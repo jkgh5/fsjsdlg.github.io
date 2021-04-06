@@ -1,0 +1,46 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:01.710
+On a data stream project,
+
+00:00:01.710 --> 00:00:03.765
+there can be multiple stakeholders.
+
+00:00:03.765 --> 00:00:06.750
+It may be helpful to think of each of them in terms of
+
+00:00:06.750 --> 00:00:09.915
+consumers and producers of information.
+
+00:00:09.915 --> 00:00:14.010
+The application development team produces data streams you will consume.
+
+00:00:14.010 --> 00:00:17.115
+They also consume data streams you will produce.
+
+00:00:17.115 --> 00:00:19.350
+Data engineering teams may maintain
+
+00:00:19.350 --> 00:00:23.010
+the infrastructure you use to run streaming applications.
+
+00:00:23.010 --> 00:00:26.430
+Often, data science is the area responsible for
+
+00:00:26.430 --> 00:00:29.895
+creating and maintaining streaming applications.
+
+00:00:29.895 --> 00:00:35.145
+C-level executives come to rely on rapidly available recommendations,
+
+00:00:35.145 --> 00:00:37.485
+produced by streaming analytics.
+
+00:00:37.485 --> 00:00:39.975
+Running a company can be very challenging,
+
+00:00:39.975 --> 00:00:43.090
+unless the right information is available.
+

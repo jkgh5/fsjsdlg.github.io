@@ -1,0 +1,341 @@
+{
+  "data": {
+    "lesson": {
+      "id": 1054014,
+      "key": "72fcdb74-d4d2-4d3f-a940-b644aba0349f",
+      "title": "Evaluate Human Balance with Spark Streaming",
+      "semantic_type": "Lesson",
+      "is_public": true,
+      "version": "1.0.0",
+      "locale": "en-us",
+      "summary": null,
+      "lesson_type": "Classroom",
+      "display_workspace_project_only": false,
+      "resources": {
+        "files": [
+          {
+            "name": "Videos Zip File",
+            "uri": "https://zips.udacity-data.com/72fcdb74-d4d2-4d3f-a940-b644aba0349f/1054014/1607025533343/Evaluate+Human+Balance+with+Spark+Streaming+Videos.zip"
+          },
+          {
+            "name": "Transcripts Zip File",
+            "uri": "https://zips.udacity-data.com/72fcdb74-d4d2-4d3f-a940-b644aba0349f/1054014/1607025531357/Evaluate+Human+Balance+with+Spark+Streaming+Subtitles.zip"
+          }
+        ],
+        "google_plus_link": null,
+        "career_resource_center_link": null,
+        "coaching_appointments_link": null,
+        "office_hours_link": null,
+        "aws_provisioning_link": null
+      },
+      "project": {
+        "key": "f52e27cd-7945-46c5-b7ac-4c378365bb6a",
+        "version": "1.0.0",
+        "locale": "en-us",
+        "duration": 40320,
+        "semantic_type": "Project",
+        "title": "Evaluate Human Balance with Spark Streaming",
+        "description": "### Submission Deliverables\n\nAs part of this project, you will submit the following:\n\n- The **sparkpykafkajoin.py** Python script\n- The **sparkpyeventskafkastreamtoconsole.py** Python script\n- The **sparkpyrediskafkastreamtoconsole.py** Python script\n- The log file from running the **sparkpykafkajoin.py** Python script in Spark: `/home/workspace/spark/logs/kafkajoin.log`\n- The log file from running the **sparkpyeventskafkastreamtoconsole.py** Python script in Spark: `/home/workspace/spark/logs/eventstream.log`\n- The log file from running the **sparkpyrediskafkastreamtoconsole.py** Python script in Spark: `/home/workspace/spark/logs/redisstream.log`\n- The stedi-application sub-folder in the Python script `sparkpykafkajoin.py`, including  the `/home/workspace/stedi-application/application.conf` file\n- The log files from the Spark master and Spark worker: `/home/workspace/spark/logs`\n- At least two screenshots of the working graph showing data flowing to the `/home/workspace/screenshots` folder\n\nAwesome job completing your project. Before submitting your project for review please make sure:\n- Your project meets everything in the [Rubric](https://review.udacity.com/#!/rubrics/2895/view)\n- You have included all of the files listed above.\n\nIf you have completed all of that, please submit!",
+        "is_public": true,
+        "summary": null,
+        "forum_path": "",
+        "rubric_id": "2895",
+        "terminal_project_id": null,
+        "resources": null,
+        "image": null
+      },
+      "lab": null,
+      "concepts": [
+        {
+          "id": 1078004,
+          "key": "c3113876-48d1-4020-b9a7-283e4fdfc2e9",
+          "title": "Project Overview",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "c3113876-48d1-4020-b9a7-283e4fdfc2e9",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1095977,
+              "key": "8f4ebfd0-da41-47a9-beef-78cef8a965e5",
+              "title": "ND029 DSND C2 L4 A01 Project Introduction",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "8Lg85019ae8",
+                "china_cdn_id": "8Lg85019ae8.mp4"
+              }
+            },
+            {
+              "id": 1078005,
+              "key": "5ce289bd-af4c-4980-829e-34eeb9a96e7f",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Project Overview\n\nYou work for the data science team at STEDI, a small startup focused on assessing balance for seniors. STEDI has an application that collects data from seniors during a <a href=\"https://youtu.be/XosjuXTCGeg\" target=\"_blank\">small exercise</a>. The user logs in and then selects the customer they are working with. Then the user starts a timer and clicks a button with each step the senior takes. When the senior has reached 30 steps, their test is finished. The data transmitted enables the application to monitor seniors’ balance risk.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1078487,
+              "key": "280e0419-14db-4ba3-94fa-599a9fb7d45b",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/September/5f68db8a_stedi-application/stedi-application.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/280e0419-14db-4ba3-94fa-599a9fb7d45b",
+              "caption": "STEDI Application",
+              "alt": "Stedi application",
+              "width": 500,
+              "height": 500,
+              "instructor_notes": null
+            },
+            {
+              "id": 1078486,
+              "key": "c8fd974a-8780-400c-bb51-0606d09f3b33",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### A New Product Feature\nYour product manager has requested a graph that shows fall risk (will they fall and become injured?) for recent assessments. The development team has built a graph, which is ready to receive risk information from Kafka:",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1078485,
+              "key": "d0cb8935-b764-4a1f-9040-fa0801794b50",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/September/5f68db1d_stedi-graph/stedi-graph.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/d0cb8935-b764-4a1f-9040-fa0801794b50",
+              "caption": "STEDI Risk Graph",
+              "alt": "Graph showing STEDI population risk change by birth year",
+              "width": 500,
+              "height": 500,
+              "instructor_notes": null
+            },
+            {
+              "id": 1078489,
+              "key": "a6cd81e5-cb05-408f-a54e-e20215c0d69d",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### The Data\n\nThe STEDI data science team has configured some real-time data sources using Kafka Connect. One of those data sources is Redis. When a customer is first assessed in the STEDI application, their record is added to a sorted set called **Customer** in Redis. Redis is configured as a Kafka source and whenever any data is saved to Redis (including Customer information), a payload is published to the Kafka topic called **redis-server**.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1078492,
+              "key": "7c06f5df-5218-4b22-bc22-d70fd4116966",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### The Challenge\nThe application development team has programmed certain business events to be published automatically to Kafka. Whenever a customer takes an assessment, their risk score is generated, as long as they have four or more completed assessments. The risk score is transmitted to a Kafka topic called **stedi-events** as a JSON object with this format:\n\n```\n{\"customer\":\"Jason.Mitra@test.com\",\"score\":7.0,\"riskDate\":\"2020-09-14T07:54:06.417Z\"}\n```\n\nThe application development team was not able to complete the feature as the graph is currently not receiving any data. Because the graph is currently not receiving any data, you need to generate a new payload in a Kafka topic and make it available to the STEDI application to consume.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 1099272,
+          "key": "f560b037-addb-4490-a2dd-26af9a536579",
+          "title": "Project Setup Outside of Classroom",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "f560b037-addb-4490-a2dd-26af9a536579",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1105123,
+              "key": "400219d4-3508-4e0e-b43c-a10bf45b47a6",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Cloning the GitHub Repository\n\nThe first step to setting up your local workspace is to clone the GitHub repository:\n\n```\ngit clone git@github.com:udacity/nd029-c2-apache-spark-and-spark-streaming-starter.git\n```\n\n\n\n## Windows Users\n\nIt is HIGHLY recommended to install the 10 October 2020 Update: <a href=\"https://support.microsoft.com/en-us/windows/get-the-windows-10-october-2020-update-7d20e88c-0568-483a-37bc-c3885390d212\" target=\"_blank\">https://support.microsoft.com/en-us/windows/get-the-windows-10-october-2020-update-7d20e88c-0568-483a-37bc-c3885390d212</a>\n\nYou will then want to install the latest version of Docker on Windows: <a href=\"https://docs.docker.com/docker-for-windows/install/\" target=\"_blank\">https://docs.docker.com/docker-for-windows/install/</a>\n\n## Using Docker for your Project\n\nYou will need to use Docker to run the project on your own computer. You can find Docker for your operating system here: <a href=\"https://docs.docker.com/get-docker/\" target=\"_blank\">https://docs.docker.com/get-docker/</a>\n\nIt is recommended that you configure Docker to allow it to use up to 2 cores and 6 GB of your host memory for use by the course workspace. If you are running other processes using Docker simultaneously with the workspace, you should take that into account also.\n\nThe docker-compose file at the root of the repository creates 9 separate containers:\n\n* Redis\n* Zookeeper (for Kafka)\n* Kafka\n* Banking Simulation\n* Trucking Simulation\n* STEDI (Application used in Final Project)\n* Kafka Connect with Redis Source Connector\n* Spark Master\n* Spark Worker\n\nIt also mounts your repository folder to the Spark Master and Spark Worker containers as a volume  `/home/workspace`, making your code changes instantly available within to the containers running Spark.\n\nLet's get these containers started!\n\n```\ncd [repositoryfolder]\ndocker-compose up\n```\n\nYou should see 9 containers when you run this command:\n\n```\ndocker ps\n```",
+              "instructor_notes": null
+            }
+          ]
+        },
+        {
+          "id": 1078006,
+          "key": "f5c8f761-8414-4392-b1d3-8fb24f1d745c",
+          "title": "Project Instructions",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "f5c8f761-8414-4392-b1d3-8fb24f1d745c",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1078495,
+              "key": "1fc4394e-83fc-4cb0-b467-7d5eedff7a3f",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Project Instructions\n\nTake a look at the [project rubric](https://review.udacity.com/#!/rubrics/2895/view), which will be used to grade your submission. You'll use the workspace on the next page to work through the various steps of the project. Project instructions are located in the workspace's guide notebook.\n\nOnce you've completed the required tasks, you can submit your project from the workspace.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1078493,
+              "key": "d2a8b12e-ef12-4659-8b77-c3ee3b7847d7",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Submission Deliverables\n\nAs part of this project, you will submit the following:\n\n- The **sparkpykafkajoin.py** Python script\n- The **sparkpyeventskafkastreamtoconsole.py** Python script\n- The **sparkpyrediskafkastreamtoconsole.py** Python script\n- The log file from running the **sparkpykafkajoin.py** Python script in Spark: `/home/workspace/spark/logs/kafkajoin.log`\n- The log file from running the **sparkpyeventskafkastreamtoconsole.py** Python script in Spark: `/home/workspace/spark/logs/eventstream.log`\n- The log file from running the **sparkpyrediskafkastreamtoconsole.py** Python script in Spark: `/home/workspace/spark/logs/redisstream.log`\n- The stedi-application sub-folder In the Python script `sparkpykafkajoin.py`, including  the `/home/workspace/stedi-application/application.conf` file\n- The log files from the Spark master and Spark worker: `/home/workspace/spark/logs`\n- At least two screenshots of the working graph showing data flowing to the `/home/workspace/screenshots` folder",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 1095978,
+          "key": "22f5c4b6-adbc-46e2-b8dd-465e0ded97fb",
+          "title": "Create Wireframe",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "22f5c4b6-adbc-46e2-b8dd-465e0ded97fb",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1095989,
+              "key": "7fe5b60c-f921-4a1d-823f-09c0421ddfe5",
+              "title": "Create a STEDI Wireframe",
+              "semantic_type": "TaskListAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "7fe5b60c-f921-4a1d-823f-09c0421ddfe5",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "tasks": [
+                "Open your diagramming tool (I will use Draw.io)",
+                "Create a block for STEDI (business application)",
+                "Create a block for your application running in Spark",
+                "Create a block for Redis",
+                "Draw the topic from Redis",
+                "Draw the topic from STEDI",
+                "Draw the topic from your application"
+              ],
+              "positive_feedback": "Great job! Remember you will be creating the topic from Spark to send data to STEDI. The solution to this wireframe is on the next page!",
+              "video_feedback": null,
+              "description": "Creating a data flow diagram can be a good idea when starting a Data Streaming project. Let's start this project by drawing where the data is coming from and where it is going."
+            }
+          ]
+        },
+        {
+          "id": 1095979,
+          "key": "02f778bb-bb7d-40c4-9dfa-262dc14107a3",
+          "title": "Wireframe Solution",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "02f778bb-bb7d-40c4-9dfa-262dc14107a3",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1095980,
+              "key": "3d90fb4d-9258-4855-8b05-4eb6a6285947",
+              "title": "ND029 DSND C2 L4 A02 Project Wireframe",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "4YSeVNr4ohU",
+                "china_cdn_id": "4YSeVNr4ohU.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 1054017,
+          "key": "69f49918-ab80-49ba-88e8-e035745ff485",
+          "title": "Project Workspace",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "69f49918-ab80-49ba-88e8-e035745ff485",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1054018,
+              "key": "324db9a1-7d18-43c9-a3d5-f4a26abe4056",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "r1053966c1054017xJUPYTERLhua0w708",
+              "pool_id": "jupyterlabpython37",
+              "view_id": "jupyter-lab-ge0iw",
+              "gpu_capable": false,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "disk": {
+                      "id": "data-science-datasets",
+                      "paths": [
+                        {
+                          "src": "/ND029",
+                          "dest": "/data/"
+                        }
+                      ]
+                    },
+                    "port": "3000",
+                    "ports": [],
+                    "videos": [],
+                    "pageEnd": "",
+                    "pageStart": "",
+                    "allowSubmit": true,
+                    "defaultPath": "/",
+                    "actionButtonText": ""
+                  },
+                  "kind": "jupyter-lab"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "_deprecated": [
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "starter_files",
+      "reason": "prefer master_archive_id"
+    }
+  ]
+}

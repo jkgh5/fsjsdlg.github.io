@@ -1,0 +1,25 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:04.680
+I'd like to introduce you to the project you'll be working on to wrap up this course.
+
+00:00:04.680 --> 00:00:07.560
+You work for the Data Science team at STEDI,
+
+00:00:07.560 --> 00:00:10.530
+a small start-up focused on assessing balance for seniors.
+
+00:00:10.530 --> 00:00:15.765
+STEDI has an application that collects data from seniors during a small exercise.
+
+00:00:15.765 --> 00:00:20.925
+Your product manager has requested a graph that shows fall risk for recent assessments.
+
+00:00:20.925 --> 00:00:25.080
+Your job is to collect data from Redis and the application,
+
+00:00:25.080 --> 00:00:31.690
+join the data and provide a new Kafka topic to properly display data in the graph.
+

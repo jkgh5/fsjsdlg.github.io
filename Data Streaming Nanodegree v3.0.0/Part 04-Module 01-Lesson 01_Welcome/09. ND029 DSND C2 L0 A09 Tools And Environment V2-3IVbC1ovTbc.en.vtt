@@ -1,0 +1,52 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:03.915
+Let's talk about the tools and environment that you will use in the course.
+
+00:00:03.915 --> 00:00:07.500
+You should already be familiar with SQL,
+
+00:00:07.500 --> 00:00:11.895
+Python, and it may be helpful to understand ETL.
+
+00:00:11.895 --> 00:00:16.875
+Some of the tools you will learn to use in this course include: Bash,
+
+00:00:16.875 --> 00:00:23.550
+Kafka, Redis, Spark, and Draw.io.
+
+00:00:23.550 --> 00:00:28.920
+Some examples of tools that are used elsewhere in streaming include JMS,
+
+00:00:28.920 --> 00:00:33.990
+RabbitMQ, Hadoop, SQS, and Firebase.
+
+00:00:33.990 --> 00:00:39.050
+I'd like to introduce you to the workspace that we'll be using in this course.
+
+00:00:39.050 --> 00:00:43.085
+The workspace has several tools installed already for you,
+
+00:00:43.085 --> 00:00:45.980
+including Spark and Kafka,
+
+00:00:45.980 --> 00:00:47.735
+as well as Redis.
+
+00:00:47.735 --> 00:00:51.035
+In the workspace we start Spark manually.
+
+00:00:51.035 --> 00:00:54.380
+This is not required in a typical Spark environment.
+
+00:00:54.380 --> 00:00:59.765
+In addition, we use the Start Kafka button to startup Kafka.
+
+00:00:59.765 --> 00:01:02.120
+In a production or test environment,
+
+00:01:02.120 --> 00:01:08.850
+both Spark and Kafka will typically be set up already and will be constantly running.
+

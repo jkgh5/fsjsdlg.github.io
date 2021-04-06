@@ -1,0 +1,67 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:03.180
+Let's talk about why data streaming is important.
+
+00:00:03.180 --> 00:00:05.550
+The world around us has become filled with
+
+00:00:05.550 --> 00:00:08.775
+opportunities to gain valuable streams of data.
+
+00:00:08.775 --> 00:00:12.105
+Let's take a video streaming platform, for example,
+
+00:00:12.105 --> 00:00:14.505
+in a simple process of watching a video,
+
+00:00:14.505 --> 00:00:19.200
+the average person generates and consumes various types of data.
+
+00:00:19.200 --> 00:00:22.500
+The actual video feed is itself a data stream,
+
+00:00:22.500 --> 00:00:26.655
+sending thousands of frames per minute in small network packets.
+
+00:00:26.655 --> 00:00:28.665
+Like the network packets,
+
+00:00:28.665 --> 00:00:32.669
+most streams are composed of small application messages,
+
+00:00:32.669 --> 00:00:36.060
+as user logging into view their favorite TV series will
+
+00:00:36.060 --> 00:00:40.060
+present their online profile as they log in to the website.
+
+00:00:40.060 --> 00:00:42.680
+Then several events take place that make
+
+00:00:42.680 --> 00:00:45.605
+their video available for viewing in the browser,
+
+00:00:45.605 --> 00:00:49.280
+hopping on their cell phone to take the rest of the video on the road,
+
+00:00:49.280 --> 00:00:54.970
+the mobile app will send device messages to catch up to the previously played frame.
+
+00:00:54.970 --> 00:00:59.750
+All of the messages both created and consumed in this process of viewing
+
+00:00:59.750 --> 00:01:06.325
+videos can be aggregated and used to recommend future video selections to the user.
+
+00:01:06.325 --> 00:01:10.520
+A brief analogy to data streaming is a real stream or river,
+
+00:01:10.520 --> 00:01:12.920
+what we are trying to do with data streaming is
+
+00:01:12.920 --> 00:01:16.470
+capture the streaming data directly from the stream.
+

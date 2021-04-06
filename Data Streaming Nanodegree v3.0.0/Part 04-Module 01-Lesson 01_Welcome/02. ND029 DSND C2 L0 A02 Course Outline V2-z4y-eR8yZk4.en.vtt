@@ -1,0 +1,58 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:02.565
+Let's take a look at the course outline.
+
+00:00:02.565 --> 00:00:04.110
+In your first lesson,
+
+00:00:04.110 --> 00:00:06.555
+you will begin with streaming DataFrames in Spark,
+
+00:00:06.555 --> 00:00:08.565
+including starting a Spark cluster,
+
+00:00:08.565 --> 00:00:10.530
+deploying a Spark application,
+
+00:00:10.530 --> 00:00:15.885
+creating a streaming DataFrame with Kafka and creating and querying a Spark View.
+
+00:00:15.885 --> 00:00:19.550
+In the second lesson, you'll work with joint and JSON,
+
+00:00:19.550 --> 00:00:23.739
+including parsing a JSON payload into separate fields for analysis,
+
+00:00:23.739 --> 00:00:25.834
+joining two streaming DataFrames,
+
+00:00:25.834 --> 00:00:28.715
+and writing a streaming DataFrame to Kafka.
+
+00:00:28.715 --> 00:00:30.635
+In the third and last lesson,
+
+00:00:30.635 --> 00:00:32.015
+you'll work with Redis,
+
+00:00:32.015 --> 00:00:36.785
+Base64, and JSON, including manually saving to Redis,
+
+00:00:36.785 --> 00:00:39.275
+reading Redis data from a Kafka topic,
+
+00:00:39.275 --> 00:00:45.560
+parsing Base64 encoded information and sinking a subset of JSON fields.
+
+00:00:45.560 --> 00:00:48.680
+In the project you complete at the end of the course,
+
+00:00:48.680 --> 00:00:50.615
+you will evaluate human balance,
+
+00:00:50.615 --> 00:00:56.400
+applying techniques from the course to a real-world streaming analytics application.
+

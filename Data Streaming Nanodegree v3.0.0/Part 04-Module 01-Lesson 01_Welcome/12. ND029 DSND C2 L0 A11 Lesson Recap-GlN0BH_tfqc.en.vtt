@@ -1,0 +1,25 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:03.465
+Let's go over what we've talked about so far.
+
+00:00:03.465 --> 00:00:07.080
+We've had an introduction to Apache Spark,
+
+00:00:07.080 --> 00:00:12.030
+talked about why data streaming is important, and discussed stakeholders.
+
+00:00:12.030 --> 00:00:14.940
+We then discussed when to use data streaming,
+
+00:00:14.940 --> 00:00:16.920
+the history of data streaming,
+
+00:00:16.920 --> 00:00:18.795
+your tools and environment,
+
+00:00:18.795 --> 00:00:21.880
+and then discuss the final project.
+

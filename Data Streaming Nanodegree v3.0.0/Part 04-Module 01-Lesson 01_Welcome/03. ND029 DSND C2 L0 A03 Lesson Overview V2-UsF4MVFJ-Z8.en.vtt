@@ -1,0 +1,25 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:03.000
+Let's look at the introductory lesson overview.
+
+00:00:03.000 --> 00:00:04.815
+In this introductory lesson,
+
+00:00:04.815 --> 00:00:07.875
+we will discuss an introduction to Apache Spark.
+
+00:00:07.875 --> 00:00:11.220
+Discuss why data streaming is important and
+
+00:00:11.220 --> 00:00:14.805
+discuss common stake holders in a data streaming application.
+
+00:00:14.805 --> 00:00:19.845
+We will then discuss when to use data streaming and the history of data streaming.
+
+00:00:19.845 --> 00:00:25.539
+We will look at some tools and the environment and then go over the final project.
+

@@ -1,0 +1,46 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:02.310
+Let's talk about Data streaming.
+
+00:00:02.310 --> 00:00:06.570
+One of the best examples of a data stream is the stream of consciousness.
+
+00:00:06.570 --> 00:00:08.700
+Thoughts are constant when awake.
+
+00:00:08.700 --> 00:00:11.280
+They are constantly changing and evolving.
+
+00:00:11.280 --> 00:00:12.990
+They start with one subject,
+
+00:00:12.990 --> 00:00:15.600
+and can move to another topic very quickly.
+
+00:00:15.600 --> 00:00:21.390
+Multiple inputs are aggregated to form ideas and conclusions.
+
+00:00:21.390 --> 00:00:23.880
+Just as in our consciousness,
+
+00:00:23.880 --> 00:00:27.090
+the world around us generates loads of information.
+
+00:00:27.090 --> 00:00:30.810
+A real-world event is often responsible for producing
+
+00:00:30.810 --> 00:00:34.665
+the stream of information ingested by a streaming application.
+
+00:00:34.665 --> 00:00:39.750
+An application event is created in response to a real-world event.
+
+00:00:39.750 --> 00:00:44.375
+A listener responsible for responding to this event ingests it.
+
+00:00:44.375 --> 00:00:48.240
+As a result, a new insight is produced.
+

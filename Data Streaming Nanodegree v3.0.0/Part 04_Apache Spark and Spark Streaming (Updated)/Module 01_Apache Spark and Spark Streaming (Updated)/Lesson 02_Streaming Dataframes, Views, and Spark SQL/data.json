@@ -1,0 +1,2875 @@
+{
+  "data": {
+    "lesson": {
+      "id": 1079586,
+      "key": "876ada77-99c4-44f5-b2c1-a948c6288bef",
+      "title": "Streaming Dataframes, Views, and Spark SQL",
+      "semantic_type": "Lesson",
+      "is_public": true,
+      "version": "1.0.0",
+      "locale": "en-us",
+      "summary": "In this lesson, you'll learn about working with Spark Dataframes and views.",
+      "lesson_type": "Classroom",
+      "display_workspace_project_only": false,
+      "resources": {
+        "files": [
+          {
+            "name": "Videos Zip File",
+            "uri": "https://zips.udacity-data.com/876ada77-99c4-44f5-b2c1-a948c6288bef/1079586/1607108713744/Streaming+Dataframes%2C+Views%2C+and+Spark+SQL+Videos.zip"
+          },
+          {
+            "name": "Transcripts Zip File",
+            "uri": "https://zips.udacity-data.com/876ada77-99c4-44f5-b2c1-a948c6288bef/1079586/1607108708188/Streaming+Dataframes%2C+Views%2C+and+Spark+SQL+Subtitles.zip"
+          },
+          {
+            "name": "Apache Spark And Spark Streaming Glossary",
+            "uri": "https://video.udacity-data.com/topher/2020/November/5fa5dee4_apache-spark-and-spark-streaming/apache-spark-and-spark-streaming.pdf"
+          }
+        ],
+        "google_plus_link": null,
+        "career_resource_center_link": null,
+        "coaching_appointments_link": null,
+        "office_hours_link": null,
+        "aws_provisioning_link": null
+      },
+      "project": null,
+      "lab": null,
+      "concepts": [
+        {
+          "id": 1079476,
+          "key": "26c02271-ee8a-4d1c-b9b6-7720125acf42",
+          "title": "Lesson Overview",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "26c02271-ee8a-4d1c-b9b6-7720125acf42",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1079469,
+              "key": "511916f7-4f53-4947-95f6-a7fe7a5d32a0",
+              "title": "Lesson Outline Heading",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Streaming DataFrames Lesson Overview",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1079470,
+              "key": "905e2747-c199-4aec-8f20-9794ef219b56",
+              "title": "ND029 DSND C2 L1 A01 Course Overview V2",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "ivvhGSFJNVs",
+                "china_cdn_id": "ivvhGSFJNVs.mp4"
+              }
+            },
+            {
+              "id": 1079472,
+              "key": "e2824525-5800-4f82-beaf-2f1aaf68142f",
+              "title": "Course Outline Summary",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "This is the first lesson of the Spark Streaming Course.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1079474,
+              "key": "a071111e-46ab-4209-be43-6fc95ab83882",
+              "title": "Lesson Outline Summary",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "In this lesson, we'll set the foundations of this course by getting hands-on by Starting A Spark Cluster and Deploying a Spark Application, Creating a Spark Streaming DataFrame with a Kafka Source, Creating a and Querying a Spark View.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1079475,
+              "key": "06169c31-8369-44c2-af59-7f51df6390c9",
+              "title": "Learning Objectives",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "* Start a Spark Cluster and Deploy a Spark application.\n* Create a Spark Streaming DataFrame with a Kafka source\n* Create a Spark View\n* Query a Spark View",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1094519,
+              "key": "7f30458b-759d-478d-83ae-8b01b48b6351",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/November/5fa161a8_slide-2/slide-2.jpeg",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/7f30458b-759d-478d-83ae-8b01b48b6351",
+              "caption": "Course Overview",
+              "alt": "Course Overview",
+              "width": 1920,
+              "height": 1080,
+              "instructor_notes": null
+            }
+          ]
+        },
+        {
+          "id": 1079482,
+          "key": "e23294fb-680a-4a04-b004-a87822b512dd",
+          "title": "Importance of Spark",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "e23294fb-680a-4a04-b004-a87822b512dd",
+            "completed_at": "2021-01-29T14:37:16.220Z",
+            "last_viewed_at": "2021-01-29T14:37:24.417Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1079477,
+              "key": "620f9bb5-9b53-4e26-9664-6f58638dd580",
+              "title": "Why are Spark sources and Dataframes important? Heading",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Why are Spark Sources and Dataframes Important?\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1079478,
+              "key": "aa54d418-98dc-4d11-b132-500c188f7fbb",
+              "title": "ND029 DSND C2 L1 A02a Importance Of Spark V3",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "WGAfUrUrmrw",
+                "china_cdn_id": "WGAfUrUrmrw.mp4"
+              }
+            },
+            {
+              "id": 1094515,
+              "key": "a2a731a8-585a-42e8-80c8-2d58c34d6890",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### What is Spark?\n\n**Spark: **an open-source framework for distributed computing across a cluster of servers; typically, programming is required.\n\n### What is Kafka?\n\n**Kafka: **a durable message broker used to mediate the exchange of messages between multiple applications.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1079480,
+              "key": "1d4ba139-1c80-4f4a-a1dc-0f04fa7a3daa",
+              "title": "Why are Spark sources and Dataframes important? Summary",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### The Case for Streaming\n\n* Data at rest is not the most relevant information\n* Act in response to conditions\n* Respond to events\n* Spark sources connect to the outside world\n* Kafka source can connect to virtually anything",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1094516,
+              "key": "a45193ca-e307-4427-822d-ed5a68e5f647",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## What Does Spark Do?\n\n* Using information from a variety of sources, Spark allows you to create relationships with other data\n* Spark reads streams of information in near real-time\n* Spark can read from folders, sockets, or Kafka topics",
+              "instructor_notes": null
+            },
+            {
+              "id": 1094517,
+              "key": "476858a7-98f6-406c-9ebd-6fb1dd68d3ef",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## What is a Cluster?\n\n**Cluster: **an orientation of two or more servers in such a fashion that they can communicate directly with one another or with a cluster manager; often for the purpose of high availability or increased capacity.",
+              "instructor_notes": null
+            },
+            {
+              "id": 1094520,
+              "key": "9f5aec63-e86e-4fa7-baee-6b32b6e3d52f",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/November/5fa161e4_slide-12/slide-12.jpeg",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/9f5aec63-e86e-4fa7-baee-6b32b6e3d52f",
+              "caption": "Spark Kubernetes Cluster Mode",
+              "alt": "Spark Kubernetes Cluster Mode",
+              "width": 1920,
+              "height": 1080,
+              "instructor_notes": null
+            },
+            {
+              "id": 1079481,
+              "key": "f71bd83c-d7a0-4e48-a99a-9a58d1ea351a",
+              "title": "Why are Spark sources and Dataframes important? Quiz",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### What does Kubernetes mean?\n\n**Kubernetes: **an open-source technology used to coordinate and distribute computing.\n\n### What is Zookeeper?\n\n**Zookeeper:** an open-source technology that enables semi-autonomous healing of a server cluster.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1094523,
+              "key": "f80e1850-d88a-4407-a25b-bc132937067b",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/November/5fa16336_slide-15/slide-15.jpeg",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/f80e1850-d88a-4407-a25b-bc132937067b",
+              "caption": "Spark Standalone Cluster Mode",
+              "alt": "Spark Standalone Cluster Mode",
+              "width": 1920,
+              "height": 1080,
+              "instructor_notes": null
+            },
+            {
+              "id": 1099233,
+              "key": "7949e11e-48d6-4246-a745-07f6fa1599ac",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Wireframe\n\n\n\nWireframing an application before building it out is important. We will start the wireframe here and continually add to it throughout the course as a best practice. \n\n\n\nYou can use<a href=\"https://draw.io\" target=\"_blank\"> draw.io</a> or any other similar tool to follow along and try it yourself.",
+              "instructor_notes": null
+            },
+            {
+              "id": 1094534,
+              "key": "3d37c72e-585d-41e0-b124-f1e7ffbfb828",
+              "title": "ND029 DSND C2 L1 A02b Wireframe With Spark And Kafka",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "KOxpOj77_WE",
+                "china_cdn_id": "KOxpOj77_WE.mp4"
+              }
+            },
+            {
+              "id": 1094524,
+              "key": "4f3fd40d-3244-4028-b7fd-662e50ea9a7c",
+              "title": null,
+              "semantic_type": "MatchingQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "4f3fd40d-3244-4028-b7fd-662e50ea9a7c",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "complex_prompt": {
+                  "text": "Match the correct node with the configuration."
+                },
+                "concepts_label": "Node",
+                "answers_label": "Configuration",
+                "concepts": [
+                  {
+                    "text": "Kubernetes Cluster Mode",
+                    "correct_answer": {
+                      "id": "b2b865b3-2acf-49f7-b07e-cf173401e66b",
+                      "text": "A configuration in which Spark workers are managed by Kubernetes"
+                    }
+                  },
+                  {
+                    "text": "Standalone Cluster Mode",
+                    "correct_answer": {
+                      "id": "c4bbb02e-c69e-4465-9c64-4d2361050324",
+                      "text": "A configuration in which the Spark workers are managed by the Spark Master "
+                    }
+                  }
+                ],
+                "answers": [
+                  {
+                    "id": "c4bbb02e-c69e-4465-9c64-4d2361050324",
+                    "text": "A configuration in which the Spark workers are managed by the Spark Master "
+                  },
+                  {
+                    "id": "b2b865b3-2acf-49f7-b07e-cf173401e66b",
+                    "text": "A configuration in which Spark workers are managed by Kubernetes"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 1079493,
+          "key": "860886c1-1ee9-48f3-ac53-ee62595b8a2a",
+          "title": "Spark Clusters",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "860886c1-1ee9-48f3-ac53-ee62595b8a2a",
+            "completed_at": "2021-01-29T14:53:37.938Z",
+            "last_viewed_at": "2021-01-29T16:13:52.570Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1079489,
+              "key": "0ce50a50-e315-421d-b834-c7f8bbd4910b",
+              "title": "Start a Spark Cluster and deploy a Spark application Heading",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Run a Spark Cluster and Deploy Spark Applications",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1079490,
+              "key": "0179f792-71aa-4e04-9c4f-6d86c1b98a1d",
+              "title": "ND029 DSND C2 L1 A03 Spark Clusters V2",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "WAa98lxdUSI",
+                "china_cdn_id": "WAa98lxdUSI.mp4"
+              }
+            },
+            {
+              "id": 1094525,
+              "key": "b948c181-2299-42c3-a1ce-69d1c1ab3970",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Spark Component Inventory\n\n* **Zookeeper: **connects to the Spark Master\n* **`spark-submit`** **command**: deploys the Spark Application \n* **Spark Master: **connects to the Spark workers.\n* **Spark Workers: **connect to the Spark Master on the Spark URI in a Standalone Cluster; in a Kubernetes configuration they are orchestrated by Kubernetes.",
+              "instructor_notes": null
+            },
+            {
+              "id": 1094526,
+              "key": "f366f5c6-133f-4373-80c3-2f7d28eeb87e",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/November/5fa1690d_slide-22/slide-22.jpeg",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/f366f5c6-133f-4373-80c3-2f7d28eeb87e",
+              "caption": "Spark Startup Sequence",
+              "alt": "Spark Startup Sequence",
+              "width": 1920,
+              "height": 1080,
+              "instructor_notes": null
+            },
+            {
+              "id": 1094528,
+              "key": "26a5857a-91e1-4da9-a57d-5283bd77a9c3",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Starting the Spark Cluster\n\n1. Run the `start-master.sh` script\n1. Watch for the log file location\n1. Cat or tail the log file to find the Spark Master URI\n1. Run the `start-slave.sh` script passing the Spark Master URI parameter\n\n## Spark Startup Commands\n\n```\n$ /data/spark/sbin/start-master.sh\n$ tail -f /opt/spark-2.3.4-bin-hadoop2.7/logs/spark--org.apache.spark.deploy.master.Master-1-719f72471d5b.out\n$ /data/spark/sbin/start-slave.sh spark://719f72471d5b:7077\n```",
+              "instructor_notes": null
+            },
+            {
+              "id": 1094531,
+              "key": "070e49bf-9e6c-4f1f-b844-3d43dd8f9832",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/November/5fa16dc0_slide-25/slide-25.jpeg",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/070e49bf-9e6c-4f1f-b844-3d43dd8f9832",
+              "caption": "Spark is Polyglot",
+              "alt": "Spark is Polyglog",
+              "width": 1920,
+              "height": 1080,
+              "instructor_notes": null
+            },
+            {
+              "id": 1094532,
+              "key": "a1c22d20-4a27-4184-9931-36c2d6a26edf",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Multi-Language Support\n\n* You can write Spark Streaming applications using R, which is very popular for Data Science applications\n* You can also use Java, which is very familiar to a large portion of the Development Community\n* Spark also supports Scala, one of the foundational languages for Spark and Big Data\n* Lastly, Spark supports Python, one of the most popular programming languages",
+              "instructor_notes": null
+            },
+            {
+              "id": 1094533,
+              "key": "58a0ec22-2144-4086-84af-b13a345aa6c2",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/November/5fa16ece_slide-26/slide-26.jpeg",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/58a0ec22-2144-4086-84af-b13a345aa6c2",
+              "caption": "Spark Language Constructs",
+              "alt": "Spark Language Constructs",
+              "width": 1920,
+              "height": 1080,
+              "instructor_notes": null
+            },
+            {
+              "id": 1094548,
+              "key": "8ac87094-28fc-44b1-95ed-830cda2539d4",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Data Streaming constructs\n\n* R uses DataFrames\n* Java and Scala use typed DataSets\n* Python uses DataFrames\n\n## Why use Python?\n\n* Python is not strictly typed\n* Popular for Data Science applications",
+              "instructor_notes": null
+            },
+            {
+              "id": 1094551,
+              "key": "32095eca-e5cc-4a0f-9328-31b27a9e22a7",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/November/5fa18c19_slide-29/slide-29.jpeg",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/32095eca-e5cc-4a0f-9328-31b27a9e22a7",
+              "caption": "Pressing Needs Create Pipelines",
+              "alt": "Pressing Needs Create Pipelines",
+              "width": 1920,
+              "height": 1080,
+              "instructor_notes": null
+            },
+            {
+              "id": 1094552,
+              "key": "23f82150-d296-4a81-b345-0010e746509c",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## What is a Data Pipeline?\n\n**Data Pipeline: **a series of processing steps that augment or refine a raw data source in preparation for consumption by another system.",
+              "instructor_notes": null
+            },
+            {
+              "id": 1094565,
+              "key": "3d30575b-b79a-49ea-9d13-0cb320f91ca1",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/November/5fa19208_slide-32/slide-32.jpeg",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/3d30575b-b79a-49ea-9d13-0cb320f91ca1",
+              "caption": "Structure of a Data Pipeline",
+              "alt": "Structure of a Data Pipeline",
+              "width": 1920,
+              "height": 1080,
+              "instructor_notes": null
+            },
+            {
+              "id": 1094569,
+              "key": "9442c68d-76f0-4e96-8c73-407016d28903",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Structure of a Data Pipeline\n\n1. Every Spark Application starts by reading in a source\n1. A series of steps is executed that transforms the original flow of information\n1. The end result is a DataFrame that can be sinked externally with an outside system\n\nThe source is continually polled for updates to apply the transformations.* This continual polling is what sets Spark Streaming apart from non-streaming applications.*",
+              "instructor_notes": null
+            },
+            {
+              "id": 1094571,
+              "key": "62ff1e4b-3ca1-4c67-8208-0caeb7f2dc56",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Sample Spark Streaming Application\n\n```\nspark = SparkSession.builder.appName(\"balance-events\").getOrCreate()\n\nkafkaRawStreamingDF = spark                          \\    \n.readStream                                          \\\n.format(\"kafka\")                                     \\\n.option(\"kafka.bootstrap.servers\",\"localhost:9092)   \\\n.option(\"subscribe\",\"balance-updates\")               \\\n.option(\"startingOffsets\",\"earliest\")                \\\n.load()\n\nkafkaStreamingDF = kafkaRawStreamingDF.selectExpr(\"cast(key as string) key,\"cast(value as string) value\")\n\nkafkaStreamingDF.writeStream.outputMode(\"append\").format(\"console\").start().awaitTermination()\n```",
+              "instructor_notes": null
+            },
+            {
+              "id": 1094576,
+              "key": "7e830d7e-a2e0-4a5a-892c-8a38d41ee573",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Explanation of Sample Spark Streaming Application\n\n**Note:** the import of SparkSession is omitted for brevity\n\n* We start by instantiating a Spark session- this connects us to the Spark cluster\n* Next, we open a streaming source (Kafka in this case)\n* Third, we apply data transformations\n* Last we sink data to something external to Spark (the console is a good sink to test your data quality visually)",
+              "instructor_notes": null
+            },
+            {
+              "id": 1094577,
+              "key": "14f2a582-fe3e-4421-b923-35898e362564",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/November/5fa19584_slide-34/slide-34.jpeg",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/14f2a582-fe3e-4421-b923-35898e362564",
+              "caption": "From Start to Deployment",
+              "alt": "From Start to Deployment",
+              "width": 1920,
+              "height": 1080,
+              "instructor_notes": null
+            },
+            {
+              "id": 1094580,
+              "key": "393ec1b8-9aef-4fb1-9845-e0ff48217249",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## From Start to Deployment\n\nTo take advantage of the resources in the Spark cluster, we submit (or deploy) the Spark code:\n\n1. Start the Spark master\n1. Start the Spark workers   \n1. Submit your application\n\n```\n$ /home/workspace/spark/sbin/start-master.sh\n$ /home/workspace/spark/sbin/start-slave.sh spark://719f72471d5b:7077\n$ /home/workspace/spark/bin/spark-submit /home/workspace/hellospark.py\n```\n\nIf you ever need to stop the master, the script for that is:\n\n```\n$ /data/spark/sbin/stop-master.sh\n```\n\nIf you ever need to stop the worker, the script for that is:\n\n```\n$ /data/spark/sbin/stop-slave.sh\n```",
+              "instructor_notes": null
+            },
+            {
+              "id": 1094587,
+              "key": "6f1481a9-94b0-420b-9f16-50408113501f",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Streaming Results\n\n* When your spark streaming application begins producing data, it will push the data to the sink you have created \n* By default, Spark executes in micro-batches\n* When sinking to the console you will see the batches\n* When sinking to anything else, you won't see the batches on the console\n* When sinking to the console, you should wait up to 2 minutes to see the results\n* When you see Batch 0 you have started getting results",
+              "instructor_notes": null
+            },
+            {
+              "id": 1094584,
+              "key": "3ec7e2e6-9347-4208-8901-89471dccef76",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/November/5fa1974e_slide-38/slide-38.jpeg",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/3ec7e2e6-9347-4208-8901-89471dccef76",
+              "caption": "Streaming Results",
+              "alt": "Streaming Results",
+              "width": 1920,
+              "height": 1080,
+              "instructor_notes": null
+            },
+            {
+              "id": 1082031,
+              "key": "93924ce3-0251-48e5-bc54-28934e462565",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Additional Resources\n\nFor more details about various Spark deployment configurations see the official <a href=\"http://spark.apache.org/docs/latest/cluster-overview.html\" target=\"_blank\">Spark Cluster mode Overview</a>",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 1082043,
+          "key": "44f2d9fa-18a7-4d01-9bfe-0a9e165bbe65",
+          "title": "Walkthrough 1: Start a Spark Cluster",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "44f2d9fa-18a7-4d01-9bfe-0a9e165bbe65",
+            "completed_at": "2021-01-29T14:59:42.758Z",
+            "last_viewed_at": "2021-01-29T16:14:02.549Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1094547,
+              "key": "2104550c-d1d9-4b7c-a6f2-235b8d7c0541",
+              "title": "ND029 DSND C2 L1 A04 Spark Clusters Walkthrough Short",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "Qhc0TLfAbfE",
+                "china_cdn_id": "Qhc0TLfAbfE.mp4"
+              }
+            },
+            {
+              "id": 1094549,
+              "key": "e00b4f1f-e0d3-4fdd-9e12-b8ec09150019",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "To make the workspace blow bigger, you can click the **Expand** button in the lower left-hand corner of the screen. However, you will not also be able to view the video at the same time. You may wish to open the video in a separate window to help with this.",
+              "instructor_notes": null
+            },
+            {
+              "id": 1106423,
+              "key": "1d7a6a88-c806-4488-b760-5056f49c2deb",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Start a Spark Cluster\n\n* From the terminal: `cd /home/workspace/spark/sbin`\n* Type: `./start-master.sh`\n* Watch for a message similar to this: `Logging to /home/workspace/spark/logs/spark--org.apache.spark.deploy.master.Master-1-5a00814ba363.out`\n* Copy the path to your log, for example: `/home/workspace/sparklogs/logs/spark--org.apache.spark.deploy.master.Master-1-5a00814ba363.out`\n* Type: `cat [path to log]`\n* Look for a message like this: `Starting Spark master at spark://5a00814ba363:7077`\n* Copy the Spark URI, for example: `spark://5a00814ba363:7077`\n* Type: `./start-slave.sh [Spark URI]`\n\n## Create a hello world Spark application and submit it to the cluster\n\n* Complete the hellospark.py application (be sure to click File Save when done)\n* From the terminal type: `cd /home/workspace/spark/bin`\n* Type: `./spark-submit /home/workspace/hellospark.py`\n* Watch for the output at the end for the counts",
+              "instructor_notes": null
+            },
+            {
+              "id": 1085113,
+              "key": "6d9bfb6e-7440-4374-92ed-4ae9b77579f4",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "r1053966c1082043xJUPYTERLvc36joa9",
+              "pool_id": "jupyterlabpython37",
+              "view_id": "jupyter-lab-kwptd",
+              "gpu_capable": false,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "disk": {
+                      "id": "data-science-datasets",
+                      "paths": [
+                        {
+                          "src": "/ND029",
+                          "dest": "/data/"
+                        }
+                      ]
+                    },
+                    "port": "3000",
+                    "ports": [],
+                    "videos": [],
+                    "pageEnd": "2",
+                    "pageStart": "2",
+                    "allowSubmit": false,
+                    "defaultPath": "/",
+                    "actionButtonText": ""
+                  },
+                  "kind": "jupyter-lab"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            },
+            {
+              "id": 1094536,
+              "key": "64ef48fb-1390-4428-b01d-7e7e6fe0cb4f",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Optional Long Walkthrough with Troubleshooting",
+              "instructor_notes": null
+            },
+            {
+              "id": 1094537,
+              "key": "d9357055-00b4-4f0b-b88c-2c12ae6ab37e",
+              "title": "ND029 DSND C2 L1 A04 Spark Clusters Walkthrough",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "kjEFiU3bwg4",
+                "china_cdn_id": "kjEFiU3bwg4.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 1079497,
+          "key": "c67e0b04-304a-476d-a4f8-50c594a03847",
+          "title": "Quiz: Spark Clusters",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "c67e0b04-304a-476d-a4f8-50c594a03847",
+            "completed_at": "2021-01-29T17:54:47.944Z",
+            "last_viewed_at": "2021-01-29T17:54:46.870Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1079494,
+              "key": "1f5dcc2f-5765-4f63-857f-55cfb616e8f1",
+              "title": "Quiz: Start a Spark Cluster and deploy a Spark application Heading",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Quiz: Start Spark and deploy a Spark Application",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1094538,
+              "key": "4e57589c-ddbc-4a8b-80f7-66c66a3d8d85",
+              "title": null,
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "4e57589c-ddbc-4a8b-80f7-66c66a3d8d85",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "How can you tell what URI the Spark Master is running on?",
+                "answers": [
+                  {
+                    "id": "42d99edf-7da2-4ead-8f3c-f463597c18e5",
+                    "text": "Cat the log file",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "ca20f836-81eb-4a59-9c19-1f49015b6114",
+                    "text": "Read the configuration file",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "9a4daa37-3a9a-4619-bd43-a3332c1c5d28",
+                    "text": "Query the DataFrame",
+                    "is_correct": false
+                  }
+                ]
+              }
+            },
+            {
+              "id": 1094530,
+              "key": "ab2dc972-1a12-4bce-9c72-e9440fd27a8a",
+              "title": null,
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "ab2dc972-1a12-4bce-9c72-e9440fd27a8a",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "How can you check if Spark is up and running in Spark Standalone Cluster mode?",
+                "answers": [
+                  {
+                    "id": "32c40830-b292-4d61-835a-057406aca85c",
+                    "text": "$ ps -ef",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "dcc827ef-4b4e-4522-9b62-84455f4f4c92",
+                    "text": "Start the Spark application and if Spark isn't running it will stop.",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "5dc04f32-3166-4095-a8fc-f10c863de900",
+                    "text": "$ top",
+                    "is_correct": false
+                  }
+                ]
+              }
+            },
+            {
+              "id": 1094553,
+              "key": "0e58c375-712c-44ea-92a3-630c29e23ae1",
+              "title": null,
+              "semantic_type": "CheckboxQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "0e58c375-712c-44ea-92a3-630c29e23ae1",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "What languages does Spark support?",
+                "answers": [
+                  {
+                    "id": "702d9dd1-a796-4b9b-b5a0-dbccc8491797",
+                    "text": "R",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "d75a6331-ded4-4862-b684-d2fc9da58d61",
+                    "text": "Java",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "ff59cacf-5e4c-48e5-8969-30d238aa5e6d",
+                    "text": "Scala",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "7fa3ab33-1d16-45bc-a41a-557a801479a7",
+                    "text": "Python",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "08a6bdd4-ac7c-43b8-8115-7290126e6333",
+                    "text": "Go",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "25120f87-6e7c-44e5-bd6d-b0ced8460924",
+                    "text": "C#",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "93f449ee-c5e1-4be5-98ee-020ff07e31df",
+                    "text": "Ruby",
+                    "is_correct": false
+                  }
+                ]
+              }
+            },
+            {
+              "id": 1095397,
+              "key": "fd58d926-88d7-4de0-bff6-f55c1dde0189",
+              "title": null,
+              "semantic_type": "MatchingQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "fd58d926-88d7-4de0-bff6-f55c1dde0189",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "complex_prompt": {
+                  "text": "Match the Code Element with the Correct Component\n\n```\nspark = SparkSession.builder.appName(\"balance-events\").getOrCreate()\n\nkafkaRawStreamingDF = spark                          \\    \n.readStream                                          \\\n.format(\"kafka\")                                     \\\n.option(\"kafka.bootstrap.servers\",\"localhost:9092)   \\\n.option(\"subscribe\",\"balance-updates\")               \\\n.option(\"startingOffsets\",\"earliest\")                \\\n.load()\n\nkafkaStreamingDF = kafkaRawStreamingDF.selectExpr(\"cast(key as string) key,\"cast(value as string) value\")\n\nkafkaStreamingDF.writeStream.outputMode(\"append\").format(\"console\").start().awaitTermination()\n```"
+                },
+                "concepts_label": null,
+                "answers_label": null,
+                "concepts": [
+                  {
+                    "text": "`spark.readStream`",
+                    "correct_answer": {
+                      "id": "9f92c446-e466-43f4-9a3f-ab550c8ed95f",
+                      "text": "Source"
+                    }
+                  },
+                  {
+                    "text": "`kafkaStreamingDF.writeStream`",
+                    "correct_answer": {
+                      "id": "73103160-0442-49bb-8cf4-1eed3a21c931",
+                      "text": "Sink"
+                    }
+                  },
+                  {
+                    "text": "`\"cast(value as string) value\"`",
+                    "correct_answer": {
+                      "id": "110dbae8-9103-42b1-94a1-e4590e9798e0",
+                      "text": "Transformation"
+                    }
+                  }
+                ],
+                "answers": [
+                  {
+                    "id": "9f92c446-e466-43f4-9a3f-ab550c8ed95f",
+                    "text": "Source"
+                  },
+                  {
+                    "id": "110dbae8-9103-42b1-94a1-e4590e9798e0",
+                    "text": "Transformation"
+                  },
+                  {
+                    "id": "73103160-0442-49bb-8cf4-1eed3a21c931",
+                    "text": "Sink"
+                  }
+                ]
+              }
+            },
+            {
+              "id": 1094564,
+              "key": "c2fe6277-4812-46f8-93e7-f4ce40c28bcd",
+              "title": null,
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "c2fe6277-4812-46f8-93e7-f4ce40c28bcd",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "If your organization uses Docker extensively, which of the following would be the preferred cluster configuration?",
+                "answers": [
+                  {
+                    "id": "2dc63ae4-0416-47b1-a1ab-2897edaf97a6",
+                    "text": "Kubernetes",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "3ef50956-d52d-4936-85b3-18a9c1286017",
+                    "text": "Spark Standalone Cluster",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "05c0ae22-a9fb-4b1e-99b9-d721ce43c624",
+                    "text": "YARN",
+                    "is_correct": false
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 1079500,
+          "key": "136d9c37-583c-47b5-81c7-a01195008367",
+          "title": "Exercise 1: Spark Clusters",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "136d9c37-583c-47b5-81c7-a01195008367",
+            "completed_at": "2021-01-29T18:02:49.200Z",
+            "last_viewed_at": "2021-01-29T18:02:48.914Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1101846,
+              "key": "fdbbff1b-9d4e-4ebe-b8ef-33a063d223a3",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Writing a Hello World pyspark Application\n\nThroughout the course you will deploy spark applications on a Spark cluster. That means the cluster needs to be running! So, for each exercise you will start up the spark master and the worker. This requires some coordination between the worker and the master so work can be delegated. Once they are both up and running, you will be able to submit your application to the master.",
+              "instructor_notes": null
+            },
+            {
+              "id": 1094539,
+              "key": "3ba1d591-546b-455e-a8e0-c7ed4f47808c",
+              "title": "Write Hello World pyspark Application",
+              "semantic_type": "TaskListAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "3ba1d591-546b-455e-a8e0-c7ed4f47808c",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "tasks": [
+                "Start the spark master",
+                "Read the logs from the master",
+                "Identify the URI for Spark Master",
+                "Start the spark worker",
+                "Submit the spark hello world application"
+              ],
+              "positive_feedback": "Awesome Job! You have just created your first Spark Cluster!",
+              "video_feedback": null,
+              "description": "Write Hello World pyspark Application"
+            },
+            {
+              "id": 1079839,
+              "key": "e3be848f-628f-4fff-8913-e9304bdf27a1",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "r1053966c1079500xJUPYTERLsuza2mm4",
+              "pool_id": "jupyterlabpython37",
+              "view_id": "jupyter-lab-5yfv1",
+              "gpu_capable": false,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "disk": {
+                      "id": "data-science-datasets",
+                      "paths": [
+                        {
+                          "src": "/ND029",
+                          "dest": "/data/"
+                        }
+                      ]
+                    },
+                    "port": "3000",
+                    "ports": [],
+                    "videos": [],
+                    "pageEnd": "",
+                    "pageStart": "",
+                    "allowSubmit": true,
+                    "defaultPath": "/",
+                    "actionButtonText": ""
+                  },
+                  "kind": "jupyter-lab"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        },
+        {
+          "id": 1079505,
+          "key": "b05518a4-3d80-4ce6-9b57-97f0c2f62127",
+          "title": "Solution: Spark Clusters",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "b05518a4-3d80-4ce6-9b57-97f0c2f62127",
+            "completed_at": "2021-01-29T18:03:11.586Z",
+            "last_viewed_at": "2021-01-29T18:03:10.889Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1079501,
+              "key": "9fd60414-9268-488a-8777-b44155336ddd",
+              "title": "Solution: Start a Spark Cluster and deploy a Spark application Heading",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Solution: Start Spark and deploy a Spark Application\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1094544,
+              "key": "63bf9dfd-f168-4776-8404-bf9d29637b99",
+              "title": "ND029 DSND C2 L1 A05 Solution Spark Clusters Short",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "LdxhOfBIRmA",
+                "china_cdn_id": "LdxhOfBIRmA.mp4"
+              }
+            },
+            {
+              "id": 1095200,
+              "key": "8b6d52bf-c14a-43b5-a606-fb4a856c7d71",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Spark Cluster Review\n\nTo take advantage of the resources in the Spark cluster, we submitted (or deployed) the Spark code:\n\n1. Started the Spark master\n1. Started the Spark workers   \n1. Submitted your application\n\n```\n$ /home/workspace/spark/sbin/start-master.sh\n$ /home/workspace/spark/sbin/start-slave.sh spark://719f72471d5b:7077\n$ /home/workspace/spark/bin/spark-submit /home/workspace/hellospark.py\n```",
+              "instructor_notes": null
+            },
+            {
+              "id": 1094542,
+              "key": "ff52f567-367f-4026-b05b-b29979583f6d",
+              "title": "Reflect",
+              "semantic_type": "TaskListAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "ff52f567-367f-4026-b05b-b29979583f6d",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "tasks": [
+                "Do you feel comfortable starting Spark?",
+                "Do you feel comfortable with navigating the file systems?",
+                "Were you able to successfully complete exercise?"
+              ],
+              "positive_feedback": "If you felt great about all of the above, awesome. If not, feel free to go back over the walkthrough and solutions.",
+              "video_feedback": null,
+              "description": "Now that you have completed the first exercise reflect on the following:"
+            },
+            {
+              "id": 1094543,
+              "key": "36b4fc39-873e-44d4-8f9e-a269acaabe9d",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Optional Solution with Troubleshooting",
+              "instructor_notes": null
+            },
+            {
+              "id": 1079502,
+              "key": "725cbba8-bd9e-4f9d-8ffa-aa74c036f67d",
+              "title": "ND029 DSND C2 L1 A05 Solution Spark Clusters",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "7ldL8OHcxjU",
+                "china_cdn_id": "7ldL8OHcxjU.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 1079510,
+          "key": "ee340531-06b9-4761-8264-37a732a770ef",
+          "title": "Create a Spark Streaming Dataframe with a Kafka Source",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "ee340531-06b9-4761-8264-37a732a770ef",
+            "completed_at": "2021-01-29T19:09:17.456Z",
+            "last_viewed_at": "2021-01-29T19:49:23.949Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1079506,
+              "key": "40078950-98e8-471a-bac7-ba5cf8122a65",
+              "title": "Create a Spark Streaming Dataframe with a Kafka source Heading",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Create a Spark Streaming Dataframe with a Kafka Source",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1079507,
+              "key": "a493c3ef-1367-4267-8024-26763903ce57",
+              "title": "ND029 DSND C2 L1 A06 Kafka As A Source Part 1 V2",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "60ozjuOuP7w",
+                "china_cdn_id": "60ozjuOuP7w.mp4"
+              }
+            },
+            {
+              "id": 1094599,
+              "key": "d4a23e63-d1c2-4add-b284-627c35c46d94",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Changing Data\n\nHave you ever seen fireflies at night? Our world is full of data, which like fireflies is constantly changing and in motion.",
+              "instructor_notes": null
+            },
+            {
+              "id": 1094598,
+              "key": "104dd899-9395-4d00-8f22-3ee83a884e3f",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/November/5fa198f5_slide-48/slide-48.jpeg",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/104dd899-9395-4d00-8f22-3ee83a884e3f",
+              "caption": "Streaming DataFrame: Capturing Data in Motion",
+              "alt": "Streaming DataFrame Capturing Data in Motion",
+              "width": 1920,
+              "height": 1080,
+              "instructor_notes": null
+            },
+            {
+              "id": 1094601,
+              "key": "b2a2fc86-769c-4d54-a938-e8ac1684d117",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Streaming DataFrame: Capturing Data in Motion\n\n* Imagine each firefly is a different Data Stream\n* We want to be able to capture, compare, and gather their unique data, and see how they look when viewed together \n* DataFrames enable these unique comparisons to happen\n* They can make a short-term view of data in motion, that your application will use to create insights",
+              "instructor_notes": null
+            },
+            {
+              "id": 1094602,
+              "key": "a3006853-fddd-4e12-9a1e-eb99a763555f",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### What is a DataFrame?\n\n**DataFrame: **A** **programming construct used to coordinate the processing of dynamic data.",
+              "instructor_notes": null
+            },
+            {
+              "id": 1094603,
+              "key": "f05d7587-7fdf-45ab-89c2-a9e94eaab103",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## DataFrames in Action\n\n```\nspark = SparkSession.builder.appName(\"balance-events\").getOrCreate()\n\nkafkaRawStreamingDF = spark \\\n   .readStream              \\\n   .format(\"kafka\")         \\\n   .option(\"kafka.bootstrap.servers\",\"localhost:9092\") \\\n   .option(\"subscribe\",\"balance-updates\")              \\\n   .option(\"startingOffsets\",\"earliest\")              \\    \n\nkafkaStreamingDF = kafkaRawStreamingDF \\\n   .selectExpr(\"cast(key as string) key\", \"cast(value as string) value\")\n\nkafkaStreamingDF.writeStream \\\n   .outputMode(\"append\") \\\n   .format(\"console\") \\\n   .start() \\\n   .awaitTermination()\n\n```",
+              "instructor_notes": null
+            },
+            {
+              "id": 1094604,
+              "key": "f589def3-dd4a-4711-a75e-f1e85e7c7085",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Explanation of DataFrames in Action\n\nHere is a Spark Streaming Application using the DataFrame construct:\n\n* Our Source DataFrame in this example, **kafkaRawStreamingDF**, is created by reading from a readStream\n* The Sink DataFrame, **kafkaStreamingDF**, is used to write information to the console \n* Both DataFrames appear as coding variables, but they are powerful abstractions of moving DataSets",
+              "instructor_notes": null
+            },
+            {
+              "id": 1094605,
+              "key": "635db31e-f342-4e49-9207-347b5f7dfc56",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/November/5fa19b8e_slide-51/slide-51.jpeg",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/635db31e-f342-4e49-9207-347b5f7dfc56",
+              "caption": "Source and Sink",
+              "alt": "Source and Sink",
+              "width": 1920,
+              "height": 1080,
+              "instructor_notes": null
+            },
+            {
+              "id": 1094609,
+              "key": "84e6ebc8-9f57-4f26-bca3-b2a3124d1296",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### What is a Source?\n\n**Source: **an external system that generates data.\n\n### What is a Sink?\n\n**Sink: **an external system that consumes data.",
+              "instructor_notes": null
+            },
+            {
+              "id": 1094607,
+              "key": "ced88b39-af1b-4484-803c-dd63768d1d5b",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/November/5fa19bb4_slide-54/slide-54.jpeg",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/ced88b39-af1b-4484-803c-dd63768d1d5b",
+              "caption": "Pop Quiz",
+              "alt": "Pop Quiz",
+              "width": 1920,
+              "height": 1080,
+              "instructor_notes": null
+            },
+            {
+              "id": 1094611,
+              "key": "4841616e-9f41-4dd8-a0b2-512ccdc45ff1",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Pop Quiz\n\nSo which is a source and which is a sink? The key is the *perspective*. It is all determined based on the point of view. When drawing a map of the world, you orient the globe based on your current perspective. When viewed from different angles, the world can look very different. When diagramming a system, you must choose the perspective. Which system will be the source in this diagram? Which will be the sink?\n\n1. In this picture, identify at least two sources\n1. Identify at least one sink\n1. Can you identify something in the picture that is both a source and a sink?",
+              "instructor_notes": null
+            },
+            {
+              "id": 1094608,
+              "key": "9802ea1d-abe7-47d7-896e-9ad73eafa236",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/November/5fa19bd1_slide-55/slide-55.jpeg",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/9802ea1d-abe7-47d7-896e-9ad73eafa236",
+              "caption": "Answer Key",
+              "alt": "Answer Key",
+              "width": 1920,
+              "height": 1080,
+              "instructor_notes": null
+            },
+            {
+              "id": 1094612,
+              "key": "1dc2b642-5280-4f19-9ec9-f4de771999b0",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Answer Key\n\n* The faucet represents both a data Source and a data Sink\n* Water flows ***to*** it from the Hot and Cold \n* Water flows ***from*** it to the washbasin\n* The washbasin represents a data Sink in this example\n* Water flows ***to*** it from the faucet \n* The Hot and Cold both represent data Sources here\n* They provide both hot and cold water ***to*** the faucet\n\nRemember, the key is in the Perspective!",
+              "instructor_notes": null
+            },
+            {
+              "id": 1094614,
+              "key": "43560bdf-94dd-40d3-8573-29e02ac38247",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/November/5fa19d83_slide-56/slide-56.jpeg",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/43560bdf-94dd-40d3-8573-29e02ac38247",
+              "caption": "Spark Sources",
+              "alt": "Spark Sources",
+              "width": 1920,
+              "height": 1080,
+              "instructor_notes": null
+            },
+            {
+              "id": 1094617,
+              "key": "b271a67d-edde-4638-a7f4-d448e25d58d5",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Spark Sources\n\n* Spark Streams can read from various input sources\n* So far we have read from a static file using just Spark without streaming\n* Spark Streams have the ability to monitor folders, watching for files as they appear, and then read them in real-time\n* Perhaps the most flexible source to read from is Kafka, because of its ability to broker data\n* Another source that can be used primarily for testing is a Unix socket - we will not be going into this in the course, but it can be useful for learning",
+              "instructor_notes": null
+            },
+            {
+              "id": 1094621,
+              "key": "58581e0e-ae60-499d-9f20-654e8b04935d",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/November/5fa19e28_slide-58/slide-58.jpeg",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/58581e0e-ae60-499d-9f20-654e8b04935d",
+              "caption": "Constructing a Kafka Stream",
+              "alt": "Constructing a Kafka Stream",
+              "width": 1920,
+              "height": 1080,
+              "instructor_notes": null
+            },
+            {
+              "id": 1094622,
+              "key": "4d0ac9e1-a04a-4b32-8fd7-1fd521a37c0d",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## To construct a Kafka Stream:\n\n* You first provide a **broker** name\n* Then you choose a **topic**\n* Last you should indicate if you want **the earliest** or **latest** messages:\n   * Earliest means you would like to read your messages starting with the oldest\n   * Latest means you would like to read the most recent messages first (this option doesn't read the older messages, just those messages from the time the stream starts going forward",
+              "instructor_notes": null
+            },
+            {
+              "id": 1094623,
+              "key": "a0df6da2-76e8-493d-ac3a-e7a412c3cfaf",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Kafka Stream in Action\n\n```\nkafkaRawStreamingDF = spark                          \\    \n.readStream                                          \\\n.format(\"kafka\")                                     \\\n.option(\"kafka.bootstrap.servers\", \"localhost:9092\") \\\n.option(\"subscribe\", \"balance-updates\")              \\\n.option(\"startingOffsets\",\"earliest\")                \\ \n```",
+              "instructor_notes": null
+            },
+            {
+              "id": 1094624,
+              "key": "88f6f545-b220-4937-bec3-ea3a212a16de",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Explanation of Kafka Stream in Action\n\nHere is a Spark Streaming Application using a Kafka Stream as a Source\n\n1. Our Source DataFrame in this example, called **kafkaRawStreamingDF** is created by reading from a readStream\n1. We chain the option function to provide multiple connection parameters \n1. The first parameter we pass is the **kafka.bootstrap.servers** parameter...this is our **broker**\n1. The next parameter we pass is the **subscribe** parameter...this is the **topic**\n1. The last parameter we send is the **startingOffsets** parameter...this tells Kafka we want messages starting at the **earliest** message received for the topic\n\nKeep in mind that messages do expire eventually, so earliest is actually the earliest message Kafka still remembers.",
+              "instructor_notes": null
+            },
+            {
+              "id": 1094625,
+              "key": "bac67c8d-fb40-46d1-b718-ef7cf8f45704",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## What's a Broker?\n\n**Broker: **in a Kafka configuration, the server to which requests from external systems can be addressed; also the central processing component of a Kafka cluster.\n\n## What's a Topic?\n\n**Topic: **in a Kafka configuration, a communication channel; often representing similar or related data; sometimes called a mailbox.\n\n## What is an Offset?\n\n**Offset: **in a Kafka configuration, a value that determines the mode of consumption of a topic; earliest starts at the oldest message; the latest starts at the newest message.",
+              "instructor_notes": null
+            },
+            {
+              "id": 1094545,
+              "key": "9431d9e3-4162-45e1-a6ce-857652d851fa",
+              "title": "ND029 DSND C2 L1 A06 Kafka As A Source Part 2",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "u2cI_vmIR6c",
+                "china_cdn_id": "u2cI_vmIR6c.mp4"
+              }
+            },
+            {
+              "id": 1095154,
+              "key": "80b534d9-194a-4143-90bc-b0d8dd35610b",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## The *Topic* of the Conversation\n\nHave you ever known someone who can intelligently discuss just about anything? It doesn't seem to matter what the conversation is about, they just happen to know something about it?\n\nKafka has a similar quality. It can provide data from dozens or hundreds of topics. Each topic's data can come from a different source.",
+              "instructor_notes": null
+            },
+            {
+              "id": 1095153,
+              "key": "05c791ec-831e-44d8-b983-5135a8ac33f6",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/November/5fa2aa09_slide-63/slide-63.jpeg",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/05c791ec-831e-44d8-b983-5135a8ac33f6",
+              "caption": "Topic of the Conversation",
+              "alt": "Topic of the Conversation",
+              "width": 1920,
+              "height": 1080,
+              "instructor_notes": null
+            },
+            {
+              "id": 1095156,
+              "key": "37b363d5-7ff8-40cf-b20f-35f77c5062c8",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Keys and Values\n\nEvery message you read from Kafka has 2 fields:\n\n* The **Key** column is like the primary key for a database table and is often a unique identifier\n* The **Value** column contains the bulk of the data being transmitted\n* By default, the Kafka key and value are in binary format",
+              "instructor_notes": null
+            },
+            {
+              "id": 1095155,
+              "key": "7ec6b7f3-503f-4774-8e4b-b7182b5ca8c4",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/November/5fa2abfd_slide-65/slide-65.jpeg",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/7ec6b7f3-503f-4774-8e4b-b7182b5ca8c4",
+              "caption": "Keys and Values",
+              "alt": "Keys and Values",
+              "width": 1920,
+              "height": 1080,
+              "instructor_notes": null
+            },
+            {
+              "id": 1082035,
+              "key": "a1ec9c14-9f60-4792-b82d-69a107901da3",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Additional Resources\n\nFor more information on integrating Spark with Kafka, see the official <a href=\"https://spark.apache.org/docs/latest/structured-streaming-kafka-integration.html\" target=\"_blank\">Kafka Integration Guide</a>.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 1082044,
+          "key": "952d8d8a-cf48-46d1-9177-76a6b51f6f70",
+          "title": "Walkthrough 2: Create a Spark Streaming Dataframe",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "952d8d8a-cf48-46d1-9177-76a6b51f6f70",
+            "completed_at": "2021-01-29T20:09:41.104Z",
+            "last_viewed_at": "2021-01-29T20:09:40.621Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1094546,
+              "key": "b2393ced-8360-4b62-a8bd-b72d8824c28a",
+              "title": "ND029 DSND C2 L1 A07 Kafka As A Source Walkthrough Short",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "QAMG3IhJGGw",
+                "china_cdn_id": "QAMG3IhJGGw.mp4"
+              }
+            },
+            {
+              "id": 1106426,
+              "key": "05a63cdc-7572-41f5-89cb-3f251c025d46",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Create a Spark Streaming Dataframe with a Kafka Source\n\n* From the console type: `/home/workspace/startup/startup.sh` to start Kafka, and the Trucking Simulation\n* Start the spark master and spark worker\n   * From the terminal type: `/home/workspace/spark/sbin/start-master.sh`\n   * View the log and copy down the Spark URI\n   * From the terminal type: `/home/workspace/spark/sbin/start-slave.sh [Spark URI]`\n* Complete the `kafkaconsole.py` python script\n* Submit the application to the spark cluster:\n   * From the terminal type: \n   `/home/workspace/spark/submit-kafka-console.sh`\n* Watch the terminal for the values to scroll past (it may take up to 2 minutes)",
+              "instructor_notes": null
+            },
+            {
+              "id": 1085360,
+              "key": "e1ce886c-b332-439a-bb01-1f3e1a825920",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "r1053966c1082043xJUPYTERLvc36joa9",
+              "pool_id": "jupyterlabpython37",
+              "view_id": "jupyter-lab-8gxfg",
+              "gpu_capable": false,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "disk": {
+                      "id": "data-science-datasets",
+                      "paths": [
+                        {
+                          "src": "/ND029",
+                          "dest": "/data/"
+                        }
+                      ]
+                    },
+                    "port": "3000",
+                    "ports": [],
+                    "videos": [],
+                    "pageEnd": "3",
+                    "pageStart": "3",
+                    "allowSubmit": false,
+                    "defaultPath": "/",
+                    "actionButtonText": ""
+                  },
+                  "kind": "jupyter-lab"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            },
+            {
+              "id": 1094550,
+              "key": "b5f82312-c7f5-4334-a2e8-20aaa28cb83b",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Optional Long Walkthrough with Troubleshooting",
+              "instructor_notes": null
+            },
+            {
+              "id": 1093727,
+              "key": "296e3818-c421-448b-af84-a35280af7402",
+              "title": "ND029 DSND C2 L1 A07 Kafka As A Source Walkthrough",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "video": {
+                "youtube_id": "oKmYu47Y8eY",
+                "china_cdn_id": "oKmYu47Y8eY.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 1079514,
+          "key": "0ef94baa-f1b4-49f1-bc00-c1099a3682e5",
+          "title": "Quiz: Create a Spark Streaming Dataframe",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "0ef94baa-f1b4-49f1-bc00-c1099a3682e5",
+            "completed_at": "2021-01-29T20:14:05.546Z",
+            "last_viewed_at": "2021-01-29T20:14:05.350Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1079511,
+              "key": "8394adca-f95e-4cfe-af70-10742e3d58ec",
+              "title": "Quiz: Create a Spark Streaming Dataframe with a Kafka source Heading",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Quiz: Create a Spark Streaming Dataframe",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1095161,
+              "key": "24f46c83-5d58-4308-b9dd-881c287cee14",
+              "title": null,
+              "semantic_type": "CheckboxQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "24f46c83-5d58-4308-b9dd-881c287cee14",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "What is the purpose of a Kafka Topic?",
+                "answers": [
+                  {
+                    "id": "8f81d19f-d17c-4289-b262-b2e5cc806cb1",
+                    "text": "A Kafka Topic is a communication channel",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "d7df7ac9-f6fd-4b70-9b04-3ed908ccaa10",
+                    "text": "A Kafka Topic can be compared to a mailbox",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a5dc60a5-cd6c-4b94-8eb7-b42eac5bb0f6",
+                    "text": "Kafka Topics can only be used to communicate between Zookeeper and the Kafka Broker",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1073791-6ef0-4d12-acbc-9d36e865c392",
+                    "text": "A Kafka Topic can only store information from databases",
+                    "is_correct": false
+                  }
+                ]
+              }
+            },
+            {
+              "id": 1095158,
+              "key": "e78dbae6-2e77-429f-8fa0-c7e24f1fceef",
+              "title": null,
+              "semantic_type": "MatchingQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "e78dbae6-2e77-429f-8fa0-c7e24f1fceef",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "complex_prompt": {
+                  "text": "Constructing a Kafka Stream"
+                },
+                "concepts_label": null,
+                "answers_label": null,
+                "concepts": [
+                  {
+                    "text": "Broker Name",
+                    "correct_answer": {
+                      "id": "b97381fe-de04-4f51-a680-65142599e639",
+                      "text": "The name of the Kafka server"
+                    }
+                  },
+                  {
+                    "text": "Topic Name",
+                    "correct_answer": {
+                      "id": "cad0992f-ec06-431a-9db6-c85297874f11",
+                      "text": "The channel you wish to subscribe to"
+                    }
+                  },
+                  {
+                    "text": "Earliest or Latest",
+                    "correct_answer": {
+                      "id": "0d23d9c8-bd7d-43f8-a54a-f34d0af788c1",
+                      "text": "Also known as the starting offset. This determines order you want to get your messages in."
+                    }
+                  }
+                ],
+                "answers": [
+                  {
+                    "id": "b97381fe-de04-4f51-a680-65142599e639",
+                    "text": "The name of the Kafka server"
+                  },
+                  {
+                    "id": "0d23d9c8-bd7d-43f8-a54a-f34d0af788c1",
+                    "text": "Also known as the starting offset. This determines order you want to get your messages in."
+                  },
+                  {
+                    "id": "cad0992f-ec06-431a-9db6-c85297874f11",
+                    "text": "The channel you wish to subscribe to"
+                  }
+                ]
+              }
+            },
+            {
+              "id": 1095502,
+              "key": "044f92f4-a1d2-468f-a0d9-cb693e523605",
+              "title": null,
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "044f92f4-a1d2-468f-a0d9-cb693e523605",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Which of these is a correct example of reading from a Kafka source?",
+                "answers": [
+                  {
+                    "id": "20ba98e0-4bad-4fcb-b973-4aa9d454857b",
+                    "text": "```\nkafkaRawStreamingDF = spark                          \\\n    .readStream                                          \\\n    .format(\"kafka\")                                     \\\n    .option(\"kafka.bootstrap.servers\", \"localhost:9092\") \\\n    .option(\"subscribe\",\"balance-updates\")                  \\\n    .option(\"startingOffsets\",\"earliest\")\\\n    .start()  \n\n```",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "74a0cb76-6e30-4923-97c0-6433fdc27bf4",
+                    "text": "```\nkafkaRawStreamingDF = spark                          \\\n    .readStream                                          \\\n    .format(\"kafka\")                                     \\\n    .option(\"kafka.bootstrap.servers\", \"localhost:9092\") \\\n    .option(\"subscribe\",\"balance-updates\")                  \\\n    .option(\"startingOffsets\",\"earliest\")\\\n    .load()  \n```",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "9c002e8d-3843-4231-b992-a5145079d55c",
+                    "text": "```\nkafkaRawStreamingDF = spark                          \\\n    .readStream                                          \\\n    .format(\"kafka\")                                     \\\n    .option(\"kafka.bootstrap.servers\", \"localhost:9092\") \\\n    .option(\"topic\",\"balance-updates\")                  \\\n    .option(\"startingOffsets\",\"earliest\")\\\n    .load()  \n```",
+                    "is_correct": false
+                  }
+                ]
+              }
+            },
+            {
+              "id": 1095163,
+              "key": "de2c5c70-2a7f-43e5-8d97-191f6794103e",
+              "title": null,
+              "semantic_type": "MatchingQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "de2c5c70-2a7f-43e5-8d97-191f6794103e",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "complex_prompt": {
+                  "text": "Spark and Kafka Terms"
+                },
+                "concepts_label": "Component",
+                "answers_label": "Description",
+                "concepts": [
+                  {
+                    "text": "Source",
+                    "correct_answer": {
+                      "id": "7b54de42-ab3c-41bb-840f-c73fc75ebaad",
+                      "text": "An external system which generates data"
+                    }
+                  },
+                  {
+                    "text": "Sink",
+                    "correct_answer": {
+                      "id": "2c019870-98a3-41da-adc1-b6e2400809f4",
+                      "text": "An external system which consumes data"
+                    }
+                  },
+                  {
+                    "text": "DataFrame",
+                    "correct_answer": {
+                      "id": "a6278a83-c0a1-4f57-97aa-56558b2ff494",
+                      "text": "A programming construct used to coordinate processing of dynamic data"
+                    }
+                  }
+                ],
+                "answers": [
+                  {
+                    "id": "2c019870-98a3-41da-adc1-b6e2400809f4",
+                    "text": "An external system which consumes data"
+                  },
+                  {
+                    "id": "7b54de42-ab3c-41bb-840f-c73fc75ebaad",
+                    "text": "An external system which generates data"
+                  },
+                  {
+                    "id": "a6278a83-c0a1-4f57-97aa-56558b2ff494",
+                    "text": "A programming construct used to coordinate processing of dynamic data"
+                  }
+                ]
+              }
+            },
+            {
+              "id": 1095164,
+              "key": "d4170354-49b9-43be-928d-d13a83bd419d",
+              "title": null,
+              "semantic_type": "CheckboxQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "d4170354-49b9-43be-928d-d13a83bd419d",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Which are Spark Sources?",
+                "answers": [
+                  {
+                    "id": "456b1b2f-623c-41d3-9bc3-b9d7caaa95bf",
+                    "text": "Kafka",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "85473b09-2a49-4143-ba36-b298006cf55b",
+                    "text": "Folder",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "db4d5834-6f62-4f2c-b833-c49206a36945",
+                    "text": "Socket",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "b18cc20e-b2fd-421b-ad63-b8992d82fdbd",
+                    "text": "Database",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "f6bc4ff5-9df9-44e4-967c-3d4069a8078c",
+                    "text": "Twitter ",
+                    "is_correct": false
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 1079517,
+          "key": "109587bc-8822-46cc-aa68-cdd32bbd0bde",
+          "title": "Exercise : Create a Spark Streaming Dataframe",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "109587bc-8822-46cc-aa68-cdd32bbd0bde",
+            "completed_at": "2021-01-29T20:15:40.818Z",
+            "last_viewed_at": "2021-01-29T20:15:40.621Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1079515,
+              "key": "a7a97657-9662-4566-b9a2-36f4a8ec0773",
+              "title": "Exercise: Create a Spark Streaming Dataframe with a Kafka source Instructions",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Exercise: Create a Spark Streaming Dataframe\n\nSpark is a great stream processing engine, but without connections to outside sources of data, it would be rather pointless. So, let's introduce you to working with Kafka, one of the most popular durable message brokers.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1095165,
+              "key": "8012ebe8-e50d-48ad-9520-2eab17b7c281",
+              "title": "Write a pyspark application",
+              "semantic_type": "TaskListAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "8012ebe8-e50d-48ad-9520-2eab17b7c281",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "tasks": [
+                "Read a stream from a Kafka topic",
+                "Write the DataFrame from Kafka to the console",
+                "Start Spark Master, and Worker",
+                "Deploy and run the pyspark application"
+              ],
+              "positive_feedback": "Way to go! You are becoming familiar with running Spark!",
+              "video_feedback": null,
+              "description": "Write a pyspark application"
+            },
+            {
+              "id": 1083035,
+              "key": "de2bf38e-29e9-48a6-904d-aaa2a9a6e91d",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "r1053966c1079517xJUPYTERLwxw7ivab",
+              "pool_id": "jupyterlabpython37",
+              "view_id": "jupyter-lab-vynfx",
+              "gpu_capable": false,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "disk": {
+                      "id": "data-science-datasets",
+                      "paths": [
+                        {
+                          "src": "/ND029",
+                          "dest": "/data/"
+                        }
+                      ]
+                    },
+                    "port": "3000",
+                    "ports": [],
+                    "videos": [],
+                    "pageEnd": "",
+                    "pageStart": "",
+                    "allowSubmit": false,
+                    "defaultPath": "/",
+                    "actionButtonText": ""
+                  },
+                  "kind": "jupyter-lab"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        },
+        {
+          "id": 1079522,
+          "key": "5fc52d1d-6e30-4166-bd56-40adbcd6e516",
+          "title": "Solution 2: Create a Spark Streaming Dataframe",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "5fc52d1d-6e30-4166-bd56-40adbcd6e516",
+            "completed_at": "2021-01-29T20:16:25.313Z",
+            "last_viewed_at": "2021-01-29T20:16:25.097Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1079518,
+              "key": "96da7738-a915-48fc-8d57-a9d1c792630b",
+              "title": "Solution: Create a Spark Streaming Dataframe with a Kafka source Heading",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Solution: Create a Spark Streaming Dataframe",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1094555,
+              "key": "b3996300-99f3-4636-a036-61038f1ac617",
+              "title": "ND029 DSND C2 L1 A08 Solution Kafka As A Source Short",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "1Xed93lgn4A",
+                "china_cdn_id": "1Xed93lgn4A.mp4"
+              }
+            },
+            {
+              "id": 1095201,
+              "key": "f4d9fc74-5392-4fd1-8c73-b542ebe17b53",
+              "title": "Reflect\n\nNow that you have completed the Spark Streaming DataFrame, reflect on the following:",
+              "semantic_type": "TaskListAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "f4d9fc74-5392-4fd1-8c73-b542ebe17b53",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "tasks": [
+                "How are you feeling about DataFrames with Kafka?",
+                "How familiar are you with the concept of a source?",
+                "How familiar are you with the concept of a sink?",
+                "Where could you use Kafka in your work?",
+                "How could you use a DataFrame?"
+              ],
+              "positive_feedback": "If you felt great about all of the above, awesome. If not, feel free to go back over the walkthrough and solutions.",
+              "video_feedback": null,
+              "description": null
+            },
+            {
+              "id": 1094554,
+              "key": "a24a7c2b-b403-4939-a253-41a009f7f3ff",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Optional Long Solution with Troubleshooting",
+              "instructor_notes": null
+            },
+            {
+              "id": 1079519,
+              "key": "100953d9-03b2-4106-8233-bf811b69c765",
+              "title": "ND029 DSND C2 L1 A08 Solution Kafka As A Source",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "3xJUyNFF6eI",
+                "china_cdn_id": "3xJUyNFF6eI.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 1079527,
+          "key": "a051b4bc-0f82-4963-ac42-5e2f299cbc44",
+          "title": "Spark Views",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "a051b4bc-0f82-4963-ac42-5e2f299cbc44",
+            "completed_at": "2021-01-29T20:18:53.458Z",
+            "last_viewed_at": "2021-01-29T20:18:53.255Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1079523,
+              "key": "96e07885-7be2-40a3-b09d-aa05c50d752a",
+              "title": "Create a Spark view and an in memory table Heading",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Create a Spark View",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1079524,
+              "key": "95c982d0-aabe-4166-8a8b-91243715b907",
+              "title": "ND029 DSND C2 L1 A09 Spark Views",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "MPEiHxwojhk",
+                "china_cdn_id": "MPEiHxwojhk.mp4"
+              }
+            },
+            {
+              "id": 1079526,
+              "key": "69c72d41-33bd-4675-8059-d9726e2b2bb0",
+              "title": "Create a Spark view and an in memory table Summary",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### What is a Spark View?\n\n**Spark View: **in a Spark application, a session-bound representation of data in a certain configuration (ex: a view of discounted inventory).",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1095170,
+              "key": "b00cf3a3-224c-466b-892f-e34b00b968ba",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Create a View\n\n* Creating a view is like using a colored filter that changes certain things in a picture\n* Using spark you can create temporary views of data which emphasize or reveal certain attributes\n* For example, if you wanted to extract a year from a field that contains a month, day, and year, you could save that as a view\n* The purpose of temporary views is to save a certain configuration of a DataFrame for later reference within the same Spark application\n* The view won't be available to other Spark Applications",
+              "instructor_notes": null
+            },
+            {
+              "id": 1095171,
+              "key": "bf58c283-367f-4e38-83b3-1a4242bf2469",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/November/5fa2ba86_slide-78/slide-78.jpeg",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/bf58c283-367f-4e38-83b3-1a4242bf2469",
+              "caption": "Create a View Example",
+              "alt": "Create a View Example. Choosing the right fields is important.",
+              "width": 1920,
+              "height": 1080,
+              "instructor_notes": null
+            },
+            {
+              "id": 1095172,
+              "key": "6df5df34-0984-42c0-9fc1-eddc855f6307",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Create a View\n\n* In this example, we started with several fields available from our source\n* We have an urgent need for a combination of these fields\n* We then create a subset in a view for later querying",
+              "instructor_notes": null
+            },
+            {
+              "id": 1095173,
+              "key": "bdfb4e92-cc47-45c1-a0c9-e9609714878a",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Creating a Spark View in Action\n\n```\nfuelLevelStreamingDF.createOrReplaceTempView(\"FuelLevel\") \n```",
+              "instructor_notes": null
+            },
+            {
+              "id": 1095174,
+              "key": "bf384fbb-fc2e-4226-a546-d91b54f59402",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Explanation of Spark View in Action\n\n* In this snippet, we are working with a DataFrame previously instantiated, called **fuelLevelStreamingDF**\n* Using the **createOrReplaceTempView** function call we create a Temporary View: \"FuelLevel\"\n* Notice the **view** has a name which is the way we will later query the view\n* Any filtering we want to be applied to the **DataFrame** can be done before this point\n* The **DataFrame** will be represented by the temporary view",
+              "instructor_notes": null
+            },
+            {
+              "id": 1095175,
+              "key": "88b73121-263f-4fe7-914b-65f488f26058",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Creating then Querying a Spark View in Action\n\n```\nfuelLevelStreamingDF.createOrReplaceTempView(\"FuelLevel\")\nfuelLevelSelectStarDF=spark.sql(\"select * from FuelLevel\")\n```",
+              "instructor_notes": null
+            },
+            {
+              "id": 1095176,
+              "key": "56c750e5-38bf-42ba-9659-97f0e068829a",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Explanation of Creating then Querying a Spark View\n\n* In this snippet, we are working with a DataFrame previously instantiated, called **fuelLevelStreamingDF**\n* Using the createOrReplaceTempView function call we create a Temporary View: \"FuelLevel\"\n* Notice the view name is the way we access and query the **view**\n* This is different from the way we act on **DataFrames**\n* We query the view using a select statement which includes the name of the **view**\n* The spark.sql call results in another **DataFrame** called **fuelLevelSelectStarDF**\n* This **DataFrame** holds the results of the query",
+              "instructor_notes": null
+            },
+            {
+              "id": 1095178,
+              "key": "4b65c030-e917-46e2-ae39-3f6140b1b3b2",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Flexibility, Familiarity, SQL\n\n* Views give you a lot of flexibility in querying your streaming data\n* SQL syntax is familiar to many people\n* Spark has SQL functions for data manipulation\n* You can use the usual field aliasing\n* There are many other features of SQL included in the query syntax",
+              "instructor_notes": null
+            },
+            {
+              "id": 1095179,
+              "key": "f6f3d3e4-9aa5-4a92-a668-b8e01276d633",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Query a View then Sink to Kafka\n\n```\nfuelLevelKeyValueDF=spark.sql(\"select key, value from FuelLevel\")\n\nfuelLevelKeyValueDF                       \\\n.selectExpr(\"cast(key as string) as key\", \\\n\"cast(value as string) as value\")         \\   \n.writeStream                              \\    \n.format(\"kafka\")                          \\    \n.option(\"kafka.bootstrap.servers\", \"localhost:9092\")\\    \n.option(\"topic\", \"fuel-changes\")          \\    \n.option(\"checkpointLocation\",\"/tmp/kafkacheckpoint\")\\ \n.start()                                  \\    \n.awaitTermination()\n```",
+              "instructor_notes": null
+            },
+            {
+              "id": 1095181,
+              "key": "4f53ba00-6198-4e40-96fd-cd941cfb47c6",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Explanation of Querying a View and Sinking to Kafka\n\n* After querying your **view**, you have something to offer to other systems\n* Let's learn how to share that data via a Kafka topic\n* First, select the fields using spark.sql\n* Next, use a select expression on the resulting **DataFrame** to cast the fields\n* Be sure to pass the Kafka bootstrap servers parameter\n* Last sink the **DataFrame** to your new Kafka **topic**, using the writeStream\n* Now any Kafka consumer can access your data by subscribing to the **topic** called fuel-changes",
+              "instructor_notes": null
+            },
+            {
+              "id": 1095182,
+              "key": "e7c08c9d-9b9f-4571-8599-90633902ba6e",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/November/5fa2beae_slide-85/slide-85.jpeg",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/e7c08c9d-9b9f-4571-8599-90633902ba6e",
+              "caption": "Key Points",
+              "alt": "Key Points",
+              "width": 1920,
+              "height": 1080,
+              "instructor_notes": null
+            }
+          ]
+        },
+        {
+          "id": 1082046,
+          "key": "2b4e6414-89d3-4809-bc9d-970bd74436fc",
+          "title": "Walkthrough 3: Query a Spark View",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "2b4e6414-89d3-4809-bc9d-970bd74436fc",
+            "completed_at": "2021-01-29T20:32:46.318Z",
+            "last_viewed_at": "2021-01-29T20:32:45.864Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1093728,
+              "key": "0625856c-d982-4661-8cd5-8c5dc4ec344f",
+              "title": "ND029 DSND C2 L1 A10 Spark Views Walkthrough Short",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "WQ-Pt82OgHU",
+                "china_cdn_id": "WQ-Pt82OgHU.mp4"
+              }
+            },
+            {
+              "id": 1104585,
+              "key": "7f0282b6-08bf-4eb5-b94c-aec705145b03",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "***Note, the instructor refers to this as a solution. However, it is a walkthrough. ***",
+              "instructor_notes": null
+            },
+            {
+              "id": 1106430,
+              "key": "06a22ce9-a721-448a-88bd-792ce5658c8d",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Create and Query a Temporary Spark View and Sink to Kafka\n\n* **If you just started the workspace**, from the console type: `/home/workspace/startup/startup.sh` to start Kafka, and the Trucking Simulation\n* **If you just started the workspace**, start the spark master and spark worker\n   * From the terminal type: `/home/workspace/spark/sbin/start-master.sh`\n   * View the log and copy down the Spark URI\n   * From the terminal type: `/home/workspace/spark/sbin/start-slave.sh [Spark URI]`\n* Complete the `gear-position.py` python script\n* Submit the application to the spark cluster:\n   * From the terminal type: \n   `/home/workspace/spark/submit-gear-position.sh`\n* Use the kafka-console-consumer command to watch the data you are sinking:\n`/data/kafka/bin/kafka-console-consumer --bootstrap-server localhost:port_number --topic topic_name --from-beginning`",
+              "instructor_notes": null
+            },
+            {
+              "id": 1085807,
+              "key": "a42d109c-4e21-44c1-9078-b2e681ce7e54",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "r1053966c1082043xJUPYTERLvc36joa9",
+              "pool_id": "jupyterlabpython37",
+              "view_id": "jupyter-lab-il9dg",
+              "gpu_capable": false,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "disk": {
+                      "id": "data-science-datasets",
+                      "paths": [
+                        {
+                          "src": "/ND029",
+                          "dest": "/data/"
+                        }
+                      ]
+                    },
+                    "port": "3000",
+                    "ports": [],
+                    "videos": [],
+                    "pageEnd": "1",
+                    "pageStart": "1",
+                    "allowSubmit": true,
+                    "defaultPath": "/",
+                    "actionButtonText": ""
+                  },
+                  "kind": "jupyter-lab"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            },
+            {
+              "id": 1094557,
+              "key": "e0288321-4ba6-4aa9-a05d-22eea4f5c877",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Optional Long Walkthroughs with Troubleshooting",
+              "instructor_notes": null
+            },
+            {
+              "id": 1094558,
+              "key": "1b5ecfe1-13ef-4bea-8f81-8be3dfcbb2d4",
+              "title": "ND029 DSND C2 L1 A10 Spark Views Walkthrough Take 1",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "video": {
+                "youtube_id": "0WAd6IX7UGI",
+                "china_cdn_id": "0WAd6IX7UGI.mp4"
+              }
+            },
+            {
+              "id": 1094560,
+              "key": "05662570-84f3-4657-addc-c52f851d8edd",
+              "title": "ND029 DSND C2 L1 A10 Spark Views Walkthrough Take 2",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "video": {
+                "youtube_id": "2zJwNSE6XRM",
+                "china_cdn_id": "2zJwNSE6XRM.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 1079548,
+          "key": "352a66fc-f192-434d-9ef7-6a60540a61be",
+          "title": "Quiz: Query a Spark View",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "352a66fc-f192-434d-9ef7-6a60540a61be",
+            "completed_at": "2021-01-29T20:36:03.907Z",
+            "last_viewed_at": "2021-01-29T20:36:03.730Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1079545,
+              "key": "e377d8d4-ae38-429d-b1e2-2cfb7058b4f3",
+              "title": "Quiz: Query a Spark view and an in memory table Heading",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Quiz: Create and Query Spark View",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1095204,
+              "key": "a0c7e5d2-7bc2-4fca-b4f4-6c85d904a182",
+              "title": null,
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "a0c7e5d2-7bc2-4fca-b4f4-6c85d904a182",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Which of the following is the correct syntax to create a temporary view of the carLocation DataFrame?",
+                "answers": [
+                  {
+                    "id": "602f9426-d22b-4b91-9a78-db894ddb05be",
+                    "text": "```carLocationDF.view(\"CarLocation\")```",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "c69722f2-27c0-4d8d-b018-4a39f560ef4f",
+                    "text": "```carLocation.show()```",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "cb175490-9452-4186-b7a2-6a792fcc1f2c",
+                    "text": "```carLocationDF.createOrReplaceTempView(\"CarLocation\")```",
+                    "is_correct": true
+                  }
+                ]
+              }
+            },
+            {
+              "id": 1095254,
+              "key": "7bd40c48-1762-4c85-abdd-a1e7c3015540",
+              "title": null,
+              "semantic_type": "MatchingQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "7bd40c48-1762-4c85-abdd-a1e7c3015540",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "complex_prompt": {
+                  "text": "Match the correct Spark writeStream option with its purpose"
+                },
+                "concepts_label": "Option",
+                "answers_label": "Purpose",
+                "concepts": [
+                  {
+                    "text": "kafka.bootstrap.servers",
+                    "correct_answer": {
+                      "id": "44db7416-0721-449f-876b-3d81c48100a8",
+                      "text": "This is the server name and port of one or more Kafka brokers"
+                    }
+                  },
+                  {
+                    "text": "topic",
+                    "correct_answer": {
+                      "id": "8a5bafe0-c2f8-4fef-a291-8e2a6f509da9",
+                      "text": "This is the communication channel we will use to communicate with Kafka"
+                    }
+                  },
+                  {
+                    "text": "checkpointLocation",
+                    "correct_answer": {
+                      "id": "a4cd5d71-4abe-4890-86a9-2be4dff0dedc",
+                      "text": "This is a temporary file used by Spark, that needs to be writable by the Spark worker"
+                    }
+                  }
+                ],
+                "answers": [
+                  {
+                    "id": "8a5bafe0-c2f8-4fef-a291-8e2a6f509da9",
+                    "text": "This is the communication channel we will use to communicate with Kafka"
+                  },
+                  {
+                    "id": "a4cd5d71-4abe-4890-86a9-2be4dff0dedc",
+                    "text": "This is a temporary file used by Spark, that needs to be writable by the Spark worker"
+                  },
+                  {
+                    "id": "44db7416-0721-449f-876b-3d81c48100a8",
+                    "text": "This is the server name and port of one or more Kafka brokers"
+                  }
+                ]
+              }
+            },
+            {
+              "id": 1095255,
+              "key": "30a4b430-f758-4c71-8f5b-d738268ad1ae",
+              "title": null,
+              "semantic_type": "CheckboxQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "30a4b430-f758-4c71-8f5b-d738268ad1ae",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Which is correct syntax for directly querying the accountBalance DataFrame?",
+                "answers": [
+                  {
+                    "id": "c9227168-16c1-4538-b766-1493acdf7950",
+                    "text": "accountBalanceDF.selectExpr(\"accountNumber\",\"balance\")",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "2fc05210-9c9a-4d52-a6f2-0a6561b4bc32",
+                    "text": "accountBalanceDF.query(\"select accountNumber, balance from accountBalanceDF\"",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "f1a80461-52a5-4c2f-bbf9-86eb9ad02819",
+                    "text": "spark.sql(select accountNumber, balance from accountBalanceDF)",
+                    "is_correct": false
+                  }
+                ]
+              }
+            },
+            {
+              "id": 1095265,
+              "key": "e61677e0-6f99-4788-8e6a-4cd95bdfab8b",
+              "title": null,
+              "semantic_type": "CheckboxQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "e61677e0-6f99-4788-8e6a-4cd95bdfab8b",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Which is correct syntax for querying a Spark View called AccountBalance?",
+                "answers": [
+                  {
+                    "id": "63d18d1c-75f1-4880-a3ec-08fc8087c3a5",
+                    "text": "spark.sql(\"select * from AccountBalance\")",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "da177a93-7d52-4674-bec0-23e1a867447b",
+                    "text": "AcccountBalance.selectExpr(\"select * from AccountBalance\")",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "9166b96d-a95d-401b-af7f-98c8289c6aa6",
+                    "text": "spark.select(\"select * from AccountBalance\")",
+                    "is_correct": false
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 1079551,
+          "key": "d01a03c3-2117-4515-bc6c-807a8b66ac38",
+          "title": "Exercise: Spark Views",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "d01a03c3-2117-4515-bc6c-807a8b66ac38",
+            "completed_at": "2021-01-29T20:36:41.776Z",
+            "last_viewed_at": "2021-01-29T20:36:41.569Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1079549,
+              "key": "3a8593e9-42cc-4542-9a98-563058a756ee",
+              "title": "Exercise: Query a Spark view and an in memory table Instructions",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Exercise: Query a Spark View\n\nWe've started a Spark cluster, and connected to Kafka. Now it's time to start crunching. Let's do some basic queries on a DataFrame. Using spark.sql we will execute a query \"select * from ATMVisits\" and see ATM Visit data.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1095269,
+              "key": "d47cdaf1-72e3-4094-b324-cefd72a2c5c8",
+              "title": "Write a pyspark application",
+              "semantic_type": "TaskListAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "d47cdaf1-72e3-4094-b324-cefd72a2c5c8",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "tasks": [
+                "Read a stream from a Kafka topic",
+                "Write the stream to an in-memory table",
+                "Select the value column from the in memory table",
+                "Write the DataFrame with just the value to the console",
+                "Start Spark Master, and Worker",
+                "Deploy and run the pyspark application"
+              ],
+              "positive_feedback": null,
+              "video_feedback": null,
+              "description": null
+            },
+            {
+              "id": 1084234,
+              "key": "0a774403-9d6b-49f5-9b85-6a81f4791a9c",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "r1053966c1079551xJUPYTERL4ahuuzqw",
+              "pool_id": "jupyterlabpython37",
+              "view_id": "jupyter-lab-eg9zj",
+              "gpu_capable": false,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "disk": {
+                      "id": "data-science-datasets",
+                      "paths": [
+                        {
+                          "src": "/ND029",
+                          "dest": "/data/"
+                        }
+                      ]
+                    },
+                    "port": "3000",
+                    "ports": [],
+                    "videos": [],
+                    "pageEnd": "",
+                    "pageStart": "",
+                    "allowSubmit": false,
+                    "defaultPath": "/",
+                    "actionButtonText": ""
+                  },
+                  "kind": "jupyter-lab"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        },
+        {
+          "id": 1079556,
+          "key": "e0849104-cd49-4235-b52f-b45e7214aae0",
+          "title": "Solution 3: Spark Views",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "e0849104-cd49-4235-b52f-b45e7214aae0",
+            "completed_at": "2021-01-29T20:37:20.954Z",
+            "last_viewed_at": "2021-01-29T20:37:20.748Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1079552,
+              "key": "05a9c484-0faa-4014-b437-f8fe2113a6fb",
+              "title": "Solution: Query a Spark view and an in memory table Heading",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Solution: Query a Spark View",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1079553,
+              "key": "1d11a27f-cc26-4a1c-bd3e-402c53206c16",
+              "title": "ND029 DSND C2 L1 A11 Solution Spark Views Short",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "38dAk5XdB_k",
+                "china_cdn_id": "38dAk5XdB_k.mp4"
+              }
+            },
+            {
+              "id": 1094562,
+              "key": "bbf242db-bb8d-455e-8bda-58c53077afcf",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Optional Long Solution with Troubleshooting",
+              "instructor_notes": null
+            },
+            {
+              "id": 1094563,
+              "key": "4a5663b9-642b-4003-ab04-e21bb8031913",
+              "title": "ND029 DSND C2 L1 A11 Solution Spark Views",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "video": {
+                "youtube_id": "GkkawRK7eec",
+                "china_cdn_id": "GkkawRK7eec.mp4"
+              }
+            },
+            {
+              "id": 1095202,
+              "key": "9ae82f28-79c7-4f40-9454-c3557d26f01f",
+              "title": "Now that you have created and queried a Spark View, reflect on the following:",
+              "semantic_type": "TaskListAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "9ae82f28-79c7-4f40-9454-c3557d26f01f",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "tasks": [
+                "Do you feel comfortable creating a Spark view?",
+                "Do you feel comfortable querying a Spark view?",
+                "Do you know how you would use them in your own work?"
+              ],
+              "positive_feedback": "If you felt great about all of the above, awesome. If not, feel free to go back over the walkthrough and solutions.",
+              "video_feedback": null,
+              "description": null
+            }
+          ]
+        },
+        {
+          "id": 1079564,
+          "key": "31f0227b-8ae0-4e88-956a-0f7fc89b97a7",
+          "title": "Edge Cases",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "31f0227b-8ae0-4e88-956a-0f7fc89b97a7",
+            "completed_at": "2021-01-29T20:39:40.542Z",
+            "last_viewed_at": "2021-01-29T20:39:40.291Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1079557,
+              "key": "1f4038f8-36c3-4252-a99e-a317f23902fc",
+              "title": "Edge Cases Heading",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Edge Cases",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1095270,
+              "key": "ea3e9565-a90d-463b-a8ba-2038b3e2467c",
+              "title": null,
+              "semantic_type": "CheckboxQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "ea3e9565-a90d-463b-a8ba-2038b3e2467c",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "If you type ```ps -ef``` what would you expect to see if Spark Master and Worker are running?",
+                "answers": [
+                  {
+                    "id": "7ddb6102-b2b1-4177-b866-a69d47878b39",
+                    "text": "```Spark Status: Up```\n\n",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "63f1aa46-8da7-40d1-bbe0-8cdb5a07f345",
+                    "text": "```UID        PID  PPID  C STIME TTY          TIME CMD```\n```root        46     1  7 16:13 pts/0    00:00:06 /usr/lib/jvm/java-8-openjdk-amd64/jre/bin/java -cp /data/spark/conf/:/data/spark/jars/* -Xmx1g org.apache.spark.depl```\n```root       176     1 99 16:14 pts/0    00:00:05 /usr/lib/jvm/java-8-openjdk-amd64/jre/bin/java -cp /data/spark/conf/:/data/spark/jars/* -Xmx1g org.apache.spark.depl```",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "d079e3a2-a4a5-4d33-ac2a-97a009fd2fa0",
+                    "text": "```UID        PID  PPID  C STIME TTY          TIME CMD```\n```root         8     1  7 16:10 pts/0    00:00:00 /bin/bash```\n```root        24     1 16 16:10 ?        00:00:00 /opt/conda/bin/python -m ipykernel_launcher -f /root/.local/share/jupyter/runtime/kernel-ed59e7f1-8822-4714-b276-8d9```\n```root         1     0 15 16:10 ?        00:00:02 /opt/conda/bin/python /opt/conda/bin/jupyter-lab --allow-root --ip=0.0.0.0 --NotebookApp.token= --NotebookApp.allow_```",
+                    "is_correct": false
+                  }
+                ]
+              }
+            },
+            {
+              "id": 1079559,
+              "key": "1078e280-c06d-4a6a-9d18-ad3d26c25616",
+              "title": "ND029 DSND C2 L1 A12 Edge Cases V2",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "1DvGSDhJk5I",
+                "china_cdn_id": "1DvGSDhJk5I.mp4"
+              }
+            },
+            {
+              "id": 1095281,
+              "key": "5e0562dd-cf7b-461e-8f5f-8320dfb9dc4f",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Is Spark Running?\n\n```\n$ ps -ef\nUID        PID  PPID  C STIME TTY          TIME CMD\nroot         1     0 15 16:10 ?        00:00:02 /opt/conda/bin/python /opt/conda/bin/jupyter-lab --allow-root --ip=0.0.0.0 --NotebookApp.token= --NotebookApp.allow_\nroot         8     1  7 16:10 pts/0    00:00:00 /bin/bash\nroot        13     1  6 16:10 pts/1    00:00:00 /bin/bash\nroot        18     1  7 16:10 pts/2    00:00:00 /bin/bash\nroot        24     1 16 16:10 ?        00:00:00 /opt/conda/bin/python -m ipykernel_launcher -f /root/.local/share/jupyter/runtime/kernel-ed59e7f1-8822-4714-b276-8d9\nroot        46     1  7 16:13 pts/0    00:00:06 /usr/lib/jvm/java-8-openjdk-amd64/jre/bin/java -cp /data/spark/conf/:/data/spark/jars/* -Xmx1g org.apache.spark.depl\nroot        37     8  0 16:10 pts/0    00:00:00 ps -ef\nroot       176     1 99 16:14 pts/0    00:00:05 /usr/lib/jvm/java-8-openjdk-amd64/jre/bin/java -cp /data/spark/conf/:/data/spark/jars/* -Xmx1g org.apache.spark.depl\n```",
+              "instructor_notes": null
+            },
+            {
+              "id": 1095280,
+              "key": "b7524e5a-8d23-49db-8776-401cbc4f900f",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Is Spark Running?\n\nTyping `ps -ef` will give you a list of processes running on the server:\n\n* Watch for two lines that have the word spark in them\n* You may have to expand the terminal to see the full output \n* Check if there are two lines containing the word spark\n* Each is a process, one runs the master, one runs a worker\n* This means Spark is actively running",
+              "instructor_notes": null
+            }
+          ]
+        },
+        {
+          "id": 1079574,
+          "key": "2baf8ff1-772c-4def-8018-7fa814afab88",
+          "title": "Glossary",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "2baf8ff1-772c-4def-8018-7fa814afab88",
+            "completed_at": "2021-01-29T20:41:30.650Z",
+            "last_viewed_at": "2021-01-29T20:41:30.324Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1079572,
+              "key": "a4370187-4fb9-40ef-9bc8-4aa36d234e75",
+              "title": "Glossary Heading",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Glossary",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1079573,
+              "key": "04905e9c-2f3c-404a-a275-e16fb9894217",
+              "title": "Glossary List",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "|KeyTerm| Definition| \n|--------------|---------------------|\n|Broker| In a Kafka configuration, the server to which requests from external systems can be addressed; also the central processing component of a Kafka cluster.|\n|Cluster| An orientation of two or more servers in such a fashion that they can communicate directly with one another or with a cluster manager; often for the purpose of high availability or increased capacity.|\n|Data Pipeline| A series of steps of processing that augment or refine a raw data source in preparation for consumption by another system.|\n|DataFrame| A programming construct used to coordinate the processing of dynamic data.|\n|Kafka| A durable message broker used to mediate the exchange of messages between multiple applications.|\n|Kubernetes| An open-source technology used to coordinate and distribute computing.|\n|Offset| In a Kafka configuration, a value that determines the mode of consumption of a topic; the earliest starts at the oldest message; the latest starts at the newest message.|\n|Sink| An external system that consumes data.|\n|Source| An external system that generates data.|\n|Spark| An open-source framework for distributed computing across a cluster of servers; typically programming is required.|\n|Spark View: |in a Spark application, a session-bound representation of data in a certain configuration|\n|Topic| In a Kafka configuration, a channel of communication; often representing similar or related data; sometimes called a mailbox.|\n|Zookeeper| An open-source technology that enables semi-autonomous healing of a server cluster.|",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 1079577,
+          "key": "19ff3269-e996-43f4-a031-b44075740d6b",
+          "title": "Further Reading",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "19ff3269-e996-43f4-a031-b44075740d6b",
+            "completed_at": "2021-01-29T20:42:04.230Z",
+            "last_viewed_at": "2021-01-29T20:42:04.024Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1095252,
+              "key": "fc5ea846-856a-4217-8cf3-a977093c9448",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "",
+              "instructor_notes": null
+            },
+            {
+              "id": 1095283,
+              "key": "f2b586ed-ac7f-4857-b0d3-6a3b224a448f",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Spark Cluster-Mode Resources:\n\nFor more details about various Spark deployment configurations see the official <a href=\"http://spark.apache.org/docs/latest/cluster-overview.html\" target=\"_blank\">Spark Cluster Mode Overview</a>",
+              "instructor_notes": null
+            },
+            {
+              "id": 1095284,
+              "key": "719eaba9-883b-4a05-a35c-4cf814e0b181",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Kafka Integration Guide Resources\n\nFor more information on integrating Spark with Kafka, see the official <a href=\"https://spark.apache.org/docs/latest/structured-streaming-kafka-integration.html\" target=\"_blank\">Kafka Integration Guide</a>",
+              "instructor_notes": null
+            },
+            {
+              "id": 1095286,
+              "key": "6ea8e441-fe41-4be6-a82f-1ccef7f7872d",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Using Data Sets and DataFrames\n\nFor more information on using DataFrames see the official Spark Documentation <a href=\"https://spark.apache.org/docs/latest/structured-streaming-programming-guide.html#creating-streaming-dataframes-and-streaming-datasets\" target=\"_blank\">Using Data Sets and DataFrames</a>",
+              "instructor_notes": null
+            }
+          ]
+        },
+        {
+          "id": 1079585,
+          "key": "38784b96-a1c6-43bf-b1a9-a7019ee4214f",
+          "title": "Lesson Review",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "38784b96-a1c6-43bf-b1a9-a7019ee4214f",
+            "completed_at": "2021-01-29T20:42:21.535Z",
+            "last_viewed_at": "2021-01-29T20:42:21.167Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1079578,
+              "key": "7bd39e50-3d3e-41f8-9536-fa20e4bebe2c",
+              "title": "Lesson Review Heading",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Lesson Review",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1079579,
+              "key": "8461d466-4809-4f95-994d-e5730673e8f0",
+              "title": "ND029 DSND C2 L1 A13 Lesson Recap",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "_OwSBdaJuG4",
+                "china_cdn_id": "_OwSBdaJuG4.mp4"
+              }
+            },
+            {
+              "id": 1095287,
+              "key": "0e178022-613c-4258-9adf-322bbaecd040",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/November/5fa34bf3_slide-98/slide-98.jpeg",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/0e178022-613c-4258-9adf-322bbaecd040",
+              "caption": "Lesson Learning Objectives",
+              "alt": "Lesson Learning Objectives",
+              "width": 1920,
+              "height": 1080,
+              "instructor_notes": null
+            },
+            {
+              "id": 1095288,
+              "key": "498f04aa-b6ae-4fc3-b1b3-00b5d63d186f",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Lesson Learning Objectives\n\nUpon completion of Lesson 1, you should be able to successfully carry out the following tasks:\n\n* Start a Spark Cluster and deploy a Spark application\n* Create a Spark Streaming DataFrame with a Kafka Source\n* Create a Spark View\n* Query a Spark View",
+              "instructor_notes": null
+            },
+            {
+              "id": 1095289,
+              "key": "2ebd2764-eeff-47c2-9780-47e814a43fef",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/November/5fa34c7d_slide-99/slide-99.jpeg",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/2ebd2764-eeff-47c2-9780-47e814a43fef",
+              "caption": "Course Overview",
+              "alt": "Course Overview",
+              "width": 1920,
+              "height": 1080,
+              "instructor_notes": null
+            },
+            {
+              "id": 1095290,
+              "key": "7caee881-003b-4f9f-88d7-489a3dd4ba64",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Where we are in the Course\n\nHere's where we are in the course:\n\n* We just learned about Streaming DataFrames\n* Next, we're going to talk about Joins and JSON",
+              "instructor_notes": null
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "_deprecated": [
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "starter_files",
+      "reason": "prefer master_archive_id"
+    },
+    {
+      "name": "starter_files",
+      "reason": "prefer master_archive_id"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "starter_files",
+      "reason": "prefer master_archive_id"
+    },
+    {
+      "name": "starter_files",
+      "reason": "prefer master_archive_id"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "starter_files",
+      "reason": "prefer master_archive_id"
+    },
+    {
+      "name": "starter_files",
+      "reason": "prefer master_archive_id"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    }
+  ]
+}

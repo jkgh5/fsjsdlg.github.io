@@ -1,0 +1,2514 @@
+{
+  "data": {
+    "lesson": {
+      "id": 1079708,
+      "key": "4720ad9e-3236-4ebe-a324-b55b61dcf328",
+      "title": "Joins and JSON",
+      "semantic_type": "Lesson",
+      "is_public": true,
+      "version": "1.0.0",
+      "locale": "en-us",
+      "summary": "In this lesson, you'll learn how to work with JSON and complete Joins for data streaming.",
+      "lesson_type": "Classroom",
+      "display_workspace_project_only": false,
+      "resources": {
+        "files": [
+          {
+            "name": "Videos Zip File",
+            "uri": "https://zips.udacity-data.com/4720ad9e-3236-4ebe-a324-b55b61dcf328/1079708/1606957808110/Joins+and+JSON+Videos.zip"
+          },
+          {
+            "name": "Transcripts Zip File",
+            "uri": "https://zips.udacity-data.com/4720ad9e-3236-4ebe-a324-b55b61dcf328/1079708/1606957802468/Joins+and+JSON+Subtitles.zip"
+          },
+          {
+            "name": "Apache Spark And Spark Streaming Glossary",
+            "uri": "https://video.udacity-data.com/topher/2020/November/5fa5df29_apache-spark-and-spark-streaming-glossary/apache-spark-and-spark-streaming-glossary.pdf"
+          }
+        ],
+        "google_plus_link": null,
+        "career_resource_center_link": null,
+        "coaching_appointments_link": null,
+        "office_hours_link": null,
+        "aws_provisioning_link": null
+      },
+      "project": null,
+      "lab": null,
+      "concepts": [
+        {
+          "id": 1079590,
+          "key": "b146d8eb-95bc-47dd-b4d3-8802947bb9c7",
+          "title": "Lesson Overview",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "b146d8eb-95bc-47dd-b4d3-8802947bb9c7",
+            "completed_at": "2021-01-29T19:10:07.579Z",
+            "last_viewed_at": "2021-01-30T08:59:00.017Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1079587,
+              "key": "30eeb8ed-c559-42e0-bb58-6e2bcacc8123",
+              "title": "Introduction Heading",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Introduction",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1079588,
+              "key": "eb07363c-af19-4ed2-84e4-b21b6fe83b4d",
+              "title": "ND029 DSND C2 L2 A01 Lesson Overview V2",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "b2JuYfwa59I",
+                "china_cdn_id": "b2JuYfwa59I.mp4"
+              }
+            },
+            {
+              "id": 1095311,
+              "key": "dd1b5779-9b37-44bb-b765-e1a8e0ff8ce1",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/November/5fa3f4bb_slide-2-1/slide-2-1.jpeg",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/dd1b5779-9b37-44bb-b765-e1a8e0ff8ce1",
+              "caption": "Course Overview",
+              "alt": "Course Overview",
+              "width": 1920,
+              "height": 1080,
+              "instructor_notes": null
+            },
+            {
+              "id": 1095313,
+              "key": "57166ebc-dfd8-4d14-b8ef-d35ee2f4100f",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Course Overview\n\nYou just learned about Streaming **DataFrames**\n\n**In this lesson we'll become familiar with:**\n\n* Parsing a JSON Payload into Separate Fields for Analysis\n* Joining two Streaming DataFrames from Different Data Sources\n* Writing a Streaming DataFrame to Kafka with Aggregated data",
+              "instructor_notes": null
+            },
+            {
+              "id": 1095312,
+              "key": "85ecc5e2-b8ae-49a9-9f5c-5cc03e23da70",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/November/5fa3f4ee_slide-3/slide-3.jpeg",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/85ecc5e2-b8ae-49a9-9f5c-5cc03e23da70",
+              "caption": "Lesson Learning Objectives",
+              "alt": "Lesson Learning Objectives",
+              "width": 1920,
+              "height": 1080,
+              "instructor_notes": null
+            },
+            {
+              "id": 1095314,
+              "key": "feca3ded-833b-4beb-97e9-9930d1c6c1e2",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Lesson Learning Objectives\n\nUpon completion of Lesson 2, you should be able to successfully complete the following:\n\n* Parse a JSON payload into separate fields for analysis\n* Join two streaming DataFrames from different data sources\n* Write a streaming DataFrame to Kafka with aggregated data",
+              "instructor_notes": null
+            }
+          ]
+        },
+        {
+          "id": 1079598,
+          "key": "4e45fed4-366a-4c17-86c5-515f90d07ecc",
+          "title": "Why JSON is important?",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "4e45fed4-366a-4c17-86c5-515f90d07ecc",
+            "completed_at": "2021-01-30T08:58:55.030Z",
+            "last_viewed_at": "2021-01-30T08:59:12.475Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1079592,
+              "key": "0a090111-96e0-4518-a658-667313e35618",
+              "title": "ND029 DSND C2 L2 A02 Why JSON Is Important",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "5_fywXfeaWM",
+                "china_cdn_id": "5_fywXfeaWM.mp4"
+              }
+            },
+            {
+              "id": 1095315,
+              "key": "b45a07c4-544e-419e-80e0-fcde93b46ba8",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Why are JSON and Joins Important in Spark?\n\n* Could you write streaming spark applications without using JSON? \n* Do you need to use Joins?\n* In this lesson, we will discuss the details of when and why we would use both",
+              "instructor_notes": null
+            },
+            {
+              "id": 1095316,
+              "key": "7838e375-275a-4b88-9213-8b34d48148f6",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/November/5fa3f690_slide-6/slide-6.jpeg",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/7838e375-275a-4b88-9213-8b34d48148f6",
+              "caption": null,
+              "alt": null,
+              "width": 1920,
+              "height": 1080,
+              "instructor_notes": null
+            },
+            {
+              "id": 1095318,
+              "key": "3115c59a-ef07-43ba-8567-52f18198bdba",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Putting it All Together\n\n* In the previous lesson, you learned how to write a basic streaming application\n* In this lesson, you will learn how to read streaming JSON messages\n* Streaming messages usually are JSON formatted",
+              "instructor_notes": null
+            },
+            {
+              "id": 1095319,
+              "key": "cad68b17-f177-4831-b634-03f9cc89417c",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Parsing JSON in Spark\n\n* If you are using a version before Spark 3.0.0, JSON field inference is not available\n* In this lesson, you will learn how to create a JSON schema based on an expected format\n* You will learn how to explicitly parse JSON into independent fields in a temporary view\n* Joins allow you to merge data from separate DataFrames into a single DataFrame just like you would in a SQL Join",
+              "instructor_notes": null
+            },
+            {
+              "id": 1095317,
+              "key": "5cf4b98b-34fe-4c4a-b594-952b2277d67e",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/November/5fa3f69e_slide-7/slide-7.jpeg",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/5cf4b98b-34fe-4c4a-b594-952b2277d67e",
+              "caption": null,
+              "alt": null,
+              "width": 1920,
+              "height": 1080,
+              "instructor_notes": null
+            },
+            {
+              "id": 1095321,
+              "key": "01ebb794-dd57-46ea-8a76-4f94c6207896",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Explore Streaming Data\n\n* JSON has become the de facto standard for data exchange\n* You will work extensively with JSON throughout the rest of the course\n* We will explore multiple JSON payloads streaming from Kafka\n* Providing streaming data to others is best done through JSON format",
+              "instructor_notes": null
+            },
+            {
+              "id": 1095322,
+              "key": "5b785e38-77bb-4443-981a-fb9e563a9f9c",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### What is JSON?\n\n**JSON: **JavaScript Object Notation; originally created to serialize objects in JavaScript, a data serialization standard consisting of keys and values (ex: { \"firstName\":\"Sally\", \"lastName\":\"Smith\"}).",
+              "instructor_notes": null
+            }
+          ]
+        },
+        {
+          "id": 1079604,
+          "key": "d212346c-c2d2-4b03-8b6d-264a00d85e5e",
+          "title": "Why JSON and joins are important.",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "d212346c-c2d2-4b03-8b6d-264a00d85e5e",
+            "completed_at": "2021-01-30T09:03:14.318Z",
+            "last_viewed_at": "2021-01-30T09:03:14.163Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1079599,
+              "key": "86b9ef23-ba46-48d5-8927-ec61e7be4843",
+              "title": "Why JSON is important? Why are joins important? Heading",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Why JSON is important? Why are joins important?",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1079600,
+              "key": "9ee3e2a6-24c7-4659-9b5a-d4248b5bcb97",
+              "title": "ND029 DSND C2 L2 A03 How An Expert Thinks About JSON And Joins With Spark V2",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "iUitjlUaUy8",
+                "china_cdn_id": "iUitjlUaUy8.mp4"
+              }
+            },
+            {
+              "id": 1095323,
+              "key": "963f2ab8-f375-4b7a-81a6-8b54c1f9ad46",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## JSON is Universally Used to Transmit Data\n\n* It is simple to read and write\n* Almost any system will accept it\n* The JSON format can be used to describe most record types",
+              "instructor_notes": null
+            },
+            {
+              "id": 1095324,
+              "key": "05733fe8-4543-403e-ac39-a07c3e4a26f7",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/November/5fa3f8b1_slide-12-1/slide-12-1.jpeg",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/05733fe8-4543-403e-ac39-a07c3e4a26f7",
+              "caption": "Joining Streams Typically Difficult",
+              "alt": "Joining Streaming Data is Typically Difficult",
+              "width": 1920,
+              "height": 1080,
+              "instructor_notes": null
+            },
+            {
+              "id": 1095325,
+              "key": "b5f6e5e2-fd26-4e39-a54a-9a933fa43acf",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Joining Streaming Data is Typically Difficult\n\n* Usually joining streams of data is not straightforward\n* Without built-in streaming join functionality, you will have to write code to cache or query extra data\n* This can be very IO intensive because the data is often stored in very large tables, and may be difficult to index\n* The time to retrieve the secondary data is often prohibitive",
+              "instructor_notes": null
+            }
+          ]
+        },
+        {
+          "id": 1079610,
+          "key": "a929874c-cd75-49f4-9877-aad20701a4ce",
+          "title": "Parse a JSON Payload",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "a929874c-cd75-49f4-9877-aad20701a4ce",
+            "completed_at": "2021-01-30T09:05:18.141Z",
+            "last_viewed_at": "2021-01-30T09:05:17.950Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1079605,
+              "key": "535bbaa7-abba-476a-a11a-8bbdf718a741",
+              "title": "How an Expert Thinks about JSON and about joins Heading",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Parse a JSON Payload",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1105068,
+              "key": "6586ab0f-036c-42ad-8fdf-07b268750f98",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Wireframe",
+              "instructor_notes": null
+            },
+            {
+              "id": 1104584,
+              "key": "7131feec-858e-45e1-b4d6-1aa38751fd42",
+              "title": "ND029 DSND C2 L2 A04 Parse A JSON Payload Into Separate Fields Part 1 V2",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "video": {
+                "youtube_id": "1PQ7a93OheA",
+                "china_cdn_id": "1PQ7a93OheA.mp4"
+              }
+            },
+            {
+              "id": 1079606,
+              "key": "c8b85a23-48b5-4501-b7dc-482554463295",
+              "title": "ND029 DSND C2 L2 A04 Parse A JSON Payload Into Separate Fields Part 2 V2",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "CTv-u1hZGRs",
+                "china_cdn_id": "CTv-u1hZGRs.mp4"
+              }
+            },
+            {
+              "id": 1095326,
+              "key": "1840053c-578f-4600-aec1-f61ac75255fc",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/November/5fa3fa30_slide-16/slide-16.jpeg",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/1840053c-578f-4600-aec1-f61ac75255fc",
+              "caption": "Puzzle Pieces JSON Fields",
+              "alt": "Puzzle Pieces are your JSON Fields",
+              "width": 1920,
+              "height": 1080,
+              "instructor_notes": null
+            },
+            {
+              "id": 1079607,
+              "key": "9ce4498b-f34c-4e6d-9fdf-a5ba7d38c1b9",
+              "title": "How an Expert Thinks about JSON and about joins Summary",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "* Creating a sink can be compared with assembling a puzzle\n* The JSON fields are the pieces to the puzzle\n* Just as the picture of the finished puzzle will help you decide where pieces belong, seeing the end goal for your sink format guides your programming",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1094573,
+              "key": "6c0ba356-1449-4935-b486-9878ae530fec",
+              "title": "ND029 DSND C2 L2 A04 Parse A JSON Payload Into Separate Fields Part 2 V2",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "CTv-u1hZGRs",
+                "china_cdn_id": "CTv-u1hZGRs.mp4"
+              }
+            },
+            {
+              "id": 1095333,
+              "key": "5f8bf8d1-2f19-4259-8920-b78dc5d777ad",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Searching for Pieces of the Puzzle\n\n* It is important to know what the data looks like in the sources you will be joining so you know which fields will come from which streams\n* Try to get samples payloads of each source as early as possible so you can create a picture of the complete sink and where all the pieces might come from\n* It is ok if the payload format is not 100% finalized at first\n* However, if fields change in the sources that are used in your join, the format of the final output will be affected",
+              "instructor_notes": null
+            },
+            {
+              "id": 1095334,
+              "key": "0ca68bb0-a196-4376-8dda-0ca8b4543a73",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Examine Some Sample Data\n\n`{\"truckNumber\":\"5169\", \"destination\":\"Florida\",\"milesFromShop\":505,\"odomoterReading\":50513}`\n\n## Formatted JSON\n\n```\n{\n  \"truckNumber\":\"5169\", (Type: String)\n  \"destination\":\"Florida\", (Type: String)\n  \"milesFromShop\":505, (Type: Integer)\n  \"odomoterReading\":50513 (Type: Integer)\n}\n```",
+              "instructor_notes": null
+            },
+            {
+              "id": 1095505,
+              "key": "d36e7866-e221-4fde-9558-92436b66f864",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Pop Quiz: How would this JSON data look when properly formatted?\n\n```\n{\"answerId\":98333113,\"questionId\":13253463,\"isSolution\":true,\"quizId\":438934543,\n\"body\":\"50 States\"}\n```",
+              "instructor_notes": null
+            },
+            {
+              "id": 1095506,
+              "key": "46e9e7be-112f-438b-a12f-4a3f6085dc0d",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Pop Quiz Answer\n\n```\n{\n\"answerId\":98333113,\n\"questionId\":13253463,\n\"isSolution\":true,\n\"quizId\":438934543,\n\"body\":\"50 States\"\n}\n```",
+              "instructor_notes": null
+            },
+            {
+              "id": 1095338,
+              "key": "8a8f9033-e2a0-4a4d-afe1-bcabf7d7a031",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## What is `StructType`?\n\n**`StructType`**: a Spark class that defines the schema for a DataFrame",
+              "instructor_notes": null
+            },
+            {
+              "id": 1095335,
+              "key": "2b22771f-0250-4f2f-b7c6-a45ba1cf332d",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## StructType Code\n\n```\n# JSON Sample: {\"firstName\":\"Muhamed\",\"lastName\":\"Adel\"}\npersonSchema = StructType (\n  [\n    StructField(\"firstName\",StringType()),\n    StructField(\"age\",IntegerType())\n  ]\n)\n```\n\n## `StructType` Important Points\n\n* Using an array of `StructField`s, you create your `StructType`\n* Each `StructField` correlates with a JSON field",
+              "instructor_notes": null
+            },
+            {
+              "id": 1095504,
+              "key": "3620dd61-25bc-40a2-9e81-8aeaef1223e5",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "What is a `StructField`?\n\n**`StructField`**: a Python class used to create a typed field in a `StructType`.\n\nExample: `StructField(\"truckNumber\", StringType())`",
+              "instructor_notes": null
+            },
+            {
+              "id": 1095337,
+              "key": "a62a381b-8f1d-426d-9692-7520f5639915",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## `StructField` Code\n\n```\n# JSON Sample: {\"firstName\":\"Aarthi\",\"lastName\":\"Singh\"}\n\nStructField(\"firstName\", StringType())\nStructField(\"age\", IntegerType())\n```\n\n## `StructField` Important Points\n\n* The field name needs to match your JSON field\n* Make sure to define the data type",
+              "instructor_notes": null
+            },
+            {
+              "id": 1095339,
+              "key": "5731a9d1-c09e-49b0-a975-43136e0d66a4",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Creating a `StructType` Schema in Action\n\n```\n# Sample JSON: \n# {\n#    \"truckNumber\":\"2352523\",\n#    \"destination\":\"Accra\",\n#    \"milesFromShop\":100,\n#    \"odometerReading\": 99789\n# }\n\ntruckStatusSchema = StructType (   \n        [\n          StructField(\"truckNumber\", StringType()),        \n          StructField(\"destination\", StringType()), \n          StructField(\"milesFromShop\", IntegerType()),  \n          StructField(\"odometerReading\", IntegerType())\n        ]\n)   \n```",
+              "instructor_notes": null
+            },
+            {
+              "id": 1095340,
+              "key": "b2525a35-e142-4d90-9112-e2109f7674d6",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Explanation of Creating a `StructType` Schema in Action\n\n* You define a `StructType` by instantiating it in code\n* List the array of fields by name and type\n* Notice the field names in this example correspond with the JSON fields earlier",
+              "instructor_notes": null
+            },
+            {
+              "id": 1095341,
+              "key": "5f4c75b8-78e0-4199-9c7c-c36587a9168b",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Parsing JSON in Action\n\n```\n# Sample JSON: \n# {\n#    \"truckNumber\":\"2352523\",\n#    \"destination\":\"Accra\",\n#    \"milesFromShop\":100,\n#    \"odometerReading\": 99789\n# }\n\ntruckStatusSchema = StructType (   \n        [\n          StructField(\"truckNumber\", StringType()),        \n          StructField(\"destination\", StringType()), \n          StructField(\"milesFromShop\", IntegerType()),  \n          StructField(\"odometerReading\", IntegerType())\n        ]\n) \n\nvehicleStatusStreamingDF \\\n  .withColumn(\"value\",from_json(\"value\",truckStatusSchema))      \n```",
+              "instructor_notes": null
+            },
+            {
+              "id": 1095342,
+              "key": "8458214f-0706-4650-8425-84e65f8bc5e9",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Explanation of Parsing JSON in Action\n\nOnce you have defined the schema, you are ready to use it to parse a field containing JSON:\n\n**`withColumn`**\n\n* In this example, the DataFrame is called **`vehicleStatusStreamingDF`**\n* We parse the JSON field called value, using the **`.withColumn`**` `method\n* **`.withColumn`**** **creates or overwrites an existing column \n\n**`from_json`**\n\n* Because the value column already exists, we are overwriting it\n* The new value is assigned using the **`from_json`** function\n* The **`from_json`** function uses the column name containing the JSON, value, and the **`truckStatusSchema`**",
+              "instructor_notes": null
+            },
+            {
+              "id": 1095343,
+              "key": "9b9113eb-ecb7-43bb-b52c-62c534d3f5b7",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## How to call `.withColumn`\n\n```\nvehicleStatusStreamingDF \\\n  .withColumn(\"newFieldName\", \"data Value\")\n```\n\n## Passing Parameters using `.withColumn`\n\n1. The new or existing column name we are assigning data to\n1. The data we want to assign",
+              "instructor_notes": null
+            },
+            {
+              "id": 1095344,
+              "key": "8712778c-9ece-42c2-ba51-3fd42e50b04e",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## How to call `from_json`\n\n`from_json(\"columnName\", structSchemaVariable)`\n\n## Passing Parameters using from_json\n\n1. The column name we want to extract JSON out of\n1. The variable which holds the `StructType` defining our schema",
+              "instructor_notes": null
+            }
+          ]
+        },
+        {
+          "id": 1082048,
+          "key": "3a7d3149-0b43-4501-9a8d-0c51950482ca",
+          "title": "Walkthrough 1: Parse a JSON Payload",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "3a7d3149-0b43-4501-9a8d-0c51950482ca",
+            "completed_at": "2021-01-30T09:18:39.789Z",
+            "last_viewed_at": "2021-01-30T09:18:39.030Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1093729,
+              "key": "36173fb9-c38f-4b1b-9ddf-5ef60d9ce509",
+              "title": "ND029 DSND C2 L2 A05 Parse A JSON Payload Into Separate Fields Walkthrough Short",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "7r_93StwHTY",
+                "china_cdn_id": "7r_93StwHTY.mp4"
+              }
+            },
+            {
+              "id": 1106432,
+              "key": "99a2a6f3-8e40-48c7-8b5d-5f64fd778bd0",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Parse a JSON Payload Into Separate Fields for Analysis\n\n* **If you just started the workspace**, from the console type: `/home/workspace/startup/startup.sh` to start Kafka, and the Trucking Simulation\n* **If you just started the workspace**, start the spark master and spark worker\n   * From the terminal type: `/home/workspace/spark/sbin/start-master.sh`\n   * View the log and copy down the Spark URI\n   * From the terminal type: `/home/workspace/spark/sbin/start-slave.sh [Spark URI]`\n* Complete the `vehicle-status.py` python script\n* Submit the application to the spark cluster:\n   * From the terminal type: \n   `/home/workspace/spark/submit-vehicle-status.sh`\n* Watch the terminal for the values to scroll past (can take up to 2 minutes)",
+              "instructor_notes": null
+            },
+            {
+              "id": 1085808,
+              "key": "f60fec33-568a-4c71-8a4f-f58fc2a60cb5",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "r1053966c1082043xJUPYTERLvc36joa9",
+              "pool_id": "jupyterlabpython37",
+              "view_id": "jupyter-lab-d8oy1",
+              "gpu_capable": false,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "disk": {
+                      "id": "data-science-datasets",
+                      "paths": [
+                        {
+                          "src": "/ND029",
+                          "dest": "/data/"
+                        }
+                      ]
+                    },
+                    "port": "3000",
+                    "ports": [],
+                    "videos": [],
+                    "pageEnd": "1",
+                    "pageStart": "1",
+                    "allowSubmit": false,
+                    "defaultPath": "/",
+                    "actionButtonText": ""
+                  },
+                  "kind": "jupyter-lab"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            },
+            {
+              "id": 1094579,
+              "key": "8bf5ca6e-4224-4c5d-94b4-3b608802e25d",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Optional Long Walkthrough with Troubleshooting",
+              "instructor_notes": null
+            },
+            {
+              "id": 1094578,
+              "key": "11a5110c-0319-48f3-b942-7e7b6eccefe5",
+              "title": "ND029 DSND C2 L2 A05 Parse A JSON Payload Into Separate Fields Walkthrough",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "video": {
+                "youtube_id": "7BdKFnqeGYU",
+                "china_cdn_id": "7BdKFnqeGYU.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 1079619,
+          "key": "d54979ed-fa30-4a1a-b2fd-1d754c75a633",
+          "title": "Quiz: Parse a JSON payload into separate fields for analysis",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "d54979ed-fa30-4a1a-b2fd-1d754c75a633",
+            "completed_at": "2021-01-30T09:58:58.770Z",
+            "last_viewed_at": "2021-01-30T09:58:58.179Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1079616,
+              "key": "038884fd-316a-47f4-af3f-13438b8c43e0",
+              "title": "Quiz: Parse a JSON payload into separate fields for analysis Heading",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Quiz: Parse a JSON payload into separate fields for analysis",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1095507,
+              "key": "89c9a3f9-440a-439d-8314-b4e3d1db4924",
+              "title": null,
+              "semantic_type": "MatchingQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "89c9a3f9-440a-439d-8314-b4e3d1db4924",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "complex_prompt": {
+                  "text": "Match the Concept with the Definition"
+                },
+                "concepts_label": "Concept",
+                "answers_label": "Definition",
+                "concepts": [
+                  {
+                    "text": "`StructType`",
+                    "correct_answer": {
+                      "id": "2fdb16b5-0333-44a5-af9c-747ced2a0e62",
+                      "text": "a Spark class that defines the schema for a DataFrame"
+                    }
+                  },
+                  {
+                    "text": "`StructField`",
+                    "correct_answer": {
+                      "id": "7e847b51-6266-4175-a73c-20d4d5444276",
+                      "text": "a Python class used to create a typed field in a StructType"
+                    }
+                  },
+                  {
+                    "text": "JSON",
+                    "correct_answer": {
+                      "id": "236a810c-74b9-44f6-8a97-1281b14463d2",
+                      "text": "a data serialization standard consisting of keys and values "
+                    }
+                  }
+                ],
+                "answers": [
+                  {
+                    "id": "2fdb16b5-0333-44a5-af9c-747ced2a0e62",
+                    "text": "a Spark class that defines the schema for a DataFrame"
+                  },
+                  {
+                    "id": "236a810c-74b9-44f6-8a97-1281b14463d2",
+                    "text": "a data serialization standard consisting of keys and values "
+                  },
+                  {
+                    "id": "7e847b51-6266-4175-a73c-20d4d5444276",
+                    "text": "a Python class used to create a typed field in a StructType"
+                  }
+                ]
+              }
+            },
+            {
+              "id": 1095510,
+              "key": "cf433085-ba51-4ad2-9ae1-d9fba4c4e5d9",
+              "title": null,
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "cf433085-ba51-4ad2-9ae1-d9fba4c4e5d9",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "What is the correct way to use a `StructType` called `vehicleStatusSchema` to deserialize JSON?",
+                "answers": [
+                  {
+                    "id": "cc7f13f2-39eb-41af-988c-b272f3d0dfdd",
+                    "text": "```\nvehicleStatusStreamingDF \\\n  .withColumn(\"value\",from_json(\"value\",vehicleStatusSchema))\n\n```",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "9548cfc0-e196-4adf-bef7-6c1cb0eb12ea",
+                    "text": "```\nvehicleStatusStreamingDF \\\n  .withColumn(\"value\",parse_json(\"value\",vehicleStatusSchema))\n\n```",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "6fd39667-2d8a-460c-a48a-3b07d2951dcc",
+                    "text": "```\nvehicleStatusStreamingDF \\\n  .withColumn(\"value\",from_json(\"vehicleStatusSchema))\n\n```",
+                    "is_correct": false
+                  }
+                ]
+              }
+            },
+            {
+              "id": 1095511,
+              "key": "a6b3a809-48a6-4e9f-80f9-0c8ef51f64c8",
+              "title": null,
+              "semantic_type": "CheckboxQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "a6b3a809-48a6-4e9f-80f9-0c8ef51f64c8",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Select an appropriate Instantiation of a `StructType` for the following `VehicleStatus` JSON: \n```\n{\n  \"truckNumber\":\"5169\",\n  \"destination\":\"Florida\",\n  \"milesFromShop\":505,\n  \"odomoterReading\":50513\n}\n\n```",
+                "answers": [
+                  {
+                    "id": "18c04109-39ea-49d4-a7ef-4303082944e6",
+                    "text": "```\nvehicleStatusSchema = StructType (\n    [\n        StructField(\"truckNumber\", StringType()),\n        StructField(\"destination\", StringType()),\n        StructField(\"milesFromShop\", IntegerType()),\n        StructField(\"odometerReading\", IntegerType())     \n    ]   \n)\n```",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "40be8f87-5337-4fc8-a57e-89fcd8dc43a4",
+                    "text": "```\nvehicleStatusSchema = StructType (\n    [\n        StructField(\"truckNumber\", StringType()),\n        StructField(\"destination\", FloatType()),\n        StructField(\"milesFromShop\", IntegerType()),\n        StructField(\"odometerReading\", IntegerType())     \n    ]   \n)\n```",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "e93ae616-baf0-494a-b9db-13b8904a2303",
+                    "text": "```\nvehicleStatusSchema = StructType (   \n        StructField(\"truckNumber\", StringType()),\n        StructField(\"destination\", StringType()),\n        StructField(\"milesFromShop\", IntegerType()),\n        StructField(\"odometerReading\", IntegerType())           \n)\n```",
+                    "is_correct": false
+                  }
+                ]
+              }
+            },
+            {
+              "id": 1095518,
+              "key": "a1143ecb-0fc4-4535-8c7a-1d67d6250a96",
+              "title": null,
+              "semantic_type": "CheckboxQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "a1143ecb-0fc4-4535-8c7a-1d67d6250a96",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Which `StructField` instantiations below match the `VehicleCheckin` JSON:\n```\n{\n  \"reservationId\":\"1601485848310\",\n  \"locationName\":\"New Mexico\",\n  \"truckNumber\":\"3944\",\n  \"status\":\"In\"}\n\n```",
+                "answers": [
+                  {
+                    "id": "24c49b6f-6c5e-45ae-840e-263cde921190",
+                    "text": "`StructField(\"reservationid\", StringType())`",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "b606608b-f39b-4720-ad5d-6402756b8d73",
+                    "text": "` StructField(\"locationName\", StringType())`",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "9595ccdf-6024-4fe7-bea2-c41387126080",
+                    "text": "`StructField(\"truckNumber\", IntegerType())`",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "4b1f6646-fb83-4980-8278-916a02a7c6c4",
+                    "text": "`StructField(\"status\", StringType()`",
+                    "is_correct": true
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 1079622,
+          "key": "1c99ffa2-86a7-47fe-a6ad-0c8e0c8e1e74",
+          "title": "Exercise: Parse a JSON Payload",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "1c99ffa2-86a7-47fe-a6ad-0c8e0c8e1e74",
+            "completed_at": "2021-01-30T12:45:41.425Z",
+            "last_viewed_at": "2021-01-30T12:45:41.035Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1079620,
+              "key": "02066d38-efba-48a7-8579-38c799940605",
+              "title": "Exercise: Parse a JSON payload into separate fields for analysis Instructions",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Exercise: Parse a JSON payload into separate fields for analysis\n\nIn this exercise we will be working with a Kafka topic created to broadcast deposits in a bank. Each message contains the following data:\n\n* account number\n* amount\n* date and time\n\nYou will create a view with this data so you can query it using spark.sql.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1095345,
+              "key": "c0da37ac-c3c2-4671-a883-074aa6ec8e2b",
+              "title": "Write a pyspark application",
+              "semantic_type": "TaskListAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "c0da37ac-c3c2-4671-a883-074aa6ec8e2b",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "tasks": [
+                "Read a stream from a kafka topic",
+                "Write the dataframe from kafka to the console",
+                "Parse the dataframe and store it as a temporary view",
+                "Select * from the temp view, and write the stream to the console",
+                "Start spark master, and worker",
+                "Deploy and run the pyspark application"
+              ],
+              "positive_feedback": null,
+              "video_feedback": null,
+              "description": null
+            },
+            {
+              "id": 1084251,
+              "key": "8de62782-e7d9-48ab-b6ed-cd07c3e6a06e",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "r1053966c1079622xJUPYTERLkwjs4cci",
+              "pool_id": "jupyterlabpython37",
+              "view_id": "jupyter-lab-hpurh",
+              "gpu_capable": false,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "disk": {
+                      "id": "data-science-datasets",
+                      "paths": [
+                        {
+                          "src": "/ND029",
+                          "dest": "/data/"
+                        }
+                      ]
+                    },
+                    "port": "3000",
+                    "ports": [],
+                    "videos": [],
+                    "pageEnd": "",
+                    "pageStart": "",
+                    "allowSubmit": true,
+                    "defaultPath": "/",
+                    "actionButtonText": ""
+                  },
+                  "kind": "jupyter-lab"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        },
+        {
+          "id": 1079627,
+          "key": "e12a1490-3e00-47bc-930c-bf232af161c1",
+          "title": "Solution 1: Parse a JSON Payload",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "e12a1490-3e00-47bc-930c-bf232af161c1",
+            "completed_at": "2021-01-30T12:47:03.473Z",
+            "last_viewed_at": "2021-01-30T12:47:03.318Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1079623,
+              "key": "3e895452-cff0-48a8-960c-9251ea88f294",
+              "title": "Solution: Parse a JSON payload into separate fields for analysis Heading",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Solution: Parse a JSON Payload for Analysis",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1079624,
+              "key": "97c9c3c4-ceeb-4de9-8bc3-3ee2cc844d85",
+              "title": "ND029 DSND C2 L2 A06 Solution Parse A JSON Payload Into Separate Fields Short",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "I01xumgdn9w",
+                "china_cdn_id": "I01xumgdn9w.mp4"
+              }
+            },
+            {
+              "id": 1095346,
+              "key": "8467e52a-db7f-4850-8058-a39a18f01506",
+              "title": "Now that you have parsed a JSON payload, reflect on the following:",
+              "semantic_type": "TaskListAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "8467e52a-db7f-4850-8058-a39a18f01506",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "tasks": [
+                "How comfortable are you with StructType?",
+                "How comfortable are you with StructField?",
+                "Can you define a StructType schema if you were given a JSON sample?",
+                "Do you remember how to use the StructType schema in your code?"
+              ],
+              "positive_feedback": "If you felt great about all of the above, awesome. If not, feel free to go back over the walkthrough and solutions.",
+              "video_feedback": null,
+              "description": null
+            },
+            {
+              "id": 1094581,
+              "key": "fc98c06d-4544-4a36-b58c-69078252d8eb",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Optional Long Solution with Troubleshooting",
+              "instructor_notes": null
+            },
+            {
+              "id": 1094582,
+              "key": "2e9b13cb-1f52-4356-9d6e-496fd18a38e9",
+              "title": "ND029 DSND C2 L2 A06 Solution Parse A JSON Payload Into Separate Fields",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "video": {
+                "youtube_id": "cJpWFE7VR3Y",
+                "china_cdn_id": "cJpWFE7VR3Y.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 1079632,
+          "key": "e21c2f54-9ea7-4060-a666-45f2fb330844",
+          "title": "Join Streaming Dataframes from Different Datasources",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "e21c2f54-9ea7-4060-a666-45f2fb330844",
+            "completed_at": "2021-01-30T12:49:43.181Z",
+            "last_viewed_at": "2021-01-30T12:49:42.790Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1079628,
+              "key": "fc7527d3-bfae-403d-8c93-653b76e90be8",
+              "title": "Join two streaming dataframes from different datasources Heading",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Join Streaming Dataframes from Different Datasources",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1079629,
+              "key": "2068f6d8-f91b-4baf-a9f1-f445b64d2148",
+              "title": "ND029 DSND C2 L2 A07 Joining DataFrames V2",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "NjxTyb0R9QU",
+                "china_cdn_id": "NjxTyb0R9QU.mp4"
+              }
+            },
+            {
+              "id": 1095347,
+              "key": "1a663cea-fc2d-4458-b408-fbe1bcee1dbe",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/November/5fa40954_slide-47-1/slide-47-1.jpeg",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/1a663cea-fc2d-4458-b408-fbe1bcee1dbe",
+              "caption": "Joining Data Delivers Value",
+              "alt": "Joining Data Delivers Value",
+              "width": 1920,
+              "height": 1080,
+              "instructor_notes": null
+            },
+            {
+              "id": 1095360,
+              "key": "e760f0c1-1a7c-4fd1-9e56-4507e514e67b",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Joining Data Delivers Value\n\n* One of the main purposes of writing a streaming application is to accept data from multiple sources\n* Joining on streaming data can be very powerful because typically the data is changing very rapidly\n* Creating a combined view of the data as it changes together adds tremendous value",
+              "instructor_notes": null
+            },
+            {
+              "id": 1095348,
+              "key": "b5812858-4591-429b-bf83-4cac240c4136",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/November/5fa40972_slide-48-1/slide-48-1.jpeg",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/b5812858-4591-429b-bf83-4cac240c4136",
+              "caption": "Plan Your Sink",
+              "alt": "Plan Your Sink",
+              "width": 1920,
+              "height": 1080,
+              "instructor_notes": null
+            },
+            {
+              "id": 1095361,
+              "key": "5853240e-833a-4ee9-a268-93f857d04dd6",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Plan Your Sink\n\nNow that you have looked at your source data, it's time to start planning the **sink**:\n\n* What is the final goal?\n* What is the format of the data you plan to send to the other system? \n* Often the person who knows the answer is someone on another team who needs the data you provide \n* Other times, there is no definitive answer, so you create your own format",
+              "instructor_notes": null
+            },
+            {
+              "id": 1095349,
+              "key": "f30b0933-a972-43f1-b4b5-78a8ab521f3f",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/November/5fa4098e_slide-49/slide-49.jpeg",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/f30b0933-a972-43f1-b4b5-78a8ab521f3f",
+              "caption": "Data Mocking",
+              "alt": "Data Mocking",
+              "width": 1920,
+              "height": 1080,
+              "instructor_notes": null
+            },
+            {
+              "id": 1095362,
+              "key": "50d063f7-027b-4c85-828b-a761b5c8abe9",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Data Mocking\n\n* As you interview system owners from other teams it will be important to discuss the fields they need\n* Once you have discussed the data that is needed you can create a mock data sample\n* Ask for feedback on the mock data sample before writing the spark application\n* This will give you the chance to refine the data model",
+              "instructor_notes": null
+            },
+            {
+              "id": 1095363,
+              "key": "030ec2de-4e0a-4fb1-b9cf-2b63a4313cdc",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### What is Data Mocking?\n\n**Data Mocking: **to create a representative sample of an undefined source of data (ex: we mocked the data so they could see it).",
+              "instructor_notes": null
+            },
+            {
+              "id": 1095364,
+              "key": "1c313a7b-af96-44fa-af1b-3e210d8d7435",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Create the Destination Format\n\n```\n{\n    \"customerId\": 213923498,\n    \"originatingAirport\": \"LAX\",\n    \"destinationAirport\": \"PDX\"\n}\n```\n\n## Remember\n\n Sometimes only a few critical fields are what is needed:\n\n* In this example, there are three fields: `\"customerId\"`, `\"originatingAirport\"`, and `\"destinationAirport\"`\n* It is a common practice to include all available fields, but this can be risky\n* The downstream consumers may rely on fields that are subject to change\n* The fewer fields you transmit, the less likely it is that something will change",
+              "instructor_notes": null
+            },
+            {
+              "id": 1095351,
+              "key": "b81a1740-8cc2-4b4f-95e9-cec70090348d",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/November/5fad6c01_slide-55-1/slide-55-1.jpeg",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/b81a1740-8cc2-4b4f-95e9-cec70090348d",
+              "caption": "Identify Redundant Data Fields",
+              "alt": "Identify Redundant Data Fields",
+              "width": 1920,
+              "height": 1080,
+              "instructor_notes": null
+            },
+            {
+              "id": 1095365,
+              "key": "e40314d1-2678-4d70-b98d-3aa38fc7ccc8",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Identify Redundant Fields\n\nNow that you have designed the format for your **sink**, you should decide where the data will come from:\n\n* Certain fields will be present in multiple sources\n* Some data sources are less authoritative than others\n* Try to identify which sources are more authoritative for certain types of data\n\nIn the above diagram, **Customer ID** is present in all three sources. This could be helpful for **joining** customer data as it is generated with departure data.\n\nThe** flight number** is present in both the Flight Data and Departure Data sources. This could be helpful for **joining** Flight Data and Departure Data as it is generated. The **Customer Email** field is probably more authoritative in the Customer source than the Flight source.",
+              "instructor_notes": null
+            },
+            {
+              "id": 1095352,
+              "key": "b63528a6-9046-4715-9522-03313bf62521",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/November/5fa409e4_slide-56-1/slide-56-1.jpeg",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/b63528a6-9046-4715-9522-03313bf62521",
+              "caption": "Find Data Source Fields",
+              "alt": "Find Data Source Fields",
+              "width": 1920,
+              "height": 1080,
+              "instructor_notes": null
+            },
+            {
+              "id": 1095366,
+              "key": "e7c26807-9f61-4b00-bf2c-d41593f185f2",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Find Data Source Fields\n\nOnce you have identified redundant fields, you should be sure you have all your bases covered:\n\n* Make sure every field you need in your destination **data sink** has been identified\n* In the above diagram, the first payload has the `\"customerId\"`\n* The second payload contains the `\"originatingAirport\"` and `\"destinationAirport\"` fields\n* We will need both payloads to create the final **sink** which includes the `\"customerId\"`, `\"originatingAirport\"`*, and `\"destinationAirport\"` fields",
+              "instructor_notes": null
+            },
+            {
+              "id": 1095353,
+              "key": "664cf74c-ea03-4c50-b83e-f2cf83c5b4f6",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/November/5fa409fd_slide-59/slide-59.jpeg",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/664cf74c-ea03-4c50-b83e-f2cf83c5b4f6",
+              "caption": "Identify Join Fields",
+              "alt": "Identify Join Fields",
+              "width": 1920,
+              "height": 1080,
+              "instructor_notes": null
+            },
+            {
+              "id": 1095367,
+              "key": "aec5db63-ee10-4b11-a8ef-a052a0c1e65c",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Identify Join Fields\n\nBefore we write our **join**, we need to ensure we have a common field to join on:\n\n* I may see all the fields I need in various sources\n* But unless there is a common field, the join won't work\n* In this example, there are four Data Types: Reservation, VehicleStatus, Checkin, and Payment\n* They each have unique data\n\n***There are some common fields that connect these together. What are they?***",
+              "instructor_notes": null
+            },
+            {
+              "id": 1095354,
+              "key": "d2e1295c-cf67-4dd9-bcfa-e33965235b9b",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/November/5fa40a1a_slide-60/slide-60.jpeg",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/d2e1295c-cf67-4dd9-bcfa-e33965235b9b",
+              "caption": "Join Fields Identified",
+              "alt": "Join Fields Identified",
+              "width": 1920,
+              "height": 1080,
+              "instructor_notes": null
+            },
+            {
+              "id": 1095368,
+              "key": "421fa2af-e0ff-4de6-beed-32ccfd50c277",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Join Fields Identified\n\nReservation, VehicleStatus, and Checkin all have a field called `\"truckNumber\"`.\n\nReservation, Checkin, and Payment all contain a field called `\"reservationId\"`.\n\nIn theory, this example would make joining possible between any two data types with the same field.",
+              "instructor_notes": null
+            },
+            {
+              "id": 1095355,
+              "key": "a377b8e9-1787-4029-a82a-873c422bdf29",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/November/5fa40a37_slide-61/slide-61.jpeg",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/a377b8e9-1787-4029-a82a-873c422bdf29",
+              "caption": "New DataFrame with joined fields",
+              "alt": "New DataFrame with joined fields",
+              "width": 1920,
+              "height": 1080,
+              "instructor_notes": null
+            },
+            {
+              "id": 1095369,
+              "key": "5a08cf32-dd60-4f8c-9e54-befc6100db75",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## New DataFrame with joined fields\n\nJoining the `Reservation` and the `VehicleStatus` DataFrames we now have the `ReservationWithStatus` DataFrame with all the data from both DataFrames.",
+              "instructor_notes": null
+            },
+            {
+              "id": 1095370,
+              "key": "ab1bafa8-ac9b-4820-b80d-7a4b621ea397",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## What is a Join?\n\n**Join: **to connect two data collections by referencing a field they share in common; or the state which connects two data collections by referencing a common field.",
+              "instructor_notes": null
+            },
+            {
+              "id": 1095371,
+              "key": "ec6520dd-1520-4594-9f2e-3eb3f2bfc335",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Verifying Data Standards\n\nIt is a very good idea to look at samples of each DataSource to see if fields are standardized. Unfortunately, it is common to use the same field name to mean different things, especially in different systems. \n\n***Look at the four Data Types below. Do you see anything different about them?***\n\n### Reservation\n\n```\n{\n  \"reservationId\":\"1603561552180\",\n  \"customerName\":\"Chuck Jones\",\n  \"truckNumber\":\"2416\",\n  \"reservationDate\":\"2020-10-24T17:45:52.180Z\"\n}\n```\n\n### VehicleStatus\n\n```\n{\n  \"truckNumber\":\"5169\",\n  \"destination\":\"Florida\",\n  \"milesFromShop\":505,\n  \"odometerReading\":50513\n}\n```\n\n### CheckIn\n\n```\n{\n   \"reservationId\":\"00001601485848310\",\n   \"locationName\":\"New Mexico\",\n   \"truckNumber\":\"3944\",\n   \"status\":\"In\"\n}\n```\n\n### `Payment`\n\n```\n{\n  \"reservationId\":\"9856743232-L\",\n  \"customerName\":\"Frank Aristotle\",\n  \"date\":\"Sep 29, 2020, 10:06:23 AM\",\n  \"amount\":\"946.88\"\n}\n```",
+              "instructor_notes": null
+            },
+            {
+              "id": 1095921,
+              "key": "8bdda7ed-a5d7-46c9-a1c1-f503a14f6920",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Data Differences Identified\n\n* `Reservation`, `Checkin`, and `Payment` all format the `\"reservationId\"` differently\n* After examining `Reservation` and `Checkin` it appears the main difference is the leading zeros\n* Until further data samples are obtained for `Payment`, it is hard to say if the `\"reservationId\"` is the same field, due to the significant difference in format\n\n### Reservation\n\n`\"reservationId\":\"1603561552180\"`\n\n### CheckIn\n\n`\"reservationId\":\"00001601485848310\"`\n\n### Payment\n\n`\"reservationId\":\"9856743232-L\"`",
+              "instructor_notes": null
+            },
+            {
+              "id": 1095922,
+              "key": "409fb5ac-2e16-46cd-9c13-f0e11a5b2d44",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Identify the Common Field\n\n* In this example, we want to join the two payloads shown\n* What is the common field we can join on?\n\n### Ticketing\n\n```\n{\n   \"customerId\" : 213923498,\n   \"ticketId\" : 0922345566,\n   \"flightNumber\": 573819429\n}\n```\n\n### Flight Info\n\n```\n {\n  \"flightNumber\": 573819429,\n  \"originatingAirport\": \"LAX\",\n  \"destinationAirport\": \"PDX\"\n}\n```",
+              "instructor_notes": null
+            },
+            {
+              "id": 1095923,
+              "key": "78c36754-1a0d-48f1-aaa4-de748c18345f",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Common Field Identified\n\nThe common field in both Ticketing and Flight Info is `\"flightNumber\"`:\n\n### Ticketing\n\n`\"flightNumber\": 573819429`\n\n### Flight Info\n\n`\"flightNumber\": 573819429`",
+              "instructor_notes": null
+            },
+            {
+              "id": 1096041,
+              "key": "abbe060d-28b4-4fb2-9e4f-559fa5fb2459",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Using a Column Alias in Spark SQL\n\nUsing `\"select columnName as columnNameAlias\"` can be useful when joining two DataFrames. Usually they will both share at least one column. If you don't use aliases, you may run into errors when trying to join them together.\n\nExample:\n\n```\nflightInfoDF=spark.sql(\"select flightNumber as flightInfoFlightNumber from FlightInfoView\")\n```",
+              "instructor_notes": null
+            },
+            {
+              "id": 1096037,
+              "key": "b9edca41-7186-4f1b-be20-ce3d480654ff",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## What does calling `.join` do?\n\n**join: **A function called on a DataFrame that accepts the right hand of the join (another Dataframe), and the join expression (includes the fields to join on). This is the Spark function that implements the concept of joining two different groups of data.\n\nExample: \n\n```\ncheckinStatusDF = vehicleStatusSelectStarDF \\\n.join(vehicleCheckinSelectStarDF, expr(\"\"\"\n    statusTruckNumber = checkinTruckNumber\n\"\"\"                                                                                 \n))\n```",
+              "instructor_notes": null
+            },
+            {
+              "id": 1096040,
+              "key": "64de367b-f37c-450d-b6d3-4a5fae2b2b25",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Calling `.join` Key Points\n\n* You will need two DataFrames defined already\n* You will want to avoid using the same column names in each DataFrame to avoid collisions\n* Using field aliases in each DataFrame where needed (ex: `\"truckNumber as statusTruckNumber\"`)\n* The default join type is a left outer join",
+              "instructor_notes": null
+            },
+            {
+              "id": 1082049,
+              "key": "8ca8bb98-f0b7-468e-9747-779d09881ec7",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Additional Resources\n\nFor more reading on joining Spark Streams, check out the <a href=\"https://spark.apache.org/docs/latest/structured-streaming-programming-guide.html#join-operations\" target=\"_blank\">Join Section in the Official Spark Streaming Guide</a>",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 1082050,
+          "key": "b78c70a4-4257-47c3-9352-6654563c2a4c",
+          "title": "Walkthrough 2: Join Streaming Dataframes",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "b78c70a4-4257-47c3-9352-6654563c2a4c",
+            "completed_at": "2021-01-30T13:51:20.227Z",
+            "last_viewed_at": "2021-01-30T13:51:19.713Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1093730,
+              "key": "b9beaf0b-b982-4881-a62d-124f5fcecea4",
+              "title": "ND029 DSND C2 L2 A08 Joining DataFrames Walkthrough Short",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "bZXjyI-I6Vw",
+                "china_cdn_id": "bZXjyI-I6Vw.mp4"
+              }
+            },
+            {
+              "id": 1106433,
+              "key": "1e009e8b-36bb-49d8-9228-ca0e48db6298",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Join Streaming Dataframes from Different Sources\n\n* **If you just started the workspace**, from the console type: `/home/workspace/startup/startup.sh` to start Kafka, and the Trucking Simulation\n* **If you just started the workspace**, start the spark master and spark worker\n   * From the terminal type: `/home/workspace/spark/sbin/start-master.sh`\n   * View the log and copy down the Spark URI\n   * From the terminal type: `/home/workspace/spark/sbin/start-slave.sh [Spark URI]`\n* Complete the `vehicle-checkin.py` python script\n* Submit the application to the spark cluster:\n   * From the terminal type: \n   `/home/workspace/spark/submit-vehicle-checkin.sh`\n* Watch the terminal for the values to scroll past (can take up to 2 minutes)",
+              "instructor_notes": null
+            },
+            {
+              "id": 1085809,
+              "key": "968c85b8-3998-4826-b8d4-5ca3d0737333",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "r1053966c1082043xJUPYTERLvc36joa9",
+              "pool_id": "jupyterlabpython37",
+              "view_id": "jupyter-lab-8f75t",
+              "gpu_capable": false,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "disk": {
+                      "id": "data-science-datasets",
+                      "paths": [
+                        {
+                          "src": "/ND029",
+                          "dest": "/data/"
+                        }
+                      ]
+                    },
+                    "port": "3000",
+                    "ports": [],
+                    "videos": [],
+                    "pageEnd": "1",
+                    "pageStart": "1",
+                    "allowSubmit": true,
+                    "defaultPath": "/",
+                    "actionButtonText": ""
+                  },
+                  "kind": "jupyter-lab"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            },
+            {
+              "id": 1094585,
+              "key": "0311373a-1c0b-4ed2-a2d8-702a7d351b1d",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Optional Long Walkthrough with Troubleshooting",
+              "instructor_notes": null
+            },
+            {
+              "id": 1094586,
+              "key": "993a3d7f-6157-4727-8f96-0ac57f40845b",
+              "title": "ND029 DSND C2 L2 A08 Joining DataFrames Walkthrough",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "video": {
+                "youtube_id": "s8w1HlfV71A",
+                "china_cdn_id": "s8w1HlfV71A.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 1079636,
+          "key": "072c6af3-5dba-408a-bc56-b19145ff30e1",
+          "title": "Quiz: Join Streaming Dataframes from Different Datasources",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "072c6af3-5dba-408a-bc56-b19145ff30e1",
+            "completed_at": "2021-01-30T13:55:01.426Z",
+            "last_viewed_at": "2021-01-30T13:55:01.206Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1079633,
+              "key": "a347c761-6b3b-4b93-a9c9-bcea4d7fc748",
+              "title": "Quiz: Join two streaming dataframes from different datasources Heading",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Quiz: Join Streaming Dataframes from Different Datasources",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1095985,
+              "key": "99e57bec-185d-4c42-a94d-ba6025e48376",
+              "title": "Identify the Common Field",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "99e57bec-185d-4c42-a94d-ba6025e48376",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Identify the common field in the following payloads best suited to use for a join expression:\n\n### Reservation\n```\n{\n  \"reservationId\":\"814840107\",\n  \"customerName\":\"Jim Harris\", \n  \"truckNumber\":\"15867\", \n  \"reservationDate\":\"Sep 29, 2020, 10:06:23 AM\"\n}\n```\n\n### Payment\n```\n{\n  \"reservationId\":\"9856743232\",\n  \"customerName\":\"Frank Aristotle\",\n  \"amount\":\"946.88\"\n}\n```\n",
+                "answers": [
+                  {
+                    "id": "a1604684101213",
+                    "text": "`customerName` ",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1604684154762",
+                    "text": "`reservationDate`",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1604684166935",
+                    "text": "`truckNumber`",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1604684182935",
+                    "text": "`reservationId`",
+                    "is_correct": true
+                  }
+                ]
+              }
+            },
+            {
+              "id": 1095986,
+              "key": "9729cfe9-ace7-43b5-ac87-7d734759b8bd",
+              "title": "What is the goal of data mocking?",
+              "semantic_type": "CheckboxQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "9729cfe9-ace7-43b5-ac87-7d734759b8bd",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "What is the goal of data mocking? Select all that apply.",
+                "answers": [
+                  {
+                    "id": "a1604684326923",
+                    "text": "To create the schema for a data sink",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1604684394192",
+                    "text": "To avoid having to make changes in the future",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1604684404041",
+                    "text": "To determine what fields are needed",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1604684416386",
+                    "text": "To extract data from the test system.",
+                    "is_correct": false
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 1079639,
+          "key": "84fff6aa-bc20-4cbb-a326-e0fbc44d14dd",
+          "title": "Exercise 2: Join Streaming Dataframes",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "84fff6aa-bc20-4cbb-a326-e0fbc44d14dd",
+            "completed_at": "2021-01-30T13:55:38.064Z",
+            "last_viewed_at": "2021-01-30T13:55:37.692Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1079637,
+              "key": "0b243f3d-f858-4095-8a7a-725ad99f7a22",
+              "title": "Exercise: Join two streaming dataframes from different datasources Instructions",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Exercise: Join Streaming DataFrames from Different Datasources\n\nIn this exercise you will be working with the deposit topic and a topic that contains customer information. Each customer message contains the following information:\n\n* customer name\n* email\n* phone\n* birth day\n* account number\n* customer location\n\nYou will join the information from the bank deposit topic and the customer topic to create a view that contains the customer and the deposit.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1095993,
+              "key": "90de32ed-f816-4625-8c8a-185d001601db",
+              "title": "Write a pyspark application",
+              "semantic_type": "TaskListAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "90de32ed-f816-4625-8c8a-185d001601db",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "tasks": [
+                "Read a stream from a kafka topic containing JSON",
+                "Write the dataframe from kafka to the console with the key, value fields",
+                "Read a second stream from a separate kafka topic containing JSON",
+                "Write the second stream from kafka to the console with the key, value fields",
+                "Parse the JSON from the first dataframe and store it as a temporary view",
+                "Parse the JSON from the second dataframe and store it as another temporary view",
+                "Select * from the first temp view, and write the stream to the console",
+                "Select * from the second temp view, and write the stream to the console",
+                "Join both streams on a common field (ex: Bank account number)",
+                "Write the joined stream to the console",
+                "Start spark master, and worker",
+                "Deploy and run the pyspark application"
+              ],
+              "positive_feedback": "Joining DataFrames can be really helpful. Nice job putting these together!",
+              "video_feedback": null,
+              "description": "Write a pyspark application"
+            },
+            {
+              "id": 1084253,
+              "key": "a9f5d021-ef7f-4214-9df1-ce0dcd4c1ffa",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "r1053966c1079639xJUPYTERL9be0obzg",
+              "pool_id": "jupyterlabpython37",
+              "view_id": "jupyter-lab-wyxau",
+              "gpu_capable": false,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "disk": {
+                      "id": "data-science-datasets",
+                      "paths": [
+                        {
+                          "src": "/ND029",
+                          "dest": "/data/"
+                        }
+                      ]
+                    },
+                    "port": "3000",
+                    "ports": [],
+                    "videos": [],
+                    "pageEnd": "",
+                    "pageStart": "",
+                    "allowSubmit": true,
+                    "defaultPath": "/",
+                    "actionButtonText": ""
+                  },
+                  "kind": "jupyter-lab"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        },
+        {
+          "id": 1079644,
+          "key": "263906ba-43ab-4e08-ae50-828a0df0ec90",
+          "title": "Solution: Join Streaming Dataframes",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "263906ba-43ab-4e08-ae50-828a0df0ec90",
+            "completed_at": "2021-01-30T14:05:25.020Z",
+            "last_viewed_at": "2021-01-31T17:43:52.686Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1079640,
+              "key": "ed0f1db5-c899-42b8-b378-600805666210",
+              "title": "Solution: Join two streaming dataframes from different datasources Heading",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Solution: Join Streaming Dataframes from Different Datasources",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1079641,
+              "key": "7f9f41e5-bb90-4ba0-885d-82b9eb391bdf",
+              "title": "ND029 DSND C2 L2 A09 Solution Joining DataFrames Short",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "aNWMzjmkQHw",
+                "china_cdn_id": "aNWMzjmkQHw.mp4"
+              }
+            },
+            {
+              "id": 1094588,
+              "key": "35147a97-5bc0-4c4a-a140-a2a95437fbbb",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Optional Long Solution with Troubleshooting",
+              "instructor_notes": null
+            },
+            {
+              "id": 1094589,
+              "key": "2dbc536f-2efc-4064-abfa-2eb079a73152",
+              "title": "ND029 DSND C2 L2 A09 Solution Joining DataFrames",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "video": {
+                "youtube_id": "iha6SzSkEYI",
+                "china_cdn_id": "iha6SzSkEYI.mp4"
+              }
+            },
+            {
+              "id": 1096000,
+              "key": "3444207e-3903-4f17-b03f-93d652c02c2b",
+              "title": "Now that you have joined two Streaming DataFrames, reflect on the following:",
+              "semantic_type": "TaskListAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "3444207e-3903-4f17-b03f-93d652c02c2b",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "tasks": [
+                "Are you comfortable identifying join fields?",
+                "How familiar are you with the concept of joins?",
+                "If you wanted to join two topics in your work, what function would you need to know how to use? "
+              ],
+              "positive_feedback": "If the concept of joins is fuzzy, reading about SQL Joins might help. Also, if you felt great about all of the above, awesome. If not, feel free to go back over the walkthrough and solutions.",
+              "video_feedback": null,
+              "description": null
+            }
+          ]
+        },
+        {
+          "id": 1079649,
+          "key": "e74cc724-dfa7-4dc0-8d99-a57159df0628",
+          "title": "Sink to Kafka",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "e74cc724-dfa7-4dc0-8d99-a57159df0628",
+            "completed_at": "2021-01-31T22:01:06.505Z",
+            "last_viewed_at": "2021-02-05T08:20:23.026Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1079645,
+              "key": "443d9d2a-ef94-42e2-adb1-276d5e7bc677",
+              "title": "Write a streaming dataframe to Kafka with aggregated data Heading",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Write a Streaming Dataframe to Kafka with Aggregated Data",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1079646,
+              "key": "e53df470-444e-4d35-969d-55366498ae35",
+              "title": "ND029 DSND C2 L2 A10 Sink To Kafka V3",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "SmRn19dOW3Y",
+                "china_cdn_id": "SmRn19dOW3Y.mp4"
+              }
+            },
+            {
+              "id": 1096004,
+              "key": "52f7557e-7d67-40cf-904f-bf4ea916833f",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/November/5fa595fd_slide-77/slide-77.jpeg",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/52f7557e-7d67-40cf-904f-bf4ea916833f",
+              "caption": "Sinking Data to Kafka",
+              "alt": "Sinking Data to Kafka",
+              "width": 1920,
+              "height": 1080,
+              "instructor_notes": null
+            },
+            {
+              "id": 1096023,
+              "key": "7b35bb60-c670-448c-b753-6fbc4fa4d53a",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Sinking Data to Kafka\n\n* In order to sink to Kafka, you need to have something to sink\n* That will be a Streaming DataFrame you create\n* When we sink to Kafka we need to identify the topic we will be sending data to\n* Then it is just a matter of writing a few lines to sink your DataFrame\n* They will look similar to what you have done to sink to the console",
+              "instructor_notes": null
+            },
+            {
+              "id": 1096029,
+              "key": "e674a04d-5d10-487c-92d5-72af38a9e18b",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Sink to Kafka in Practice\n\n```\n vehicleStatusDF\\\n .selectExpr(\"cast(statusTruckNumber as string) as key\", \"to_json(struct(*)) as value\") \\\n    .writeStream \\\n    .format(\"kafka\") \\\n    .option(\"kafka.bootstrap.servers\", \"localhost:9092\")\\\n    .option(\"topic\", \"vehicle-status-changes\")\\\n    .option(\"checkpointLocation\",\"/tmp/kafkacheckpoint\")\\\n    .start()\\\n    .awaitTermination()\n```",
+              "instructor_notes": null
+            },
+            {
+              "id": 1096030,
+              "key": "72002caa-f7d1-4506-8522-2366b4b8bc45",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Explanation of Sink to Kafka\n\nAfter creating a view, you have something unique to offer to other systems. Let's learn how to share that data via a Kafka topic:\n\n* Use a select expression on the DataFrame to cast the key, and structure your fields as JSON\n* Be sure to pass the Kafka bootstrap servers parameter\n* Last sink the DataFrame to your new Kafka topic, using the `writeStream`\n\nNow any Kafka consumer can access your data by subscribing to the topic called vehicle-status-changes.",
+              "instructor_notes": null
+            },
+            {
+              "id": 1096031,
+              "key": "5806d514-e9ce-4b82-8bd3-9f5ac3c169c4",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## What does calling `.selectExpr` do?\n\n**`selectExpr`**:  A function called on a DataFrame to pass a select expression.\n\nExample:`.selectExpr(\"cast(statusTruckNumber as string) as key\", \"to_json(struct(*)) as value\")`",
+              "instructor_notes": null
+            },
+            {
+              "id": 1096032,
+              "key": "39b9e633-3cf4-48f6-9f62-52f5be4b2051",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Select Expression Key Points\n\n* We are creating a DataFrame with two fields\n* Each parameter defines a field\n* When streaming to Kafka, the fields should be called `\"key\"` and `\"value\"`\n* The key is a unique identifier\n* The value contains the JSON",
+              "instructor_notes": null
+            },
+            {
+              "id": 1096033,
+              "key": "d927c027-1b58-4448-8fbf-66aae95ee150",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## What does calling `to_json` do?\n\n**`to_json`**: A Spark SQL function that accepts multiple columns containing JSON and creates a single column containing the JSON formatted data.\n\nExample:\n`to_json(struct(*)) as value)`",
+              "instructor_notes": null
+            },
+            {
+              "id": 1096034,
+              "key": "09bb01d8-21ed-467f-8259-8ad8e99d7f36",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Using `to_json` Key Points :\n\n* We use `to_json` in a select expression on a DataFrame\n* First, pass the fields you want to be serialized\n* Then alias them as a field\n* When passing the JSON to Kafka we want the field name to be `\"value\"`",
+              "instructor_notes": null
+            },
+            {
+              "id": 1096035,
+              "key": "397fb3a4-a459-4fa2-b5a8-a66ae546f704",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## What is the `checkpointLocation`?\n\n**`checkpointLocation`**:  an option passed when connecting to Kafka to send data to a topic; must be a writeable filesystem path for the Spark Worker.\n\nExample: `.option(\"checkpointLocation\",\"/tmp/kafkacheckpoint\")`",
+              "instructor_notes": null
+            },
+            {
+              "id": 1096036,
+              "key": "00265e1b-75a5-410c-acd2-6127ddac63a8",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Passing `checkpointLocation` Key Points:\n\n* When streaming to Kafka, you must define the same options  when reading from Kafka\n* You also need an additional option: `checkpointLocation`\n* This needs to be a writeable path\n* It is used by Spark to offload some data to disk for recovery",
+              "instructor_notes": null
+            },
+            {
+              "id": 1082051,
+              "key": "3bb953fe-40e3-4de6-8b54-fc434ce71596",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Kafka Integration Resources\n\nFor more information on integrating Spark with Kafka, see the official <a href=\"https://spark.apache.org/docs/latest/structured-streaming-kafka-integration.html\" target=\"_blank\">Kafka Integration Guide</a>",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 1082052,
+          "key": "ecf915ae-21f1-473e-b86e-8f0b822ac414",
+          "title": "Walkthrough 3: Sink to Kafka",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "ecf915ae-21f1-473e-b86e-8f0b822ac414",
+            "completed_at": "2021-02-05T08:42:08.874Z",
+            "last_viewed_at": "2021-02-05T08:42:08.080Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1105072,
+              "key": "328e49e9-d52a-4d57-81c9-885d92b5addf",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Using the Kafka Console Consumer Command\n\nSo far we have mainly used the console as our sink. That is perfect for beginning a new data pipeline, as it helps us see the data produced. However, ultimately you will want to send the data to another system. Often, that will be done using a kafka sink. \n\nThere is a very useful tool installed with Confluent Kafka called the `kafka-console-consumer` command. To use this tool, you just type the path to the tool. So for example in our workspace the command looks like this:\n\n```\n/data/kafka/bin/kafka-console-consumer --bootstrap-server localhost:9092 --topic gear-position-updates\n```",
+              "instructor_notes": null
+            },
+            {
+              "id": 1106435,
+              "key": "cfa80e96-d262-43bd-9ccd-5b64731d0f5e",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Write a Streaming Dataframe to Kafka\n\n* **If you just started the workspace**, from the console type: `/home/workspace/startup/startup.sh` to start Kafka, and the Trucking Simulation\n* **If you just started the workspace**, start the spark master and spark worker\n   * From the terminal type: `/home/workspace/spark/sbin/start-master.sh`\n   * View the log and copy down the Spark URI\n   * From the terminal type: `/home/workspace/spark/sbin/start-slave.sh [Spark URI]`\n* Update the `vehicle-checkin.py` python script and then change the sink from the console to a new Kafka topic\n* Submit the application to the Spark cluster:\n* From the terminal type: \n`/home/workspace/spark/submit-vehicle-checkin.sh`",
+              "instructor_notes": null
+            },
+            {
+              "id": 1093731,
+              "key": "7d9e0bf3-779e-48e1-98c2-a58a257e3498",
+              "title": "ND029 DSND C2 L2 A11 Sink To Kafka Walkthrough Short",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "jWWnToVWlgM",
+                "china_cdn_id": "jWWnToVWlgM.mp4"
+              }
+            },
+            {
+              "id": 1085810,
+              "key": "02adfae2-458f-42db-a8ab-be1001db497d",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "r1053966c1082043xJUPYTERLvc36joa9",
+              "pool_id": "jupyterlabpython37",
+              "view_id": "jupyter-lab-05zen",
+              "gpu_capable": false,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "disk": {
+                      "id": "data-science-datasets",
+                      "paths": [
+                        {
+                          "src": "/ND029",
+                          "dest": "/data/"
+                        }
+                      ]
+                    },
+                    "port": "3000",
+                    "ports": [],
+                    "videos": [],
+                    "pageEnd": "1",
+                    "pageStart": "1",
+                    "allowSubmit": true,
+                    "defaultPath": "/",
+                    "actionButtonText": ""
+                  },
+                  "kind": "jupyter-lab"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            },
+            {
+              "id": 1094593,
+              "key": "b287c6d9-06c9-48a8-9d9f-589e72ebca9e",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Optional Long Walkthrough with Troubleshooting",
+              "instructor_notes": null
+            },
+            {
+              "id": 1094594,
+              "key": "1342aea2-feb2-4225-b4e3-0c8b9fab1375",
+              "title": "ND029 DSND C2 L2 A11 Sink To Kafka Walkthrough",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "video": {
+                "youtube_id": "AMInzw9jCcs",
+                "china_cdn_id": "AMInzw9jCcs.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 1079653,
+          "key": "67872d0e-ab88-4ad9-bf32-f0b786afaa24",
+          "title": "Quiz: Sink to Kafka",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "67872d0e-ab88-4ad9-bf32-f0b786afaa24",
+            "completed_at": "2021-02-05T08:46:24.672Z",
+            "last_viewed_at": "2021-02-05T08:46:23.143Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1079650,
+              "key": "eea76d94-72f1-4068-af26-05fd525fd263",
+              "title": "Quiz: Write a streaming dataframe to Kafka with aggregated data Heading",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Quiz: Write a Streaming Dataframe to Kafka with Aggregated Data",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1096077,
+              "key": "99e2e7c8-a203-4140-8d2e-06970d416cd2",
+              "title": null,
+              "semantic_type": "MatchingQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "99e2e7c8-a203-4140-8d2e-06970d416cd2",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "complex_prompt": {
+                  "text": "What are the three steps to create a Kafka sink using Spark Streaming?"
+                },
+                "concepts_label": "Sequence",
+                "answers_label": "Action",
+                "concepts": [
+                  {
+                    "text": "Step 1",
+                    "correct_answer": {
+                      "id": "a3f9d062-0750-4ecb-9cab-cf9e085cb9af",
+                      "text": "Create a DataFrame"
+                    }
+                  },
+                  {
+                    "text": "Step 2",
+                    "correct_answer": {
+                      "id": "66e9a03c-d6a8-4eef-9a32-6c5dc0da36b2",
+                      "text": "Choose the Kafka Topic"
+                    }
+                  },
+                  {
+                    "text": "Step 3",
+                    "correct_answer": {
+                      "id": "11c71e14-1a97-406a-88d1-74d2fcbf5af7",
+                      "text": "Sink to the Topic"
+                    }
+                  }
+                ],
+                "answers": [
+                  {
+                    "id": "11c71e14-1a97-406a-88d1-74d2fcbf5af7",
+                    "text": "Sink to the Topic"
+                  },
+                  {
+                    "id": "a3f9d062-0750-4ecb-9cab-cf9e085cb9af",
+                    "text": "Create a DataFrame"
+                  },
+                  {
+                    "id": "66e9a03c-d6a8-4eef-9a32-6c5dc0da36b2",
+                    "text": "Choose the Kafka Topic"
+                  }
+                ]
+              }
+            },
+            {
+              "id": 1096076,
+              "key": "820c2053-d3c8-48a4-a3e9-44bdffd46bd5",
+              "title": null,
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "820c2053-d3c8-48a4-a3e9-44bdffd46bd5",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "You wrote a DataFrame called `flightInfo` with a column called `\"reservationId'` that contains a unique identifier for each record. You want to push the stream in JSON format to a Kafka topic. You have agreed to use the topic called flight-info-updates. The Kafka broker is running at `kafka-broker1.internal.us` on port **9092**. The spark worker has write access to the /tmp/ directory.\n\nWhat will the code look like?",
+                "answers": [
+                  {
+                    "id": "16222c6b-da81-44f8-a67e-0c9477845efd",
+                    "text": "```\n flightInfo\\\n .selectExpr(\"cast(reservationId as string) as key\", \"to_json(struct(*)) as value\") \\\n    .writeStream \\\n    .format(\"kafka\") \\\n    .option(\"kafka.bootstrap.servers\", \"kafka-broker1.internal.us:9092\")\\\n    .option(\"topic\", \"flight-info-updates\")\\\n    .option(\"checkpointLocation\",\"/tmp/kafkacheckpoint\")\\\n    .start()\\\n    .awaitTermination()\n```",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "9fbea10f-3574-4801-a91b-279e30545c24",
+                    "text": "```\n flightInfo\\\n .selectExpr(\"cast(reservationId as string) as key\", \"to_json(struct(*)) as value\") \\\n    .writeStream \\\n    .format(\"kafka\") \\\n    .option(\"kafka.bootstrap.servers\", \"kafka-broker1.internal.us:9002\")\\\n    .option(\"topic\", \"flight-info-updates\")\\\n    .option(\"checkpointLocation\",\"/tmp/kafkacheckpoint\")\\\n    .start()\\\n    .awaitTermination()\n```",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "bca8ecf9-2169-4f57-a377-29ea6acc429e",
+                    "text": "```\n flightInfo\\\n .selectExpr(\"cast(key as string) as key\", \"to_json(struct(*)) as value\") \\\n    .writeStream \\\n    .format(\"kafka\") \\\n    .option(\"kafka.bootstrap.servers\", \"kafka-broker1.internal.us:9092\")\\\n    .option(\"topic\", \"flight-info-updates\")\\\n    .option(\"checkpointLocation\",\"/tmp/kafkacheckpoint\")\\\n    .start()\\\n    .awaitTermination()\n```",
+                    "is_correct": false
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 1079656,
+          "key": "5d0ad3fb-7c3b-45da-86ba-778a77fbe0bf",
+          "title": "Exercise: Sink to Kafka",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "5d0ad3fb-7c3b-45da-86ba-778a77fbe0bf",
+            "completed_at": "2021-02-05T08:48:48.098Z",
+            "last_viewed_at": "2021-02-05T08:48:47.918Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1079654,
+              "key": "20d4af22-798c-4e3f-b043-75a1feeada2f",
+              "title": "Exercise: Write a streaming dataframe to Kafka with aggregated data Instructions",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Exercise: Write a Streaming Dataframe to Kafka with Aggregated Data\n\nIn this exercise you will be working with a bank withdrawals topic and an Automated Teller Machine (ATM) visit topic. The goal will be to join both those data streams in a way that allows you to identify withdrawals connected with an ATM visit.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1096042,
+              "key": "3a5de88c-4aca-462d-b585-a72415f6014c",
+              "title": "Write a pyspark application",
+              "semantic_type": "TaskListAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "3a5de88c-4aca-462d-b585-a72415f6014c",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "tasks": [
+                "Read a stream from a kafka topic containing JSON",
+                "Write the dataframe from kafka to the console with the key, value fields",
+                "Read a second stream from a separate kafka topic containing JSON",
+                "Write the second stream from kafka to the console with the key, value fields",
+                "Parse the JSON from the first dataframe and store it as a temporary view",
+                "Parse the JSON from the second dataframe and store it as another temporary view",
+                "Select * from the first temp view, and write the stream to the console",
+                "Select * from the second temp view, and write the stream to the console",
+                "Join both streams on a common field (ex: Bank account number)",
+                "Write the joined stream to a third kafka topic",
+                "Start spark master, and worker",
+                "Deploy and run the pyspark application"
+              ],
+              "positive_feedback": "Nice job! Sharing your data with the outside world is the end result of writing a Spark Streaming Application!",
+              "video_feedback": null,
+              "description": null
+            },
+            {
+              "id": 1084254,
+              "key": "0fde9c1a-8cea-4d16-91e7-aa8d7129b73a",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "r1053966c1079656xJUPYTERL69ngt9uo",
+              "pool_id": "jupyterlabpython37",
+              "view_id": "jupyter-lab-9gb4a",
+              "gpu_capable": false,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "disk": {
+                      "id": "data-science-datasets",
+                      "paths": [
+                        {
+                          "src": "/ND029",
+                          "dest": "/data/"
+                        }
+                      ]
+                    },
+                    "port": "3000",
+                    "ports": [],
+                    "videos": [],
+                    "pageEnd": "",
+                    "pageStart": "",
+                    "allowSubmit": true,
+                    "defaultPath": "/",
+                    "actionButtonText": ""
+                  },
+                  "kind": "jupyter-lab"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        },
+        {
+          "id": 1079661,
+          "key": "4c96cf1c-b7ad-471c-b7e0-e51d681d6dc7",
+          "title": "Solution 3: Sink to Kafka",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "4c96cf1c-b7ad-471c-b7e0-e51d681d6dc7",
+            "completed_at": "2021-02-05T08:51:11.693Z",
+            "last_viewed_at": "2021-02-05T08:51:11.342Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1079657,
+              "key": "ebca8a90-ed4a-4c4f-85bf-64e77ef8e2e2",
+              "title": "Solution: Write a streaming dataframe to Kafka with aggregated data Heading",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Solution: Write a Streaming Dataframe to Kafka with Aggregated Data",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1079658,
+              "key": "9714c17b-6ffc-4ee0-ad1a-984dcd17831e",
+              "title": "ND029 DSND C2 L2 A12 Solution Sink To Kafka Short",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "h3IYGuoWYUg",
+                "china_cdn_id": "h3IYGuoWYUg.mp4"
+              }
+            },
+            {
+              "id": 1096043,
+              "key": "f753053a-4fd0-4709-9a0c-fd1c5b264af7",
+              "title": "Now that you have completed a sink to Kafka, reflect on the following:",
+              "semantic_type": "TaskListAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "f753053a-4fd0-4709-9a0c-fd1c5b264af7",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "tasks": [
+                "How comfortable are you with using the .writeStream on a DataFrame?",
+                "If you were asked to create a new topic in Kafka for a work assignment, where would you start?",
+                "Is there anything about the end-to-end process you don't understand?"
+              ],
+              "positive_feedback": "Great job! This lesson is a culmination of what you have learned so far. Feel free to go back to any area you want to review!",
+              "video_feedback": null,
+              "description": null
+            },
+            {
+              "id": 1094596,
+              "key": "c9f7c6aa-178b-4c91-90f2-75abc51d1b68",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Optional Long Solution with Troubleshooting",
+              "instructor_notes": null
+            },
+            {
+              "id": 1094597,
+              "key": "21fc263f-4313-4c18-8f3e-709bff93446a",
+              "title": "ND029 DSND C2 L2 A12 Solution Sink To Kafka",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "video": {
+                "youtube_id": "PBLgrp-8NSY",
+                "china_cdn_id": "PBLgrp-8NSY.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 1079686,
+          "key": "8607dd1c-173a-43e8-83ad-59aca7a67382",
+          "title": "Edge Cases",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "8607dd1c-173a-43e8-83ad-59aca7a67382",
+            "completed_at": "2021-02-05T08:56:25.412Z",
+            "last_viewed_at": "2021-02-05T08:56:23.904Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1079679,
+              "key": "0c81420f-cb4f-42cd-b9ac-800368788bfd",
+              "title": "Edge Cases Heading",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Edge Cases",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1079681,
+              "key": "6296387b-f8a5-4bbc-939c-3eb32ea54582",
+              "title": "ND029 DSND C2 L2 A13 Edge Cases V2",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "-AEvisUKkcw",
+                "china_cdn_id": "-AEvisUKkcw.mp4"
+              }
+            },
+            {
+              "id": 1096044,
+              "key": "4b6d65a9-8a47-43fd-8f1f-540dae4b18e1",
+              "title": null,
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "4b6d65a9-8a47-43fd-8f1f-540dae4b18e1",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "If you had a Spark application that wasn't outputting any data, with the last few lines below, what small code change could you make?\n\n```\ncustomerSelectStarDF=spark.sql(\"select * from BankCustomers\")\ncustomerWithDepositDF = bankDepositsSelectStarDF \\\n.join(customerSelectStarDF, expr(\"\"\"   accountNumber = customerNumber\"\"\"    ))\ncustomerWithDepositDF \\\n.writeStream \\\n.outputMode(\"append\") \\\n.format(\"console\") \\\n.start() \\\n.awaitTermination()\n```",
+                "answers": [
+                  {
+                    "id": "b04a29b7-423e-42bf-bbaa-aae611d98dac",
+                    "text": "```customerSelectStarDF.writeStream.outputMode(\"append\") \\\n.format(\"console\").start().awaitTermination()```",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "9eb61eb7-c7af-47d6-92a5-39094fdd2b66",
+                    "text": "```customerWithDepositDF.writeStream.outputMode(\"append\") \\\n.format(\"console\").start().log()```",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "74824a21-d426-41eb-aa37-970b1fdfc25f",
+                    "text": "```customerWithDepositDF.writeStream.outputMode(\"append\") \\\n.format(\"console\").start().debug()```",
+                    "is_correct": false
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 1079696,
+          "key": "7eb02a8e-c182-4fb5-b5bc-3bf03c82b5b2",
+          "title": "Glossary",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "7eb02a8e-c182-4fb5-b5bc-3bf03c82b5b2",
+            "completed_at": "2021-02-05T09:23:45.307Z",
+            "last_viewed_at": "2021-02-05T09:23:44.840Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1079694,
+              "key": "860ddbb6-e8c6-48a8-a486-0d3df2b407b5",
+              "title": "Glossary Heading",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Glossary",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1079695,
+              "key": "d9f263cc-99bc-4ef4-821c-acebbaa7bf0c",
+              "title": "Glossary List",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "|Term|Definition|\n|--------|--------------|\n|Join| To connect two data collections by referencing a field they share in common, or the state which connects two data collections by referencing a common field.|\n|JSON| JavaScript Object Notation; originally created to serialize objects in JavaScript, a data serialization standard consisting of keys and values.|\n|Spark View| In a Spark application, a session-bound representation of data in a certain configuration.|\n|StructField| A Python class used to create a typed field in a StructType.|\n|StructType| A Spark class that defines the schema for a DataFrame.|",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 1079699,
+          "key": "7bbc8594-419a-4d52-83fd-5c8022a4466d",
+          "title": "Further Reading",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "7bbc8594-419a-4d52-83fd-5c8022a4466d",
+            "completed_at": "2021-02-05T09:26:07.234Z",
+            "last_viewed_at": "2021-02-05T09:26:06.383Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1096078,
+              "key": "52f80bde-d090-49cd-8443-bd06e4d0c5e8",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Joining Spark Streams Resources\n\nFor more reading on joining Spark Streams, check out the <a href=\"https://spark.apache.org/docs/latest/structured-streaming-programming-guide.html#join-operations\" target=\"_blank\">Join Section in the Official Spark Streaming Guide</a>",
+              "instructor_notes": null
+            },
+            {
+              "id": 1096079,
+              "key": "0a553ea6-1f96-46c3-bbcc-2b1ae65945d4",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Kafka Integration Resources\n\nFor more information on integrating Spark with Kafka, see the official <a href=\"https://spark.apache.org/docs/latest/structured-streaming-kafka-integration.html\" target=\"_blank\">Kafka Integration Guide</a>",
+              "instructor_notes": null
+            }
+          ]
+        },
+        {
+          "id": 1079707,
+          "key": "fd176961-528c-4928-a37f-5edc4d878c21",
+          "title": "Lesson Review",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "fd176961-528c-4928-a37f-5edc4d878c21",
+            "completed_at": "2021-02-05T09:26:15.969Z",
+            "last_viewed_at": "2021-02-05T09:26:15.808Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1079700,
+              "key": "4658a39e-bfa3-44f8-b312-af6cca235a2b",
+              "title": "Lesson Review Heading",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Lesson Review",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1079701,
+              "key": "9edfcd89-6a7e-4f42-85e9-ea38b95ee296",
+              "title": "ND029 DSND C2 L2 A14 Lesson Recap V2",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "3kk3RvOCKfs",
+                "china_cdn_id": "3kk3RvOCKfs.mp4"
+              }
+            },
+            {
+              "id": 1096080,
+              "key": "aa532b61-9d6e-4045-af5e-d14a6ab5c6d0",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/November/5fa5d6ff_slide-96/slide-96.jpeg",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/aa532b61-9d6e-4045-af5e-d14a6ab5c6d0",
+              "caption": "Lesson Learning Objectives",
+              "alt": "Lesson Learning Objectives",
+              "width": 1920,
+              "height": 1080,
+              "instructor_notes": null
+            },
+            {
+              "id": 1096081,
+              "key": "9bc72749-3795-448b-8000-a5fba408e731",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Lesson Learning Objectives\n\nNow that you have completed Lesson 2, you should be able to successfully complete the following:\n\n* Parse a JSON payload into separate fields for analysis\n* Join two streaming DataFrames from different data sources\n* Write a streaming DataFrame to Kafka with aggregated data",
+              "instructor_notes": null
+            },
+            {
+              "id": 1096082,
+              "key": "a16c9ed1-b797-4bfe-aeb4-48b6f5cbdbfe",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/November/5fa5d784_slide-97/slide-97.jpeg",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/a16c9ed1-b797-4bfe-aeb4-48b6f5cbdbfe",
+              "caption": "Course Overview",
+              "alt": "Course Overview",
+              "width": 1920,
+              "height": 1080,
+              "instructor_notes": null
+            },
+            {
+              "id": 1096083,
+              "key": "2c61803c-a765-4a17-9fe0-7939703a1178",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Where we are in the Course\n\nHere's where we are in the course:\n\n* We just learned about Joins and JSON\n* Next we will work with Redis, Base64, and JSON",
+              "instructor_notes": null
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "_deprecated": [
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "starter_files",
+      "reason": "prefer master_archive_id"
+    },
+    {
+      "name": "starter_files",
+      "reason": "prefer master_archive_id"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "starter_files",
+      "reason": "prefer master_archive_id"
+    },
+    {
+      "name": "starter_files",
+      "reason": "prefer master_archive_id"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "starter_files",
+      "reason": "prefer master_archive_id"
+    },
+    {
+      "name": "starter_files",
+      "reason": "prefer master_archive_id"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    }
+  ]
+}

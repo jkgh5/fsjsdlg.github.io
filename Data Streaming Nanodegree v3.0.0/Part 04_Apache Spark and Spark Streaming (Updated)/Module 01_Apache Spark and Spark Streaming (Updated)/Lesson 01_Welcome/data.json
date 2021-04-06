@@ -1,0 +1,1019 @@
+{
+  "data": {
+    "lesson": {
+      "id": 1079464,
+      "key": "441f6b6e-8946-424f-bc1d-07caae55f041",
+      "title": "Welcome",
+      "semantic_type": "Lesson",
+      "is_public": true,
+      "version": "1.0.0",
+      "locale": "en-us",
+      "summary": "Introduction to Data Streaming with Spark",
+      "lesson_type": "Classroom",
+      "display_workspace_project_only": false,
+      "resources": {
+        "files": [
+          {
+            "name": "Videos Zip File",
+            "uri": "https://zips.udacity-data.com/441f6b6e-8946-424f-bc1d-07caae55f041/1079464/1607108706070/Welcome+Videos.zip"
+          },
+          {
+            "name": "Transcripts Zip File",
+            "uri": "https://zips.udacity-data.com/441f6b6e-8946-424f-bc1d-07caae55f041/1079464/1607108702317/Welcome+Subtitles.zip"
+          },
+          {
+            "name": "Apache Spark and Spark Streaming Glossary",
+            "uri": "https://video.udacity-data.com/topher/2020/November/5fa5df29_apache-spark-and-spark-streaming-glossary/apache-spark-and-spark-streaming-glossary.pdf"
+          }
+        ],
+        "google_plus_link": null,
+        "career_resource_center_link": null,
+        "coaching_appointments_link": null,
+        "office_hours_link": null,
+        "aws_provisioning_link": null
+      },
+      "project": null,
+      "lab": null,
+      "concepts": [
+        {
+          "id": 1079404,
+          "key": "5e3de483-dbd4-47dd-9b12-40d61b4ff68f",
+          "title": "Meet Your Instructor",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "5e3de483-dbd4-47dd-9b12-40d61b4ff68f",
+            "completed_at": "2021-01-29T11:10:55.484Z",
+            "last_viewed_at": "2021-01-29T11:10:55.096Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1079401,
+              "key": "d0de6138-b099-4fec-b41b-d72ac5f0bbda",
+              "title": "Meet Your Instructor Heading",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Meet Your Instructor",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1095944,
+              "key": "d16d4aa7-ac1d-4dca-9cf2-a8fa767c44c0",
+              "title": "ND029 DSND C2 L0 A01 Meet Your Instructor V2",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "9ZLEScPGpeI",
+                "china_cdn_id": "9ZLEScPGpeI.mp4"
+              }
+            },
+            {
+              "id": 1079403,
+              "key": "dd93aea9-6bda-4a6f-b4fc-1d59b5232c87",
+              "title": "Meet Your Instructor Text",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## I have worked with Data Streaming from the beginning of my career\n\n* From Connected Cars to Automated Customer Invoices, Data Streams are ubiquitous \n* I have designed and built multiple end-to-end streaming pipelines\n* The possibilities are endless, and technology is better than ever to help you in your journey\n* Spark and Kafka represent two of the best technologies I have encountered for streaming",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 1079409,
+          "key": "5d99b8c5-07f4-4457-b864-97338171952f",
+          "title": "Course Outline",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "5d99b8c5-07f4-4457-b864-97338171952f",
+            "completed_at": "2021-01-29T13:57:06.282Z",
+            "last_viewed_at": "2021-01-29T13:57:05.680Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1079405,
+              "key": "7317f9fd-262d-4252-8e27-a4a4f089ea67",
+              "title": "Course Outline Heading",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Course Outline",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1079406,
+              "key": "707465b6-f180-40bf-94e1-b1ec7cab781a",
+              "title": "ND029 DSND C2 L0 A02 Course Outline V2",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "z4y-eR8yZk4",
+                "china_cdn_id": "z4y-eR8yZk4.mp4"
+              }
+            },
+            {
+              "id": 1079408,
+              "key": "8c52e681-1d98-4cfd-925b-1f6b59c5049c",
+              "title": "Course Outline Summary",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Lesson 1 Overview\n\nIn your first lesson, you will begin with Streaming DataFrames in Spark, including:\n\n* Starting a Spark Cluster\n* Deploying a Spark Application\n* Creating a Streaming DataFrame with Kafka\n* Creating and Querying a Spark View",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1100157,
+              "key": "4f60f44f-88e8-4bff-8946-002e770a1237",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/November/5fb2a5d9_slide-5/slide-5.jpeg",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/4f60f44f-88e8-4bff-8946-002e770a1237",
+              "caption": "Lesson 1 Overview",
+              "alt": "Lesson 1 Overview",
+              "width": 1920,
+              "height": 1080,
+              "instructor_notes": null
+            },
+            {
+              "id": 1098698,
+              "key": "b37d5c30-da37-40bf-88ec-d7d118792614",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Lesson 2 Overview\n\nIn the second lesson, you will work with Joins and JSON, including:\n\n* Parsing a JSON Payload into separate fields for analysis\n* Joining two streaming DataFrames\n* Writing a streaming dataframe to Kafka",
+              "instructor_notes": null
+            },
+            {
+              "id": 1098697,
+              "key": "7d62d625-27de-4429-8cc5-8b20c944888d",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/November/5fabfbe3_slide-6-1/slide-6-1.jpeg",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/7d62d625-27de-4429-8cc5-8b20c944888d",
+              "caption": "Lesson 2 Overview",
+              "alt": "Lesson 2 Overview",
+              "width": 1920,
+              "height": 1080,
+              "instructor_notes": null
+            },
+            {
+              "id": 1098700,
+              "key": "1eda58e6-05b0-4394-a5eb-0cb2dc1fa117",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Lesson 3 Overview\n\nIn the third and last lesson, you will work with Redis, Base64, and JSON, including:\n\n* Manually saving to Redis\n* Reading Redis Data from a Kafka Topic\n* Parsing Base64 encoded information\n* Sinking a subset of JSON fields.",
+              "instructor_notes": null
+            },
+            {
+              "id": 1098699,
+              "key": "7999db54-85b5-4430-8e40-b3869aa8ce0e",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/November/5fabfc58_slide-7-1/slide-7-1.jpeg",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/7999db54-85b5-4430-8e40-b3869aa8ce0e",
+              "caption": "Lesson 3 Overview",
+              "alt": "Lesson 3 Overview",
+              "width": 1920,
+              "height": 1080,
+              "instructor_notes": null
+            },
+            {
+              "id": 1098702,
+              "key": "1e45e2cc-ddbf-45a9-a6a3-1325c10e81cc",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Project Overview\n\nIn the Project you complete at the end of the course, you will evaluate human balance, applying techniques from the course to a real-world streaming analytics application.",
+              "instructor_notes": null
+            },
+            {
+              "id": 1098701,
+              "key": "0099c314-437f-4206-b29d-e5c385a00aec",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/November/5fabfca6_slide-8/slide-8.jpeg",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/0099c314-437f-4206-b29d-e5c385a00aec",
+              "caption": "Project Overview",
+              "alt": "Project Overview",
+              "width": 1920,
+              "height": 1080,
+              "instructor_notes": null
+            }
+          ]
+        },
+        {
+          "id": 1079414,
+          "key": "e4ca2eec-7baf-4c32-9a44-d69d189be106",
+          "title": "Lesson Outline",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "e4ca2eec-7baf-4c32-9a44-d69d189be106",
+            "completed_at": "2021-01-29T13:58:14.849Z",
+            "last_viewed_at": "2021-01-29T13:58:14.633Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1079411,
+              "key": "5d13b331-54c9-42d5-98d8-b1a71c3222b6",
+              "title": "ND029 DSND C2 L0 A03 Lesson Overview V2",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "UsF4MVFJ-Z8",
+                "china_cdn_id": "UsF4MVFJ-Z8.mp4"
+              }
+            },
+            {
+              "id": 1098703,
+              "key": "5fecd36f-9f3d-4f9a-984c-c9bd60d4a589",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/November/5fabfcf0_slide-11/slide-11.jpeg",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/5fecd36f-9f3d-4f9a-984c-c9bd60d4a589",
+              "caption": "Introductory Lesson Overview",
+              "alt": "Introductory Lesson Overview",
+              "width": 1920,
+              "height": 1080,
+              "instructor_notes": null
+            },
+            {
+              "id": 1079413,
+              "key": "ef0febdf-3c18-40fc-ae32-53322fe36567",
+              "title": "Lesson Outline Summary",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Introductory Lesson Outline\n\nIn this introductory lesson, we will discuss:\n\n* An introduction to Apache Spark\n* Why Data Streaming is Important\n* Common stakeholders in a Data Streaming application\n* When to use data streaming\n* History of data streaming\n\nFinally, we'll look at some tools and the environment, and then go over the final project.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 1079424,
+          "key": "f427dc03-697c-4c3e-b09c-656ccfd45248",
+          "title": "Introduction to Data Streaming",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "f427dc03-697c-4c3e-b09c-656ccfd45248",
+            "completed_at": "2021-01-29T13:58:45.951Z",
+            "last_viewed_at": "2021-01-29T14:07:07.802Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1079419,
+              "key": "93f637c2-40b5-4e03-a6b8-d92c6e190156",
+              "title": "Introduction to Apache Spark and Spark Streaming Heading",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Introduction to Apache Spark and Spark Streaming",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1079420,
+              "key": "404968bb-e6f9-4051-8f78-7a7495c623a5",
+              "title": "ND029 DSND C2 L0 A04 Introduction To Data Streaming",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "7IN21UGQ7Sg",
+                "china_cdn_id": "7IN21UGQ7Sg.mp4"
+              }
+            },
+            {
+              "id": 1079421,
+              "key": "a1df7cf2-2f4a-4e56-ad7f-a063aee0b514",
+              "title": "Introduction to Apache Spark and Spark Streaming Summary",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Consciousness is a Data Stream\n\n<hr>\n\nWhat is a \"stream of consciousness\"? It refers to the organic flow of thoughts and ideas in the brain.\n\n**Thoughts:**\n\n* Are always moving when you are awake\n* Are constantly changing and evolving\n* Start with one subject and move to another topic quickly\n* Multiple sources of data are aggregated to form ideas and conclusions",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1099176,
+              "key": "8a8bf6fa-d7bc-4eb9-a3dd-2a789edf4a51",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/November/5fad483a_slide-16-1/slide-16-1.jpeg",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/8a8bf6fa-d7bc-4eb9-a3dd-2a789edf4a51",
+              "caption": "Consciousness- a Data Stream",
+              "alt": "Consciousness- a Data Stream",
+              "width": 1920,
+              "height": 1080,
+              "instructor_notes": null
+            },
+            {
+              "id": 1099177,
+              "key": "019a88e0-5120-42be-8383-f3d55a47d6ab",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/November/5fad4939_slide-17/slide-17.jpeg",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/019a88e0-5120-42be-8383-f3d55a47d6ab",
+              "caption": "Streaming Application",
+              "alt": "Streaming Application",
+              "width": 1920,
+              "height": 1080,
+              "instructor_notes": null
+            },
+            {
+              "id": 1099188,
+              "key": "b37d54e5-20eb-46e0-b94c-a69989b38962",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## The World Around Us Generates Loads of Information\n\nJust as in our consciousness, the world around us generates loads of information\n\nA real-world event is often responsible for producing the stream of information ingested by a Streaming Application:\n\n1. An application event is created in response to a real-world event\n1. A listener responsible for responding to this event ingests it\n1. As a result, a new insight is produced",
+              "instructor_notes": null
+            },
+            {
+              "id": 1106377,
+              "key": "375a0060-efec-4715-a8d9-b855f30939c4",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## What is Data Streaming?\n\n**Data Streaming: **Data Streaming is the process of transmitting and/or receiving data envelopes or messages over a potentially undefined space of time, while applying computational algorithms to those data envelopes or messages.",
+              "instructor_notes": null
+            },
+            {
+              "id": 1099216,
+              "key": "6b1937f8-fdc4-4b61-a7f5-62e7974f2678",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Course Prerequisites",
+              "instructor_notes": null
+            },
+            {
+              "id": 1099215,
+              "key": "a834dc0f-abc0-44dc-972e-a4b9ace1cace",
+              "title": "ND029 DSND C2 L0 A03b Course Prerequisites",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "video": {
+                "youtube_id": "iKgYUYzEfo8",
+                "china_cdn_id": "iKgYUYzEfo8.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 1079428,
+          "key": "5a868a75-72bc-4a08-b40f-28d0476d7125",
+          "title": "Why Data Streaming Is Important",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "5a868a75-72bc-4a08-b40f-28d0476d7125",
+            "completed_at": "2021-01-29T14:17:37.916Z",
+            "last_viewed_at": "2021-01-29T14:17:37.459Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1079425,
+              "key": "eab49918-84a3-4bc7-8f32-3ebf3e97e9ff",
+              "title": "Apache Spark and Spark Streaming Is Important Heading",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Apache Spark and Spark Streaming Is Important",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1079426,
+              "key": "6341af7d-43cf-4735-9c69-d5df3f874128",
+              "title": "ND029 DSND C2 L0 A05 Why Is Data Streaming Important V2",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "Wjpm-9AzEhc",
+                "china_cdn_id": "Wjpm-9AzEhc.mp4"
+              }
+            },
+            {
+              "id": 1099211,
+              "key": "578c0384-1790-4ab6-8f07-33874544dd9e",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/November/5fad4959_slide-20-1/slide-20-1.jpeg",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/578c0384-1790-4ab6-8f07-33874544dd9e",
+              "caption": "Why is Data Streaming Important?",
+              "alt": "Why is Data Streaming Important?",
+              "width": 1920,
+              "height": 1080,
+              "instructor_notes": null
+            },
+            {
+              "id": 1099212,
+              "key": "6065c2f4-804e-4804-95a4-147c4790f35f",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Video Streaming Application\n\nThe world around us has become filled with opportunities to gain valuable streams of data. Let's take a video streaming platform for example. In the simple process of watching a video, the average viewer generates and consumes various types of data:\n\n1. The actual video feed is itself a data stream, sending thousands of frames per minute in small network packets\n1. Like the network packets, most streams are composed of small application messages\n1. A user logging in to view their favorite TV series will present their online profile as they log in to the website\n1. Then several events take place that make their video available for viewing in the browser\n1. Hopping on their cell phone to take the rest of the video on the road, the mobile app will send device messages to catch up to the previously played frame\n\nMessages both created and consumed in this process of viewing videos can be aggregated and used to recommend future video selections to the user.",
+              "instructor_notes": null
+            },
+            {
+              "id": 1106380,
+              "key": "f72ca124-966a-4c23-b23a-35895ffc6fee",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/December/5fc8ebe2_slide-1/slide-1.jpeg",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/f72ca124-966a-4c23-b23a-35895ffc6fee",
+              "caption": "Streaming Map Application",
+              "alt": "Streaming Map Application",
+              "width": 1920,
+              "height": 1080,
+              "instructor_notes": null
+            },
+            {
+              "id": 1099214,
+              "key": "382d1890-9a59-4fe8-a27c-8665cde83d35",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Streaming Map Application\n\nAnother example of streaming is a map application. With a Map Application, data is constantly exchanged between the application and the data processing engine:\n\n* The phone application transmits a continual stream of GPS Coordinates\n* As the GPS Coordinates are delivered, the server analyzes the best route to the destination\n* The current best route is delivered to the app\n* This process is repeated until the destination is reached",
+              "instructor_notes": null
+            }
+          ]
+        },
+        {
+          "id": 1079434,
+          "key": "b8dc7938-710e-4774-8580-8a6d659d3083",
+          "title": "Business Stakeholders",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "b8dc7938-710e-4774-8580-8a6d659d3083",
+            "completed_at": "2021-01-29T14:23:42.697Z",
+            "last_viewed_at": "2021-01-29T14:23:42.511Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1079430,
+              "key": "3d790cb1-5b31-4496-9a06-666fd996964e",
+              "title": "ND029 DSND C2 L0 A06 Business Stakeholders V2",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "xvYe4ccZ6nI",
+                "china_cdn_id": "xvYe4ccZ6nI.mp4"
+              }
+            },
+            {
+              "id": 1099218,
+              "key": "f0809815-46ea-4981-967f-3271cac75308",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "**Note: the order of two items were switched in the video above. Please accept our apologies.**\n## Teams You Work With\n\n* The Application Development Team produces Data Streams that you will consume\n* They also consume Data Streams you will produce\n* Data Engineering teams may maintain the infrastructure you use to run Streaming Applications\n* Often Data Science is the area responsible for creating and maintaining Streaming Applications\n* C-Level executives come to rely on rapidly available recommendations produced by streaming analytics. Running a company can be very challenging unless the right information is available",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1099217,
+              "key": "4476c6db-d19f-4d38-b701-feef0015a4cf",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/November/5fad49ea_slide-24/slide-24.jpeg",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/4476c6db-d19f-4d38-b701-feef0015a4cf",
+              "caption": "Teams You Work With",
+              "alt": "Teams You Work With",
+              "width": 1920,
+              "height": 1080,
+              "instructor_notes": null
+            }
+          ]
+        },
+        {
+          "id": 1079439,
+          "key": "3fe26d88-7c91-4fb0-bf33-a275f3a16c8a",
+          "title": "When To Use Data Streaming",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "3fe26d88-7c91-4fb0-bf33-a275f3a16c8a",
+            "completed_at": "2021-01-29T14:25:42.083Z",
+            "last_viewed_at": "2021-01-29T14:25:41.910Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1079435,
+              "key": "2623e216-b5e9-404a-b6e5-fc995c4f7d27",
+              "title": "When To Use Apache Spark and Spark Streaming Heading",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## When To Use Apache Spark and Spark Streaming",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1079436,
+              "key": "18f3f66d-23b4-4aa3-82c0-87e970a44192",
+              "title": "ND029 DSND C2 L0 A07 When To Use Data Streaming V2",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "3DMTTfO9Ew8",
+                "china_cdn_id": "3DMTTfO9Ew8.mp4"
+              }
+            },
+            {
+              "id": 1099221,
+              "key": "df0d60ad-dc24-4d2b-9b44-b8d8e6d993fe",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Qualifications for a Data Streaming Project\n\nData Streaming should not be considered a universal solution to all Data requirements. Certain elements qualify a project as ideal for a Data Streaming project:\n\n* There must be a way of producing the information that is needed (example: I want to know how many times a user clicks on my website per hour in real-time)\n* The data should be actionable in a real-time manner (example: I want to pop a chatbot to users who click more than 100 times per hour on my website)\n* The proposed solution must provide business value\n   * Value is defined as something that is worth more than the resources expended\n   * Stakeholders should agree the proposed project has merit\n   * Just because something is interesting doesn't mean it provides value to your business",
+              "instructor_notes": null
+            },
+            {
+              "id": 1099219,
+              "key": "1739479e-4594-44fd-9c80-21b828f40cd0",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/November/5fad4a06_slide-27-2/slide-27-2.jpeg",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/1739479e-4594-44fd-9c80-21b828f40cd0",
+              "caption": null,
+              "alt": null,
+              "width": 1920,
+              "height": 1080,
+              "instructor_notes": null
+            }
+          ]
+        },
+        {
+          "id": 1079444,
+          "key": "bb77d901-b8e0-41b3-bbe9-4a60ce523e53",
+          "title": "History of Data Streaming",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "bb77d901-b8e0-41b3-bbe9-4a60ce523e53",
+            "completed_at": "2021-01-29T14:27:00.050Z",
+            "last_viewed_at": "2021-01-29T14:26:59.854Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1079440,
+              "key": "78313b10-6ae5-4b2e-9a24-25c43f4c0935",
+              "title": "History of Apache Spark and Spark Streaming Heading",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## History of Apache Spark and Spark Streaming",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1079441,
+              "key": "9a8bd992-f504-46ee-9fba-11ae71236b49",
+              "title": "ND029 DSND C2 L0 A08 History Of Data Streaming",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "oywpGO4WPAg",
+                "china_cdn_id": "oywpGO4WPAg.mp4"
+              }
+            },
+            {
+              "id": 1099223,
+              "key": "0b0ae7e9-0769-4496-82ba-a42eb9073960",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Messaging Systems Timeline\n\n**1964** - IBM System/360 (Mainframe)- including BTAM and QTAM (Basic and Queued Telecommunications Access Methods) \n\n**1971** - IBM offered TCAM- Telecommunications Access Method - more advanced message routing\n\n**1992** - IBM announced MQSeries- available off the mainframe\n\n**1998** - Sun Microsystems published The Java Message Service (JMS)\n\n**1999** - IBM Andy Stanford-Clark and Arlen Nipper authored MQTT",
+              "instructor_notes": null
+            },
+            {
+              "id": 1099222,
+              "key": "a692f8af-adcf-4afd-ab1a-d667617da89d",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/November/5fad4a1f_slide-31/slide-31.jpeg",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/a692f8af-adcf-4afd-ab1a-d667617da89d",
+              "caption": "Messing Systems Timeline",
+              "alt": "Messaging Systems Timeline",
+              "width": 1920,
+              "height": 1080,
+              "instructor_notes": null
+            },
+            {
+              "id": 1099225,
+              "key": "6297cb8a-47a8-4c8e-8cd6-b9088e6a2e27",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Evolution of Streaming\n\n**2003** - Apache Nutch created by Doug Cutting and Mike Cafarella\n\n**2006** - Apache Nutch moved to Apache Hadoop project\n\n**2007** - Rabbit Technologies Ltd. developed RabbitMQ\n\n**2009** - Spark started by Matei Zaharia at UC Berkeley\n\n**2011** - Kafka developed by LinkedIn\n\n**2013** - Spark donated to Apache\n\n**2017** - Spark 2.2 Released with Kafka Streaming Support",
+              "instructor_notes": null
+            },
+            {
+              "id": 1099224,
+              "key": "6306f46a-2a9f-4d2d-8daf-7c9f65c9c8a1",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/November/5fad4a65_slide-33/slide-33.jpeg",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/6306f46a-2a9f-4d2d-8daf-7c9f65c9c8a1",
+              "caption": "Evolution of Streaming",
+              "alt": "Evolution of Streaming",
+              "width": 1920,
+              "height": 1080,
+              "instructor_notes": null
+            }
+          ]
+        },
+        {
+          "id": 1079450,
+          "key": "d2229881-c258-4cf6-82f3-5e07df6b2b65",
+          "title": "Tools & Environment",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "d2229881-c258-4cf6-82f3-5e07df6b2b65",
+            "completed_at": "2021-01-29T14:29:03.299Z",
+            "last_viewed_at": "2021-01-29T14:29:02.836Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1079445,
+              "key": "1d291493-cf78-48d1-bf5e-b78ebc655c53",
+              "title": "Tools & Environment Heading",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Tools & Environment",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1079446,
+              "key": "f8496e04-7834-4efa-b494-49b9528e9e76",
+              "title": "ND029 DSND C2 L0 A09 Tools And Environment V2",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "3IVbC1ovTbc",
+                "china_cdn_id": "3IVbC1ovTbc.mp4"
+              }
+            },
+            {
+              "id": 1099228,
+              "key": "05a3aa42-fd77-4f42-8a62-3b3cfc0e7dd7",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Tools Used in this Course\n\nSome of the tools you will use in the course include:\n\n* bash\n* Python\n* Kafka\n* Spark\n* Redis\n* Docker (optional if you choose to do the exercises using your computer)\n\nThe workspace environment has Kafka, Spark, Python, and Bash installed for you. The Docker images provided for the course also have all of these things included. A simulated Business Application is provided as part of the workspace and as part of the Docker image.",
+              "instructor_notes": null
+            },
+            {
+              "id": 1099227,
+              "key": "2913f753-0e06-43fe-ac85-0a70bd04c843",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/November/5fad4a84_slide-36/slide-36.jpeg",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/2913f753-0e06-43fe-ac85-0a70bd04c843",
+              "caption": null,
+              "alt": null,
+              "width": 1920,
+              "height": 1080,
+              "instructor_notes": null
+            },
+            {
+              "id": 1099296,
+              "key": "08836806-ddf3-4112-8089-94c85e2add5e",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Tools Used Elsewhere for Streaming\n\nSome examples of tools that are used elsewhere in streaming include:\n\n* JMS\n* RabbitMQ\n* Hadoop\n* SQS\n* Firebase",
+              "instructor_notes": null
+            },
+            {
+              "id": 1099295,
+              "key": "88cc9a10-4a91-40f3-b8c3-a513d9d3017d",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/November/5fad8383_slide-37-1/slide-37-1.jpeg",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/88cc9a10-4a91-40f3-b8c3-a513d9d3017d",
+              "caption": "Tools Used Elsewhere for Streaming",
+              "alt": "Tools Used Elsewhere for Streaming",
+              "width": 1920,
+              "height": 1080,
+              "instructor_notes": null
+            }
+          ]
+        },
+        {
+          "id": 1105245,
+          "key": "eb32c555-125c-4400-93ba-f5f4ffa8e204",
+          "title": "Workspace Setup Outside of Classroom",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "eb32c555-125c-4400-93ba-f5f4ffa8e204",
+            "completed_at": "2021-01-29T14:30:29.324Z",
+            "last_viewed_at": "2021-01-29T14:33:43.825Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1105246,
+              "key": "c7a8a981-deed-48e2-9b0c-3ffa007ad16d",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Clone the Github Repository\n\nThe first step to setting up your local workspace is to clone the GitHub Repository:\n\n```\ngit clone git@github.com:udacity/nd029-c2-apache-spark-and-spark-streaming-starter.git\n```\n\n## Windows Users\n\nIt is HIGHLY recommended to install the 10 October 2020 Update: <a href=\"https://support.microsoft.com/en-us/windows/get-the-windows-10-october-2020-update-7d20e88c-0568-483a-37bc-c3885390d212\" target=\"_blank\">https://support.microsoft.com/en-us/windows/get-the-windows-10-october-2020-update-7d20e88c-0568-483a-37bc-c3885390d212</a>\n\nYou will then want to install the latest version of Docker on Windows: <a href=\"https://docs.docker.com/docker-for-windows/install/\" target=\"_blank\">https://docs.docker.com/docker-for-windows/install/</a>\n\n## Using Docker for your Exercises\n\nYou will need to use Docker to run the exercises on your own computer. You can find Docker for your operating system here: <a href=\"https://docs.docker.com/get-docker/\" target=\"_blank\">https://docs.docker.com/get-docker/</a>\n\nIt is recommended that you configure Docker to allow it to use up to 2 cores and 6 GB of your host memory for use by the course workspace. If you are running other processes using Docker simultaneously with the workspace, you should take that into account also.\n\nThe docker-compose file at the root of the repository creates 9 separate containers:\n\n* Redis\n* Zookeeper (for Kafka)\n* Kafka\n* Banking Simulation\n* Trucking Simulation\n* STEDI (Application used in Final Project)\n* Kafka Connect with Redis Source Connector\n* Spark Master\n* Spark Worker\n\nIt also mounts your repository folder to the Spark Master and Spark Worker containers as a volume  `/home/workspace`, making your code changes instantly available within to the containers running Spark.\n\nLet's get these containers started!\n\n```\ncd [repositoryfolder]\ndocker-compose up\n```\n\nYou should see 9 containers when you run this command:\n\n```\ndocker ps\n```",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 1079455,
+          "key": "731edf2d-ec17-4371-b50a-c0ad1de577d6",
+          "title": "Project: Evaluate Human Balance with Spark Streaming",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "731edf2d-ec17-4371-b50a-c0ad1de577d6",
+            "completed_at": "2021-01-29T14:32:13.672Z",
+            "last_viewed_at": "2021-01-29T14:32:13.479Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1079451,
+              "key": "dbb1008e-d856-4898-b5fd-52a4702c5100",
+              "title": "Project: Evaluate Human Balance with Spark Streaming Heading",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Project: Evaluate Human Balance with Spark Streaming",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1079452,
+              "key": "de51b72c-e924-465f-bae4-5ecff9c092ed",
+              "title": "ND029 DSND C2 L0 A10 Project Evaluate Human Balance With Spark Streaming",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "poZZRpuzYns",
+                "china_cdn_id": "poZZRpuzYns.mp4"
+              }
+            },
+            {
+              "id": 1099298,
+              "key": "fdc25088-383e-49c1-ad97-d8538caa6292",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Project Overview\n\n* STEDI is a small startup focused on assessing balance for seniors\n* STEDI has an application that collects data from seniors during a small exercise\n* The user starts a timer and clicks a button with each step the senior takes\n* When the senior has reached 30 steps their test is finished\n* The data transmitted enables the application to monitor seniors' balance risk",
+              "instructor_notes": null
+            },
+            {
+              "id": 1099229,
+              "key": "9fc2236e-aa72-4365-bfa1-13940bd42f54",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/November/5fad4abc_slide-50/slide-50.jpeg",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/9fc2236e-aa72-4365-bfa1-13940bd42f54",
+              "caption": "Project Overview",
+              "alt": "Project Overview",
+              "width": 1920,
+              "height": 1080,
+              "instructor_notes": null
+            },
+            {
+              "id": 1099299,
+              "key": "002fa066-b774-40e0-90cb-1474702e2b0f",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## The Problem\n\n* Your product manager has requested a graph that shows fall risk\n* The development team has built the graph\n* Their graph is ready to receive data",
+              "instructor_notes": null
+            },
+            {
+              "id": 1099230,
+              "key": "e4767131-da87-4a91-bcb0-eb0323830b80",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/November/5fad4aca_slide-51-1/slide-51-1.jpeg",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/e4767131-da87-4a91-bcb0-eb0323830b80",
+              "caption": "The Problem",
+              "alt": "The Problem to solve. ",
+              "width": 1920,
+              "height": 1080,
+              "instructor_notes": null
+            }
+          ]
+        },
+        {
+          "id": 1079460,
+          "key": "04709727-386e-4dd5-b30a-5a4cac4dfd06",
+          "title": "Lesson Recap",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "04709727-386e-4dd5-b30a-5a4cac4dfd06",
+            "completed_at": "2021-01-29T14:33:06.634Z",
+            "last_viewed_at": "2021-01-29T14:33:06.466Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1079456,
+              "key": "32ffc063-2978-423c-a995-b2b671562dab",
+              "title": "Lesson Recap Heading",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Lesson Recap",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1079457,
+              "key": "70959a0b-287c-467d-8b76-f22a9802a04a",
+              "title": "ND029 DSND C2 L0 A11 Lesson Recap",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "GlN0BH_tfqc",
+                "china_cdn_id": "GlN0BH_tfqc.mp4"
+              }
+            },
+            {
+              "id": 1099300,
+              "key": "fd86c1aa-0416-43db-a095-95fbf742d47f",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Lesson Recap\n\nSo we've had an introduction to Apache Spark, we've talked about:\n\n* Why data streaming is important\n* Stakeholders\n* Data Streaming\n* History of Data Streaming\n* Your tools and environment\n* Final project",
+              "instructor_notes": null
+            },
+            {
+              "id": 1099231,
+              "key": "b2f30f17-b7e7-4be8-a860-c8a11737bfa9",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/November/5fad4a95_slide-45/slide-45.jpeg",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/b2f30f17-b7e7-4be8-a860-c8a11737bfa9",
+              "caption": "Introductory Lesson Review",
+              "alt": "Introductory Lesson Review",
+              "width": 1920,
+              "height": 1080,
+              "instructor_notes": null
+            }
+          ]
+        },
+        {
+          "id": 1079463,
+          "key": "56d6019d-a471-4c8e-9a76-6c90b08bcf47",
+          "title": "Let's Get Started!",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "56d6019d-a471-4c8e-9a76-6c90b08bcf47",
+            "completed_at": "2021-01-29T14:33:34.068Z",
+            "last_viewed_at": "2021-01-29T14:33:33.410Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1079461,
+              "key": "ff7638c2-6252-48ff-a5a5-2d4f2dee191b",
+              "title": "Good Luck! Heading",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Let's Get Started!\n\nAfter all this talk, let's do some hands-on learning.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1079462,
+              "key": "9d8d41c2-6a10-4999-87ba-d10b083cbb73",
+              "title": "ND029 DSND C2 L0 A12 Lets Get Started",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "qVAGGNVDylA",
+                "china_cdn_id": "qVAGGNVDylA.mp4"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "_deprecated": [
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    }
+  ]
+}

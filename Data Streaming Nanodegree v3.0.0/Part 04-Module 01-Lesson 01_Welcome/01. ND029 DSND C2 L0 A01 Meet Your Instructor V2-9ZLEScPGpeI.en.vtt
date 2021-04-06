@@ -1,0 +1,34 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:01.920
+Hello, my name is Sean Murdock,
+
+00:00:01.920 --> 00:00:03.285
+and I'm a data geek.
+
+00:00:03.285 --> 00:00:06.450
+Welcome to the data streaming with Apache Spark course.
+
+00:00:06.450 --> 00:00:07.860
+I will be your teacher.
+
+00:00:07.860 --> 00:00:11.100
+I've worked with data streaming since the beginning of my career,
+
+00:00:11.100 --> 00:00:13.680
+from connected cars to automated invoices,
+
+00:00:13.680 --> 00:00:16.320
+there has always been a data stream to interest me.
+
+00:00:16.320 --> 00:00:20.070
+I've seen several technologies become available over that time.
+
+00:00:20.070 --> 00:00:22.500
+I would say that Spark and Kafka represent
+
+00:00:22.500 --> 00:00:25.990
+the two best technologies to use with streaming.
+

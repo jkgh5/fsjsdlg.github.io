@@ -1,0 +1,2736 @@
+{
+  "data": {
+    "lesson": {
+      "id": 1079838,
+      "key": "8853e375-7281-4477-abf9-0c8041afd8a0",
+      "title": "Redis, Base64 and JSON",
+      "semantic_type": "Lesson",
+      "is_public": true,
+      "version": "1.0.0",
+      "locale": "en-us",
+      "summary": "This lesson will focus on working with Redis, Base64, and JSON in Data Streaming.  ",
+      "lesson_type": "Classroom",
+      "display_workspace_project_only": false,
+      "resources": {
+        "files": [
+          {
+            "name": "Videos Zip File",
+            "uri": "https://zips.udacity-data.com/8853e375-7281-4477-abf9-0c8041afd8a0/1079838/1607108723814/Redis%2C+Base64+and+JSON+Videos.zip"
+          },
+          {
+            "name": "Transcripts Zip File",
+            "uri": "https://zips.udacity-data.com/8853e375-7281-4477-abf9-0c8041afd8a0/1079838/1607108716375/Redis%2C+Base64+and+JSON+Subtitles.zip"
+          },
+          {
+            "name": "Apache Spark And Spark Streaming Glossary",
+            "uri": "https://video.udacity-data.com/topher/2020/November/5fa5df29_apache-spark-and-spark-streaming-glossary/apache-spark-and-spark-streaming-glossary.pdf"
+          }
+        ],
+        "google_plus_link": null,
+        "career_resource_center_link": null,
+        "coaching_appointments_link": null,
+        "office_hours_link": null,
+        "aws_provisioning_link": null
+      },
+      "project": null,
+      "lab": null,
+      "concepts": [
+        {
+          "id": 1079712,
+          "key": "c41f6846-d0ad-4315-94e2-0b14e9a8c2f5",
+          "title": "Lesson Outline",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "c41f6846-d0ad-4315-94e2-0b14e9a8c2f5",
+            "completed_at": "2021-01-29T19:10:46.417Z",
+            "last_viewed_at": "2021-02-05T09:27:00.195Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1079709,
+              "key": "296e1b44-8099-42d7-b017-c6f288fd7e98",
+              "title": "Introduction Heading",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Introduction",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1079710,
+              "key": "06661005-296d-466a-a1d0-dade0bac4c4e",
+              "title": "ND029 DSND C2 L3 A01 Lesson Outline V2",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "QTZUNBaq00M",
+                "china_cdn_id": "QTZUNBaq00M.mp4"
+              }
+            },
+            {
+              "id": 1096158,
+              "key": "9a75a9ca-aa3b-4938-9935-d865b5c7f038",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/November/5fa6f6ee_slide-2/slide-2.jpeg",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/9a75a9ca-aa3b-4938-9935-d865b5c7f038",
+              "caption": "Course Overview",
+              "alt": "Course Overview",
+              "width": 1920,
+              "height": 1080,
+              "instructor_notes": null
+            },
+            {
+              "id": 1096160,
+              "key": "50fc0ca3-bf22-47ce-93e8-1bde090a05c1",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Course Overview\n\nYou just learned about Joins and JSON\n\n**In this lesson you'll become familiar with:**\n\n* Manually Saving to **Redis**\n* Reading the same data from a **Kafka** **Topic**\n* Parsing **Base64** encoded information\n* Sinking a subset of **JSON** fields",
+              "instructor_notes": null
+            },
+            {
+              "id": 1096159,
+              "key": "7961e70a-b9e0-48d5-9bd8-d3eb7746ab80",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/November/5fa6f730_slide-3/slide-3.jpeg",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/7961e70a-b9e0-48d5-9bd8-d3eb7746ab80",
+              "caption": "Lesson Learning Objectives",
+              "alt": "Lesson Learning Objectives",
+              "width": 1920,
+              "height": 1080,
+              "instructor_notes": null
+            },
+            {
+              "id": 1079711,
+              "key": "a1c48806-0add-461d-bceb-17f96f8d9d58",
+              "title": "Introduction Summary",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Lesson Learning Objectives\n\nUpon completion of Lesson 3, you should be able to successfully complete the following:\n\n* Manually save to **Redis**\n* Read the Same data from a **Kafka topic**\n* Parse **Base64** Encoded information\n* Sink a Subset of **JSON** Fields",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 1079726,
+          "key": "ea70ea97-6d3d-40f3-999f-8be0ae7a99ce",
+          "title": "Why are Redis and Base64 Important?",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "ea70ea97-6d3d-40f3-999f-8be0ae7a99ce",
+            "completed_at": "2021-02-05T09:35:24.034Z",
+            "last_viewed_at": "2021-02-05T09:35:23.415Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1079722,
+              "key": "e5f706b8-aa03-4a4d-ba91-fc7ba717d0ff",
+              "title": "ND029 DSND C2 L3 A02 Why Redis And Base64 Are Important V2",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "4Ngt6VaPbs8",
+                "china_cdn_id": "4Ngt6VaPbs8.mp4"
+              }
+            },
+            {
+              "id": 1096161,
+              "key": "9c1b4b49-267c-400d-8405-fad8d13785fa",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## What is Redis?\n\n**Redis: **A database used primarily for caching; this means it is optimized for fast reads and writes.",
+              "instructor_notes": null
+            },
+            {
+              "id": 1096162,
+              "key": "0be5292c-8b10-45a3-920d-2e3c1abc41f3",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/November/5fa6f9bf_slide-8/slide-8.jpeg",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/0be5292c-8b10-45a3-920d-2e3c1abc41f3",
+              "caption": "Why is Redis Important?",
+              "alt": "Why is Redis Important?",
+              "width": 1920,
+              "height": 1080,
+              "instructor_notes": null
+            },
+            {
+              "id": 1079724,
+              "key": "251ceff8-4264-4236-8dd5-90188e956682",
+              "title": "Why is parsing Base64 encoded information important? Summary",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Why is Redis important?\n\n* Used by a lot of companies\n* Great for rapid prototyping of new applications\n* It can take you well beyond a proof of concept, all the way to production without having to create or maintain schemas\n* Later you can create a structured schema, and migrate to a relational database\n* You can stick with **Redis**, and create a nightly extract for reports\n\n**Redis** is super fast in terms of read/write execution and in the development process",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1096164,
+              "key": "1ef660c9-136e-4929-82ac-3f524ee96a3b",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Base64 is the encoding of the Internet\n\n**Example**: `https://ordersometakeout.com?coordinates=ODIuODYyOMKwIFMsIDEzNS4wMDAwwrAgRQ==`\n\n**Translation**: Deliver my takeout to these coordinates: **82.8628° S, 135.0000° E**\n\n* **Base64** is used to make the text more readable by servers\n* In this example, the URL has a long encoded string after *coordinates=*\n* Decoded the string is the latitude and longitude where the takeout is needed",
+              "instructor_notes": null
+            },
+            {
+              "id": 1098598,
+              "key": "6e3c14c6-0bd9-4829-8c69-e66a5efb9db8",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/June/5ed993bd_udacity-logo/udacity-logo.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/6e3c14c6-0bd9-4829-8c69-e66a5efb9db8",
+              "caption": null,
+              "alt": null,
+              "width": 500,
+              "height": 500,
+              "instructor_notes": null
+            },
+            {
+              "id": 1096165,
+              "key": "b84e4a05-cd31-462b-b0ba-bdb6ea771fb4",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## What is Base64?\n\n**Base64: **An encoding format used by computers to transmit and store information.",
+              "instructor_notes": null
+            }
+          ]
+        },
+        {
+          "id": 1079732,
+          "key": "e36812a9-b794-4d23-b349-9bb3228bda3d",
+          "title": "How an Expert Thinks About Redis and Base64",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "e36812a9-b794-4d23-b349-9bb3228bda3d",
+            "completed_at": "2021-02-05T09:37:59.307Z",
+            "last_viewed_at": "2021-02-05T09:37:59.165Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1079727,
+              "key": "cb248b56-e1c3-4eac-8adf-0ea6990c29a6",
+              "title": "How an Expert Thinks about parsing Base64 encoded information Heading",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## How an Expert Thinks About Parsing Base64",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1079728,
+              "key": "13e2f26d-1b1f-49b8-a37e-5e2f04d63d91",
+              "title": "ND029 DSND C2 L3 A03 How An Expert Approaches Redis And Base64",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "9BuZRnpjWlo",
+                "china_cdn_id": "9BuZRnpjWlo.mp4"
+              }
+            },
+            {
+              "id": 1079729,
+              "key": "f78d32eb-9b21-43ec-96c7-cceb690d3dbc",
+              "title": "How an Expert Thinks about parsing Base64 encoded information Summary",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Redis, Fast Reads and Writes\n\n* Redis has become so wildly popular in large part due to its performance\n* Redis can read and write very quickly\n* This makes it very useful",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1096168,
+              "key": "857f7793-2077-41a1-8e34-617559371c35",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/November/5fa6fd5d_slide-15/slide-15.jpeg",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/857f7793-2077-41a1-8e34-617559371c35",
+              "caption": "How do I recognize Base64?",
+              "alt": " How do I recognize Base64?",
+              "width": 1920,
+              "height": 1080,
+              "instructor_notes": null
+            },
+            {
+              "id": 1079730,
+              "key": "4a1c7ddf-4c14-4203-9381-562b08fdbb8b",
+              "title": "How an Expert Thinks about parsing Base64 encoded information Quiz 1",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## How can I recognize when something is encoded in Base64 format?\n\nBase64 encoding is always a string of letters that is meaningless at first glance:\n\n* If you see a string of letters that don't spell anything intelligible, you are probably looking at Base64\n* Another tell-tale indicator is if the string ends with an equals sign\n* Last, try to decode it using a free online decoder like <a href=\"https://base64decode.org\" target=\"_blank\">base64decode.org</a>",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 1079737,
+          "key": "af76288e-98e3-4eef-a2ff-a6257f9e3c54",
+          "title": "Manually Save and Read with Redis and Kafka",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "af76288e-98e3-4eef-a2ff-a6257f9e3c54",
+            "completed_at": "2021-02-05T09:40:06.639Z",
+            "last_viewed_at": "2021-02-12T09:22:52.346Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1079734,
+              "key": "3526545e-ad9f-4c9e-bba4-d29a4f23e77d",
+              "title": "ND029 DSND C2 L3 A04 Manually Save And Read From Redis Part 1 V3",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "WPRmMQm_mdA",
+                "china_cdn_id": "WPRmMQm_mdA.mp4"
+              }
+            },
+            {
+              "id": 1079733,
+              "key": "a995c21e-b940-4e20-b320-4dc0da6f0d97",
+              "title": "Manually save to redis and read the same data from a Kafka topic Heading",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## All Kafka Data Originates Somewhere\n\nAny data you read from a Kafka Source, originates somewhere else. Data can come from:\n\n* Databases\n* IoT devices\n* Log Files \n* Applications\n* Other sources",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1096171,
+              "key": "5894f722-d852-4dc9-a04a-bfd581bc0b65",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/November/5fa701a5_slide-22/slide-22.jpeg",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/5894f722-d852-4dc9-a04a-bfd581bc0b65",
+              "caption": "From the Source to the Sink",
+              "alt": "From the Source to the Sink",
+              "width": 1920,
+              "height": 1080,
+              "instructor_notes": null
+            },
+            {
+              "id": 1096274,
+              "key": "648b37e0-7e03-4c3c-bc15-4654de8680c2",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## From the Source to the Sink\n\nWhen reading information from a Kafka topic, the path it follows can look something like this:\n\n* The source system transmits some data to Kafka\n* Kafka transmits that same data to a topic without modification\n* The sink, or receiving system, decodes the information that was encoded by the source system",
+              "instructor_notes": null
+            },
+            {
+              "id": 1096275,
+              "key": "6c04d3bd-05f1-45a2-8a71-c7c7b71c572f",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## The Sink Transforms the Data\n\n<div class=\"index-module--table-responsive--1zG6k\"><table class=\"index-module--table--8j68C index-module--table-striped--3HHC-\">\n<thead>\n<tr>\n<th style=\"text-align:left\">Encoded</th>\n<th style=\"text-align:left\">Decoded</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td style=\"text-align:left\"><code>{\"key\":\"dGVzdGtleQ==\"}</code></td>\n<td style=\"text-align:left\"><code>{\"key\":\"testkey\"}</code></td>\n  </tr>\n  <tr>\n<td style=\"text-align:left\"><code>{\"element\":\"dGVzdHZhbHVl\"}</code></td>\n<td style=\"text-align:left\"><code>{\"element\":\"testvalue\"}</code></td>\n</tr>\n</tbody>\n</table>\n</div>\n\n## Often the final consumer is responsible to transform the original system's data.\n\nIn the above example:\n\n* The first message has a key and an encoded value\n* The decoded value is `\"testkey\"`\n* The second message has a key called `\"element\"`, and an encoded value\n* The decoded value is `\"testvalue\"`\nOnce the sink has decoded the data, it can be used for processing",
+              "instructor_notes": null
+            },
+            {
+              "id": 1096291,
+              "key": "87e65a31-7451-4a97-96ed-98a0309acb8a",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/November/5fa97126_slide-26/slide-26.jpeg",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/87e65a31-7451-4a97-96ed-98a0309acb8a",
+              "caption": "Typical Core Application",
+              "alt": "Typical Core Application",
+              "width": 1920,
+              "height": 1080,
+              "instructor_notes": null
+            },
+            {
+              "id": 1096333,
+              "key": "f3a46e48-e9d8-42fc-ab95-20b66a4c3160",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Typical Core Application\n\nA Core Application is a system that is used to run critical processes for a business.\n\nHere is a sample diagram where the core application stores data in a database. When given this scenario, we need to decide whether:\n\n* We want to modify the Core Application to transmit messages\n* Or instead, use the database as the source of messages",
+              "instructor_notes": null
+            },
+            {
+              "id": 1096313,
+              "key": "6cb02680-219b-4f5f-b28f-5224080a64a4",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/November/5fa988b5_slide-27/slide-27.jpeg",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/6cb02680-219b-4f5f-b28f-5224080a64a4",
+              "caption": null,
+              "alt": null,
+              "width": 1920,
+              "height": 1080,
+              "instructor_notes": null
+            },
+            {
+              "id": 1096334,
+              "key": "a2687ee7-b95b-4b5c-840c-66385069de53",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Direct Source or Indirect Source\n\nWhen faced with the decision in this example of whether to stream directly from the source as a new project or to stream from the current database, should consider these implications: \n\n* When streaming directly from the source, the quality is high\n   * This is because it is directly written by the Core Application\n   * The Time to Value can be slower\n   * Time to Value is the time it takes for a customer to benefit from your service\n   * The time to value can be slower due to coordination with the main development team who supports ongoing work on the core application\n   * The team often has several high priority initiatives\n* Regression risk of modifying the core application is moderate due to the critical role it has in performing business functions\n* Choosing an indirect source can make Time to Value lower \n   * Reducing development strain on the core team CLICK\n   * Reducing risk to the main application \n* An indirect source may have lower quality data because it is not directly produced by the core system",
+              "instructor_notes": null
+            },
+            {
+              "id": 1096314,
+              "key": "d03564d0-c696-4271-92bd-58283936bed9",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/November/5fa98990_slide-36/slide-36.jpeg",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/d03564d0-c696-4271-92bd-58283936bed9",
+              "caption": "Banking Application",
+              "alt": "Banking Application",
+              "width": 1920,
+              "height": 1080,
+              "instructor_notes": null
+            },
+            {
+              "id": 1096336,
+              "key": "48af19e6-62aa-4f80-b4ee-ed7e98a6ad9b",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Banking Application\n\nIn this lesson, we will be dealing with a sample banking application that currently uses Redis for storing customer information.",
+              "instructor_notes": null
+            },
+            {
+              "id": 1096175,
+              "key": "2b38ad67-b0b9-49fe-8007-51fdd80d754f",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/November/5fa7025d_slide-37/slide-37.jpeg",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/2b38ad67-b0b9-49fe-8007-51fdd80d754f",
+              "caption": "Using Redis Data Types",
+              "alt": "Using Redis Data Types",
+              "width": 1920,
+              "height": 1080,
+              "instructor_notes": null
+            },
+            {
+              "id": 1096338,
+              "key": "e0a1a6ad-f888-4bda-9ef3-6d891089616e",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Using Redis Data Types\n\nRedis data is stored in various data types:\n\n* A sorted set is a Redis collection that includes a value and a score. \n* A score is a secondary index. We use `zadd` to add records to a sorted set. \n* A Redis key/value pair is a simple key with one value. \n* We use the set command to set the value.",
+              "instructor_notes": null
+            },
+            {
+              "id": 1096339,
+              "key": "b8e99824-7761-4b26-ae01-8d2d62f45e7a",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Banking Example:\n\nLet's discuss a phone number that is shared by multiple systems \n\n* A Banking Application writes the data as the system of record\n* The Customer Service System uses the information to help employees interact with customers\n* The Auto Dialer uses the phone number to make automated phone calls",
+              "instructor_notes": null
+            },
+            {
+              "id": 1096177,
+              "key": "8ed3daa3-61c4-4049-8b6e-01793c7f28fd",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/November/5fa7029a_slide-41/slide-41.jpeg",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/8ed3daa3-61c4-4049-8b6e-01793c7f28fd",
+              "caption": "Redis Writing to a Topic with a Source Connector",
+              "alt": "Redis Writing to a Topic with a Source Connector",
+              "width": 1920,
+              "height": 1080,
+              "instructor_notes": null
+            },
+            {
+              "id": 1096341,
+              "key": "9bda7208-50ed-4075-9ed4-8275a9359a38",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Redis Writing to a Topic\n\n* In some scenarios, it may be useful for one of the reading applications to be updated immediately when a phone number changes. \n* For example, an autodialer making phone calls *may be in violation of the law* if it repeatedly calls a phone number recently placed on a Do Not Call list. \n* In this case, the secondary system, the Auto-Dialer should receive updates by subscribing to a Kafka topic.",
+              "instructor_notes": null
+            },
+            {
+              "id": 1096180,
+              "key": "fcb82e52-cd0e-494b-a419-695ccc9049c8",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Kafka Connect\n\n**Redis Source Connector Properties:**\n\n```\nname=redis-config\nconnector.class=org.apache.kafka.connect.redis.RedisSourceConnector\ntasks.max=1\ntopic=redis-server\nhost=redis\nport=6379\npassword=notreally\ndbName=0\n```",
+              "instructor_notes": null
+            },
+            {
+              "id": 1096344,
+              "key": "13be337d-cd6b-457e-8427-d50d259b13c4",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Kafka Source Connector\n\nWhat if there is no Kafka topic currently transmitting the phone number? This is where we would leverage a Kafka Source Connector:\n\n* We will configure Kafka Connect to Redis using a Redis Specific Source Connector\n* The way we configure the Redis Source Connector is by updating the properties file.\n* The file includes several properties\n* The topic is the topic where the data from Redis will be made available- in this case, the configured topic is called `\"redis-server\"`\n* The host, port, password, and `dbName` are used to establish a connection with Redis",
+              "instructor_notes": null
+            },
+            {
+              "id": 1096346,
+              "key": "ed1f6582-844e-42fc-86e7-14b2c4a6fde2",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## What is Kafka Connect?\n\n**Kafka Connect: **part of the Confluent Kafka distribution; it is the component responsible for providing a path from an external system (a source) to a Kafka topic or from a Kafka topic to an external system (a sink).",
+              "instructor_notes": null
+            },
+            {
+              "id": 1096347,
+              "key": "bab25239-bb34-47e6-8b59-f063851137d6",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## What is a Source Connector?\n\n**Source Connector: **A Source Connector provides a connection from an outside system (a source) to a Kafka topic.",
+              "instructor_notes": null
+            },
+            {
+              "id": 1096348,
+              "key": "8b1e3af9-204f-460a-9be0-e680d95697f5",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## What is a Sink Connector?\n\n**Sink Connector: **A Sink Connector provides a connection from a Kafka topic to an outside system (a source).",
+              "instructor_notes": null
+            },
+            {
+              "id": 1096179,
+              "key": "8818135e-284b-4647-9f48-4276b439c7bc",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/November/5fa70314_slide-47/slide-47.jpeg",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/8818135e-284b-4647-9f48-4276b439c7bc",
+              "caption": "How a Source Connector Works",
+              "alt": "How a Source Connector Works",
+              "width": 1920,
+              "height": 1080,
+              "instructor_notes": null
+            },
+            {
+              "id": 1096349,
+              "key": "87b241f4-1aac-42ab-a716-90ebf41a3bac",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Here's how a Source Connector Works\n\n* Kafka starts the connector\n* The connector begins reading from the source\n* New records appear in the configured topic",
+              "instructor_notes": null
+            },
+            {
+              "id": 1094643,
+              "key": "c230a801-b4dc-4c6b-ba93-b78926aeaec2",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Wireframe",
+              "instructor_notes": null
+            },
+            {
+              "id": 1094641,
+              "key": "a29ab226-f8e3-4e4c-89ae-bff84e9cb17d",
+              "title": "ND029 DSND C2 L3 A04 Manually Save And Read From Redis Part 2",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "QAIxb992VG4",
+                "china_cdn_id": "QAIxb992VG4.mp4"
+              }
+            },
+            {
+              "id": 1082055,
+              "key": "05959bb3-39ba-424c-ad5e-ddfbc6729a3e",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Redis QuickStart\n\nFor resources on how to get started using Redis on your own system, see the  <a href=\"https://redis.io/topics/quickstart\" target=\"_blank\">Redis QuickStart Guide</a>",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1096169,
+              "key": "9bc34b58-bdb7-4dd7-8771-c092eecd0be3",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## How to Install the Kafka Redis Source Connector\n\nFor more information on using the Kafka Redis Source Connector used in the lesson, see the <a href=\"https://github.com/scmurdock/kafka-connector-redis\" target=\"_blank\">Forked Kafka Connect Redis Repository</a> I used to set up your workspace.",
+              "instructor_notes": null
+            }
+          ]
+        },
+        {
+          "id": 1082056,
+          "key": "fb9c66f1-c003-4586-8c8e-3057871b32d9",
+          "title": "Walkthrough 1: Manually Save and Read with Redis and Kafka",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "fb9c66f1-c003-4586-8c8e-3057871b32d9",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1095393,
+              "key": "ecd23cb5-267f-4ad9-95e4-ace48c0dbb6e",
+              "title": "ND029 DSND C2 L3 A05 Manually Save And Read From Redis Walkthrough",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "video": {
+                "youtube_id": "Gs_UCeTd06E",
+                "china_cdn_id": "Gs_UCeTd06E.mp4"
+              }
+            },
+            {
+              "id": 1106436,
+              "key": "93e9c508-7ac6-44fb-8492-1e05a276a81a",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Manually Save and Read With Redis and Kafka\n\n* **If you just started the workspace**, from the console type: `/home/workspace/startup/startup.sh` to start Kafka, Redis, and the Trucking Simulation\n* Run the Redis CLI:\n   * From the terminal type: `/data/redis/redis-stable/src/redis-cli -a notreally`\n   * From the terminal type: `keys **`\n   * You will see the list of all the Redis tables\n* From another terminal type `/data/kafka/bin/kafka-console-consumer --bootstrap-server localhost:9092 --topic redis-server`\n* From the first terminal type: `set myKey myValue`\n* Open the second terminal\n* A new JSON message will appear from the redis-server topic\n* The key field contains the base64 encoded name of the Redis key\n* The value field contains the base64 encoded value written to the key \n* To decode the name of the Redis key, open a third terminal, and type: `echo \"[encoded key]\" | base64 -d`\n* To decode the value, copy the encoded value, then from the third terminal type: `echo \"[encoded value]\" | base64 -d`",
+              "instructor_notes": null
+            },
+            {
+              "id": 1085811,
+              "key": "9dfc5800-fe80-44c0-85ee-5c2c1f1e811b",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "r1053966c1082043xJUPYTERLvc36joa9",
+              "pool_id": "jupyterlabpython37",
+              "view_id": "jupyter-lab-8aajo",
+              "gpu_capable": false,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "disk": {
+                      "id": "data-science-datasets",
+                      "paths": [
+                        {
+                          "src": "/ND029",
+                          "dest": "/data/"
+                        }
+                      ]
+                    },
+                    "port": "3000",
+                    "ports": [],
+                    "videos": [],
+                    "pageEnd": "1",
+                    "pageStart": "1",
+                    "allowSubmit": true,
+                    "defaultPath": "/",
+                    "actionButtonText": ""
+                  },
+                  "kind": "jupyter-lab"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        },
+        {
+          "id": 1079741,
+          "key": "a61c98b8-adf0-4d16-9dbe-e8e3be68e543",
+          "title": "Quiz: Manually Save and Read with Redis and Kafka",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "a61c98b8-adf0-4d16-9dbe-e8e3be68e543",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1079738,
+              "key": "6e9f98f9-0471-4973-91eb-ba1bd3e8aab1",
+              "title": "Quiz: Manually save to redis and read the same data from a Kafka topic Heading",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Quiz: Manually Save and Read with Redis and Kafka",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1098541,
+              "key": "2bb6e299-c7d1-4eaa-91bc-cfc93570c1dc",
+              "title": null,
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "2bb6e299-c7d1-4eaa-91bc-cfc93570c1dc",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Redis is...",
+                "answers": [
+                  {
+                    "id": "7a615db2-becf-483b-a038-008948e6f8b2",
+                    "text": "A programming framework.",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "90b899ad-3d12-462a-b721-379bd3dfa92f",
+                    "text": "A query language.",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "76d79285-972a-4e6e-b10c-e1afd37039ba",
+                    "text": "A highly performant caching database",
+                    "is_correct": true
+                  }
+                ]
+              }
+            },
+            {
+              "id": 1098543,
+              "key": "236fcbc7-6bf1-48fd-937b-8255890e3f89",
+              "title": null,
+              "semantic_type": "MatchingQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "236fcbc7-6bf1-48fd-937b-8255890e3f89",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "complex_prompt": {
+                  "text": "Match the Redis command line operation with the requirement"
+                },
+                "concepts_label": null,
+                "answers_label": null,
+                "concepts": [
+                  {
+                    "text": "Create a simple key value pair containing the key priceOfOil, and a value 135.00",
+                    "correct_answer": {
+                      "id": "ef6c9f1c-a371-4e4d-aae6-05bca011371e",
+                      "text": "`set priceOfOil \"135.00\"`"
+                    }
+                  },
+                  {
+                    "text": "Add a customer to a sorted set called Customers, with the value \"Frank Nair\"",
+                    "correct_answer": {
+                      "id": "a98a86fc-fd72-43b0-948b-3e85308169c1",
+                      "text": "`zadd Customers 0 \"Frank Nair\"`"
+                    }
+                  },
+                  {
+                    "text": "Add a new Product to a sorted set with the value \"Checkered Cloth\".",
+                    "correct_answer": {
+                      "id": "716e25cc-7b02-4f42-9a43-d24e7e24f97f",
+                      "text": "`zadd Product 0 \"Checkered Cloth\"`"
+                    }
+                  }
+                ],
+                "answers": [
+                  {
+                    "id": "3b9bf35a-4627-4792-bd90-a5eebbf17c2c",
+                    "text": "`set Customers \"Frank Nair\"`"
+                  },
+                  {
+                    "id": "a98a86fc-fd72-43b0-948b-3e85308169c1",
+                    "text": "`zadd Customers 0 \"Frank Nair\"`"
+                  },
+                  {
+                    "id": "465260fc-098f-47f3-a024-fb4e597c57c0",
+                    "text": "`zadd priceOfOil \"135.00\""
+                  },
+                  {
+                    "id": "4a498069-68d2-49c9-a11f-b1ed07af7612",
+                    "text": "`set Product \"Checkered Cloth\"`"
+                  },
+                  {
+                    "id": "716e25cc-7b02-4f42-9a43-d24e7e24f97f",
+                    "text": "`zadd Product 0 \"Checkered Cloth\"`"
+                  },
+                  {
+                    "id": "ef6c9f1c-a371-4e4d-aae6-05bca011371e",
+                    "text": "`set priceOfOil \"135.00\"`"
+                  }
+                ]
+              }
+            },
+            {
+              "id": 1098542,
+              "key": "c9cc029d-f2ee-4ed9-99f1-b64dea1e7bd6",
+              "title": null,
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "c9cc029d-f2ee-4ed9-99f1-b64dea1e7bd6",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Base64 is...",
+                "answers": [
+                  {
+                    "id": "72f700d3-1dcb-4f36-a570-e35f59076e4f",
+                    "text": "A YAML parser",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "9c3b1407-bf8c-42d3-9a41-894c86d09d8c",
+                    "text": "An encoding format used by computers to transmit and store information",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "cf488e85-2189-4ca8-80b0-5afde892bc01",
+                    "text": "Compiled code",
+                    "is_correct": false
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 1079744,
+          "key": "c7939a92-7132-4855-9b68-d359fcc8b20e",
+          "title": "Exercise: Manually Save and Read with Redis and Kafka",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "c7939a92-7132-4855-9b68-d359fcc8b20e",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1079742,
+              "key": "0c7f3b41-beae-45f2-b505-cbff48ca99c8",
+              "title": "Exercise: Manually save to redis and read the same data from a Kafka topic Instructions",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Exercise: Manually Save and Read with Redis and Kafka\n\nWorking with Redis, it is extremely important to know how to use the Redis Command Line Interface (redis-cli) command. This command allows you to directly interact with the Redis database, by creating, updating, or deleting data.\n\nNow that we have connected Redis with Kafka using the Kafka Connect Redis Source, we should verify that it is working correctly.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1098599,
+              "key": "50e5667b-23ac-4132-b46d-8d6a8cfe473f",
+              "title": "Manually Save and Read with Redis and Kafka",
+              "semantic_type": "TaskListAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "50e5667b-23ac-4132-b46d-8d6a8cfe473f",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "tasks": [
+                "Open two terminals",
+                "Start the Redis CLI in one terminal",
+                "Start the Kafka console sink in another terminal",
+                "Write to a Redis key",
+                "Observe the message in the console sink",
+                "Base64 decode the key from the console sink",
+                "Check if it matches the key used in the`redis set [key] [value]` command executed earlier"
+              ],
+              "positive_feedback": null,
+              "video_feedback": null,
+              "description": null
+            },
+            {
+              "id": 1084257,
+              "key": "096e1162-9e0c-4eee-8757-548dadf7d2c5",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "r1053966c1079744xJUPYTERLb71jflzh",
+              "pool_id": "jupyterlabpython37",
+              "view_id": "jupyter-lab-agzjn",
+              "gpu_capable": false,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "disk": {
+                      "id": "data-science-datasets",
+                      "paths": [
+                        {
+                          "src": "/ND029",
+                          "dest": "/data/"
+                        }
+                      ]
+                    },
+                    "port": "3000",
+                    "ports": [],
+                    "videos": [],
+                    "pageEnd": "",
+                    "pageStart": "",
+                    "allowSubmit": true,
+                    "defaultPath": "/",
+                    "actionButtonText": ""
+                  },
+                  "kind": "jupyter-lab"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        },
+        {
+          "id": 1079749,
+          "key": "dfaba652-b970-4153-beff-f382c659fd28",
+          "title": "Solution 1: Manually Save and Read with Redis and Kafka",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "dfaba652-b970-4153-beff-f382c659fd28",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1079745,
+              "key": "9ebfcf9b-d143-4d94-8eec-2cccdf71cc70",
+              "title": "Solution: Manually save to redis and read the same data from a Kafka topic Heading",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Solution: Manually Save and Read with Redis and Kafka",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1079746,
+              "key": "1cfa55aa-9ebd-4c2e-8ee0-f95ea7a43868",
+              "title": "ND029 DSND C2 L3 A06 Solution Manually Save And Read From Redis",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "S1X3RnqnFzI",
+                "china_cdn_id": "S1X3RnqnFzI.mp4"
+              }
+            },
+            {
+              "id": 1098602,
+              "key": "1591547c-e610-474c-9587-01fdc8ddc085",
+              "title": "Now that you have manually saved to Redis, while working with Kafka, reflect on the following:",
+              "semantic_type": "TaskListAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "1591547c-e610-474c-9587-01fdc8ddc085",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "tasks": [
+                "How comfortable are you with the concept of Kafka Sources Connectors?",
+                "Do you remember how to add data to a Redis sorted set?",
+                "Can you explain to others how Redis is communicating with Kafka in the workspace?",
+                "Do you feel comfortable choosing between a direct or an indirect source with Kafka?"
+              ],
+              "positive_feedback": "If you feel comfortable with these, great! If not, feel free to review the lesson.",
+              "video_feedback": null,
+              "description": null
+            }
+          ]
+        },
+        {
+          "id": 1079754,
+          "key": "103c3750-ed58-4296-a5b4-613b0772559f",
+          "title": "Parse Base64 Encoded Information",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "103c3750-ed58-4296-a5b4-613b0772559f",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1079750,
+              "key": "1dfc8f8c-645c-42d6-b66f-ea1d8c67cf34",
+              "title": "Write a pyspark application that parses Base64 encoded information Heading",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Parse Base64 with Pyspark",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1079751,
+              "key": "05c44e3e-73c0-415b-ab90-05a1a502953b",
+              "title": "ND029 DSND C2 L3 A07 Parse Base64 Encoded Information",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "qUab2Qcsuks",
+                "china_cdn_id": "qUab2Qcsuks.mp4"
+              }
+            },
+            {
+              "id": 1096316,
+              "key": "492452b8-5bd8-4d6b-aff0-449ffd752c3e",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/November/5fa98a74_slide-58/slide-58.jpeg",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/492452b8-5bd8-4d6b-aff0-449ffd752c3e",
+              "caption": "Base64 Table",
+              "alt": "Bsae64 Table",
+              "width": 1920,
+              "height": 1080,
+              "instructor_notes": null
+            },
+            {
+              "id": 1096350,
+              "key": "324d2a0b-4ddf-4c26-8f2f-d540a380a8b7",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## What is Base64?\n\n* Base64 is a system of representing binary data (8-bit data), in text format. \n* Each binary sequence has a letter. \n* It can be used to represent any binary data, including text and photographs. \n\nAbove is a table that shows the key for each letter, and what it represents. The padding character is an equals sign.",
+              "instructor_notes": null
+            },
+            {
+              "id": 1096319,
+              "key": "429e390c-4688-4de2-aaf5-d450fa925806",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## HTML Using Base64\n\n```\n<div>\n<p>Smiley Face</p>\n<img src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAoAAAAHgCAYAAAA10dzkAAAEGWlDQ1B\"\n/>\n</div>\n```",
+              "instructor_notes": null
+            },
+            {
+              "id": 1096351,
+              "key": "1a16f244-9b92-4250-8cf7-16688f36284e",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Explanation of HTML Using Base64\n\nSometimes document formatted messages contain encoded information:\n\n* It can be convenient to embed small images as text directly in an HTML document\n* In this example, a smiley face is embedded in the HTML snippet\n* The base64 encoded data is truncated here for brevity",
+              "instructor_notes": null
+            },
+            {
+              "id": 1096318,
+              "key": "9ff0b9a3-3ddd-4424-a78e-eaaf081bb2f2",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/November/5fa98ae8_slide-61/slide-61.jpeg",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/9ff0b9a3-3ddd-4424-a78e-eaaf081bb2f2",
+              "caption": "Base64 Decoded Image",
+              "alt": "Base64 Decoded Image showing a smiley face.",
+              "width": 1920,
+              "height": 1080,
+              "instructor_notes": null
+            },
+            {
+              "id": 1096352,
+              "key": "4bb2c32f-241c-44db-9a65-b265b70198ce",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## This is the Base64 decoded smiley face displayed in a browser",
+              "instructor_notes": null
+            },
+            {
+              "id": 1096320,
+              "key": "0b9bdff5-6dc5-4e66-8f74-f4f74f1e9b8f",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/November/5fa98b08_slide-62/slide-62.jpeg",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/0b9bdff5-6dc5-4e66-8f74-f4f74f1e9b8f",
+              "caption": "Base64 Smiley Face",
+              "alt": "Base64 Smiley Face",
+              "width": 1920,
+              "height": 1080,
+              "instructor_notes": null
+            },
+            {
+              "id": 1096353,
+              "key": "d456e831-b154-469a-a364-1b8cbac4ea95",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## This is what the entire Base64 string looks like in the HTML source",
+              "instructor_notes": null
+            },
+            {
+              "id": 1096323,
+              "key": "b373d6a2-d4a1-43b9-ae20-9c3515b18e0f",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Redis Kafka Source vs Decoded Message\n\n**Message Sample**\n\n```\n{\n\"key\":\"cHVtcGtpblBpZUluZ3JlZGllbnRz\",\n\"existType\":\"NONE\",\n\"ch\":false,\n\"incr\":false,           \n\"zSetEntries\":[{\"element\":\"cHVtcGtpbg==\",\"score\":0.0}],\n\"zsetEntries\":[{\"element\":\"cHVtcGtpbg==\",\"score\":0.0}]\n}\n```\n\nIn our Business Application, the Redis Source Connector uses Base64 to send new records to Kafka. Here is a message sample.** Can you decode the encoded information?**",
+              "instructor_notes": null
+            },
+            {
+              "id": 1098546,
+              "key": "d473bb1c-839c-4075-abc4-a0e7034b085d",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Decoding Base64\n\nTo decode the element from the JSON above. Try this: from a Linux or Unix bash prompt, type: `echo \"cHVtcGtpbg==\" | base64 -d`",
+              "instructor_notes": null
+            },
+            {
+              "id": 1096354,
+              "key": "dd14090e-9d10-441b-aa41-d5572cd79bde",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "**Message Decoded**\n\n```\n{   \n  \"key\":\"pumpkinPieIngredients\",\n  \"existType\":\"NONE\",  \n  \"ch\":false,  \n  \"incr\":false,\n  \"zSetEntries\":[{\"element\":\"pumpkin\",\"score\":0.0}],\n  \"zsetEntries\":[{\"element\":\"pumpkin\",\"score\":0.0}]\n}\n```\n\nHere is the message decoded from Base64 to plain text. The decoded key is **`\"pumpkinPieIngredients\"`**. The decoded element is **`\"pumpkin\"`**.",
+              "instructor_notes": null
+            },
+            {
+              "id": 1096325,
+              "key": "20bc76dc-3f2b-424e-b9c6-2649c058ad0c",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## How would I do that in Spark?\n\n**unbase64: ** `unbase64(encodedStreamingDF.reservation).cast(\"string\")`",
+              "instructor_notes": null
+            },
+            {
+              "id": 1096355,
+              "key": "9ee91f51-92ed-4ec4-8422-8e9f09bb5564",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Using unbase64\n\nIn this example, the `encodedStreamingDF`** DataFrame** has a field called `\"reservation\"`. We are decoding it and then casting it to a string. This statement must be used in a spark SQL or **DataFrame** select.",
+              "instructor_notes": null
+            },
+            {
+              "id": 1096356,
+              "key": "ae8c3961-c7ed-4b45-b6fa-5453737b44ed",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## More on PySpark SQL Functions\n\nTo see the full list of possible SQL functions that come with PySpark, see the <a href=\"https://spark.apache.org/docs/latest/api/python/pyspark.sql.html\" target=\"_blank\">PySpark SQL Module</a>",
+              "instructor_notes": null
+            },
+            {
+              "id": 1096326,
+              "key": "503b8d2d-1639-415f-a453-64275f111565",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Wikipedia on Base64\n\nFor more information about Base64, see the <a href=\"https://en.wikipedia.org/wiki/Base64\" target=\"_blank\">Wikipedia Base64 Article</a>",
+              "instructor_notes": null
+            }
+          ]
+        },
+        {
+          "id": 1082058,
+          "key": "b4ed7401-6287-4917-92f2-f130c98666d7",
+          "title": "Walkthrough 2: Parse Base64 Encoded Information",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "b4ed7401-6287-4917-92f2-f130c98666d7",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1095957,
+              "key": "784cf1b2-8f8b-49c7-a7f6-28853b796af1",
+              "title": "ND029 DSND C2 L3 A08 Parse Base64 Encoded Information Walkthrough Short",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "ocGcLdLNweI",
+                "china_cdn_id": "ocGcLdLNweI.mp4"
+              }
+            },
+            {
+              "id": 1106439,
+              "key": "71b8f534-cb40-4190-982d-6b74d11bf067",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Parse Base64 With Pyspark\n\n* **If you just started the workspace**, from the console type: `/home/workspace/startup/startup.sh` to start Kafka, Redis, and the Trucking Simulation\n* **If you just started the workspace**, start the spark master and spark worker\n   * From the terminal type: `/home/workspace/spark/sbin/start-master.sh`\n   * View the log and copy down the Spark URI\n   * From the terminal type: `/home/workspace/spark/sbin/start-slave.sh [Spark URI]`\n* Complete the `reservation-base64.py` python script\n* Submit the application to the spark cluster:\n   * From the terminal type: \n   `/home/workspace/spark/submit-reservation-base64.sh`\n* Watch the terminal for the values to scroll past (may take up to 2 minutes)",
+              "instructor_notes": null
+            },
+            {
+              "id": 1085812,
+              "key": "183534de-163f-4014-9fe1-8cba1b03bbe2",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "r1053966c1082043xJUPYTERLvc36joa9",
+              "pool_id": "jupyterlabpython37",
+              "view_id": "jupyter-lab-vglg8",
+              "gpu_capable": false,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "disk": {
+                      "id": "data-science-datasets",
+                      "paths": [
+                        {
+                          "src": "/ND029",
+                          "dest": "/data/"
+                        }
+                      ]
+                    },
+                    "port": "3000",
+                    "ports": [],
+                    "videos": [],
+                    "pageEnd": "1",
+                    "pageStart": "1",
+                    "allowSubmit": true,
+                    "defaultPath": "/",
+                    "actionButtonText": ""
+                  },
+                  "kind": "jupyter-lab"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            },
+            {
+              "id": 1095394,
+              "key": "8923a9a5-574d-4e55-8d04-b59f4028d03a",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Optional: Long Walkthrough with Troubleshooting",
+              "instructor_notes": null
+            },
+            {
+              "id": 1093734,
+              "key": "8d54cf71-df1f-449d-8959-7ec3bce8588d",
+              "title": "ND029 DSND C2 L3 A08 Parse Base64 Encoded Information Walkthrough",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "video": {
+                "youtube_id": "WoPEnBODa_0",
+                "china_cdn_id": "WoPEnBODa_0.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 1079758,
+          "key": "4aec0cd1-e428-4530-9e1c-8b627d25ea58",
+          "title": "Quiz: Parse Base64 Encoded Information",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "4aec0cd1-e428-4530-9e1c-8b627d25ea58",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1098547,
+              "key": "edb88af0-a770-45e5-a599-0757a1a57cc9",
+              "title": null,
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "edb88af0-a770-45e5-a599-0757a1a57cc9",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "What is the bash command to decode the following Base64 encoded data? `SGFwcHkgTmV3IFllYXIK`",
+                "answers": [
+                  {
+                    "id": "543cd71f-31d8-46f9-a53e-c76185448592",
+                    "text": "`echo \"SGFwcHkgTmV3IFllYXIK\" | base64`",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "31223c62-86d6-46f1-9cdd-fd3800ac7922",
+                    "text": "`echo \"SGFwcHkgTmV3IFllYXIK\" | base64 -decode`",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "1d0b534b-8f94-476f-8503-390a62c362dd",
+                    "text": "`echo \"SGFwcHkgTmV3IFllYXIK\" | base64 -d`",
+                    "is_correct": true
+                  }
+                ]
+              }
+            },
+            {
+              "id": 1098548,
+              "key": "93c8ed5f-0788-430f-8eef-5f54c3d68e5e",
+              "title": null,
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "93c8ed5f-0788-430f-8eef-5f54c3d68e5e",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "What would be the Spark syntax to decode a field named *encodedLatitude* on a **DataFrame** called *coordinatesDF*?",
+                "answers": [
+                  {
+                    "id": "2876e008-30db-440b-8bdc-3fa5c1f33dac",
+                    "text": "`base64(coordinatesDF.encodedLatitude).cast(\"string\")`",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "f073eab1-cdf4-40fa-8a7a-b33627a6348e",
+                    "text": "`unbase64(coordinatesDf.encodedLatitude).cast(\"string\")`",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "82e8dd99-c020-494e-9eff-1900f858850a",
+                    "text": "`unbase64(encodedLatitude).cast(\"string\")`",
+                    "is_correct": false
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 1079761,
+          "key": "ed1f057d-9bd3-440a-9b39-a2e1668583dc",
+          "title": "Exercise 2: Parse Base64 Encoded Information",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "ed1f057d-9bd3-440a-9b39-a2e1668583dc",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1079759,
+              "key": "860452af-24c6-4b40-bd03-c4ff3d75406e",
+              "title": "Exercise: Write a pyspark application that parses Base64 encoded information Instructions",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Exercise: Parse Base64 with Pyspark\n\nNow that we have validated the Kafka Connect Redis Source, we can start writing code to extract data from the redis-server topic. Redis transmits its data to Kafka in Base64 encoded format. We will need to use the `unbase64` method to decode it in our Spark application.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1079760,
+              "key": "4cf81832-074f-4b36-a5d7-106d93c3bc22",
+              "title": "Exercise: Write a pyspark application that parses Base64 encoded information",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "* Write a pyspark application\n* Read a stream from the redis-server kafka topic containing Base64 encoded data\n* Write the dataframe from kafka to the console with the key, value fields\n* Base64 decode the dataframe\n* Write the decoded stream to the console\n* Start spark master, and worker\n* Deploy and run the pyspark application",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1098600,
+              "key": "9a6929e5-0f31-43b6-968a-25755d4ebe45",
+              "title": "Parse Base64 with Spark",
+              "semantic_type": "TaskListAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "9a6929e5-0f31-43b6-968a-25755d4ebe45",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "tasks": [
+                "Write a pyspark application",
+                "Read a stream from the `redis-server` Kafka topic containing Base64 encoded data\n",
+                "Write the dataframe from Kafka to the console with the key, value fields\n",
+                "Base64 decode the DataFrame",
+                "Write the decoded stream to the console",
+                "Start Spark master, and worker",
+                "Deploy and run the pyspark application"
+              ],
+              "positive_feedback": null,
+              "video_feedback": null,
+              "description": null
+            },
+            {
+              "id": 1084258,
+              "key": "afceead4-e562-4084-9346-3cb935116646",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "r1053966c1079761xJUPYTERLvcjtoy6m",
+              "pool_id": "jupyterlabpython37",
+              "view_id": "jupyter-lab-lbdae",
+              "gpu_capable": false,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "disk": {
+                      "id": "data-science-datasets",
+                      "paths": [
+                        {
+                          "src": "/ND029",
+                          "dest": "/data/"
+                        }
+                      ]
+                    },
+                    "port": "3000",
+                    "ports": [],
+                    "videos": [],
+                    "pageEnd": "",
+                    "pageStart": "",
+                    "allowSubmit": true,
+                    "defaultPath": "/",
+                    "actionButtonText": ""
+                  },
+                  "kind": "jupyter-lab"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        },
+        {
+          "id": 1079766,
+          "key": "09adf166-18c4-4cc5-b2be-df4cdac43246",
+          "title": "Solution: Parse Base64 Encoded Information",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "09adf166-18c4-4cc5-b2be-df4cdac43246",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1079762,
+              "key": "9e570895-f5bb-45be-b435-49a4f5c62531",
+              "title": "Solution: Write a pyspark application that parses Base64 encoded information Heading",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Solution: Parse Base64 with Pyspark",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1105042,
+              "key": "f9ed22b5-3159-41d9-ac06-cbcfb17b3253",
+              "title": "ND029 DSND C2 L3 A12 Solution Sink A Subset Of JSON Short",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "5aphl7L62bo",
+                "china_cdn_id": "5aphl7L62bo.mp4"
+              }
+            },
+            {
+              "id": 1098603,
+              "key": "4b9564f0-ad71-4ccc-83f3-1054d51a6a67",
+              "title": "Now that you have parsed Base64 encoded data using Spark, reflect on the following:",
+              "semantic_type": "TaskListAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "4b9564f0-ad71-4ccc-83f3-1054d51a6a67",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "tasks": [
+                "Do you feel comfortable manually decoding Base64 encoded information?",
+                "Do you know when to use the unbase64 function?",
+                "Do you know how to recognize Base64 encoded data? "
+              ],
+              "positive_feedback": "If you feel confident in these things, great job! If not, feel free to re-read the lesson!",
+              "video_feedback": null,
+              "description": null
+            },
+            {
+              "id": 1095959,
+              "key": "bb931c74-e281-42a5-adbd-a49bcf258936",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Optional Long Solution with Troubleshooting",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1095395,
+              "key": "3f5c79b7-4d19-4e09-9b1b-9bc86b15903c",
+              "title": "ND029 DSND C2 L3 A09 Solution Parse Base64 Encoded Information",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "video": {
+                "youtube_id": "IdxpNE4kobg",
+                "china_cdn_id": "IdxpNE4kobg.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 1079788,
+          "key": "f14d7ca6-0d4e-4e96-8c6b-2e5a77269985",
+          "title": "Sink a Subset of JSON",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "f14d7ca6-0d4e-4e96-8c6b-2e5a77269985",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1079785,
+              "key": "78ab7968-f113-4b28-aef1-3a838a1425af",
+              "title": "ND029 DSND C2 L3 A10 Sink A Subset Of JSON V2",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "9RZC6VGDqIk",
+                "china_cdn_id": "9RZC6VGDqIk.mp4"
+              }
+            },
+            {
+              "id": 1096357,
+              "key": "d2e0c55d-e6e5-4c55-ab90-9e07e619405a",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Select Using Spark\n\nThere are two main functions used for selecting data in Spark Streaming: `.select` and `spark.sql`.\n\n### .select\n\n```\ntruckReservationDF.select(\"reservationId\", \"truckNumber\")\n```\n\nHere is an example of using the`.select` method to select the columns `\"reservationId\"` and `\"truckNumber\"`. Notice the `.select`function accepts from one to many column names separated by a comma.\n\n### spark.sql\n\n```\nspark.sql(\"select reservationId, truckNumber from TruckReservation\")\n\n```\n\nThis is the same select using `spark.sql`. Notice the `spark.sql` function accepts valid SQL statements.",
+              "instructor_notes": null
+            },
+            {
+              "id": 1098540,
+              "key": "e9391e45-a50b-4a6d-b64b-068ac3f4d564",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Spark SQL Functions\n\n<div class=\"index-module--table-responsive--1zG6k\"><table class=\"index-module--table--8j68C index-module--table-striped--3HHC-\" style=\"padding:15px;border: 1px solid black\">\n<thead>\n<tr>\n  <th style=\"text-align:left;padding:15px;border: 1px solid black\"><strong>Function</strong></th>\n  <th style=\"text-align:left;padding:15px;border: 1px solid black\"><strong>Purpose</strong></th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td style=\"text-align:left;padding:15px;border: 1px solid black\"><strong>to_json</strong></td>\n<td style=\"text-align:left;padding:15px;border: 1px solid black\">Create JSON</td>\n</tr>\n<tr>\n<td style=\"text-align:left;padding:15px;border: 1px solid black\"><strong>from_json</strong></td>\n<td style=\"text-align:left;padding:15px;border: 1px solid black\">Parse JSON</td>\n</tr>\n<tr>\n<td style=\"text-align:left;padding:15px;border: 1px solid black\"><strong>unbase64</strong></td>\n<td style=\"text-align:left;padding:15px;border: 1px solid black\">Base64 Decode</td>\n</tr>\n<tr>\n<td style=\"text-align:left;padding:15px;border: 1px solid black\"><strong>base64</strong></td>\n<td style=\"text-align:left;padding:15px;border: 1px solid black\">Base64 Encode</td>\n</tr>\n<tr>\n<td style=\"text-align:left;padding:15px;border: 1px solid black\"><strong>split</strong></td>\n<td style=\"text-align:left;padding:15px;border: 1px solid black\">Separate a string of characters</td>\n</tr>\n</tbody>\n</table>\n</div>",
+              "instructor_notes": null
+            },
+            {
+              "id": 1096358,
+              "key": "c4d593c1-1370-4efc-b0c6-c38c1b038833",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Spark SQL Functions\n\nHere are some useful Spark SQL Functions. These can be used within the `spark.sql` function or within the `.select` function:\n\n* `to_json` and `from_json` are for working with JSON\n* `unbase64` and `base64` are for working with Base64 encoded information. \n* `split` is for separating a string of characters\n\nWe have worked with `to_json`, `from_json`, `unbase64` so far.",
+              "instructor_notes": null
+            },
+            {
+              "id": 1096330,
+              "key": "801e0f0e-5f4d-4e29-8c65-4bfe3858a3f5",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Using the Split Function -  First Name\n\n**Sample Data**\n\n```\n{\n\"customerName\":\"June Aristotle\",\n\"email\":\"June.Aristotle@test.com\",\n\"birthDay\":\"1948-01-01\"\n}\n```\n\n**Example Code**\n\n```\nsplit(customerStreamingDF.customerName,\" \")\\\n.getItem(0) \\\n.alias(\"firstName\") \\\n```\n\n**Output**\n\n```\n{\n\"firstName\": \"June\"\n}\n```",
+              "instructor_notes": null
+            },
+            {
+              "id": 1096359,
+              "key": "c5f55565-9122-43de-a7d4-09fa99c9170a",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Explanation of First Name\n\nIn this example we are parsing a DataFrame field `\"customerName\"` which contains both a first and the last name (ex: June Aristotle):\n\n1. Using `split` we extract both first and last names.\n1. We then call `.getItem` to get the 0th element. \n1. We then call `.alias` to create a field called `\"firstName\"`. \n\nHow would you approach this same data to get the customer's email provider?",
+              "instructor_notes": null
+            },
+            {
+              "id": 1096332,
+              "key": "da7e5504-110b-4a3e-ae6f-df1818a5a918",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Using the Split Function -  Email Domain\n\n**Sample Data**\n\n```\n\n{\n\n\"customerName\":\"June Aristotle\",\n\n\"email\":\"June.Aristotle@test.com\",\n\n\"birthDay\":\"1948-01-01\"\n\n}\n\n```\n\n**Example Code**\n\n```\n\nsplit(customerStreamingDF.email,\"@\") \\\n\n.getItem(1) \\\n\n.alias(\"emailDomain\") \\\n\n```\n\n**Output**\n\n```\n\n{\n\n\"emailDomain\": \"test.com\"\n\n}\n\n```",
+              "instructor_notes": null
+            },
+            {
+              "id": 1096360,
+              "key": "e0ef1cde-e521-4428-beb8-73c2d7a6dac3",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Explanation of Email Domain\n\nTo get the email domain:\n\n1. We call `split` passing the `\"customerStreamingDF.email\"` field, and then the `@` symbol. \n1. We then get the element from position 1, which will be the email domain. \n1. So we call the `.alias` function to create an alias called `\"emailDomain\"`.",
+              "instructor_notes": null
+            },
+            {
+              "id": 1098573,
+              "key": "c643ea87-cce1-4914-9d04-3ca145c4b1c6",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Using to_json\n\nYou have a **DataFrame** called `truckStatusDF` that contains several fields including `\"statusTruckNumber\"`. You want to prepare to sink the DataFrame by converting it to JSON. Kafka also expects a key for every message:\n\n```\ntruckStatusDF \\\n.selectExpr(\n\"cast(statusTruckNumber as string) as key\", \n\"to_json(struct(*)) as value\"\n) \n```\n\nNotice the following:\n\n* We first call `.selectExpr`\n* Within the select expression, we are creating two expressions\n   * The key field\n   * The value field\n* We use the `to_json` function",
+              "instructor_notes": null
+            },
+            {
+              "id": 1098574,
+              "key": "c7a89345-ae34-4a64-8537-3dd79a1f302d",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Sink it to Kafka\n\nNow that we got the key and value fields in a DataFrame, you can sink to a Kafka topic:\n\n```\ntruckStatusDF \\\n.selectExpr(\n\"cast(statusTruckNumber as string) as key\",\n\"to_json(struct(*)) as value\"\n) \\\n.writeStream \\\n.format(\"kafka\") \\\n.option(\"kafka.bootstrap.servers\", \"kafkabroker.besthost.net:9092\")\\\n.option(\"topic\", \"truck-status\")\\\n.option(\"checkpointLocation\",\"/tmp/kafkacheckpoint\")\\\n.start()\\\n.awaitTermination()\n```\n\nNotice the following:\n\n* After the select expression ends, we call `.writeStream`\n* The bootstrap server (the broker) is `kafkabroker.besthost.net` \n* The bootstrap port is `9092`\n* The topic is `truck-status`\n* We specified a writable path on the Spark Worker server for the *`checkpointLocation`*",
+              "instructor_notes": null
+            },
+            {
+              "id": 1082061,
+              "key": "6436b053-cb3a-4e18-bf59-ce7df763eb75",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## More on PySpark SQL Functions\n\nTo see the full list of possible SQL functions that come with PySpark, see the <a href=\"https://spark.apache.org/docs/latest/api/python/pyspark.sql.html\" target=\"_blank\">PySpark SQL Module</a>",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 1082062,
+          "key": "c2fd5401-7dab-4e47-9e91-d460e9d3ec4b",
+          "title": "Walkthrough 3: Sink a Subset of JSON Fields",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "c2fd5401-7dab-4e47-9e91-d460e9d3ec4b",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1105862,
+              "key": "e8db8bb2-8898-4d97-8524-af79d883cabd",
+              "title": "ND029 DSND C2 L3 A14 Bringing It All Together Walkthrough Short",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "UE1bwRSFDvM",
+                "china_cdn_id": "UE1bwRSFDvM.mp4"
+              }
+            },
+            {
+              "id": 1106442,
+              "key": "71a59d8d-274b-44fa-a1a2-3181fed61056",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Sink a Subset of JSON fields with Pyspark\n\n* **If you just started the workspace**, from the console type: `/home/workspace/startup/startup.sh` to start Kafka, Redis, and the Trucking Simulation\n* **If you just started the workspace**, start the spark master and spark worker\n   * From the terminal type: `/home/workspace/spark/sbin/start-master.sh`\n   * View the log and copy down the Spark URI\n   * From the terminal type: `/home/workspace/spark/sbin/start-slave.sh [Spark URI]`\n* Complete the payment-json-fields.py python script\n* Change the `payment.py` python script to add one more streaming dataframe which selects only the reservationId, and amount\n* Instead of sinking to the console, sink to a kafka topic\n* Submit the application to the spark cluster:\n   * From the terminal type: \n   `/home/workspace/spark/submit-payment.sh`\n* Connect to the kafka sink topic and watch the data streaming (may take up to 2 minutes)",
+              "instructor_notes": null
+            },
+            {
+              "id": 1085813,
+              "key": "5aba12b1-c406-4223-b9c7-1f958dc1601f",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "r1053966c1082043xJUPYTERLvc36joa9",
+              "pool_id": "jupyterlabpython37",
+              "view_id": "jupyter-lab-uq3vg",
+              "gpu_capable": false,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "disk": {
+                      "id": "data-science-datasets",
+                      "paths": [
+                        {
+                          "src": "/ND029",
+                          "dest": "/data/"
+                        }
+                      ]
+                    },
+                    "port": "3000",
+                    "ports": [],
+                    "videos": [],
+                    "pageEnd": "1",
+                    "pageStart": "1",
+                    "allowSubmit": true,
+                    "defaultPath": "/",
+                    "actionButtonText": ""
+                  },
+                  "kind": "jupyter-lab"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            },
+            {
+              "id": 1095966,
+              "key": "2c84ae19-52e3-4858-803c-516307214662",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Optional Long Walkthrough with Troubleshooting",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1095963,
+              "key": "3d4164b9-56b2-4fa7-bbf7-5f5462286856",
+              "title": "ND029 DSND C2 L3 A11 Sink A Subset Of JSON Walkthrough",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "Z-MXo4-BxeM",
+                "china_cdn_id": "Z-MXo4-BxeM.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 1079792,
+          "key": "07c5a57d-8737-43ae-af0d-50fa46f3e05e",
+          "title": "Quiz: Sink a Subset of JSON",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "07c5a57d-8737-43ae-af0d-50fa46f3e05e",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1079789,
+              "key": "2093b8f9-743d-4fe4-ada4-4b3697c58baa",
+              "title": "Quiz: Write a pyspark application that sinks a subset of JSON fields Heading",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Quiz: Sink a Subset of JSON Fields with Pyspark",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1098551,
+              "key": "b42ea8ad-3288-48f8-9a4b-ae682f2fdf5b",
+              "title": null,
+              "semantic_type": "MatchingQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "b42ea8ad-3288-48f8-9a4b-ae682f2fdf5b",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "complex_prompt": {
+                  "text": "Match the Spark SQL Function with its purpose"
+                },
+                "concepts_label": null,
+                "answers_label": null,
+                "concepts": [
+                  {
+                    "text": "`to_json`",
+                    "correct_answer": {
+                      "id": "e66205c6-b3a6-4a54-af10-3347bf51ac8c",
+                      "text": "Create JSON"
+                    }
+                  },
+                  {
+                    "text": "`from_json`",
+                    "correct_answer": {
+                      "id": "acaa48ce-3395-4b25-a8da-82dbb40077c4",
+                      "text": "Parse JSON"
+                    }
+                  },
+                  {
+                    "text": "`unbase64`",
+                    "correct_answer": {
+                      "id": "001a10f9-04d3-4b63-ac00-cb552dadffe4",
+                      "text": "Base64 Decode"
+                    }
+                  },
+                  {
+                    "text": "`base64`",
+                    "correct_answer": {
+                      "id": "f2e124e6-29f5-44a8-8692-cd776441f738",
+                      "text": "Base64 Encode"
+                    }
+                  },
+                  {
+                    "text": "`split`",
+                    "correct_answer": {
+                      "id": "09a414a9-084a-40ba-bf35-bd5d7249b9de",
+                      "text": "Separate a string of characters"
+                    }
+                  }
+                ],
+                "answers": [
+                  {
+                    "id": "09a414a9-084a-40ba-bf35-bd5d7249b9de",
+                    "text": "Separate a string of characters"
+                  },
+                  {
+                    "id": "acaa48ce-3395-4b25-a8da-82dbb40077c4",
+                    "text": "Parse JSON"
+                  },
+                  {
+                    "id": "f2e124e6-29f5-44a8-8692-cd776441f738",
+                    "text": "Base64 Encode"
+                  },
+                  {
+                    "id": "e66205c6-b3a6-4a54-af10-3347bf51ac8c",
+                    "text": "Create JSON"
+                  },
+                  {
+                    "id": "001a10f9-04d3-4b63-ac00-cb552dadffe4",
+                    "text": "Base64 Decode"
+                  }
+                ]
+              }
+            },
+            {
+              "id": 1098552,
+              "key": "7ebe9fc9-6de9-46b1-8d68-3de72aecfd27",
+              "title": null,
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "7ebe9fc9-6de9-46b1-8d68-3de72aecfd27",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "If I wanted to extract the number portion of the street address in the data below, what Spark SQL function would I use?\n\n```\n{\"businessName\":\"Sven's Bread\",\n\"streetAddress\": \"9876 S Fenton Ave.\",\n\"city\":\"New York\",\n\"state\":\"New York\"\n}\n```",
+                "answers": [
+                  {
+                    "id": "3fcc3428-f71d-48b9-9c76-fff0a1023705",
+                    "text": "`base64`",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "02454bd5-6545-4da0-b716-1048db50d481",
+                    "text": "`unbase64`",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "b5f62392-d92e-4a8f-b8a5-84733aa7b683",
+                    "text": "`split`",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "6440df37-4940-46e4-ab00-dcccd3656894",
+                    "text": "`extract`",
+                    "is_correct": false
+                  }
+                ]
+              }
+            },
+            {
+              "id": 1098555,
+              "key": "516c00c2-e5f3-401c-bf6e-1c39e1cea69e",
+              "title": null,
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "516c00c2-e5f3-401c-bf6e-1c39e1cea69e",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "I have a DataFrame called *testCustomersDF* containing the fields: *firstName*,*lastName*, *streetAddress*,*phoneNumber*,*customerId*. I want to sink the fields *customerId* and *phoneNumber* to a Kafka Topic called *test-customers* on a Broker listening at `broker1.testbroker.net:9092`, what is the syntax?",
+                "answers": [
+                  {
+                    "id": "2da928d2-1c7e-4630-8095-95e51ef120d8",
+                    "text": "```\ntestCustomersDF \\\n.selectExpr(\n\"cast(customerId as string) key\",\n\"cast(phoneNumber as string) value\"\n)  \\\n.writeStream \\\n.format(\"kafka\") \\\n.option(\"kafka.bootstrap.servers\", \"broker1.testbroker.net:9092\")\\\n.option(\"topic\", \"test-customers\")\\\n.option(\"checkpointLocation\",\"/tmp/kafkacheckpoint\")\\\n.start()\\\n.awaitTermination()\n```",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "8bc4604d-29d2-40da-baa8-132f63f19ac6",
+                    "text": "```\n.selectExpr(\n\"cast(customerId as string) key\",\n\"cast(phoneNumber as string) value\"\n)  \\\n.writeStream \\\n.format(\"kafka\") \\\n.option(\"kafka.bootstrap.servers\", \"broker1.testbroker.net:9092\")\\\n.option(\"topic\", \"test-customers\")\\\n.option(\"checkpointLocation\",\"/tmp/kafkacheckpoint\")\\\n.start()\\\n.awaitTermination()\n```",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "368c9518-7ab4-47e0-b9da-3c8dfc5a1d38",
+                    "text": "```\ntestCustomersDF \\\n.selectExpr(\n\"cast(customerId as string) key\",\n\"cast(phoneNumber as string) value\"\n)  \\\n.writeStream \\\n.format(\"kafka\") \\\n.option(\"kafka.bootstrap.servers\", \"broker1.testbroker.net:9092\")\\\n.option(\"checkpointLocation\",\"/tmp/kafkacheckpoint\")\\\n.start()\\\n.awaitTermination()\n```",
+                    "is_correct": false
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 1079795,
+          "key": "1a91b385-460e-47ac-8f9c-2ad70b1f6543",
+          "title": "Exercise 3: Sink a Subset of JSON",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "1a91b385-460e-47ac-8f9c-2ad70b1f6543",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1103489,
+              "key": "d2be6868-2b6f-4793-abb8-197b57ded913",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Sink a Subset of JSON\n\nThere are a few customer fields we are looking for from the `redis-server` server:\n\n* account number\n* location\n* birth year\n\nWe want to combine those fields into one JSON message and transmit them in a `customer-attributes` topic.",
+              "instructor_notes": null
+            },
+            {
+              "id": 1098601,
+              "key": "3a8759da-7174-467e-bc89-b78d46ed7570",
+              "title": "Sink a Subset of JSON",
+              "semantic_type": "TaskListAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "3a8759da-7174-467e-bc89-b78d46ed7570",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "tasks": [
+                "Write a pyspark application",
+                "Read a stream from the `redis-server` Kafka topic containing Base64 encoded data\n",
+                "Write the DataFrame from Kafka to the console with the key, value fields\n",
+                "Base64 decode the DataFrame",
+                "Write the decoded stream to the console",
+                "Extract the JSON payload",
+                "Write the complete JSON to the console",
+                "Parse the JSON to a temporary view",
+                "Select a subset of fields",
+                "Write the subset to the console",
+                "Start Spark master and worker",
+                "Deploy and run the pyspark application"
+              ],
+              "positive_feedback": null,
+              "video_feedback": null,
+              "description": null
+            },
+            {
+              "id": 1084261,
+              "key": "681e0cdf-6db8-4914-929b-a32e1e41eedb",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "r1053966c1079795xJUPYTERL8xuwb6ap",
+              "pool_id": "jupyterlabpython37",
+              "view_id": "jupyter-lab-co3ae",
+              "gpu_capable": false,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "disk": {
+                      "id": "data-science-datasets",
+                      "paths": [
+                        {
+                          "src": "/ND029",
+                          "dest": "/data/"
+                        }
+                      ]
+                    },
+                    "port": "3000",
+                    "ports": [],
+                    "videos": [],
+                    "pageEnd": "",
+                    "pageStart": "",
+                    "allowSubmit": true,
+                    "defaultPath": "/",
+                    "actionButtonText": ""
+                  },
+                  "kind": "jupyter-lab"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        },
+        {
+          "id": 1079800,
+          "key": "87c59930-02bd-4a9c-95d7-c59cf257f3b3",
+          "title": "Solution 3: Sink a Subset of JSON",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "87c59930-02bd-4a9c-95d7-c59cf257f3b3",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1079796,
+              "key": "4ab42346-499a-41f1-83d5-e4a2582e7d8e",
+              "title": "Solution: Write a pyspark application that sinks a subset of JSON fields Heading",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Solution: Sink a Subset of JSON Fields with Pyspark",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1105041,
+              "key": "0df19338-6bb1-4a2f-989f-c6c530ea8b3f",
+              "title": "ND029 DSND C2 L3 A12 Solution Sink A Subset Of JSON Short",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "5aphl7L62bo",
+                "china_cdn_id": "5aphl7L62bo.mp4"
+              }
+            },
+            {
+              "id": 1098605,
+              "key": "05b6c65c-001c-4bf6-b3ab-191f067ec5dc",
+              "title": null,
+              "semantic_type": "TaskListAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "05b6c65c-001c-4bf6-b3ab-191f067ec5dc",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "tasks": [
+                "When would you use `.select` versus `spark.sql`?",
+                "How do you use `split`?",
+                "When do you use `.selectExpr`?",
+                "How do you use `.selectExpr`?"
+              ],
+              "positive_feedback": "If you are comfortable with these, great! If not, feel free to review the lesson content.",
+              "video_feedback": null,
+              "description": "Now that you have used Kafka to sink a subset of JSON fields, reflect on the following:"
+            },
+            {
+              "id": 1095970,
+              "key": "03ff05f6-8d4e-4fb9-8b6d-d9aa62f44c07",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Optional Long Solution with Troubleshooting",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1095969,
+              "key": "7cd1fddf-42be-45f1-a5a9-e943a864ec2d",
+              "title": "ND029 DSND C2 L3 A12 Solution Sink A Subset Of JSON",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "w1W6BEdDmkE",
+                "china_cdn_id": "w1W6BEdDmkE.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 1079808,
+          "key": "e3923a46-8c8b-4eb5-98d4-2657e3b12693",
+          "title": "Edge Cases",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "e3923a46-8c8b-4eb5-98d4-2657e3b12693",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1079801,
+              "key": "abdff29f-275c-4adf-ac0f-39747a7e97a5",
+              "title": "Edge Cases Heading",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Edge Cases",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1079803,
+              "key": "e72035c4-1e49-469a-8e9f-dd23aaa80035",
+              "title": "ND029 DSND C2 L3 A13 Edge Cases",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "aQPB48mtgIg",
+                "china_cdn_id": "aQPB48mtgIg.mp4"
+              }
+            },
+            {
+              "id": 1099394,
+              "key": "235b4809-4bd7-4486-96fa-12995cbe1b9c",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## What If I subscribe to the wrong Kafka topic?\n\nWhat if you subscribe to the wrong Kafka topic in your Spark application and then correct it later? You may run into the error:\n\n```\nCurrent committed Offsets: {KafkaV2[Subscribe[topic-name]]: {'wrong-topic-name':{'0':0}}}\n\nSome data may have been lost because they are not available in Kafka any more; \neither the data was aged out by Kafka or the topic may have been deleted\nbefore all the data in the topic was processed. If you don't want your \nstreaming query to fail on such cases, set the source option\n\"failOnDataLoss\" to \"false.\"\n```\n\nIn this case, simply add the option `failOnDataLoss` to your `.writeStream` as below:\n\n```\ncheckinStatusDF.selectExpr(\"cast(statusTruckNumber as string) as key\", \"to_json(struct(*)) as value\") \\\n    .writeStream \\\n    .format(\"kafka\") \\\n    .option(\"kafka.bootstrap.servers\", \"localhost:9092\")\\\n    .option(\"topic\", \"checkin-status\")\\\n    .option(\"checkpointLocation\",\"/tmp/kafkacheckpoint\")\\\n    .option(\"failOnDataLoss\",\"false\")\\    \n    .start()\\\n    .awaitTermination()\n```",
+              "instructor_notes": null
+            }
+          ]
+        },
+        {
+          "id": 1103478,
+          "key": "2b332ae6-0a2c-4576-a37b-f505a57bca9e",
+          "title": "Quiz: Edge Cases",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "2b332ae6-0a2c-4576-a37b-f505a57bca9e",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1103482,
+              "key": "c81059f8-bb7b-4c0a-941a-be93c5a6b02f",
+              "title": null,
+              "semantic_type": "CheckboxQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "c81059f8-bb7b-4c0a-941a-be93c5a6b02f",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "You have a Spark streaming application sending data to Kafka, but you realize that you accidentally wrote to the wrong topic. What should you do? Check all that apply",
+                "answers": [
+                  {
+                    "id": "507f98a4-a348-451c-9250-a00a77db51d2",
+                    "text": "Erase your code and start over",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "83a4f640-e35c-413f-8795-a6358e28c060",
+                    "text": "Change the application to stream to two different topics: the wrong one and the right one.",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "c90d3b47-065b-4a40-acca-1b2ee59e7db1",
+                    "text": "Change the topic name the application writes to.",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "10010d40-d175-4eba-b501-02fff0526150",
+                    "text": "Add the failOnDataLoss option like this: `.option(\"failOnDataLoss\",\"false\")`",
+                    "is_correct": true
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 1094135,
+          "key": "9f8924fb-a21f-44cc-8104-e0370149b89b",
+          "title": "Bringing it all Together Walkthrough",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "9f8924fb-a21f-44cc-8104-e0370149b89b",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1105865,
+              "key": "fa742109-cdb1-4998-92b9-51dcd63b3ca3",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "*Please note that the video below is a longer version with troubleshooting. *",
+              "instructor_notes": null
+            },
+            {
+              "id": 1095972,
+              "key": "1bf2982b-48f6-4011-b2ba-479f32fd981e",
+              "title": "ND029 DSND C2 L3 A14 Bringing It All Together Walkthrough",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "p8J3ADzOCIA",
+                "china_cdn_id": "p8J3ADzOCIA.mp4"
+              }
+            },
+            {
+              "id": 1106443,
+              "key": "cb92614c-e924-4763-b94f-da2852d8c677",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Join Two Base64 Decoded Dataframes\n\n* **If you just started the workspace**, from the console type: `/home/workspace/startup/startup.sh` to start Kafka, Redis, and the Trucking Simulation\n* **If you just started the workspace**, start the spark master and spark worker\n   * From the terminal type: `/home/workspace/spark/sbin/start-master.sh`\n   * View the log and copy down the Spark URI\n   * From the terminal type: `/home/workspace/spark/sbin/start-slave.sh [Spark URI]`\n* Complete the `reservation-payment.py` python script\n* Submit the application to the spark cluster:\n   * From the terminal type: \n   `/home/workspace/spark/submit-reservation-payment.sh`\n* Watch the terminal for the values to scroll past (may take up to 2 minutes)",
+              "instructor_notes": null
+            },
+            {
+              "id": 1094138,
+              "key": "0f3ec1fa-e2cc-4f0a-a9bc-dd15301ce864",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "r1053966c1082043xJUPYTERLvc36joa9",
+              "pool_id": "jupyterlabpython37",
+              "view_id": "jupyter-lab-02ktc",
+              "gpu_capable": false,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "disk": {
+                      "id": "data-science-datasets",
+                      "paths": [
+                        {
+                          "src": "/ND029",
+                          "dest": "/data/"
+                        }
+                      ]
+                    },
+                    "port": "3000",
+                    "ports": [],
+                    "videos": [],
+                    "pageEnd": "1",
+                    "pageStart": "1",
+                    "allowSubmit": true,
+                    "defaultPath": "/",
+                    "actionButtonText": ""
+                  },
+                  "kind": "jupyter-lab"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        },
+        {
+          "id": 1079811,
+          "key": "d7914998-b6b3-42a5-a71c-0617dfecfe02",
+          "title": "Final Exercise",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "d7914998-b6b3-42a5-a71c-0617dfecfe02",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1103491,
+              "key": "9ce0465e-ab76-4805-8859-415159c7066f",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Decode and Join two Base64 Encoded JSON DataFrames\n\nNow that you have learned how to use `unbase64` to extract useful data, let's take things a step further. There is often a need to join data from separate data types. In this exercise we join data from the `customer` and the `customerLocation` message types.",
+              "instructor_notes": null
+            },
+            {
+              "id": 1079809,
+              "key": "343ba08b-4876-4030-877c-7a0f08634634",
+              "title": "Final Exercise Heading",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Decode and Join two Base64 Encoded JSON DataFrames\n\n* Click the button to start Kafka: Start Kafka\n* Start the spark master and spark worker\n* From the terminal type: /home/workspace/spark/sbin/start-master.sh\n* View the log and copy down the Spark URI\n* From the terminal type: /home/workspace/spark/sbin/start-slave.sh [Spark URI]\n* Start the Banking Simulation: Start Banking Simulation\n* Complete the current-country.py python script\n* Submit the application to the spark cluster:\n* From the terminal type: /home/workspace/submit-current-country.sh\n* Watch the terminal for the values to scroll past (may take 2-3 minutes)",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1099401,
+              "key": "97caabaa-a3b4-4223-b9b6-7a1a844a7725",
+              "title": "Decode and Join two Base64 Encoded JSON DataFrames\n",
+              "semantic_type": "TaskListAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "97caabaa-a3b4-4223-b9b6-7a1a844a7725",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "tasks": [
+                "Click the button to start Kafka",
+                "Start the spark master and spark worker",
+                "From the terminal type: /home/workspace/spark/sbin/start-master.sh",
+                "View the log and copy down the Spark URI",
+                "From the terminal type: /home/workspace/spark/sbin/start-slave.sh [Spark URI]",
+                "Start the Banking Simulation: Start Banking Simulation",
+                "Complete the current-country.py python script",
+                "From the terminal type: /home/workspace/submit-current-country.sh",
+                "Watch the terminal for the values to scroll past (may take 2-3 minutes)"
+              ],
+              "positive_feedback": null,
+              "video_feedback": null,
+              "description": null
+            },
+            {
+              "id": 1084262,
+              "key": "96109134-82e0-4010-a0eb-50cdb0e89880",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "r1053966c1079811xJUPYTERL63fs4owv",
+              "pool_id": "jupyterlabpython37",
+              "view_id": "jupyter-lab-krwxc",
+              "gpu_capable": false,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "disk": {
+                      "id": "data-science-datasets",
+                      "paths": [
+                        {
+                          "src": "/ND029",
+                          "dest": "/data/"
+                        }
+                      ]
+                    },
+                    "port": "3000",
+                    "ports": [],
+                    "videos": [],
+                    "pageEnd": "",
+                    "pageStart": "",
+                    "allowSubmit": true,
+                    "defaultPath": "/",
+                    "actionButtonText": ""
+                  },
+                  "kind": "jupyter-lab"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        },
+        {
+          "id": 1079815,
+          "key": "92e3e309-a077-42ca-86c3-230a1cb9e48c",
+          "title": "Solution 4: Final Exercise",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "92e3e309-a077-42ca-86c3-230a1cb9e48c",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1079812,
+              "key": "53d038fc-bc58-4d8e-a972-5cd53930fde0",
+              "title": "Final Exercise Solution Heading",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Solution: Final Exercise",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1079813,
+              "key": "f5934b0e-e0ff-48e3-b9d8-ab249a198df0",
+              "title": "ND029 DSND C2 L3 A15 Solution Bringing It All Together",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "VOEqhZbbYHY",
+                "china_cdn_id": "VOEqhZbbYHY.mp4"
+              }
+            },
+            {
+              "id": 1099404,
+              "key": "1c80d9e7-5218-4ea9-84eb-22d9159ea86c",
+              "title": "Now that you have decoded and joined two Base64 encoded JSON DataFrames, reflect on the following:\n",
+              "semantic_type": "TaskListAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "1c80d9e7-5218-4ea9-84eb-22d9159ea86c",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "tasks": [
+                "How comfortable do you feel using the unbase64 function?",
+                "If you were asked to read from a configured Redis Source Connector topic, where would you start? ",
+                "How comfortable do you feel joining DataFrames?"
+              ],
+              "positive_feedback": "If you feel good about these topics, great! If you need a little more practice, feel free to review the lesson!",
+              "video_feedback": null,
+              "description": null
+            }
+          ]
+        },
+        {
+          "id": 1079818,
+          "key": "ead9b1c1-2c1f-43cf-b4cf-788567682641",
+          "title": "Glossary",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "ead9b1c1-2c1f-43cf-b4cf-788567682641",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1079816,
+              "key": "a2c896d2-7225-4aa5-8f90-e8f07e819aed",
+              "title": "Glossary Heading",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Glossary",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1079817,
+              "key": "61d85e87-c91d-46eb-aa85-028c827a2c30",
+              "title": "Glossary List",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "|Term|Definition|\n|--------|--------------|\n|Base64| Base64 is an encoding format used by computers to transmit and store information.|\n|Kafka Connect| Kafka Connect is part of the Confluent Kafka distribution; it is the component responsible for providing a path from an external system (a source) to a Kafka topic or from a Kafka topic to an external system (a sink).|\n|Redis| Redis is a database used primarily for caching; this means it is optimized for fast reads and writes.|\n|Source Connector| A Source Connector provides a connection from an outside system (a source) to a Kafka topic.|",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 1079821,
+          "key": "aa6bf4e4-8344-402a-b69d-5a1bfc34e449",
+          "title": "Further Reading",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "aa6bf4e4-8344-402a-b69d-5a1bfc34e449",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1099405,
+              "key": "6a574867-c1fa-4eba-8aa8-ca3a95fe1588",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## How to Install the Kafka Redis Source Connector\n\nFor more information on using the Kafka Redis Source Connector used in the lesson, see the <a href=\"https://github.com/scmurdock/kafka-connector-redis\" target=\"_blank\">Forked Kafka Connect Redis Repository</a> I used to set up your workspace.\n\nAlso, here is the <a href=\"https://github.com/Aegeaner/kafka-connector-redis\" target=\"_blank\">Original Redis Source Connector Repository</a>  we based it on.",
+              "instructor_notes": null
+            },
+            {
+              "id": 1099407,
+              "key": "19ae7b40-ecaf-4e1c-abf3-6be339fbac9f",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## More on PySpark SQL Functions\n\nTo see the full list of possible SQL functions that come with PySpark, see the <a href=\"https://spark.apache.org/docs/latest/api/python/pyspark.sql.html\" target=\"_blank\">PySpark SQL Module</a>",
+              "instructor_notes": null
+            },
+            {
+              "id": 1099408,
+              "key": "0e9cc639-140a-448e-866d-7c46ae1a8b1a",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Wikipedia on Base64\n\nFor more information about Base64, see the <a href=\"https://en.wikipedia.org/wiki/Base64\" target=\"_blank\">Wikipedia Base64 Article</a>",
+              "instructor_notes": null
+            },
+            {
+              "id": 1099406,
+              "key": "d7f9a522-41dd-41de-a025-b39d4c14e86f",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## More on PySpark SQL Functions\n\nTo see the full list of possible SQL functions that come with PySpark, see the <a href=\"https://spark.apache.org/docs/latest/api/python/pyspark.sql.html\" target=\"_blank\">PySpark SQL Module</a>",
+              "instructor_notes": null
+            }
+          ]
+        },
+        {
+          "id": 1079829,
+          "key": "1961aaf3-6e0e-4698-b5dc-3328cf9c4e74",
+          "title": "Lesson and Course Recap",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "1961aaf3-6e0e-4698-b5dc-3328cf9c4e74",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1079822,
+              "key": "ab6484fd-99d2-4340-a971-38baa1f294fa",
+              "title": "Lesson Review Heading",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Lesson Review",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1079823,
+              "key": "bf9c2af7-fd09-478b-8333-f6419ae70256",
+              "title": "ND029 DSND C2 L3 A16 Lesson And Course Recap V2",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "XXgLnfyoNMI",
+                "china_cdn_id": "XXgLnfyoNMI.mp4"
+              }
+            },
+            {
+              "id": 1099410,
+              "key": "160d6bb5-858a-4823-ae19-6ef92809649c",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/November/5fadd868_slide-95/slide-95.jpeg",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/160d6bb5-858a-4823-ae19-6ef92809649c",
+              "caption": "Lesson Structure",
+              "alt": "Lesson Structure",
+              "width": 1920,
+              "height": 1080,
+              "instructor_notes": null
+            },
+            {
+              "id": 1079825,
+              "key": "28a86f15-6f3a-46fb-b535-85c4169b162b",
+              "title": "Lesson Review Learning Objectives",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Learning Objectives Review\n\n\n\nAfter finishing this lesson you should be able to:\n\n* Manually Save and Read from Redis\n* Parse Base64 Encoded Information\n* Sink a Subset of JSON",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1099409,
+              "key": "23c8c108-44ff-4af8-b4b2-f519051de339",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/November/5fadd842_slide-96-1/slide-96-1.jpeg",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/23c8c108-44ff-4af8-b4b2-f519051de339",
+              "caption": "Course Review",
+              "alt": "Course Review",
+              "width": 1920,
+              "height": 1080,
+              "instructor_notes": null
+            },
+            {
+              "id": 1079828,
+              "key": "2832e0f3-e764-4ec9-8fc1-7723db5118cb",
+              "title": "Course Outline Summary",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Where we are in the course\n\n\n\nLet's look at the course overview. You just learned about Redis, Base64, and JSON.\n\nNext you will get to work with a real-world challenge to evaluate human balance. You'll apply techniques from the course to a streaming analytics application. I hope you are ready to put your skills to the test.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 1079837,
+          "key": "2b2d18a1-7a98-4798-8cfd-6ea85a50f269",
+          "title": "Congratulations",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "2b2d18a1-7a98-4798-8cfd-6ea85a50f269",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1079836,
+              "key": "32f370a9-f240-4286-b76e-4eeedeee14b2",
+              "title": "ND029 DSND C2 L3 A17 Congratulations V2",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "2-R7aGTDsEs",
+                "china_cdn_id": "2-R7aGTDsEs.mp4"
+              }
+            },
+            {
+              "id": 1079835,
+              "key": "9258e00b-9c68-414b-9321-06ed9a876dc6",
+              "title": "Congratulations Heading",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Congratulations\n\n\n\nCongratulations! You have worked very hard. Some of the exercises and concepts in this course can be rigorous. Your incredible progress is a testament to your dedication. I have sincerely enjoyed teaching you. Remember to keep learning, and share your knowledge with others! A little knowledge goes a long way. You may now be the most experienced person in your office to work with Spark Streaming!",
+              "instructor_notes": ""
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "_deprecated": [
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "starter_files",
+      "reason": "prefer master_archive_id"
+    },
+    {
+      "name": "starter_files",
+      "reason": "prefer master_archive_id"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "starter_files",
+      "reason": "prefer master_archive_id"
+    },
+    {
+      "name": "starter_files",
+      "reason": "prefer master_archive_id"
+    },
+    {
+      "name": "starter_files",
+      "reason": "prefer master_archive_id"
+    },
+    {
+      "name": "starter_files",
+      "reason": "prefer master_archive_id"
+    },
+    {
+      "name": "starter_files",
+      "reason": "prefer master_archive_id"
+    },
+    {
+      "name": "starter_files",
+      "reason": "prefer master_archive_id"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    }
+  ]
+}

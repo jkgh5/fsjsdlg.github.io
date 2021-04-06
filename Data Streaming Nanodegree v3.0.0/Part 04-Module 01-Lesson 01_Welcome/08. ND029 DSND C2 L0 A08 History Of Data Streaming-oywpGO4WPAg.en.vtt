@@ -1,0 +1,79 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:03.135
+Let's talk about the history of data streaming.
+
+00:00:03.135 --> 00:00:05.805
+As we described in the waterfall scenario,
+
+00:00:05.805 --> 00:00:08.190
+the water we use for our survival comes from
+
+00:00:08.190 --> 00:00:11.205
+reservoirs and streams that deliver the water to us.
+
+00:00:11.205 --> 00:00:15.090
+The foundation for all streaming technology lies in the ability
+
+00:00:15.090 --> 00:00:19.275
+to transmit electronic messages from one system to another.
+
+00:00:19.275 --> 00:00:24.840
+In 1964, the IBM system 360 was created,
+
+00:00:24.840 --> 00:00:28.200
+including the BTAM and QTAM frameworks,
+
+00:00:28.200 --> 00:00:32.425
+which are basic and Queued telecommunications access methods.
+
+00:00:32.425 --> 00:00:35.969
+In 1971, IBM offered TCAM,
+
+00:00:35.969 --> 00:00:40.895
+telecommunications access method, which included more advanced message routing.
+
+00:00:40.895 --> 00:00:47.485
+In 1992, IBM announced the MQ series available off the mainframe.
+
+00:00:47.485 --> 00:00:54.050
+In 1998, Sun Micro-systems published the Java Message Service specification.
+
+00:00:54.050 --> 00:01:01.200
+In 1999, Andy Stanford-Clark and Arlen Nipper authored MQTT.
+
+00:01:01.400 --> 00:01:07.220
+While the early development of messaging was concentrated around large corporations,
+
+00:01:07.220 --> 00:01:09.260
+smaller companies began to develop
+
+00:01:09.260 --> 00:01:14.350
+groundbreaking technology that would evolve to what we currently know as data streaming.
+
+00:01:14.350 --> 00:01:20.790
+In 2003, Apache Nutch was created by Doug Cutting and Mike Cafarella.
+
+00:01:20.790 --> 00:01:26.450
+Apache Nutch moved to Apache Hadoop project in 2006.
+
+00:01:26.450 --> 00:01:29.525
+In 2007, Rabbit Technologies,
+
+00:01:29.525 --> 00:01:32.425
+LTD developed Rabbit MQ.
+
+00:01:32.425 --> 00:01:39.275
+In 2009, Spark was started by Matei Zaharia at UC Berkeley.
+
+00:01:39.275 --> 00:01:43.795
+In 2011, Kafka was developed by LinkedIn.
+
+00:01:43.795 --> 00:01:49.070
+In 2013, Spark was donated to the Apache Foundation.
+
+00:01:49.070 --> 00:01:56.220
+In 2017, Spark 2.2 was released with Kafka streaming support.
+
