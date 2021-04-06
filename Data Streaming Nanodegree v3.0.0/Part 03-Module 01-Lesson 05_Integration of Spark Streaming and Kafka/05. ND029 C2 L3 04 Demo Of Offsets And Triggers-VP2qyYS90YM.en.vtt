@@ -1,0 +1,103 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:02.924
+Here, we have the sample code for triggers.
+
+00:00:02.924 --> 00:00:07.694
+Since we have to use checkpointing mechanism which requires distributed file system,
+
+00:00:07.695 --> 00:00:09.974
+we can't run this code in the workspace,
+
+00:00:09.974 --> 00:00:12.899
+but if you were to implement this at your job,
+
+00:00:12.900 --> 00:00:14.580
+it would look similar to this.
+
+00:00:14.580 --> 00:00:17.324
+We'll have SparkSession.builder.
+
+00:00:17.324 --> 00:00:19.769
+Also master which we have a stand alone.
+
+00:00:19.769 --> 00:00:23.699
+You'll probably have to change this appname and a getorCreate.
+
+00:00:23.699 --> 00:00:26.969
+We have this in the format of rate right now.
+
+00:00:26.969 --> 00:00:30.029
+We're going to process just some random number
+
+00:00:30.030 --> 00:00:32.820
+of rows and then ramp up time which gives you one
+
+00:00:32.820 --> 00:00:41.120
+second.This is just to select a raw data that's coming in as your readStream.
+
+00:00:41.119 --> 00:00:44.584
+We're always going to use the timestamp and the value.
+
+00:00:44.585 --> 00:00:49.655
+Here, we have some default way of writing out to console.
+
+00:00:49.655 --> 00:00:54.905
+But we're also using a checkpointing mechanism which requires distributed file system.
+
+00:00:54.905 --> 00:00:57.785
+Here, we have the trigger option.
+
+00:00:57.784 --> 00:01:00.109
+This is a Pythonic way of putting it.
+
+00:01:00.109 --> 00:01:02.030
+So we're going to put once=true.
+
+00:01:02.030 --> 00:01:04.700
+Obviously, if you don't have this parameter,
+
+00:01:04.700 --> 00:01:06.299
+it defaults to false.
+
+00:01:06.299 --> 00:01:09.724
+So here, we see the processing time in 20 seconds.
+
+00:01:09.724 --> 00:01:12.364
+So this will always be in seconds.
+
+00:01:12.364 --> 00:01:14.599
+These two also require checkpointing
+
+00:01:14.599 --> 00:01:19.489
+location mechanism which also requires distributed file system.
+
+00:01:19.489 --> 00:01:22.849
+For this, you can run any query, either once query,
+
+00:01:22.849 --> 00:01:28.129
+processing time query to actually start your query and then you can append
+
+00:01:28.129 --> 00:01:34.969
+the await termination function until it stops receiving the data.
+
+00:01:34.969 --> 00:01:38.015
+There are many use cases to use trigger
+
+00:01:38.015 --> 00:01:41.269
+but if you were to treat a continuous stream of badges,
+
+00:01:41.269 --> 00:01:43.759
+you'll probably want to use processing time,
+
+00:01:43.760 --> 00:01:45.575
+20 seconds, 30 seconds,
+
+00:01:45.575 --> 00:01:49.370
+or even 200 seconds which will go above
+
+00:01:49.370 --> 00:01:54.510
+a minute to manage trigger depending on your input data.
+

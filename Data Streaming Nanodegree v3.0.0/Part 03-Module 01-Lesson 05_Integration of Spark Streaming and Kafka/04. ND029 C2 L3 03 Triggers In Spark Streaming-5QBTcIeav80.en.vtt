@@ -1,0 +1,67 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:05.565
+Spark Streaming also has another fault tolerant system called Write-Ahead Logs.
+
+00:00:05.565 --> 00:00:08.175
+This was introduced in Spark 1.2,
+
+00:00:08.175 --> 00:00:12.660
+and Write-Ahead Logs enforces fault tolerance by saving all data
+
+00:00:12.660 --> 00:00:17.894
+received by the receivers to log files located in certain checkpoint directory.
+
+00:00:17.894 --> 00:00:20.280
+It can be enabled through enabling
+
+00:00:20.280 --> 00:00:24.539
+Spark.Streaming receiver.Write-Ahead Log enabled property.
+
+00:00:24.539 --> 00:00:31.424
+In Spark streaming, Driver updates the Write-Ahead Logs with unprocessed offset.
+
+00:00:31.425 --> 00:00:39.510
+A micro batch job or our jobs are created then process the records.
+
+00:00:39.509 --> 00:00:42.920
+The output of the micro batch is
+
+00:00:42.920 --> 00:00:47.075
+persisted in some location like database or a file system.
+
+00:00:47.075 --> 00:00:52.310
+Spark structures trimmings default behavior is reading stream as a micro batch.
+
+00:00:52.310 --> 00:00:55.219
+In a micro batch, incoming records are grouped into
+
+00:00:55.219 --> 00:00:58.475
+small Windows and processed in a periodic fashion.
+
+00:00:58.475 --> 00:01:03.950
+Spark will also try to read the next micro batch as soon as possible when it's available.
+
+00:01:03.950 --> 00:01:07.250
+Spark structured streaming still works in micro batches.
+
+00:01:07.250 --> 00:01:10.730
+We say structure streaming works in micro batches because it
+
+00:01:10.730 --> 00:01:15.034
+uses run batches method and stream execution class.
+
+00:01:15.034 --> 00:01:19.349
+Run batches triggers data retrieval user-specified integral,
+
+00:01:19.349 --> 00:01:22.019
+managed by processing time executer,
+
+00:01:22.019 --> 00:01:25.218
+or only once managed by onetime executor,
+
+00:01:25.218 --> 00:01:29.369
+and we'll take a look at that in the demo in the next concept.
+

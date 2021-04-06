@@ -1,0 +1,276 @@
+<!-- udacity2.0 -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Kafka-Spark Integration Pt. 2</title>
+  <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../assets/css/plyr.css">
+  <link rel="stylesheet" href="../assets/css/katex.min.css">
+  <link rel="stylesheet" href="../assets/css/jquery.mCustomScrollbar.min.css">
+  <link rel="stylesheet" href="../assets/css/styles.css">
+  <link rel="shortcut icon" type="image/png" href="../assets/img/udacimak.png" />
+</head>
+
+<body>
+  <div class="wrapper">
+    <nav id="sidebar">
+  <div class="sidebar-header">
+    <h3>Integration of Spark Streaming and Kafka</h3>
+  </div>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled components">
+    <li class="">
+      <a href="01. Lesson Overview.html">01. Lesson Overview</a>
+    </li>
+    <li class="">
+      <a href="02. Create a Kafka Producer Server.html">02. Create a Kafka Producer Server</a>
+    </li>
+    <li class="">
+      <a href="03. Kafka Data Source API.html">03. Kafka Data Source API</a>
+    </li>
+    <li class="">
+      <a href="04. Kafka Offsets in Spark.html">04. Kafka Offsets in Spark</a>
+    </li>
+    <li class="">
+      <a href="05. Exercise Offsets &amp; Triggers.html">05. Exercise: Offsets &amp; Triggers</a>
+    </li>
+    <li class="">
+      <a href="06. Integrating Spark and Kafka.html">06. Integrating Spark and Kafka</a>
+    </li>
+    <li class="">
+      <a href="07. Logs with Spark Console &amp; UI.html">07. Logs with Spark Console &amp; UI</a>
+    </li>
+    <li class="">
+      <a href="08. Progress Reports in Spark Console.html">08. Progress Reports in Spark Console</a>
+    </li>
+    <li class="">
+      <a href="09. Review Progress Report Fields.html">09. Review: Progress Report Fields</a>
+    </li>
+    <li class="">
+      <a href="10. Kafka-Spark Integration Pt. 1.html">10. Kafka-Spark Integration Pt. 1</a>
+    </li>
+    <li class="">
+      <a href="11. Kafka-Spark Integration Pt. 2.html">11. Kafka-Spark Integration Pt. 2</a>
+    </li>
+    <li class="">
+      <a href="12. Performance Tuning.html">12. Performance Tuning</a>
+    </li>
+    <li class="">
+      <a href="13. Lesson and Course Wrap-Up.html">13. Lesson and Course Wrap-Up</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+</nav>
+
+    <div id="content">
+      <header class="container-fluild header">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <div class="align-items-middle">
+                <button type="button" id="sidebarCollapse" class="btn btn-toggle-sidebar">
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                </button>
+
+                <h1 style="display: inline-block">11. Kafka-Spark Integration Pt. 2</h1>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <main class="container">
+        <div class="row">
+          <div class="col-12">
+            <div class="ud-atom">
+  <h3><p>Scenario 2: Improve System Stability</p></h3>
+  <div>
+  <h1 id="scenario-2">Scenario 2</h1>
+<p>Other methods of improving your Spark application are by improving system stability and studying your data.</p>
+<p>When the heap gets very big (&gt; 32GB), the cost of GC (garbage collection) gets large as well. We might see this when the join application runs with large shuffles (&gt; 20GB), and the GC time will spike.</p>
+<p>Can you use a sample of your data? How about using <strong>salting</strong> or <strong>broadcasting</strong>? Let’s discuss these below.</p>
+<p>In the ideal world, when you operate a join on your dataset, join keys will be evenly distributed and each partition will be nicely organized. In the real world, uneven partitioning is unavoidable due to the nature of your dataset.</p>
+<p>Using the Spark UI (or even just your logs), you'll commonly see the errors below:</p>
+<ul>
+<li>Frozen stages</li>
+<li>Low utilization of CPU (workers not working)</li>
+<li>Out of memory errors</li>
+</ul>
+<p>Carefully studying your data, to minimize the skewed data problem, we can try the following:</p>
+<ul>
+<li><p><strong>Broadcasting</strong>: You can increase the autoBroadcastJoinThreshold value in spark.sql property so that the smaller tables get “broadcasted.” This is helpful when you have a large dataset that will not fit into your memory.</p></li>
+<li><p><strong>Salting</strong>: If you have a key with high cardinality, your dataset will be skewed. Now you introduce a “salt,” modifying original keys in a certain way and using hash partitioning for proper redistribution of records.</p></li>
+</ul>
+<p>Now that we have cleaned up our data and the skew problem as much as we could, and also assuming that our code is optimized, let’s talk about how we can stabilize the system through a couple of different methods:</p>
+<ul>
+<li>Auto scaling</li>
+<li>Speculative execution</li>
+</ul>
+<p>Auto scaling is only doable with cloud clusters as you can always add more nodes freely. Two popular tech stacks that are used are AWS Auto Scaling (if AWS EMR clusters are used) or auto scaling with Kubernetes (a container-orchestration system). </p>
+<p>Speculative execution is another popular addition to stabilize and reduce bottleneck-like threshold. Speculative execution in Spark detects the “speculated task” (which means this task is running slower than the median speed of the other tasks), and then submits the “speculated task” to another worker. This enables continuous parallel execution rather than shutting off the slow task.</p>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3><p>Scenario 2 diagram below</p></h3>
+  <div>
+  <h2 id="notes-on-scenario-2-diagram-below">Notes on Scenario 2 diagram below</h2>
+<p>In this sample image below, let’s say task 1 and 2 are identical to each other. In fact, task 2 is a duplicate of task 1. In the node that contains task 1, if the task is seen to be slower than the median speed, then the job scheduler launches the task 2 (duplicate of task 1) in another node.</p>
+<p>If the duplicate task is faster, the result of task 2 will be submitted to the job scheduler. If the original task is faster, then the result of task 1 will be used. In Spark UI, whichever node that was killed due to late execution will be noted as <code>killed intentionally</code>.</p>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3><p>Architecture of Scenario 2</p></h3>
+  <div>
+  <figure class="figure">
+    <img src="img/screen-shot-2019-10-15-at-3.32.41-pm.png" alt="**Speculative Execution in Scenario 2**" class="img img-fluid">
+    <figcaption class="figure-caption">
+      <p><strong>Speculative Execution in Scenario 2</strong></p>
+    </figcaption>
+  </figure>
+</div>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3><p>Scenario 2</p></h3>
+  <div>
+  <form>
+    <fieldset>
+      <legend><p>What does speculative execution do to keep the speed of application consistent? (may be more than one answer)</p></legend>
+    </fieldset>
+
+    <div>
+      <input type="checkbox" value="rbk1" name="952252" id="rbk1">
+      <label for="rbk1"><p>Speculative execution checks the heartbeat and speed of the tasks.</p></label>
+    </div>
+    <div>
+      <input type="checkbox" value="rbk2" name="952252" id="rbk2">
+      <label for="rbk2"><p>Speculative execution kills the slow tasks because they only disrupt the speed of the execution.</p></label>
+    </div>
+    <div>
+      <input type="checkbox" value="rbk3" name="952252" id="rbk3">
+      <label for="rbk3"><p>Speculative execution replicates tasks many times that are slow so Spark can have backup options.</p></label>
+    </div>
+  </form>
+
+  <details>
+    <summary><strong>SOLUTION:</strong></summary>
+    <ul>
+      <li>Speculative execution checks the heartbeat and speed of the tasks.</li>
+  </ul>
+  </details>
+</div>
+
+</div>
+<div class="divider"></div>
+          </div>
+
+          <div class="col-12">
+            <p class="text-right">
+              <a href="12. Performance Tuning.html" class="btn btn-outline-primary mt-4" role="button">Next Concept</a>
+            </p>
+          </div>
+        </div>
+      </main>
+
+      <footer class="footer">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <p class="text-center">
+                <a href="https://us-udacity.github.io/" target="_blank">【udacity2.0 】If you need more courses, please add wechat：udacity6</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </div>
+
+
+  <script src="../assets/js/jquery-3.3.1.min.js"></script>
+  <script src="../assets/js/plyr.polyfilled.min.js"></script>
+  <script src="../assets/js/bootstrap.min.js"></script>
+  <script src="../assets/js/jquery.mCustomScrollbar.concat.min.js"></script>
+  <script src="../assets/js/katex.min.js"></script>
+  <script>
+    // Initialize Plyr video players
+    const players = Array.from(document.querySelectorAll('video')).map(p => new Plyr(p));
+
+    // render math equations
+    let elMath = document.getElementsByClassName('mathquill');
+    for (let i = 0, len = elMath.length; i < len; i += 1) {
+      const el = elMath[i];
+
+      katex.render(el.textContent, el, {
+        throwOnError: false
+      });
+    }
+
+    // this hack will make sure Bootstrap tabs work when using Handlebars
+    if ($('#question-tabs').length && $('#user-answer-tabs').length) {
+      $("#question-tabs a.nav-link").on('click', function () {
+        $("#question-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+      $("#user-answer-tabs a.nav-link").on('click', function () {
+        $("#user-answer-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    } else {
+      $("a.nav-link").on('click', function () {
+        $(".tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    }
+
+    // side bar events
+    $(document).ready(function () {
+      $("#sidebar").mCustomScrollbar({
+        theme: "minimal"
+      });
+
+      $('#sidebarCollapse').on('click', function () {
+        $('#sidebar, #content').toggleClass('active');
+        $('.collapse.in').toggleClass('in');
+        $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+      });
+
+      // scroll to first video on page loading
+      if ($('video').length) {
+        $('html,body').animate({ scrollTop: $('div.plyr').prev().offset().top});
+      }
+
+      // auto play first video: this may not work with chrome/safari due to autoplay policy
+      if (players && players.length > 0) {
+        players[0].play();
+      }
+
+      // scroll sidebar to current concept
+      const currentInSideBar = $( "ul.sidebar-list.components li a:contains('11. Kafka-Spark Integration Pt. 2')" )
+      currentInSideBar.css( "text-decoration", "underline" );
+      $("#sidebar").mCustomScrollbar('scrollTo', currentInSideBar);
+    });
+  </script>
+</body>
+
+</html>

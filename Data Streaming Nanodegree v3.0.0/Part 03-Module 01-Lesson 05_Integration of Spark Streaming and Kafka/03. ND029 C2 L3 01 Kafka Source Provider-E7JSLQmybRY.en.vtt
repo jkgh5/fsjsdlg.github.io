@@ -1,0 +1,43 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:05.294
+In this concept, we'll go over intensely how to integrate Kafka and Spark streaming.
+
+00:00:05.294 --> 00:00:10.109
+We'll take a closer look at which Spark classes and API's that we'll be using.
+
+00:00:10.109 --> 00:00:13.980
+Kafka source provider is the underlying class we'll use and it is
+
+00:00:13.980 --> 00:00:17.760
+the provider for the streaming data source for Kafka source.
+
+00:00:17.760 --> 00:00:21.599
+Kafka source provider requires these options; subscribe,
+
+00:00:21.599 --> 00:00:26.190
+subscribepattern, or assign, and Kafka.bootstrap.server.
+
+00:00:26.190 --> 00:00:28.290
+This sounds difficult in words,
+
+00:00:28.289 --> 00:00:34.784
+but in code it's simply format of Kafka and subscribing to a topic name here,
+
+00:00:34.784 --> 00:00:38.309
+and subscribing to a Bootstrap server, usually,
+
+00:00:38.310 --> 00:00:42.179
+we'll be using for localhost and a port number for the topic.
+
+00:00:42.179 --> 00:00:46.869
+Kafka source providers sets the properties for Kafka consumers and executors.
+
+00:00:46.869 --> 00:00:49.875
+This is why we don't create separate consumer modules for
+
+00:00:49.875 --> 00:00:54.179
+Kafka producer when we integrate Kafka and Spark.
+

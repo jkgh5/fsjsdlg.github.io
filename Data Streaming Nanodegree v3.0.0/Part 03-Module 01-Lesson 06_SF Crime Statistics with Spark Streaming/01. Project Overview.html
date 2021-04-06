@@ -1,0 +1,231 @@
+<!-- udacity2.0 -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Project Overview</title>
+  <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../assets/css/plyr.css">
+  <link rel="stylesheet" href="../assets/css/katex.min.css">
+  <link rel="stylesheet" href="../assets/css/jquery.mCustomScrollbar.min.css">
+  <link rel="stylesheet" href="../assets/css/styles.css">
+  <link rel="shortcut icon" type="image/png" href="../assets/img/udacimak.png" />
+</head>
+
+<body>
+  <div class="wrapper">
+    <nav id="sidebar">
+  <div class="sidebar-header">
+    <h3>SF Crime Statistics with Spark Streaming</h3>
+  </div>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled components">
+    <li class="">
+      <a href="01. Project Overview.html">01. Project Overview</a>
+    </li>
+    <li class="">
+      <a href="02. Project Directions.html">02. Project Directions</a>
+    </li>
+    <li class="">
+      <a href="03. Project Workspace.html">03. Project Workspace</a>
+    </li>
+    <li class="">
+      <a href="Project Description - SF Crime Statistics with Spark Streaming.html">Project Description - SF Crime Statistics with Spark Streaming</a>
+    </li>
+    <li class="">
+      <a href="Project Rubric - SF Crime Statistics with Spark Streaming.html">Project Rubric - SF Crime Statistics with Spark Streaming</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+</nav>
+
+    <div id="content">
+      <header class="container-fluild header">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <div class="align-items-middle">
+                <button type="button" id="sidebarCollapse" class="btn btn-toggle-sidebar">
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                </button>
+
+                <h1 style="display: inline-block">01. Project Overview</h1>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <main class="container">
+        <div class="row">
+          <div class="col-12">
+            <div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h2 id="project-overview">Project Overview</h2>
+<p>In this project, you will be provided with a real-world dataset, extracted from Kaggle, on San Francisco crime incidents, and you will provide statistical analyses of the data using Apache Spark Structured Streaming. You will draw on the skills and knowledge you've learned in this course to create a Kafka server to produce data, and ingest data through Spark Structured Streaming.</p>
+<p>You can try to answer the following questions with the dataset:</p>
+<ul>
+<li>What are the top types of crimes in San Fransisco?</li>
+<li>What is the crime density by location?</li>
+</ul>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h3 id="development-environment">Development Environment</h3>
+<p>You may choose to create your project in the workspace we provide here, or if you wish to develop your project locally, you will need to set up your environment properly as described below:</p>
+<ul>
+<li>Spark 2.4.3</li>
+<li>Scala 2.11.x</li>
+<li>Java 1.8.x</li>
+<li>Kafka build with Scala 2.11.x</li>
+<li>Python 3.6.x or 3.7.x</li>
+</ul>
+<h4 id="environment-setup-only-necessary-if-you-want-to-work-on-the-project-locally-on-your-own-machine">Environment Setup (Only Necessary if You Want to Work on the Project Locally on Your Own Machine)</h4>
+<h5 id="for-macs-or-linux">For Macs or Linux:</h5>
+<ul>
+<li>Download Spark from <a href="https://spark.apache.org/downloads.html" rel="noopener noreferrer" target="_blank">https://spark.apache.org/downloads.html</a>. Choose "Prebuilt for Apache Hadoop 2.7 and later."</li>
+<li>Unpack Spark in one of your folders (I usually put all my dev requirements in /home/users/user/dev).</li>
+<li>Download binary for Kafka from this location <a href="https://kafka.apache.org/downloads" rel="noopener noreferrer" target="_blank">https://kafka.apache.org/downloads</a>, with Scala 2.11, version 2.3.0. Unzip in your local directory where you unzipped your Spark binary as well. Exploring the Kafka folder, you’ll see the scripts to execute in <code>bin</code> folders, and config files under <code>config</code> folder. You’ll need to modify <code>zookeeper.properties</code> and <code>server.properties</code>.</li>
+<li>Download Scala from the official site, or for Mac users, you can also use <code>brew install scala</code>, but make sure you download version 2.11.x.</li>
+<li>Run below to verify correct versions:</li>
+</ul>
+<pre><code>java -version
+scala -version</code></pre>
+<ul>
+<li>Make sure your ~/.bash_profile looks like below (might be different depending on your directory):</li>
+</ul>
+<pre><code>export SPARK_HOME=/Users/dev/spark-2.4.3-bin-hadoop2.7
+export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_181.jdk/Contents/Home
+export SCALA_HOME=/usr/local/scala/
+export PATH=$JAVA_HOME/bin:$SPARK_HOME/bin:$SCALA_HOME/bin:$PATH</code></pre>
+<h5 id="for-windows">For Windows:</h5>
+<p>Please follow the directions found in this helpful StackOverflow post: <a href="https://stackoverflow.com/questions/25481325/how-to-set-up-spark-on-windows" rel="noopener noreferrer" target="_blank">https://stackoverflow.com/questions/25481325/how-to-set-up-spark-on-windows</a></p>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <figure class="figure">
+    <img src="img/screen-shot-2019-08-12-at-9.49.15-am.png" alt="SF Crime Data" class="img img-fluid">
+    <figcaption class="figure-caption">
+      <p>SF Crime Data</p>
+    </figcaption>
+  </figure>
+</div>
+
+
+</div>
+<div class="divider"></div>
+          </div>
+
+          <div class="col-12">
+            <p class="text-right">
+              <a href="02. Project Directions.html" class="btn btn-outline-primary mt-4" role="button">Next Concept</a>
+            </p>
+          </div>
+        </div>
+      </main>
+
+      <footer class="footer">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <p class="text-center">
+                <a href="https://us-udacity.github.io/" target="_blank">【udacity2.0 】If you need more courses, please add wechat：udacity6</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </div>
+
+
+  <script src="../assets/js/jquery-3.3.1.min.js"></script>
+  <script src="../assets/js/plyr.polyfilled.min.js"></script>
+  <script src="../assets/js/bootstrap.min.js"></script>
+  <script src="../assets/js/jquery.mCustomScrollbar.concat.min.js"></script>
+  <script src="../assets/js/katex.min.js"></script>
+  <script>
+    // Initialize Plyr video players
+    const players = Array.from(document.querySelectorAll('video')).map(p => new Plyr(p));
+
+    // render math equations
+    let elMath = document.getElementsByClassName('mathquill');
+    for (let i = 0, len = elMath.length; i < len; i += 1) {
+      const el = elMath[i];
+
+      katex.render(el.textContent, el, {
+        throwOnError: false
+      });
+    }
+
+    // this hack will make sure Bootstrap tabs work when using Handlebars
+    if ($('#question-tabs').length && $('#user-answer-tabs').length) {
+      $("#question-tabs a.nav-link").on('click', function () {
+        $("#question-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+      $("#user-answer-tabs a.nav-link").on('click', function () {
+        $("#user-answer-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    } else {
+      $("a.nav-link").on('click', function () {
+        $(".tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    }
+
+    // side bar events
+    $(document).ready(function () {
+      $("#sidebar").mCustomScrollbar({
+        theme: "minimal"
+      });
+
+      $('#sidebarCollapse').on('click', function () {
+        $('#sidebar, #content').toggleClass('active');
+        $('.collapse.in').toggleClass('in');
+        $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+      });
+
+      // scroll to first video on page loading
+      if ($('video').length) {
+        $('html,body').animate({ scrollTop: $('div.plyr').prev().offset().top});
+      }
+
+      // auto play first video: this may not work with chrome/safari due to autoplay policy
+      if (players && players.length > 0) {
+        players[0].play();
+      }
+
+      // scroll sidebar to current concept
+      const currentInSideBar = $( "ul.sidebar-list.components li a:contains('01. Project Overview')" )
+      currentInSideBar.css( "text-decoration", "underline" );
+      $("#sidebar").mCustomScrollbar('scrollTo', currentInSideBar);
+    });
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,145 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:03.915
+This is a sample code that show a Spark and Kafka integration.
+
+00:00:03.915 --> 00:00:08.294
+You've learned how to create a simple producer in Kafka in previous course,
+
+00:00:08.294 --> 00:00:10.919
+so I will not be covering those and I will only be
+
+00:00:10.919 --> 00:00:13.830
+covering the integration part in Spark application.
+
+00:00:13.830 --> 00:00:15.720
+Let's take a look at the code.
+
+00:00:15.720 --> 00:00:20.670
+Here, we have a Spark variable that we are going to
+
+00:00:20.670 --> 00:00:25.695
+imply that this was already done built using SparkSession.builder.
+
+00:00:25.695 --> 00:00:29.039
+This reads as a Kafka format,
+
+00:00:29.039 --> 00:00:31.500
+and like we previously talked about in the concept,
+
+00:00:31.500 --> 00:00:34.215
+this requires Kafka bootstrap servers
+
+00:00:34.215 --> 00:00:37.380
+which we'll be using as localhost and a port number,
+
+00:00:37.380 --> 00:00:40.280
+and we're going to subscribe to a topic and we're just going to call
+
+00:00:40.280 --> 00:00:43.954
+it anything that you called in your producer.
+
+00:00:43.954 --> 00:00:47.460
+We have here a startingOffset as earliest,
+
+00:00:47.460 --> 00:00:50.130
+and then we have maxRatePerPartition.
+
+00:00:50.130 --> 00:00:53.240
+This is a new property that I'm introducing now and it
+
+00:00:53.240 --> 00:00:56.975
+sets the max number of messages per partition per batch.
+
+00:00:56.975 --> 00:00:58.954
+So you'll have to know how many
+
+00:00:58.954 --> 00:01:01.759
+partitions and how many batches you're going to be creating.
+
+00:01:01.759 --> 00:01:04.204
+Here is the maxOffsetsPerTrigger,
+
+00:01:04.204 --> 00:01:07.510
+and this loads this DataFrame.
+
+00:01:07.510 --> 00:01:10.844
+When you write our df.printSchema,
+
+00:01:10.844 --> 00:01:14.135
+this will give you these seven fields here.
+
+00:01:14.135 --> 00:01:17.480
+The first will be key, value, topic,
+
+00:01:17.480 --> 00:01:21.100
+partition, offset, timestamp, and timestampType.
+
+00:01:21.099 --> 00:01:25.354
+What really need is the content will be stored in this value,
+
+00:01:25.355 --> 00:01:27.500
+but since it's a binary format what we're
+
+00:01:27.500 --> 00:01:30.484
+doing is we're going to cast it as a string here.
+
+00:01:30.484 --> 00:01:33.635
+We're going to create a JSON Schema.
+
+00:01:33.635 --> 00:01:38.225
+I think the data that's coming in it has a status and a timestamp.
+
+00:01:38.224 --> 00:01:40.709
+When you look at the here,
+
+00:01:40.709 --> 00:01:42.799
+on the incoming data,
+
+00:01:42.799 --> 00:01:50.375
+we're applying the JSON Schema on top of this value column that we cast it as a string,
+
+00:01:50.375 --> 00:01:53.495
+and then we are calling it as a JSON topics.
+
+00:01:53.495 --> 00:01:55.385
+We're giving an alias to that.
+
+00:01:55.385 --> 00:02:01.075
+We're selecting all the all the columns that are coming into this JSON_Topics.
+
+00:02:01.075 --> 00:02:04.170
+Finally, we're going to write a query.
+
+00:02:04.170 --> 00:02:10.659
+We're going to write it out to the console and this start will actually start to query,
+
+00:02:10.659 --> 00:02:13.789
+and this query.awaitTermination will exhaust
+
+00:02:13.789 --> 00:02:17.914
+the data that's coming in from Kafka depending on how much you have it.
+
+00:02:17.914 --> 00:02:22.759
+Start playing around with this console output and try to take
+
+00:02:22.759 --> 00:02:24.649
+a look at progress report and see
+
+00:02:24.650 --> 00:02:27.814
+what data you're getting for a quick debugging purposes.
+
+00:02:27.814 --> 00:02:33.560
+Then start doing more operations like join or aggregations on your streaming dataset.
+
+00:02:33.560 --> 00:02:35.629
+To be successful in your project,
+
+00:02:35.629 --> 00:02:38.030
+I want you to pay attention in how to debug through
+
+00:02:38.030 --> 00:02:41.930
+a console so you can set up right configurations.
+

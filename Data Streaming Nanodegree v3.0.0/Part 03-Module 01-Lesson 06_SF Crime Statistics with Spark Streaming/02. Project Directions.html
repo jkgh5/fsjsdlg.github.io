@@ -1,0 +1,304 @@
+<!-- udacity2.0 -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Project Directions</title>
+  <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../assets/css/plyr.css">
+  <link rel="stylesheet" href="../assets/css/katex.min.css">
+  <link rel="stylesheet" href="../assets/css/jquery.mCustomScrollbar.min.css">
+  <link rel="stylesheet" href="../assets/css/styles.css">
+  <link rel="shortcut icon" type="image/png" href="../assets/img/udacimak.png" />
+</head>
+
+<body>
+  <div class="wrapper">
+    <nav id="sidebar">
+  <div class="sidebar-header">
+    <h3>SF Crime Statistics with Spark Streaming</h3>
+  </div>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled components">
+    <li class="">
+      <a href="01. Project Overview.html">01. Project Overview</a>
+    </li>
+    <li class="">
+      <a href="02. Project Directions.html">02. Project Directions</a>
+    </li>
+    <li class="">
+      <a href="03. Project Workspace.html">03. Project Workspace</a>
+    </li>
+    <li class="">
+      <a href="Project Description - SF Crime Statistics with Spark Streaming.html">Project Description - SF Crime Statistics with Spark Streaming</a>
+    </li>
+    <li class="">
+      <a href="Project Rubric - SF Crime Statistics with Spark Streaming.html">Project Rubric - SF Crime Statistics with Spark Streaming</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+</nav>
+
+    <div id="content">
+      <header class="container-fluild header">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <div class="align-items-middle">
+                <button type="button" id="sidebarCollapse" class="btn btn-toggle-sidebar">
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                </button>
+
+                <h1 style="display: inline-block">02. Project Directions</h1>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <main class="container">
+        <div class="row">
+          <div class="col-12">
+            <div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h2 id="starter-code">Starter Code</h2>
+<p>You can find three Python files that are starter code, the project dataset, and some other necessary resources in a zip file called "SF Crime Data Project Files" in the Resources tab in the left sidebar of your classroom: </p>
+<ul>
+<li><code>producer_server.py</code></li>
+<li><code>kafka_server.py</code></li>
+<li><code>data_stream.py</code></li>
+<li><code>police-department-calls-for-service.json</code></li>
+<li><code>radio_code.json</code></li>
+<li><code>start.sh</code></li>
+<li><code>requirements.txt</code></li>
+</ul>
+<p>These files are also included in the Project Workspace.</p>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h2 id="files-you-need-to-edit-in-your-project-work">Files You Need to Edit in Your Project Work</h2>
+<p>These starter code files should be edited:</p>
+<ul>
+<li><code>producer_server.py</code></li>
+<li><code>data_stream.py</code></li>
+<li><code>kafka_server.py</code></li>
+</ul>
+<p>The following file should be created separately for you to check if your <code>kafka_server.py</code> is working properly:</p>
+<ul>
+<li><code>consumer_server.py</code></li>
+</ul>
+<h2 id="create-a-github-repository">Create a GitHub Repository</h2>
+<p>Create a new repo that will contain all these files for your project. You will submit a link to this repo as a key part of your project submission. If you complete the project in the classroom workspace here, just download the files you worked on and add them to your repo.</p>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h2 id="beginning-the-project">Beginning the Project</h2>
+<p>This project requires creating topics, starting Zookeeper and Kafka servers, and your Kafka bootstrap server. You’ll need to choose a port number (e.g., 9092, 9093..) for your Kafka topic, and come up with a Kafka topic name and modify the zookeeper.properties and server.properties appropriately.</p>
+<h4 id="local-environment">Local Environment</h4>
+<ul>
+<li><p>Install requirements using <code>./start.sh</code> if you use conda for Python. If you use pip rather than conda, then use <code>pip install -r requirements.txt</code>.</p></li>
+<li><p>Use the commands below to start the Zookeeper and Kafka servers. You can find the bin and config folder in the Kafka binary that you have downloaded and unzipped.</p></li>
+</ul>
+<pre><code>bin/zookeeper-server-start.sh config/zookeeper.properties
+bin/kafka-server-start.sh config/server.properties</code></pre>
+<ul>
+<li>You can start the bootstrap server using this Python command: <code>python producer_server.py</code>.</li>
+</ul>
+<h4 id="workspace-environment">Workspace Environment</h4>
+<ul>
+<li>Modify the zookeeper.properties and producer.properties given to suit your topic and port number of your choice. Start up these servers in the terminal using the commands:</li>
+</ul>
+<pre><code>/usr/bin/zookeeper-server-start zookeeper.properties
+/usr/bin/kafka-server-start producer.properties</code></pre>
+<ul>
+<li><p>You’ll need to open up two terminal tabs to execute each command.</p></li>
+<li><p>Install requirements using the provided <code>./start.sh</code> script. <strong>This needs to be done every time you re-open the workspace, or anytime after you've refreshed, or woken up, or reset data, or used the "Get New Content" button in this workspace.</strong></p></li>
+<li><p>In the terminal, to install other packages that you think are necessary to complete the project, use <code>conda install &lt;package_name&gt;</code>. You may need to reinstall these packages every time you re-open the workspace, or anytime after you've refreshed, or woken up, or reset data, or used the "Get New Content" button in this workspace.</p></li>
+</ul>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h2 id="step-1">Step 1</h2>
+<ul>
+<li>The first step is to build a simple Kafka server. </li>
+<li>Complete the code for the server in <code>producer_server.py</code> and <code>kafka_server.py</code>.</li>
+</ul>
+<h4 id="local-environment">Local Environment</h4>
+<ul>
+<li>To see if you correctly implemented the server, use the command <code>bin/kafka-console-consumer.sh --bootstrap-server localhost:&lt;your-port-number&gt; --topic &lt;your-topic-name&gt; --from-beginning</code> to see your output.</li>
+</ul>
+<h4 id="workspace-environment">Workspace Environment</h4>
+<ul>
+<li>To start kafka-consumer-console, use the command <code>/usr/bin/kafka-consumer-console</code>.</li>
+</ul>
+<p><strong>Take a screenshot of your kafka-consumer-console output. You will need to include this screenshot as part of your project submission.</strong></p>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <figure class="figure">
+    <img src="img/screen-shot-2019-08-12-at-10.03.41-am.png" alt="**Sample Kafka Consumer Console Output**" class="img img-fluid">
+    <figcaption class="figure-caption">
+      <p><strong>Sample Kafka Consumer Console Output</strong></p>
+    </figcaption>
+  </figure>
+</div>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h2 id="step-2">Step 2</h2>
+<ul>
+<li>Apache Spark already has an integration with Kafka brokers, so we would not normally need a separate Kafka consumer. However, we are going to ask you to create one anyway. Why? We'd like you to create the consumer to demonstrate your understanding of creating a complete Kafka Module (producer and consumer) from scratch. In production, you might have to create a dummy producer or consumer to just test out your theory and this will be great practice for that.</li>
+<li>Implement all the TODO items in <code>data_stream.py</code>. You may need to explore the dataset beforehand using a Jupyter Notebook.</li>
+<li>Do a spark-submit using this command: <code>spark-submit --packages org.apache.spark:spark-sql-kafka-0-10_2.11:2.3.4 --master local[*] data_stream.py</code>.</li>
+<li>Take a screenshot of your progress reporter after executing a Spark job. <strong>You will need to include this screenshot as part of your project submission.</strong></li>
+<li>Take a screenshot of the Spark Streaming UI as the streaming continues. <strong>You will need to include this screenshot as part of your project submission.</strong></li>
+</ul>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h2 id="step-3">Step 3</h2>
+<p>Write the answers to these questions in the README.md doc of your GitHub repo:</p>
+<ol>
+<li><p>How did changing values on the SparkSession property parameters affect the throughput and latency of the data?</p></li>
+<li><p>What were the 2-3 most efficient SparkSession property key/value pairs? Through testing multiple variations on values, how can you tell these were the most optimal?</p></li>
+</ol>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h3 id="project-submission">Project Submission</h3>
+<p>You will submit a link to your GitHub repo, with the files you've created: <code>producer_server.py</code>, <code>kafka_server.py</code>, <code>data_stream.py</code>, and <code>consumer_server.py</code>. The README.md doc in your GitHub repo should contain your responses to the two questions from Step 3.</p>
+<p>Your project submission should also include a zip file containing the three screenshots you've taken.</p>
+</div>
+
+</div>
+<div class="divider"></div>
+          </div>
+
+          <div class="col-12">
+            <p class="text-right">
+              <a href="03. Project Workspace.html" class="btn btn-outline-primary mt-4" role="button">Next Concept</a>
+            </p>
+          </div>
+        </div>
+      </main>
+
+      <footer class="footer">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <p class="text-center">
+                <a href="https://us-udacity.github.io/" target="_blank">【udacity2.0 】If you need more courses, please add wechat：udacity6</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </div>
+
+
+  <script src="../assets/js/jquery-3.3.1.min.js"></script>
+  <script src="../assets/js/plyr.polyfilled.min.js"></script>
+  <script src="../assets/js/bootstrap.min.js"></script>
+  <script src="../assets/js/jquery.mCustomScrollbar.concat.min.js"></script>
+  <script src="../assets/js/katex.min.js"></script>
+  <script>
+    // Initialize Plyr video players
+    const players = Array.from(document.querySelectorAll('video')).map(p => new Plyr(p));
+
+    // render math equations
+    let elMath = document.getElementsByClassName('mathquill');
+    for (let i = 0, len = elMath.length; i < len; i += 1) {
+      const el = elMath[i];
+
+      katex.render(el.textContent, el, {
+        throwOnError: false
+      });
+    }
+
+    // this hack will make sure Bootstrap tabs work when using Handlebars
+    if ($('#question-tabs').length && $('#user-answer-tabs').length) {
+      $("#question-tabs a.nav-link").on('click', function () {
+        $("#question-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+      $("#user-answer-tabs a.nav-link").on('click', function () {
+        $("#user-answer-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    } else {
+      $("a.nav-link").on('click', function () {
+        $(".tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    }
+
+    // side bar events
+    $(document).ready(function () {
+      $("#sidebar").mCustomScrollbar({
+        theme: "minimal"
+      });
+
+      $('#sidebarCollapse').on('click', function () {
+        $('#sidebar, #content').toggleClass('active');
+        $('.collapse.in').toggleClass('in');
+        $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+      });
+
+      // scroll to first video on page loading
+      if ($('video').length) {
+        $('html,body').animate({ scrollTop: $('div.plyr').prev().offset().top});
+      }
+
+      // auto play first video: this may not work with chrome/safari due to autoplay policy
+      if (players && players.length > 0) {
+        players[0].play();
+      }
+
+      // scroll sidebar to current concept
+      const currentInSideBar = $( "ul.sidebar-list.components li a:contains('02. Project Directions')" )
+      currentInSideBar.css( "text-decoration", "underline" );
+      $("#sidebar").mCustomScrollbar('scrollTo', currentInSideBar);
+    });
+  </script>
+</body>
+
+</html>

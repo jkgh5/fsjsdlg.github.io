@@ -1,0 +1,34 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:03.209
+In the previous, course we learned a ton about Kafka and now we'll
+
+00:00:03.209 --> 00:00:06.650
+see how Spark Streaming can be easily integrated with Kafka,
+
+00:00:06.650 --> 00:00:09.464
+and we'll explore this throughout this lesson.
+
+00:00:09.464 --> 00:00:11.469
+Before we actually start integrating,
+
+00:00:11.470 --> 00:00:14.730
+I'd like to go over some useful classes and APIs we'll use in
+
+00:00:14.730 --> 00:00:18.685
+this lesson and some sample code on how these are used.
+
+00:00:18.684 --> 00:00:21.509
+We should be comfortable with integrating Kafka and
+
+00:00:21.510 --> 00:00:24.480
+spark after exploring this classes and APIs.
+
+00:00:24.480 --> 00:00:27.089
+We'll also take a look at some architecture diagrams
+
+00:00:27.089 --> 00:00:30.699
+at the end to go over generic business use cases.
+

@@ -1,0 +1,97 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:02.970
+Streaming data from Kafka has many benefits
+
+00:00:02.970 --> 00:00:06.044
+because Kafka allows you to build real-time streaming
+
+00:00:06.044 --> 00:00:08.849
+data pipelines in applications and get data
+
+00:00:08.849 --> 00:00:12.269
+reliably between many applications in micro services.
+
+00:00:12.269 --> 00:00:14.580
+As we learned from the previous course,
+
+00:00:14.580 --> 00:00:17.339
+one of the aspects that we have to consider when building
+
+00:00:17.339 --> 00:00:21.269
+Kafka application is how to handle lags between events.
+
+00:00:21.269 --> 00:00:25.109
+Here we'll go through a common way of managing lags using
+
+00:00:25.109 --> 00:00:29.744
+Kafka offset when developing a Kafka Spark integrated application.
+
+00:00:29.745 --> 00:00:31.545
+Before managing the offsets,
+
+00:00:31.545 --> 00:00:35.250
+let's talk about some storage options for storing offsets.
+
+00:00:35.250 --> 00:00:40.070
+You can manage and store offsets in external data stores like these,
+
+00:00:40.070 --> 00:00:45.564
+checkpoints, HBase, ZooKeeper and Kafka.
+
+00:00:45.564 --> 00:00:49.309
+A Kafka topic receives messages and then each partition
+
+00:00:49.310 --> 00:00:53.375
+keeps the messages it received in a sequential order like a Q.
+
+00:00:53.375 --> 00:00:56.149
+We can set this spark application to read from
+
+00:00:56.149 --> 00:00:58.549
+the earliest Kafka topic at the beginning of
+
+00:00:58.549 --> 00:01:02.119
+the data stream or from the latest where it left off.
+
+00:01:02.119 --> 00:01:04.849
+This diagram shows a common pipeline
+
+00:01:04.849 --> 00:01:07.774
+for offset management in Spark streaming application.
+
+00:01:07.775 --> 00:01:10.490
+You can tweak the services here to fit your business
+
+00:01:10.489 --> 00:01:14.164
+needs but most of it will follow this common regime.
+
+00:01:14.165 --> 00:01:20.480
+This is the initialization of D-Stream or structures dream in Spark application.
+
+00:01:20.480 --> 00:01:24.125
+The messages from Kafka are then read and processed.
+
+00:01:24.125 --> 00:01:29.674
+After processing, the results can be stored as well as offsets.
+
+00:01:29.674 --> 00:01:34.189
+Any external data source such as HBase, Kafka,
+
+00:01:34.189 --> 00:01:40.625
+HDFS and ZooKeeper are used to keep track of which messages have already been processed.
+
+00:01:40.625 --> 00:01:44.495
+Different scenarios or micro services can be incorporated
+
+00:01:44.495 --> 00:01:48.545
+into the above steps depending upon your business requirements.
+
+00:01:48.545 --> 00:01:52.640
+Sparks programmatic flexibility allows users to control
+
+00:01:52.640 --> 00:01:59.849
+a store offsets before or after periodic phases and we call that intervals of processing.
+

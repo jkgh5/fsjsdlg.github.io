@@ -1,0 +1,271 @@
+<!-- udacity2.0 -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Kafka Data Source API</title>
+  <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../assets/css/plyr.css">
+  <link rel="stylesheet" href="../assets/css/katex.min.css">
+  <link rel="stylesheet" href="../assets/css/jquery.mCustomScrollbar.min.css">
+  <link rel="stylesheet" href="../assets/css/styles.css">
+  <link rel="shortcut icon" type="image/png" href="../assets/img/udacimak.png" />
+</head>
+
+<body>
+  <div class="wrapper">
+    <nav id="sidebar">
+  <div class="sidebar-header">
+    <h3>Integration of Spark Streaming and Kafka</h3>
+  </div>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled components">
+    <li class="">
+      <a href="01. Lesson Overview.html">01. Lesson Overview</a>
+    </li>
+    <li class="">
+      <a href="02. Create a Kafka Producer Server.html">02. Create a Kafka Producer Server</a>
+    </li>
+    <li class="">
+      <a href="03. Kafka Data Source API.html">03. Kafka Data Source API</a>
+    </li>
+    <li class="">
+      <a href="04. Kafka Offsets in Spark.html">04. Kafka Offsets in Spark</a>
+    </li>
+    <li class="">
+      <a href="05. Exercise Offsets &amp; Triggers.html">05. Exercise: Offsets &amp; Triggers</a>
+    </li>
+    <li class="">
+      <a href="06. Integrating Spark and Kafka.html">06. Integrating Spark and Kafka</a>
+    </li>
+    <li class="">
+      <a href="07. Logs with Spark Console &amp; UI.html">07. Logs with Spark Console &amp; UI</a>
+    </li>
+    <li class="">
+      <a href="08. Progress Reports in Spark Console.html">08. Progress Reports in Spark Console</a>
+    </li>
+    <li class="">
+      <a href="09. Review Progress Report Fields.html">09. Review: Progress Report Fields</a>
+    </li>
+    <li class="">
+      <a href="10. Kafka-Spark Integration Pt. 1.html">10. Kafka-Spark Integration Pt. 1</a>
+    </li>
+    <li class="">
+      <a href="11. Kafka-Spark Integration Pt. 2.html">11. Kafka-Spark Integration Pt. 2</a>
+    </li>
+    <li class="">
+      <a href="12. Performance Tuning.html">12. Performance Tuning</a>
+    </li>
+    <li class="">
+      <a href="13. Lesson and Course Wrap-Up.html">13. Lesson and Course Wrap-Up</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+</nav>
+
+    <div id="content">
+      <header class="container-fluild header">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <div class="align-items-middle">
+                <button type="button" id="sidebarCollapse" class="btn btn-toggle-sidebar">
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                </button>
+
+                <h1 style="display: inline-block">03. Kafka Data Source API</h1>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <main class="container">
+        <div class="row">
+          <div class="col-12">
+            <div class="ud-atom">
+  <h3><p>Kafka Data Source</p></h3>
+  <div>
+  <h2 id="kafka-data-source">Kafka Data Source</h2>
+<p>KafkaSource is the data source for Apache Kafka in Spark Structured Streaming. It's part of kafka-0-10-sql library in Spark (source code: <a href="https://github.com/apache/spark/blob/4513f1c0dc450e9249d43fdad618fdcaf8d399b6/external/kafka-0-10-sql/src/main/scala/org/apache/spark/sql/kafka010/KafkaSource.scala)" rel="noopener noreferrer" target="_blank">https://github.com/apache/spark/blob/4513f1c0dc450e9249d43fdad618fdcaf8d399b6/external/kafka-0-10-sql/src/main/scala/org/apache/spark/sql/kafka010/KafkaSource.scala)</a>.<br />
+A couple important functions to note in this source are:</p>
+<ul>
+<li><code>getOffset()</code>, which uses the KafkaOffsetReader to get the latest available offset</li>
+<li><code>getBatch()</code>, which returns a DataFrame from the start to end of an offset.</li>
+</ul>
+<p>You should define spark-sql-kafka-0-10 module as part of the execution of your project.<br />
+For Spark environments using shell script, we'll be using the following command to submit Spark jobs:</p>
+<p><code>./bin/spark-shell --packages org.apache.spark:spark-sql-kafka-0-10_2.12:2.3.4</code></p>
+<p>What we’re actually doing here is including an external package to allow us to use Kafka (broker version 0.10), and the correct version of Spark we have installed (compiled with Scala 2.12 and Spark version 2.3.4). org.apache.spark:spark-sql-kafka-0-10_<scala_version>:<spark_version>.</p>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3><p>ND029 C2 L3 01 Kafka Source Provider</p></h3>
+  <video controls>
+  <source src="03. ND029 C2 L3 01 Kafka Source Provider-E7JSLQmybRY.mp4" type="video/mp4">
+
+  <track default="true" kind="subtitles" srclang="en" src="03. ND029 C2 L3 01 Kafka Source Provider-E7JSLQmybRY.en.vtt" label="en">
+</video>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3><p>KafkaSourceProvider summary</p></h3>
+  <div>
+  <h2 id="kafkasourceprovider-code-reference">KafkaSourceProvider Code Reference</h2>
+<p>KafkaSourceProvider requires these options</p>
+<ul>
+<li>subscribe, subscribepattern, or assign</li>
+<li>kafka.bootstrap.server</li>
+</ul>
+<pre><code>kafka_df = spark.readStream.\
+  format("kafka").\ # set data ingestion format as Kafka
+  option("subscribe", "&lt;topic_name&gt;").\ #This is required although it says option.
+  option("kafka.bootstrap.servers", "localhost:9092").\ #You will also need the url and port of the bootstrap server
+  load()</code></pre>
+<p>Reference: <a href="https://github.com/apache/spark/blob/master/external/kafka-0-10-sql/src/main/scala/org/apache/spark/sql/kafka010/KafkaSourceProvider.scala" rel="noopener noreferrer" target="_blank">https://github.com/apache/spark/blob/master/external/kafka-0-10-sql/src/main/scala/org/apache/spark/sql/kafka010/KafkaSourceProvider.scala</a></p>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3><p>Kafka Source Provider Workspace Instruction</p></h3>
+  <div>
+  <h3 id="exercise-kafka-source-provider">Exercise: Kafka Source Provider</h3>
+<p>Using the Kafka Producer Server you created in the previous exercise, we can now ingest data from the Kafka Producer Server to a Structured Streaming application. First you’ll need to set up the entry point for the stream.</p>
+<p>Requirements:</p>
+<ul>
+<li>Set up the entry point</li>
+<li>Use appropriate configurations in the options to ingest the Kafka stream</li>
+<li>Do a <code>df.printSchema()</code> to explore the schema of the default Kafka ingestion</li>
+<li>You can use any Kafka library (pykafka, kafka, kafka-confluent, etc). But if you wish to use a library other than kafka-confluent or kafka-python, you will have to reinstall the library each time you wake up workspace (or anytime after you've refreshed, or woken up, or reset data, or used the "Get New Content" button). The idea here is for you to generate a Python file that has a Kafka producer, and this file should act as your bootstrap server.</li>
+</ul>
+<p>Please note:<br />
+If you encounter this error</p>
+<pre><code>ImportError: cannot import name 'SourceDistribution' from 'pip._internal.distributions.source' (/opt/conda/lib/python3.7/site-packages/pip/_internal/distributions/source/__init__.py)</code></pre>
+<p>while installing any packages, please run this command:</p>
+<pre><code>conda install &lt;package_name&gt;</code></pre>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div class="jumbotron">
+  <h3>Code</h3>
+
+  <p class="lead">If you need a code on the <a href="https://github.com/udacity"
+    target="_blank">https://github.com/udacity</a>. </p>
+
+  </ul>
+</div>
+
+</div>
+<div class="divider"></div>
+          </div>
+
+          <div class="col-12">
+            <p class="text-right">
+              <a href="04. Kafka Offsets in Spark.html" class="btn btn-outline-primary mt-4" role="button">Next Concept</a>
+            </p>
+          </div>
+        </div>
+      </main>
+
+      <footer class="footer">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <p class="text-center">
+                <a href="https://us-udacity.github.io/" target="_blank">【udacity2.0 】If you need more courses, please add wechat：udacity6</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </div>
+
+
+  <script src="../assets/js/jquery-3.3.1.min.js"></script>
+  <script src="../assets/js/plyr.polyfilled.min.js"></script>
+  <script src="../assets/js/bootstrap.min.js"></script>
+  <script src="../assets/js/jquery.mCustomScrollbar.concat.min.js"></script>
+  <script src="../assets/js/katex.min.js"></script>
+  <script>
+    // Initialize Plyr video players
+    const players = Array.from(document.querySelectorAll('video')).map(p => new Plyr(p));
+
+    // render math equations
+    let elMath = document.getElementsByClassName('mathquill');
+    for (let i = 0, len = elMath.length; i < len; i += 1) {
+      const el = elMath[i];
+
+      katex.render(el.textContent, el, {
+        throwOnError: false
+      });
+    }
+
+    // this hack will make sure Bootstrap tabs work when using Handlebars
+    if ($('#question-tabs').length && $('#user-answer-tabs').length) {
+      $("#question-tabs a.nav-link").on('click', function () {
+        $("#question-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+      $("#user-answer-tabs a.nav-link").on('click', function () {
+        $("#user-answer-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    } else {
+      $("a.nav-link").on('click', function () {
+        $(".tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    }
+
+    // side bar events
+    $(document).ready(function () {
+      $("#sidebar").mCustomScrollbar({
+        theme: "minimal"
+      });
+
+      $('#sidebarCollapse').on('click', function () {
+        $('#sidebar, #content').toggleClass('active');
+        $('.collapse.in').toggleClass('in');
+        $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+      });
+
+      // scroll to first video on page loading
+      if ($('video').length) {
+        $('html,body').animate({ scrollTop: $('div.plyr').prev().offset().top});
+      }
+
+      // auto play first video: this may not work with chrome/safari due to autoplay policy
+      if (players && players.length > 0) {
+        players[0].play();
+      }
+
+      // scroll sidebar to current concept
+      const currentInSideBar = $( "ul.sidebar-list.components li a:contains('03. Kafka Data Source API')" )
+      currentInSideBar.css( "text-decoration", "underline" );
+      $("#sidebar").mCustomScrollbar('scrollTo', currentInSideBar);
+    });
+  </script>
+</body>
+
+</html>

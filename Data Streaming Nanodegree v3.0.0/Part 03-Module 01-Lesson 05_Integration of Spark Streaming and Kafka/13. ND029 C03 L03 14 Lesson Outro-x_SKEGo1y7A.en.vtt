@@ -1,0 +1,31 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:02.730
+Congratulations. We've successfully learned
+
+00:00:02.730 --> 00:00:05.115
+about Spark Streaming and Structured Steaming.
+
+00:00:05.115 --> 00:00:07.830
+Also, we saw how we can integrate Kafka,
+
+00:00:07.830 --> 00:00:11.160
+which is one of the most popular choices of data ingestion for
+
+00:00:11.160 --> 00:00:15.810
+Spark Structured Streaming and created a simple data ingestion pipeline.
+
+00:00:15.810 --> 00:00:18.420
+We also looked at some general ideas how you
+
+00:00:18.420 --> 00:00:21.010
+can implement these in your business use cases,
+
+00:00:21.010 --> 00:00:23.520
+so you can apply the things we learned at your job.
+
+00:00:23.519 --> 00:00:27.039
+I hope you enjoyed the experience and hope to see you again.
+
