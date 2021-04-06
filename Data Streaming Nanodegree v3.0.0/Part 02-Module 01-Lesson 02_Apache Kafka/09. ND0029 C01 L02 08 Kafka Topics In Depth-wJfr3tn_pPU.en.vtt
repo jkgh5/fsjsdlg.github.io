@@ -1,0 +1,136 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:01.879 --> 00:00:04.154
+To get the most out of Kafka,
+
+00:00:04.155 --> 00:00:07.440
+it's critical that you understand how to properly configure topics.
+
+00:00:07.440 --> 00:00:09.660
+Kafka topics provide many settings and
+
+00:00:09.660 --> 00:00:12.255
+configuration options that you need to be familiar with.
+
+00:00:12.255 --> 00:00:13.670
+In this section, we're going to review
+
+00:00:13.669 --> 00:00:16.009
+the most important configuration options and learn how to
+
+00:00:16.010 --> 00:00:18.679
+use them to get the most out of a Kafka topics.
+
+00:00:18.679 --> 00:00:20.899
+As we learned in the previous section,
+
+00:00:20.899 --> 00:00:25.539
+Kafka uses data replication to duplicate data across multiple machines.
+
+00:00:25.539 --> 00:00:28.504
+It helps prevent data loss in case of broker fails.
+
+00:00:28.504 --> 00:00:33.214
+Most commonly, the desired replication factor is set at the topic level.
+
+00:00:33.215 --> 00:00:36.695
+You should always specify this value when creating a topic.
+
+00:00:36.695 --> 00:00:40.405
+If a leader broker fails or is removed from the cluster,
+
+00:00:40.405 --> 00:00:41.585
+the cluster will identify
+
+00:00:41.585 --> 00:00:44.689
+another Replica Broker to take over its place as the new leader,
+
+00:00:44.689 --> 00:00:46.655
+as we learned in the previous section.
+
+00:00:46.655 --> 00:00:48.965
+For Replica Broker to take over,
+
+00:00:48.965 --> 00:00:52.085
+it must be in sync with the previous leader.
+
+00:00:52.085 --> 00:00:54.399
+This is called an "In Sync Replica."
+
+00:00:54.399 --> 00:00:58.114
+You'll typically see in here this abbreviated as an ISR.
+
+00:00:58.115 --> 00:01:01.400
+Again, this is called an "In Sync Replica," and we're going to abbreviate as
+
+00:01:01.399 --> 00:01:05.185
+an ISR in Kafka documentation and elsewhere.
+
+00:01:05.185 --> 00:01:06.924
+When you configure your topic,
+
+00:01:06.924 --> 00:01:08.840
+you not only configure the number of replicas,
+
+00:01:08.840 --> 00:01:13.505
+but you also configure the desired number of In Sync Replicas or ISRs.
+
+00:01:13.504 --> 00:01:15.799
+What this means is that Kafka will not
+
+00:01:15.799 --> 00:01:18.469
+indicate that a message has been successfully received to
+
+00:01:18.469 --> 00:01:23.344
+a producer and tell us number of replicas has successfully received the message.
+
+00:01:23.344 --> 00:01:26.245
+If you have a replication factor of three,
+
+00:01:26.245 --> 00:01:28.435
+but an ISR number of two,
+
+00:01:28.435 --> 00:01:31.760
+both the leader and at least one broker will have received
+
+00:01:31.760 --> 00:01:36.355
+the message successfully before the producer receives a success message from the broker.
+
+00:01:36.355 --> 00:01:39.650
+This scenario is great because we can be guaranteed that
+
+00:01:39.650 --> 00:01:42.575
+both the master and at least one replica have the data.
+
+00:01:42.575 --> 00:01:43.890
+So if the master were to fail,
+
+00:01:43.890 --> 00:01:47.299
+at least one other machine would be available to take over.
+
+00:01:47.299 --> 00:01:50.060
+Be careful setting the ISR number too high.
+
+00:01:50.060 --> 00:01:53.000
+Remember that every additional In Sync Replica is
+
+00:01:53.000 --> 00:01:56.239
+one more machine that has to receive and store the message.
+
+00:01:56.239 --> 00:02:00.909
+This can slowdown processing if the number grows too large. One final note.
+
+00:02:00.909 --> 00:02:05.045
+The scenario I just described is not as one side as it sounds.
+
+00:02:05.045 --> 00:02:07.250
+The producer must also indicate
+
+00:02:07.250 --> 00:02:11.689
+how many brokers it wants to acknowledge this message with the AX setting.
+
+00:02:11.689 --> 00:02:14.340
+We'll cover this a little bit more later.
+

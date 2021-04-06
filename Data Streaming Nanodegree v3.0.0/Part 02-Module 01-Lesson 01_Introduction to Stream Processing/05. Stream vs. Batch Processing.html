@@ -1,0 +1,319 @@
+<!-- udacity2.0 -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Stream vs. Batch Processing</title>
+  <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../assets/css/plyr.css">
+  <link rel="stylesheet" href="../assets/css/katex.min.css">
+  <link rel="stylesheet" href="../assets/css/jquery.mCustomScrollbar.min.css">
+  <link rel="stylesheet" href="../assets/css/styles.css">
+  <link rel="shortcut icon" type="image/png" href="../assets/img/udacimak.png" />
+</head>
+
+<body>
+  <div class="wrapper">
+    <nav id="sidebar">
+  <div class="sidebar-header">
+    <h3>Introduction to Stream Processing</h3>
+  </div>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled components">
+    <li class="">
+      <a href="01. Welcome.html">01. Welcome</a>
+    </li>
+    <li class="">
+      <a href="02. Lesson Glossary of Key Terms.html">02. Lesson Glossary of Key Terms</a>
+    </li>
+    <li class="">
+      <a href="03. Intro to Stream Processing.html">03. Intro to Stream Processing</a>
+    </li>
+    <li class="">
+      <a href="04. Stream Processing Examples.html">04. Stream Processing Examples</a>
+    </li>
+    <li class="">
+      <a href="05. Stream vs. Batch Processing.html">05. Stream vs. Batch Processing</a>
+    </li>
+    <li class="">
+      <a href="06. Review Stream Processing.html">06. Review: Stream Processing</a>
+    </li>
+    <li class="">
+      <a href="07. Append-Only Logs.html">07. Append-Only Logs</a>
+    </li>
+    <li class="">
+      <a href="08. Log-structured storage.html">08. Log-structured storage</a>
+    </li>
+    <li class="">
+      <a href="09. Kafka A Stream Processing Tool.html">09. Kafka: A Stream Processing Tool</a>
+    </li>
+    <li class="">
+      <a href="10. Kafka in Industry.html">10. Kafka in Industry</a>
+    </li>
+    <li class="">
+      <a href="11. Kafka in Action.html">11. Kafka in Action</a>
+    </li>
+    <li class="">
+      <a href="12. What is a Kafka Topic.html">12. What is a Kafka Topic?</a>
+    </li>
+    <li class="">
+      <a href="13. What is a Kafka Producer.html">13. What is a Kafka Producer?</a>
+    </li>
+    <li class="">
+      <a href="14. What is a Kafka Consumer.html">14. What is a Kafka Consumer?</a>
+    </li>
+    <li class="">
+      <a href="15. Using the Kafka CLI tools.html">15. Using the Kafka CLI tools</a>
+    </li>
+    <li class="">
+      <a href="16. Kafka Python Library.html">16. Kafka Python Library</a>
+    </li>
+    <li class="">
+      <a href="17. Lesson Summary.html">17. Lesson Summary</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+</nav>
+
+    <div id="content">
+      <header class="container-fluild header">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <div class="align-items-middle">
+                <button type="button" id="sidebarCollapse" class="btn btn-toggle-sidebar">
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                </button>
+
+                <h1 style="display: inline-block">05. Stream vs. Batch Processing</h1>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <main class="container">
+        <div class="row">
+          <div class="col-12">
+            <div class="ud-atom">
+  <h3><p>ND0029 C01 L01 05 Contrasting Stream And Batch Processing</p></h3>
+  <video controls>
+  <source src="05. ND0029 C01 L01 05 Contrasting Stream And Batch Processing-lHPQDWSw7IE.mp4" type="video/mp4">
+
+  <track default="true" kind="subtitles" srclang="en" src="05. ND0029 C01 L01 05 Contrasting Stream And Batch Processing-lHPQDWSw7IE.en.vtt" label="en">
+</video>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3><p>Contrasting Stream and Batch Processing</p></h3>
+  <div>
+  <h2 id="batch-processing">Batch Processing</h2>
+<ul>
+<li>Runs on a scheduled basis</li>
+<li>May run for a longer period of time and write results to a SQL-like store</li>
+<li>May analyze all historical data at once</li>
+<li>Typically works with mutable data and data stores</li>
+</ul>
+<h2 id="stream-processing">Stream Processing</h2>
+<ul>
+<li>Runs at whatever frequency events are generated</li>
+<li>Typically runs quickly, updating in-memory aggregates</li>
+<li>Stream Processing applications may simply emit events themselves, rather than write to an event store</li>
+<li>Typically analyzes trends over a limited period of time due to data volume</li>
+<li>Typically analyzes immutable data and data stores</li>
+</ul>
+<p><em>Batch and Stream processing are not mutually exclusive</em>. Batch systems can create events to feed into stream processing applications, and similarly, stream processing applications can be part of batch processing analyses. </p>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3><p>Components of a Stream Processing Solution</p></h3>
+  <div>
+  <h3 id="components-of-a-stream-processing-solution">Components of a Stream Processing Solution</h3>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3><p>ND0029 C01 L01 06 Components Of A Stream Processing Solution</p></h3>
+  <video controls>
+  <source src="05. ND0029 C01 L01 06 Components Of A Stream Processing Solution-u8yl2PRXrEg.mp4" type="video/mp4">
+
+  <track default="true" kind="subtitles" srclang="en" src="05. ND0029 C01 L01 06 Components Of A Stream Processing Solution-u8yl2PRXrEg.en.vtt" label="en">
+</video>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3><p>Components of a Stream Processing Solution</p></h3>
+  <div>
+  <h2 id="streaming-data-store">Streaming Data Store</h2>
+<ul>
+<li>May look like a message queue, as is the case with Apache Kafka</li>
+<li>May look like a SQL store, as is the case with Apache Cassandra</li>
+<li>Responsible for holding all of the immutable event data in the system</li>
+<li>Provides guarantee that data is stored ordered according to the time it was produced</li>
+<li>Provides guarantee that data is produced to consumers in the order it was received</li>
+<li>Provides guarantee that the events it stores are immutable and unchangeable</li>
+</ul>
+<h2 id="stream-processing-application-and-framework">Stream Processing Application and Framework</h2>
+<ul>
+<li>Stream Processing applications sit downstream of the data store</li>
+<li>Stream Processing applications ingest real-time event data from one or more data streams</li>
+<li>Stream Processing applications aggregate, join, and find differences in data from these streams</li>
+<li>Common Stream Processing Application Frameworks in use today include: <ul>
+<li>Confluent KSQL</li>
+<li>Kafka Streams</li>
+<li>Apache Flink</li>
+<li>Apache Samza</li>
+<li>Apache Spark Structure Streaming</li>
+<li>Faust Python Library</li></ul></li>
+</ul>
+<h3 id="further-optional-reading-on-message-queues">Further Optional Reading on Message Queues</h3>
+<ul>
+<li><a href="https://www.rabbitmq.com/" rel="noopener noreferrer" target="_blank">RabbitMQ</a></li>
+<li><a href="https://activemq.apache.org/" rel="noopener noreferrer" target="_blank">ActiveMQ</a></li>
+</ul>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3><p>Benefits of Stream Processing</p></h3>
+  <div>
+  <h3 id="benefits-of-stream-processing">Benefits of Stream Processing</h3>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3><p>ND0029 C01 L01 07 The Benefits Of Stream Processing</p></h3>
+  <video controls>
+  <source src="05. ND0029 C01 L01 07 The Benefits Of Stream Processing-HuqHnCAGWEQ.mp4" type="video/mp4">
+
+  <track default="true" kind="subtitles" srclang="en" src="05. ND0029 C01 L01 07 The Benefits Of Stream Processing-HuqHnCAGWEQ.en.vtt" label="en">
+</video>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3><p>The benefits of stream processing compared to batch</p></h3>
+  <div>
+  <h2 id="benefits-of-stream-processing">Benefits of Stream Processing</h2>
+<ul>
+<li>Faster for scenarios where a limited set of recent data is needed</li>
+<li>More scalable due to distributed nature of storage</li>
+<li>Provides a useful abstraction that decouples applications from each other</li>
+<li>Allows one set of data to satisfy many use-cases which may not have been predictable when the dataset was originally created</li>
+<li>Built-in ability to replay events and observe exactly what occurred, and in what order, provides more opportunities to recover from error states or dig into how a particular result was arrived at</li>
+</ul>
+</div>
+
+</div>
+<div class="divider"></div>
+          </div>
+
+          <div class="col-12">
+            <p class="text-right">
+              <a href="06. Review Stream Processing.html" class="btn btn-outline-primary mt-4" role="button">Next Concept</a>
+            </p>
+          </div>
+        </div>
+      </main>
+
+      <footer class="footer">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <p class="text-center">
+                <a href="https://us-udacity.github.io/" target="_blank">【udacity2.0 】If you need more courses, please add wechat：udacity6</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </div>
+
+
+  <script src="../assets/js/jquery-3.3.1.min.js"></script>
+  <script src="../assets/js/plyr.polyfilled.min.js"></script>
+  <script src="../assets/js/bootstrap.min.js"></script>
+  <script src="../assets/js/jquery.mCustomScrollbar.concat.min.js"></script>
+  <script src="../assets/js/katex.min.js"></script>
+  <script>
+    // Initialize Plyr video players
+    const players = Array.from(document.querySelectorAll('video')).map(p => new Plyr(p));
+
+    // render math equations
+    let elMath = document.getElementsByClassName('mathquill');
+    for (let i = 0, len = elMath.length; i < len; i += 1) {
+      const el = elMath[i];
+
+      katex.render(el.textContent, el, {
+        throwOnError: false
+      });
+    }
+
+    // this hack will make sure Bootstrap tabs work when using Handlebars
+    if ($('#question-tabs').length && $('#user-answer-tabs').length) {
+      $("#question-tabs a.nav-link").on('click', function () {
+        $("#question-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+      $("#user-answer-tabs a.nav-link").on('click', function () {
+        $("#user-answer-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    } else {
+      $("a.nav-link").on('click', function () {
+        $(".tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    }
+
+    // side bar events
+    $(document).ready(function () {
+      $("#sidebar").mCustomScrollbar({
+        theme: "minimal"
+      });
+
+      $('#sidebarCollapse').on('click', function () {
+        $('#sidebar, #content').toggleClass('active');
+        $('.collapse.in').toggleClass('in');
+        $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+      });
+
+      // scroll to first video on page loading
+      if ($('video').length) {
+        $('html,body').animate({ scrollTop: $('div.plyr').prev().offset().top});
+      }
+
+      // auto play first video: this may not work with chrome/safari due to autoplay policy
+      if (players && players.length > 0) {
+        players[0].play();
+      }
+
+      // scroll sidebar to current concept
+      const currentInSideBar = $( "ul.sidebar-list.components li a:contains('05. Stream vs. Batch Processing')" )
+      currentInSideBar.css( "text-decoration", "underline" );
+      $("#sidebar").mCustomScrollbar('scrollTo', currentInSideBar);
+    });
+  </script>
+</body>
+
+</html>

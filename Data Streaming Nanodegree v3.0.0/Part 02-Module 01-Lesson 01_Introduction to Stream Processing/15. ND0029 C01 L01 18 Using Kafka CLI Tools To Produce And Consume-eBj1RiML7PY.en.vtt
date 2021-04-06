@@ -1,0 +1,109 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:01.580 --> 00:00:04.679
+In this section, we'll go hands on with
+
+00:00:04.679 --> 00:00:08.039
+a Kafka CLI tools to see how Kafka works up close.
+
+00:00:08.039 --> 00:00:09.839
+By the end of this lesson,
+
+00:00:09.839 --> 00:00:11.504
+you will have created a Kafka topic,
+
+00:00:11.505 --> 00:00:12.885
+produced data in that topic,
+
+00:00:12.884 --> 00:00:14.669
+and then consume that same data.
+
+00:00:14.669 --> 00:00:17.324
+You'll be well on your way to beginning your Kafka journey.
+
+00:00:17.324 --> 00:00:19.134
+I've opened the workspace for you,
+
+00:00:19.135 --> 00:00:22.395
+where we're going to actually run the Kafka CLI tools,
+
+00:00:22.394 --> 00:00:24.919
+as well as some other sample code here in a little bit.
+
+00:00:24.920 --> 00:00:28.540
+Before we begin, I want to give you a quick overview of the workspace.
+
+00:00:28.539 --> 00:00:32.839
+In this class, we're mostly going to be using Python console,
+
+00:00:32.840 --> 00:00:34.550
+terminal, and text file.
+
+00:00:34.549 --> 00:00:36.274
+Jupyter notebook is available,
+
+00:00:36.274 --> 00:00:38.600
+but some of the advanced features that we're going to be using,
+
+00:00:38.600 --> 00:00:39.875
+won't work well if notebooks.
+
+00:00:39.875 --> 00:00:42.835
+So I recommend that you stick to opening text files.
+
+00:00:42.835 --> 00:00:44.550
+To look at mark down files,
+
+00:00:44.549 --> 00:00:46.059
+you can see that sample 1,
+
+00:00:46.060 --> 00:00:48.965
+is a Markdown file by the extension MD,
+
+00:00:48.965 --> 00:00:51.440
+you right-click, go to open with,
+
+00:00:51.439 --> 00:00:53.434
+and open Markdown preview.
+
+00:00:53.435 --> 00:00:57.995
+So you're going to do the same thing in your exercise that follows this demonstration.
+
+00:00:57.994 --> 00:01:03.875
+As you can see, we can view the markdown and actually follow the instructions.
+
+00:01:03.875 --> 00:01:06.454
+Now, to actually run the client,
+
+00:01:06.454 --> 00:01:08.719
+we're going to actually need to have a terminal window.
+
+00:01:08.719 --> 00:01:12.640
+So I'm going to click terminal back on the launcher.
+
+00:01:12.640 --> 00:01:15.025
+I can also click plus,
+
+00:01:15.025 --> 00:01:17.840
+which would open another launcher if I've closed it.
+
+00:01:17.840 --> 00:01:20.150
+So I'm going to go ahead and open a terminal,
+
+00:01:20.150 --> 00:01:22.730
+and I'm going to actually click and drag to
+
+00:01:22.730 --> 00:01:25.790
+resize the terminal because I don't want it to take up the whole window.
+
+00:01:25.790 --> 00:01:30.635
+I want to be able to reference both the instructions and the terminal at the same time.
+
+00:01:30.635 --> 00:01:32.855
+I also want a little bit more screen real estate,
+
+00:01:32.855 --> 00:01:37.230
+so I'm going to go ahead and click the folder to close that left folder window.
+

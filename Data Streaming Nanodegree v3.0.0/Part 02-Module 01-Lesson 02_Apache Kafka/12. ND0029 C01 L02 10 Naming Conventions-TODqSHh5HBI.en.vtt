@@ -1,0 +1,148 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:03.310
+One of the most frequent questions new Kafka developers ask about,
+
+00:00:03.310 --> 00:00:06.929
+are what naming convention should be followed for Kafka topics.
+
+00:00:06.929 --> 00:00:12.989
+Truth is, there really is no idiomatic or correct pattern to follow naming a Kafka topic.
+
+00:00:12.990 --> 00:00:16.140
+The only rules enforced by Kafka are that
+
+00:00:16.140 --> 00:00:19.769
+your topic name must be less than 256 characters,
+
+00:00:19.769 --> 00:00:21.870
+and is made up of alphanumeric characters,
+
+00:00:21.870 --> 00:00:24.390
+underscores, periods or a dash.
+
+00:00:24.390 --> 00:00:27.179
+So I've used rejects format here but basically,
+
+00:00:27.179 --> 00:00:29.355
+A through Z or capital A through Z,
+
+00:00:29.355 --> 00:00:32.789
+zero through nine, period or a dash or an underscore.
+
+00:00:32.789 --> 00:00:34.579
+Any other characters are invalid.
+
+00:00:34.579 --> 00:00:36.004
+So no percent signs,
+
+00:00:36.005 --> 00:00:38.335
+no exclamation points, things like that.
+
+00:00:38.335 --> 00:00:42.020
+With that being said, it's useful to come up with a strategy for your company,
+
+00:00:42.020 --> 00:00:45.020
+team or even for yourself when naming Kafka topics.
+
+00:00:45.020 --> 00:00:50.225
+Kafka consumers can use regular expressions to consume data from many topics at once.
+
+00:00:50.225 --> 00:00:51.469
+We're going to see this again in
+
+00:00:51.469 --> 00:00:54.519
+the Kafka consumer section but for now just know that you can do it.
+
+00:00:54.520 --> 00:00:57.560
+For example, if you have an inconsistent naming scheme,
+
+00:00:57.560 --> 00:01:00.140
+it will be much more difficult for consumers to utilize
+
+00:01:00.140 --> 00:01:02.960
+your data with one of these regular expressions subscriptions.
+
+00:01:02.960 --> 00:01:05.000
+Strong naming schemes also make
+
+00:01:05.000 --> 00:01:08.105
+your stream processing application more resilient to change.
+
+00:01:08.105 --> 00:01:12.380
+Say you have a group of topics with similar data and similar names.
+
+00:01:12.379 --> 00:01:16.039
+If you add another topic with similar data and a similar name,
+
+00:01:16.040 --> 00:01:18.590
+your stream processing application may be able to just pick it
+
+00:01:18.590 --> 00:01:21.560
+up without any actual modifications to the code itself.
+
+00:01:21.560 --> 00:01:25.010
+Here are a few general suggestions to keep in mind.
+
+00:01:25.010 --> 00:01:27.664
+First, I recommend picking a separator
+
+00:01:27.664 --> 00:01:30.965
+like period or underscore to separate segments of a name,
+
+00:01:30.965 --> 00:01:35.965
+like com.Udacity or com_Udacity.
+
+00:01:35.965 --> 00:01:41.225
+Second, try segmenting your names based on schema or a model type.
+
+00:01:41.224 --> 00:01:43.519
+If lesson is my model type,
+
+00:01:43.519 --> 00:01:48.334
+I might choose a topic name like com.Udacity.lesson.
+
+00:01:48.334 --> 00:01:53.989
+Finally, it's typically useful to call it the event type and the topic name as well.
+
+00:01:53.989 --> 00:01:57.199
+Let's say the event we're looking at is quiz completed.
+
+00:01:57.200 --> 00:01:59.260
+If we were to combine all those rules,
+
+00:01:59.260 --> 00:02:05.515
+we might end up with a final topic name such as com.Udacity.lesson.quizcompleted.
+
+00:02:05.515 --> 00:02:08.750
+Again, there's no right or wrong way to name topics in Kafka.
+
+00:02:08.750 --> 00:02:11.419
+You may find that you don't like the suggestion I've given you,
+
+00:02:11.419 --> 00:02:13.039
+and that's totally okay.
+
+00:02:13.039 --> 00:02:17.269
+But having some strategy may end up saving you a lot of time and confusion.
+
+00:02:17.270 --> 00:02:20.210
+The important key here is consistency.
+
+00:02:20.210 --> 00:02:21.724
+Try to be consistent,
+
+00:02:21.724 --> 00:02:23.750
+pick something and stick with it,
+
+00:02:23.750 --> 00:02:26.180
+and make sure you communicate it to the people you're working with as
+
+00:02:26.180 --> 00:02:28.745
+well so that they can also follow that consistent pattern.
+
+00:02:28.745 --> 00:02:34.439
+For example, we'd down here com.Udacity.Lesson2.quiz.result.
+

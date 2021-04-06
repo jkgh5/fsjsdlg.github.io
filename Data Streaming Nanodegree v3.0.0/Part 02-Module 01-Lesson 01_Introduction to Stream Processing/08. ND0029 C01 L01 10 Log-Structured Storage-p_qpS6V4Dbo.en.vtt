@@ -1,0 +1,91 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:01.550 --> 00:00:04.459
+As the technology industry has grown,
+
+00:00:04.459 --> 00:00:05.855
+so too has the size,
+
+00:00:05.855 --> 00:00:07.655
+scale, and speed of our data.
+
+00:00:07.655 --> 00:00:10.199
+In parallel, business users are increasingly
+
+00:00:10.199 --> 00:00:13.634
+demanding quicker and quicker access to insights from this data.
+
+00:00:13.634 --> 00:00:16.094
+The competing pressures of these issues
+
+00:00:16.094 --> 00:00:19.094
+has led to a renaissance in data storage solutions.
+
+00:00:19.094 --> 00:00:22.410
+One of the key innovations over the past decade in computing has been
+
+00:00:22.410 --> 00:00:26.774
+the emergence of log-structured storage as a primary means of storing data.
+
+00:00:26.774 --> 00:00:29.500
+Distinct log-structured storage solutions were
+
+00:00:29.500 --> 00:00:32.118
+built to leverage the benefits of stream processing,
+
+00:00:32.118 --> 00:00:35.509
+event-driven architectures, and append-only logs.
+
+00:00:35.509 --> 00:00:39.259
+Common characteristics of all log-structured storage systems
+
+00:00:39.259 --> 00:00:42.559
+are that they simply append data to log files on disk.
+
+00:00:42.560 --> 00:00:46.925
+These log files may store data indefinitely for a specific time period,
+
+00:00:46.924 --> 00:00:49.729
+or until a specific size is reached.
+
+00:00:49.729 --> 00:00:53.089
+There are typically many log files on disk,
+
+00:00:53.090 --> 00:00:57.109
+and these log files are merged and compacted occasionally.
+
+00:00:57.109 --> 00:00:59.240
+When a log file is merged,
+
+00:00:59.240 --> 00:01:05.275
+it means that two or more log files are joined together into one output log file.
+
+00:01:05.275 --> 00:01:07.830
+When a log file is compacted,
+
+00:01:07.829 --> 00:01:11.390
+it means that the data from one or more files is deleted.
+
+00:01:11.390 --> 00:01:15.109
+Deletion is typically determined by the age of the record.
+
+00:01:15.109 --> 00:01:18.575
+The oldest records are removed while the newest stay.
+
+00:01:18.575 --> 00:01:23.750
+We'll cover log compaction and management in depth in the next lesson.
+
+00:01:23.750 --> 00:01:27.694
+Why do these systems use many log files instead of one?
+
+00:01:27.694 --> 00:01:29.959
+If there were only one log file,
+
+00:01:29.959 --> 00:01:32.719
+the speed of the streaming data stores will be limited to
+
+00:01:32.719 --> 00:01:37.170
+the I/O speed of reading a single file off of disk.
+

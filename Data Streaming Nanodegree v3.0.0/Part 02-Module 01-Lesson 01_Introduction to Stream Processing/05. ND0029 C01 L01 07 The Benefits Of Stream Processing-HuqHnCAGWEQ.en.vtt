@@ -1,0 +1,94 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:03.810
+With all this information about stream processing under your belt,
+
+00:00:03.810 --> 00:00:07.470
+you may be wondering what the advantages of stream processing are.
+
+00:00:07.469 --> 00:00:09.449
+As people learn about stream processing,
+
+00:00:09.449 --> 00:00:11.789
+they begin to see that it represents a paradigm shift,
+
+00:00:11.789 --> 00:00:13.709
+not only in terms of how they see their data,
+
+00:00:13.710 --> 00:00:16.500
+but and how they represent and process it as well.
+
+00:00:16.500 --> 00:00:19.515
+What makes stream processing worth the effort anyway?
+
+00:00:19.515 --> 00:00:22.460
+There are many scenarios in which stream processing provides
+
+00:00:22.460 --> 00:00:26.660
+significant benefits or provides functionality that would otherwise be impossible.
+
+00:00:26.660 --> 00:00:28.879
+Stream processing is typically faster for
+
+00:00:28.879 --> 00:00:31.894
+scenarios where a limited set of recent data is needed.
+
+00:00:31.894 --> 00:00:36.380
+Because stream processing applications are receiving events as soon as they occur,
+
+00:00:36.380 --> 00:00:39.065
+they can perform your calculation in real time.
+
+00:00:39.064 --> 00:00:41.509
+Stream processing applications are also
+
+00:00:41.509 --> 00:00:46.579
+typically more scalable due to the distributed nature of the underlying data stores.
+
+00:00:46.579 --> 00:00:50.059
+A single data stream may feed tens, hundreds,
+
+00:00:50.060 --> 00:00:54.905
+or even thousands of disparate processing applications with relatively little overhead.
+
+00:00:54.905 --> 00:00:58.100
+Additionally, data streaming conceptually decouples how
+
+00:00:58.100 --> 00:01:01.795
+data might be used from how it is produced.
+
+00:01:01.795 --> 00:01:06.109
+Applications simply produce descriptive events as they occur.
+
+00:01:06.109 --> 00:01:09.245
+This means that one set of data may satisfy
+
+00:01:09.245 --> 00:01:14.825
+many use cases which may or may not be predictable when the event was originally created.
+
+00:01:14.825 --> 00:01:17.900
+Encouraging applications to simply produce events
+
+00:01:17.900 --> 00:01:21.350
+and not specific models for downstream data manipulation,
+
+00:01:21.349 --> 00:01:25.914
+provides a powerful abstraction that decouples applications from each other.
+
+00:01:25.915 --> 00:01:30.319
+Finally, because the data in data streams are immutable and an order,
+
+00:01:30.319 --> 00:01:32.900
+streaming applications can replay events
+
+00:01:32.900 --> 00:01:36.115
+and observe exactly what occurred and in what order.
+
+00:01:36.114 --> 00:01:38.839
+This provides more opportunities to recover from
+
+00:01:38.840 --> 00:01:43.530
+error states or dig into how a particular result was actually arrived at.
+

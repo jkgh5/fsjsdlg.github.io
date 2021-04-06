@@ -1,0 +1,340 @@
+<!-- udacity2.0 -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Kafka Data Replication</title>
+  <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../assets/css/plyr.css">
+  <link rel="stylesheet" href="../assets/css/katex.min.css">
+  <link rel="stylesheet" href="../assets/css/jquery.mCustomScrollbar.min.css">
+  <link rel="stylesheet" href="../assets/css/styles.css">
+  <link rel="shortcut icon" type="image/png" href="../assets/img/udacimak.png" />
+</head>
+
+<body>
+  <div class="wrapper">
+    <nav id="sidebar">
+  <div class="sidebar-header">
+    <h3>Apache Kafka</h3>
+  </div>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled components">
+    <li class="">
+      <a href="01. Lesson Overview.html">01. Lesson Overview</a>
+    </li>
+    <li class="">
+      <a href="02. Lesson Glossary of Key Terms.html">02. Lesson Glossary of Key Terms</a>
+    </li>
+    <li class="">
+      <a href="03. Kafka Runs Anywhere.html">03. Kafka Runs Anywhere</a>
+    </li>
+    <li class="">
+      <a href="04. How Kafka Stores Data.html">04. How Kafka Stores Data</a>
+    </li>
+    <li class="">
+      <a href="05. Kafka Data Partitioning.html">05. Kafka Data Partitioning</a>
+    </li>
+    <li class="">
+      <a href="06. Kafka Data Replication.html">06. Kafka Data Replication</a>
+    </li>
+    <li class="">
+      <a href="07. Explore How Kafka Works.html">07. Explore How Kafka Works</a>
+    </li>
+    <li class="">
+      <a href="08. Summary How Kafka Works.html">08. Summary: How Kafka Works</a>
+    </li>
+    <li class="">
+      <a href="09. Kafka Topics in Depth.html">09. Kafka Topics in Depth</a>
+    </li>
+    <li class="">
+      <a href="10. Partitioning Topics.html">10. Partitioning Topics</a>
+    </li>
+    <li class="">
+      <a href="11. Review Topic Partitioning.html">11. Review: Topic Partitioning</a>
+    </li>
+    <li class="">
+      <a href="12. Naming Kafka Topics.html">12. Naming Kafka Topics</a>
+    </li>
+    <li class="">
+      <a href="13. Topic Data Management.html">13. Topic Data Management</a>
+    </li>
+    <li class="">
+      <a href="14. Topic Creation.html">14. Topic Creation</a>
+    </li>
+    <li class="">
+      <a href="15. Kafka Topics Summary.html">15. Kafka Topics Summary</a>
+    </li>
+    <li class="">
+      <a href="16. Kafka Producers.html">16. Kafka Producers</a>
+    </li>
+    <li class="">
+      <a href="17. Synchronous Production.html">17. Synchronous Production</a>
+    </li>
+    <li class="">
+      <a href="18. Asynchronous Production.html">18. Asynchronous Production</a>
+    </li>
+    <li class="">
+      <a href="19. Message Serialization.html">19. Message Serialization</a>
+    </li>
+    <li class="">
+      <a href="20. Synchronous or Asynchronous.html">20. Synchronous or Asynchronous?</a>
+    </li>
+    <li class="">
+      <a href="21. Producer Configuration.html">21. Producer Configuration</a>
+    </li>
+    <li class="">
+      <a href="22. Review Producer Configuration.html">22. Review: Producer Configuration</a>
+    </li>
+    <li class="">
+      <a href="23. Batching Configuration.html">23. Batching Configuration</a>
+    </li>
+    <li class="">
+      <a href="24. Configure a Producer.html">24. Configure a Producer</a>
+    </li>
+    <li class="">
+      <a href="25. Kafka Producers Summary.html">25. Kafka Producers Summary</a>
+    </li>
+    <li class="">
+      <a href="26. Kafka Consumers.html">26. Kafka Consumers</a>
+    </li>
+    <li class="">
+      <a href="27. Consumer Offsets.html">27. Consumer Offsets</a>
+    </li>
+    <li class="">
+      <a href="28. Practice with Consumer Offsets.html">28. Practice with Consumer Offsets</a>
+    </li>
+    <li class="">
+      <a href="29. Consumer Groups.html">29. Consumer Groups</a>
+    </li>
+    <li class="">
+      <a href="30. Consumer Subscriptions.html">30. Consumer Subscriptions</a>
+    </li>
+    <li class="">
+      <a href="31. Consumer Deserializers.html">31. Consumer Deserializers</a>
+    </li>
+    <li class="">
+      <a href="32. Retrieving Data from Kafka.html">32. Retrieving Data from Kafka</a>
+    </li>
+    <li class="">
+      <a href="33. Build a Kafka Consumer.html">33. Build a Kafka Consumer</a>
+    </li>
+    <li class="">
+      <a href="34. Kafka Consumers Summary.html">34. Kafka Consumers Summary</a>
+    </li>
+    <li class="">
+      <a href="35. Consumer Performance.html">35. Consumer Performance</a>
+    </li>
+    <li class="">
+      <a href="36. Producer Performance.html">36. Producer Performance</a>
+    </li>
+    <li class="">
+      <a href="37. Broker Performance.html">37. Broker Performance</a>
+    </li>
+    <li class="">
+      <a href="38. Performance Summary.html">38. Performance Summary</a>
+    </li>
+    <li class="">
+      <a href="39. Record Removal; Data Privacy.html">39. Record Removal; Data Privacy</a>
+    </li>
+    <li class="">
+      <a href="40. Per-User Key Encryption.html">40. Per-User Key Encryption</a>
+    </li>
+    <li class="">
+      <a href="41. Review Record Removal &amp; Data Privacy.html">41. Review: Record Removal &amp; Data Privacy</a>
+    </li>
+    <li class="">
+      <a href="42. Summary Record Removal &amp; Data Privacy.html">42. Summary: Record Removal &amp; Data Privacy</a>
+    </li>
+    <li class="">
+      <a href="43. Lesson Summary.html">43. Lesson Summary</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+</nav>
+
+    <div id="content">
+      <header class="container-fluild header">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <div class="align-items-middle">
+                <button type="button" id="sidebarCollapse" class="btn btn-toggle-sidebar">
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                </button>
+
+                <h1 style="display: inline-block">06. Kafka Data Replication</h1>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <main class="container">
+        <div class="row">
+          <div class="col-12">
+            <div class="ud-atom">
+  <h3><p>ND0029 C01 L02 06 Data Replication</p></h3>
+  <video controls>
+  <source src="06. ND0029 C01 L02 06 Data Replication-ZqjjU2QTF5Y.mp4" type="video/mp4">
+
+  <track default="true" kind="subtitles" srclang="en" src="06. ND0029 C01 L02 06 Data Replication-ZqjjU2QTF5Y.en.vtt" label="en">
+</video>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3><p>Data Replication</p></h3>
+  <div>
+  <figure class="figure">
+    <img src="img/screen-shot-2019-09-05-at-1.21.03-pm.png" alt="**Data Replication helps prevent data loss by writing the same data to more than one broker**" class="img img-fluid">
+    <figcaption class="figure-caption">
+      <p><strong>Data Replication helps prevent data loss by writing the same data to more than one broker</strong></p>
+    </figcaption>
+  </figure>
+</div>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3><p>What is data replication?</p></h3>
+  <div>
+  <form>
+    <fieldset>
+      <legend><p>What is data replication?</p></legend>
+    </fieldset>
+
+      <div>
+        <input type="radio" value="rbk1" name="916648" id="rbk1">
+        <label for="rbk1"><p>The unit by which Kafka achieves parallelism</p></label>
+      </div>
+      <div>
+        <input type="radio" value="rbk2" name="916648" id="rbk2">
+        <label for="rbk2"><p>The process Kafka uses to determine cluster membership</p></label>
+      </div>
+      <div>
+        <input type="radio" value="rbk3" name="916648" id="rbk3">
+        <label for="rbk3"><p>A mechanism by which producers communicate with each other</p></label>
+      </div>
+      <div>
+        <input type="radio" value="rbk4" name="916648" id="rbk4">
+        <label for="rbk4"><p>A mechanism by which extra copies of data in Kafka are stored to prevent data loss</p></label>
+      </div>
+  </form>
+
+  <details>
+    <summary><strong>SOLUTION:</strong></summary>
+    A mechanism by which extra copies of data in Kafka are stored to prevent data loss
+  </details>
+</div>
+
+</div>
+<div class="divider"></div>
+          </div>
+
+          <div class="col-12">
+            <p class="text-right">
+              <a href="07. Explore How Kafka Works.html" class="btn btn-outline-primary mt-4" role="button">Next Concept</a>
+            </p>
+          </div>
+        </div>
+      </main>
+
+      <footer class="footer">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <p class="text-center">
+                <a href="https://us-udacity.github.io/" target="_blank">【udacity2.0 】If you need more courses, please add wechat：udacity6</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </div>
+
+
+  <script src="../assets/js/jquery-3.3.1.min.js"></script>
+  <script src="../assets/js/plyr.polyfilled.min.js"></script>
+  <script src="../assets/js/bootstrap.min.js"></script>
+  <script src="../assets/js/jquery.mCustomScrollbar.concat.min.js"></script>
+  <script src="../assets/js/katex.min.js"></script>
+  <script>
+    // Initialize Plyr video players
+    const players = Array.from(document.querySelectorAll('video')).map(p => new Plyr(p));
+
+    // render math equations
+    let elMath = document.getElementsByClassName('mathquill');
+    for (let i = 0, len = elMath.length; i < len; i += 1) {
+      const el = elMath[i];
+
+      katex.render(el.textContent, el, {
+        throwOnError: false
+      });
+    }
+
+    // this hack will make sure Bootstrap tabs work when using Handlebars
+    if ($('#question-tabs').length && $('#user-answer-tabs').length) {
+      $("#question-tabs a.nav-link").on('click', function () {
+        $("#question-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+      $("#user-answer-tabs a.nav-link").on('click', function () {
+        $("#user-answer-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    } else {
+      $("a.nav-link").on('click', function () {
+        $(".tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    }
+
+    // side bar events
+    $(document).ready(function () {
+      $("#sidebar").mCustomScrollbar({
+        theme: "minimal"
+      });
+
+      $('#sidebarCollapse').on('click', function () {
+        $('#sidebar, #content').toggleClass('active');
+        $('.collapse.in').toggleClass('in');
+        $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+      });
+
+      // scroll to first video on page loading
+      if ($('video').length) {
+        $('html,body').animate({ scrollTop: $('div.plyr').prev().offset().top});
+      }
+
+      // auto play first video: this may not work with chrome/safari due to autoplay policy
+      if (players && players.length > 0) {
+        players[0].play();
+      }
+
+      // scroll sidebar to current concept
+      const currentInSideBar = $( "ul.sidebar-list.components li a:contains('06. Kafka Data Replication')" )
+      currentInSideBar.css( "text-decoration", "underline" );
+      $("#sidebar").mCustomScrollbar('scrollTo', currentInSideBar);
+    });
+  </script>
+</body>
+
+</html>

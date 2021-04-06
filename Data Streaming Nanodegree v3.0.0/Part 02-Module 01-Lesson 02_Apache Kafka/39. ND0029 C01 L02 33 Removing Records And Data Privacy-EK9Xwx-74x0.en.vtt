@@ -1,0 +1,43 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:01.399 --> 00:00:05.804
+You may recall that you can't easily delete records from Kafka,
+
+00:00:05.804 --> 00:00:08.054
+as it is an append only log.
+
+00:00:08.054 --> 00:00:10.289
+This is a serious issue in a world where
+
+00:00:10.289 --> 00:00:14.519
+privacy regulations are increasingly giving consumers the right to be forgotten.
+
+00:00:14.519 --> 00:00:17.355
+Regulation like the EU's GDPR,
+
+00:00:17.355 --> 00:00:20.655
+and the California Consumer Privacy Act or CCPA,
+
+00:00:20.655 --> 00:00:25.095
+grant citizens in these regions the right to request their data be removed from storage.
+
+00:00:25.094 --> 00:00:27.719
+While it's an encouraging development that legislative bodies
+
+00:00:27.719 --> 00:00:30.464
+have begun to take up this issue and protect consumers,
+
+00:00:30.464 --> 00:00:33.679
+it does create some interesting technical challenges for Kafka users.
+
+00:00:33.679 --> 00:00:39.325
+In this section will review a strategy popularized by Kafka user Daniel Lebrero ,
+
+00:00:39.325 --> 00:00:41.420
+to allow for deletion of records and
+
+00:00:41.420 --> 00:00:46.800
+existing Kafka topics that belong to a user and contains sensitive information.
+

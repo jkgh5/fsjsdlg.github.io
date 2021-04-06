@@ -1,0 +1,178 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:01.800
+As I mentioned in the previous section,
+
+00:00:01.800 --> 00:00:06.149
+parallelism and scalability of a topic is determined by partitioning.
+
+00:00:06.150 --> 00:00:09.089
+There are a few more details we need to understand regarding
+
+00:00:09.089 --> 00:00:12.029
+how you choose the number of partitions for a given topic.
+
+00:00:12.029 --> 00:00:16.619
+First, Kafka's ordering guarantees only apply within the partition themselves.
+
+00:00:16.620 --> 00:00:22.155
+Meaning, if I have a topic with three partitions A, B,
+
+00:00:22.155 --> 00:00:25.320
+and C, I can only be sure that the message is and
+
+00:00:25.320 --> 00:00:29.295
+topic A are ordered correctly relative to each other.
+
+00:00:29.295 --> 00:00:31.770
+I can make no assertions about messages and
+
+00:00:31.769 --> 00:00:35.475
+partition A relative to messages and partition B,
+
+00:00:35.475 --> 00:00:40.800
+or A relative towards messages and partition C. Let's see what that looks like.
+
+00:00:40.799 --> 00:00:44.284
+Notice how if I consume off just partition A,
+
+00:00:44.284 --> 00:00:48.214
+I never see messages 2, 3, or 5.
+
+00:00:48.215 --> 00:00:51.035
+So here we're consuming from partition A.
+
+00:00:51.034 --> 00:00:54.359
+This consumer never received 2, 3,
+
+00:00:54.359 --> 00:00:58.715
+and 5 even though if we were to count sequentially, they come after one.
+
+00:00:58.715 --> 00:01:02.540
+We only saw 1.6 in order.
+
+00:01:02.539 --> 00:01:04.905
+That's because ordering, as I said,
+
+00:01:04.905 --> 00:01:07.250
+is only guaranteed within a partition,
+
+00:01:07.250 --> 00:01:09.260
+and this case partition A.
+
+00:01:09.260 --> 00:01:13.900
+Again ordering is not relative to partition B or C. This is critical,
+
+00:01:13.900 --> 00:01:16.760
+if you need all messages in a topic to be strictly ordered,
+
+00:01:16.760 --> 00:01:19.130
+then you need to keep your partition count to one.
+
+00:01:19.129 --> 00:01:22.234
+Choosing the number of partitions can be a tricky endeavor.
+
+00:01:22.234 --> 00:01:26.179
+There is no such thing as the right number for all scenarios.
+
+00:01:26.180 --> 00:01:29.360
+I'll provide a link to an excellent blog post from confluent which
+
+00:01:29.359 --> 00:01:32.915
+walks you through the pros and cons of how to choose the number of partitions.
+
+00:01:32.915 --> 00:01:35.300
+The gist of this blog post is that you need to
+
+00:01:35.299 --> 00:01:38.450
+try and understand your throughput goals first.
+
+00:01:38.450 --> 00:01:42.424
+There is an equation that confident recommends that I'm going to pass along to you.
+
+00:01:42.424 --> 00:01:44.855
+Just remember, this equation is a starting point.
+
+00:01:44.855 --> 00:01:49.115
+You will almost certainly need to tweak and refine and your real-world scenarios.
+
+00:01:49.114 --> 00:01:52.909
+The equation says that you take the maximum of both the desired
+
+00:01:52.909 --> 00:01:58.219
+throughput divided by the producer and desire throughput divided by the consumer.
+
+00:01:58.219 --> 00:02:02.929
+This number should be equal to the maximum read write rate of your broker's.
+
+00:02:02.930 --> 00:02:04.475
+So here's that equation.
+
+00:02:04.474 --> 00:02:07.759
+We have the maximum of our throughput divided by the number of
+
+00:02:07.760 --> 00:02:11.194
+producers and the throughput divided by the number of consumers.
+
+00:02:11.194 --> 00:02:15.334
+So if this number comes out to be 10 and this number is 11,
+
+00:02:15.335 --> 00:02:18.620
+we would take the maximum of 10 and 11 which is 11,
+
+00:02:18.620 --> 00:02:22.189
+and we would need 11 partitions to meet our throughput goals.
+
+00:02:22.189 --> 00:02:25.925
+Let's say that I had a goal throughput of 100 megabytes per second.
+
+00:02:25.925 --> 00:02:28.820
+I have three producers and five consumers.
+
+00:02:28.819 --> 00:02:31.704
+So I have three producers and five consumers.
+
+00:02:31.705 --> 00:02:36.679
+If I divide a throughput goal of 100 megabytes per second by three producers,
+
+00:02:36.679 --> 00:02:39.800
+I have about 34 partitions if I round.
+
+00:02:39.800 --> 00:02:43.130
+If I divide a 100 megabyte per second by five consumers,
+
+00:02:43.129 --> 00:02:44.960
+I have about 20 partitions.
+
+00:02:44.960 --> 00:02:48.564
+Taking larger of 34 or 20,
+
+00:02:48.564 --> 00:02:53.704
+I would need 34 partitions for this topic to achieve 100 megabytes per second.
+
+00:02:53.705 --> 00:02:56.079
+It's worth noting in this example,
+
+00:02:56.079 --> 00:03:00.409
+I assume that one partition represents about 10 megabytes per second throughput.
+
+00:03:00.409 --> 00:03:03.710
+This number could be much higher in real-world scenarios.
+
+00:03:03.710 --> 00:03:06.814
+Finally, partitions do have some performance consequences
+
+00:03:06.814 --> 00:03:10.134
+such as increased unavailability during re-balances.
+
+00:03:10.134 --> 00:03:14.199
+Additionally, re-partitions do introduce network latency.
+
+00:03:14.199 --> 00:03:17.239
+Simply put, it is not advantageous to just choose
+
+00:03:17.240 --> 00:03:23.010
+an arbitrarily large number of partitions and hope that it works well, you need to test.
+

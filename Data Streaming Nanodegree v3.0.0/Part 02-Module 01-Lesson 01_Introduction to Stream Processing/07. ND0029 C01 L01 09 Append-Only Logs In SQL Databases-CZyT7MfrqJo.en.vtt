@@ -1,0 +1,109 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:01.370 --> 00:00:05.429
+Append-Only logs were not originally created for stream processing.
+
+00:00:05.429 --> 00:00:08.099
+In fact, almost every developer is already using
+
+00:00:08.099 --> 00:00:11.955
+append only log today but they're likely just not even aware of it.
+
+00:00:11.955 --> 00:00:17.160
+Years ago, SQL database developers need to develop a way to keep track of changes to
+
+00:00:17.160 --> 00:00:19.440
+databases so that they could be synched to read
+
+00:00:19.440 --> 00:00:22.380
+replicas from the primary read write node.
+
+00:00:22.379 --> 00:00:23.454
+So just to reiterate,
+
+00:00:23.454 --> 00:00:24.929
+in most SQL clusters,
+
+00:00:24.929 --> 00:00:27.809
+you'll have one SQL database node which is servicing
+
+00:00:27.809 --> 00:00:31.410
+all requests from clients such as micro services and others.
+
+00:00:31.410 --> 00:00:36.045
+You'll have secondary nodes that will take over if the primary node were to fail.
+
+00:00:36.045 --> 00:00:38.390
+But one of the problems is how do you keep the data in
+
+00:00:38.390 --> 00:00:40.744
+sync between the primary and the secondaries?
+
+00:00:40.744 --> 00:00:44.104
+What happens if data is lost as it's being synched?
+
+00:00:44.104 --> 00:00:49.969
+Developers for these database systems hit upon the idea of keeping an append-only log
+
+00:00:49.969 --> 00:00:51.560
+behind the scenes that track
+
+00:00:51.560 --> 00:00:55.850
+the exact events that were taking place on the primary database.
+
+00:00:55.850 --> 00:01:00.740
+The idea is simple, every time an update creation or deletion took place,
+
+00:01:00.740 --> 00:01:04.100
+the database would sequentially right that action out to a log.
+
+00:01:04.099 --> 00:01:06.679
+That log would then be replicated to each of
+
+00:01:06.680 --> 00:01:12.830
+the read replicas which would modify their data in exactly the same fashion.
+
+00:01:12.829 --> 00:01:15.620
+This provided guarantees that the read replicas would
+
+00:01:15.620 --> 00:01:19.085
+contain identical state to the primary node.
+
+00:01:19.084 --> 00:01:21.634
+For those of you who have used Postgres,
+
+00:01:21.635 --> 00:01:25.579
+this is what is known as the write-ahead log or wall.
+
+00:01:25.579 --> 00:01:31.025
+Specifically, this process is typically referred to as Change Data Capture,
+
+00:01:31.025 --> 00:01:33.455
+otherwise known as CDC.
+
+00:01:33.454 --> 00:01:37.250
+So SQL database is already implemented in append-only log,
+
+00:01:37.250 --> 00:01:39.439
+why aren't they viable streaming data stores?
+
+00:01:39.439 --> 00:01:42.560
+Well, because SQL databases don't actually surface the
+
+00:01:42.560 --> 00:01:46.314
+append-only log in a consumable fashion for stream processing applications.
+
+00:01:46.314 --> 00:01:48.969
+SQL databases do not actually store the data.
+
+00:01:48.969 --> 00:01:51.304
+They use at runtime and append-only logs.
+
+00:01:51.305 --> 00:01:53.030
+The wall and other forms of
+
+00:01:53.030 --> 00:01:58.950
+CDC are purpose-built for replication and for replication only.
+

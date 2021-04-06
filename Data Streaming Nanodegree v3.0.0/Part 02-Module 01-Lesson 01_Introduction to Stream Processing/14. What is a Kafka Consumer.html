@@ -1,0 +1,257 @@
+<!-- udacity2.0 -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>What is a Kafka Consumer?</title>
+  <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../assets/css/plyr.css">
+  <link rel="stylesheet" href="../assets/css/katex.min.css">
+  <link rel="stylesheet" href="../assets/css/jquery.mCustomScrollbar.min.css">
+  <link rel="stylesheet" href="../assets/css/styles.css">
+  <link rel="shortcut icon" type="image/png" href="../assets/img/udacimak.png" />
+</head>
+
+<body>
+  <div class="wrapper">
+    <nav id="sidebar">
+  <div class="sidebar-header">
+    <h3>Introduction to Stream Processing</h3>
+  </div>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled components">
+    <li class="">
+      <a href="01. Welcome.html">01. Welcome</a>
+    </li>
+    <li class="">
+      <a href="02. Lesson Glossary of Key Terms.html">02. Lesson Glossary of Key Terms</a>
+    </li>
+    <li class="">
+      <a href="03. Intro to Stream Processing.html">03. Intro to Stream Processing</a>
+    </li>
+    <li class="">
+      <a href="04. Stream Processing Examples.html">04. Stream Processing Examples</a>
+    </li>
+    <li class="">
+      <a href="05. Stream vs. Batch Processing.html">05. Stream vs. Batch Processing</a>
+    </li>
+    <li class="">
+      <a href="06. Review Stream Processing.html">06. Review: Stream Processing</a>
+    </li>
+    <li class="">
+      <a href="07. Append-Only Logs.html">07. Append-Only Logs</a>
+    </li>
+    <li class="">
+      <a href="08. Log-structured storage.html">08. Log-structured storage</a>
+    </li>
+    <li class="">
+      <a href="09. Kafka A Stream Processing Tool.html">09. Kafka: A Stream Processing Tool</a>
+    </li>
+    <li class="">
+      <a href="10. Kafka in Industry.html">10. Kafka in Industry</a>
+    </li>
+    <li class="">
+      <a href="11. Kafka in Action.html">11. Kafka in Action</a>
+    </li>
+    <li class="">
+      <a href="12. What is a Kafka Topic.html">12. What is a Kafka Topic?</a>
+    </li>
+    <li class="">
+      <a href="13. What is a Kafka Producer.html">13. What is a Kafka Producer?</a>
+    </li>
+    <li class="">
+      <a href="14. What is a Kafka Consumer.html">14. What is a Kafka Consumer?</a>
+    </li>
+    <li class="">
+      <a href="15. Using the Kafka CLI tools.html">15. Using the Kafka CLI tools</a>
+    </li>
+    <li class="">
+      <a href="16. Kafka Python Library.html">16. Kafka Python Library</a>
+    </li>
+    <li class="">
+      <a href="17. Lesson Summary.html">17. Lesson Summary</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+</nav>
+
+    <div id="content">
+      <header class="container-fluild header">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <div class="align-items-middle">
+                <button type="button" id="sidebarCollapse" class="btn btn-toggle-sidebar">
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                </button>
+
+                <h1 style="display: inline-block">14. What is a Kafka Consumer?</h1>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <main class="container">
+        <div class="row">
+          <div class="col-12">
+            <div class="ud-atom">
+  <h3><p>ND0029 C01 L01 17 Kafka Consumers</p></h3>
+  <video controls>
+  <source src="14. ND0029 C01 L01 17 Kafka Consumers-kRFMPxTvfF8.mp4" type="video/mp4">
+
+  <track default="true" kind="subtitles" srclang="en" src="14. ND0029 C01 L01 17 Kafka Consumers-kRFMPxTvfF8.en.vtt" label="en">
+</video>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3><p>Kafka Consumers</p></h3>
+  <div>
+  <h2 id="kafka-consumers">Kafka Consumers</h2>
+<ul>
+<li>Pull event data from one or more Kafka Topics</li>
+<li>Integrate with Kafka via a Client Library written in languages like Python, Java, Go, and more</li>
+<li>By default only consume data that was produced after the consumer first connected to the topic. Historical data will not be consumed by default.</li>
+</ul>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3><p>What is a Kafka Consumer?</p></h3>
+  <div>
+  <form>
+    <fieldset>
+      <legend><p>What is a Kafka Consumer?</p></legend>
+    </fieldset>
+
+      <div>
+        <input type="radio" value="rbk1" name="909792" id="rbk1">
+        <label for="rbk1"><p>An application that sends event data to a Kafka Topic</p></label>
+      </div>
+      <div>
+        <input type="radio" value="rbk2" name="909792" id="rbk2">
+        <label for="rbk2"><p>An application that pulls event data from a Kafka Topic</p></label>
+      </div>
+      <div>
+        <input type="radio" value="rbk3" name="909792" id="rbk3">
+        <label for="rbk3"><p>The application that stores events</p></label>
+      </div>
+  </form>
+
+  <details>
+    <summary><strong>SOLUTION:</strong></summary>
+    An application that pulls event data from a Kafka Topic
+  </details>
+</div>
+
+</div>
+<div class="divider"></div>
+          </div>
+
+          <div class="col-12">
+            <p class="text-right">
+              <a href="15. Using the Kafka CLI tools.html" class="btn btn-outline-primary mt-4" role="button">Next Concept</a>
+            </p>
+          </div>
+        </div>
+      </main>
+
+      <footer class="footer">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <p class="text-center">
+                <a href="https://us-udacity.github.io/" target="_blank">【udacity2.0 】If you need more courses, please add wechat：udacity6</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </div>
+
+
+  <script src="../assets/js/jquery-3.3.1.min.js"></script>
+  <script src="../assets/js/plyr.polyfilled.min.js"></script>
+  <script src="../assets/js/bootstrap.min.js"></script>
+  <script src="../assets/js/jquery.mCustomScrollbar.concat.min.js"></script>
+  <script src="../assets/js/katex.min.js"></script>
+  <script>
+    // Initialize Plyr video players
+    const players = Array.from(document.querySelectorAll('video')).map(p => new Plyr(p));
+
+    // render math equations
+    let elMath = document.getElementsByClassName('mathquill');
+    for (let i = 0, len = elMath.length; i < len; i += 1) {
+      const el = elMath[i];
+
+      katex.render(el.textContent, el, {
+        throwOnError: false
+      });
+    }
+
+    // this hack will make sure Bootstrap tabs work when using Handlebars
+    if ($('#question-tabs').length && $('#user-answer-tabs').length) {
+      $("#question-tabs a.nav-link").on('click', function () {
+        $("#question-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+      $("#user-answer-tabs a.nav-link").on('click', function () {
+        $("#user-answer-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    } else {
+      $("a.nav-link").on('click', function () {
+        $(".tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    }
+
+    // side bar events
+    $(document).ready(function () {
+      $("#sidebar").mCustomScrollbar({
+        theme: "minimal"
+      });
+
+      $('#sidebarCollapse').on('click', function () {
+        $('#sidebar, #content').toggleClass('active');
+        $('.collapse.in').toggleClass('in');
+        $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+      });
+
+      // scroll to first video on page loading
+      if ($('video').length) {
+        $('html,body').animate({ scrollTop: $('div.plyr').prev().offset().top});
+      }
+
+      // auto play first video: this may not work with chrome/safari due to autoplay policy
+      if (players && players.length > 0) {
+        players[0].play();
+      }
+
+      // scroll sidebar to current concept
+      const currentInSideBar = $( "ul.sidebar-list.components li a:contains('14. What is a Kafka Consumer?')" )
+      currentInSideBar.css( "text-decoration", "underline" );
+      $("#sidebar").mCustomScrollbar('scrollTo', currentInSideBar);
+    });
+  </script>
+</body>
+
+</html>

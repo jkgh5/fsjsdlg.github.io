@@ -1,0 +1,370 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:01.520 --> 00:00:03.990
+In this demonstration, we'll revisit
+
+00:00:03.990 --> 00:00:06.000
+an earlier producer configuration and use
+
+00:00:06.000 --> 00:00:08.144
+some of the configuration options we just learned about.
+
+00:00:08.144 --> 00:00:09.674
+Let's close out Sample 3,
+
+00:00:09.675 --> 00:00:11.325
+and we'll open Sample 4.
+
+00:00:11.324 --> 00:00:15.689
+So we're going to play with some of the producer settings the same way that we play with
+
+00:00:15.689 --> 00:00:20.204
+some of that Kafka topic settings in an earlier exercise.
+
+00:00:20.204 --> 00:00:24.419
+So the first thing we're going to do is we're going to
+
+00:00:24.420 --> 00:00:28.785
+actually set the linger milliseconds on our sample.
+
+00:00:28.785 --> 00:00:31.559
+First, I'm going to move this window so that we can
+
+00:00:31.559 --> 00:00:36.589
+see both the terminal and or code window.
+
+00:00:36.590 --> 00:00:38.525
+So we're going to set linger milliseconds.
+
+00:00:38.524 --> 00:00:40.309
+What are linger milliseconds?
+
+00:00:40.310 --> 00:00:42.620
+Well, let's take a look at the documentation.
+
+00:00:42.619 --> 00:00:46.784
+So this is librdkafka settings.
+
+00:00:46.784 --> 00:00:51.364
+LibrdKafka is the underlying library that powers the confluent Kafka-Python library.
+
+00:00:51.365 --> 00:00:57.050
+So its shares all of the same configuration as the confluent Kafka-Python library.
+
+00:00:57.049 --> 00:00:59.959
+So we were looking for linger milliseconds.
+
+00:00:59.960 --> 00:01:03.230
+What's great about this documentation is not only does it tell you whether this
+
+00:01:03.229 --> 00:01:06.469
+applies to a producer in this case that's what P stands for.
+
+00:01:06.469 --> 00:01:10.239
+It will also if that configuration option applies to a consumer or a topic.
+
+00:01:10.239 --> 00:01:11.929
+It'll tell you what the default is.
+
+00:01:11.930 --> 00:01:14.210
+So in this case a half a second,
+
+00:01:14.209 --> 00:01:16.819
+and it'll also give you a description of what this does.
+
+00:01:16.819 --> 00:01:19.114
+Essentially, what linger milliseconds is,
+
+00:01:19.114 --> 00:01:22.729
+is how long the underlying client library is going to wait before
+
+00:01:22.730 --> 00:01:26.390
+it sends the message is to off to the actual broker.
+
+00:01:26.390 --> 00:01:31.010
+So again, the default was 500 milliseconds or a half second.
+
+00:01:31.010 --> 00:01:34.820
+Let's set this to something larger say 10,000 milliseconds.
+
+00:01:34.819 --> 00:01:37.750
+This is the equivalent of 10 seconds and see what happens.
+
+00:01:37.750 --> 00:01:39.875
+Now, I want to point something out here.
+
+00:01:39.875 --> 00:01:44.689
+I have this producer configured to run as fast as it possibly can.
+
+00:01:44.689 --> 00:01:49.700
+Because of that I've added this little function call down here producer.
+
+00:01:49.700 --> 00:01:51.640
+poll(0). What does that mean?
+
+00:01:51.640 --> 00:01:55.219
+Well, because we're producing so much data to Kafka so fast,
+
+00:01:55.219 --> 00:02:00.179
+all we're doing is sending it essentially some very very simple string data,
+
+00:02:00.180 --> 00:02:03.110
+we actually need to call the poll so that we actually knowledge to
+
+00:02:03.109 --> 00:02:06.495
+the underlying client library that the messages have been delivered.
+
+00:02:06.495 --> 00:02:09.185
+Otherwise, it will overflow its queue very quickly.
+
+00:02:09.185 --> 00:02:12.650
+As you'll see, we'll probably still overflow that queue pretty fast.
+
+00:02:12.650 --> 00:02:14.840
+That's why we're going to tweak these settings.
+
+00:02:14.840 --> 00:02:16.685
+So you can see running,
+
+00:02:16.685 --> 00:02:18.664
+and you can see queue full.
+
+00:02:18.664 --> 00:02:21.745
+So this is configured to print out when it gets to a million messages.
+
+00:02:21.745 --> 00:02:25.340
+So we weren't able to produce some million messages before things overflowed.
+
+00:02:25.340 --> 00:02:27.664
+Now, why might that be?
+
+00:02:27.664 --> 00:02:29.769
+Well, if we look at our settings,
+
+00:02:29.769 --> 00:02:34.275
+we know that the linger milliseconds was now spend 10 seconds instead of a half second.
+
+00:02:34.275 --> 00:02:37.610
+So this means that our underlying client is going to
+
+00:02:37.610 --> 00:02:41.345
+wait a longer time before actually sends messages to the Kafka broker.
+
+00:02:41.344 --> 00:02:44.960
+So in essence, we're actually going to build up more data on
+
+00:02:44.960 --> 00:02:48.950
+the local machine than we may have historically done.
+
+00:02:48.949 --> 00:02:51.000
+So how can we change that?
+
+00:02:51.000 --> 00:02:53.599
+Well, there are two settings through that we could take a look at.
+
+00:02:53.599 --> 00:02:57.199
+Queue buffering max messages and max kilobytes.
+
+00:02:57.199 --> 00:02:59.424
+Well, what do these settings do?
+
+00:02:59.425 --> 00:03:03.620
+These settings configure the underlying Kafka client library to
+
+00:03:03.620 --> 00:03:07.539
+allow us to hold a certain number of messages or a certain amount of kilobytes of data,
+
+00:03:07.539 --> 00:03:09.379
+in addition to what the default settings are.
+
+00:03:09.379 --> 00:03:11.125
+So let's take a look at that in the settings real quickly.
+
+00:03:11.125 --> 00:03:14.284
+I'm just going to copy this, we're going to pull that up.
+
+00:03:14.284 --> 00:03:19.400
+So we can see the default here is to hold a 100,000 messages.
+
+00:03:19.400 --> 00:03:22.550
+This is the maximum number of messages allowed in the producer queue.
+
+00:03:22.550 --> 00:03:26.300
+That means that we're only allowed to hold a 100,000 before sending.
+
+00:03:26.300 --> 00:03:31.185
+So if we produce a 100,000 messages before this 10 seconds elapsed,
+
+00:03:31.185 --> 00:03:33.405
+we would be out of buffer space.
+
+00:03:33.405 --> 00:03:37.849
+So that's likely because the number of batch messages number
+
+00:03:37.849 --> 00:03:39.560
+of messages that we want to send it a batch at
+
+00:03:39.560 --> 00:03:42.155
+once is probably not set to match the same.
+
+00:03:42.155 --> 00:03:43.909
+So let's set this differently.
+
+00:03:43.909 --> 00:03:48.560
+Let's say that we want to batch out 10,000 messages at a time.
+
+00:03:48.560 --> 00:03:51.599
+Let's see if that helps us.
+
+00:03:51.650 --> 00:03:56.700
+So this means that the underlying client library will either wait 10 seconds to send
+
+00:03:56.699 --> 00:03:59.219
+the messages or wait until it has 10,000 messages
+
+00:03:59.219 --> 00:04:02.580
+before sending the sentiment data out to Kafka.
+
+00:04:02.580 --> 00:04:05.195
+You can see this time we didn't have a queue full.
+
+00:04:05.194 --> 00:04:08.944
+So again, why did it succeed this time when it didn't last time?
+
+00:04:08.944 --> 00:04:12.049
+Well, again the reason is that we told it test
+
+00:04:12.050 --> 00:04:15.365
+weight either 10 seconds or until it has 10,000 messages.
+
+00:04:15.365 --> 00:04:18.410
+So we know that at the queue buffering max messages is a
+
+00:04:18.410 --> 00:04:22.765
+100,000 but we set the batch number of messages to 10,000.
+
+00:04:22.764 --> 00:04:25.360
+We're never going to hit that 100,000 ceiling.
+
+00:04:25.360 --> 00:04:27.444
+So we'll never overrun the queue.
+
+00:04:27.444 --> 00:04:29.245
+Again, if I comment this out,
+
+00:04:29.245 --> 00:04:30.899
+we'd start to fail again.
+
+00:04:30.899 --> 00:04:34.159
+Another approach I could take would be to increase
+
+00:04:34.160 --> 00:04:37.100
+this to some significantly larger number of messages.
+
+00:04:37.100 --> 00:04:39.080
+Say we have one million,
+
+00:04:39.079 --> 00:04:41.349
+can make it 10 million or a 100 million.
+
+00:04:41.350 --> 00:04:43.610
+Then it would probably run for
+
+00:04:43.610 --> 00:04:46.610
+a while before a crash but it probably would eventually crash again.
+
+00:04:46.610 --> 00:04:49.009
+So the point of this exercise
+
+00:04:49.009 --> 00:04:51.349
+is really to show that there are a number of options that you can
+
+00:04:51.350 --> 00:04:55.980
+tweak and that you typically can't just create a producer and hope that it will work,
+
+00:04:55.980 --> 00:04:59.689
+there are usually some configuration options that you need to consider on your end.
+
+00:04:59.689 --> 00:05:01.759
+Now, as I said earlier,
+
+00:05:01.759 --> 00:05:03.904
+pre-optimization isn't always the best idea.
+
+00:05:03.904 --> 00:05:07.519
+So what I would recommend is that you start with these numbers
+
+00:05:07.519 --> 00:05:11.599
+and try to measure out what you think is appropriate for your given situation.
+
+00:05:11.600 --> 00:05:13.790
+I don't think that think about is the maximum amount
+
+00:05:13.790 --> 00:05:15.845
+of data you want to keep in memory at once.
+
+00:05:15.845 --> 00:05:18.860
+For example, I believe we can take a look at what
+
+00:05:18.860 --> 00:05:21.889
+this is set to and convert that into megabytes.
+
+00:05:21.889 --> 00:05:24.064
+How much does the confluent Python library,
+
+00:05:24.064 --> 00:05:27.649
+excuse me, the confluent library it allow us to keep in memory.
+
+00:05:27.649 --> 00:05:33.439
+So it defaults to one gigabyte of data in memory.
+
+00:05:33.439 --> 00:05:35.269
+That's pretty significant overhead and
+
+00:05:35.269 --> 00:05:37.579
+depending on your application that may not be appropriate.
+
+00:05:37.579 --> 00:05:38.930
+If you're running on limited hardware,
+
+00:05:38.930 --> 00:05:43.629
+you might want to something smaller say 1,000 kilobytes or 10,000.
+
+00:05:43.629 --> 00:05:48.125
+Be careful though because if this number is hit before you send the data to Kafka,
+
+00:05:48.125 --> 00:05:49.910
+you will have a queue overflow.
+
+00:05:49.910 --> 00:05:52.250
+One more final thing before I move on.
+
+00:05:52.250 --> 00:05:54.709
+We're going to go ahead and specify a compression type.
+
+00:05:54.709 --> 00:05:57.969
+So I'm going to clear these other options out for just a moment,
+
+00:05:57.970 --> 00:06:04.310
+and we're going to set the compression type equal to Lz4.
+
+00:06:04.310 --> 00:06:08.280
+That's how easy it is to add compression to your producer.
+
+00:06:08.290 --> 00:06:11.400
+We can go ahead and run that,
+
+00:06:11.689 --> 00:06:14.675
+and you can see we're producing messages.
+
+00:06:14.675 --> 00:06:17.030
+We still have the same problem that we encountered earlier
+
+00:06:17.029 --> 00:06:19.684
+because we removed our settings where the queue is full.
+
+00:06:19.685 --> 00:06:22.860
+But that's how you would add compression.
+

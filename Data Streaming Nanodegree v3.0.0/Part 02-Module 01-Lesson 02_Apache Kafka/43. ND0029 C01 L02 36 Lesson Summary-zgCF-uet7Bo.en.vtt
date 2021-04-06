@@ -1,0 +1,49 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:03.120
+All right. Welcome to the end of this lesson.
+
+00:00:03.120 --> 00:00:04.919
+We've learned a lot.
+
+00:00:04.919 --> 00:00:08.205
+In this lesson, we've covered architecture,
+
+00:00:08.205 --> 00:00:11.530
+consumer topic and producer configuration,
+
+00:00:11.529 --> 00:00:16.140
+and learned best practices on how to monitor those same configuration items.
+
+00:00:16.140 --> 00:00:20.324
+We've also seen how to delete and manage and encrypt user data.
+
+00:00:20.324 --> 00:00:22.199
+By the end of this lesson,
+
+00:00:22.199 --> 00:00:26.009
+you have learned so much information about how Kafka works and you're going
+
+00:00:26.010 --> 00:00:30.105
+to be ready to apply it not only in future lessons, but in the real world.
+
+00:00:30.105 --> 00:00:31.914
+So now that we reviewed a lot today,
+
+00:00:31.914 --> 00:00:34.399
+but knowing this information is worth it and it's really
+
+00:00:34.399 --> 00:00:37.310
+going to make this journey that much better for you.
+
+00:00:37.310 --> 00:00:38.810
+In the upcoming lesson,
+
+00:00:38.810 --> 00:00:41.480
+we're going to start seeing how we can really take
+
+00:00:41.479 --> 00:00:45.279
+our Kafka data to the next level with data schemas.
+

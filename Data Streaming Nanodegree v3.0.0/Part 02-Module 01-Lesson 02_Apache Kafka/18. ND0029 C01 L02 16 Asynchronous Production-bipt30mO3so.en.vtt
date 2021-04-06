@@ -1,0 +1,64 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:04.769
+Asynchronous production of Kafka is the most common method of producing data to topics.
+
+00:00:04.769 --> 00:00:08.580
+This type of production is useful when you want to maximize your throughput to
+
+00:00:08.580 --> 00:00:13.035
+Kafka with the least overhead and impact on the integrated application.
+
+00:00:13.035 --> 00:00:15.179
+In an asynchronous producer,
+
+00:00:15.179 --> 00:00:18.030
+client library will take messages from the application,
+
+00:00:18.030 --> 00:00:20.743
+add the message into a batch of other messages,
+
+00:00:20.743 --> 00:00:22.859
+and eventually send it to Kafka.
+
+00:00:22.859 --> 00:00:24.824
+While this process is occurring,
+
+00:00:24.824 --> 00:00:29.609
+the function that called the produce function may continue onwards and do something else.
+
+00:00:29.609 --> 00:00:32.100
+Eventually, the Kafka broker who will respond to
+
+00:00:32.100 --> 00:00:35.250
+the producer acknowledging that it received these messages.
+
+00:00:35.250 --> 00:00:37.350
+When developers first learn of this,
+
+00:00:37.350 --> 00:00:41.800
+they often wonder how they can know if their message was successfully delivered or not.
+
+00:00:41.799 --> 00:00:46.714
+Kafka clients offer callbacks for when messages are delivered or an error occurs.
+
+00:00:46.715 --> 00:00:48.950
+So in the case that something does fail,
+
+00:00:48.950 --> 00:00:52.760
+your application code will be given a chance to take some rectifying action.
+
+00:00:52.759 --> 00:00:56.000
+Additionally, producers can decide to fire and forget
+
+00:00:56.000 --> 00:00:59.450
+and never check delivery confirmation or error messages.
+
+00:00:59.450 --> 00:01:02.720
+Unless your specific problem requires synchronicity,
+
+00:01:02.719 --> 00:01:06.750
+asynchronous production should be your default choice.
+

@@ -1,0 +1,67 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:03.495
+All Kafka brokers belong to a Kafka cluster.
+
+00:00:03.495 --> 00:00:07.725
+A cluster consists of one or more Kafka brokers.
+
+00:00:07.724 --> 00:00:11.024
+Some clusters will contain just one broker while
+
+00:00:11.025 --> 00:00:14.855
+others may contain three or potentially thousands.
+
+00:00:14.855 --> 00:00:19.954
+Remember in the first lesson I pointed out that LinkedIn and Netflix and accompanies like
+
+00:00:19.954 --> 00:00:25.479
+Uber and Apple will run a hundreds or a thousands of Kafka brokers to handle their data.
+
+00:00:25.480 --> 00:00:27.830
+How do the Kafka brokers and clients keep track of
+
+00:00:27.829 --> 00:00:30.649
+all the Kafka brokers if they're are more than one?
+
+00:00:30.649 --> 00:00:34.670
+The Kafka team decided to use a tool called Apache Zookeeper for this purpose.
+
+00:00:34.670 --> 00:00:37.280
+For this class, it's not important to know much
+
+00:00:37.280 --> 00:00:40.310
+about zookeeper outside of how Kafka uses it.
+
+00:00:40.310 --> 00:00:43.984
+Zookeeper is used for a few things in the Kafka world.
+
+00:00:43.984 --> 00:00:49.369
+First, zookeeper is used to determine which brokers are members of the cluster,
+
+00:00:49.369 --> 00:00:54.469
+as well as which of those brokers are the leaders of the various topics.
+
+00:00:54.469 --> 00:01:00.089
+Beyond that Kafka also uses zookeeper to store topics state and user permissions.
+
+00:01:00.090 --> 00:01:03.440
+User permissions are also known as ACLs.
+
+00:01:03.439 --> 00:01:07.039
+Kafka's usage as zookeeper means that brokers may typically
+
+00:01:07.040 --> 00:01:10.805
+gracefully join and leave the cluster as needed.
+
+00:01:10.805 --> 00:01:17.165
+The flexibility has proven highly attractive so that many companies will use Kafka
+
+00:01:17.165 --> 00:01:20.734
+in a large and growing data system because it's usage
+
+00:01:20.734 --> 00:01:25.230
+of zookeeper allows nodes to come and go gracefully from the cluster.
+

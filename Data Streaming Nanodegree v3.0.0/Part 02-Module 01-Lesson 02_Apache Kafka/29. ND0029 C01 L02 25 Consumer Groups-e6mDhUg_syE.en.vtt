@@ -1,0 +1,142 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:01.514
+When we covered Kafka Topics,
+
+00:00:01.514 --> 00:00:04.889
+we learned that topics may consist of one or more partitions.
+
+00:00:04.889 --> 00:00:09.809
+We also learned that these partitions are unit of parallelism for Kafka consumers.
+
+00:00:09.810 --> 00:00:11.720
+When you create a Kafka consumer,
+
+00:00:11.720 --> 00:00:14.714
+you must specify a group ID parameter.
+
+00:00:14.714 --> 00:00:18.780
+This parameter tells Kafka what consumer group the consumer belongs to.
+
+00:00:18.780 --> 00:00:22.035
+Consumer groups are collections of Kafka consumers
+
+00:00:22.035 --> 00:00:25.710
+that are working together to consume data from the same topic.
+
+00:00:25.710 --> 00:00:30.219
+These consumers may exist within the same running application or more likely,
+
+00:00:30.219 --> 00:00:32.795
+there are multiple instances of the same application
+
+00:00:32.795 --> 00:00:35.660
+that all belong to the same consumer group.
+
+00:00:35.659 --> 00:00:38.209
+Kafka uses the consumer group ID to assign
+
+00:00:38.210 --> 00:00:41.780
+partitions to specific consumers within the consumer group.
+
+00:00:41.780 --> 00:00:46.679
+That way, each consumer is responsible for consuming a portion of the data.
+
+00:00:46.679 --> 00:00:48.259
+This spreads the load amongst
+
+00:00:48.259 --> 00:00:51.829
+multiple consumers and can dramatically increase your throughput.
+
+00:00:51.829 --> 00:00:55.100
+It's important to note here that only one consumer
+
+00:00:55.100 --> 00:00:57.980
+in the consumer group receives the message from the broker.
+
+00:00:57.979 --> 00:01:00.319
+Well, this works fine for many use cases.
+
+00:01:00.320 --> 00:01:03.170
+If your application needs all the data from a topic,
+
+00:01:03.170 --> 00:01:05.875
+you should make sure to use single-process consumer groups.
+
+00:01:05.875 --> 00:01:10.890
+So in this example, consumer A has been assigned to partition A and partition C,
+
+00:01:10.890 --> 00:01:13.829
+and consumer B has been assigned to partition B.
+
+00:01:13.829 --> 00:01:19.640
+What this means is that consumer B will only ever see messages from partition B and
+
+00:01:19.640 --> 00:01:22.920
+consumer A will be the only consumer that sees
+
+00:01:22.920 --> 00:01:26.950
+the messages from partition A and partition C. Remember,
+
+00:01:26.950 --> 00:01:29.359
+for the consumers in a consumer group,
+
+00:01:29.359 --> 00:01:33.579
+only one of the consumers will see the message from particular partition.
+
+00:01:33.579 --> 00:01:36.780
+When consumer processes join or leave a consumer group,
+
+00:01:36.780 --> 00:01:41.180
+the Kafka group coordinator broker starts a process known as rebalancing.
+
+00:01:41.180 --> 00:01:45.005
+In this example, consumer A is going to lead the consumer group.
+
+00:01:45.004 --> 00:01:47.905
+When this happens, the rebalance occurs.
+
+00:01:47.905 --> 00:01:51.230
+A rebalance is a process in which a Kafka broker works with
+
+00:01:51.230 --> 00:01:53.150
+a consumer group leader to reassign
+
+00:01:53.150 --> 00:01:56.855
+partitions for a topic to the other consumers in the group.
+
+00:01:56.855 --> 00:02:00.230
+So in this case, partition A and partition C will need to
+
+00:02:00.230 --> 00:02:03.920
+be reassigned because consumer A is leaving their consumer group.
+
+00:02:03.920 --> 00:02:06.920
+Rebalancing is an expensive process and it
+
+00:02:06.920 --> 00:02:10.069
+brings your consumption to a halt across all consumers.
+
+00:02:10.069 --> 00:02:12.500
+Notice that all of our assignments are gone.
+
+00:02:12.500 --> 00:02:16.599
+That's because we're undergoing a rebalance and all of our consumption stopped.
+
+00:02:16.599 --> 00:02:19.840
+Well, as should try hard to avoid unnecessary rebalances,
+
+00:02:19.840 --> 00:02:21.590
+you should embrace scaling up and down
+
+00:02:21.590 --> 00:02:24.754
+your consumer groups as necessary to achieve high throughput.
+
+00:02:24.754 --> 00:02:26.689
+After the rebalance has completed,
+
+00:02:26.689 --> 00:02:30.750
+all of our partitions will be assigned to a particular consumer.
+

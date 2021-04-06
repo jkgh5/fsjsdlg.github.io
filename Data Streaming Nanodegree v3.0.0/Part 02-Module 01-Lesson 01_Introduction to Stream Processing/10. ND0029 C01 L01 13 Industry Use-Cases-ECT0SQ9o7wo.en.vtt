@@ -1,0 +1,100 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:01.429 --> 00:00:06.074
+In the previous section, we mentioned that Kafka is widely used in industry.
+
+00:00:06.075 --> 00:00:08.970
+Let's quickly review a few of those use cases.
+
+00:00:08.970 --> 00:00:12.690
+Uber uses Kafka extensively in a real-time pricing models.
+
+00:00:12.689 --> 00:00:16.019
+Kafka is the backbone by which a significant portion of the events in
+
+00:00:16.019 --> 00:00:19.754
+the system are communicated to the various stream processing calculations.
+
+00:00:19.754 --> 00:00:22.529
+The speed and flexibility of Kafka allow Uber to adjust
+
+00:00:22.530 --> 00:00:26.445
+their price to reflect the constantly evolving conditions of the real-world.
+
+00:00:26.445 --> 00:00:30.519
+Check the notes for more information on how the system works.
+
+00:00:30.710 --> 00:00:34.500
+Segment is a web analytics company that helps many of
+
+00:00:34.500 --> 00:00:36.494
+the world's largest tech companies track and
+
+00:00:36.494 --> 00:00:39.765
+understand user actions on their applications.
+
+00:00:39.765 --> 00:00:42.289
+To deal with the sheer volume of data and
+
+00:00:42.289 --> 00:00:45.259
+the significant number of data sources and data syncs,
+
+00:00:45.259 --> 00:00:48.170
+Segment uses Kafka as the routing backbone for
+
+00:00:48.170 --> 00:00:51.965
+a significant portion of the data that traverses through their platform.
+
+00:00:51.965 --> 00:00:53.960
+Their resilience to failure,
+
+00:00:53.960 --> 00:00:56.390
+ordering guarantees and scalability make
+
+00:00:56.390 --> 00:00:59.765
+Kafka a particularly excellent choice for a tool like Segment.
+
+00:00:59.765 --> 00:01:02.990
+Netflix has integrated Kafka as a core component of
+
+00:01:02.990 --> 00:01:07.445
+their data platform which they refer to internally as the keystone data pipeline.
+
+00:01:07.444 --> 00:01:10.389
+As one of the most popular Internet services in the world,
+
+00:01:10.390 --> 00:01:15.200
+Netflix has to handle a deluge of data coming from a number of different data sources,
+
+00:01:15.200 --> 00:01:16.850
+including video viewing activities,
+
+00:01:16.849 --> 00:01:19.564
+UI interactions, logs and so on.
+
+00:01:19.564 --> 00:01:22.730
+Now, I'm going to mention some numbers here just to
+
+00:01:22.730 --> 00:01:25.984
+give you a sense of how incredibly skill how Kafka is.
+
+00:01:25.984 --> 00:01:31.400
+So the important part takeaway from these numbers is that Kafka can be huge.
+
+00:01:31.400 --> 00:01:40.670
+Netflix sends over 500 billion events and 1.3 petabytes per day into Kafka.
+
+00:01:40.670 --> 00:01:47.974
+That includes eight million events and 24 gigabytes per second during peak hours.
+
+00:01:47.974 --> 00:01:49.699
+Based on those numbers,
+
+00:01:49.700 --> 00:01:53.359
+you can probably guess that Kafka is a core part of many of the services you
+
+00:01:53.359 --> 00:01:58.200
+may use and enjoy on a daily basis at some of the world's biggest tech companies.
+

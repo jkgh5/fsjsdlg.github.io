@@ -1,0 +1,121 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:01.760 --> 00:00:05.924
+The Apache Kafka is the streaming data store of choice in this class.
+
+00:00:05.924 --> 00:00:08.219
+Beyond this class, Apache Kafka is one of
+
+00:00:08.220 --> 00:00:11.010
+those popular streaming data platforms in the industry today.
+
+00:00:11.009 --> 00:00:13.800
+Kafka provides a simple message queue interface,
+
+00:00:13.800 --> 00:00:17.565
+on top of its append only log structured storage Medium.
+
+00:00:17.565 --> 00:00:20.294
+Kafka is a log of events,
+
+00:00:20.294 --> 00:00:23.955
+where traditional message queues are typically used as job queues.
+
+00:00:23.954 --> 00:00:27.434
+This concept is a core tenet of how to reason about Kafka.
+
+00:00:27.434 --> 00:00:30.254
+Kafka and adventure describes something that has happened,
+
+00:00:30.254 --> 00:00:31.544
+whereas in a traditional message,
+
+00:00:31.545 --> 00:00:35.289
+or job queue messages are often requests for an action to be performed.
+
+00:00:35.289 --> 00:00:37.548
+Kafka is also highly scalable,
+
+00:00:37.548 --> 00:00:39.994
+and offer strict ordering guarantees.
+
+00:00:39.994 --> 00:00:41.654
+Kafka is fault tolerant,
+
+00:00:41.655 --> 00:00:43.755
+meaning that in a well configured cluster,
+
+00:00:43.755 --> 00:00:47.359
+one or more nodes can be lost without losing any data.
+
+00:00:47.359 --> 00:00:49.820
+Kafka was created at LinkedIn to service
+
+00:00:49.820 --> 00:00:52.219
+internal stream processing requirements that
+
+00:00:52.219 --> 00:00:55.280
+couldn't be met by traditional message queuing systems.
+
+00:00:55.280 --> 00:00:58.829
+The ideas that they capture in Kafka quickly gained popularity,
+
+00:00:58.829 --> 00:01:00.890
+and since then, Kafka has grown to become one of
+
+00:01:00.890 --> 00:01:03.850
+the Apache Foundation's most popular projects.
+
+00:01:03.850 --> 00:01:06.424
+Kafka has been deployed in sizes ranging from
+
+00:01:06.424 --> 00:01:09.864
+just one node to thousands of nodes successfully.
+
+00:01:09.864 --> 00:01:14.824
+It is used extensively in production workloads in companies as diverse as Uber,
+
+00:01:14.825 --> 00:01:16.939
+Apple, Netflix, and Airbnb,
+
+00:01:16.939 --> 00:01:19.329
+in addition to of course LinkedIn.
+
+00:01:19.329 --> 00:01:22.129
+The creators of Kafka eventually left LinkedIn to
+
+00:01:22.129 --> 00:01:24.530
+form their own company called Confluent,
+
+00:01:24.530 --> 00:01:27.320
+to focus full-time on Kafka and its ecosystem.
+
+00:01:27.319 --> 00:01:31.099
+Today Confluent continues to introduce excellent and innovative products to
+
+00:01:31.099 --> 00:01:34.759
+enhance the Kafka ecosystem such as KSQL and Kafka Connect.
+
+00:01:34.760 --> 00:01:37.365
+We will cover these tools later in this course.
+
+00:01:37.364 --> 00:01:39.434
+For now, it is worth mentioning though,
+
+00:01:39.435 --> 00:01:41.549
+Apache Kafka is an open source tool,
+
+00:01:41.549 --> 00:01:42.825
+as is Kafka Connect,
+
+00:01:42.825 --> 00:01:45.894
+and some of the other tools in the ecosystem that we'll discuss.
+
+00:01:45.894 --> 00:01:49.984
+Kafka is also a common data store for many popular data streaming tools today,
+
+00:01:49.984 --> 00:01:53.670
+including Apache Spark, Flink, and Samza.
+

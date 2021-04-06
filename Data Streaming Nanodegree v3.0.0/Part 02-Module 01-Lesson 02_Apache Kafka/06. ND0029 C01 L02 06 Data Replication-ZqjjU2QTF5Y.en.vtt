@@ -1,0 +1,160 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:01.280 --> 00:00:04.799
+Most Kafka users will be interested in making sure
+
+00:00:04.799 --> 00:00:07.994
+their data is resilient to Kafka broker failures.
+
+00:00:07.995 --> 00:00:10.935
+As you've likely experienced, machines fail,
+
+00:00:10.935 --> 00:00:15.225
+and often, we cannot predict when it's going to happen or prevent it for that matter.
+
+00:00:15.224 --> 00:00:18.629
+Thankfully, the Kafka design team had the foresight to include
+
+00:00:18.629 --> 00:00:22.224
+the concept of replication as a core feature of Kafka.
+
+00:00:22.225 --> 00:00:28.200
+In Kafka, replication means that the data is written not just to one broker but to many.
+
+00:00:28.199 --> 00:00:33.015
+So here, we wrote A to partition A and broker 0.
+
+00:00:33.015 --> 00:00:38.570
+But we're also going to write it to broker 1 because broker 1 has partitioned A as
+
+00:00:38.570 --> 00:00:44.375
+a replica and to broker 2 because it also has partition A replicas.
+
+00:00:44.375 --> 00:00:46.325
+So what does that mean?
+
+00:00:46.325 --> 00:00:47.870
+If broker 0 were to fail,
+
+00:00:47.869 --> 00:00:50.149
+broker 1 and 2 would still have the data.
+
+00:00:50.149 --> 00:00:51.859
+As we mentioned previously,
+
+00:00:51.859 --> 00:00:54.920
+the broker responsible for sending and receiving data to clients
+
+00:00:54.920 --> 00:00:58.505
+is known as the leader broker for given topic partition.
+
+00:00:58.505 --> 00:01:02.045
+So here, we have partition A and partition B leaders.
+
+00:01:02.045 --> 00:01:05.420
+Any brokers that are storing the replicated data,
+
+00:01:05.420 --> 00:01:07.355
+are referred to as replicas.
+
+00:01:07.355 --> 00:01:12.195
+So broker 0 is a replica for partition B,
+
+00:01:12.194 --> 00:01:15.614
+broker 2 is a replica for partition A,
+
+00:01:15.614 --> 00:01:20.454
+and broker 1 is a replica for both partition B and partition A.
+
+00:01:20.454 --> 00:01:22.745
+If the leader broker were to fail,
+
+00:01:22.745 --> 00:01:25.100
+one of these replicas would be elected the new per
+
+00:01:25.099 --> 00:01:28.189
+topic partition leader by a zookeeper election.
+
+00:01:28.189 --> 00:01:30.064
+So if broker 0 were to fail,
+
+00:01:30.064 --> 00:01:33.144
+we would no longer have a leader for partition A.
+
+00:01:33.144 --> 00:01:37.159
+Broker 1 and broker two will call an election to decide who will
+
+00:01:37.159 --> 00:01:41.194
+become the leader for partition A now that the broker zero has failed.
+
+00:01:41.194 --> 00:01:43.329
+Once the election is complete,
+
+00:01:43.329 --> 00:01:44.894
+a new broker will be elected.
+
+00:01:44.894 --> 00:01:49.039
+In this case, broker 1 was elected the new leader of partition A.
+
+00:01:49.040 --> 00:01:53.750
+The exact number of replicas that will be used can be configured globally as
+
+00:01:53.750 --> 00:01:56.150
+a Kafka server configuration item as well as
+
+00:01:56.150 --> 00:01:59.240
+set individually on every topic that you create.
+
+00:01:59.239 --> 00:02:01.824
+But there are a few things you need to keep in mind.
+
+00:02:01.825 --> 00:02:05.990
+First, you can't have more replicas than you have brokers.
+
+00:02:05.989 --> 00:02:07.859
+If you have five brokers in your cluster,
+
+00:02:07.859 --> 00:02:10.099
+the maximum number of replicas you can set,
+
+00:02:10.099 --> 00:02:13.039
+either globally or on your topic, is five.
+
+00:02:13.039 --> 00:02:18.289
+I want to reiterate that in the previous exercises we use a replication factor of one.
+
+00:02:18.289 --> 00:02:21.049
+The reason we did that is because in the work space,
+
+00:02:21.050 --> 00:02:22.610
+we only have one broker,
+
+00:02:22.610 --> 00:02:26.015
+so we're limited to a maximum replication factor of one.
+
+00:02:26.014 --> 00:02:28.984
+It's also worth mentioning that replication has overhead.
+
+00:02:28.985 --> 00:02:31.360
+The more nodes that need to replicate the data,
+
+00:02:31.360 --> 00:02:34.610
+the longer it's going to take to produce the data to the cluster.
+
+00:02:34.610 --> 00:02:39.245
+That being said, it is always a good idea to enable replication if you can.
+
+00:02:39.245 --> 00:02:40.670
+In this course, like I mentioned,
+
+00:02:40.669 --> 00:02:42.500
+we're only going to be using one broker.
+
+00:02:42.500 --> 00:02:44.925
+But outside of this course, I strongly,
+
+00:02:44.925 --> 00:02:51.150
+strongly recommend using replication factor greater than one to prevent data loss.
+

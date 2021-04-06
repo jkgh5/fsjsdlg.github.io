@@ -1,0 +1,139 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:04.620
+Kafika keeps track of what messages the consumer last successfully processed.
+
+00:00:04.620 --> 00:00:07.410
+Internally each message in a Kafka topic and
+
+00:00:07.410 --> 00:00:10.695
+partition has an offset number attached to it.
+
+00:00:10.695 --> 00:00:13.320
+This number is simply an increasing counter that
+
+00:00:13.320 --> 00:00:16.065
+identify sequentially which message this is.
+
+00:00:16.065 --> 00:00:22.400
+So as we send message one and then we can see that we now have an offset of one.
+
+00:00:22.399 --> 00:00:26.574
+As we send message two into our consumer,
+
+00:00:26.574 --> 00:00:30.649
+we can see that the XYZ consumer offset is now set to two.
+
+00:00:30.649 --> 00:00:34.909
+Finally, as we send the third message we can see that our consumer has now
+
+00:00:34.909 --> 00:00:39.274
+consumed up to message three so the consumer offset is set to three.
+
+00:00:39.274 --> 00:00:42.829
+Kafka stores the offset of the last message of the consumer read,
+
+00:00:42.829 --> 00:00:46.384
+known as the consumer offset in an internal topic.
+
+00:00:46.384 --> 00:00:49.039
+Those client libraries including the one we're teaching in
+
+00:00:49.039 --> 00:00:52.445
+this course will automatically report their offset position to Kafka.
+
+00:00:52.445 --> 00:00:54.460
+This means you don't have to do anything,
+
+00:00:54.460 --> 00:00:56.435
+your library will do it for you.
+
+00:00:56.435 --> 00:00:59.734
+This doesn't happen every single time message is consumed,
+
+00:00:59.734 --> 00:01:02.089
+instead it is a periodic process.
+
+00:01:02.090 --> 00:01:04.370
+You can change how frequently your client sends commits
+
+00:01:04.370 --> 00:01:07.180
+back to the Kafka broker in your client settings.
+
+00:01:07.180 --> 00:01:09.440
+Additionally, you can disable automatic reporting of
+
+00:01:09.439 --> 00:01:11.750
+commits if you'd like but it's not recommended.
+
+00:01:11.750 --> 00:01:14.224
+Offsets are critical for many applications.
+
+00:01:14.224 --> 00:01:16.609
+If your application crashes and reboots
+
+00:01:16.609 --> 00:01:19.444
+it knows where to start off the next time that connects to Kafka.
+
+00:01:19.444 --> 00:01:22.039
+This is a useful feature that enables clients to feel
+
+00:01:22.040 --> 00:01:25.595
+confident in building stage full applications around Kafka.
+
+00:01:25.594 --> 00:01:29.780
+These offset commits can be made either synchronously or asynchronously.
+
+00:01:29.780 --> 00:01:32.299
+By default, commits are made asynchronously
+
+00:01:32.299 --> 00:01:35.164
+as your application continues to process data.
+
+00:01:35.165 --> 00:01:38.260
+If your application is particularly sensitive to miss data,
+
+00:01:38.260 --> 00:01:42.280
+it may be a good idea to consider using asynchronous commit.
+
+00:01:42.280 --> 00:01:44.435
+In the vast majority of cases though
+
+00:01:44.435 --> 00:01:48.335
+automatic asynchronous commits should be your default choice.
+
+00:01:48.334 --> 00:01:50.479
+One thing I want you to be aware of,
+
+00:01:50.480 --> 00:01:53.719
+the committed offset determines where your consumer will start up.
+
+00:01:53.719 --> 00:01:57.890
+If you want your consumer to start at the first known message in a topic partition,
+
+00:01:57.890 --> 00:02:01.219
+you should set the offset to the earliest value.
+
+00:02:01.219 --> 00:02:06.409
+Most libraries will have a special valuetor represent earliest for offsets.
+
+00:02:06.409 --> 00:02:08.629
+You'll see that in an upcoming demonstration.
+
+00:02:08.629 --> 00:02:11.750
+If you want the consumer to start from the earliest known message in
+
+00:02:11.750 --> 00:02:15.430
+a partition every time it starts up not just the first time it starts up,
+
+00:02:15.430 --> 00:02:18.020
+you will need to manually assign your consumer to the
+
+00:02:18.020 --> 00:02:21.335
+earliest known offset every single time it starts.
+
+00:02:21.335 --> 00:02:24.659
+You'll also see this in an upcoming demonstration.
+

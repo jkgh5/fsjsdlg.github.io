@@ -1,0 +1,226 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:01.610 --> 00:00:04.214
+Now, that we've defined data streams,
+
+00:00:04.214 --> 00:00:05.759
+stream processing, and events,
+
+00:00:05.759 --> 00:00:09.939
+let's walk through a few real-world examples of how we might use stream processing.
+
+00:00:09.939 --> 00:00:12.789
+One of the first places many organizations choose to
+
+00:00:12.789 --> 00:00:15.954
+introduce stream processing is in log analysis.
+
+00:00:15.955 --> 00:00:19.719
+Modern technology companies often run tens to thousands of
+
+00:00:19.719 --> 00:00:24.820
+microservices all of which are constantly producing logs.
+
+00:00:24.820 --> 00:00:29.109
+These logs are full of information which can be mined for user behavior patterns,
+
+00:00:29.109 --> 00:00:31.059
+failure prediction, and debugging.
+
+00:00:31.059 --> 00:00:34.359
+The only problem for many of these organizations is how do you process
+
+00:00:34.359 --> 00:00:38.125
+the huge quantities of log data being produced in one place?
+
+00:00:38.125 --> 00:00:39.564
+So you can see on the screen here,
+
+00:00:39.564 --> 00:00:40.899
+this is a made-up scenario,
+
+00:00:40.899 --> 00:00:46.344
+we have a bunch of servers that are spitting out logs at a very fast rate.
+
+00:00:46.344 --> 00:00:48.789
+How is it that we can take this information and
+
+00:00:48.789 --> 00:00:50.920
+actually perform some interesting analytics on it?
+
+00:00:50.920 --> 00:00:53.480
+This is hard to do with traditional systems.
+
+00:00:53.479 --> 00:00:55.684
+To solve this problem,
+
+00:00:55.685 --> 00:01:00.520
+each log produced by every micro service could become an event in a data stream.
+
+00:01:00.520 --> 00:01:03.910
+Then these companies can build stream processing applications that
+
+00:01:03.909 --> 00:01:08.484
+analyze and join on the events in these data streams to find insights in the data.
+
+00:01:08.484 --> 00:01:11.739
+So as you can see as the logs happen,
+
+00:01:11.739 --> 00:01:16.734
+there being siloed out into an event stream.
+
+00:01:16.734 --> 00:01:21.265
+Another common use case for streaming data and stream processing is for web analytics.
+
+00:01:21.265 --> 00:01:25.370
+Modern web applications measure almost every action a user takes on their site.
+
+00:01:25.370 --> 00:01:27.585
+Button clicks, page load times,
+
+00:01:27.584 --> 00:01:30.594
+and session duration are just a few common examples.
+
+00:01:30.594 --> 00:01:32.709
+These actions can add up fast.
+
+00:01:32.709 --> 00:01:37.159
+If every user session generates tens of events per minute and you have millions of users,
+
+00:01:37.159 --> 00:01:42.049
+your web application is suddenly generating a significant amount of data.
+
+00:01:42.109 --> 00:01:45.810
+Ingesting and processing this volume is difficult.
+
+00:01:45.810 --> 00:01:47.010
+To deal with this influx,
+
+00:01:47.010 --> 00:01:51.130
+companies utilize stream processing to analyze data as it's generated.
+
+00:01:51.129 --> 00:01:52.839
+Not only does this lessen
+
+00:01:52.840 --> 00:01:56.799
+the long-term processing burden for many companies as the working dataset is smaller,
+
+00:01:56.799 --> 00:02:00.670
+but it also enables these companies to benefit from real-time analysis instead of
+
+00:02:00.670 --> 00:02:06.204
+long running batch analyses that may only update once a day or once an hour.
+
+00:02:06.204 --> 00:02:11.435
+Right sharing applications are heavy users of stream processing for real-time analysis.
+
+00:02:11.435 --> 00:02:14.060
+As demand goes up or down on a neighborhood,
+
+00:02:14.060 --> 00:02:16.594
+price will increase or decrease.
+
+00:02:16.594 --> 00:02:18.909
+Demand is measured by searches,
+
+00:02:18.909 --> 00:02:20.680
+events in the area,
+
+00:02:20.680 --> 00:02:22.939
+and the ratio of available cars and
+
+00:02:22.939 --> 00:02:26.300
+other environmental factors such as the current weather.
+
+00:02:26.300 --> 00:02:29.180
+The sheer volume of events in a system such as
+
+00:02:29.180 --> 00:02:31.790
+this and the quick turnaround times required to
+
+00:02:31.789 --> 00:02:37.114
+generate pricing recommendations is well-suited to stream processing applications.
+
+00:02:37.115 --> 00:02:39.215
+As events are generated in real time,
+
+00:02:39.215 --> 00:02:44.800
+pricing algorithms can analyze various data streams to adjust the recommended pricing.
+
+00:02:44.800 --> 00:02:48.590
+A traditional batch processing approach would simply be unable to keep
+
+00:02:48.590 --> 00:02:52.235
+up with the constantly evolving real-world events that determine pricing.
+
+00:02:52.235 --> 00:02:54.185
+By the time a batch job is completed,
+
+00:02:54.185 --> 00:02:56.300
+it's very likely that market conditions will have
+
+00:02:56.300 --> 00:02:58.820
+changed and the pricing model will be out of date.
+
+00:02:58.819 --> 00:03:00.579
+When we think about the stock market,
+
+00:03:00.580 --> 00:03:05.240
+we typically picture stock tickers and graphs going up and down throughout the day.
+
+00:03:05.240 --> 00:03:09.560
+Prices for stocks fluctuate as fast as our computers can measure time.
+
+00:03:09.560 --> 00:03:12.580
+This generates a significant amount of event data.
+
+00:03:12.580 --> 00:03:13.965
+Beyond the price itself,
+
+00:03:13.965 --> 00:03:16.205
+financial analysis is also concerned with
+
+00:03:16.205 --> 00:03:18.560
+other signals in the market such as news regarding
+
+00:03:18.560 --> 00:03:24.064
+a company or stock and sentiment on social media platforms such as Twitter and Facebook.
+
+00:03:24.064 --> 00:03:27.930
+Financial companies ingest this high-volume event data and make,
+
+00:03:27.930 --> 00:03:31.594
+buy, or sell decisions in real-time using stream processing.
+
+00:03:31.594 --> 00:03:34.009
+Batch processing would simply be too slow and
+
+00:03:34.009 --> 00:03:37.264
+infrequent to properly capture the rapid nature of the market.
+
+00:03:37.264 --> 00:03:39.559
+By the time your batch processing job is completed,
+
+00:03:39.560 --> 00:03:41.254
+the market has already moved on.
+
+00:03:41.254 --> 00:03:43.655
+You can see on this slide we're factoring in
+
+00:03:43.655 --> 00:03:46.354
+a number of things to make our purchase calculation.
+
+00:03:46.354 --> 00:03:49.129
+We're looking at stock price adjustments throughout the day,
+
+00:03:49.129 --> 00:03:50.750
+news about the company,
+
+00:03:50.750 --> 00:03:54.019
+and sentiment analysis from a social media platform like Twitter,
+
+00:03:54.019 --> 00:03:58.650
+and feeding all that into a purchase calculation which is making buy or sell decisions.
+

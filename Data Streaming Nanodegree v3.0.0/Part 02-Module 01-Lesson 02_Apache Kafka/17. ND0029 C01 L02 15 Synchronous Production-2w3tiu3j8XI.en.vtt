@@ -1,0 +1,64 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:03.705
+The simplest type of Kafka producer is the synchronous producer.
+
+00:00:03.705 --> 00:00:07.304
+Synchronous producers send data to Kafka and then block
+
+00:00:07.304 --> 00:00:12.855
+program execution until the message receipt has been confirmed by the Kafka broker.
+
+00:00:12.855 --> 00:00:14.775
+So when an action happens,
+
+00:00:14.775 --> 00:00:16.589
+the producer emits an event,
+
+00:00:16.589 --> 00:00:18.059
+and sends it to the broker.
+
+00:00:18.059 --> 00:00:21.929
+Broker then responds to the producer indicating that it has
+
+00:00:21.929 --> 00:00:26.280
+correctly receive the event data from the producer.
+
+00:00:26.280 --> 00:00:29.330
+Once that's happened, the producer will continue execution.
+
+00:00:29.329 --> 00:00:32.509
+Synchronous production is fairly rare in the Kafka world,
+
+00:00:32.509 --> 00:00:34.219
+but it does have its place.
+
+00:00:34.219 --> 00:00:37.399
+Imagine you're processing a credit card transaction and the application
+
+00:00:37.399 --> 00:00:40.699
+requires a successful message delivery before moving on.
+
+00:00:40.700 --> 00:00:43.340
+In this scenario, it might matter a lot to the customer that
+
+00:00:43.340 --> 00:00:46.355
+their data is definitely delivered and are in processing queue.
+
+00:00:46.354 --> 00:00:50.854
+In that case, we can use synchronous production to ensure that the delivery is a success.
+
+00:00:50.854 --> 00:00:53.569
+Otherwise, we can roll back the transaction.
+
+00:00:53.570 --> 00:00:56.270
+Synchronous production is useful when you want to ensure
+
+00:00:56.270 --> 00:00:58.880
+data is sent before moving the application forward.
+
+00:00:58.880 --> 00:01:03.870
+This type of producers should not be the default unless you have a good reason to use it.
+

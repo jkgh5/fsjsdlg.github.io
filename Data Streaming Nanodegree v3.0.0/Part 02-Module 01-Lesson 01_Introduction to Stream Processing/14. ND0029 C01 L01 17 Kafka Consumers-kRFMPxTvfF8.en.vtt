@@ -1,0 +1,76 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:04.179
+Once a topic is being created in Kafka and the data has been placed in the topic,
+
+00:00:04.179 --> 00:00:07.785
+we can start to build applications that actually make use of this data stream.
+
+00:00:07.785 --> 00:00:13.964
+Applications that pull event data from one or more Kafka topics are known as consumers.
+
+00:00:13.964 --> 00:00:16.545
+As with Kafka producers,
+
+00:00:16.545 --> 00:00:19.875
+I will simply refer to Kafka consumers as consumers
+
+00:00:19.875 --> 00:00:23.429
+throughout the rest of this lesson and throughout the rest of this course.
+
+00:00:23.429 --> 00:00:26.309
+There are many different ways to consume data from Kafka.
+
+00:00:26.309 --> 00:00:29.879
+But most applications will integrate a Kafka client library.
+
+00:00:29.879 --> 00:00:33.719
+All major Kafka client libraries for Python, Java, Go,
+
+00:00:33.719 --> 00:00:36.689
+and essentially any other programming language implement
+
+00:00:36.689 --> 00:00:40.314
+both the producer and consumer interfaces to Kafka itself.
+
+00:00:40.314 --> 00:00:43.339
+By default, Kafka consumers will only consume
+
+00:00:43.340 --> 00:00:46.640
+data that was produced after first connected to Kafka.
+
+00:00:46.640 --> 00:00:51.679
+This means that if you connect it to a topic now but 100 records were produced yesterday,
+
+00:00:51.679 --> 00:00:55.384
+you would not receive these records produced yesterday by default.
+
+00:00:55.384 --> 00:00:57.629
+I just want to emphasize that fact.
+
+00:00:57.630 --> 00:01:00.370
+When you create a consumer and connect to a topic,
+
+00:01:00.369 --> 00:01:03.244
+you will not receive historical data by default.
+
+00:01:03.244 --> 00:01:07.564
+There are settings you can use to tell Kafka to actually
+
+00:01:07.564 --> 00:01:09.829
+get all the historical data that it has available
+
+00:01:09.829 --> 00:01:12.554
+and we'll review that in the coming sections.
+
+00:01:12.555 --> 00:01:15.680
+Again, similar to both producers and Kafka topics,
+
+00:01:15.680 --> 00:01:18.395
+there are a number of configuration options to consider.
+
+00:01:18.394 --> 00:01:21.239
+We're going to cover that in the next lesson.
+

@@ -1,0 +1,16 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:01.310 --> 00:00:06.074
+Now that we've learned about stream processing and Apache Kafka at a high level,
+
+00:00:06.075 --> 00:00:09.089
+let's actually dive in and learn how to use the tool.
+
+00:00:09.089 --> 00:00:10.529
+In the following sections,
+
+00:00:10.529 --> 00:00:14.890
+you'll learn about Kafka topics consumers and producers.
+

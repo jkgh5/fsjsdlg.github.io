@@ -1,0 +1,148 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:01.520 --> 00:00:04.269
+Going to have a look now at the differences between
+
+00:00:04.269 --> 00:00:06.774
+Synchronous and Asynchronous Data Production.
+
+00:00:06.775 --> 00:00:09.130
+So we're going to return to the workspace,
+
+00:00:09.130 --> 00:00:11.304
+and we're going to take a look at the sample three.
+
+00:00:11.304 --> 00:00:14.875
+The first thing we're going to do is take a look at our produce function.
+
+00:00:14.875 --> 00:00:16.780
+We've seen this function before.
+
+00:00:16.780 --> 00:00:19.045
+There are a few modifications here.
+
+00:00:19.045 --> 00:00:23.185
+First we instantiate our producer with bootstrap servers,
+
+00:00:23.184 --> 00:00:25.119
+and then we're going to go ahead and call
+
+00:00:25.120 --> 00:00:28.075
+produce with this new purchase object serialized.
+
+00:00:28.074 --> 00:00:30.189
+So let's take a look at that real quick.
+
+00:00:30.190 --> 00:00:33.265
+The very bottom here we have a data class.
+
+00:00:33.265 --> 00:00:37.075
+This purchase type has username, currency, and amount.
+
+00:00:37.075 --> 00:00:42.535
+We're just generating some fake random data in here just for illustration purposes.
+
+00:00:42.534 --> 00:00:45.214
+We also have a serialized function which will take
+
+00:00:45.215 --> 00:00:48.830
+a purchase object and dump it out as a JSON string.
+
+00:00:48.829 --> 00:00:51.500
+So returning to our produce function,
+
+00:00:51.500 --> 00:00:54.570
+when we call produce on the producer,
+
+00:00:54.570 --> 00:00:56.825
+we're going to create a purchase object with
+
+00:00:56.825 --> 00:00:59.179
+some random data because this is just a demonstration,
+
+00:00:59.179 --> 00:01:02.284
+and we're going to serialize it out to a JSON string.
+
+00:01:02.284 --> 00:01:07.754
+Then we're going to measure every thousandth iteration,
+
+00:01:07.754 --> 00:01:09.959
+how much time has elapsed.
+
+00:01:09.959 --> 00:01:15.109
+For going to first run our producer asynchronously so we can see how fast it runs.
+
+00:01:15.109 --> 00:01:17.424
+Let's go ahead and give this a shot.
+
+00:01:17.424 --> 00:01:22.325
+So again, this producer is already set up asynchronously which is the default.
+
+00:01:22.325 --> 00:01:26.795
+All right. So we can see we'll get to 10,000 messages and then we'll stop.
+
+00:01:26.795 --> 00:01:32.230
+Okay. So it took five seconds to get to 10,000 messages using asynchronous production.
+
+00:01:32.230 --> 00:01:35.950
+Now, if we want to make this synchronous,
+
+00:01:35.950 --> 00:01:38.540
+we can use the producer flush function.
+
+00:01:38.540 --> 00:01:45.155
+The flush function tells the underlying Kafka client to stop and send messages to Kafka.
+
+00:01:45.155 --> 00:01:50.555
+So this essentially, makes our producer asynchronous producer.
+
+00:01:50.555 --> 00:01:52.010
+So by adding this function,
+
+00:01:52.010 --> 00:01:54.200
+we're going to be stopping every single time
+
+00:01:54.200 --> 00:01:57.049
+we produce a message and sending that message to Kafka.
+
+00:01:57.049 --> 00:02:01.049
+Now, let's see how long it takes us to get 10,000 messages.
+
+00:02:10.039 --> 00:02:16.405
+Okay. So it added about two seconds of execution time.
+
+00:02:16.405 --> 00:02:17.909
+This is our asynchronous,
+
+00:02:17.909 --> 00:02:20.685
+took five seconds to get 10,000 messages,
+
+00:02:20.685 --> 00:02:23.009
+and for a synchronous,
+
+00:02:23.009 --> 00:02:25.560
+it took seven seconds to get to 10,000 messages.
+
+00:02:25.560 --> 00:02:27.710
+Now, I want to emphasize this is not
+
+00:02:27.710 --> 00:02:30.439
+the most scientific benchmark that has ever
+
+00:02:30.439 --> 00:02:33.530
+been run on synchronous versus asynchronous production,
+
+00:02:33.530 --> 00:02:35.224
+and it's not necessarily meant to be.
+
+00:02:35.224 --> 00:02:39.439
+I just wanted to illustrate the fact that when you use a synchronous producer,
+
+00:02:39.439 --> 00:02:41.944
+you are going to slow down your production to Kafka.
+
+00:02:41.944 --> 00:02:47.639
+So carefully consider whether or not it's worth it in your specific situation.
+

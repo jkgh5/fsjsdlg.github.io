@@ -1,0 +1,73 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:01.760 --> 00:00:04.169
+Hi. I'm Ben Goldberg,
+
+00:00:04.169 --> 00:00:06.059
+and I'll be your instructor for this course.
+
+00:00:06.059 --> 00:00:07.229
+Before we get started,
+
+00:00:07.230 --> 00:00:09.450
+I want to tell you a little bit about myself.
+
+00:00:09.449 --> 00:00:13.890
+Most of my career has been centered around data engineering of one kind or another.
+
+00:00:13.890 --> 00:00:16.740
+I spent the beginning of my career working on computer vision,
+
+00:00:16.739 --> 00:00:20.070
+teaching airborne systems to understand in parts of the world around them.
+
+00:00:20.070 --> 00:00:22.620
+I worked on artificial intelligence startup that was able to
+
+00:00:22.620 --> 00:00:25.484
+transform raw data sets into written language,
+
+00:00:25.484 --> 00:00:27.289
+which is where I had my first introduction to
+
+00:00:27.289 --> 00:00:29.585
+many of the concepts we'll cover in this course.
+
+00:00:29.585 --> 00:00:33.310
+I'm currently located in Chicago where I'm a staff engineer at SpotHero.
+
+00:00:33.310 --> 00:00:37.370
+At SpotHero, I founded built and lead our data engineering team.
+
+00:00:37.369 --> 00:00:39.154
+Beyond my work at SpotHero,
+
+00:00:39.155 --> 00:00:42.149
+I'm an instructor for the Udacity Data Engineering nanodegree
+
+00:00:42.149 --> 00:00:44.314
+having previously taught about airflow.
+
+00:00:44.314 --> 00:00:47.419
+I'm also an open source contributor and maintainer for a number of
+
+00:00:47.420 --> 00:00:50.359
+data engineering tools such as Kafka Kubernetes charts,
+
+00:00:50.359 --> 00:00:52.549
+Airflow, and Schema Registry.
+
+00:00:52.549 --> 00:00:54.589
+The approaches we're going to cover in this course
+
+00:00:54.590 --> 00:00:56.960
+represent the best practices that I've learned throughout
+
+00:00:56.960 --> 00:00:59.109
+my day-to-day work as a data engineer
+
+00:00:59.109 --> 00:01:02.280
+and through collaborating with colleagues in the space.
+

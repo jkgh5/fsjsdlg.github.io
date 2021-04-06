@@ -1,0 +1,274 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:01.280 --> 00:00:04.290
+In this demonstration, we're going to demonstrate creating
+
+00:00:04.290 --> 00:00:07.830
+a topic with more complete settings as you've seen in previous lessons.
+
+00:00:07.830 --> 00:00:09.720
+So let's move over to the workspace.
+
+00:00:09.720 --> 00:00:14.310
+We're going to close out sample1 and we're going to open sample2.
+
+00:00:14.310 --> 00:00:20.679
+I'm just going to move around my workspace here, resizing windows.
+
+00:00:21.190 --> 00:00:26.925
+So here we have our project.
+
+00:00:26.925 --> 00:00:30.255
+This function will check to see whether the topic exists.
+
+00:00:30.254 --> 00:00:34.424
+Because again, we want to check that a topic exist before we try to create it.
+
+00:00:34.424 --> 00:00:37.109
+This function will actually create the topic and will take
+
+00:00:37.109 --> 00:00:40.335
+the actual configuration settings that we want to pass along to the topic.
+
+00:00:40.335 --> 00:00:45.950
+So the first thing that we're going to do is configure our topic creation function.
+
+00:00:45.950 --> 00:00:48.905
+We'll come back to this topic exist function in just a moment.
+
+00:00:48.905 --> 00:00:52.085
+We're going to start by going ahead and create a new topic.
+
+00:00:52.085 --> 00:00:56.600
+There are some additional settings that we want to put into the topic configuration.
+
+00:00:56.600 --> 00:01:00.050
+Because there are so many settings for topic creation,
+
+00:01:00.049 --> 00:01:02.089
+I've actually pulled up the documentation.
+
+00:01:02.090 --> 00:01:04.745
+As I mentioned in one of the previous exercises,
+
+00:01:04.745 --> 00:01:08.150
+I certainly don't have all these configuration options memorized by heart.
+
+00:01:08.150 --> 00:01:11.090
+I always have the documentation phases libraries
+
+00:01:11.090 --> 00:01:14.359
+available so that I can reference them when I need to answer these questions.
+
+00:01:14.359 --> 00:01:16.849
+So let's start by going ahead and taking a look at
+
+00:01:16.849 --> 00:01:19.429
+the two places we can look for configuration options.
+
+00:01:19.430 --> 00:01:22.790
+The first place is the official Apache Kafka documentation.
+
+00:01:22.790 --> 00:01:26.920
+You can see here we have topic configuration configure documentation.
+
+00:01:26.920 --> 00:01:30.635
+There're are a number of options that we can consider.
+
+00:01:30.635 --> 00:01:34.070
+The first thing we're going to set though is clean up policy.
+
+00:01:34.069 --> 00:01:36.679
+So we want to use a cleanup policy,
+
+00:01:36.680 --> 00:01:38.780
+in this case, a deletion.
+
+00:01:38.780 --> 00:01:41.344
+So let's go back and set that.
+
+00:01:41.344 --> 00:01:47.734
+So we're going to expand this config and insert cleanup.policy to delete.
+
+00:01:47.734 --> 00:01:50.194
+Delete that extra quote there.
+
+00:01:50.194 --> 00:01:53.284
+Next thing I'm going to do is set a compression type.
+
+00:01:53.284 --> 00:01:59.069
+Say compression.type and we'll use lz4.
+
+00:01:59.069 --> 00:02:03.349
+Again, if you're not sure what types of compression are available for the topic,
+
+00:02:03.349 --> 00:02:05.329
+you can go back here, find
+
+00:02:05.329 --> 00:02:09.335
+compression.type and you can see that there's some documentation here.
+
+00:02:09.335 --> 00:02:13.875
+Again, gzip, snappy, lz4, and zstd.
+
+00:02:13.875 --> 00:02:17.465
+Next, we're going to give it a delete retention milliseconds.
+
+00:02:17.465 --> 00:02:23.495
+So this is how long logs will be deleted after they'd marked for deletion.
+
+00:02:23.495 --> 00:02:25.680
+So you can see more about this,
+
+00:02:25.680 --> 00:02:28.545
+but essentially after this is been,
+
+00:02:28.544 --> 00:02:30.549
+a top data's been marked for deletion,
+
+00:02:30.550 --> 00:02:33.605
+how long it will wait to actually get rid of that data.
+
+00:02:33.604 --> 00:02:35.554
+By default, it's set to zero.
+
+00:02:35.555 --> 00:02:37.170
+It doesn't really matter what we set it to.
+
+00:02:37.169 --> 00:02:40.224
+We can set it to 100 milliseconds for now.
+
+00:02:40.224 --> 00:02:44.000
+I apologize, I actually meant to set this to compaction, not delete.
+
+00:02:44.000 --> 00:02:47.965
+So we're going to use a compacted topic not a normal deleted topic.
+
+00:02:47.965 --> 00:02:52.069
+Finally, we're going to put a file delete delay milliseconds here.
+
+00:02:52.069 --> 00:02:55.549
+So file.delete.delay.ms.
+
+00:02:55.550 --> 00:02:57.814
+I believe that's the right setting, let's just double-check.
+
+00:02:57.814 --> 00:03:00.319
+Yep. File delete delay milliseconds.
+
+00:03:00.319 --> 00:03:02.419
+This is how long we're going to wait before we let
+
+00:03:02.419 --> 00:03:04.729
+Kafka actually remove the file from the file system.
+
+00:03:04.729 --> 00:03:10.459
+Again, I believe the default is set to 60 seconds.
+
+00:03:10.460 --> 00:03:12.830
+We can change it to something else.
+
+00:03:12.830 --> 00:03:14.960
+Say we don't want it to wait at all or very,
+
+00:03:14.960 --> 00:03:17.555
+very short amount of time, set that to 100 milliseconds.
+
+00:03:17.555 --> 00:03:20.765
+Now, we have this advanced configuration setup.
+
+00:03:20.764 --> 00:03:23.629
+To be honest with you, I really pulled a lot of these settings out of
+
+00:03:23.629 --> 00:03:26.875
+just thin air just to show you how many options there are really are.
+
+00:03:26.875 --> 00:03:30.530
+You can choose to change any of these settings that you want and play around.
+
+00:03:30.530 --> 00:03:33.199
+Honestly, I recommend that you do to get a feel for how
+
+00:03:33.199 --> 00:03:37.414
+these settings actually change and modify how Kafka behaves.
+
+00:03:37.414 --> 00:03:38.979
+Now that we've created our topic,
+
+00:03:38.979 --> 00:03:43.294
+we're going to go ahead and figure out whether or not our topic already exists.
+
+00:03:43.294 --> 00:03:45.559
+So we have client.list_topics.
+
+00:03:45.560 --> 00:03:48.754
+That's going to return to us a list of topic metadata.
+
+00:03:48.754 --> 00:03:51.189
+Let's take a look at how that is configured.
+
+00:03:51.189 --> 00:03:54.409
+ClusterMetadata that's returned to us includes
+
+00:03:54.409 --> 00:03:57.799
+some information such as brokers, the cluster id.
+
+00:03:57.800 --> 00:03:59.930
+But most importantly to us for this function,
+
+00:03:59.930 --> 00:04:01.594
+a dictionary of topics,
+
+00:04:01.594 --> 00:04:04.780
+is a map of topics to the actual topic metadata.
+
+00:04:04.780 --> 00:04:07.414
+For most, we're just interested if our topic appears.
+
+00:04:07.414 --> 00:04:10.129
+So if we have topic metadata,
+
+00:04:10.129 --> 00:04:13.769
+we can say return topic_metadata.topics.
+
+00:04:14.469 --> 00:04:18.904
+Then we can see if the dictionary contains our topic name.
+
+00:04:18.904 --> 00:04:21.404
+So we're using a dictionary.get.
+
+00:04:21.404 --> 00:04:24.639
+If this.get doesn't find this topic name,
+
+00:04:24.639 --> 00:04:25.789
+it will return none.
+
+00:04:25.790 --> 00:04:28.180
+So we want to return a Boolean here, not a none.
+
+00:04:28.180 --> 00:04:31.634
+So we're going to say.get is not None.
+
+00:04:31.634 --> 00:04:35.209
+If a topic exists and we find in dictionary,
+
+00:04:35.209 --> 00:04:36.469
+it will not be None.
+
+00:04:36.470 --> 00:04:38.465
+Therefore, it will return true.
+
+00:04:38.464 --> 00:04:41.944
+Finally, we need to give our topic a name.
+
+00:04:41.944 --> 00:04:45.360
+We'll just call this sample2.
+
+00:04:45.430 --> 00:04:49.725
+I'll go ahead and save, and we'll run our lesson.
+
+00:04:49.725 --> 00:04:56.650
+So you can see topic sample2 exists is false and we create our topic.
+

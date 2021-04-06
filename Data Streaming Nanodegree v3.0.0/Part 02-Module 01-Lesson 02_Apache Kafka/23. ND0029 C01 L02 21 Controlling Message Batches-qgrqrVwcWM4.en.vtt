@@ -1,0 +1,115 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:02.879
+When Kafka client library send data to Kafka,
+
+00:00:02.879 --> 00:00:05.730
+they do not send every message individually.
+
+00:00:05.730 --> 00:00:08.370
+Instead the client libraries collect groups of
+
+00:00:08.369 --> 00:00:11.234
+messages together and then send them to the Kafka broker.
+
+00:00:11.234 --> 00:00:13.949
+These groups of messages are known as batches.
+
+00:00:13.949 --> 00:00:15.959
+So when an action occurs,
+
+00:00:15.960 --> 00:00:18.120
+will create a message,
+
+00:00:18.120 --> 00:00:22.335
+and we'll add as new actions come in additional messages or events.
+
+00:00:22.335 --> 00:00:26.730
+They'll get bundled together into a batch and sent to the broker.
+
+00:00:26.730 --> 00:00:30.495
+Client libraries do this largely for performance reasons.
+
+00:00:30.495 --> 00:00:32.115
+In high throughput applications,
+
+00:00:32.115 --> 00:00:34.454
+sending every message as it's produced
+
+00:00:34.454 --> 00:00:37.405
+would lead to a significant amount of networking overhead.
+
+00:00:37.405 --> 00:00:42.814
+The count, frequency, and quantity of data sent in these batches are customizable.
+
+00:00:42.814 --> 00:00:45.799
+For example, the library that we've been using in this class,
+
+00:00:45.799 --> 00:00:48.199
+the Confluent-Kafka Python library sends
+
+00:00:48.200 --> 00:00:51.625
+messages by default when any one of these conditions occur.
+
+00:00:51.625 --> 00:00:55.350
+First, if 10,000 messages are queued up to be sent,
+
+00:00:55.350 --> 00:00:57.469
+a half-second of time has elapsed since
+
+00:00:57.469 --> 00:01:01.475
+the last group of messages was sent or the last batch of messages were sent,
+
+00:01:01.475 --> 00:01:04.655
+a gigabyte of data has been accumulated.
+
+00:01:04.655 --> 00:01:08.105
+Those are the three conditions that will trigger a batch to be sent.
+
+00:01:08.105 --> 00:01:10.160
+These settings may not be appropriate for
+
+00:01:10.159 --> 00:01:13.444
+your application depending on how much throughput you expect.
+
+00:01:13.444 --> 00:01:17.014
+You can modify some or all of these settings if desired.
+
+00:01:17.015 --> 00:01:21.325
+For example, maybe the data being produced isn't time-sensitive.
+
+00:01:21.325 --> 00:01:23.510
+In that case, you could consider increasing
+
+00:01:23.510 --> 00:01:26.765
+the elapsed time setting to one second or 10 seconds.
+
+00:01:26.765 --> 00:01:29.375
+Possibly your host has limited local storage.
+
+00:01:29.375 --> 00:01:33.605
+So you might set the size to something like 15 megabytes instead of one gigabyte.
+
+00:01:33.605 --> 00:01:38.540
+It's also possible to disable one or more of these settings entirely if you wish.
+
+00:01:38.540 --> 00:01:41.915
+This is not a typical use case but it remains an option if needed.
+
+00:01:41.915 --> 00:01:43.785
+Whatever settings you do decide on,
+
+00:01:43.784 --> 00:01:47.719
+just be aware these settings can be tweaked and often have to be for your use case.
+
+00:01:47.719 --> 00:01:52.250
+It's also worth keeping in mind that if the settings are not aggressive enough,
+
+00:01:52.250 --> 00:01:55.099
+you may overrun the number of messages
+
+00:01:55.099 --> 00:01:59.009
+that can be kept in a queue on your local machine, so be careful.
+

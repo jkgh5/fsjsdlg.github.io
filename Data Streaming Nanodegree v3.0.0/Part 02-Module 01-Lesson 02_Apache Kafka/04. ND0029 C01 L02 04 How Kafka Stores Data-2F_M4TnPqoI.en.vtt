@@ -1,0 +1,52 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:03.089
+It's worth understanding how Kafka stores data so that we can
+
+00:00:03.089 --> 00:00:06.570
+better appreciate how the brokers achieved such high throughput.
+
+00:00:06.570 --> 00:00:11.160
+In fact, the way that Kafka stores data is almost disappointingly simple.
+
+00:00:11.160 --> 00:00:16.469
+Kafka simply has a data directory on disk where it stores a logged data and text files.
+
+00:00:16.469 --> 00:00:19.919
+So here we have a directory /var/lib/kafka/data.
+
+00:00:19.920 --> 00:00:22.635
+This is where Kafka will sorts data in your workspace
+
+00:00:22.635 --> 00:00:25.770
+as well as in many Kafka production systems.
+
+00:00:25.769 --> 00:00:30.480
+Each topic receives its own sub-directory with the associated name of the topic.
+
+00:00:30.480 --> 00:00:34.049
+So here we have a sub-directory a and a sub-directory for topic
+
+00:00:34.049 --> 00:00:40.064
+b. Kafka may store more than one log file for a given topic. Why is that?
+
+00:00:40.064 --> 00:00:43.839
+If Kafka were to use just one file to store the data for a given topic,
+
+00:00:43.840 --> 00:00:47.435
+it would be limited to the speed of a disk on which the broker is running.
+
+00:00:47.435 --> 00:00:48.650
+To help alleviate that,
+
+00:00:48.649 --> 00:00:51.259
+Kafka can split data into many files.
+
+00:00:51.259 --> 00:00:53.210
+You can control this when you create your topic
+
+00:00:53.210 --> 00:00:55.950
+which we'll see how to do it in the next section.
+

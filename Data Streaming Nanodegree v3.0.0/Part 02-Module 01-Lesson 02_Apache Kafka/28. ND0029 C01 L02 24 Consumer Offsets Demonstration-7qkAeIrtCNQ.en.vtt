@@ -1,0 +1,337 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:01.490 --> 00:00:04.830
+In this demonstration, we'll see how we can make use of
+
+00:00:04.830 --> 00:00:09.300
+a consumer's offset settings to consume all of the available data and a topic,
+
+00:00:09.300 --> 00:00:13.230
+not just data that was produced after reconnected to the topic.
+
+00:00:13.230 --> 00:00:17.579
+So we're going to go back to the workspace and we have a sample five open.
+
+00:00:17.579 --> 00:00:20.359
+Let's take a look at some of the code that we have available to us here.
+
+00:00:20.359 --> 00:00:22.114
+This is our consume function.
+
+00:00:22.114 --> 00:00:26.419
+We have a to-do message here that's asking us to actually set the auto
+
+00:00:26.420 --> 00:00:30.965
+offset reset variable to earliest or latest.
+
+00:00:30.964 --> 00:00:34.259
+We're going to go ahead and try it earliest first.
+
+00:00:34.719 --> 00:00:39.125
+In fact, we'll actually start by just running this.
+
+00:00:39.125 --> 00:00:41.710
+So when we run this function,
+
+00:00:41.710 --> 00:00:43.189
+what's going to happen is we're going to have
+
+00:00:43.189 --> 00:00:45.559
+a producer that's going to start producing data,
+
+00:00:45.560 --> 00:00:49.820
+where sleeping the consumer for 2.5 seconds before it starts to consume messages,
+
+00:00:49.820 --> 00:00:52.700
+to give the producer a chance to build up a backlog
+
+00:00:52.700 --> 00:00:56.660
+of messages that this consumer is never going to see.
+
+00:00:56.659 --> 00:01:02.959
+So if I run this Python example just like this and give it just a second,
+
+00:01:02.960 --> 00:01:05.795
+you can see that the iteration, I'm going to stop this.
+
+00:01:05.795 --> 00:01:09.290
+If we scroll back up, if we were consuming from the very beginning of the topic,
+
+00:01:09.290 --> 00:01:12.080
+we would see iteration zero, but we don't see that.
+
+00:01:12.079 --> 00:01:15.109
+We see that it took a little while for our consumer to be created in Connect,
+
+00:01:15.109 --> 00:01:18.814
+so it didn't get connected until at least 27 iterations had passed.
+
+00:01:18.814 --> 00:01:22.459
+Now, one of the ways that we can change this is by
+
+00:01:22.459 --> 00:01:26.059
+setting the earliest value on our auto offset reset.
+
+00:01:26.060 --> 00:01:30.560
+We're also going to update our group ID to something different,
+
+00:01:30.560 --> 00:01:32.420
+we'll call it zero take two.
+
+00:01:32.420 --> 00:01:36.469
+So to a uniquely identify this as a new consumer group to Kafka.
+
+00:01:36.469 --> 00:01:40.069
+So let's clear this and let's try this again.
+
+00:01:40.069 --> 00:01:42.694
+Before we begin, I just want to quickly explain this again.
+
+00:01:42.694 --> 00:01:47.809
+The auto offset reset option which you can read more about in the Kafka documentation,
+
+00:01:47.810 --> 00:01:49.475
+so I'm going to pull that up for you.
+
+00:01:49.474 --> 00:01:54.619
+Essentially tells the Kafka client where to create the consumer at.
+
+00:01:54.620 --> 00:01:56.314
+Earliest as it says,
+
+00:01:56.314 --> 00:02:00.034
+automatically resets the offset to the smallest offset available.
+
+00:02:00.034 --> 00:02:01.804
+So let's go ahead and give that a shot.
+
+00:02:01.805 --> 00:02:07.125
+So remember, we're going to start incrementing messages from zero on up. All right.
+
+00:02:07.125 --> 00:02:11.889
+So we're running and you can see here that as soon as the consumer connected,
+
+00:02:11.889 --> 00:02:13.969
+it started at iteration zero.
+
+00:02:13.969 --> 00:02:16.639
+So it's starting at the earliest known offset.
+
+00:02:16.639 --> 00:02:18.289
+Now, here's the thing though.
+
+00:02:18.289 --> 00:02:21.349
+This auto offset reset function only works the
+
+00:02:21.349 --> 00:02:24.814
+first time this particular consumer connects to the topic.
+
+00:02:24.814 --> 00:02:26.300
+If I run again,
+
+00:02:26.300 --> 00:02:30.640
+we're going to pick up after iteration 12. Let's see this in action.
+
+00:02:30.639 --> 00:02:34.439
+So as you can see, we ran Python simplified again,
+
+00:02:34.439 --> 00:02:38.125
+we left off at 12 and we picked up at 13.
+
+00:02:38.125 --> 00:02:39.985
+Depending on your application,
+
+00:02:39.985 --> 00:02:41.560
+that might be amazing,
+
+00:02:41.560 --> 00:02:45.530
+excellent behavior that enables you to build some really exciting applications.
+
+00:02:45.530 --> 00:02:49.794
+However, if you want to see all the data every time that you start your application,
+
+00:02:49.794 --> 00:02:51.879
+you need to do a little more work.
+
+00:02:51.879 --> 00:02:57.394
+Because Kafka keeps track of the last offset message that you saw,
+
+00:02:57.395 --> 00:03:00.010
+we're going to have to actually tell Kafka to
+
+00:03:00.009 --> 00:03:03.099
+change where the consumer offset is located.
+
+00:03:03.099 --> 00:03:06.444
+We can do that using an unassigned callback.
+
+00:03:06.444 --> 00:03:08.544
+So what this means is,
+
+00:03:08.544 --> 00:03:11.914
+when we subscribe to the topic,
+
+00:03:11.914 --> 00:03:16.204
+we want to have this on assigned callback invoked when
+
+00:03:16.205 --> 00:03:21.425
+the Kafka broker assigns our client our partition to consume from.
+
+00:03:21.425 --> 00:03:24.439
+So this is an on assigned callback.
+
+00:03:24.439 --> 00:03:26.599
+I'm actually going to go ahead and pull up
+
+00:03:26.599 --> 00:03:29.960
+the confluent documentation so you can see what this function looks like.
+
+00:03:29.960 --> 00:03:33.110
+So your confluent Kafka consumer on assigned.
+
+00:03:33.110 --> 00:03:37.655
+As you can see, this is a callback which helps us handle customize offsets and it
+
+00:03:37.655 --> 00:03:42.215
+always takes a consumer and a list of partitions for that consumer.
+
+00:03:42.215 --> 00:03:44.090
+So going back to our code,
+
+00:03:44.090 --> 00:03:47.930
+you can see that we have that same function signature here.
+
+00:03:47.930 --> 00:03:52.015
+Unfortunately, we haven't done anything with the partitions yet. So let's handle that.
+
+00:03:52.014 --> 00:03:55.594
+Now, partitions are always a list of partitions,
+
+00:03:55.594 --> 00:03:58.189
+even if there's only one partition.
+
+00:03:58.189 --> 00:04:00.800
+So we're going to iterate over every partition that
+
+00:04:00.800 --> 00:04:03.320
+our consumer has been assigned and we're going to
+
+00:04:03.319 --> 00:04:09.854
+say partition.offset equal OFFSET_EARLIEST.
+
+00:04:09.854 --> 00:04:15.544
+Now, this is a special value defined by the Confluent Library.
+
+00:04:15.544 --> 00:04:17.990
+In fact, I actually got wrong, it's actually offset beginning.
+
+00:04:17.990 --> 00:04:21.935
+You can see I've imported it from confluent Kafka offset beginning.
+
+00:04:21.935 --> 00:04:27.530
+Now, why would I set this to offset beginning instead of just setting it equal to zero?
+
+00:04:27.529 --> 00:04:29.934
+Well, truth be told,
+
+00:04:29.935 --> 00:04:33.449
+if this was a topic of expiring messages,
+
+00:04:33.449 --> 00:04:36.170
+offset zero may have already been deleted out of the topic.
+
+00:04:36.170 --> 00:04:38.735
+So it may not actually be available for us to consume anymore.
+
+00:04:38.735 --> 00:04:40.069
+So offset beginning is
+
+00:04:40.069 --> 00:04:43.839
+a somewhat safer and honestly easier thing to read in the code than in zero.
+
+00:04:43.839 --> 00:04:45.569
+It's clear what this means.
+
+00:04:45.569 --> 00:04:49.154
+So now, if we restart our code,
+
+00:04:49.154 --> 00:04:55.169
+we should start from iteration zero instead of iteration 27.
+
+00:04:55.170 --> 00:04:59.750
+Let's see if that worked and it looks like I had a typo here.
+
+00:04:59.750 --> 00:05:01.759
+I did partitions instead of partition.
+
+00:05:01.759 --> 00:05:05.569
+So you can see name partition is not defined and that's because I
+
+00:05:05.569 --> 00:05:09.394
+was iterating for partition in partitions.
+
+00:05:09.394 --> 00:05:11.039
+So now that I fixed that,
+
+00:05:11.040 --> 00:05:12.720
+let's try that one more time.
+
+00:05:12.720 --> 00:05:16.370
+So we're running this again and so you can
+
+00:05:16.370 --> 00:05:20.870
+see that we started at iteration zero and we got up to iteration nine.
+
+00:05:20.870 --> 00:05:23.930
+If we hadn't set the partition offset to offset beginning,
+
+00:05:23.930 --> 00:05:29.545
+we would've started at I believe partition 27. If we scroll back up.
+
+00:05:29.545 --> 00:05:31.955
+So we can see that in action again.
+
+00:05:31.954 --> 00:05:33.574
+If this wasn't set,
+
+00:05:33.574 --> 00:05:37.414
+we would start over at iteration ten. Let's see what happens.
+
+00:05:37.415 --> 00:05:39.319
+We shouldn't see zero come out again,
+
+00:05:39.319 --> 00:05:42.050
+starting at iteration zero and we did.
+
+00:05:42.050 --> 00:05:44.495
+So this is how you actually manage
+
+00:05:44.495 --> 00:05:48.634
+partition assignment and offset assignment if needed on the consumer side.
+
+00:05:48.634 --> 00:05:51.894
+Most applications won't necessarily have to do this,
+
+00:05:51.894 --> 00:05:54.049
+especially stream processing applications that
+
+00:05:54.050 --> 00:05:56.990
+only care about data in a certain time frame.
+
+00:05:56.990 --> 00:05:59.780
+However, there are many important use cases of Kafka
+
+00:05:59.779 --> 00:06:02.704
+where you do need to see all of the data available on a topic.
+
+00:06:02.704 --> 00:06:05.529
+If you need to see all the data available on a topic,
+
+00:06:05.529 --> 00:06:07.649
+every single time the application runs,
+
+00:06:07.649 --> 00:06:13.229
+it's important to make sure that you set your partition offsets to the beginning offset.
+

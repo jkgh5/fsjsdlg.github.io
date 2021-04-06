@@ -1,0 +1,94 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:04.184
+The first configuration option that many developers want to set on their consumers,
+
+00:00:04.184 --> 00:00:06.729
+is the topic which they wish to subscribe to.
+
+00:00:06.730 --> 00:00:09.750
+Abstractly, you may be able to think of this the same
+
+00:00:09.750 --> 00:00:12.509
+way you would subscribe to types of content in real life.
+
+00:00:12.509 --> 00:00:14.160
+Sometimes you will subscribe to something
+
+00:00:14.160 --> 00:00:16.919
+specific like a particular magazine or podcasts,
+
+00:00:16.919 --> 00:00:19.140
+other times you may want to subscribe to a group of
+
+00:00:19.140 --> 00:00:22.740
+related things like a series of magazines or group of podcasts.
+
+00:00:22.739 --> 00:00:26.564
+Kafka supports both of these models of subscription for topics.
+
+00:00:26.565 --> 00:00:28.260
+If you know the full name of the topic,
+
+00:00:28.260 --> 00:00:30.270
+you simply specify it to your client library,
+
+00:00:30.269 --> 00:00:33.134
+and Kafka will send you the data for that topic.
+
+00:00:33.134 --> 00:00:37.625
+This is an example of a specific topic name; com.
+
+00:00:37.625 --> 00:00:41.884
+udacity. lesson2. quiz. results. What's really cool though,
+
+00:00:41.884 --> 00:00:45.228
+is that if you have more than one topic with a shared naming conventions,
+
+00:00:45.228 --> 00:00:46.729
+let's say we had com.
+
+00:00:46.729 --> 00:00:49.559
+udacity. lesson2. quiz. results, com.
+
+00:00:49.560 --> 00:00:54.609
+udacity. lesson2. quiz. opened, you can use regular expressions to subscribe to topics.
+
+00:00:54.609 --> 00:00:57.439
+So you can receive events from two topics at once.
+
+00:00:57.439 --> 00:00:59.329
+See the accompanying notes for this section,
+
+00:00:59.329 --> 00:01:01.460
+for examples of what the syntax looks like.
+
+00:01:01.460 --> 00:01:04.504
+But on the screen, you can see a quick example.
+
+00:01:04.504 --> 00:01:07.159
+Each one of these regular expressions will always start
+
+00:01:07.159 --> 00:01:10.099
+with this little carrot icon up here at the top,
+
+00:01:10.099 --> 00:01:13.849
+and end with some other regular expression syntax.
+
+00:01:13.849 --> 00:01:16.309
+Regular expression syntax can also be interspersed
+
+00:01:16.310 --> 00:01:19.125
+within the rest of the text. But this would match com.
+
+00:01:19.125 --> 00:01:23.650
+udacity. lesson2. anything coming after lesson2.
+
+00:01:23.650 --> 00:01:25.870
+So if we had five topics that match that,
+
+00:01:25.870 --> 00:01:28.920
+you would be subscribed to all five of those topics.
+

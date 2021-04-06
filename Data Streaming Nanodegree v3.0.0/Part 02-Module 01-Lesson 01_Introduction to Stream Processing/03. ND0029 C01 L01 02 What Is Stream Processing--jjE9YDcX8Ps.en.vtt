@@ -1,0 +1,151 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:05.459
+In computing, a stream is typically thought of as a potentially unbounded sequence.
+
+00:00:05.459 --> 00:00:08.384
+So here, we have an event A, B,
+
+00:00:08.384 --> 00:00:12.300
+and C. Stream processing is the act of performing
+
+00:00:12.300 --> 00:00:18.255
+continual calculations on a potentially endless and constantly evolving source of data.
+
+00:00:18.254 --> 00:00:23.835
+These endless and constantly evolving sources of data are known as data streams.
+
+00:00:23.835 --> 00:00:28.755
+These calculations typically result in output data streams,
+
+00:00:28.754 --> 00:00:30.809
+and that's what we have here on the right.
+
+00:00:30.809 --> 00:00:34.350
+When we say endless and constantly evolving source of data,
+
+00:00:34.350 --> 00:00:38.015
+this doesn't mean that the data is produced at an even or constant rate.
+
+00:00:38.015 --> 00:00:41.570
+It simply means that the stream does not have a defined start or
+
+00:00:41.570 --> 00:00:46.280
+end that the data contained within the stream can change shape and size.
+
+00:00:46.280 --> 00:00:47.945
+So in this example,
+
+00:00:47.945 --> 00:00:50.780
+you can see that there's a gap between event C and
+
+00:00:50.780 --> 00:00:53.975
+A and we're not producing data at an even rate.
+
+00:00:53.975 --> 00:00:57.445
+You can also see that Y and X are grouped very closely together,
+
+00:00:57.445 --> 00:01:00.409
+again, being produced at an uneven rate.
+
+00:01:00.409 --> 00:01:02.764
+Data also comes in different shapes and sizes.
+
+00:01:02.765 --> 00:01:07.280
+You can see that C is smaller than A and that Y is smaller than X.
+
+00:01:07.280 --> 00:01:10.474
+Data streams are made up of immutable data.
+
+00:01:10.474 --> 00:01:13.099
+Immutable data does not change.
+
+00:01:13.099 --> 00:01:16.084
+Once the data has been placed in the data stream,
+
+00:01:16.084 --> 00:01:19.944
+that specific piece of data can never be updated or changed.
+
+00:01:19.944 --> 00:01:22.009
+Now, I've used the lock icons here to
+
+00:01:22.010 --> 00:01:24.410
+indicate that once we've created this piece of data,
+
+00:01:24.409 --> 00:01:26.284
+it can never be changed again.
+
+00:01:26.284 --> 00:01:30.200
+It is possible, say we have a piece of data with
+
+00:01:30.200 --> 00:01:34.734
+key B and we want to change the value that the key B points to.
+
+00:01:34.734 --> 00:01:37.679
+We can create another entry,
+
+00:01:37.680 --> 00:01:41.764
+another event with the key B and a different value
+
+00:01:41.763 --> 00:01:46.744
+to change what the key B represents in our calculation.
+
+00:01:46.745 --> 00:01:50.165
+We're going to learn more how this works towards the end of this lesson.
+
+00:01:50.165 --> 00:01:54.530
+But for now, just keep in mind when you create an event with a specific key,
+
+00:01:54.530 --> 00:01:57.215
+you can never change that key again.
+
+00:01:57.215 --> 00:02:01.325
+The data and data streams are typically individually small.
+
+00:02:01.325 --> 00:02:05.825
+In many case, each record or entry is less than one megabyte in size.
+
+00:02:05.825 --> 00:02:07.159
+So on this slide,
+
+00:02:07.159 --> 00:02:09.259
+we point to C, B,
+
+00:02:09.259 --> 00:02:11.000
+or A or Z, Y,
+
+00:02:11.000 --> 00:02:14.120
+or X, each one of these data entries or
+
+00:02:14.120 --> 00:02:18.125
+data records will be less than one megabyte in size typically.
+
+00:02:18.125 --> 00:02:20.495
+While the size of the data maybe small,
+
+00:02:20.495 --> 00:02:23.300
+stream processing systems may be high throughput.
+
+00:02:23.300 --> 00:02:27.965
+In some cases streams will receive thousands or tens of thousands of records per second.
+
+00:02:27.965 --> 00:02:30.469
+It is also possible and just as common for
+
+00:02:30.469 --> 00:02:33.379
+streams to receive infrequent updates or changes.
+
+00:02:33.379 --> 00:02:37.849
+So again, we only have three data records on the screen here in the stream,
+
+00:02:37.849 --> 00:02:39.319
+but we could have thousands,
+
+00:02:39.319 --> 00:02:42.579
+tens of thousands, or hundreds of thousands in the span of just a minute.
+
+00:02:42.580 --> 00:02:47.070
+Likewise, it could take hours to generate just these three events.
+

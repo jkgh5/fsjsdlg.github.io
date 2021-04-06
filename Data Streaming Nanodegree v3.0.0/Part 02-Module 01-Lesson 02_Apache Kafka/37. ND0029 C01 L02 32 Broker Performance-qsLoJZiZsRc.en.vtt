@@ -1,0 +1,67 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:01.409
+Last but not least,
+
+00:00:01.409 --> 00:00:04.950
+we need to consider the performance of the Kafka broker itself.
+
+00:00:04.950 --> 00:00:09.435
+The Kafka broker is the conduit through which data in our system flows.
+
+00:00:09.435 --> 00:00:12.359
+First, disk usage should be monitored.
+
+00:00:12.359 --> 00:00:15.494
+Kafka retains data, sometimes indefinitely.
+
+00:00:15.494 --> 00:00:18.660
+As you add topics and increase the volume of data,
+
+00:00:18.660 --> 00:00:21.449
+it's possible you may fill up the disks on your brokers.
+
+00:00:21.449 --> 00:00:24.660
+If this happens, you will take the broker offline and potentially
+
+00:00:24.660 --> 00:00:28.260
+cause data loss and downtime for your applications.
+
+00:00:28.260 --> 00:00:32.010
+Next, network usage is a critical metric to measure.
+
+00:00:32.009 --> 00:00:37.004
+In the first lesson we mentioned that Netflix handles billions of messages per day.
+
+00:00:37.005 --> 00:00:40.905
+If Netflix didn't have thousands of nodes to handle their throughput,
+
+00:00:40.905 --> 00:00:45.575
+it's possible they would actually saturate their network cards on the actual servers.
+
+00:00:45.575 --> 00:00:49.400
+Again, this can make Kafka brokers periodically unavailable.
+
+00:00:49.399 --> 00:00:52.774
+Election frequency is another important metric.
+
+00:00:52.774 --> 00:00:55.489
+When leadership elections occur for topics,
+
+00:00:55.490 --> 00:00:58.219
+consumption and production temporarily stops.
+
+00:00:58.219 --> 00:01:00.560
+If these elections are happening frequently,
+
+00:01:00.560 --> 00:01:02.885
+it can be hugely disruptive to your system.
+
+00:01:02.884 --> 00:01:06.094
+Frequent elections are also an indicator that a broker is
+
+00:01:06.094 --> 00:01:10.170
+unstable or the settings may be improperly configured.
+

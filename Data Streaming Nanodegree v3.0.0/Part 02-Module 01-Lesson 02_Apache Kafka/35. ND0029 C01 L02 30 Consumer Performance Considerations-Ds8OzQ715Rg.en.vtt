@@ -1,0 +1,73 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:01.490 --> 00:00:05.895
+Well, you've now learned how to create and configure your Kafka consumers.
+
+00:00:05.894 --> 00:00:08.730
+You haven't yet seen how to measure their performance.
+
+00:00:08.730 --> 00:00:11.820
+In this section, we're going to review some of the information you have
+
+00:00:11.820 --> 00:00:16.289
+available to better understand how your consumer applications are performing.
+
+00:00:16.289 --> 00:00:21.195
+The most important metric to understand for your Kafka consumer is consumer lag.
+
+00:00:21.195 --> 00:00:24.149
+Consumer lag is measured by taking the difference between
+
+00:00:24.149 --> 00:00:30.074
+the current consumer offset in the offset of the newest message for that topic partition.
+
+00:00:30.074 --> 00:00:33.030
+There will almost always be some consumer lag.
+
+00:00:33.030 --> 00:00:37.410
+So if you measure this difference and see some small dif, that's okay.
+
+00:00:37.409 --> 00:00:41.594
+If you notice that the consumer lag number continues to grow over time though,
+
+00:00:41.594 --> 00:00:44.560
+that is an indicator that your consumer can't keep up.
+
+00:00:44.560 --> 00:00:50.060
+In that case, you typically will need additional consumer processes in order to keep up.
+
+00:00:50.060 --> 00:00:53.645
+You can use Kafka Clyde tools to measure consumer lag.
+
+00:00:53.645 --> 00:00:57.109
+Another important metric to measure is the number
+
+00:00:57.109 --> 00:01:00.320
+of messages per second passing through your Kafka topic.
+
+00:01:00.320 --> 00:01:03.255
+This number indicates the throughput of your topic,
+
+00:01:03.255 --> 00:01:07.070
+and can be useful in understanding if you're meeting your performance goals.
+
+00:01:07.069 --> 00:01:11.388
+Low throughput may indicate that there isn't as much data as expected,
+
+00:01:11.388 --> 00:01:14.359
+or that the consumer simply cannot keep up.
+
+00:01:14.359 --> 00:01:18.890
+This metric is typically calculated in conjunction with your consumer lag.
+
+00:01:18.890 --> 00:01:24.965
+Kafka emits metrics for throughput via the Java Metrics Exporter or JMX,
+
+00:01:24.965 --> 00:01:26.990
+so that you can hook this metric directly into
+
+00:01:26.989 --> 00:01:30.359
+your monitoring dashboards and alerting systems.
+

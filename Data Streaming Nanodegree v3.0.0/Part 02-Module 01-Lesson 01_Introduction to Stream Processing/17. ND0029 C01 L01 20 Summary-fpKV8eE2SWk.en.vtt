@@ -1,0 +1,43 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:03.149
+In this lesson, we learned what stream processing and
+
+00:00:03.149 --> 00:00:06.269
+a streaming data store are and how they work.
+
+00:00:06.269 --> 00:00:08.219
+We saw how we would use these tools in
+
+00:00:08.220 --> 00:00:11.295
+industry and what problems they would solve for us.
+
+00:00:11.294 --> 00:00:14.939
+We compared and contrasted stream processing with batch processing,
+
+00:00:14.939 --> 00:00:18.225
+learned how they were different but also how they're complimentary to each other.
+
+00:00:18.225 --> 00:00:20.070
+We learned what an event is,
+
+00:00:20.070 --> 00:00:23.010
+why streaming data stores are typically immutable,
+
+00:00:23.010 --> 00:00:28.440
+and then we saw how Apache Cassandra and Apache Kafka implement log structure storage.
+
+00:00:28.440 --> 00:00:32.189
+Beyond that, we also saw how Apache Kafka can be used from
+
+00:00:32.189 --> 00:00:37.259
+the command line via CLI tools or via the confluent Kafka Python library.
+
+00:00:37.259 --> 00:00:41.509
+In the next lesson, we're going to learn much more about Kafka and see how
+
+00:00:41.509 --> 00:00:46.589
+we can configure it for each specific situation that we need to run it in.
+

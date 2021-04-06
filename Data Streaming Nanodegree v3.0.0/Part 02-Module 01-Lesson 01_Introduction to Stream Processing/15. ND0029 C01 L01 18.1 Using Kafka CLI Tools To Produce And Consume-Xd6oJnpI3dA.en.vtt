@@ -1,0 +1,178 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:02.430
+So the first thing we're going to do I'll list
+
+00:00:02.430 --> 00:00:06.300
+the Kafka topics that we have available on our server.
+
+00:00:06.299 --> 00:00:08.969
+So run type Kafka-topics,
+
+00:00:08.970 --> 00:00:10.530
+and I'm going to hit "Enter".
+
+00:00:10.529 --> 00:00:12.209
+This isn't going to do anything except print out
+
+00:00:12.210 --> 00:00:14.985
+all the various configuration options available to us.
+
+00:00:14.984 --> 00:00:18.019
+You can see, and real quick I'm actually go to
+
+00:00:18.019 --> 00:00:23.059
+"View single document mode" so that we can view more of the screen at once.
+
+00:00:23.059 --> 00:00:27.169
+There are a number of options available to us with the Kafka topics command.
+
+00:00:27.170 --> 00:00:29.870
+We're not going to cover most of these in this class,
+
+00:00:29.870 --> 00:00:34.054
+but I'm going to point out a couple of the important options that you might want to use.
+
+00:00:34.054 --> 00:00:37.210
+First there's a create and delete command,
+
+00:00:37.210 --> 00:00:40.390
+as always describe, and list.
+
+00:00:40.390 --> 00:00:42.109
+These commands can be used to create,
+
+00:00:42.109 --> 00:00:46.085
+delete or list topics or describe the topic.
+
+00:00:46.085 --> 00:00:49.490
+Additionally, this --zookeeper option is
+
+00:00:49.490 --> 00:00:53.270
+required every time you want to use the Kafka topics command.
+
+00:00:53.270 --> 00:00:55.850
+Now, if you don't know what Zookeeper is that's okay.
+
+00:00:55.850 --> 00:00:59.620
+We're going to review some depth at the very beginning of Lesson 2.
+
+00:00:59.619 --> 00:01:03.979
+But for now, know that Zookeeper keeps some of the configuration for the Kafka cluster.
+
+00:01:03.979 --> 00:01:07.414
+So we have to talk to it so that we can get information about the topics.
+
+00:01:07.415 --> 00:01:09.430
+So now that you've actually seen an overview,
+
+00:01:09.430 --> 00:01:11.290
+let's list Kafka topics.
+
+00:01:11.290 --> 00:01:16.400
+So we're going to type in Kafka-topics ---list because we want to list the topics,
+
+00:01:16.400 --> 00:01:19.175
+and we're going to specify Zookeeper.
+
+00:01:19.174 --> 00:01:21.670
+Now, I'm going to minimize this window again so
+
+00:01:21.670 --> 00:01:24.430
+that I can show you how you can get the Zookeeper URL.
+
+00:01:24.430 --> 00:01:26.840
+I've put it in the description here and it's going to be
+
+00:01:26.840 --> 00:01:29.105
+the same for you as it is for me in this demonstration.
+
+00:01:29.105 --> 00:01:34.505
+So we're going to type in localhost:2181 and hit "Enter".
+
+00:01:34.504 --> 00:01:38.000
+So you can see, I'm going to resize this window just a little bit,
+
+00:01:38.000 --> 00:01:40.459
+and this is another nice feature of this new workspace.
+
+00:01:40.459 --> 00:01:44.129
+You can see that when I resize the window I can see what I've actually run,
+
+00:01:44.129 --> 00:01:47.649
+and you can see a list of all the Kafka topics that are currently available.
+
+00:01:47.650 --> 00:01:49.930
+Now, we haven't created a Kafka topic yet,
+
+00:01:49.930 --> 00:01:52.115
+so these are all system topics.
+
+00:01:52.114 --> 00:01:56.074
+Typically, system topics are prefixed with an underscore,
+
+00:01:56.075 --> 00:01:58.745
+and I would not recommend interacting with it if you can avoid it.
+
+00:01:58.745 --> 00:02:01.165
+Now, we've actually listed a topics,
+
+00:02:01.165 --> 00:02:03.200
+let's go ahead and create a topic.
+
+00:02:03.200 --> 00:02:06.590
+So we're going to use the Kafka topics command again.
+
+00:02:06.590 --> 00:02:10.895
+We're going to specify the create switch instead of the list switch this time.
+
+00:02:10.895 --> 00:02:14.510
+We're also going to tell Kafka the name of the topic that we want to create.
+
+00:02:14.509 --> 00:02:17.854
+In this case, we're going to use my-first-topic,
+
+00:02:17.854 --> 00:02:20.614
+and then we're going to pass these two options here;
+
+00:02:20.615 --> 00:02:22.909
+partitions and replication factor.
+
+00:02:22.909 --> 00:02:25.655
+Don't worry about what this means just now.
+
+00:02:25.655 --> 00:02:28.055
+We're going to cover this in more detail in Lesson 2.
+
+00:02:28.055 --> 00:02:30.230
+So for now, just pass these values through,
+
+00:02:30.229 --> 00:02:32.599
+because we have to specify them for Kafka.
+
+00:02:32.599 --> 00:02:36.259
+Finally, we're going to specify Zookeeper again,
+
+00:02:36.259 --> 00:02:39.649
+so that our Kafka cli tool knows how to
+
+00:02:39.650 --> 00:02:43.409
+talk to the Kafka cluster, and then we're going to hit "Enter".
+
+00:02:43.409 --> 00:02:46.460
+Wait just a moment, and you can see
+
+00:02:46.460 --> 00:02:49.805
+that we successfully created our topic, "my-first-topic".
+
+00:02:49.805 --> 00:02:53.719
+So we can wait up a few times here and then relist
+
+00:02:53.719 --> 00:02:57.919
+the topics just to confirm that our topic now exists on the Kafka cluster,
+
+00:02:57.919 --> 00:03:02.459
+and you can see my first topic has been created.
+

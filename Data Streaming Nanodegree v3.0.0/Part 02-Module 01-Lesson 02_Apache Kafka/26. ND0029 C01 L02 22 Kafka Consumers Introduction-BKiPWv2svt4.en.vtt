@@ -1,0 +1,76 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:01.639 --> 00:00:04.469
+Similar to producers and topics,
+
+00:00:04.469 --> 00:00:06.449
+Kafka consumers are, you guessed it,
+
+00:00:06.450 --> 00:00:08.505
+rich with configuration options.
+
+00:00:08.505 --> 00:00:11.535
+In this section, you'll learn what consumer groups are,
+
+00:00:11.535 --> 00:00:13.949
+and how to leverage them to maximize throughput.
+
+00:00:13.949 --> 00:00:15.599
+You'll also see how to subscribe to
+
+00:00:15.599 --> 00:00:19.304
+one or more topics and how to configure your consumer for high performance.
+
+00:00:19.304 --> 00:00:23.774
+We'll also see how to deserialize data and deal with topic rebalances.
+
+00:00:23.774 --> 00:00:27.149
+The first configuration option that many developers want to set
+
+00:00:27.149 --> 00:00:30.869
+on their consumer is the topic to which they wish to subscribe.
+
+00:00:30.870 --> 00:00:35.265
+Make sure that the Kafka topic you wish to subscribe to already exists.
+
+00:00:35.265 --> 00:00:39.045
+Otherwise, you risk having the client create itself automatically.
+
+00:00:39.045 --> 00:00:40.304
+As you've already learned,
+
+00:00:40.304 --> 00:00:42.869
+this is a bad idea because the producer will
+
+00:00:42.869 --> 00:00:45.994
+not have the chance to configure the settings as needed.
+
+00:00:45.994 --> 00:00:48.919
+To disable this behavior, and you really should,
+
+00:00:48.920 --> 00:00:53.045
+make sure to disable automatic topic creation in your consumer configuration.
+
+00:00:53.045 --> 00:00:55.130
+Once you subscribe to a topic,
+
+00:00:55.130 --> 00:00:57.770
+the next order of business is to poll for data.
+
+00:00:57.770 --> 00:01:00.500
+While your application code will call a poll method,
+
+00:01:00.500 --> 00:01:02.719
+behind the scenes your client library will be
+
+00:01:02.719 --> 00:01:05.659
+queuing messages for your application to consume.
+
+00:01:05.659 --> 00:01:08.164
+Similar to how you configure the producer,
+
+00:01:08.165 --> 00:01:13.530
+the conflict consumer's data queue can be configured by length, time, and size.
+

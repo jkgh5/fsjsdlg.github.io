@@ -1,0 +1,94 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:01.399 --> 00:00:06.599
+In this demonstration, we'll explore the poll and consume APIs in more detail.
+
+00:00:06.599 --> 00:00:09.029
+In this demonstration, we can see that we have
+
+00:00:09.029 --> 00:00:12.419
+a consume methods similar to what we've seen in previous examples.
+
+00:00:12.419 --> 00:00:18.329
+We have a while loop with a poll function that waits one second between timeouts.
+
+00:00:18.329 --> 00:00:20.864
+Once we get the message, we check if it's none,
+
+00:00:20.864 --> 00:00:24.614
+if it has an error, and then we print out the message key and value.
+
+00:00:24.614 --> 00:00:26.625
+What we're going to do instead,
+
+00:00:26.625 --> 00:00:28.440
+is we're going to try using the consume method
+
+00:00:28.440 --> 00:00:31.065
+here to grab more than one message at a time.
+
+00:00:31.065 --> 00:00:33.660
+So let's see what that looks like.
+
+00:00:33.659 --> 00:00:36.639
+It changes from c.poll to c.consume,
+
+00:00:36.640 --> 00:00:40.024
+and we're going to say that we want 10 messages at a time,
+
+00:00:40.024 --> 00:00:43.324
+and we're going to change this to be messages instead of message,
+
+00:00:43.325 --> 00:00:46.804
+because consume will return a list of messages.
+
+00:00:46.804 --> 00:00:51.299
+Next, we're going to iterate over each one of these messages.
+
+00:00:51.399 --> 00:00:53.710
+What's really nice about this,
+
+00:00:53.710 --> 00:00:56.774
+is that the syntax is almost identical to poll.
+
+00:00:56.774 --> 00:00:59.449
+So to update our code to
+
+00:00:59.450 --> 00:01:02.570
+handle consuming a list of messages
+
+00:01:02.570 --> 00:01:06.230
+opposed to handling poll where we get one message at a time,
+
+00:01:06.230 --> 00:01:11.400
+simply means to wrap our existing code in a for loop.
+
+00:01:11.400 --> 00:01:12.960
+So that being done,
+
+00:01:12.959 --> 00:01:19.814
+we can now simply run Sample 6 and try to get 10 messages at a time. All right.
+
+00:01:19.814 --> 00:01:23.435
+We're not going to see 10 messages pop up all at once.
+
+00:01:23.435 --> 00:01:27.439
+What is nice here is that you can see that it works essentially the same way.
+
+00:01:27.439 --> 00:01:28.640
+We're never timing out.
+
+00:01:28.640 --> 00:01:32.719
+We're always grabbing some data and we can see that it didn't
+
+00:01:32.719 --> 00:01:37.670
+take much to actually modify our application to grab more than one message at a time.
+
+00:01:37.670 --> 00:01:40.850
+So consider using consume if you want to grab
+
+00:01:40.849 --> 00:01:45.299
+buckets of messages instead of just one message at every iteration.
+

@@ -1,0 +1,346 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:01.459 --> 00:00:06.314
+Now, that we've learned about how Kafka actually works and how it's architected,
+
+00:00:06.314 --> 00:00:09.495
+let's look around the workspace to see Kafka in action.
+
+00:00:09.494 --> 00:00:12.449
+So we're going to pull up this workspace.
+
+00:00:12.449 --> 00:00:15.014
+I've already pulled up Sample1.markdown.
+
+00:00:15.015 --> 00:00:19.679
+So similar to how we did this in the first exercise that we did in the last lesson,
+
+00:00:19.678 --> 00:00:23.070
+we're going to actually walk through some of the command line tools for Kafka.
+
+00:00:23.070 --> 00:00:27.285
+So I'm going to go over here and I'm going to bring up a terminal window.
+
+00:00:27.285 --> 00:00:30.105
+I'm going to resize it to take up half the screen.
+
+00:00:30.105 --> 00:00:33.170
+The first thing we're going to do is create another topic.
+
+00:00:33.170 --> 00:00:36.125
+So we've already seen how to do this.
+
+00:00:36.125 --> 00:00:42.100
+For your Kafka-topics --create --topic Kafka-arch.
+
+00:00:42.100 --> 00:00:44.945
+We're going to use this as an abbreviation for architecture.
+
+00:00:44.945 --> 00:00:47.645
+Again, we're going to have one partition,
+
+00:00:47.645 --> 00:00:50.060
+and a replication factor of one.
+
+00:00:50.060 --> 00:00:52.359
+Again, we have replication factor of one,
+
+00:00:52.359 --> 00:00:55.164
+because we're only running one Kafka broker.
+
+00:00:55.164 --> 00:01:02.070
+We're going to specify Zookeeper as Localhost: 2181.
+
+00:01:02.070 --> 00:01:04.984
+So now, we've created a topic called Kafka architecture.
+
+00:01:04.984 --> 00:01:08.554
+The next thing we're going to do is actually inspect what was created.
+
+00:01:08.555 --> 00:01:11.450
+So we're going to list the files in this directory.
+
+00:01:11.450 --> 00:01:14.990
+So in the slides we talked about var/lib/kafka/data.
+
+00:01:14.989 --> 00:01:18.079
+Let's see what's in there. I'm actually going to make the screen
+
+00:01:18.079 --> 00:01:21.894
+full screen so we can see more stuff on the screen at once.
+
+00:01:21.894 --> 00:01:24.149
+So let's go ahead and run that command.
+
+00:01:24.150 --> 00:01:26.734
+There's quite a bit of stuff in this directory.
+
+00:01:26.734 --> 00:01:29.390
+This is the Kafka data directory, just to reiterate.
+
+00:01:29.390 --> 00:01:33.899
+We have private Kafka internal topics, Kafka offsets,
+
+00:01:33.899 --> 00:01:39.484
+and then all the way at the bottom here we have one folder Kafka arch 0.
+
+00:01:39.484 --> 00:01:42.590
+This is our topic. What's inside of that folder?
+
+00:01:42.590 --> 00:01:49.299
+Well, let's take a look var/lib/kafka/data Kafka-arch-0.
+
+00:01:49.299 --> 00:01:51.659
+We have an index, a log,
+
+00:01:51.659 --> 00:01:54.149
+a time index, and an epoch checkpoint.
+
+00:01:54.150 --> 00:01:56.300
+We don't need to really worry about the details of
+
+00:01:56.299 --> 00:01:58.609
+any of the files other than just the log file.
+
+00:01:58.609 --> 00:02:01.234
+Let's take a look at what it might look like.
+
+00:02:01.234 --> 00:02:05.629
+So I'm just going to use vim to open this file up.
+
+00:02:05.629 --> 00:02:08.044
+You can see there's nothing in it,
+
+00:02:08.044 --> 00:02:12.155
+because we haven't published any messages to this topic. Quit out of that.
+
+00:02:12.155 --> 00:02:15.439
+Now, you may be wondering, why is there only one folder for
+
+00:02:15.439 --> 00:02:19.909
+Kafka arch 0 but there are so many folders for some of these other topics?
+
+00:02:19.909 --> 00:02:23.539
+Well, each one of these folders actually represents a partition.
+
+00:02:23.539 --> 00:02:25.584
+Remember when we created the topic,
+
+00:02:25.585 --> 00:02:29.379
+we only specified one partition.
+
+00:02:29.599 --> 00:02:33.769
+So let's go back to our document and take a look at what we're going to do next.
+
+00:02:33.770 --> 00:02:36.515
+So we're going to leave single document mode,
+
+00:02:36.514 --> 00:02:38.625
+and I'm going to come over here,
+
+00:02:38.625 --> 00:02:41.180
+rush in to produce some data into this topic.
+
+00:02:41.180 --> 00:02:43.040
+So let's go ahead and give that a shot.
+
+00:02:43.039 --> 00:02:45.935
+I'm just going to copy this command since we've already seen how to run it.
+
+00:02:45.935 --> 00:02:49.430
+But basically we're just going to run the Kafka-console-producer against
+
+00:02:49.430 --> 00:02:54.165
+the Kafka-arch-topic with the localhost: 9092 Kafka broker.
+
+00:02:54.164 --> 00:02:56.435
+We're just going to produce in some data.
+
+00:02:56.435 --> 00:03:02.495
+We'll say, hello world! again. Kafka architecture test.
+
+00:03:02.495 --> 00:03:04.550
+Then we're going to Control C to exit.
+
+00:03:04.550 --> 00:03:09.035
+Then we're going to take a look at what's in that data directory one more time.
+
+00:03:09.034 --> 00:03:10.250
+So I'm just going to head up.
+
+00:03:10.250 --> 00:03:11.675
+We're going to look at var/lib/Kafka.
+
+00:03:11.675 --> 00:03:15.305
+Kafka arch 0 log.
+
+00:03:15.305 --> 00:03:19.045
+You'll see there's now some data in this topic.
+
+00:03:19.044 --> 00:03:22.625
+Well, this isn't necessarily used for human consumption.
+
+00:03:22.625 --> 00:03:24.259
+This isn't meant for you to be able to read,
+
+00:03:24.259 --> 00:03:26.569
+but I just want to show you where the data is getting stored.
+
+00:03:26.569 --> 00:03:28.444
+So if you're looking at this and thinking,
+
+00:03:28.444 --> 00:03:31.104
+this data looks crazy, that's okay.
+
+00:03:31.104 --> 00:03:33.049
+This is Kafka's binary representation.
+
+00:03:33.050 --> 00:03:35.100
+It's not meant for you to interpret as a human being.
+
+00:03:35.099 --> 00:03:37.430
+But it is nice to know where the data is being put.
+
+00:03:37.430 --> 00:03:39.290
+So we can quit out of this,
+
+00:03:39.289 --> 00:03:41.644
+and next we're going to repartition the topic.
+
+00:03:41.645 --> 00:03:43.969
+So we're going to run a new command that you haven't seen before.
+
+00:03:43.969 --> 00:03:45.694
+This is the Alter command.
+
+00:03:45.694 --> 00:03:50.074
+So we're going to alter our topic to have three partitions instead of just one.
+
+00:03:50.074 --> 00:03:52.504
+So we're going to run the Kafka-topics--alter,
+
+00:03:52.504 --> 00:03:56.414
+specify the topic we want to alter.
+
+00:03:56.414 --> 00:03:59.419
+Then we're going to say that we want to have three partitions.
+
+00:03:59.419 --> 00:04:01.250
+It's a list of 10, 100,
+
+00:04:01.250 --> 00:04:04.294
+300, whatever number you care to choose, you can.
+
+00:04:04.294 --> 00:04:07.000
+But we're just going to set it to three for now.
+
+00:04:07.000 --> 00:04:13.069
+We're going to set Zookeeper equal to Localhost: 2181 as we always do. So it's going run.
+
+00:04:13.069 --> 00:04:17.540
+Takes just a moment, and you'll see that now if we go back,
+
+00:04:17.540 --> 00:04:20.629
+we're just going to clear this and make this full screen again.
+
+00:04:20.629 --> 00:04:23.060
+We're going to go to single document mode.
+
+00:04:23.060 --> 00:04:28.564
+If we do an ls on var/lib/kafka/data,
+
+00:04:28.564 --> 00:04:33.889
+and I'm actually just going to grab so it filters out just our Kafka-arch-topics.
+
+00:04:33.889 --> 00:04:39.569
+Let's see what we find. We now have three folders here: 0, 1, and two.
+
+00:04:39.569 --> 00:04:41.699
+That's because we now have three partitions.
+
+00:04:41.699 --> 00:04:44.175
+So you can actually see under the hood,
+
+00:04:44.175 --> 00:04:46.625
+how Kafka is managing partitions.
+
+00:04:46.625 --> 00:04:48.769
+We can actually just think of as a topic
+
+00:04:48.769 --> 00:04:52.685
+almost as simple abstraction over the actual partitions on disk.
+
+00:04:52.685 --> 00:04:55.345
+So let's go back to our file here.
+
+00:04:55.345 --> 00:04:58.560
+Now that we've seen that, if we continue to produce data,
+
+00:04:58.560 --> 00:05:00.290
+let's do that one more time.
+
+00:05:00.290 --> 00:05:03.710
+We're going to go ahead and run our producer command again,
+
+00:05:03.709 --> 00:05:06.469
+because it's going to produce a few more messages, 1, 2,
+
+00:05:06.470 --> 00:05:10.270
+3, 4, 5, 6, and so on.
+
+00:05:10.269 --> 00:05:14.430
+Doesn't really matter what you put messages we produced, and we're going to quit out.
+
+00:05:14.430 --> 00:05:19.514
+Let's take a look at a couple of those other topics that we have.
+
+00:05:19.514 --> 00:05:22.370
+A couple of other partition data files.
+
+00:05:22.370 --> 00:05:23.930
+So let's take a look here.
+
+00:05:23.930 --> 00:05:25.535
+So we're looking at Kafka arch-0.
+
+00:05:25.535 --> 00:05:26.630
+So there's still data here,
+
+00:05:26.629 --> 00:05:29.284
+and you can see there's some new data in this file.
+
+00:05:29.285 --> 00:05:33.610
+But what happens if I look at Kafka arch one or two? Let's look at one.
+
+00:05:33.610 --> 00:05:35.475
+Now, we have data here as well,
+
+00:05:35.475 --> 00:05:38.970
+and we also have data in Kafka arh-2.
+
+00:05:38.970 --> 00:05:43.220
+So well, it may not be necessary for you to ever actually dig in on
+
+00:05:43.220 --> 00:05:45.680
+your own production workloads and actually see how
+
+00:05:45.680 --> 00:05:48.319
+the underlying data is stored on disk by Kafka.
+
+00:05:48.319 --> 00:05:50.194
+It's a useful exercise for you to just
+
+00:05:50.194 --> 00:05:53.615
+understand how Kafka is working in storing the files.
+
+00:05:53.615 --> 00:05:57.824
+Especially given the fact that understanding how Kafka's stores these files,
+
+00:05:57.824 --> 00:06:00.649
+may help you better understand how to actually optimize
+
+00:06:00.649 --> 00:06:05.129
+Kafka's disk usage and other types of performance metrics later on.
+

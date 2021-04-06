@@ -1,0 +1,175 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:03.794
+There are two distinct components to stream processing applications.
+
+00:00:03.794 --> 00:00:05.700
+The streaming data store,
+
+00:00:05.700 --> 00:00:07.620
+which we've animated down here on the left,
+
+00:00:07.620 --> 00:00:10.004
+with events going into the streaming data store,
+
+00:00:10.005 --> 00:00:13.110
+and the streaming processing calculation,
+
+00:00:13.109 --> 00:00:15.419
+and that's what we have here on the right.
+
+00:00:15.419 --> 00:00:18.509
+Just to reiterate, think of a data store as
+
+00:00:18.510 --> 00:00:22.470
+a generic place where we store data such as a database or message queue.
+
+00:00:22.469 --> 00:00:25.094
+The streaming data store is responsible for holding
+
+00:00:25.094 --> 00:00:27.674
+all of the immutable event data in the system.
+
+00:00:27.675 --> 00:00:31.260
+Streaming data stores provide guarantees that data is stored,
+
+00:00:31.260 --> 00:00:34.414
+ordered according to the time it was produced,
+
+00:00:34.414 --> 00:00:37.700
+as well as produced to consumers in that same order.
+
+00:00:37.700 --> 00:00:39.245
+So just to reiterate,
+
+00:00:39.244 --> 00:00:41.784
+if I have an event produced at time zero,
+
+00:00:41.784 --> 00:00:43.979
+time one, and time two,
+
+00:00:43.979 --> 00:00:46.549
+when that data leaves the data store,
+
+00:00:46.549 --> 00:00:48.154
+it will come out in the same order,
+
+00:00:48.155 --> 00:00:51.695
+so a consumer of this data we'll see T_O first,
+
+00:00:51.695 --> 00:00:54.939
+T_1 second, and T_2 third.
+
+00:00:54.939 --> 00:00:58.489
+Additionally, these data stores also guarantee that the events
+
+00:00:58.490 --> 00:01:01.475
+that they store are immutable and unchangeable.
+
+00:01:01.475 --> 00:01:04.969
+So the data store itself is actually
+
+00:01:04.969 --> 00:01:09.215
+the object in the system that makes the decision that once this event has been stored,
+
+00:01:09.215 --> 00:01:11.015
+it can no longer be changed.
+
+00:01:11.015 --> 00:01:14.780
+These conceptual guarantees provides stream processing applications with
+
+00:01:14.780 --> 00:01:18.894
+powerful assumptions that they can use in processing the data at a later time.
+
+00:01:18.894 --> 00:01:23.469
+If we can assume that data can't change and always arrives in a particular order,
+
+00:01:23.469 --> 00:01:25.359
+that alleviates a significant amount of
+
+00:01:25.359 --> 00:01:28.435
+logical overhead from our stream processing applications.
+
+00:01:28.435 --> 00:01:33.960
+The most common streaming data store in use today are Apache Kafka, and Apache Cassandra.
+
+00:01:33.959 --> 00:01:36.549
+So you have the Kafka logo here on the left,
+
+00:01:36.549 --> 00:01:38.905
+and the Cassandra logo here on the right.
+
+00:01:38.905 --> 00:01:44.680
+Kafka has some similarities to message queues such as RabbitMQ or ActiveMQ.
+
+00:01:44.680 --> 00:01:47.560
+If you're not familiar with those technologies, it's okay.
+
+00:01:47.560 --> 00:01:51.250
+We'll add some links to the texts for you to take a look at them out offline.
+
+00:01:51.250 --> 00:01:53.469
+We'll talk more about how Kafka works,
+
+00:01:53.469 --> 00:01:56.590
+and how it differs from these other message queues in a later lesson.
+
+00:01:56.590 --> 00:01:59.560
+Apache Cassandra behave similarly to traditional SQL stores,
+
+00:01:59.560 --> 00:02:01.385
+but also supports streaming data.
+
+00:02:01.385 --> 00:02:03.810
+The actual stream processing application is
+
+00:02:03.810 --> 00:02:07.150
+the second component in a stream processing solution.
+
+00:02:07.150 --> 00:02:11.090
+These applications sit downstream of the data store.
+
+00:02:11.090 --> 00:02:16.354
+So here we have events coming out of a data store into the streaming calculation.
+
+00:02:16.354 --> 00:02:21.364
+They ingest real-time event data from one or more data streams.
+
+00:02:21.365 --> 00:02:24.110
+These applications will aggregate, join,
+
+00:02:24.110 --> 00:02:27.470
+and find differences between incoming data from these data streams,
+
+00:02:27.469 --> 00:02:32.224
+and then they typically produce output events that represent the calculation result.
+
+00:02:32.224 --> 00:02:36.424
+There are many types of stream processing application frameworks available today.
+
+00:02:36.425 --> 00:02:38.150
+In this course specifically,
+
+00:02:38.150 --> 00:02:40.504
+we are going to cover confluent case SQL,
+
+00:02:40.504 --> 00:02:43.294
+and the Faust Python streaming library.
+
+00:02:43.294 --> 00:02:47.359
+Other excellent options include Apache Spark structured streaming,
+
+00:02:47.360 --> 00:02:52.595
+Apache Kafka streams, Apache Flink, and Apache Samza.
+
+00:02:52.594 --> 00:02:56.219
+Each of these streaming platforms offer unique and interesting features,
+
+00:02:56.219 --> 00:02:58.564
+but the core concepts that we're going to learn in this course
+
+00:02:58.564 --> 00:03:02.039
+are shared amongst all the solutions we're going to review.
+

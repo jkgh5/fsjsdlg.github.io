@@ -1,0 +1,199 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:02.279
+Let's review some of the details of building
+
+00:00:02.279 --> 00:00:05.219
+a consumer with a Confluent Kafka Python library.
+
+00:00:05.219 --> 00:00:07.634
+When we talk about consuming data from Kafka,
+
+00:00:07.634 --> 00:00:10.035
+we typically refer to a Poll Loop,
+
+00:00:10.035 --> 00:00:11.910
+which is responsible for requesting
+
+00:00:11.910 --> 00:00:15.509
+new data from the underlying client libraries consumer q.
+
+00:00:15.509 --> 00:00:18.300
+Let's walk through an example of what a Poll Loop looks like,
+
+00:00:18.300 --> 00:00:19.620
+which you can see on the screen here.
+
+00:00:19.620 --> 00:00:21.164
+In this first example,
+
+00:00:21.164 --> 00:00:23.864
+we're going to write a while loop that loops indefinitely.
+
+00:00:23.864 --> 00:00:26.699
+So you can see we have while True that's going to
+
+00:00:26.699 --> 00:00:29.589
+loop until either we control C to exit the application,
+
+00:00:29.589 --> 00:00:32.609
+it crashes or some other outside for stops this.
+
+00:00:32.609 --> 00:00:35.820
+Within this while loop, we're simply going to call poll.
+
+00:00:35.820 --> 00:00:40.284
+When we call poll, we've passed in the one second timeout.
+
+00:00:40.284 --> 00:00:43.324
+Essentially, if no message has been received in one second,
+
+00:00:43.325 --> 00:00:46.205
+the loop will continue and poll again.
+
+00:00:46.204 --> 00:00:48.890
+If we do in fact receive a message from Kafka,
+
+00:00:48.890 --> 00:00:51.064
+we needed to do some error checking first.
+
+00:00:51.064 --> 00:00:52.534
+Is the message None?
+
+00:00:52.534 --> 00:00:56.584
+This would happen if we did a poll for one second and receive no message.
+
+00:00:56.585 --> 00:00:59.765
+If that happens, we just want to continue back to the top of the loop.
+
+00:00:59.765 --> 00:01:02.255
+We also want to check to see if there is an error.
+
+00:01:02.255 --> 00:01:05.659
+If the message cannot be processed or there's some other kind of error,
+
+00:01:05.659 --> 00:01:07.239
+we don't want to do anything with it.
+
+00:01:07.239 --> 00:01:09.108
+Ideally, in a production application,
+
+00:01:09.108 --> 00:01:13.084
+we would log that we received in error and then continue back to the top of the loop.
+
+00:01:13.084 --> 00:01:14.809
+If a message contains data,
+
+00:01:14.810 --> 00:01:19.025
+we can extract the key in value from the message by calling either of those methods.
+
+00:01:19.025 --> 00:01:24.340
+So you can see here we're printing message.key and message.value.
+
+00:01:24.340 --> 00:01:29.140
+It is possible to swap out the pull method for a consumed method.
+
+00:01:29.140 --> 00:01:30.980
+The consume method allows us to consume
+
+00:01:30.980 --> 00:01:34.285
+more than one message at a time which can be advantageous.
+
+00:01:34.284 --> 00:01:35.954
+Well, both methods are good,
+
+00:01:35.954 --> 00:01:40.384
+the pull method is actually more feature-rich and then Kafka Confluent Python library.
+
+00:01:40.385 --> 00:01:43.070
+We'll talk more about Avro and a future lesson but
+
+00:01:43.069 --> 00:01:46.224
+the poll method provides some useful functionality in this area.
+
+00:01:46.224 --> 00:01:48.979
+Finally, it's important that once you do decide
+
+00:01:48.980 --> 00:01:51.460
+to exit a consumer that you do it gracefully.
+
+00:01:51.459 --> 00:01:56.074
+Finish consuming any messages that the consumer has polled and then close the library,
+
+00:01:56.075 --> 00:02:00.379
+this allows your client to flush its offset and process any remaining messages.
+
+00:02:00.379 --> 00:02:05.599
+Skipping this step can lead your client finding itself in an inconsistent state.
+
+00:02:05.599 --> 00:02:08.854
+It's also worth mentioning that failure to close means that
+
+00:02:08.854 --> 00:02:10.474
+the Kafka broker has to determine on its
+
+00:02:10.474 --> 00:02:12.724
+own that your consumer has left the consumer group.
+
+00:02:12.724 --> 00:02:15.745
+Determining this takes time and failed messages,
+
+00:02:15.745 --> 00:02:17.629
+this can cost performance problems for the rest of
+
+00:02:17.629 --> 00:02:20.424
+the consumer group and cause a laid rebalances.
+
+00:02:20.425 --> 00:02:23.960
+In this example, you can see we've used the consume method.
+
+00:02:23.960 --> 00:02:26.210
+So consume unlike poll,
+
+00:02:26.210 --> 00:02:28.490
+can grab a certain number of messages at a time.
+
+00:02:28.490 --> 00:02:32.480
+Here, I specified that I'd like to fetch five messages at a time,
+
+00:02:32.479 --> 00:02:34.354
+if there are five messages available.
+
+00:02:34.354 --> 00:02:35.719
+Just like the poll method,
+
+00:02:35.719 --> 00:02:37.625
+we have a timeout of one second.
+
+00:02:37.625 --> 00:02:41.525
+You'll get back an array of messages or a list of messages.
+
+00:02:41.525 --> 00:02:44.870
+So we'll iterate over the messages that we did receive.
+
+00:02:44.870 --> 00:02:48.370
+Again, we still want to just check to make sure the message isn't None.
+
+00:02:48.370 --> 00:02:49.754
+This case shouldn't occur,
+
+00:02:49.754 --> 00:02:53.569
+we should get an empty list but it doesn't hurt to check this scenario.
+
+00:02:53.569 --> 00:02:57.064
+We also want to check to make sure the message doesn't have an error,
+
+00:02:57.064 --> 00:03:01.129
+and just as in the previous example if neither of those conditions are true,
+
+00:03:01.129 --> 00:03:03.590
+we can extract the message key and value.
+
+00:03:03.590 --> 00:03:06.800
+What's nice about this is it allows us to process multiple messages at
+
+00:03:06.800 --> 00:03:10.980
+once as opposed to poll we're only going to get one message at a time.
+

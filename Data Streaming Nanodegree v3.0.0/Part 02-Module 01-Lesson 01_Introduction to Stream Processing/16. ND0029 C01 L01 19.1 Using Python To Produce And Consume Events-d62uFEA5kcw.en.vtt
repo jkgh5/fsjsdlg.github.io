@@ -1,0 +1,271 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:01.830
+Then we're going to actually go ahead and
+
+00:00:01.830 --> 00:00:04.530
+complete the Kafka-Python producer and consumer.
+
+00:00:04.530 --> 00:00:07.035
+So we're first going to create the producer,
+
+00:00:07.035 --> 00:00:09.210
+we have a produce function here,
+
+00:00:09.210 --> 00:00:11.130
+and there is this async def,
+
+00:00:11.130 --> 00:00:13.095
+you can safely ignore this if you'd like.
+
+00:00:13.095 --> 00:00:16.574
+This is Python 3.6.0 Async IO Syntax and
+
+00:00:16.574 --> 00:00:18.119
+I'm using it so that we can both produce and
+
+00:00:18.120 --> 00:00:20.385
+consume within the same application more easily.
+
+00:00:20.385 --> 00:00:22.640
+It's not important that you understand how this works for now,
+
+00:00:22.640 --> 00:00:24.644
+so just go ahead and ignore it.
+
+00:00:24.644 --> 00:00:27.314
+Say producer and then we're going to
+
+00:00:27.315 --> 00:00:30.270
+configure this with the same settings as our admin client,
+
+00:00:30.269 --> 00:00:36.045
+going to say bootstrap.servers broker URL.
+
+00:00:36.045 --> 00:00:39.660
+This will create a producer that's connected to our Kafka broker.
+
+00:00:39.659 --> 00:00:42.099
+Next, we're going to create a production loop.
+
+00:00:42.100 --> 00:00:47.270
+In this loop all we're doing is producing some kind of data into this topic.
+
+00:00:47.270 --> 00:00:52.045
+So we're going to say P.produce provide a topic name,
+
+00:00:52.045 --> 00:00:54.755
+so we have that topic name up here.
+
+00:00:54.755 --> 00:00:57.370
+Then we're also going to provide some data to it,
+
+00:00:57.369 --> 00:01:01.114
+so I'm going to use Python three syntax here to format a string,
+
+00:01:01.115 --> 00:01:07.204
+and I'm just going to put in a message and then the current iteration of this loop.
+
+00:01:07.204 --> 00:01:09.319
+So it should just print out message zero,
+
+00:01:09.319 --> 00:01:12.469
+message one, two, three, so on and so forth.
+
+00:01:12.469 --> 00:01:15.289
+We're going to go ahead and save and that's all
+
+00:01:15.290 --> 00:01:17.855
+there is to it when we actually want to produce.
+
+00:01:17.855 --> 00:01:22.040
+But we also will need a consumer to consume the data so that we can see some output.
+
+00:01:22.040 --> 00:01:24.440
+So let's go ahead and complete the consumer.
+
+00:01:24.439 --> 00:01:27.144
+Consumers take essentially the same configuration
+
+00:01:27.144 --> 00:01:29.319
+as both the admin client and the producer,
+
+00:01:29.319 --> 00:01:35.229
+bootstrap.server set to broker URL.
+
+00:01:35.569 --> 00:01:39.674
+However, we also need to set a group ID for our consumers,
+
+00:01:39.674 --> 00:01:43.284
+we'll cover this in detail in lesson two but for now just name it whatever you want.
+
+00:01:43.284 --> 00:01:48.659
+We'll call this first Python consumer group,
+
+00:01:48.659 --> 00:01:51.534
+but you can give it whatever name you want.
+
+00:01:51.534 --> 00:01:54.310
+We then need to subscribe to a topic.
+
+00:01:54.310 --> 00:01:57.379
+So here we're going to provide the topic name,
+
+00:01:58.879 --> 00:02:02.199
+and then finally we actually need to pull for messages from Kafka.
+
+00:02:02.200 --> 00:02:05.170
+So now that we're subscribed we need to grab the messages.
+
+00:02:05.170 --> 00:02:10.319
+So we're going to say, message equal c,
+
+00:02:10.319 --> 00:02:13.519
+so this is the instantiated consumer client.pull.
+
+00:02:13.520 --> 00:02:14.915
+Then we provide a timeout,
+
+00:02:14.914 --> 00:02:16.984
+in this case we're going to give it a one second time out.
+
+00:02:16.985 --> 00:02:20.615
+So if we don't receive a message in one second, we're going to time out.
+
+00:02:20.615 --> 00:02:22.340
+Once we've received the message,
+
+00:02:22.340 --> 00:02:24.425
+we've got to handle a couple of situations.
+
+00:02:24.425 --> 00:02:28.790
+I'm going to clear this out but if the message is none or there's an error,
+
+00:02:28.789 --> 00:02:32.179
+we need to provide some kind of information to the consumer client
+
+00:02:32.180 --> 00:02:36.020
+so that it knows that either the message isn't valid or none was received.
+
+00:02:36.020 --> 00:02:38.420
+If we did receive a message there's going to be
+
+00:02:38.419 --> 00:02:41.839
+a key and a value that we can print out or return to our color.
+
+00:02:41.840 --> 00:02:48.935
+So I'm going to clear this out, and I'm going to go ahead and say if message is none,
+
+00:02:48.935 --> 00:02:57.370
+print no message received, else if message.error.
+
+00:02:57.370 --> 00:03:00.664
+So was there an error is not none,
+
+00:03:00.664 --> 00:03:08.465
+print message had an error and we're just going to render that in to the string.
+
+00:03:08.465 --> 00:03:13.310
+Finally, we're going to say there is no issue,
+
+00:03:13.310 --> 00:03:14.629
+the message is working appropriately.
+
+00:03:14.629 --> 00:03:18.819
+So let's just go ahead and print out the key.
+
+00:03:18.819 --> 00:03:26.204
+So message.key and the message value,
+
+00:03:26.205 --> 00:03:31.580
+message.value, and with that we should be good to go.
+
+00:03:31.580 --> 00:03:34.205
+So let's go ahead and save this and see what happens.
+
+00:03:34.205 --> 00:03:36.755
+Let's give it a second here as it starts up.
+
+00:03:36.754 --> 00:03:39.629
+We can also check the Kafka logs.
+
+00:03:42.849 --> 00:03:46.879
+I see. So there was a mistake on our consumer here.
+
+00:03:46.879 --> 00:03:48.294
+So when we subscribed,
+
+00:03:48.294 --> 00:03:50.024
+I just pass in a topic name.
+
+00:03:50.025 --> 00:03:53.390
+Let's actually take a look at the documentation to see what was the mistake here.
+
+00:03:53.389 --> 00:03:58.024
+So if we go to the consumer on the left here in the documentation,
+
+00:03:58.025 --> 00:04:00.590
+we can see the subscribe documentation.
+
+00:04:00.590 --> 00:04:03.210
+I'm going to scroll down to that.
+
+00:04:03.409 --> 00:04:06.525
+Looking for the S, so here we go.
+
+00:04:06.525 --> 00:04:10.340
+Subscribe topics, so my mistake is that I just provided
+
+00:04:10.340 --> 00:04:15.140
+a single string to it but like the topic creation and topic deletion,
+
+00:04:15.139 --> 00:04:17.029
+it's also a list of topics.
+
+00:04:17.029 --> 00:04:22.399
+So we're going to come back in here and just wrap this in a list syntax.
+
+00:04:22.399 --> 00:04:28.949
+Save, and then we're going to go ahead and clear our terminal and try once more.
+
+00:04:30.589 --> 00:04:33.209
+So we can see our consumers running,
+
+00:04:33.209 --> 00:04:35.169
+no messages have been received yet.
+
+00:04:35.170 --> 00:04:38.540
+It looks like our producer is now receiving messages.
+
+00:04:38.540 --> 00:04:43.310
+So we're printing out that there's no key and that we have messaged 9,10,
+
+00:04:43.310 --> 00:04:45.415
+11, 12 and so on.
+
+00:04:45.415 --> 00:04:47.480
+You'll notice as the messages print to
+
+00:04:47.480 --> 00:04:50.509
+the screen that they don't seem to be happening very quickly.
+
+00:04:50.509 --> 00:04:55.670
+That's because I've specifically set the print time to one second per message.
+
+00:04:55.670 --> 00:04:59.845
+We're only pulling for a message from Kafka once every second,
+
+00:04:59.845 --> 00:05:01.215
+and that's all there is to it.
+
+00:05:01.214 --> 00:05:05.839
+This is your first Kafka consumer and producer topic creation
+
+00:05:05.839 --> 00:05:08.164
+and topic deletion with Python.
+
+00:05:08.165 --> 00:05:12.379
+Now go ahead and give this a shot in your own workspace.
+

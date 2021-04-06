@@ -1,0 +1,40 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:02.270
+Once a topic has been created with Kafka,
+
+00:00:02.270 --> 00:00:04.950
+the next step is to send data into the topic.
+
+00:00:04.950 --> 00:00:09.644
+Applications that send event data into topics are known as Kafka producers.
+
+00:00:09.644 --> 00:00:13.125
+From now on, I'm just going to refer to these as producers.
+
+00:00:13.125 --> 00:00:15.644
+There are many ways to produce data to Kafka,
+
+00:00:15.644 --> 00:00:19.079
+but applications typically integrate a Kafka client library.
+
+00:00:19.079 --> 00:00:21.239
+Excellent client libraries exist for
+
+00:00:21.239 --> 00:00:23.820
+almost all programming languages that are popular today,
+
+00:00:23.820 --> 00:00:27.225
+including Python, Java, Go and others.
+
+00:00:27.225 --> 00:00:30.540
+There are many configuration options and considerations for producers,
+
+00:00:30.539 --> 00:00:32.399
+just as there were with topics which we're going
+
+00:00:32.399 --> 00:00:35.429
+to review in depth also in the next lesson.
+

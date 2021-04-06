@@ -1,0 +1,118 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:02.250
+Before we review more advanced concepts,
+
+00:00:02.250 --> 00:00:06.375
+it's worth reminding ourselves that Kafka supports message expiration.
+
+00:00:06.375 --> 00:00:09.224
+Kafka can expire messages based on time,
+
+00:00:09.224 --> 00:00:11.669
+topics size, or both, as we learned.
+
+00:00:11.669 --> 00:00:16.259
+Given that, if your topic settings are within the boundaries of your data removal goals,
+
+00:00:16.260 --> 00:00:18.195
+this may be the simplest option.
+
+00:00:18.195 --> 00:00:21.199
+For example, if a regulation requires that you must delete
+
+00:00:21.199 --> 00:00:24.050
+data within 24 hours of a user request,
+
+00:00:24.050 --> 00:00:26.085
+that your message expiration is 12 hours,
+
+00:00:26.085 --> 00:00:28.880
+you can be sure that the users data will have already been
+
+00:00:28.879 --> 00:00:32.464
+expired without requiring you to take any further action.
+
+00:00:32.465 --> 00:00:35.450
+Unfortunately, it's not often the case that
+
+00:00:35.450 --> 00:00:38.960
+expiration policies are in line with these kinds of deadlines.
+
+00:00:38.960 --> 00:00:44.600
+In some cases, we won't have the luxury of using message expiration to manage user data.
+
+00:00:44.600 --> 00:00:47.929
+When this occurs, we must use log compaction instead
+
+00:00:47.929 --> 00:00:51.424
+of log expiration to manage a user's personal data.
+
+00:00:51.424 --> 00:00:53.214
+As we reviewed earlier,
+
+00:00:53.215 --> 00:00:54.610
+in a compacted topic,
+
+00:00:54.609 --> 00:01:00.140
+you can continue to publish updates to a particular message as long as the keys match.
+
+00:01:00.140 --> 00:01:07.030
+So as you can see here, we have a message A_1, B_2, and C_3.
+
+00:01:07.030 --> 00:01:12.530
+Also recall, that a message with a matching key and a null value,
+
+00:01:12.530 --> 00:01:16.700
+tells the Kafka broker that it should delete the key on the next compaction,
+
+00:01:16.700 --> 00:01:19.010
+effectively deleting the message.
+
+00:01:19.010 --> 00:01:24.180
+So here, we've now published the most recent message for A,
+
+00:01:24.180 --> 00:01:25.685
+key A as null.
+
+00:01:25.685 --> 00:01:28.070
+This indicates for the Kafka broker,
+
+00:01:28.069 --> 00:01:31.250
+that both this message and this message,
+
+00:01:31.250 --> 00:01:33.079
+because they both have key A,
+
+00:01:33.079 --> 00:01:35.734
+should be deleted because it has a null value.
+
+00:01:35.734 --> 00:01:38.810
+Leveraging this idea, we can see that we can publish
+
+00:01:38.810 --> 00:01:42.894
+null messages for a user ID to delete the user's data.
+
+00:01:42.894 --> 00:01:48.109
+We do have to keep in mind that there are log compaction timing settings on the topic.
+
+00:01:48.109 --> 00:01:52.129
+So you'll also want to verify that these are set appropriately for your use case.
+
+00:01:52.129 --> 00:01:56.554
+Otherwise, it may take too long for your data to be compacted and deleted.
+
+00:01:56.555 --> 00:01:59.795
+One of the major problems with this approach however,
+
+00:01:59.795 --> 00:02:02.810
+is that user data may be spread through many topics,
+
+00:02:02.810 --> 00:02:05.225
+and not always keyed on the user ID.
+
+00:02:05.224 --> 00:02:09.479
+So unfortunately, this strategy is typically not enough.
+

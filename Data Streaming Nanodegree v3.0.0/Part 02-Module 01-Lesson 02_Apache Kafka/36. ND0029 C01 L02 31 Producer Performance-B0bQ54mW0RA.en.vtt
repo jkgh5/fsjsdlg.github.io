@@ -1,0 +1,43 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:03.209
+Now that you've seen how to measure the performance of your Kafka consumers,
+
+00:00:03.209 --> 00:00:06.120
+let's pivot and have a look at your Kafka producers.
+
+00:00:06.120 --> 00:00:08.699
+When your producer sends messages to the Kafka,
+
+00:00:08.699 --> 00:00:11.910
+there's always some inherent latency in that process.
+
+00:00:11.910 --> 00:00:16.394
+Ideally though, that latency number is small and consistent.
+
+00:00:16.394 --> 00:00:20.550
+High latency can indicate that your acks setting is too high and that
+
+00:00:20.550 --> 00:00:24.825
+too many ISR nodes must confirm message before returning.
+
+00:00:24.824 --> 00:00:26.910
+It may also indicate that
+
+00:00:26.910 --> 00:00:30.914
+too many partitions or replicas have been assigned to this topic.
+
+00:00:30.914 --> 00:00:35.629
+Another metric to keep your eyes on is the producer response rate.
+
+00:00:35.630 --> 00:00:39.920
+This metric is an indicator of how many messages are being delivered over time.
+
+00:00:39.920 --> 00:00:41.570
+You can measure these numbers by using
+
+00:00:41.570 --> 00:00:45.179
+producer delivery callbacks in your client library.
+

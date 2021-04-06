@@ -1,0 +1,49 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:04.304
+As you've seen, Kafka offers a number of configuration options for topics.
+
+00:00:04.304 --> 00:00:06.554
+Remember, you can create topics automatically,
+
+00:00:06.554 --> 00:00:08.589
+but it's not a good practice to get into.
+
+00:00:08.589 --> 00:00:11.640
+To get the best performance out of your Kafka cluster and it's topics,
+
+00:00:11.640 --> 00:00:15.780
+always make sure to manually create your topics with carefully considered options.
+
+00:00:15.779 --> 00:00:19.009
+One easy thing to consider in your producer applications is to
+
+00:00:19.010 --> 00:00:22.730
+write code that checks to see if the desired topic exists.
+
+00:00:22.730 --> 00:00:23.990
+If it doesn't exist,
+
+00:00:23.989 --> 00:00:26.500
+then the producer can configure and create the topic.
+
+00:00:26.500 --> 00:00:29.990
+Alternatively, you can also consider using Bash scripts on
+
+00:00:29.989 --> 00:00:33.905
+infrastructure provisioning tool like terraform to create your topics as well.
+
+00:00:33.905 --> 00:00:36.500
+What you choose will ultimately be driven by
+
+00:00:36.500 --> 00:00:39.320
+the workflows that you and your team are most comfortable with.
+
+00:00:39.320 --> 00:00:41.960
+Just remember, create topics manually.
+
+00:00:41.960 --> 00:00:45.179
+Don't rely on automatic topic creation.
+

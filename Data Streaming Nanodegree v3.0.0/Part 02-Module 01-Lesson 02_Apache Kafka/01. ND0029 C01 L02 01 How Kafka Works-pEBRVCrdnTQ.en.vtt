@@ -1,0 +1,25 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:01.550 --> 00:00:05.490
+So far, we've just scraped the surface of Kafka.
+
+00:00:05.490 --> 00:00:09.720
+Before we dive any further into how we can use Kafka for streaming applications,
+
+00:00:09.720 --> 00:00:13.950
+we need to better understand how it works so we can fully take advantage of it.
+
+00:00:13.949 --> 00:00:17.519
+In this section, we'll cover Kafka's operational architecture,
+
+00:00:17.519 --> 00:00:19.364
+how Kafka stores data,
+
+00:00:19.364 --> 00:00:22.109
+Kafka high availability and data loss prevention with
+
+00:00:22.109 --> 00:00:26.230
+data replication and Kafka data retention policies.
+

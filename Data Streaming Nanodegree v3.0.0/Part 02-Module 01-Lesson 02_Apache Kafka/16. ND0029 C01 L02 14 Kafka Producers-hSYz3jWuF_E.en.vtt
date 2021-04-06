@@ -1,0 +1,25 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:01.490 --> 00:00:05.615
+Kafka producers are rich with options and configuration,
+
+00:00:05.615 --> 00:00:08.150
+similar to the Kafka topics you just learned about.
+
+00:00:08.150 --> 00:00:12.554
+In this section, we'll learn the ins and outs of creating Kafka producers.
+
+00:00:12.554 --> 00:00:14.490
+By the time we've completed this section,
+
+00:00:14.490 --> 00:00:19.019
+you will have mastered sending data to Kafka both synchronously and asynchronously.
+
+00:00:19.019 --> 00:00:22.140
+You'll also be familiar with fine-grained controls that
+
+00:00:22.140 --> 00:00:26.620
+producers offer that help improve speed and serialized data.
+

@@ -1,0 +1,52 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:04.440
+Similar to how databases have tables to organize and segment datasets,
+
+00:00:04.440 --> 00:00:08.640
+Kafka uses the concept of topics to organize related events.
+
+00:00:08.640 --> 00:00:13.125
+Unlike database tables, Kafka topics are not queryable.
+
+00:00:13.125 --> 00:00:18.015
+Instead, you must create producers or consumers to utilize the data.
+
+00:00:18.015 --> 00:00:21.899
+For example, you may have a topic called logs which contains
+
+00:00:21.899 --> 00:00:25.604
+the logs from your application,and another topic called purchases,
+
+00:00:25.605 --> 00:00:28.710
+which contains all purchase data for your application.
+
+00:00:28.710 --> 00:00:32.655
+In Kafka, topics can be created automatically,
+
+00:00:32.655 --> 00:00:36.645
+programmatically from within your application or from the command line.
+
+00:00:36.645 --> 00:00:40.035
+All topics consist of a stream of key-value data.
+
+00:00:40.034 --> 00:00:41.864
+If you're familiar with JSON data,
+
+00:00:41.865 --> 00:00:43.335
+this is a similar concept.
+
+00:00:43.335 --> 00:00:47.325
+However, the way that Kafka represents this relationship was with a binary format,
+
+00:00:47.325 --> 00:00:50.270
+not texturally as you will by JSON.
+
+00:00:50.270 --> 00:00:54.080
+Kafka topics are rich with configuration options and considerations,
+
+00:00:54.079 --> 00:00:57.629
+which we are going to review in depth in the next lesson.
+

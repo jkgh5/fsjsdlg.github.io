@@ -1,0 +1,363 @@
+<!-- udacity2.0 -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Log-structured storage</title>
+  <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../assets/css/plyr.css">
+  <link rel="stylesheet" href="../assets/css/katex.min.css">
+  <link rel="stylesheet" href="../assets/css/jquery.mCustomScrollbar.min.css">
+  <link rel="stylesheet" href="../assets/css/styles.css">
+  <link rel="shortcut icon" type="image/png" href="../assets/img/udacimak.png" />
+</head>
+
+<body>
+  <div class="wrapper">
+    <nav id="sidebar">
+  <div class="sidebar-header">
+    <h3>Introduction to Stream Processing</h3>
+  </div>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled components">
+    <li class="">
+      <a href="01. Welcome.html">01. Welcome</a>
+    </li>
+    <li class="">
+      <a href="02. Lesson Glossary of Key Terms.html">02. Lesson Glossary of Key Terms</a>
+    </li>
+    <li class="">
+      <a href="03. Intro to Stream Processing.html">03. Intro to Stream Processing</a>
+    </li>
+    <li class="">
+      <a href="04. Stream Processing Examples.html">04. Stream Processing Examples</a>
+    </li>
+    <li class="">
+      <a href="05. Stream vs. Batch Processing.html">05. Stream vs. Batch Processing</a>
+    </li>
+    <li class="">
+      <a href="06. Review Stream Processing.html">06. Review: Stream Processing</a>
+    </li>
+    <li class="">
+      <a href="07. Append-Only Logs.html">07. Append-Only Logs</a>
+    </li>
+    <li class="">
+      <a href="08. Log-structured storage.html">08. Log-structured storage</a>
+    </li>
+    <li class="">
+      <a href="09. Kafka A Stream Processing Tool.html">09. Kafka: A Stream Processing Tool</a>
+    </li>
+    <li class="">
+      <a href="10. Kafka in Industry.html">10. Kafka in Industry</a>
+    </li>
+    <li class="">
+      <a href="11. Kafka in Action.html">11. Kafka in Action</a>
+    </li>
+    <li class="">
+      <a href="12. What is a Kafka Topic.html">12. What is a Kafka Topic?</a>
+    </li>
+    <li class="">
+      <a href="13. What is a Kafka Producer.html">13. What is a Kafka Producer?</a>
+    </li>
+    <li class="">
+      <a href="14. What is a Kafka Consumer.html">14. What is a Kafka Consumer?</a>
+    </li>
+    <li class="">
+      <a href="15. Using the Kafka CLI tools.html">15. Using the Kafka CLI tools</a>
+    </li>
+    <li class="">
+      <a href="16. Kafka Python Library.html">16. Kafka Python Library</a>
+    </li>
+    <li class="">
+      <a href="17. Lesson Summary.html">17. Lesson Summary</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+</nav>
+
+    <div id="content">
+      <header class="container-fluild header">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <div class="align-items-middle">
+                <button type="button" id="sidebarCollapse" class="btn btn-toggle-sidebar">
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                </button>
+
+                <h1 style="display: inline-block">08. Log-structured storage</h1>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <main class="container">
+        <div class="row">
+          <div class="col-12">
+            <div class="ud-atom">
+  <h3><p>ND0029 C01 L01 10 Log-Structured Storage</p></h3>
+  <video controls>
+  <source src="08. ND0029 C01 L01 10 Log-Structured Storage-p_qpS6V4Dbo.mp4" type="video/mp4">
+
+  <track default="true" kind="subtitles" srclang="en" src="08. ND0029 C01 L01 10 Log-Structured Storage-p_qpS6V4Dbo.en.vtt" label="en">
+</video>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3><p>ND0029 C01 L01 11 Examples Of Log-Structure Storage</p></h3>
+  <video controls>
+  <source src="08. ND0029 C01 L01 11 Examples Of Log-Structure Storage-jYClPG07uJc.mp4" type="video/mp4">
+
+  <track default="true" kind="subtitles" srclang="en" src="08. ND0029 C01 L01 11 Examples Of Log-Structure Storage-jYClPG07uJc.en.vtt" label="en">
+</video>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3><p>How are append-only logs used in SQL databases?</p></h3>
+  <div>
+  <form>
+    <fieldset>
+      <legend><p>How are append-only logs used in SQL databases? </p></legend>
+    </fieldset>
+
+      <div>
+        <input type="radio" value="rbk1" name="909808" id="rbk1">
+        <label for="rbk1"><p>SQL databases use append-only logs to track communications from database clients</p></label>
+      </div>
+      <div>
+        <input type="radio" value="rbk2" name="909808" id="rbk2">
+        <label for="rbk2"><p>SQL databases use append-only logs to store periodic checkpoints of database state</p></label>
+      </div>
+      <div>
+        <input type="radio" value="rbk3" name="909808" id="rbk3">
+        <label for="rbk3"><p>SQL databases use append-only logs to store the state of the database on disk</p></label>
+      </div>
+      <div>
+        <input type="radio" value="rbk4" name="909808" id="rbk4">
+        <label for="rbk4"><p>SQL databases use append-only logs to track all creations, updates, and deletes made to the database, so that those changes can be synced to replicas</p></label>
+      </div>
+  </form>
+
+  <details>
+    <summary><strong>SOLUTION:</strong></summary>
+    SQL databases use append-only logs to track all creations, updates, and deletes made to the database, so that those changes can be synced to replicas
+  </details>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3><p>Append-only logs always contain all data ever produced (true/false)</p></h3>
+  <div>
+  <form>
+    <fieldset>
+      <legend><p>Append-only logs always contain all data ever produced</p></legend>
+    </fieldset>
+
+      <div>
+        <input type="radio" value="rbk1" name="909788" id="rbk1">
+        <label for="rbk1"><p>True</p></label>
+      </div>
+      <div>
+        <input type="radio" value="rbk2" name="909788" id="rbk2">
+        <label for="rbk2"><p>False</p></label>
+      </div>
+  </form>
+
+  <details>
+    <summary><strong>SOLUTION:</strong></summary>
+    False
+  </details>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3><p>Which of the following are benefits of append-only logs?</p></h3>
+  <div>
+  <form>
+    <fieldset>
+      <legend><p>Which of the following is true of append-only logs? (may be more than one answer)</p></legend>
+    </fieldset>
+
+    <div>
+      <input type="checkbox" value="rbk1" name="909794" id="rbk1">
+      <label for="rbk1"><p>They are a key component of data streams</p></label>
+    </div>
+    <div>
+      <input type="checkbox" value="rbk2" name="909794" id="rbk2">
+      <label for="rbk2"><p>They are text files in which incoming events are written to the end of the log as they are received</p></label>
+    </div>
+    <div>
+      <input type="checkbox" value="rbk3" name="909794" id="rbk3">
+      <label for="rbk3"><p>Append-only logs are mutable</p></label>
+    </div>
+    <div>
+      <input type="checkbox" value="rbk4" name="909794" id="rbk4">
+      <label for="rbk4"><p>Append-only logs help ensure events are ordered correctly even at high throughput and scale</p></label>
+    </div>
+  </form>
+
+  <details>
+    <summary><strong>SOLUTION:</strong></summary>
+    <ul>
+      <li>They are a key component of data streams</li>
+      <li>They are text files in which incoming events are written to the end of the log as they are received</li>
+      <li>Append-only logs help ensure events are ordered correctly even at high throughput and scale</li>
+  </ul>
+  </details>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3><p>Append-Only Logs Summary</p></h3>
+  <div>
+  <h2 id="append-only-logs">Append-only logs</h2>
+<ul>
+<li>Append-only logs are text files in which incoming events are written to the end of the log as they are received. </li>
+<li>This simple concept -- of only ever appending, or adding, data to the end of a log file -- is what allows stream processing applications to ensure that events are ordered correctly even at high throughput and scale.</li>
+<li>We can take this idea a step farther, and say that in fact, streams <em>are</em> append-only logs.</li>
+</ul>
+<h2 id="log-structured-streaming">Log-structured streaming</h2>
+<ul>
+<li>Log-structured streams build upon the concept of append-only logs. One of the hallmarks of log-structured storage systems is that at their core they utilize append-only logs.</li>
+<li>Common characteristics of all log-structured storage systems are that they simply append data to log files on disk.</li>
+<li>These log files may store data indefinitely, for a specific time period, or until a specific size is reached. </li>
+<li>There are typically many log files on disk, and these log files are <em>merged</em> and <em>compacted</em> occasionally.  </li>
+<li>When a log file is <em>merged</em> it means that two or more log files are joined together into one log file. </li>
+<li>When a log file is <em>compacted</em> it means that data from one or more files is deleted. Deletion is typically determined by the age of a record. The oldest records are removed, while the newest stay.</li>
+<li>Examples of real world log-structured data stores: Apache HBase, Apache Cassandra, Apache Kafka</li>
+</ul>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3><p>Append-Only Logs Further Research</p></h3>
+  <div>
+  <h3 id="further-research-on-append-only-logs">Further Research on Append-Only Logs</h3>
+<ul>
+<li><a href="http://cassandra.apache.org/" rel="noopener noreferrer" target="_blank">Apache Cassandra</a></li>
+<li><a href="https://hbase.apache.org/" rel="noopener noreferrer" target="_blank">Apache HBase</a></li>
+<li><a href="https://kafka.apache.org/" rel="noopener noreferrer" target="_blank">Apache Kafka</a></li>
+</ul>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3><p>Log-Structured Storage</p></h3>
+  <div>
+  <h2 id="log-structured-storage">Log-Structured Storage</h2>
+<p>One of the key innovations over the past decade in computing has been the emergence of log-structured storage as a primary means of storing data.</p>
+</div>
+
+</div>
+<div class="divider"></div>
+          </div>
+
+          <div class="col-12">
+            <p class="text-right">
+              <a href="09. Kafka A Stream Processing Tool.html" class="btn btn-outline-primary mt-4" role="button">Next Concept</a>
+            </p>
+          </div>
+        </div>
+      </main>
+
+      <footer class="footer">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <p class="text-center">
+                <a href="https://us-udacity.github.io/" target="_blank">【udacity2.0 】If you need more courses, please add wechat：udacity6</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </div>
+
+
+  <script src="../assets/js/jquery-3.3.1.min.js"></script>
+  <script src="../assets/js/plyr.polyfilled.min.js"></script>
+  <script src="../assets/js/bootstrap.min.js"></script>
+  <script src="../assets/js/jquery.mCustomScrollbar.concat.min.js"></script>
+  <script src="../assets/js/katex.min.js"></script>
+  <script>
+    // Initialize Plyr video players
+    const players = Array.from(document.querySelectorAll('video')).map(p => new Plyr(p));
+
+    // render math equations
+    let elMath = document.getElementsByClassName('mathquill');
+    for (let i = 0, len = elMath.length; i < len; i += 1) {
+      const el = elMath[i];
+
+      katex.render(el.textContent, el, {
+        throwOnError: false
+      });
+    }
+
+    // this hack will make sure Bootstrap tabs work when using Handlebars
+    if ($('#question-tabs').length && $('#user-answer-tabs').length) {
+      $("#question-tabs a.nav-link").on('click', function () {
+        $("#question-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+      $("#user-answer-tabs a.nav-link").on('click', function () {
+        $("#user-answer-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    } else {
+      $("a.nav-link").on('click', function () {
+        $(".tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    }
+
+    // side bar events
+    $(document).ready(function () {
+      $("#sidebar").mCustomScrollbar({
+        theme: "minimal"
+      });
+
+      $('#sidebarCollapse').on('click', function () {
+        $('#sidebar, #content').toggleClass('active');
+        $('.collapse.in').toggleClass('in');
+        $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+      });
+
+      // scroll to first video on page loading
+      if ($('video').length) {
+        $('html,body').animate({ scrollTop: $('div.plyr').prev().offset().top});
+      }
+
+      // auto play first video: this may not work with chrome/safari due to autoplay policy
+      if (players && players.length > 0) {
+        players[0].play();
+      }
+
+      // scroll sidebar to current concept
+      const currentInSideBar = $( "ul.sidebar-list.components li a:contains('08. Log-structured storage')" )
+      currentInSideBar.css( "text-decoration", "underline" );
+      $("#sidebar").mCustomScrollbar('scrollTo', currentInSideBar);
+    });
+  </script>
+</body>
+
+</html>

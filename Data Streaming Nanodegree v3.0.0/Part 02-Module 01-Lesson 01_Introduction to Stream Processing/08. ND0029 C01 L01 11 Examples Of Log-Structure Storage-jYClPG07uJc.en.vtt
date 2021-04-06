@@ -1,0 +1,58 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:04.139
+You may have already heard of data stores such as Apache Cassandra,
+
+00:00:04.139 --> 00:00:06.914
+Apache HBase, or Apache Kafka.
+
+00:00:06.915 --> 00:00:12.495
+All three of these data stores utilize log structured storage to maintain state.
+
+00:00:12.494 --> 00:00:17.039
+Apache Cassandra and HBase are not the focus of this course,
+
+00:00:17.039 --> 00:00:20.530
+are both data stores that surface SQ-like interfaces,
+
+00:00:20.530 --> 00:00:23.895
+and are appropriate for working with massive datasets.
+
+00:00:23.894 --> 00:00:28.064
+Both of these data stores are wide used across the industry.
+
+00:00:28.065 --> 00:00:29.880
+Under the SQL for side,
+
+00:00:29.879 --> 00:00:35.479
+these data stores use append only logs to store and coordinate data across nodes.
+
+00:00:35.479 --> 00:00:37.114
+In terms of functionality,
+
+00:00:37.115 --> 00:00:42.380
+these data stores look and feel more familiar to a database such as PostgreSQL or MySQL,
+
+00:00:42.380 --> 00:00:44.975
+but at a much larger scale.
+
+00:00:44.975 --> 00:00:48.020
+It's also worth noting that Apache HBase and
+
+00:00:48.020 --> 00:00:52.520
+Cassandra or both tend to be used in batch processing systems.
+
+00:00:52.520 --> 00:00:55.790
+Apache Kafka on the other hand is a message queue system
+
+00:00:55.789 --> 00:00:59.284
+based on the concept of launch structure append-only storage.
+
+00:00:59.284 --> 00:01:03.049
+Kafka may appear externally similar to tools like rather on queue,
+
+00:01:03.049 --> 00:01:07.560
+acted on queue, but it is based on a different storage and scaling mechanism.
+

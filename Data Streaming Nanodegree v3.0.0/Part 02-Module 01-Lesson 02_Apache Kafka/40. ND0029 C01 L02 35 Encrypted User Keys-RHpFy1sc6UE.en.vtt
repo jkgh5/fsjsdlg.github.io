@@ -1,0 +1,100 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:02.310
+As I mentioned in the introduction to this section,
+
+00:00:02.310 --> 00:00:04.710
+an engineer named Daniel Borough has
+
+00:00:04.710 --> 00:00:08.115
+designed an ingenious method of managing user data in Kafka.
+
+00:00:08.115 --> 00:00:12.120
+Daniel created an idea called encrypted user keys.
+
+00:00:12.119 --> 00:00:17.699
+The idea is that you create a topic that maps a user ID to an encryption key.
+
+00:00:17.699 --> 00:00:21.629
+You then use this encryption key to encrypt any data related to a user,
+
+00:00:21.629 --> 00:00:24.375
+before putting it into any other Kafka topic.
+
+00:00:24.375 --> 00:00:29.280
+So if I have a topic or multiple topics containing user data,
+
+00:00:29.280 --> 00:00:32.509
+I can take that key specific to the user,
+
+00:00:32.509 --> 00:00:35.765
+and I've used color here to map this key to this red key.
+
+00:00:35.765 --> 00:00:38.554
+So this red key to this red user data,
+
+00:00:38.554 --> 00:00:41.394
+this blue key to this blue user data,
+
+00:00:41.395 --> 00:00:44.420
+and this purple key to the purple user data.
+
+00:00:44.420 --> 00:00:46.670
+If I want to access this data,
+
+00:00:46.670 --> 00:00:50.315
+I have to take this key and decrypt the user data.
+
+00:00:50.314 --> 00:00:53.750
+Same deal with the blue key to the blue user data,
+
+00:00:53.750 --> 00:00:56.164
+and the purple key to the purple user data.
+
+00:00:56.164 --> 00:00:59.615
+You can then use this encryption key to encrypt any data
+
+00:00:59.615 --> 00:01:03.200
+related to a user before putting it into any other Kafka topic.
+
+00:01:03.200 --> 00:01:05.810
+So again, as we create this data,
+
+00:01:05.810 --> 00:01:09.314
+we would create the data and then put the key into the encryption topic,
+
+00:01:09.314 --> 00:01:13.009
+put those two things together and we would be able to decrypt this data
+
+00:01:13.010 --> 00:01:17.120
+to get out the actual information contained in this data record.
+
+00:01:17.120 --> 00:01:19.280
+If you wish to delete the user data,
+
+00:01:19.280 --> 00:01:21.769
+you simply need to compact and delete
+
+00:01:21.769 --> 00:01:25.144
+their encryption key from the encrypted user key topic.
+
+00:01:25.144 --> 00:01:27.319
+Once the user key is gone,
+
+00:01:27.319 --> 00:01:29.899
+it is effectively impossible for any application in
+
+00:01:29.900 --> 00:01:32.900
+your system to decrypt the user's data ever again.
+
+00:01:32.900 --> 00:01:35.510
+This simple and powerful idea vastly
+
+00:01:35.510 --> 00:01:38.435
+reduces the management overhead of deleting user data.
+
+00:01:38.435 --> 00:01:41.850
+Kudos to Daniel for coming up with this creative idea.
+

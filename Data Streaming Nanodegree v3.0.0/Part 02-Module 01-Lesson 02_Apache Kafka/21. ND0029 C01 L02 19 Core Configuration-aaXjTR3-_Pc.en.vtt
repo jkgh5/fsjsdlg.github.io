@@ -1,0 +1,241 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:01.935
+As with Kafka topics,
+
+00:00:01.935 --> 00:00:05.250
+Kafka producers offer extensive configuration options.
+
+00:00:05.250 --> 00:00:08.189
+We're not going to cover all of these options exhaustively in this course,
+
+00:00:08.189 --> 00:00:10.349
+but I'd like to highlight a few you should be aware of.
+
+00:00:10.349 --> 00:00:14.969
+First, all producers should provide a client ID setting.
+
+00:00:14.970 --> 00:00:16.905
+This setting is not required,
+
+00:00:16.905 --> 00:00:19.910
+but it's very useful for debugging producer and broker issues.
+
+00:00:19.910 --> 00:00:22.714
+The ID that you provide will show up in the Kafka logs.
+
+00:00:22.714 --> 00:00:23.989
+So if there's some kind of an issue,
+
+00:00:23.989 --> 00:00:28.359
+you can try to correlate the client ID of your application to what's in your Kafka logs.
+
+00:00:28.359 --> 00:00:31.864
+It can also be used to manage limits on the producer.
+
+00:00:31.864 --> 00:00:34.085
+Retries are another important setting.
+
+00:00:34.085 --> 00:00:36.170
+Producers will typically allow you to configure
+
+00:00:36.170 --> 00:00:39.905
+how many retries you would like them to attempt before they mark a message as failed.
+
+00:00:39.905 --> 00:00:41.245
+So what this means is,
+
+00:00:41.244 --> 00:00:44.089
+if you send a message and a message doesn't make it to the broker,
+
+00:00:44.090 --> 00:00:48.425
+the client library that you're using will automatically retry to send that message.
+
+00:00:48.424 --> 00:00:51.559
+Also make sure to set enable idempotence.
+
+00:00:51.560 --> 00:00:54.910
+If you turn on retries and ordering guarantees matter to you,
+
+00:00:54.909 --> 00:00:57.500
+otherwise your messages may become out of order.
+
+00:00:57.500 --> 00:01:00.799
+Kafka producers may also opt to set compression on messages
+
+00:01:00.799 --> 00:01:04.369
+themselves separately from what the Kafka topic is configured to use.
+
+00:01:04.370 --> 00:01:06.755
+So I know that sounds confusing, but yes,
+
+00:01:06.754 --> 00:01:12.784
+you can configure compression on both the topic itself and on your Kafka producer.
+
+00:01:12.784 --> 00:01:17.689
+The same compression options are typically present on the producer as on the broker.
+
+00:01:17.689 --> 00:01:19.879
+The rest will depend on your client library.
+
+00:01:19.879 --> 00:01:22.054
+Again, to quickly review those options,
+
+00:01:22.055 --> 00:01:25.245
+Gzip, Snappy, LZ4 and ZSTD.
+
+00:01:25.245 --> 00:01:27.375
+If you choose to compress with the producer,
+
+00:01:27.375 --> 00:01:31.909
+compression is going to occur on the client machine and not on the broker.
+
+00:01:31.909 --> 00:01:36.019
+If you set the compression on the broker or the topic configuration,
+
+00:01:36.019 --> 00:01:39.375
+the messages will be compressed on the broker.
+
+00:01:39.375 --> 00:01:41.900
+Now, here's the thing, what if you set
+
+00:01:41.900 --> 00:01:45.605
+the compression setting on both a producer and on the topic?
+
+00:01:45.605 --> 00:01:48.335
+Well, you're going to compress in two places.
+
+00:01:48.334 --> 00:01:53.104
+If you set the, say the compression type to LZ4 on your producer
+
+00:01:53.105 --> 00:01:58.225
+and the compression type to snappy or Gzip on the broker,
+
+00:01:58.224 --> 00:02:01.248
+you'll compress once on the client and LZ4,
+
+00:02:01.248 --> 00:02:02.754
+send it to the broker.
+
+00:02:02.754 --> 00:02:04.280
+Then once it's reached the broker,
+
+00:02:04.280 --> 00:02:08.974
+the broker will decompress the message and then re-compress it into Gzip or Snappy.
+
+00:02:08.974 --> 00:02:12.199
+So what's it's important to keep in mind here is that if you have the compression
+
+00:02:12.199 --> 00:02:15.509
+setting in two places and the settings don't match,
+
+00:02:15.509 --> 00:02:18.394
+the broker is going to uncompressed and re-compress your message.
+
+00:02:18.395 --> 00:02:20.659
+So be careful that you're not setting this to
+
+00:02:20.659 --> 00:02:23.650
+a different compression setting and that if you want to change at the topic level,
+
+00:02:23.650 --> 00:02:24.844
+that you change it there.
+
+00:02:24.844 --> 00:02:27.650
+In other words, the topic compression setting always takes
+
+00:02:27.650 --> 00:02:31.135
+precedence over the producer configuration.
+
+00:02:31.134 --> 00:02:32.909
+Finally, in the previous section,
+
+00:02:32.909 --> 00:02:35.794
+we learned what an in-sync replica or ISR was.
+
+00:02:35.794 --> 00:02:38.389
+This is a broker replica that is up to date with
+
+00:02:38.389 --> 00:02:41.464
+the broker leader for a given topic partition.
+
+00:02:41.465 --> 00:02:43.969
+We learned the number of in-sync replicas could be the
+
+00:02:43.969 --> 00:02:46.925
+same or less than the number of total replicas.
+
+00:02:46.925 --> 00:02:49.890
+There was another piece to this equation which when we mentioned before,
+
+00:02:49.889 --> 00:02:51.994
+but we have not yet discussed in detail.
+
+00:02:51.995 --> 00:02:55.370
+The producer acts or acknowledgment setting.
+
+00:02:55.370 --> 00:02:58.580
+Kafka producers get to determine how many replicas must
+
+00:02:58.580 --> 00:03:01.760
+acknowledge the message before they move on to the next message.
+
+00:03:01.759 --> 00:03:05.164
+This number does not have to equal the ISR number.
+
+00:03:05.164 --> 00:03:10.364
+For example, I may have five replicas in a topic ISR setting of three,
+
+00:03:10.365 --> 00:03:13.534
+but the producer could send its ISR into two.
+
+00:03:13.534 --> 00:03:16.430
+This means the producer is only going to wait until
+
+00:03:16.430 --> 00:03:19.099
+two replicas have acknowledged the message to proceed,
+
+00:03:19.099 --> 00:03:22.085
+not the full three that the ISR was set to.
+
+00:03:22.085 --> 00:03:25.099
+Why would you want this and when would this even be useful?
+
+00:03:25.099 --> 00:03:28.609
+Well, the setting provides the producers some flexibility in determining
+
+00:03:28.610 --> 00:03:32.570
+how many brokers need to have actually received the message before it moves on.
+
+00:03:32.569 --> 00:03:36.055
+The Kafka cluster will still ensure that the other replicas are in sync,
+
+00:03:36.055 --> 00:03:39.050
+it just won't block the producer client while it does that.
+
+00:03:39.050 --> 00:03:42.710
+This is an important performance feature for some high-throughput applications.
+
+00:03:42.710 --> 00:03:45.320
+With that being said, I do recommend that you default the ISR
+
+00:03:45.319 --> 00:03:48.094
+setting to all or its equivalent negative one,
+
+00:03:48.094 --> 00:03:49.930
+unless you have a good reason not to.
+
+00:03:49.930 --> 00:03:52.080
+As many things in software engineering,
+
+00:03:52.080 --> 00:03:55.550
+it's better to introduce complexity as needed and not pre-optimize.
+
+00:03:55.550 --> 00:03:57.380
+If your producer performance begins to lag,
+
+00:03:57.379 --> 00:03:59.729
+this is a place to investigate.
+

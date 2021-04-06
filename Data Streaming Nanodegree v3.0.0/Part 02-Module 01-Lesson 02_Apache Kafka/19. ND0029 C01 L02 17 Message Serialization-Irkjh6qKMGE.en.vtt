@@ -1,0 +1,115 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:01.760 --> 00:00:04.275
+When we produce data to Kafka,
+
+00:00:04.275 --> 00:00:07.320
+it's important to consider how that data is represented.
+
+00:00:07.320 --> 00:00:11.250
+Up until now, we've just been publishing string data directly into Kafka.
+
+00:00:11.250 --> 00:00:13.275
+Most applications will want to publish
+
+00:00:13.275 --> 00:00:16.109
+a representation of an application object instance,
+
+00:00:16.109 --> 00:00:19.859
+JSON data, or some other more formalized type of data.
+
+00:00:19.859 --> 00:00:23.759
+This process of transforming an application's internal representation of
+
+00:00:23.760 --> 00:00:25.710
+a data model to a data model suitable for
+
+00:00:25.710 --> 00:00:29.085
+data stores or other applications is called serialization.
+
+00:00:29.085 --> 00:00:31.650
+Whether you've called it serialization or not before,
+
+00:00:31.649 --> 00:00:33.789
+you've almost certainly performed this process.
+
+00:00:33.789 --> 00:00:38.629
+For example, maybe you transformed an array of objects in your application into a CSV.
+
+00:00:38.630 --> 00:00:41.929
+Perhaps you've turned an internal object in your application into JSON,
+
+00:00:41.929 --> 00:00:44.109
+and posted it to an HTTP API.
+
+00:00:44.109 --> 00:00:49.204
+You may have saved an application's representation of an object to a SQL database.
+
+00:00:49.204 --> 00:00:51.769
+All of these scenarios involve serializing
+
+00:00:51.770 --> 00:00:56.480
+an applications data model into a state more suitable for another application.
+
+00:00:56.479 --> 00:00:59.779
+Kafka itself does not handle the serialization process,
+
+00:00:59.780 --> 00:01:03.980
+instead the Kafka Client Library helps facilitate the process.
+
+00:01:03.979 --> 00:01:06.319
+In Python, this is pretty simple,
+
+00:01:06.319 --> 00:01:08.584
+as we'll see in an upcoming demonstration.
+
+00:01:08.584 --> 00:01:12.659
+The most common types of data serialization are binary data,
+
+00:01:12.659 --> 00:01:15.944
+CSV data, JSON data, and Avro.
+
+00:01:15.944 --> 00:01:19.764
+We're going to cover Apache Avro in detail in lesson 3.
+
+00:01:19.765 --> 00:01:25.099
+Finally, never change the type of serialization and use without recreating a topic.
+
+00:01:25.099 --> 00:01:26.434
+If you created a topic,
+
+00:01:26.435 --> 00:01:28.174
+say "My first topic",
+
+00:01:28.174 --> 00:01:30.379
+and you republishing string data into it,
+
+00:01:30.379 --> 00:01:32.899
+and then a month or two later you decided you wanted to put
+
+00:01:32.900 --> 00:01:35.790
+JSON or Avro data in there, you shouldn't do that.
+
+00:01:35.790 --> 00:01:39.065
+You should create a new topic entirely with a different version.
+
+00:01:39.064 --> 00:01:42.319
+If you do mix serialization formats in the same topic,
+
+00:01:42.319 --> 00:01:45.259
+this is a guaranteed way to cause a production outage,
+
+00:01:45.260 --> 00:01:47.165
+or at the worst cause,
+
+00:01:47.165 --> 00:01:49.715
+a bunch of errors to happen and downstream consumers.
+
+00:01:49.715 --> 00:01:51.740
+There's going to be no way for your consumers to
+
+00:01:51.739 --> 00:01:55.170
+know that the serialization format has changed.
+
