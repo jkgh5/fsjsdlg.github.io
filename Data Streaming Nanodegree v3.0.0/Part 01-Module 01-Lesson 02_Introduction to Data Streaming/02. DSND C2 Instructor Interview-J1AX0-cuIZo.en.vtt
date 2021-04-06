@@ -1,0 +1,91 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:01.530
+My name is Jillian Kim.
+
+00:00:01.530 --> 00:00:05.070
+I'm a Senior Data Engineer at Williams Sonoma.
+
+00:00:05.070 --> 00:00:10.530
+Previously, I worked at Samsung, Spongecell, Change Healthcare.
+
+00:00:10.530 --> 00:00:13.740
+Mostly I've been building data pipelines that handle
+
+00:00:13.740 --> 00:00:17.890
+batch or stream processing of incoming datas.
+
+00:00:22.270 --> 00:00:28.925
+I am currently using structured streaming at my job to ingest multiple streams of data,
+
+00:00:28.925 --> 00:00:31.475
+for example, Kafka or RabbitMQ.
+
+00:00:31.475 --> 00:00:33.740
+I've also used AWS Kinesis,
+
+00:00:33.740 --> 00:00:35.345
+which is another popular one.
+
+00:00:35.345 --> 00:00:39.380
+I use these streaming applications to ingest multiple streams of
+
+00:00:39.380 --> 00:00:44.700
+data and to produce some output that is meaningful to the business.
+
+00:00:48.670 --> 00:00:52.250
+Well, it's important because now everything is
+
+00:00:52.250 --> 00:00:56.030
+data centric and a lot of the data is streaming data set.
+
+00:00:56.030 --> 00:00:59.300
+So it is important for you to learn these skills so that you can
+
+00:00:59.300 --> 00:01:03.480
+stay competitive as a data engineer in the job market.
+
+00:01:07.390 --> 00:01:11.540
+We will primarily focus on using Spark structured streaming,
+
+00:01:11.540 --> 00:01:18.020
+but you can also apply the concept of streaming as well in using other libraries.
+
+00:01:18.020 --> 00:01:20.570
+Mostly you'll be learning about the concept of
+
+00:01:20.570 --> 00:01:24.175
+streaming on top of using Spark structured streaming,
+
+00:01:24.175 --> 00:01:30.065
+and you will also learn how to integrate one of the most popular streaming format,
+
+00:01:30.065 --> 00:01:34.650
+which is Kafka, into your structure streaming application.
+
+00:01:38.740 --> 00:01:44.300
+You will have the skill set to apply to a data engineering job that focuses
+
+00:01:44.300 --> 00:01:50.430
+on building data pipeline that builds a streaming application.
+
+00:01:54.680 --> 00:01:59.120
+The hiring managers look for if you can write a good software,
+
+00:01:59.120 --> 00:02:04.490
+on top of if you have understanding of how to build a data pipeline in general.
+
+00:02:04.490 --> 00:02:06.560
+They will also look for if you can write
+
+00:02:06.560 --> 00:02:12.080
+a scalable code and if you can troubleshoot streaming applications,
+
+00:02:12.080 --> 00:02:14.510
+or just in general, if you can troubleshoot,
+
+00:02:14.510 --> 00:02:18.180
+and also data warehousing skills.
+
