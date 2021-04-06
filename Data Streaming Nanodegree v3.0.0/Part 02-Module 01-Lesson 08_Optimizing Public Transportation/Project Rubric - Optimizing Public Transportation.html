@@ -1,0 +1,425 @@
+<!-- udacity2.0 -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Optimizing Public Transportation</title>
+  <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../assets/css/plyr.css">
+  <link rel="stylesheet" href="../assets/css/katex.min.css">
+  <link rel="stylesheet" href="../assets/css/jquery.mCustomScrollbar.min.css">
+  <link rel="stylesheet" href="../assets/css/styles.css">
+  <link rel="shortcut icon" type="image/png" href="../assets/img/udacimak.png" />
+</head>
+
+<body>
+  <div class="wrapper">
+    <nav id="sidebar">
+  <div class="sidebar-header">
+    <h3>Optimizing Public Transportation</h3>
+  </div>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled components">
+    <li class="">
+      <a href="01. Project Overview.html">01. Project Overview</a>
+    </li>
+    <li class="">
+      <a href="02. Project Directions.html">02. Project Directions</a>
+    </li>
+    <li class="">
+      <a href="03. Project Walkthrough.html">03. Project Walkthrough</a>
+    </li>
+    <li class="">
+      <a href="04. Project Workspace.html">04. Project Workspace</a>
+    </li>
+    <li class="">
+      <a href="Project Description - Optimizing Public Transportation.html">Project Description - Optimizing Public Transportation</a>
+    </li>
+    <li class="">
+      <a href="Project Rubric - Optimizing Public Transportation.html">Project Rubric - Optimizing Public Transportation</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+</nav>
+
+    <div id="content">
+      <header class="container-fluild header">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <div class="align-items-middle">
+                <button type="button" id="sidebarCollapse" class="btn btn-toggle-sidebar">
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                </button>
+
+                <h1 style="display: inline-block">Optimizing Public Transportation</h1>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <main class="container">
+        <div class="row">
+          <div class="col-12">
+            
+      <div>
+        <h2><p>Kafka Producer</p></h2>
+        <table class="table table-bordered table-hover">
+          <thead>
+            <tr class="thead-dark">
+              <th>Criteria</th>
+              <th>Meet Specification</th>
+            </tr>
+          </thead>
+          
+    <tbody>
+      
+      <tr scope="row">
+        <td>
+          <p>Kafka topics are created with appropriate settings</p>
+        </td>
+        <td>
+          <p>Using the Kafka Topics CLI, topics appear for arrivals on each train line in addition to the turnstiles for each of those stations.</p>
+        </td>
+      </tr>
+    
+      <tr scope="row">
+        <td>
+          <p>Kafka messages are produced successfully</p>
+        </td>
+        <td>
+          <p>Using the Kafka Topics CLI, messages continuously appear for each station on the train line, for both arrivals and turnstile actions.</p>
+        </td>
+      </tr>
+    
+      <tr scope="row">
+        <td>
+          <p>All messages have an associated value schema</p>
+        </td>
+        <td>
+          <p>Using the Schema Registry API, a schema is visible for arrivals and turnstile events.</p>
+        </td>
+      </tr>
+    
+    </tbody>
+  
+        </table>
+
+      </div>
+    
+      <div>
+        <h2><p>Kafka Consumer</p></h2>
+        <table class="table table-bordered table-hover">
+          <thead>
+            <tr class="thead-dark">
+              <th>Criteria</th>
+              <th>Meet Specification</th>
+            </tr>
+          </thead>
+          
+    <tbody>
+      
+      <tr scope="row">
+        <td>
+          <p>Messages are consumed from Kafka</p>
+        </td>
+        <td>
+          <p>Stations, status, and weather data appear and update in the Transit Status UI.</p>
+        </td>
+      </tr>
+    
+      <tr scope="row">
+        <td>
+          <p>Stations data is consumed from the beginning of the topic</p>
+        </td>
+        <td>
+          <p>All Blue, Green, and Red Line stations appear in the Transit Status UI.</p>
+        </td>
+      </tr>
+    
+    </tbody>
+  
+        </table>
+
+      </div>
+    
+      <div>
+        <h2><p>Kafka REST Proxy</p></h2>
+        <table class="table table-bordered table-hover">
+          <thead>
+            <tr class="thead-dark">
+              <th>Criteria</th>
+              <th>Meet Specification</th>
+            </tr>
+          </thead>
+          
+    <tbody>
+      
+      <tr scope="row">
+        <td>
+          <p>Kafka REST Proxy successfully delivers messages to the Kafka Topic</p>
+        </td>
+        <td>
+          <p>Using the kafka-console-consumer, weather messages are visible in the weather topic and are regularly produced as the simulation runs.</p>
+        </td>
+      </tr>
+    
+      <tr scope="row">
+        <td>
+          <p>Messages produced to the Kafka REST Proxy include a value schema</p>
+        </td>
+        <td>
+          <p>Using the Kafka Schema Registry REST API, a schema is defined for the weather topic. </p>
+        </td>
+      </tr>
+    
+    </tbody>
+  
+        </table>
+
+      </div>
+    
+      <div>
+        <h2><p>Kafka Connect</p></h2>
+        <table class="table table-bordered table-hover">
+          <thead>
+            <tr class="thead-dark">
+              <th>Criteria</th>
+              <th>Meet Specification</th>
+            </tr>
+          </thead>
+          
+    <tbody>
+      
+      <tr scope="row">
+        <td>
+          <p>Kafka Connect successfully loads Station data from Postgres to Kafka</p>
+        </td>
+        <td>
+          <p>Using the kafka-console-consumer, all stations defined in Postgres are visible in the stations topic.</p>
+        </td>
+      </tr>
+    
+      <tr scope="row">
+        <td>
+          <p>Kafka Connect is configured to define a Schema</p>
+        </td>
+        <td>
+          <p>Using the Kafka Connect REST API, the Kafka Connect configuration is configured to use JSON for both key and values.</p>
+<p>Using the Schema Registry REST API, the schemas for stations key and value are visible.</p>
+        </td>
+      </tr>
+    
+      <tr scope="row">
+        <td>
+          <p>Kafka Connect is configured to load on an incrementing ID</p>
+        </td>
+        <td>
+          <p>Using the Kafka Connect REST API, the Kafka Connect configuration uses an incrementing ID, and the ID is configured to be <code>stop_id</code>.</p>
+        </td>
+      </tr>
+    
+    </tbody>
+  
+        </table>
+
+      </div>
+    
+      <div>
+        <h2><p>Faust Streams</p></h2>
+        <table class="table table-bordered table-hover">
+          <thead>
+            <tr class="thead-dark">
+              <th>Criteria</th>
+              <th>Meet Specification</th>
+            </tr>
+          </thead>
+          
+    <tbody>
+      
+      <tr scope="row">
+        <td>
+          <p>The Faust application ingests data from the stations topic</p>
+        </td>
+        <td>
+          <p>A consumer group for Faust is created on the Kafka Connect Stations topic.</p>
+        </td>
+      </tr>
+    
+      <tr scope="row">
+        <td>
+          <p>Data is translated correctly from the Kafka Connect format to the Faust table format</p>
+        </td>
+        <td>
+          <p>Data is ingested in the <code>Station</code> format and is then transformed into the <code>TransformedStation</code> format.</p>
+        </td>
+      </tr>
+    
+      <tr scope="row">
+        <td>
+          <p>Transformed Station Data is Present for each Station ID in the Kafka Topic</p>
+        </td>
+        <td>
+          <p>A topic is present in Kafka with the output topic name the student supplied. Inspecting messages in the topic, every station ID is represented.</p>
+        </td>
+      </tr>
+    
+    </tbody>
+  
+        </table>
+
+      </div>
+    
+      <div>
+        <h2><p>KSQL</p></h2>
+        <table class="table table-bordered table-hover">
+          <thead>
+            <tr class="thead-dark">
+              <th>Criteria</th>
+              <th>Meet Specification</th>
+            </tr>
+          </thead>
+          
+    <tbody>
+      
+      <tr scope="row">
+        <td>
+          <p>Turnstile topic is translated into a KSQL Table</p>
+        </td>
+        <td>
+          <p>Using the KSQL CLI, turnstile data is visible in the table <code>TURNSTILE</code>.</p>
+        </td>
+      </tr>
+    
+      <tr scope="row">
+        <td>
+          <p>Turnstile table is aggregated into a summary table</p>
+        </td>
+        <td>
+          <p>Using the KSQL CLI, verify that station IDs have an associated <code>count</code> column.</p>
+        </td>
+      </tr>
+    
+    </tbody>
+  
+        </table>
+
+      </div>
+    
+      <div class="jumbotron">
+        <h3>Tips to make your project standout:</h3>
+        <p><ol>
+<li>As you develop your Kafka Producer and Consumer code, think about shared functionality. Leverage this shared functionality to organize your code and reduce code duplication.</li>
+<li>Create topics for the Kafka REST Proxy Weather topic and Kafka Connect stations topic manually instead of allowing Kafka to use autocreate. Its always better to manually create topics with appropriate settings than to use autocreate!</li>
+<li>Consider a naming convention for your topics and follow it throughout your project, including with Kafka REST Proxy and Kafka Connect.</li>
+</ol></p>
+      </div>
+    
+          </div>
+
+          <div class="col-12">
+            <p class="text-right">
+            </p>
+          </div>
+        </div>
+      </main>
+
+      <footer class="footer">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <p class="text-center">
+                <a href="https://us-udacity.github.io/" target="_blank">【udacity2.0 】If you need more courses, please add wechat：udacity6</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </div>
+
+
+  <script src="../assets/js/jquery-3.3.1.min.js"></script>
+  <script src="../assets/js/plyr.polyfilled.min.js"></script>
+  <script src="../assets/js/bootstrap.min.js"></script>
+  <script src="../assets/js/jquery.mCustomScrollbar.concat.min.js"></script>
+  <script src="../assets/js/katex.min.js"></script>
+  <script>
+    // Initialize Plyr video players
+    const players = Array.from(document.querySelectorAll('video')).map(p => new Plyr(p));
+
+    // render math equations
+    let elMath = document.getElementsByClassName('mathquill');
+    for (let i = 0, len = elMath.length; i < len; i += 1) {
+      const el = elMath[i];
+
+      katex.render(el.textContent, el, {
+        throwOnError: false
+      });
+    }
+
+    // this hack will make sure Bootstrap tabs work when using Handlebars
+    if ($('#question-tabs').length && $('#user-answer-tabs').length) {
+      $("#question-tabs a.nav-link").on('click', function () {
+        $("#question-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+      $("#user-answer-tabs a.nav-link").on('click', function () {
+        $("#user-answer-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    } else {
+      $("a.nav-link").on('click', function () {
+        $(".tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    }
+
+    // side bar events
+    $(document).ready(function () {
+      $("#sidebar").mCustomScrollbar({
+        theme: "minimal"
+      });
+
+      $('#sidebarCollapse').on('click', function () {
+        $('#sidebar, #content').toggleClass('active');
+        $('.collapse.in').toggleClass('in');
+        $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+      });
+
+      // scroll to first video on page loading
+      if ($('video').length) {
+        $('html,body').animate({ scrollTop: $('div.plyr').prev().offset().top});
+      }
+
+      // auto play first video: this may not work with chrome/safari due to autoplay policy
+      if (players && players.length > 0) {
+        players[0].play();
+      }
+
+      // scroll sidebar to current concept
+      const currentInSideBar = $( "ul.sidebar-list.components li a:contains('Optimizing Public Transportation')" )
+      currentInSideBar.css( "text-decoration", "underline" );
+      $("#sidebar").mCustomScrollbar('scrollTo', currentInSideBar);
+    });
+  </script>
+</body>
+
+</html>

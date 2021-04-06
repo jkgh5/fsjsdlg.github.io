@@ -1,0 +1,979 @@
+{
+  "data": {
+    "lesson": {
+      "id": 922168,
+      "key": "233d13c1-2510-4e7a-9852-26491ae740b0",
+      "title": "Integration of Spark Streaming and Kafka",
+      "semantic_type": "Lesson",
+      "is_public": true,
+      "version": "1.0.0",
+      "locale": "en-us",
+      "summary": "In this lesson, students will learn core components in integrating Spark Streaming and Kafka.",
+      "lesson_type": "Classroom",
+      "display_workspace_project_only": false,
+      "resources": {
+        "files": [
+          {
+            "name": "Videos Zip File",
+            "uri": "https://zips.udacity-data.com/233d13c1-2510-4e7a-9852-26491ae740b0/922168/1574703186618/Integration+of+Spark+Streaming+and+Kafka+Videos.zip"
+          },
+          {
+            "name": "Transcripts Zip File",
+            "uri": "https://zips.udacity-data.com/233d13c1-2510-4e7a-9852-26491ae740b0/922168/1574703184072/Integration+of+Spark+Streaming+and+Kafka+Subtitles.zip"
+          }
+        ],
+        "google_plus_link": null,
+        "career_resource_center_link": null,
+        "coaching_appointments_link": null,
+        "office_hours_link": null,
+        "aws_provisioning_link": null
+      },
+      "project": null,
+      "lab": null,
+      "concepts": [
+        {
+          "id": 951175,
+          "key": "7eca7aee-f9cf-4c69-bad6-e2c69eba1149",
+          "title": "Lesson Overview",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "7eca7aee-f9cf-4c69-bad6-e2c69eba1149",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 951146,
+              "key": "45cc988b-1bac-4784-81d2-185a29707c2b",
+              "title": "Spark-Kafka deep dive overview",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Spark-Kafka Integration Overview\n\nIn this lesson, we’ll be heavily looking at the important components of the Spark-Kafka integration, and also the architecture of offsets, Kafka, and triggers. We’ll also be discussing performance tuning, and looking at some application contexts.\nThere are various Kafka libraries available in the Python Package Index PyPI. This lesson uses pykafka or pykafka.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 951149,
+              "key": "bc59b3c9-9fec-4365-8236-b4440e57825d",
+              "title": "ND029 C03 L03 01 Lesson Intro",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "v-5Fiv2AMf0",
+                "china_cdn_id": "v-5Fiv2AMf0.mp4"
+              }
+            },
+            {
+              "id": 951145,
+              "key": "53fb0ca9-3128-41ab-9789-695a7eb0fcae",
+              "title": "Glossary of Key Terms in Lesson",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Glossary of Key Terms You Will Learn in this Lesson\n- **Write Ahead Logs (WAL)**: This is where the operation is logged in a file format. When unfortunate events like driver or node failure happen and the application is restarted, the operation logged in the WAL can be applied to the data.\n- **Broadcasting**: Spark allows users to keep a read-only variable cached on each machine rather than sending the data over the network with tasks. This is useful when you have a rather large dataset and don't want to send the dataset over the network.\n- **Salting**: Another popular method of redistributing a dataset. This is done by adding a \"fake-primary-key\" to redistribute the data.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 956105,
+          "key": "3d5e6728-71e0-4510-8b64-1b8f32189fa3",
+          "title": "Create a Kafka Producer Server",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "3d5e6728-71e0-4510-8b64-1b8f32189fa3",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 956103,
+              "key": "77ea1426-cfe3-410d-a52e-0b647d450883",
+              "title": "Create a Kafka Producer Server Instruction",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Exercise - Create a Kafka Producer Server\nIn this workspace, you’re going to create a Kafka Producer Server. You’ll be using this code for the next few workspace exercises. \nYou have already learned how to create a Kafka Producer Server in the previous Kafka course, so refer back to those lessons if you need to!\nWe’re just starting you with an empty Python file for this exercise, but you can refer to the solution code if you really need to. (Try not to!)\n\nRequirements:\n- Your Kafka Server should ingest the `uber.json` data file in the workspace correctly. If unsure of the correct path of the file, type `pwd` in the console to get the absolute path of the file. \n- You can name your own topic and feel free to use any free port number for this server.\n- This will be your bootstrap server for your streaming application.\n- You should be able to check if your server ingests data correctly by using Kafka Consumer Console.\n- You can use any Kafka library (pykafka, kafka, kafka-confluent, etc). But if you wish to use a library other than kafka-confluent or kafka-python, you will have to reinstall the library each time you wake up workspace (or anytime after you've refreshed, or woken up, or reset data, or used the \"Get New Content\" button). The idea here is for you to generate a Python file that has a Kafka producer, and this file should act as your bootstrap server.\n\n\nPlease note:\nIf you encounter this error\n```\nImportError: cannot import name 'SourceDistribution' from 'pip._internal.distributions.source' (/opt/conda/lib/python3.7/site-packages/pip/_internal/distributions/source/__init__.py)\n```\nwhile installing any packages, please run this command:\n```\nconda install <package_name>\n```\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 956106,
+              "key": "a209a0d8-9878-42f6-b612-1adf7b34e5f1",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "r899655c956105xJUPYTERLqdmcl83v",
+              "pool_id": "jupyterlabpython37",
+              "view_id": "jupyter-lab-ep6so",
+              "gpu_capable": false,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "disk": null,
+                    "port": 3000,
+                    "ports": [],
+                    "videos": [],
+                    "pageEnd": "1",
+                    "pageStart": "1",
+                    "allowSubmit": false,
+                    "defaultPath": "/",
+                    "actionButtonText": ""
+                  },
+                  "kind": "jupyter-lab"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        },
+        {
+          "id": 951174,
+          "key": "0d1cfe0c-b222-4837-878c-8753a5398103",
+          "title": "Kafka Data Source API",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "0d1cfe0c-b222-4837-878c-8753a5398103",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 951147,
+              "key": "400e63b7-d8f5-4681-bdcf-8af0dbdb4714",
+              "title": "Kafka Data Source",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Kafka Data Source\n\nKafkaSource is the data source for Apache Kafka in Spark Structured Streaming. It's part of kafka-0-10-sql library in Spark (source code: https://github.com/apache/spark/blob/4513f1c0dc450e9249d43fdad618fdcaf8d399b6/external/kafka-0-10-sql/src/main/scala/org/apache/spark/sql/kafka010/KafkaSource.scala).\nA couple important functions to note in this source are:\n- `getOffset()`, which uses the KafkaOffsetReader to get the latest available offset\n- `getBatch()`, which returns a DataFrame from the start to end of an offset.\n\nYou should define spark-sql-kafka-0-10 module as part of the execution of your project.\nFor Spark environments using shell script, we'll be using the following command to submit Spark jobs:\n\n`./bin/spark-shell --packages org.apache.spark:spark-sql-kafka-0-10_2.12:2.3.4`\n\nWhat we’re actually doing here is including an external package to allow us to use Kafka (broker version 0.10), and the correct version of Spark we have installed (compiled with Scala 2.12 and Spark version 2.3.4). org.apache.spark:spark-sql-kafka-0-10_<scala_version>:<spark_version>.\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 951144,
+              "key": "5f3d911e-24bc-4064-880a-b897e2926e32",
+              "title": "ND029 C2 L3 01 Kafka Source Provider",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "E7JSLQmybRY",
+                "china_cdn_id": "E7JSLQmybRY.mp4"
+              }
+            },
+            {
+              "id": 952251,
+              "key": "7cea643a-fcc1-4ca0-a071-9ff473c44e73",
+              "title": "KafkaSourceProvider summary",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## KafkaSourceProvider Code Reference\nKafkaSourceProvider requires these options\n- subscribe, subscribepattern, or assign\n- kafka.bootstrap.server\n\n```\nkafka_df = spark.readStream.\\\n  format(\"kafka\").\\ # set data ingestion format as Kafka\n  option(\"subscribe\", \"<topic_name>\").\\ #This is required although it says option.\n  option(\"kafka.bootstrap.servers\", \"localhost:9092\").\\ #You will also need the url and port of the bootstrap server\n  load()\n```\nReference: https://github.com/apache/spark/blob/master/external/kafka-0-10-sql/src/main/scala/org/apache/spark/sql/kafka010/KafkaSourceProvider.scala",
+              "instructor_notes": ""
+            },
+            {
+              "id": 956102,
+              "key": "d44cef04-3a94-4453-b983-84c5f8ea5e12",
+              "title": "Kafka Source Provider Workspace Instruction",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Exercise: Kafka Source Provider\nUsing the Kafka Producer Server you created in the previous exercise, we can now ingest data from the Kafka Producer Server to a Structured Streaming application. First you’ll need to set up the entry point for the stream.\n\nRequirements:\n- Set up the entry point\n- Use appropriate configurations in the options to ingest the Kafka stream\n- Do a `df.printSchema()` to explore the schema of the default Kafka ingestion\n- You can use any Kafka library (pykafka, kafka, kafka-confluent, etc). But if you wish to use a library other than kafka-confluent or kafka-python, you will have to reinstall the library each time you wake up workspace (or anytime after you've refreshed, or woken up, or reset data, or used the \"Get New Content\" button). The idea here is for you to generate a Python file that has a Kafka producer, and this file should act as your bootstrap server.\n\nPlease note:\nIf you encounter this error\n```\nImportError: cannot import name 'SourceDistribution' from 'pip._internal.distributions.source' (/opt/conda/lib/python3.7/site-packages/pip/_internal/distributions/source/__init__.py)\n```\nwhile installing any packages, please run this command:\n```\nconda install <package_name>\n```",
+              "instructor_notes": ""
+            },
+            {
+              "id": 957080,
+              "key": "4fcfa775-a411-4bcb-a6af-9fe6bcd05b40",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "r899655c956105xJUPYTERLqdmcl83v",
+              "pool_id": "jupyterlabpython37",
+              "view_id": "jupyter-lab-o0ptk",
+              "gpu_capable": false,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "disk": null,
+                    "port": 3000,
+                    "ports": [],
+                    "videos": [],
+                    "pageEnd": "2",
+                    "pageStart": "2",
+                    "allowSubmit": false,
+                    "defaultPath": "/",
+                    "actionButtonText": ""
+                  },
+                  "kind": "jupyter-lab"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        },
+        {
+          "id": 951179,
+          "key": "16f75426-35c4-4cbe-be42-a172639ad208",
+          "title": "Kafka Offsets in Spark",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "16f75426-35c4-4cbe-be42-a172639ad208",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 951150,
+              "key": "4963ed84-7aca-43e1-a644-7ef9f3c3fb6c",
+              "title": "Kafka Offset Reader",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Kafka Offset Reader\n\nKafkaOffsetReader is a class within Spark that uses Kafka's own KafkaConsumer API to read Kafka offsets. This class uses the ConsumerStrategy class that defines which Kafka topic and partitions should be read. ConsumerStrategy is another useful class to specify a fixed collection of partitions and to subscribe to a fixed collection of topics.\n\nYou will be using KafkaOffsetReader closely with KafkaSourceProvider.\n\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 951157,
+              "key": "e2c93d8b-5d73-4f9e-b1ab-e2cba709a30b",
+              "title": "ND029 C2 L3 02 Kafka Offset Management",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "UGjbjgP50_g",
+                "china_cdn_id": "UGjbjgP50_g.mp4"
+              }
+            },
+            {
+              "id": 951156,
+              "key": "73e6ce05-ec99-4f68-b937-47cb54101315",
+              "title": "Kafka offset management architecture",
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2019/October/5d9d09f7_screen-shot-2019-10-08-at-3.12.56-pm/screen-shot-2019-10-08-at-3.12.56-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/73e6ce05-ec99-4f68-b937-47cb54101315",
+              "caption": "Kafka Offset Management and Store",
+              "alt": "",
+              "width": 1392,
+              "height": 534,
+              "instructor_notes": null
+            },
+            {
+              "id": 951164,
+              "key": "826ea009-d757-40f1-9186-a3aea3e7f0d2",
+              "title": "ND029 C2 L3 03 Triggers In Spark Streaming",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "5QBTcIeav80",
+                "china_cdn_id": "5QBTcIeav80.mp4"
+              }
+            },
+            {
+              "id": 951154,
+              "key": "5e48b4d7-d0bd-4241-94c3-1bd2c5f4abc3",
+              "title": "Triggers",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Triggers in Spark Streaming - Key Points\n\nWrite Ahead Logs enforce fault-tolerance by saving logs to a certain checkpoint directory. Enabling WAL can be done by using the Spark property, `spark.streaming.receiver.writeAheadLog.enable`.\n\nSpark Triggers determine how often a streaming query needs to be executed. The trigger can be set using a few options in the query builder.\n",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 951176,
+          "key": "091a37e1-e498-4ea0-bb2d-ed7c325bde54",
+          "title": "Exercise: Offsets & Triggers",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "091a37e1-e498-4ea0-bb2d-ed7c325bde54",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 951168,
+              "key": "4f5b514f-d86b-4858-9770-464c9cd23308",
+              "title": "ND029 C2 L3 04 Demo Of Offsets And Triggers",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "VP2qyYS90YM",
+                "china_cdn_id": "VP2qyYS90YM.mp4"
+              }
+            },
+            {
+              "id": 951775,
+              "key": "50d97995-0ba0-463c-a7fa-e05063ed9572",
+              "title": "Triggers Workspace Introduction",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Exercise: Exploring Triggers \nUsing the Kafka Server and Structured Streaming application, we will now play with the triggers.\n ",
+              "instructor_notes": ""
+            },
+            {
+              "id": 951776,
+              "key": "f834df8a-17d0-4912-9d5f-b79edc717d1b",
+              "title": "How do we enable triggers?",
+              "semantic_type": "CheckboxQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "f834df8a-17d0-4912-9d5f-b79edc717d1b",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "How do we enable triggers?",
+                "answers": [
+                  {
+                    "id": "rbk1",
+                    "text": "No need to configure - there is always a default value",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "rbk2",
+                    "text": "Using Trigger.Once()",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "rbk3",
+                    "text": "Using Trigger.ProcessingTime()",
+                    "is_correct": true
+                  }
+                ]
+              }
+            },
+            {
+              "id": 957091,
+              "key": "ca4cff87-4b7e-4d3f-afc2-d2bbe9db777b",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "r899655c956105xJUPYTERLqdmcl83v",
+              "pool_id": "jupyterlabpython37",
+              "view_id": "jupyter-lab-xabrb",
+              "gpu_capable": false,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "disk": null,
+                    "port": 3000,
+                    "ports": [],
+                    "videos": [],
+                    "pageEnd": "3",
+                    "pageStart": "3",
+                    "allowSubmit": false,
+                    "defaultPath": "/",
+                    "actionButtonText": ""
+                  },
+                  "kind": "jupyter-lab"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            },
+            {
+              "id": 957460,
+              "key": "a4103d43-5457-4c85-98d2-17616758d22e",
+              "title": "Exercise: Exploring Triggers",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Exercise: Exploring Triggers \nUsing the Kafka Server and Structured Streaming application, we will now play with the triggers.\n\nAgain, you can use any Kafka library (pykafka, kafka, kafka-confluent, etc). But if you wish to use a library other than kafka-confluent or kafka-python, you will have to reinstall the library each time you wake up workspace (or anytime after you've refreshed, or woken up, or reset data, or used the \"Get New Content\" button). The idea here is for you to generate a Python file that has a Kafka producer, and this file should act as your bootstrap server.\n\nPlease note:\nIf you encounter this error\n```\nImportError: cannot import name 'SourceDistribution' from 'pip._internal.distributions.source' (/opt/conda/lib/python3.7/site-packages/pip/_internal/distributions/source/__init__.py)\n```\nwhile installing any packages, please run this command:\n```\nconda install <package_name>\n```",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 951184,
+          "key": "b51a4f8b-573d-44d8-8827-7c71c877766a",
+          "title": "Integrating Spark and Kafka",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "b51a4f8b-573d-44d8-8827-7c71c877766a",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 951148,
+              "key": "0c73933f-0184-40ad-90bf-54d40060e589",
+              "title": "Recap on Lesson so Far",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Recap of Lesson So Far\n\nWe have looked at a few key points regarding the integration of Kafka and Spark.\n- KafkaSourceProvider provides a consumer for Kafka within Spark, therefore we will not need to create separate consumer modules for consumption.\n- Managing offsets becomes crucial to making your Kafka and Spark microservices be best optimized. You’re in full control of your offset management, and you’ll have to make decisions best fitting your business context.\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 951153,
+              "key": "ff835b14-54d9-454e-9805-28d7c2bff103",
+              "title": "Integrating Spark and Kafka Heading",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Integrating Spark and Kafka\n\nNow that we’ve looked over important features on the Kafka API in Spark, we’re ready to integrate Spark and Kafka.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 951151,
+              "key": "0b7ad1e6-c064-4e12-9fb6-03ad60f0d887",
+              "title": "Kafka broker with Spark Streaming",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Kafka Broker with Spark Structured Streaming\n\nTo recap from previous lessons, a Kafka broker receives messages from producers. A Kafka broker is a server, and we can think of a Kafka cluster as comprised of one or more Kafka brokers. Producers publish the data (or push messages) into Kafka topics. And then the Kafka consumer pulls messages from a Kafka topic.\n\nSpark Streaming and Structured Streaming already provide a quick way to integrate Kafka to read data and write data back to Kafka.\n\nOnce received from Kafka, the source will have the following schema:\n\n- key[binary]\n- value[binary]\n- topic[string]\n- partition[int]\n- offset[long]\n- timestamp[long]\n- timestampType[int]\n\nThe value column should contain the most useful (the content) of the messages.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 951155,
+              "key": "960e4c92-ab27-45fa-94b9-6bcdc7935f87",
+              "title": "Kafka broker with Spark Streaming Architecture",
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2019/October/5da644b3_screen-shot-2019-10-15-at-3.13.41-pm/screen-shot-2019-10-15-at-3.13.41-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/960e4c92-ab27-45fa-94b9-6bcdc7935f87",
+              "caption": "**Sample Spark Structured Streaming Architecture with Kafka** ",
+              "alt": "Sample Spark Structured Streaming Architecture with Kafka",
+              "width": 703,
+              "height": 253,
+              "instructor_notes": null
+            },
+            {
+              "id": 951159,
+              "key": "c633aaf4-7cc8-41e5-a6fa-786fa7376e3a",
+              "title": "ND029 C2 L3 05 Demo Of Spark-Kafka Integration",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "3APmEZCSAVY",
+                "china_cdn_id": "3APmEZCSAVY.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 951183,
+          "key": "6aec0c48-b390-47a3-bc4e-ba046e57a6ea",
+          "title": "Logs with Spark Console & UI",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "6aec0c48-b390-47a3-bc4e-ba046e57a6ea",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 951203,
+              "key": "b3fee27b-4417-4727-af90-06ba821567c7",
+              "title": "Structured Streaming on Spark UI",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Structured Streaming on Spark UI\n\nWe have looked at various ways of using the Spark UI to monitor and debug Spark applications. How can we monitor and debug Streaming applications?\n\nWhile the streaming application is running, you’ll see a “Streaming” tab (see image below). This tab in the UI enables you to concurrently monitor your job. \n\nThe “Streaming” tab contains some information about Spark & Scala versions, but it also shows what kind of streaming data you’re ingesting from (in the example below, Kafka stream), number of offsets in each partition, and also input rate of the data.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 951165,
+              "key": "686bb889-50fb-4a8e-a1ba-db83d2a5b894",
+              "title": "Pipeline architecture",
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2019/November/5dd2146e_screen-shot-2019-11-17-at-7.47.39-pm/screen-shot-2019-11-17-at-7.47.39-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/686bb889-50fb-4a8e-a1ba-db83d2a5b894",
+              "caption": "",
+              "alt": "",
+              "width": 1410,
+              "height": 806,
+              "instructor_notes": null
+            },
+            {
+              "id": 957459,
+              "key": "ceba44cc-6409-44f4-bf4a-316a714356e0",
+              "title": "Sample Spark UI with Streaming, Image 1",
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2019/November/5dd214ab_screen-shot-2019-11-17-at-7.48.46-pm/screen-shot-2019-11-17-at-7.48.46-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/ceba44cc-6409-44f4-bf4a-316a714356e0",
+              "caption": "",
+              "alt": "",
+              "width": 1400,
+              "height": 690,
+              "instructor_notes": null
+            },
+            {
+              "id": 957462,
+              "key": "62445ad8-932f-468f-9f2c-92a34f2c8e42",
+              "title": "Spark Console Image Part 3",
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2019/November/5dd214cd_screen-shot-2019-11-17-at-7.49.20-pm/screen-shot-2019-11-17-at-7.49.20-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/62445ad8-932f-468f-9f2c-92a34f2c8e42",
+              "caption": "**Sample Spark UI with Structured Streaming**",
+              "alt": "Sample Spark UI with Structured Streaming",
+              "width": 1418,
+              "height": 590,
+              "instructor_notes": null
+            },
+            {
+              "id": 951166,
+              "key": "367cfc3e-9112-4aeb-928b-7180a6a8e03b",
+              "title": "",
+              "semantic_type": "ReflectAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "367cfc3e-9112-4aeb-928b-7180a6a8e03b",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "title": "Reflect",
+                "semantic_type": "TextQuestion",
+                "evaluation_id": null,
+                "text": "Explain a scenario or business model where you would use this architecture with Kafka and Spark integration. Where would you put your sinks? "
+              },
+              "answer": {
+                "text": "Thanks for your response! Here are some of my thoughts:\n\nIn any case you need a streaming application. Some popular domains that use Kafka and Spark integration are advertisement technology, banking, fraud detection, etc. Kafka provides data streams of events and a Spark application will often be integrated to process the stream of data. The sinks should be implemented wherever you want to save your intermediary data, for example, at the end of each micro-batch.",
+                "video": null
+              }
+            }
+          ]
+        },
+        {
+          "id": 951180,
+          "key": "451ae30b-9722-4946-a0ce-0f12382c273d",
+          "title": "Progress Reports in Spark Console",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "451ae30b-9722-4946-a0ce-0f12382c273d",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 951172,
+              "key": "1f0121d3-5d4f-4ce5-9369-b35cc173a3f0",
+              "title": "Spark Console to show reports",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Spark Console Shows Progress Reports\n\nIn this concept, we’ll take a look at the Progress Report that shows up in the console.\nAll this information that is coming through the console could be cumbersome, but once we understand what each field is, it’ll be easier to understand.\n\nYou’ll see something like this in the Spark Console:",
+              "instructor_notes": ""
+            },
+            {
+              "id": 957486,
+              "key": "03de71a3-99de-4190-a443-82aeeadfdd9c",
+              "title": "Progress Report",
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2019/November/5dd21775_screen-shot-2019-11-17-at-8.00.39-pm/screen-shot-2019-11-17-at-8.00.39-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/03de71a3-99de-4190-a443-82aeeadfdd9c",
+              "caption": "** Sample Progress Report**",
+              "alt": "Sample Progress Report",
+              "width": 1408,
+              "height": 1284,
+              "instructor_notes": null
+            },
+            {
+              "id": 951152,
+              "key": "173ca7a2-f790-4d58-a023-26f23ecef9a5",
+              "title": "Breakdown of report component",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "This is called a Progress Report. There are obvious key value pairs, like timestamp and batchId, id for each unique query. But what we really need to take a look at are these three pieces of data, because they provide important information regarding the batch size and processed rows:\n\n- `numInputRows` : The aggregate (across all sources) number of records processed in a trigger.\n- `inputRowsPerSecond` : The aggregate (across all sources) rate of data arriving.\n- `processedRowsPerSecond` : The aggregate (across all sources) rate at which Spark is processing data.\n\nAlso you can see that we’re using ConsoleSink which is one of the sinks we mentioned before.\n\n## Breakdown of Report Component\n\nBreakdown of ProgressReporter:\n- `currentBatchId[Long]` : ID of current micro-batch\n- `Id`: UUID of the streaming query\n- `Name`: Name of the streaming query. This can be configured in your code\n- `Sink`: Streaming sink of the streaming query\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 956104,
+              "key": "9cc026a2-4635-4a9c-91c2-8165fb667eac",
+              "title": "Generate Progress Reporter Instruction",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Exercise: Generate Progress Report\nRequirements:\n- Add and change the value of `maxRatePerPartition` in your option\n- Change the value of `trigger`\n- Change the value of `startingOffsets`\n- Again, you can use any Kafka library (pykafka, kafka, kafka-confluent, etc). But if you wish to use a library other than kafka-confluent or kafka-python, you will have to reinstall the library each time you wake up workspace (or anytime after you've refreshed, or woken up, or reset data, or used the \"Get New Content\" button). The idea here is for you to generate a Python file that has a Kafka producer, and this file should act as your bootstrap server.\n\nPlease note:\nIf you encounter this error\n```\nImportError: cannot import name 'SourceDistribution' from 'pip._internal.distributions.source' (/opt/conda/lib/python3.7/site-packages/pip/_internal/distributions/source/__init__.py)\n```\nwhile installing any packages, please run this command:\n```\nconda install <package_name>\n```",
+              "instructor_notes": ""
+            },
+            {
+              "id": 957161,
+              "key": "37187872-0872-42b0-b3ce-77650c0de20a",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "r899655c956105xJUPYTERLqdmcl83v",
+              "pool_id": "jupyterlabpython37",
+              "view_id": "jupyter-lab-4is1f",
+              "gpu_capable": false,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "disk": null,
+                    "port": 3000,
+                    "ports": [],
+                    "videos": [],
+                    "pageEnd": "4",
+                    "pageStart": "4",
+                    "allowSubmit": false,
+                    "defaultPath": "/",
+                    "actionButtonText": ""
+                  },
+                  "kind": "jupyter-lab"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        },
+        {
+          "id": 957463,
+          "key": "83a9e12d-c73c-433a-a340-069fcfeaa4a8",
+          "title": "Review: Progress Report Fields",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "83a9e12d-c73c-433a-a340-069fcfeaa4a8",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 957461,
+              "key": "af0c304d-34c2-47dc-b54f-99cf79895f8b",
+              "title": "Reflections on Progress Reporter Fields",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Reflections on Interpreting Progress Reporter Fields",
+              "instructor_notes": ""
+            },
+            {
+              "id": 956101,
+              "key": "2be47a43-83c5-4e11-b322-5cbfcd2360be",
+              "title": "Discussion on Progress Reporter",
+              "semantic_type": "ReflectAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "2be47a43-83c5-4e11-b322-5cbfcd2360be",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "title": "Reflect",
+                "semantic_type": "TextQuestion",
+                "evaluation_id": null,
+                "text": "Take a closer look in the last exercise at the progress reporter that was generated using your Kafka server and Structured Streaming application. With the variations on applications, like `maxRatePerPartition` and `trigger`, how did the progress report change? What do they mean? Pick 3-5 fields, and write down what each field means."
+              },
+              "answer": {
+                "text": "Thanks for your response. Here are my answers for what each field means:\n- `id`: ID of the current batch in UUID\n- `currentDurationMs`: cumulative times in milliseconds \n- `currentTriggerStartOffsets`: start offsets per source\n- `sources.description`: the description of source - kafka, rate, etc\n- `sink`: sink types (console, kafka, etc)\n\nFor more info, [here is a resource for you](https://github.com/apache/spark/blob/master/sql/core/src/main/scala/org/apache/spark/sql/execution/streaming/ProgressReporter.scala).\n",
+                "video": null
+              }
+            }
+          ]
+        },
+        {
+          "id": 951177,
+          "key": "e1f20b0f-9b99-43ac-928a-60bac18ed2a6",
+          "title": "Kafka-Spark Integration Pt. 1",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "e1f20b0f-9b99-43ac-928a-60bac18ed2a6",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 951169,
+              "key": "47f0ba40-3448-4101-b52d-18ab6483a236",
+              "title": "Scenario 1: Improving Spark Structured Streaming with Kafka",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Scenario 1\n\nGiven problem:\nWe're given a hypothetical Spark streaming application. This application receives data from Kafka. Every 2 minutes, you can see that Kafka is producing 60000 records. But at its maximum load, the application takes between 2 minutes for each micro-batch of 500 records. How do we improve the speed of this application?\n\n1. We can tweak the application's algorithm to speed up the application.\n    - Let's say the application's algorithm is tweaked - how can you check if most or all of the CPU cores are working?\n        - In a Spark Streaming job, Kafka partitions map 1:1 with Spark partitions. So we can increase Parallelism by increasing the number of partitions in Kafka, which then will increase Spark partitions.\n\n2. We can check if the input data was balanced/unbalanced, skewed or not. We can check the throughput of each partition using Spark UI, and how many cores are consistently working. You can also use the `htop` command to see if your cores are all working (if you have a small cluster).\n    - Increase driver and executor memory: Out-of-memory issues can be frequently solved by increasing the memory of executor and driver. Always try to give some overhead (usually 10%) to fit your excessive applications. \n\n3. You could also set `spark.streaming.kafka.maxRatePerPartition` to a higher number and see if there is any increase in data ingestion.\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 952253,
+              "key": "865226da-84b1-4718-88a9-dcb4c1a09fa9",
+              "title": "Scenario 1 - What are some Spark application properties you can use for memory management?",
+              "semantic_type": "CheckboxQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "865226da-84b1-4718-88a9-dcb4c1a09fa9",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "What are some Spark application properties you can use for memory management?",
+                "answers": [
+                  {
+                    "id": "rbk1",
+                    "text": "spark.memory.application",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "rbk2",
+                    "text": "spark.executor.memory",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "rbk3",
+                    "text": "spark.memory.master",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "rbk4",
+                    "text": "spark.driver.memory",
+                    "is_correct": true
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 951182,
+          "key": "200969f6-ab83-4b5f-ab63-1a363dadad64",
+          "title": "Kafka-Spark Integration Pt. 2",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "200969f6-ab83-4b5f-ab63-1a363dadad64",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 951161,
+              "key": "4ccc83dc-81c8-4041-8a49-5a67c0b718c4",
+              "title": "Scenario 2: Improve System Stability",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Scenario 2\n\nOther methods of improving your Spark application are by improving system stability and studying your data.\n\nWhen the heap gets very big (> 32GB), the cost of GC (garbage collection) gets large as well. We might see this when the join application runs with large shuffles (> 20GB), and the GC time will spike.\n\nCan you use a sample of your data? How about using **salting** or **broadcasting**? Let’s discuss these below.\n\nIn the ideal world, when you operate a join on your dataset, join keys will be evenly distributed and each partition will be nicely organized. In the real world, uneven partitioning is unavoidable due to the nature of your dataset.\n\nUsing the Spark UI (or even just your logs), you'll commonly see the errors below:\n- Frozen stages\n- Low utilization of CPU (workers not working)\n- Out of memory errors\n\nCarefully studying your data, to minimize the skewed data problem, we can try the following:\n- **Broadcasting**: You can increase the autoBroadcastJoinThreshold value in spark.sql property so that the smaller tables get “broadcasted.” This is helpful when you have a large dataset that will not fit into your memory.\n\n- **Salting**: If you have a key with high cardinality, your dataset will be skewed. Now you introduce a “salt,” modifying original keys in a certain way and using hash partitioning for proper redistribution of records.\n\nNow that we have cleaned up our data and the skew problem as much as we could, and also assuming that our code is optimized, let’s talk about how we can stabilize the system through a couple of different methods:\n- Auto scaling\n- Speculative execution\n\nAuto scaling is only doable with cloud clusters as you can always add more nodes freely. Two popular tech stacks that are used are AWS Auto Scaling (if AWS EMR clusters are used) or auto scaling with Kubernetes (a container-orchestration system). \n\nSpeculative execution is another popular addition to stabilize and reduce bottleneck-like threshold. Speculative execution in Spark detects the “speculated task” (which means this task is running slower than the median speed of the other tasks), and then submits the “speculated task” to another worker. This enables continuous parallel execution rather than shutting off the slow task.\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 951774,
+              "key": "9b42b853-aeaf-4b37-b75f-ac0f9d9b9371",
+              "title": "Scenario 2 diagram below",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Notes on Scenario 2 diagram below\nIn this sample image below, let’s say task 1 and 2 are identical to each other. In fact, task 2 is a duplicate of task 1. In the node that contains task 1, if the task is seen to be slower than the median speed, then the job scheduler launches the task 2 (duplicate of task 1) in another node.\n\nIf the duplicate task is faster, the result of task 2 will be submitted to the job scheduler. If the original task is faster, then the result of task 1 will be used. In Spark UI, whichever node that was killed due to late execution will be noted as `killed intentionally`.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 951163,
+              "key": "9ee67792-3cba-4b47-a3d3-9c89fd0ceb8e",
+              "title": "Architecture of Scenario 2",
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2019/October/5da64914_screen-shot-2019-10-15-at-3.32.41-pm/screen-shot-2019-10-15-at-3.32.41-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/9ee67792-3cba-4b47-a3d3-9c89fd0ceb8e",
+              "caption": "**Speculative Execution in Scenario 2**",
+              "alt": "Speculative Execution in Scenario 2",
+              "width": 1380,
+              "height": 712,
+              "instructor_notes": null
+            },
+            {
+              "id": 952252,
+              "key": "5d975dce-2023-46cb-b2cb-4ba092664501",
+              "title": "Scenario 2",
+              "semantic_type": "CheckboxQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "5d975dce-2023-46cb-b2cb-4ba092664501",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "What does speculative execution do to keep the speed of application consistent? (may be more than one answer)",
+                "answers": [
+                  {
+                    "id": "rbk1",
+                    "text": "Speculative execution checks the heartbeat and speed of the tasks.",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "rbk2",
+                    "text": "Speculative execution kills the slow tasks because they only disrupt the speed of the execution.",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "rbk3",
+                    "text": "Speculative execution replicates tasks many times that are slow so Spark can have backup options.",
+                    "is_correct": false
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 951777,
+          "key": "6f109d10-999e-4f07-8742-c51649aa3f11",
+          "title": "Performance Tuning",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "6f109d10-999e-4f07-8742-c51649aa3f11",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 951167,
+              "key": "e5b80571-073c-4fd1-b77d-682de737a44f",
+              "title": "✔︎",
+              "semantic_type": "ReflectAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "e5b80571-073c-4fd1-b77d-682de737a44f",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "title": "Reflect",
+                "semantic_type": "TextQuestion",
+                "evaluation_id": null,
+                "text": "Choose either Scenario 1 or 2 discussed above. Are there any other changes you could make to improve your performance? If so, what are they?"
+              },
+              "answer": {
+                "text": "Thanks for your response! Here are my thoughts:\n\nFor additional improvements, you could always do a set of rigorous stress testing on your system to better understand your system stability and daily throughput and latency of the data, and even go further on what could be your max daily throughput and latency of the data. ",
+                "video": null
+              }
+            },
+            {
+              "id": 951170,
+              "key": "58c4cb1a-17b1-46b2-b976-9f1b5eea4e2d",
+              "title": "Further Research",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Further Optional Reading on Performance Tuning\nFurther reading on JVM and GC (for those who are not familiar with Java): https://betsol.com/2017/06/java-memory-management-for-java-virtual-machine-jvm/\n\nTuning: https://spark.apache.org/docs/latest/tuning.html\n\nTuning on Cloudera blog: https://blog.cloudera.com/how-to-tune-your-apache-spark-jobs-part-1/",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 951181,
+          "key": "d87385db-a2a4-4077-8e7a-8d0ba8b6dfbd",
+          "title": "Lesson and Course Wrap-Up",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "d87385db-a2a4-4077-8e7a-8d0ba8b6dfbd",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 951160,
+              "key": "aec20f74-4811-44e4-8ce8-7c2519cdc8a9",
+              "title": "Lesson Summary",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Lesson Summary\nIn this lesson, we covered the fundamentals on how to integrate Spark Structured Streaming and Kafka. Overall, you should have a strong sense of what Apache Spark is, and how to use various components of Spark along with the integration of Kafka. We also looked at some hypothetical real-world applications, and a few potential ways to tune the system as well.\n\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 951171,
+              "key": "9cb63a2b-eef6-4629-bc29-7889ddde701c",
+              "title": "ND029 C03 L03 14 Lesson Outro",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "x_SKEGo1y7A",
+                "china_cdn_id": "x_SKEGo1y7A.mp4"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "_deprecated": [
+    {
+      "name": "starter_files",
+      "reason": "prefer master_archive_id"
+    },
+    {
+      "name": "starter_files",
+      "reason": "prefer master_archive_id"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "starter_files",
+      "reason": "prefer master_archive_id"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "starter_files",
+      "reason": "prefer master_archive_id"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    }
+  ]
+}

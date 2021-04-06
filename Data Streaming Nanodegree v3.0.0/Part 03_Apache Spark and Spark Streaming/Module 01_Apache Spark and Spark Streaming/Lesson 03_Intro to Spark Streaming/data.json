@@ -1,0 +1,1301 @@
+{
+  "data": {
+    "lesson": {
+      "id": 922166,
+      "key": "952320e3-fbe2-44fa-ab23-2acc8ce14e68",
+      "title": "Intro to Spark Streaming",
+      "semantic_type": "Lesson",
+      "is_public": true,
+      "version": "1.0.0",
+      "locale": "en-us",
+      "summary": "In this lesson, students will learn what Apache Spark Streaming is. Students will review the core architecture of Spark, and distinguish differences between Spark Streaming vs Structured Streaming.",
+      "lesson_type": "Classroom",
+      "display_workspace_project_only": false,
+      "resources": {
+        "files": [
+          {
+            "name": "Videos Zip File",
+            "uri": "https://zips.udacity-data.com/952320e3-fbe2-44fa-ab23-2acc8ce14e68/922166/1574703154454/Intro+to+Spark+Streaming+Videos.zip"
+          },
+          {
+            "name": "Transcripts Zip File",
+            "uri": "https://zips.udacity-data.com/952320e3-fbe2-44fa-ab23-2acc8ce14e68/922166/1574703149271/Intro+to+Spark+Streaming+Subtitles.zip"
+          },
+          {
+            "name": "Intro To Spark Streaming",
+            "uri": "https://video.udacity-data.com/topher/2020/May/5ec6e906_intro-to-spark-streaming/intro-to-spark-streaming.pdf"
+          }
+        ],
+        "google_plus_link": null,
+        "career_resource_center_link": null,
+        "coaching_appointments_link": null,
+        "office_hours_link": null,
+        "aws_provisioning_link": null
+      },
+      "project": null,
+      "lab": null,
+      "concepts": [
+        {
+          "id": 951258,
+          "key": "e69aa3c1-9a3c-4e09-aab6-8def9a7b11d1",
+          "title": "Welcome to Data Streaming",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "e69aa3c1-9a3c-4e09-aab6-8def9a7b11d1",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 951215,
+              "key": "c270e8f5-d071-410e-bfa7-c02e5816e97a",
+              "title": "DSND C2 L1 00 Lesson Intro",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "B2k4OkGlhrY",
+                "china_cdn_id": "B2k4OkGlhrY.mp4"
+              }
+            },
+            {
+              "id": 951205,
+              "key": "4fa7ca2e-5c8f-46b1-8960-8b42f6f92283",
+              "title": "Course Outline",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Outline of Data Streaming Lessons\n- Apache Spark fundamentals (RDD/DataFrame/Dataset)\n- Actions/Transformations\n- Spark Streaming/Structured Streaming\n- Integration of Spark Streaming with Apache Kafka",
+              "instructor_notes": ""
+            },
+            {
+              "id": 951301,
+              "key": "78fcd4aa-3d6a-47a5-ac3d-3e9b3dfbfc83",
+              "title": "Instructor Interview: Job Skills in these Data Streaming Lessons",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Instructor Interview: Job Skills in these Data Streaming Lessons",
+              "instructor_notes": ""
+            },
+            {
+              "id": 951206,
+              "key": "6b3edd0c-6463-4c26-9c5c-1ab8efe0728a",
+              "title": "ND029 C03 Instructor Interview",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "MmiLZ9gqnik",
+                "china_cdn_id": "MmiLZ9gqnik.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 951300,
+          "key": "25fad2c3-8ed3-45b7-9f4c-ddd699e46599",
+          "title": "Lesson Overview",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "25fad2c3-8ed3-45b7-9f4c-ddd699e46599",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 951299,
+              "key": "fc350cf6-6a9b-49eb-8048-14426e8d8f4c",
+              "title": "ND029 C03 L01 01 Welcome And Course Overview",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "_F7cE_SO__I",
+                "china_cdn_id": "_F7cE_SO__I.mp4"
+              }
+            },
+            {
+              "id": 951298,
+              "key": "386e0a3c-5605-4f59-8e01-f1ac011ca37b",
+              "title": "Lesson Overview",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Lesson Overview\n\nIn this lesson, we’ll go over the components of Apache Spark and focus on the ones that we will be using throughout the course.\nWe’ll specifically look at\n- Apache Spark Ecosystem\n- Overview on Apache Spark’s building blocks (RDD/DataFrame/DataSet)\n- Apache Spark Streaming and Structured Streaming\n- Usage of Spark UI\n- Concepts of Spark DAGs and Stages\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 951648,
+              "key": "65feec14-9472-471f-b57a-ada08f4d3bb0",
+              "title": "Slides for Each Lesson Available in Resources",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Slides for Each Lesson Available in Resources\nThe slide deck for each lesson, seen in the videos, can be found in the Resources tab of the left sidebar of your classroom here.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 951213,
+              "key": "89236b09-0851-42e8-b771-3e08a1443bc9",
+              "title": "Glossary for Lesson 4",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Glossary of Key Terms You Will Learn in this Lesson\n- **RDD** (Resilient Distributed Dataset) : The fundamental data structure of the Spark Core component. An immutable distributed collection of objects.\n- **DataFrame** : A data structure of the Spark SQL component. A distributed collection of data organized into named columns. \n- **Dataset** : A data structure of the Spark SQL component. A distributed collection of data organized into named columns **and also strongly typed**.\n- **DAG (Directed Acyclic Graph)**: Each Spark job creates a DAG which consists of task stages to be performed on the clusters.\n- **Logical plan** :  A pipeline of operations that can be executed as one stage and does not require the data to be shuffled across the partitions — for example, map, filter, etc.\n- **Physical plan** : The phase where the action is triggered, and the DAG Scheduler looks at lineage and comes up with the best execution plan with stages and tasks together, and executes the job into a set of tasks in parallel.\n- **DAG Scheduler**: DAG scheduler converts a logical execution plan into physical plan.\n- **Task** : A task is a unit of work that is sent to the executor.\n- **Stage** : A collection of tasks.\n- **State** : Intermediary and arbitrary information that needs to be maintained in streaming processing.\n- **Lineage Graph**: A complete graph of all the parent RDDs of an RDD. RDD Lineage is built by applying transformations to the RDD.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 951267,
+          "key": "0bd04178-dc2f-4fed-8b1e-bd29079dc798",
+          "title": "Introduce Spark Ecosystem",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "0bd04178-dc2f-4fed-8b1e-bd29079dc798",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 951252,
+              "key": "2a8e0d93-e991-4d12-848e-c7f6fadfcbd4",
+              "title": "ND029 C2 L1 01 Introduce Spark Ecosystem",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "nze14n8RLws",
+                "china_cdn_id": "nze14n8RLws.mp4"
+              }
+            },
+            {
+              "id": 951256,
+              "key": "f2858c3e-9ee4-4ba4-8b46-266f90272bd5",
+              "title": "Spark Ecosystem - Components",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Spark Components \n#### Core\nContains the basic functionality of Spark. Also home to the API that defines RDDs, which is Spark's main programming abstraction.\n#### SQL\nPackage for working with structured data. It allows querying data via SQL as well as Apache Hive. It supports various sources of data, like Hive tables, Parquet, JSON, CSV, etc.\n#### Streaming\nEnables processing of live streams of data. Spark Streaming provides an API for manipulating data streams that are similar to Spark Core's RDD API.\n#### MLlib\nProvides multiple types of machine learning algorithms, like classification, regression, clustering, etc. This component will not be a focus of this course.\n#### GraphX\nLibrary for manipulating graphs and performing graph-parallel computations. This library is where you can find PageRank and triangle counting algorithms. This component will not be a focus of this course.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 951253,
+              "key": "ecfa3a80-aa65-4ca4-9d38-49b4ae93fc45",
+              "title": "Spark Ecosystem Graphic",
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2019/October/5d9d477a_screen-shot-2019-10-08-at-7.35.14-pm/screen-shot-2019-10-08-at-7.35.14-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/ecfa3a80-aa65-4ca4-9d38-49b4ae93fc45",
+              "caption": "**Apache Spark Components**",
+              "alt": "Apache Spark Components",
+              "width": 1000,
+              "height": 450,
+              "instructor_notes": null
+            }
+          ]
+        },
+        {
+          "id": 951270,
+          "key": "65fd7067-5ea3-44cc-858c-bfbf7bbc133f",
+          "title": "Review: Spark Ecosystem",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "65fd7067-5ea3-44cc-858c-bfbf7bbc133f",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 951249,
+              "key": "efdffd2a-b6be-4dd7-8c60-a557acce5083",
+              "title": "What are the components of Apache Spark?",
+              "semantic_type": "CheckboxQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "efdffd2a-b6be-4dd7-8c60-a557acce5083",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Which are components of Apache Spark?",
+                "answers": [
+                  {
+                    "id": "rbk1",
+                    "text": "MLlib",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "rbk2",
+                    "text": "RDD",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "rbk3",
+                    "text": "Streaming",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "rbk4",
+                    "text": "Spark Session",
+                    "is_correct": false
+                  }
+                ]
+              }
+            },
+            {
+              "id": 951247,
+              "key": "d8679e5f-6a54-493a-a7f8-7a1833cf28a7",
+              "title": "What are the different methods to run Spark over Apache Hadoop?",
+              "semantic_type": "ReflectAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "d8679e5f-6a54-493a-a7f8-7a1833cf28a7",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "title": "Reflect",
+                "semantic_type": "TextQuestion",
+                "evaluation_id": null,
+                "text": "\n"
+              },
+              "answer": {
+                "text": "Thanks for your response. We can’t check your answer on this quiz, but I would’ve said something like, “Integrate Spark instead of MapReduce, and use YARN to start Spark jobs. You can still use the HDFS for the file system (or S3, or others).”",
+                "video": null
+              }
+            }
+          ]
+        },
+        {
+          "id": 951260,
+          "key": "bde7b724-337b-4aba-ae18-fb0205be9670",
+          "title": "Intro to Spark RDDs",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "bde7b724-337b-4aba-ae18-fb0205be9670",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 951245,
+              "key": "3f38e8b4-e7a8-4417-8fc3-5495f6e11746",
+              "title": "ND029 C2 L1 02 Introduce Spark RDDs",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "rgxr4NHUNt0",
+                "china_cdn_id": "rgxr4NHUNt0.mp4"
+              }
+            },
+            {
+              "id": 951216,
+              "key": "578facbf-b7fc-4a81-a4df-c52e7a957e35",
+              "title": "Spark RDD Recap",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## RDD Key Points\n\n- RDD stands for Resilient Distributed Dataset:\n    - Resilient because its fault-tolerance comes from maintaining RDD lineage, so even with loss during the operations, you can always go back to where the operation was lost.\n    - Distributed because the data is distributed across many partitions and workers.\n    - Dataset is a collection of partitioned data.\nRDD has characteristics like in-memory, immutability, lazily evaluated, cacheable, and typed (we don't see this much in Python, but you'd see this in Scala or Java).\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 951493,
+              "key": "f7df4549-f1f3-4ad9-8584-a2b140271c6b",
+              "title": "Coding Notes on RDD Demo",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Code Used in SparkContext Example\n```\nfrom pyspark import SparkConf, SparkContext\n\nconf = SparkConf().setMaster(\"local[2]\").setAppName(\"RDD Example\")\nsc = SparkContext(conf=conf)\n\n# different way of setting configurations \n#conf.setMaster('some url')\n#conf.set('spark.executor.memory', '2g')\n#conf.set('spark.executor.cores', '4')\n#conf.set('spark.cores.max', '40')\n#conf.set('spark.logConf', True)\n\n# sparkContext.parallelize materializes data into RDD \n# documentation: https://spark.apache.org/docs/2.1.1/programming-guide.html#parallelized-collections\nrdd = sc.parallelize([('Richard', 22), ('Alfred', 23), ('Loki',4), ('Albert', 12), ('Alfred', 9)])\n\nrdd.collect() # [('Richard', 22), ('Alfred', 23), ('Loki', 4), ('Albert', 12), ('Alfred', 9)]\n\n# create two different RDDs\nleft = sc.parallelize([(\"Richard\", 1), (\"Alfred\", 4)])\nright = sc.parallelize([(\"Richard\", 2), (\"Alfred\", 5)])\n\njoined_rdd = left.join(right)\ncollected = joined_rdd.collect()\n\ncollected #[('Alfred', (4, 5)), ('Richard', (1, 2))]\n```\n## Code Used in SparkSession Example\n\n```\n# Notice we’re using pyspark.sql library here\nfrom pyspark.sql import SparkSession\n\nspark = SparkSession.builder \\\n        .master(\"local\") \\\n        .appName(\"CSV file loader\") \\\n        .getOrCreate()\n\n# couple ways of setting configurations\n#spark.conf.set(\"spark.executor.memory\", '8g')\n#spark.conf.set('spark.executor.cores', '3')\n#spark.conf.set('spark.cores.max', '3')\n#spark.conf.set(\"spark.driver.memory\", '8g')\n\nfile_path = \"./AB_NYC_2019.csv\"\n# Always load csv files with header=True\ndf = spark.read.csv(file_path, header=True)\n\ndf.printSchema()\n\ndf.select('neighbourhood').distinct().show(10, False)\n\n```",
+              "instructor_notes": ""
+            },
+            {
+              "id": 951373,
+              "key": "6d8378e7-7ca1-443f-831b-6b578f58e342",
+              "title": "RDD Demo",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Demo for RDDs",
+              "instructor_notes": ""
+            },
+            {
+              "id": 951231,
+              "key": "ca331dcb-18a2-44e7-8769-3fa3e37b0660",
+              "title": "ND029 C2 L1 03 Demo For RDD",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "f3lViDkep50",
+                "china_cdn_id": "f3lViDkep50.mp4"
+              }
+            },
+            {
+              "id": 951225,
+              "key": "0c2bea59-24aa-484f-9456-219b3d27e5d9",
+              "title": "Why is Spark RDD immutable?",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "0c2bea59-24aa-484f-9456-219b3d27e5d9",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Why is a Spark RDD immutable?",
+                "answers": [
+                  {
+                    "id": "rbk1",
+                    "text": "Immutable data is always safe to share across multiple processes as well as multiple threads.",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "rbk2",
+                    "text": "Spark RDDs are fault tolerant as they track data lineage information to rebuild lost data automatically on failure.",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "rbk3",
+                    "text": "If the computation is time-consuming, we can cache the RDD, which results in performance improvement.",
+                    "is_correct": false
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 951257,
+          "key": "8eae1992-4e84-47d9-a2ca-010fc2500d27",
+          "title": "Partitioning in Spark",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "8eae1992-4e84-47d9-a2ca-010fc2500d27",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 951210,
+              "key": "7977b585-4350-46c5-aa88-f9381ab22055",
+              "title": "ND029 C2 L1 04 Partitioning In Spark",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "5MfezTUP6-k",
+                "china_cdn_id": "5MfezTUP6-k.mp4"
+              }
+            },
+            {
+              "id": 951218,
+              "key": "27cfeb6a-804d-4489-a468-95b74942806b",
+              "title": "Partitioning in Spark",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Partitioning in Spark\n\nBy default in Spark, a partition is created for each block of the file in HDFS (128MB is the default setting for Hadoop) if you are using HDFS as your file system. If you read a file into an RDD from AWS S3 or some other source, Spark uses 1 partition per 32MB of data. There are a few ways to bypass this default upon creation of an RDD, or reshuffling the RDD to resize the number of partitions, by using `rdd.repartition(<the partition number you want to repartition to>)`. For example, `rdd.repartition(10)` should change the number of partitions to 10.\n\nIn local mode, Spark uses as many partitions as there are cores, so this will depend on your machine. You can override this by adding a configuration parameter `spark-submit --conf spark.default.parallelism=<some number>`.\n\nSo hypothetically, if you have a file of 200 MB and if you were to load this into an RDD, how many partitions will this RDD have? If this file is on HDFS, this will produce 2 partitions (each of them being 128MB). If the file is on AWS S3 or some other file system, it will produce 7 partitions.\n\n### Hash Partitioning\n\nHash partitioning in Spark is not different than the normal way of using a hash key in the data world to distribute data across partitions uniformly.\n\nUsually this is defined by\n\n`partition = key.hashCode() % numPartitions`\n\nThis mode of partitioning is used when you want to evenly distribute your data across partitions.\n\n### Range Partitioning\n\nRange partitioning is another well-known partitioning method in the data world. Range partitioning divides each partition in a continuous but non-overlapping way.\n\nLet's pretend there is a table called `employees`, and it has the following schema:\n\n```\nCREATE TABLE employees (\n\temployee_id INT NOT NULL,\n\tfirst_name VARCHAR(30),\n\tlast_name VARCHAR(30),\n\t...\n)\n```\n\nRange partitioning would come into play where you partition the `employees table` by `employee_id`, like this:\n\n```\nPARTITION BY RANGE (employee_id) (\n\tPARTITION p0 VALUES LESS THAN (11),\n\tPARTITION p0 VALUES LESS THAN (21),\n\tPARTITION p0 VALUES LESS THAN (31),\n\t...\n)\n```\n\nIn reality, you'd want to use range partition over a timestamp, but this example gives you a rough idea of what range partitioning means.\n\nYou can use the `partitionByRange()` function to partition your data into some kind of group. Range partitioning in Spark ensures that every range is contained in a single partition. This becomes useful when you want to reduce shuffles across machines, for example when you know for sure all your parent RDDs need to stay in the same partition.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 951263,
+          "key": "ee07d39f-1db8-4d61-af22-f42924779cd5",
+          "title": "DataFrames and Datasets",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "ee07d39f-1db8-4d61-af22-f42924779cd5",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 951251,
+              "key": "f61678ad-5351-4a59-8073-a4f71effb397",
+              "title": "ND029 C2 L1 05 DataFrames And Datasets",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "QPeosn-fX0s",
+                "china_cdn_id": "QPeosn-fX0s.mp4"
+              }
+            },
+            {
+              "id": 951220,
+              "key": "b6ddb2f0-d4a9-4f0d-9a47-dd2bf48b6f8f",
+              "title": "DataFrames and Datasets - Key Points",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## DataFrames and Datasets - Key Points\n\nYou can think of DataFrames as tables in a relational database, or dataframes in Python’s pandas library. \nDataFrames provide memory management and optimized execution plans.\n\n### DataFrames\nDataFrames appeared in Spark Release 1.3.0. We already know that both Datasets and DataFrames are an organized collection of data in columns, but the biggest difference is that DataFrames do not provide type safety. DataFrames are similar to the tables in a relational database. Unlike RDDs, DataFrames and Datasets are part of the spark.sql library, which means you can create a temporary view of these tables and apply SQL queries.\n\nDataFrames allow users to process a large amount of structured data by providing Schema. The Schema is another feature that is very similar to a relational database, indicating types of data that should be stored in the column (String, Timestamp, Double, Long, etc... these are available in spark.sql.types library), and also whether the column can be nullable or not. The aspect that is different from relational databases is that DataFrames and Datasets have no notion of primary/foreign keys - you as a developer define these as you create your DataFrame or Dataset.\n\n### Datasets\nA Dataset is a core building block in SparkSQL that is strongly typed, unlike DataFrames, You can think of Datasets as an extension of the DataFrame API with type-safety. The Dataset API has been available since the release of Spark 1.6. Although Datasets and DataFrames are part of the Spark SQL Component, RDDs, Datasets, and DataFrames still share common features which are: immutability, resilience, and the capability of distributed computing in-memory. \n\nA Dataset provides the features of an RDD and a DataFrame:\n- The convenience of an RDD, as it is an extended library of a Spark DataFrame\n- Performance optimization of a DataFrame using Catalyst\n- Enforced type-safety\n\nDatasets are not available in Python, only in Java and Scala. So we won’t be spending much time with Datasets in this course, since we focus on Python.\n\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 951374,
+              "key": "f1518b37-cfb4-4845-8af3-56b3f072a7b1",
+              "title": "DataFrames Demo",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## DataFrames Demo",
+              "instructor_notes": ""
+            },
+            {
+              "id": 951226,
+              "key": "6e05d260-ab8d-4bc9-b50b-59ca26f6be68",
+              "title": "ND029 C2 L1 06 Demo - DataFrames",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "Es1mfhBY5s0",
+                "china_cdn_id": "Es1mfhBY5s0.mp4"
+              }
+            },
+            {
+              "id": 951208,
+              "key": "b5ca631b-bb48-4c2b-bd1e-5ef0c5d7277b",
+              "title": "What are the differences among RDD/Dataframe/Dataset?",
+              "semantic_type": "ReflectAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "b5ca631b-bb48-4c2b-bd1e-5ef0c5d7277b",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "title": "Reflect",
+                "semantic_type": "TextQuestion",
+                "evaluation_id": null,
+                "text": ""
+              },
+              "answer": {
+                "text": "Thanks for your response! We can’t check your answer, but I would’ve said: “RDDs are in the Core component, while DataFrames and Datasets are in the SQL component. RDDs and DataFrames are both immutable collections of datasets, but DataFrames are organized into columns. Datasets are organized into columns also, and also provide type safety.\n\n",
+                "video": null
+              }
+            }
+          ]
+        },
+        {
+          "id": 951235,
+          "key": "b4f12c7e-16c8-491e-9ffd-b4e4b3d33cc6",
+          "title": "Create RDD and DataFrame",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "b4f12c7e-16c8-491e-9ffd-b4e4b3d33cc6",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 951484,
+              "key": "6993c233-b9ec-4c4d-892e-09d31bc33795",
+              "title": "Workspace Coding Exercise",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Workspace Coding Exercise\nPlease complete the TODO items in the code below, then execute it in the terminal using the command `spark-submit example_code_spark_session.py` .\n\nOnce you execute the code using the `spark-submit` command with SparkSession as the entry point, you’ll see a “spark-warehouse” directory appear. It's a metastore that gets generated automatically and this is where Spark SQL persists its tables/dataframes. This directory can be configured to be generated somewhere else, but in the Standalone mode of execution it will always appear where your execution code is.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 951302,
+              "key": "5127914a-cb15-49e9-8e35-8fa953d9267d",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "r899655c951235xJUPYTERLwveceqfi",
+              "pool_id": "jupyterlabpython37",
+              "view_id": "jupyter-lab-skohj",
+              "gpu_capable": false,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "disk": null,
+                    "port": 3000,
+                    "ports": [],
+                    "videos": [],
+                    "pageEnd": "",
+                    "pageStart": "",
+                    "allowSubmit": false,
+                    "defaultPath": "/",
+                    "actionButtonText": ""
+                  },
+                  "kind": "jupyter-lab"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        },
+        {
+          "id": 951264,
+          "key": "704ece8c-a0cd-4c7f-bf47-b223997449dd",
+          "title": "Intro to Spark Streaming",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "704ece8c-a0cd-4c7f-bf47-b223997449dd",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 951234,
+              "key": "3d3ef152-fe02-4888-b353-64ada1292a81",
+              "title": "ND029 C2 L1 07 Discretized Stream",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "HWIhXJ5hz-4",
+                "china_cdn_id": "HWIhXJ5hz-4.mp4"
+              }
+            },
+            {
+              "id": 951211,
+              "key": "0481d2d2-a272-485a-88ae-6b0c42b9a170",
+              "title": "Introduce Spark Streaming",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Intro to Spark Streaming and DStream\nWe’ve been primarily looking at batch ingestion but now we’ll start to look at streaming ingestion.\n\nSpark DStream, Discretized Stream, is the basic abstraction and building block of Spark Streaming. DStream is a continuous stream of RDDs. It receives input from various sources like Kafka, Flume, Kinesis, or TCP sockets (we'll mostly be using sockets or Kafka). Another way of generating a Dstream is by operating transformation functions on top of existing DStream.\n\nAnother concept added in DStream is that now we're dealing with intervals (or windows).\n\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 951230,
+              "key": "0576fba6-f852-4001-994d-833e750e3380",
+              "title": "D stream architecture",
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2019/October/5d9e0e53_screen-shot-2019-10-09-at-9.41.55-am/screen-shot-2019-10-09-at-9.41.55-am.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/0576fba6-f852-4001-994d-833e750e3380",
+              "caption": "**Programming Model for DStream**",
+              "alt": "Programming Model for DStream",
+              "width": 704,
+              "height": 158,
+              "instructor_notes": null
+            },
+            {
+              "id": 951246,
+              "key": "12dd4432-d982-4e39-9c6b-ff93b3442047",
+              "title": "ND029 C2 L1 08 Introduce Spark Streaming-Structured Streaming",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "BvbhJFwZX0c",
+                "china_cdn_id": "BvbhJFwZX0c.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 951265,
+          "key": "7e9c29ff-6c7d-4ec8-a04c-c569b612c0d6",
+          "title": "Review: Spark Streaming & DStream",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "7e9c29ff-6c7d-4ec8-a04c-c569b612c0d6",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 951222,
+              "key": "630430c0-5376-4d89-96a6-d18d19594436",
+              "title": "What is Spark Streaming?",
+              "semantic_type": "ReflectAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "630430c0-5376-4d89-96a6-d18d19594436",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "title": "Reflect",
+                "semantic_type": "TextQuestion",
+                "evaluation_id": null,
+                "text": ""
+              },
+              "answer": {
+                "text": "Thanks for your response. We can’t check your answer, but I would’ve said something like:\n\n“Spark Streaming is an extension of Spark’s Core API, a scalable and fault-tolerant streaming processing system that supports batch and streaming processing.”",
+                "video": null
+              }
+            },
+            {
+              "id": 951221,
+              "key": "25411202-7da2-41d8-82f1-416ed74a070c",
+              "title": "How Can We Form DStreams?",
+              "semantic_type": "CheckboxQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "25411202-7da2-41d8-82f1-416ed74a070c",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "How can we form DStreams? (may be more than one answer)",
+                "answers": [
+                  {
+                    "id": "rbk1",
+                    "text": "DStreams can be created from live data (such as data from Kafka or Flume)",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "rbk2",
+                    "text": "DStreams can be created by parallelizing data from local files",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "rbk3",
+                    "text": "Dstreams can be generated by transformation of existing DStreams, using operations such as map, window and reduceByKeyAndWindow.",
+                    "is_correct": true
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 951261,
+          "key": "92cb2bec-04ca-427a-853b-c5d10142f4a1",
+          "title": "Spark Structured Streaming",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "92cb2bec-04ca-427a-853b-c5d10142f4a1",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 951219,
+              "key": "6972f85b-7c97-4d7f-be51-c22b58fc9563",
+              "title": "ND029 C2 L1 09 Introduce Spark Streaming Example",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "fCLWECWRHHw",
+                "china_cdn_id": "fCLWECWRHHw.mp4"
+              }
+            },
+            {
+              "id": 951227,
+              "key": "d44bdb1e-60da-47c2-af60-dbe08a3e91d2",
+              "title": "Structured Streaming Key Points",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Structured Streaming - Key Points\n\nStructured Streaming is a programming model, introduced in Spark 2.0, to provide support for building scalable and fault-tolerant applications using Spark SQL. \n\nInternally, Structured Streaming is processed using a micro-batch. It processes data streams as a series of small batch jobs. \n\nWith Structured Streaming, users/developers don't have to worry about specific issues related to streaming applications, like fault-tolerance, data loss, state loss, or real-time processing of data. The application can now guarantee fault-tolerance using checkpointing.\n\nThe advantages of using Structured Streaming are:\n- Continuous update of the final result\n- Can be used in either Scala, Python, or Java\n- Computations are optimized due to using the same Spark SQL component (Catalyst)\n\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 951375,
+              "key": "091da820-3083-462e-9280-7af2a50a33c3",
+              "title": "Diagram header",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Structured Streaming Architecture",
+              "instructor_notes": ""
+            },
+            {
+              "id": 951377,
+              "key": "6d0e204b-64e6-4772-b183-edf39f9ae5ab",
+              "title": "Structured Streaming Architecture",
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2019/October/5d9e5fae_screen-shot-2019-10-09-at-3.30.54-pm/screen-shot-2019-10-09-at-3.30.54-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/6d0e204b-64e6-4772-b183-edf39f9ae5ab",
+              "caption": "",
+              "alt": "Structured Streaming Architecture",
+              "width": 974,
+              "height": 1286,
+              "instructor_notes": null
+            }
+          ]
+        },
+        {
+          "id": 951259,
+          "key": "6d5d591b-a655-4c4c-a35f-fe5d8dc524de",
+          "title": "State Management",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "6d5d591b-a655-4c4c-a35f-fe5d8dc524de",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 951236,
+              "key": "42960336-0a53-4705-b5c0-f82e0f1b0cc5",
+              "title": "ND029 C2 L1 10 State Management In Structured Streaming",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "BuWj6wHh3o0",
+                "china_cdn_id": "BuWj6wHh3o0.mp4"
+              }
+            },
+            {
+              "id": 951240,
+              "key": "d2f8080b-1f46-4936-8af5-1f65053b9cf0",
+              "title": "Structured Streaming Summary",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Recap on Structured Streaming and State Management\nStructured Streaming is a new streaming strategy developed from Discretized Stream. It added a few updates from Dstream, such as decoupling saving state to store to decouple the state management, and also checkpointing metadata. Because these two limitations are decoupled from the application, the developer is now able to exercise fault-tolerant end-to-end execution with ease.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 951486,
+              "key": "5410ca76-d48e-42f3-9895-2013f05115ed",
+              "title": "Exercise: Submit a Spark Streaming job with a given dataset",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Exercise: Submit a Spark Streaming job with a given dataset\nPlease complete the TODO items in the code below, then execute it in the terminal using the command `<filename>.py` .\n\nOnce you execute the code using the `spark-submit` command with SparkSession as the entry point, you’ll see a “spark-warehouse” directory appear. It's a metastore that gets generated automatically and this is where Spark SQL persists its tables/dataframes. This directory can be configured to be generated somewhere else, but in the Standalone mode of execution it will always appear where your execution code is.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 951304,
+              "key": "676b0b09-51f6-41b0-89cf-529c08f842f1",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "r899655c951259xJUPYTERL4uhdsfmv",
+              "pool_id": "jupyterlabpython37",
+              "view_id": "jupyter-lab-rtaj3",
+              "gpu_capable": false,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "disk": null,
+                    "port": 3000,
+                    "ports": [],
+                    "videos": [],
+                    "pageEnd": "",
+                    "pageStart": "",
+                    "allowSubmit": false,
+                    "defaultPath": "/",
+                    "actionButtonText": ""
+                  },
+                  "kind": "jupyter-lab"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            },
+            {
+              "id": 960210,
+              "key": "6a2785c8-8b25-408f-994b-7fbede8e8cbb",
+              "title": "State Mgmt",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## State Management\nRemember that state management is a useful concept in the data streaming world. You can think of state as an intermediate information between micro-batches. There are two major types of state, the metadata of the micro-batch, and the accumulated data derived from processed data (so any data prior to the current micro-batch). ",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 951262,
+          "key": "660e7afb-e243-4b36-9ed6-68411c9b1db8",
+          "title": "Spark UI / DAGs",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "660e7afb-e243-4b36-9ed6-68411c9b1db8",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 951229,
+              "key": "d2dd5990-99ed-4c61-bd27-9b763e5f7094",
+              "title": "Intro to Spark UI / DAGs",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Intro to Spark UI/DAGs\n\nSpark UI is a web interface that gets created when you submit a Spark job. It's a convenient resource for the developer to monitor the status of the job execution. The developer can inspect jobs, stages, storages, environment, and executors in this page, as well as the visualized version of the DAGs (Directed Acyclic Graph) of the Spark job.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 951232,
+              "key": "a02c559d-2418-46b8-abf3-a5d9e9d8449d",
+              "title": "ND029 C2 L1 11 Spark UI Overview",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "EpNEyEhSPI8",
+                "china_cdn_id": "EpNEyEhSPI8.mp4"
+              }
+            },
+            {
+              "id": 951248,
+              "key": "0b17c9b8-4e82-4ffa-9e55-698308015a97",
+              "title": "Spark DAGs",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Spark DAGs\nAt any level, when an action is called on the RDD, Spark generates a DAG. One different thing to note about DAGs is that, unlike Hadoop MapReduce, which creates a Map stage and a Reduce stage, DAGs in Spark can contain many stages.\n\nThe DAG scheduler divides operators into stages of tasks, and also puts operators together in the most optimized way.\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 951214,
+              "key": "7bb1c9b0-16ad-4363-a00e-0c8efdc885f1",
+              "title": "ND029 C2 L1 12 Spark UI - Dags",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "AP_qvCE7-fc",
+                "china_cdn_id": "AP_qvCE7-fc.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 951407,
+          "key": "70b8e08f-3a45-436f-b3b7-cf7f0d727618",
+          "title": "More on the Spark UI",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "70b8e08f-3a45-436f-b3b7-cf7f0d727618",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 951254,
+              "key": "e44e14de-bb49-4ddc-a47f-80310e0b7a9e",
+              "title": "Spark Master UI",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Spark UI\nLet’s start taking a look at Spark UI. First, we’ll explore what the landing page of Spark UI tells us and how it can help us effectively monitor and debug the Spark job.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 951238,
+              "key": "d1303c71-7af3-457f-b6c2-45dc519a1a69",
+              "title": "ND029 C2 L1 13 Spark Master UI",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "V_qrb_QjqB4",
+                "china_cdn_id": "V_qrb_QjqB4.mp4"
+              }
+            },
+            {
+              "id": 951378,
+              "key": "37554dd3-afb6-4c4a-8e85-8ba372a05be0",
+              "title": "Spark UI / DAGs",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Spark UI / DAGs Visuals with Explanations",
+              "instructor_notes": ""
+            },
+            {
+              "id": 951382,
+              "key": "78ff58c5-a75a-4c8e-ac5c-7f4266ec1e48",
+              "title": "Spark DAGs and UI",
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2019/October/5d9e638b_screen-shot-2019-10-09-at-3.47.13-pm/screen-shot-2019-10-09-at-3.47.13-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/78ff58c5-a75a-4c8e-ac5c-7f4266ec1e48",
+              "caption": "Red 1 - This is where your job name will be from the configuration\n\nRed 2 - Shows the list of action functions that were called\n\nRed 3 - Spark version (other configurations and Spark version can be shown from Environment tab)",
+              "alt": "Spark DAGs and UI Image",
+              "width": 1334,
+              "height": 732,
+              "instructor_notes": null
+            },
+            {
+              "id": 951242,
+              "key": "cd765e66-00d7-4d51-9d58-004a4a6ee402",
+              "title": "Spark DAGs UI",
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2019/October/5d9e62e7_screen-shot-2019-10-09-at-3.44.09-pm/screen-shot-2019-10-09-at-3.44.09-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/cd765e66-00d7-4d51-9d58-004a4a6ee402",
+              "caption": "**Red box annotates DAG of the Job ID 1**",
+              "alt": "Red box annotates DAG of the Job ID 1",
+              "width": 1202,
+              "height": 982,
+              "instructor_notes": null
+            },
+            {
+              "id": 951217,
+              "key": "a9bf3240-3c23-4bde-b010-ffd8ecce477f",
+              "title": "Spark UI / DAGs Recap",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Spark UI, DAGs - Key Points\n\nDAG is not a new concept created by Spark, rather, if you ever have taken a course about graphs, you see the concept of DAGs fairly often. Spark applied this concept with lazy evaluation and actions (which we’ll be taking a look at in the next lesson) to visualize your work in the UI.\n\nThe Spark UI becomes very important when you want to debug at system level. It tells you how many stages you’ve created, the amount of resources you’re using, logs, workers, and a lot of other useful information, like lineage graph, duration of tasks, aggregated metrics, etc. \n\nThe lineage graph is the history of RDD transformations, and it’s the graph of all the parent RDDs of the current RDD.\n\n## Lineage Graph Example",
+              "instructor_notes": ""
+            },
+            {
+              "id": 951408,
+              "key": "92f4e05d-217a-4631-b1e0-3109a8908aa6",
+              "title": "Lineage Graph Example",
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2019/October/5d9eba22_screen-shot-2019-10-09-at-9.53.34-pm/screen-shot-2019-10-09-at-9.53.34-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/92f4e05d-217a-4631-b1e0-3109a8908aa6",
+              "caption": "**Lineage Graph Example**\n\n(`WholeStageCodegen` is a query optimization in Spark SQL that pipes multiple operators together into a single Java function.)",
+              "alt": "Lineage Graph Example",
+              "width": 500,
+              "height": 625,
+              "instructor_notes": null
+            },
+            {
+              "id": 951209,
+              "key": "c9681a56-3951-45e6-902d-6a03e799fbba",
+              "title": "What are the differences between Spark DAGs and Lineage Graphs?",
+              "semantic_type": "ReflectAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "c9681a56-3951-45e6-902d-6a03e799fbba",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "title": "Reflect",
+                "semantic_type": "TextQuestion",
+                "evaluation_id": null,
+                "text": ""
+              },
+              "answer": {
+                "text": "Thanks for your response. We can’t assess your response, but I would have said the following:\n\nA lineage graph shows you the history of how the final SparkRDD/DataFrame has been created. With the application of transformation functions, you’re building the lineage graph. A DAG shows you different stages of the Spark job. A compilation of DAGs could be the lineage graph, but a DAG contains more information than just stages - it tells you where the shuffles occurred, actions occurred, and with transformations, what kind of RDDs/DataFrames have been generated.",
+                "video": null
+              }
+            }
+          ]
+        },
+        {
+          "id": 951268,
+          "key": "aaad3a67-3a04-4f48-bd45-dd215f5f0bd9",
+          "title": "Spark Stages",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "aaad3a67-3a04-4f48-bd45-dd215f5f0bd9",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 951223,
+              "key": "e79c1b77-6079-4763-8a3a-d4fb25eb8fb2",
+              "title": "ND029 C2 L1 14 Spark Stages",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "VZvCtgs40Bo",
+                "china_cdn_id": "VZvCtgs40Bo.mp4"
+              }
+            },
+            {
+              "id": 951376,
+              "key": "1e972384-df06-4d86-9269-1e36a8185ddf",
+              "title": "Advanced - Spark Stages and Spark UI",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Advanced Demo: Spark Stages and Spark UI ",
+              "instructor_notes": ""
+            },
+            {
+              "id": 951228,
+              "key": "2b8a9a11-1e14-451e-b36b-7642c8bea24a",
+              "title": "ND029 C2 L1 15 Spark Stages And Spark UI Advanced Demo",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "0Xi7NipF0sU",
+                "china_cdn_id": "0Xi7NipF0sU.mp4"
+              }
+            },
+            {
+              "id": 951379,
+              "key": "b1dd7a6d-5f5f-451c-81a5-4b7a1efc6b75",
+              "title": "Spark UI / DAGs / Stages",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Example of Spark UI, DAGs, stages and code\nThis is the code that was used to generate the image below.\n\n```\rfrom pyspark.sql import SparkSession\nspark = SparkSession.builder \\\n        .config('spark.ui.port', 3000) \\\n        .master(\"local[2]\") \\\n        .appName(\"data exploration\") \\\n        .getOrCreate()\n\nspark.conf.set('spark.executor.memory', '3g')\nspark.conf.set('spark.executor.cores', '3g')\n\ndf = spark.read.csv('AB_NYC_2019.csv', header=True)\ndf1 = df.select('neighbourhood', 'price').distinct()\nimport pyspark.sql.functions\ndf1.rdd.getNumPartitions()\ndf1.repartition(10).agg({\"price\": \"max\"}).collect()\n```\n\nThis will give you some nonsense data at the end, but we can take a closer look at how the tasks were split.\n\nSince the code annotates `local[2]`, it's using 2 partitions at the beginning. `local[*]` means `local[{Runtime.getRuntime.availableProcessors()}]`. And then depending on the data, there are 200 tasks. Then there is `repartition(10)` which brought down the number of tasks to 10. Finally the last `collect()` has 1 task.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 951250,
+              "key": "e8c5b3b0-e97a-470a-83ff-0e7595bf7f7c",
+              "title": "Spark UI / dags / stages Graphic",
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2019/October/5d9ea4ba_screen-shot-2019-10-09-at-8.25.34-pm/screen-shot-2019-10-09-at-8.25.34-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/e8c5b3b0-e97a-470a-83ff-0e7595bf7f7c",
+              "caption": "**Spark UI Stages Tab**",
+              "alt": "Spark UI Stages Tab",
+              "width": 1420,
+              "height": 714,
+              "instructor_notes": null
+            },
+            {
+              "id": 951233,
+              "key": "532f5e63-d39c-46bd-9c6c-ecccd9733c39",
+              "title": "Spark UI advanced tab",
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2019/October/5d9ea4e1_screen-shot-2019-10-09-at-8.26.11-pm/screen-shot-2019-10-09-at-8.26.11-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/532f5e63-d39c-46bd-9c6c-ecccd9733c39",
+              "caption": "**SQL Tab Seen When You Use SparkSession**\n(If used with SparkContext, you will not see the SQL tab though, since SparkContext is the entry point for RDD, which is in the Core component.)",
+              "alt": "SQL Tab Seen When You Use SparkSession",
+              "width": 1416,
+              "height": 296,
+              "instructor_notes": null
+            },
+            {
+              "id": 951380,
+              "key": "22911eaa-57ad-49e8-9fc9-8fcaa15f6e27",
+              "title": "Logical Plan and Physical Plan of Spark job",
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2019/October/5d9ea660_screen-shot-2019-10-09-at-8.32.36-pm/screen-shot-2019-10-09-at-8.32.36-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/22911eaa-57ad-49e8-9fc9-8fcaa15f6e27",
+              "caption": "**Detailed Logical Plan and Physical Plan of Spark Job**",
+              "alt": "Logical Plan and Physical Plan of Spark Job",
+              "width": 2040,
+              "height": 1084,
+              "instructor_notes": null
+            }
+          ]
+        },
+        {
+          "id": 951269,
+          "key": "4e9c4c4e-078c-4e75-aaa0-c7e81c5151f0",
+          "title": "Establishing Schema",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "4e9c4c4e-078c-4e75-aaa0-c7e81c5151f0",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 951255,
+              "key": "e0d21e5a-a83a-400a-bf9e-19ee7c601280",
+              "title": "Establishing Schema",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# What is a Schema?\n\nGenerally, a schema is the description of the structure of your data. It tells you how your data is organized - you can say it’s the blueprint of your data. DataFrames and Datasets use this concept when you create DataFrame and Dataset during run time (implicit) or compile time (explicit).\n\nStructField objects are in tuple (name, type of your data, and nullified represented in True/False), and you need to wrap these objects in StructType to build a schema.\n\nStructType and StructField belong to the org.apache.spark.sql.types package so these need to be imported separately.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 951239,
+              "key": "6f71c7ed-cbf8-4b49-907c-f7df57710fd2",
+              "title": "ND029 C2 L1 17 Spark StructType",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "_hG4nGow7EI",
+                "china_cdn_id": "_hG4nGow7EI.mp4"
+              }
+            },
+            {
+              "id": 951244,
+              "key": "c3d3b350-e8a0-41fb-ac9e-1065faff4b1a",
+              "title": "Create a dataframe/dataset using schema Summary",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Creating a DataFrame or Dataset using a Schema - Summary\nCreating a Schema helps eliminate some errors that can arise while generating your DataFrame. \n\nA Dataset is already type-safe but because it’s a feature not available in Python, we’ll use StructType to build schema for a DataFrame. In this case, a DataFrame’s schema can be represented by StructType and we can apply this schema through the `createDataFrame` function of SparkSession object.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 951485,
+              "key": "e08f6386-dfb9-48f7-b4db-e992ac01840e",
+              "title": "Create a DataFrame / Dataset Using Schema",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Exercise: Create a DataFrame / Dataset Using Schema\nPlease complete the TODO items in the code below, then execute it in the terminal using the command `spark-submit <filename>.py`.\n\nOnce you execute the code using the `spark-submit` command with SparkSession as the entry point, you’ll see a “spark-warehouse” directory appear. It's a metastore that gets generated automatically and this is where Spark SQL persists its tables/dataframes. This directory can be configured to be generated somewhere else, but in the Standalone mode of execution it will always appear where your execution code is.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 951305,
+              "key": "df406229-56de-4c3a-8be7-7bf521492945",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "r899655c951269xJUPYTERLgcxdo9i1",
+              "pool_id": "jupyterlabpython37",
+              "view_id": "jupyter-lab-sgt3x",
+              "gpu_capable": false,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "disk": null,
+                    "port": 3000,
+                    "ports": [],
+                    "videos": [],
+                    "pageEnd": "",
+                    "pageStart": "",
+                    "allowSubmit": false,
+                    "defaultPath": "/",
+                    "actionButtonText": ""
+                  },
+                  "kind": "jupyter-lab"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        },
+        {
+          "id": 951266,
+          "key": "998b12e2-5817-4019-80ae-a244020d6cae",
+          "title": "Lesson Recap",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "998b12e2-5817-4019-80ae-a244020d6cae",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 951243,
+              "key": "a6b6f105-2d2b-4b51-ad92-0e64be5e1b75",
+              "title": "DSND C2 L1 18 Lesson Outro",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "enCkAfrOtpU",
+                "china_cdn_id": "enCkAfrOtpU.mp4"
+              }
+            },
+            {
+              "id": 951237,
+              "key": "aadd1c38-2563-4f12-a36d-3b87b2b7bc52",
+              "title": "Lesson Summary",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Lesson Summary\n\nIn this lesson, we learned the fundamentals of Spark RDDs and DataFrames, and how we can leverage the Spark Web UI to efficiently monitor and debug Spark jobs. As a data engineer, you will always be monitoring through Spark Web UI to visualize if your code is optimized. Depending on your business needs, you will now be able to select which core building blocks to use (RDD vs DataFrame, or DataSet if you can use Scala or Java), and also run a simple SQL-like analysis on your data.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 951241,
+              "key": "00bf4525-d35b-4095-ad59-f6074a1b74e4",
+              "title": "Further Research",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Further Optional Reading\n- [Spark UI](https://databricks.com/blog/2015/06/22/understanding-your-spark-application-through-visualization.html)\n\n- [Project Tungsten](https://databricks.com/blog/2015/04/28/project-tungsten-bringing-spark-closer-to-bare-metal.html) is a side project in Databricks to optimize Spark jobs for CPU and memory efficiency. \n\n- [Whole Stage CodeGen](https://issues.apache.org/jira/browse/SPARK-12795)\n\n- [More on Whole Stage CodeGen](http://www.vldb.org/pvldb/vol4/p539-neumann.pdf)",
+              "instructor_notes": ""
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "_deprecated": [
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "starter_files",
+      "reason": "prefer master_archive_id"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "starter_files",
+      "reason": "prefer master_archive_id"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "starter_files",
+      "reason": "prefer master_archive_id"
+    }
+  ]
+}

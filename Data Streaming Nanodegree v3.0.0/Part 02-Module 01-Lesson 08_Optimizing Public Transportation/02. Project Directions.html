@@ -1,0 +1,488 @@
+<!-- udacity2.0 -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Project Directions</title>
+  <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../assets/css/plyr.css">
+  <link rel="stylesheet" href="../assets/css/katex.min.css">
+  <link rel="stylesheet" href="../assets/css/jquery.mCustomScrollbar.min.css">
+  <link rel="stylesheet" href="../assets/css/styles.css">
+  <link rel="shortcut icon" type="image/png" href="../assets/img/udacimak.png" />
+</head>
+
+<body>
+  <div class="wrapper">
+    <nav id="sidebar">
+  <div class="sidebar-header">
+    <h3>Optimizing Public Transportation</h3>
+  </div>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled components">
+    <li class="">
+      <a href="01. Project Overview.html">01. Project Overview</a>
+    </li>
+    <li class="">
+      <a href="02. Project Directions.html">02. Project Directions</a>
+    </li>
+    <li class="">
+      <a href="03. Project Walkthrough.html">03. Project Walkthrough</a>
+    </li>
+    <li class="">
+      <a href="04. Project Workspace.html">04. Project Workspace</a>
+    </li>
+    <li class="">
+      <a href="Project Description - Optimizing Public Transportation.html">Project Description - Optimizing Public Transportation</a>
+    </li>
+    <li class="">
+      <a href="Project Rubric - Optimizing Public Transportation.html">Project Rubric - Optimizing Public Transportation</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+</nav>
+
+    <div id="content">
+      <header class="container-fluild header">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <div class="align-items-middle">
+                <button type="button" id="sidebarCollapse" class="btn btn-toggle-sidebar">
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                </button>
+
+                <h1 style="display: inline-block">02. Project Directions</h1>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <main class="container">
+        <div class="row">
+          <div class="col-12">
+            <div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h2 id="starter-code-and-data">Starter Code and Data</h2>
+<p>Please find in the Resources tab, in the left sidebar of your classroom here, a zip file with all of the starter files and code referred to here in these directions. You can download those files and run your code locally, or you can use the Project Workspace we provide.</p>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h2 id="project-directions">Project Directions</h2>
+<p>The Chicago Transit Authority (CTA) has asked us to develop a dashboard displaying system status for its commuters. We have decided to use Kafka and ecosystem tools like REST Proxy and Kafka Connect to accomplish this task.</p>
+<p>Our architecture will look like so:</p>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <figure class="figure">
+    <img src="img/screen-shot-2019-07-19-at-10.43.38-am.png" alt="" class="img img-fluid">
+    <figcaption class="figure-caption">
+      
+    </figcaption>
+  </figure>
+</div>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h4 id="step-1-create-kafka-producers">Step 1: Create Kafka Producers</h4>
+<p>The first step in our plan is to configure the train stations to emit some of the events that we need. The CTA has placed a sensor on each side of every train station that can be programmed to take an action whenever a train arrives at the station.</p>
+<p>To accomplish this, you must complete the following tasks:</p>
+<ol>
+<li><p>Complete the code in <code>producers/models/producer.py</code>.</p></li>
+<li><p>Define a value schema for the arrival event in <code>producers/models/schemas/arrival_value.json</code> with the following attributes:</p></li>
+</ol>
+<ul>
+<li>station_id</li>
+<li>train_id</li>
+<li>direction</li>
+<li>line</li>
+<li>train_status</li>
+<li>prev_station_id</li>
+<li>prev_direction</li>
+</ul>
+<ol>
+<li>Complete the code in <code>producers/models/station.py</code> so that:<ul>
+<li>A topic is created for each station in Kafka to track the arrival events</li>
+<li>The station emits an arrival event to Kafka whenever the <code>Station.run()</code> function is called.</li>
+<li>Ensure that events emitted to Kafka are paired with the Avro key and value schemas</li></ul></li>
+<li>Define a value schema for the turnstile event in <code>producers/models/schemas/turnstile_value.json</code> with the following attributes<ul>
+<li>station_id</li>
+<li>station_name</li>
+<li>line</li></ul></li>
+<li>Complete the code in <code>producers/models/turnstile.py</code> so that:<ul>
+<li>A topic is created for each turnstile for each station in Kafka to track the turnstile events</li>
+<li>The station emits a turnstile event to Kafka whenever the <code>Turnstile.run()</code> function is called.</li>
+<li>Events emitted to Kafka are paired with the Avro key and value schemas</li></ul></li>
+</ol>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h4 id="step-2-configure-kafka-rest-proxy-producer">Step 2: Configure Kafka REST Proxy Producer</h4>
+<p>Our partners at the CTA have asked that we also send weather readings into Kafka from their weather hardware. Unfortunately, this hardware is old and we cannot use the Python Client Library due to hardware restrictions. Instead, we are going to use HTTP REST to send the data to Kafka from the hardware using Kafka's REST Proxy.</p>
+<p>To accomplish this, you must complete the following tasks:</p>
+<ol>
+<li>Define a value schema for the weather event in <code>producers/models/schemas/weather_value.json</code> with the following attributes:<ul>
+<li>temperature</li>
+<li>status</li></ul></li>
+<li>Complete the code in <code>producers/models/weather.py</code> so that:<ul>
+<li>A topic is created for weather events</li>
+<li>The weather model emits weather event to Kafka REST Proxy whenever the Weather.run() function is called.</li>
+<li>NOTE: When sending HTTP requests to Kafka REST Proxy, be careful to include the correct Content-Type. Pay close attention to the <a href="https://docs.confluent.io/current/kafka-rest/api.html#post--topics-(string-topic_name" rel="noopener noreferrer" target="_blank">examples in the documentation</a> for more information.</li>
+<li>Events emitted to REST Proxy are paired with the Avro key and value schemas</li></ul></li>
+</ol>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h4 id="step-3-configure-kafka-connect">Step 3: Configure Kafka Connect</h4>
+<p>Finally, we need to extract station information from our PostgreSQL database into Kafka. We've decided to use the <a href="https://docs.confluent.io/current/connect/kafka-connect-jdbc/source-connector/index.html" rel="noopener noreferrer" target="_blank">Kafka JDBC Source Connector</a>.</p>
+<p>To accomplish this, you must complete the following tasks:</p>
+<ol>
+<li>Complete the code and configuration in producers/connectors.py<ul>
+<li>Please refer to the <a href="https://docs.confluent.io/current/connect/kafka-connect-jdbc/source-connector/source_config_options.html" rel="noopener noreferrer" target="_blank">Kafka Connect JDBC Source Connector Configuration Options</a> for documentation on the options you must complete.</li>
+<li>You can run this file directly to test your connector, rather than running the entire simulation.</li>
+<li>Make sure to use the Kafka Connect API, kafka-console-consumer, and kafka-topics CLI tool to check the status and output of the Connector</li>
+<li>To delete a misconfigured connector: CURL -X DELETE localhost:8083/connectors/stations</li></ul></li>
+</ol>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h4 id="step-4-configure-the-faust-stream-processor">Step 4: Configure the Faust Stream Processor</h4>
+<p>We will leverage Faust Stream Processing to transform the raw Stations table that we ingested from Kafka Connect. The raw format from the database has more data than we need, and the line color information is not conveniently configured. To remediate this, we're going to ingest data from our Kafka Connect topic, and transform the data.</p>
+<p>To accomplish this, you must complete the following tasks:</p>
+<ul>
+<li>Complete the code and configuration in <code>consumers/faust_stream.py</code></li>
+</ul>
+<p><strong>Watch Out!</strong><br />
+You must run this Faust processing application with the following command:</p>
+<p><code>faust -A faust_stream worker -l info</code></p>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h4 id="step-5-configure-the-ksql-table">Step 5: Configure the KSQL Table</h4>
+<p>Next, we will use KSQL to aggregate turnstile data for each of our stations. Recall that when we produced turnstile data, we simply emitted an event, not a count. What would make this data more useful would be to summarize it by station so that downstream applications always have an up-to-date count.</p>
+<p>To accomplish this, you must complete the following tasks:</p>
+<ul>
+<li>Complete the queries in <code>consumers/ksql.py</code>.</li>
+</ul>
+<p><strong>Tips</strong></p>
+<ul>
+<li>The KSQL CLI is the best place to build your queries. Try <code>ksql</code> in your workspace to enter the CLI.</li>
+<li>You can run this file on its own simply by running <code>python ksql.py</code>.</li>
+<li>Made a mistake in table creation? <code>DROP TABLE &lt;your_table&gt;</code>. If the CLI asks you to terminate a running query, you can <code>TERMINATE &lt;query_name&gt;</code>.</li>
+</ul>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h4 id="step-6-create-kafka-consumers">Step 6: Create Kafka Consumers</h4>
+<p>With all of the data in Kafka, our final task is to consume the data in the web server that is going to serve the transit status pages to our commuters.</p>
+<p>To accomplish this, you must complete the following tasks:</p>
+<ol>
+<li>Complete the code in <code>consumers/consumer.py</code></li>
+<li>Complete the code in <code>consumers/models/line.py</code></li>
+<li>Complete the code in <code>consumers/models/weather.py</code></li>
+<li>Complete the code in <code>consumers/models/station.py</code></li>
+</ol>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h3 id="other-resources-and-documentation">Other Resources and Documentation</h3>
+<p>In addition to the course content you have already reviewed, you may find the following examples and documentation helpful in completing this project:</p>
+<ul>
+<li><p><a href="https://docs.confluent.io/current/clients/confluent-kafka-python/#" rel="noopener noreferrer" target="_blank">Confluent Python Client Documentation</a></p></li>
+<li><p><a href="https://github.com/confluentinc/confluent-kafka-python#usage" rel="noopener noreferrer" target="_blank">Confluent Python Client Usage and Examples</a></p></li>
+<li><p><a href="https://docs.confluent.io/current/kafka-rest/api.html#post--topics-(string-topic_name" rel="noopener noreferrer" target="_blank">REST Proxy API Reference</a></p></li>
+<li><p><a href="https://docs.confluent.io/current/connect/kafka-connect-jdbc/source-connector/source_config_options.html" rel="noopener noreferrer" target="_blank">Kafka Connect JDBC Source Connector Configuration Options</a></p></li>
+</ul>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h3 id="directory-layout">Directory Layout</h3>
+<p>The project consists of two main directories, <code>producers</code> and <code>consumers</code>.</p>
+<p>The following directory layout indicates with a * the files that the student is responsible for modifying. Instructions for what is required are present as comments in each file.</p>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <figure class="figure">
+    <img src="img/screen-shot-2019-07-21-at-7.00.34-pm.png" alt="" class="img img-fluid">
+    <figcaption class="figure-caption">
+      
+    </figcaption>
+  </figure>
+</div>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h2 id="running-and-testing">Running and Testing</h2>
+<h3 id="running-in-the-classroom-project-workspace-recommended">Running in the Classroom Project Workspace (recommended)</h3>
+<p>The Project Workspace environment is already preconfigured with all of the services you need to complete your project. No additional configuration is required.</p>
+<p>The following services are available in the classroom workspace environment:</p>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <figure class="figure">
+    <img src="img/screen-shot-2019-09-05-at-11.47.37-am.png" alt="" class="img img-fluid">
+    <figcaption class="figure-caption">
+      
+    </figcaption>
+  </figure>
+</div>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h3 id="running-on-your-computer">Running on Your Computer</h3>
+<p><strong>NOTE: You must allocate <em>at least</em> 4gb RAM to your Docker-Compose environment to run locally.</strong></p>
+<p>To run the simulation, you must first start up the Kafka ecosystem on your machine utilizing Docker-Compose.</p>
+<p><code>%&gt; docker-compose up</code></p>
+<p>Docker-Compose will take 3-5 minutes to start, depending on your hardware. Please be patient and wait for the Docker-Compose logs to slow down or stop before beginning the simulation.</p>
+<p>Once Docker-Compose is ready, the following services will be available on your local machine:</p>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <figure class="figure">
+    <img src="img/screen-shot-2019-09-05-at-11.50.46-am.png" alt="" class="img img-fluid">
+    <figcaption class="figure-caption">
+      
+    </figcaption>
+  </figure>
+</div>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <p>Note that to access these services from your own machine, you will always use the <code>Host URL</code> column.</p>
+<p>When configuring services that run within Docker-Compose, like Kafka Connect, <strong>you must use the <code>Docker URL</code></strong>. When you configure the JDBC Source Kafka Connector, for example, you will want to use the value from the <code>Docker URL</code> column.</p>
+<h3 id="running-the-simulation">Running the Simulation</h3>
+<p>There are two pieces to the simulation, the <code>producer</code> and <code>consumer</code>. As you develop each piece of the code, it is recommended that you only run one piece of the project at a time.</p>
+<p>However, when you are ready to verify the end-to-end system prior to submission, it is critical that you open a terminal window for each piece and run them at the same time. <strong>If you do not run both the <code>producer</code> and <code>consumer</code> at the same time you will not be able to successfully complete the project.</strong></p>
+<p><strong>To run the <code>producer</code>:</strong></p>
+<p>If using Project Workspace:</p>
+<ol>
+<li><code>cd producers</code></li>
+<li><code>python simulation.py</code></li>
+</ol>
+<p>If using your computer:</p>
+<ol>
+<li><code>cd producers</code></li>
+<li><code>virtualenv venv</code></li>
+<li><code>. venv/bin/activate</code></li>
+<li><code>pip install -r requirements.txt</code></li>
+<li><code>python simulation.py</code></li>
+</ol>
+<p>Once the simulation is running, you may hit <code>Ctrl+C</code> at any time to exit.</p>
+<p><strong>To run the Faust Stream Processing Application:</strong></p>
+<p>If using Project Workspace:</p>
+<ol>
+<li><code>cd consumers</code></li>
+<li><code>faust -A faust_stream worker -l info</code></li>
+</ol>
+<p>If using your computer:</p>
+<ol>
+<li><code>cd consumers</code></li>
+<li><code>virtualenv venv</code></li>
+<li><code>. venv/bin/activate</code></li>
+<li><code>pip install -r requirements.txt</code></li>
+<li><code>faust -A faust_stream worker -l info</code></li>
+</ol>
+<p><strong>To run the KSQL Creation Script:</strong></p>
+<p>If using Project Workspace:</p>
+<ol>
+<li><code>cd consumers</code></li>
+<li><code>python ksql.py</code></li>
+</ol>
+<p>If using your computer:</p>
+<ol>
+<li><code>cd consumers</code></li>
+<li><code>virtualenv venv</code></li>
+<li><code>. venv/bin/activate</code></li>
+<li><code>pip install -r requirements.txt</code></li>
+<li><code>python ksql.py</code></li>
+</ol>
+<p><strong>To run the <code>consumer</code>:</strong>    (<strong>NOTE</strong>: Do not run the consumer until you have reached Step 6!)</p>
+<p>If using Project Workspace:</p>
+<ol>
+<li><code>cd consumers</code></li>
+<li><code>python server.py</code></li>
+</ol>
+<p>If using your computer:</p>
+<ol>
+<li><code>cd consumers</code></li>
+<li><code>virtualenv venv</code></li>
+<li><code>. venv/bin/activate</code></li>
+<li><code>pip install -r requirements.txt</code></li>
+<li><code>python server.py</code></li>
+</ol>
+<p>Once the server is running, you may hit <code>Ctrl+C</code> at any time to exit.</p>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h2 id="project-submission">Project Submission</h2>
+<p>Please check your work against the project <a href="https://review.udacity.com/#!/rubrics/2660/view" rel="noopener noreferrer" target="_blank">rubric</a> before you submit it. Your reviewer will be using this rubric to assess your project work.</p>
+<p>The only thing you need to submit for this project is your code. To do this, you have two options:</p>
+<ul>
+<li>You may submit a link to your GitHub repo on the project page: "Optimizing Public Transportation."</li>
+<li>Or for those of you developing your code in the classroom workspace, you may submit your workspace code directly. </li>
+</ul>
+</div>
+
+</div>
+<div class="divider"></div>
+          </div>
+
+          <div class="col-12">
+            <p class="text-right">
+              <a href="03. Project Walkthrough.html" class="btn btn-outline-primary mt-4" role="button">Next Concept</a>
+            </p>
+          </div>
+        </div>
+      </main>
+
+      <footer class="footer">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <p class="text-center">
+                <a href="https://us-udacity.github.io/" target="_blank">【udacity2.0 】If you need more courses, please add wechat：udacity6</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </div>
+
+
+  <script src="../assets/js/jquery-3.3.1.min.js"></script>
+  <script src="../assets/js/plyr.polyfilled.min.js"></script>
+  <script src="../assets/js/bootstrap.min.js"></script>
+  <script src="../assets/js/jquery.mCustomScrollbar.concat.min.js"></script>
+  <script src="../assets/js/katex.min.js"></script>
+  <script>
+    // Initialize Plyr video players
+    const players = Array.from(document.querySelectorAll('video')).map(p => new Plyr(p));
+
+    // render math equations
+    let elMath = document.getElementsByClassName('mathquill');
+    for (let i = 0, len = elMath.length; i < len; i += 1) {
+      const el = elMath[i];
+
+      katex.render(el.textContent, el, {
+        throwOnError: false
+      });
+    }
+
+    // this hack will make sure Bootstrap tabs work when using Handlebars
+    if ($('#question-tabs').length && $('#user-answer-tabs').length) {
+      $("#question-tabs a.nav-link").on('click', function () {
+        $("#question-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+      $("#user-answer-tabs a.nav-link").on('click', function () {
+        $("#user-answer-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    } else {
+      $("a.nav-link").on('click', function () {
+        $(".tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    }
+
+    // side bar events
+    $(document).ready(function () {
+      $("#sidebar").mCustomScrollbar({
+        theme: "minimal"
+      });
+
+      $('#sidebarCollapse').on('click', function () {
+        $('#sidebar, #content').toggleClass('active');
+        $('.collapse.in').toggleClass('in');
+        $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+      });
+
+      // scroll to first video on page loading
+      if ($('video').length) {
+        $('html,body').animate({ scrollTop: $('div.plyr').prev().offset().top});
+      }
+
+      // auto play first video: this may not work with chrome/safari due to autoplay policy
+      if (players && players.length > 0) {
+        players[0].play();
+      }
+
+      // scroll sidebar to current concept
+      const currentInSideBar = $( "ul.sidebar-list.components li a:contains('02. Project Directions')" )
+      currentInSideBar.css( "text-decoration", "underline" );
+      $("#sidebar").mCustomScrollbar('scrollTo', currentInSideBar);
+    });
+  </script>
+</body>
+
+</html>

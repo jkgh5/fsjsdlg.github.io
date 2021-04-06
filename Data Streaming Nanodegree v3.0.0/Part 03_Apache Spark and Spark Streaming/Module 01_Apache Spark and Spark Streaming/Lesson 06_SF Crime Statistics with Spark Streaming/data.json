@@ -1,0 +1,248 @@
+{
+  "data": {
+    "lesson": {
+      "id": 922176,
+      "key": "9a62b3fd-3586-47a1-a1c9-5c727d4ec3b4",
+      "title": "SF Crime Statistics with Spark Streaming",
+      "semantic_type": "Lesson",
+      "is_public": true,
+      "version": "1.0.0",
+      "locale": "en-us",
+      "summary": "In this project, you will analyze a real-world dataset of the SF Crime Rate, extracted from kaggle, to provide statistical analysis using Apache Spark Structured Streaming.",
+      "lesson_type": "Classroom",
+      "display_workspace_project_only": false,
+      "resources": {
+        "files": [
+          {
+            "name": "SF Crime Data project files",
+            "uri": "https://video.udacity-data.com/topher/2019/November/5dd84c2d_sf-crime-data-project-files/sf-crime-data-project-files.zip"
+          }
+        ],
+        "google_plus_link": null,
+        "career_resource_center_link": null,
+        "coaching_appointments_link": null,
+        "office_hours_link": null,
+        "aws_provisioning_link": null
+      },
+      "project": {
+        "key": "09b2469b-e47c-40ca-9077-f4d7c84d5265",
+        "version": "1.0.0",
+        "locale": "en-us",
+        "duration": 40320,
+        "semantic_type": "Project",
+        "title": "SF Crime Statistics with Spark Streaming",
+        "description": "Congratulations on putting in the hard work to complete this project! Now you can look forward to receiving valuable feedback from a project reviewer.\n\nBefore you submit your project, please check your work against the project [rubric](https://review.udacity.com/#!/rubrics/2676/view). Your reviewer will be using this rubric to assess your project work.\n\nHere is what you need to submit for this project:\n- A link to your GitHub repo.\n- A zip file containing the three screenshots specified in steps 1 and 2 of the project directions\n\nPlease make sure you've included these three files in your GitHub repo:\n- `producer_server.py`\n- `consumer_server.py`\n- `data_stream.py`\n\nThe README.md doc in your GitHub repo should also contain your responses to the two questions in step 3 of the project directions.",
+        "is_public": true,
+        "summary": null,
+        "forum_path": "",
+        "rubric_id": "2676",
+        "terminal_project_id": null,
+        "resources": null,
+        "image": null
+      },
+      "lab": null,
+      "concepts": [
+        {
+          "id": 909596,
+          "key": "b8e5d5b1-6752-48be-a8de-a6ea4a63cfab",
+          "title": "Project Overview",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "b8e5d5b1-6752-48be-a8de-a6ea4a63cfab",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 909598,
+              "key": "bf195dbf-cc2d-4148-9673-67ef45893ef1",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Project Overview\nIn this project, you will be provided with a real-world dataset, extracted from Kaggle, on San Francisco crime incidents, and you will provide statistical analyses of the data using Apache Spark Structured Streaming. You will draw on the skills and knowledge you've learned in this course to create a Kafka server to produce data, and ingest data through Spark Structured Streaming.\n\nYou can try to answer the following questions with the dataset:\n* What are the top types of crimes in San Fransisco?\n* What is the crime density by location?",
+              "instructor_notes": ""
+            },
+            {
+              "id": 909600,
+              "key": "96e89fdd-766d-45fb-a3be-ddbc49c60c84",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Development Environment\nYou may choose to create your project in the workspace we provide here, or if you wish to develop your project locally, you will need to set up your environment properly as described below:\n\n- Spark 2.4.3\n- Scala 2.11.x\n- Java 1.8.x\n- Kafka build with Scala 2.11.x\n- Python 3.6.x or 3.7.x\n\n#### Environment Setup (Only Necessary if You Want to Work on the Project Locally on Your Own Machine)\n##### For Macs or Linux:\n- Download Spark from https://spark.apache.org/downloads.html. Choose \"Prebuilt for Apache Hadoop 2.7 and later.\"\n- Unpack Spark in one of your folders (I usually put all my dev requirements in /home/users/user/dev).\n- Download binary for Kafka from this location https://kafka.apache.org/downloads, with Scala 2.11, version 2.3.0. Unzip in your local directory where you unzipped your Spark binary as well. Exploring the Kafka folder, you’ll see the scripts to execute in `bin` folders, and config files under `config` folder. You’ll need to modify `zookeeper.properties` and `server.properties`.\n- Download Scala from the official site, or for Mac users, you can also use `brew install scala`, but make sure you download version 2.11.x.\n- Run below to verify correct versions:\n```\njava -version\nscala -version\n```\n- Make sure your ~/.bash_profile looks like below (might be different depending on your directory):\n```\nexport SPARK_HOME=/Users/dev/spark-2.4.3-bin-hadoop2.7\nexport JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_181.jdk/Contents/Home\nexport SCALA_HOME=/usr/local/scala/\nexport PATH=$JAVA_HOME/bin:$SPARK_HOME/bin:$SCALA_HOME/bin:$PATH\n```\n\n##### For Windows:\nPlease follow the directions found in this helpful StackOverflow post: https://stackoverflow.com/questions/25481325/how-to-set-up-spark-on-windows\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 909601,
+              "key": "0a71ff93-a5d2-47d3-b677-ec6c5d6ccec3",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2019/August/5d5198a2_screen-shot-2019-08-12-at-9.49.15-am/screen-shot-2019-08-12-at-9.49.15-am.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/0a71ff93-a5d2-47d3-b677-ec6c5d6ccec3",
+              "caption": "SF Crime Data",
+              "alt": "",
+              "width": 452,
+              "height": 447,
+              "instructor_notes": null
+            }
+          ]
+        },
+        {
+          "id": 909597,
+          "key": "0165e25d-9da1-4c92-a3cb-ffc56c5eef4f",
+          "title": "Project Directions",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "0165e25d-9da1-4c92-a3cb-ffc56c5eef4f",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 922159,
+              "key": "d66a4642-6c5a-4f71-8047-55413af3d3c0",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Starter Code\nYou can find three Python files that are starter code, the project dataset, and some other necessary resources in a zip file called \"SF Crime Data Project Files\" in the Resources tab in the left sidebar of your classroom: \n- `producer_server.py`\n- `kafka_server.py`\n- `data_stream.py`\n- `police-department-calls-for-service.json`\n- `radio_code.json`\n- `start.sh`\n- `requirements.txt`\n\nThese files are also included in the Project Workspace.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 953056,
+              "key": "9dd77a64-5a1e-417c-8392-3a6fffc6a2cb",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Files You Need to Edit in Your Project Work\nThese starter code files should be edited:\n- `producer_server.py`\n- `data_stream.py`\n- `kafka_server.py`\n\nThe following file should be created separately for you to check if your `kafka_server.py` is working properly:\n- `consumer_server.py`\n\n## Create a GitHub Repository \nCreate a new repo that will contain all these files for your project. You will submit a link to this repo as a key part of your project submission. If you complete the project in the classroom workspace here, just download the files you worked on and add them to your repo.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 909602,
+              "key": "fa4712ad-7b56-46e9-8e60-2a04bae2dafb",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Beginning the Project\nThis project requires creating topics, starting Zookeeper and Kafka servers, and your Kafka bootstrap server. You’ll need to choose a port number (e.g., 9092, 9093..) for your Kafka topic, and come up with a Kafka topic name and modify the zookeeper.properties and server.properties appropriately.\n\n#### Local Environment\n- Install requirements using `./start.sh` if you use conda for Python. If you use pip rather than conda, then use `pip install -r requirements.txt`.\n\n- Use the commands below to start the Zookeeper and Kafka servers. You can find the bin and config folder in the Kafka binary that you have downloaded and unzipped.\n```\nbin/zookeeper-server-start.sh config/zookeeper.properties\nbin/kafka-server-start.sh config/server.properties\n```\n- You can start the bootstrap server using this Python command: `python producer_server.py`.\n\n#### Workspace Environment\n- Modify the zookeeper.properties and producer.properties given to suit your topic and port number of your choice. Start up these servers in the terminal using the commands:\n```\n/usr/bin/zookeeper-server-start zookeeper.properties\n/usr/bin/kafka-server-start producer.properties\n```\n- You’ll need to open up two terminal tabs to execute each command.\n\n- Install requirements using the provided `./start.sh` script. **This needs to be done every time you re-open the workspace, or anytime after you've refreshed, or woken up, or reset data, or used the \"Get New Content\" button in this workspace.**\n\n- In the terminal, to install other packages that you think are necessary to complete the project, use `conda install <package_name>`. You may need to reinstall these packages every time you re-open the workspace, or anytime after you've refreshed, or woken up, or reset data, or used the \"Get New Content\" button in this workspace.\n\n\n\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 909603,
+              "key": "ffca4c63-97ea-4c58-a67b-98a9808ca46b",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Step 1\n- The first step is to build a simple Kafka server. \n- Complete the code for the server in `producer_server.py` and `kafka_server.py`.\n\n#### Local Environment\n-  To see if you correctly implemented the server, use the command `bin/kafka-console-consumer.sh --bootstrap-server localhost:<your-port-number> --topic <your-topic-name> --from-beginning` to see your output.\n\n#### Workspace Environment\n\n- To start kafka-consumer-console, use the command `/usr/bin/kafka-consumer-console`.\n\n**Take a screenshot of your kafka-consumer-console output. You will need to include this screenshot as part of your project submission.**\n\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 909604,
+              "key": "8ed78127-8121-4317-aa11-eaece5003c30",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2019/August/5d519bfc_screen-shot-2019-08-12-at-10.03.41-am/screen-shot-2019-08-12-at-10.03.41-am.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/8ed78127-8121-4317-aa11-eaece5003c30",
+              "caption": "**Sample Kafka Consumer Console Output**",
+              "alt": "",
+              "width": 441,
+              "height": 207,
+              "instructor_notes": null
+            },
+            {
+              "id": 909605,
+              "key": "9bdcf0b5-b295-4475-a80d-a04bea04e741",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Step 2\n- Apache Spark already has an integration with Kafka brokers, so we would not normally need a separate Kafka consumer. However, we are going to ask you to create one anyway. Why? We'd like you to create the consumer to demonstrate your understanding of creating a complete Kafka Module (producer and consumer) from scratch. In production, you might have to create a dummy producer or consumer to just test out your theory and this will be great practice for that.\n- Implement all the TODO items in `data_stream.py`. You may need to explore the dataset beforehand using a Jupyter Notebook.\n- Do a spark-submit using this command: `spark-submit --packages org.apache.spark:spark-sql-kafka-0-10_2.11:2.3.4 --master local[*] data_stream.py`.\n- Take a screenshot of your progress reporter after executing a Spark job. **You will need to include this screenshot as part of your project submission.**\n- Take a screenshot of the Spark Streaming UI as the streaming continues. **You will need to include this screenshot as part of your project submission.**",
+              "instructor_notes": ""
+            },
+            {
+              "id": 956983,
+              "key": "afd7ea67-e6d4-4ba0-b088-29b25d200e2f",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Step 3\nWrite the answers to these questions in the README.md doc of your GitHub repo:\n\n1. How did changing values on the SparkSession property parameters affect the throughput and latency of the data?\n \n2. What were the 2-3 most efficient SparkSession property key/value pairs? Through testing multiple variations on values, how can you tell these were the most optimal?\n\t\t\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 917022,
+              "key": "c2ba5c33-8c2c-4daa-9e4e-fcf9aa558485",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Project Submission\nYou will submit a link to your GitHub repo, with the files you've created: `producer_server.py`, `kafka_server.py`, `data_stream.py`, and `consumer_server.py`. The README.md doc in your GitHub repo should contain your responses to the two questions from Step 3.\n\nYour project submission should also include a zip file containing the three screenshots you've taken.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 909728,
+          "key": "6890495e-136d-4047-a174-d810233ec6ff",
+          "title": "Project Workspace",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "6890495e-136d-4047-a174-d810233ec6ff",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 922047,
+              "key": "0742f03e-a248-4449-9bec-0e257369ca87",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "r899655c909728xJUPYTERLk0olu9jb",
+              "pool_id": "jupyterlabpython37",
+              "view_id": "jupyter-lab-d7cch",
+              "gpu_capable": false,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "disk": null,
+                    "port": 3000,
+                    "ports": [],
+                    "pageEnd": "",
+                    "pageStart": "",
+                    "allowSubmit": false,
+                    "defaultPath": "/",
+                    "actionButtonText": "preview"
+                  },
+                  "kind": "jupyter-lab"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "_deprecated": [
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "starter_files",
+      "reason": "prefer master_archive_id"
+    }
+  ]
+}

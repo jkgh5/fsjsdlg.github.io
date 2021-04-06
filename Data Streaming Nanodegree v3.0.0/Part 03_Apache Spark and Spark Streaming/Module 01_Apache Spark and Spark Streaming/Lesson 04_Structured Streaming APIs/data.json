@@ -1,0 +1,1274 @@
+{
+  "data": {
+    "lesson": {
+      "id": 922167,
+      "key": "6cd0369e-32ae-42ab-aa26-550e66a4a986",
+      "title": "Structured Streaming APIs",
+      "semantic_type": "Lesson",
+      "is_public": true,
+      "version": "1.0.0",
+      "locale": "en-us",
+      "summary": "In this lesson, we’ll go over commonly used functions in RDD/DataFrame/Dataset. We’ll continue to learn about Spark Streaming APIs and how you can use them to solve real-time analytic problems.",
+      "lesson_type": "Classroom",
+      "display_workspace_project_only": false,
+      "resources": {
+        "files": [
+          {
+            "name": "Videos Zip File",
+            "uri": "https://zips.udacity-data.com/6cd0369e-32ae-42ab-aa26-550e66a4a986/922167/1574703173098/Structured+Streaming+APIs+Videos.zip"
+          },
+          {
+            "name": "Transcripts Zip File",
+            "uri": "https://zips.udacity-data.com/6cd0369e-32ae-42ab-aa26-550e66a4a986/922167/1574703168639/Structured+Streaming+APIs+Subtitles.zip"
+          }
+        ],
+        "google_plus_link": null,
+        "career_resource_center_link": null,
+        "coaching_appointments_link": null,
+        "office_hours_link": null,
+        "aws_provisioning_link": null
+      },
+      "project": null,
+      "lab": null,
+      "concepts": [
+        {
+          "id": 932010,
+          "key": "6e48101f-c666-4114-b918-04b6af4a117f",
+          "title": "Lesson Overview",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "6e48101f-c666-4114-b918-04b6af4a117f",
+            "completed_at": "2021-01-30T14:52:02.287Z",
+            "last_viewed_at": "2021-01-30T14:52:02.053Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 931971,
+              "key": "efe3b83e-ce9d-4d6e-8f6e-8bbb0aa0a285",
+              "title": "ND029 C03 L02 01 Lesson Overview",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "XlNhUxNN13o",
+                "china_cdn_id": "XlNhUxNN13o.mp4"
+              }
+            },
+            {
+              "id": 931973,
+              "key": "66700abc-46cf-405a-b700-12bacea13536",
+              "title": "Lesson Overview",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Lesson Overview\nWe’ll be reviewing action and transformation functions in RDDs/DataFrames/Datasets, and how they affect DAGs and lineage graphs. We’ll also take a look at how to use query plans to best optimize your queries. Lastly, we’ll learn how to join and aggregate on streaming datasets. We’ll use built-in-sinks to view the results of these joins and aggregations.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 931983,
+              "key": "324a2b83-f0f2-44d4-b11f-9a6e6c64d23c",
+              "title": "Glossary for Lesson 3",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Glossary of Key Terms You Will Learn in this Lesson\n- **Lazy evaluation**: An evaluation method for expressions in which expressions are not evaluated until their value is needed.\n- **Action**: A type of function for RDDs/DataFrames/Datasets where the values are sent to the driver. A new RDD/DataFrame/Dataset is not formed.\n- **Transformation**: A lazily evaluated function where a new RDD/DataFrame/Dataset is formed. There are narrow and wide types of transformations - narrow transformations occur within the same partition, whereas wide transformations may occur across all partitions.\n- **Sink**: Place for streaming writes (output).",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 932020,
+          "key": "26640360-51fb-47f1-ab54-a9c238dca8fb",
+          "title": "RDD/DataFrame Functions",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "26640360-51fb-47f1-ab54-a9c238dca8fb",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 931977,
+              "key": "cbed5cb3-a697-4be3-a510-84f369479c85",
+              "title": "RDD/Dataframe functions",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Action and Transformation Functions in RDDs and DataFrames\n\nThere are two types of Apache Spark RDD operations - transformations and actions. Transformations produce a new RDD from an existing RDD. Actions trigger evaluation of expressions and send data back to the driver.\n\nTransformations build an RDD lineage. For example, this code\n`rdd.map().filter().join().repartition()`\nbuilds a lineage of map -> filter -> join -> repartition. You can see this lineage through the `.explain` operation or through the Spark UI.\n\nThe resulting RDD from a transformation is always different from its parent RDD. It can be smaller or bigger or the same size (e.g. map).\n\nTransformations also have two types of operations - narrow and wide. Narrow is map-like, and wide is reduce-like.\n\nWhen the action is triggered, the computation is sent back to the driver. You may persist an RDD in memory using the `persist` method if there are many transformations and actions applied, so that Spark keeps the RDD around the cluster for faster access the next time.\n",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 932017,
+          "key": "c353735a-b90f-4007-9478-1695aa94d20a",
+          "title": "Lazy Evaluation",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "c353735a-b90f-4007-9478-1695aa94d20a",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 951295,
+              "key": "20a1bc29-27d1-4584-bbe4-c75634ac0675",
+              "title": "Lazy Evaluation",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Lazy Evaluation\n\nBefore we dive further into actions and transformations we need to talk about lazy evaluation. Spark utilizes lazy evaluation to evaluate the expressions on RDD/DataFrame. It's also one of the key features in Scala, in which Spark is built.\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 931995,
+              "key": "5ec75786-941c-4fc1-9b5d-73e4debda735",
+              "title": "ND029 C2 L2 01 Lazy Evaluation",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "LRUkXChjs1M",
+                "china_cdn_id": "LRUkXChjs1M.mp4"
+              }
+            },
+            {
+              "id": 931968,
+              "key": "dbcf89e9-79d0-4cf9-9beb-32d816a06525",
+              "title": "Recap on lazy evaluation",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Lazy Evaluation - Key Points\n\nLazy evaluation means an expression is not evaluated until a certain condition is met. In Spark, this is when an action triggers the DAG. Transformations are lazy and do not execute immediately. Spark adds them to a DAG of computation, and only when the driver requests some data (with an action function) does this DAG actually get executed.\n\nThese are some advantages of lazy evaluation:\n- Users can organize their Apache Spark program into smaller operations. It reduces the number of passes on data by grouping operations.\n- Saves resources by not executing every step. It saves the network trips between driver and cluster. This also saves time.\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 931985,
+              "key": "91c5a8d9-9346-4e1e-8f79-aa47a1a8bed2",
+              "title": "Free Response:",
+              "semantic_type": "ReflectAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "91c5a8d9-9346-4e1e-8f79-aa47a1a8bed2",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "title": "Reflect",
+                "semantic_type": "TextQuestion",
+                "evaluation_id": null,
+                "text": "Explain in detail how lazy evaluation is advantageous in Spark.\nWhat are some use cases that you can think of to take best advantage of lazy evaluation in Spark?"
+              },
+              "answer": {
+                "text": "Thanks for your response. We can’t check your answer, but here are a couple of cases I’ve thought of where you could put lazy evaluation to work:\n- When you know your Spark job has many actions. This means that your Spark job will already have tons of network and machine shuffles due to existing action functions and this will materialize your intermediate datasets every time you execute action functions. Evidently, this will spike your GC (garbage collection) cost. In this case, you want to minimize network and machine shuffles using as much transformation functions as possible to reduce network and machine shuffles.\n- Let’s say you have two tables - one table has the information about the 50 states in the US, like state in two letters (NY, CA, ..) and all the state’s zip codes, and the other table has all the residents in the US, with a column of which zip code they live in. Say you want to join two tables, and query only the people in California. In SQL, you would have to join them together, and then filter on “state = ‘CA’”. But in Spark, having lazy evaluation helps - since that one table is relatively small, Spark can switch the order of operations so that the smaller subset of dataframes is filtered first and then joined.",
+                "video": null
+              }
+            }
+          ]
+        },
+        {
+          "id": 932008,
+          "key": "94babb6f-f8ee-40fc-9b29-2e2628eefe60",
+          "title": "Transformations",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "94babb6f-f8ee-40fc-9b29-2e2628eefe60",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 951293,
+              "key": "8098d8ab-85e5-4997-af60-5a0da783fb40",
+              "title": "Transformations",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Transformations\nTransformations are one of the two types of Apache Spark RDD operations. Let’s look at a demonstration of how they work.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 931978,
+              "key": "33ae8783-6ffa-4fdf-a500-7293a11d7372",
+              "title": "ND029 C2 L2 02 Transformation Demo",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "L1NbK1xorvE",
+                "china_cdn_id": "L1NbK1xorvE.mp4"
+              }
+            },
+            {
+              "id": 951296,
+              "key": "6e9cb9bc-91e5-4b75-a2cf-62313aa89a72",
+              "title": "Transformations - Key Points",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Transformations - Key Points\n- Transformations in Spark build RDD lineage.\n- Transformations are expressions that are lazily evaluated and can be chained together. Then, as we discussed in the previous lesson, Spark Catalyst will use these chains to define stages, based on its optimization algorithm.\n- There are two types of transformations - wide and narrow. Narrow transformations have the parent RDDs in the same partition, whereas parent RDDs of the wide transformations may not be in the same partition.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 951523,
+              "key": "fdde6326-7cec-42af-83cf-cdfcbef6460a",
+              "title": "Exploring Transformations with Spark and Python",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Exploring Transformations with Spark and Python\nPlease complete the TODO items in the code below, then execute it in the terminal using the command `spark-submit example_code_transformation.py`.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 951469,
+              "key": "7d887396-3820-40aa-88ff-ecee6d3cf2e2",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "r899655c932008xJUPYTERLn9dvjbag",
+              "pool_id": "jupyterlabpython37",
+              "view_id": "jupyter-lab-c74n5",
+              "gpu_capable": false,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "disk": null,
+                    "port": 3000,
+                    "ports": [],
+                    "videos": [],
+                    "pageEnd": "",
+                    "pageStart": "",
+                    "allowSubmit": false,
+                    "defaultPath": "/",
+                    "actionButtonText": ""
+                  },
+                  "kind": "jupyter-lab"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        },
+        {
+          "id": 932015,
+          "key": "feffd3c7-99e4-4d0e-aa19-869e340e48d8",
+          "title": "Actions",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "feffd3c7-99e4-4d0e-aa19-869e340e48d8",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 931967,
+              "key": "7bb2bc86-cda8-494b-8587-242f7c7a3e7d",
+              "title": "ND029 C2 L2 03 Action",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "Lb_kxAgQwx0",
+                "china_cdn_id": "Lb_kxAgQwx0.mp4"
+              }
+            },
+            {
+              "id": 951290,
+              "key": "d50c7bd0-6bba-4213-8c78-c5a541c9bef5",
+              "title": "Actions - Key Points",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Actions - Key Points\n\nActions are operations that produce non-RDD values. Actions send the values from the executors to be stored to the driver. Since the value is sent back to the driver, the final value must fit into the driver JVM. Unlike transformations, which are lazily evaluated, actions evaluate the expression on RDD.\n\nA few action functions that are used often are:\n- save()\n- collect()\n- count()\n- reduce()\n- getNumPartitions()\n- aggregate()",
+              "instructor_notes": ""
+            },
+            {
+              "id": 931969,
+              "key": "4c37ffc5-6eb3-41dd-bd7c-f39c86d4708c",
+              "title": "Action/transformation functions architecture",
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2019/October/5d9f8a8e_screen-shot-2019-10-10-at-12.46.02-pm/screen-shot-2019-10-10-at-12.46.02-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/4c37ffc5-6eb3-41dd-bd7c-f39c86d4708c",
+              "caption": "**Some Commonly Used Transformation and Action Functions**",
+              "alt": "Some Commonly Used Transformation and Action Functions",
+              "width": 522,
+              "height": 302,
+              "instructor_notes": null
+            },
+            {
+              "id": 951291,
+              "key": "22e0c221-029a-4e94-a5f1-518290a9c0d5",
+              "title": "What is an action and how does it produce data in Spark?",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "22e0c221-029a-4e94-a5f1-518290a9c0d5",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "What is an action and how does it produce data in Spark?",
+                "answers": [
+                  {
+                    "id": "rbk1",
+                    "text": "An action is one of the ways of sending data from the driver to the executor, and generates a new Resilient Distributed Dataset. They also trigger execution of accumulated lineage.",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "rbk2",
+                    "text": "An action is one of the ways of sending data from the executor to the driver. Actions return the final result of RDD computations to the driver. They also also trigger execution of accumulated lineage.",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "rbk3",
+                    "text": "An action is one of the ways of sending data from the executor to the driver, and generates a new Resilient Distributed Dataset.",
+                    "is_correct": false
+                  }
+                ]
+              }
+            },
+            {
+              "id": 931990,
+              "key": "e8f6f88d-1b19-4d42-97ae-de34d1dcd924",
+              "title": "Which of these are transformation functions?",
+              "semantic_type": "CheckboxQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "e8f6f88d-1b19-4d42-97ae-de34d1dcd924",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Which of these are transformation functions?",
+                "answers": [
+                  {
+                    "id": "rbk1",
+                    "text": "count()",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "rbk2",
+                    "text": "groupByKey()",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "rbk3",
+                    "text": "collect()",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "rbk4",
+                    "text": "mapPartitionWithIndex()",
+                    "is_correct": true
+                  }
+                ]
+              }
+            },
+            {
+              "id": 951292,
+              "key": "77bed197-9379-483c-92f6-97f55ead7382",
+              "title": "How can you identify if a function is an action vs transformation in your program?",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "77bed197-9379-483c-92f6-97f55ead7382",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "How can you identify if a function is an action or a transformation in your program?",
+                "answers": [
+                  {
+                    "id": "rbk1",
+                    "text": "Compare the output of each function and determine which produces a new RDD/DataFrame/Dataset.",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "rbk2",
+                    "text": "Compare each function and determine which function parallelizes your dataset.",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "rbk3",
+                    "text": "A function is a transformation when it sends the value to the driver.",
+                    "is_correct": false
+                  }
+                ]
+              }
+            },
+            {
+              "id": 957574,
+              "key": "a7345d97-3ab6-4547-93e2-cc8ad30f76f9",
+              "title": "Exercise: Actions",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Exercise: Actions\nPlease complete the TODO items in the code below, then execute it in the terminal using the command `spark-submit example_code_transformation.py`.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 957575,
+              "key": "c49aa527-f79e-418b-b51f-a0850053f8aa",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "r899655c932015xJUPYTERLkj3ds5ku",
+              "pool_id": "jupyterlab",
+              "view_id": "jupyter-lab-wf13n",
+              "gpu_capable": false,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "disk": null,
+                    "port": 3000,
+                    "ports": [],
+                    "videos": [],
+                    "pageEnd": "",
+                    "pageStart": "",
+                    "allowSubmit": false,
+                    "defaultPath": "/",
+                    "actionButtonText": ""
+                  },
+                  "kind": "jupyter-lab"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        },
+        {
+          "id": 932011,
+          "key": "6c6264cf-f67c-4507-bc22-412ad4dbf615",
+          "title": "Transformations in DAGs",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "6c6264cf-f67c-4507-bc22-412ad4dbf615",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 932001,
+              "key": "962b5f2b-7652-49ed-bf66-fb921bd6ccac",
+              "title": "ND029 C2 L2 04 Practice- Transformations In DAGs",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "i3vKzo0DBDc",
+                "china_cdn_id": "i3vKzo0DBDc.mp4"
+              }
+            },
+            {
+              "id": 952221,
+              "key": "73f54968-6269-47c3-b0b0-82d1e490930f",
+              "title": "Exploring Transformations",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Exercise: Exploring Transformations\nPlease complete the TODO items in the code below, then execute it in the terminal using the command `spark-submit <filename>.py`.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 951470,
+              "key": "9b112ba9-0e59-4792-83fd-b53617cb906e",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "r899655c932011xJUPYTERLb23g6np9",
+              "pool_id": "jupyterlabpython37",
+              "view_id": "jupyter-lab-is9gf",
+              "gpu_capable": false,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "disk": null,
+                    "port": 3000,
+                    "ports": [],
+                    "videos": [],
+                    "pageEnd": "",
+                    "pageStart": "",
+                    "allowSubmit": false,
+                    "defaultPath": "/",
+                    "actionButtonText": ""
+                  },
+                  "kind": "jupyter-lab"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        },
+        {
+          "id": 932019,
+          "key": "dd4bf956-8152-4dba-a637-c2b951e7d186",
+          "title": "Structured Streaming APIs",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "dd4bf956-8152-4dba-a637-c2b951e7d186",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 931966,
+              "key": "9e9c6e9b-5825-4202-a8fe-713d201ba449",
+              "title": "Commonly used APIs",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Commonly used APIs for Structured Streaming\n\nNext, we will explore commonly used APIs within Spark Structured Streaming.\n\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 931984,
+              "key": "73277f5d-8958-4682-b919-f6d96c49681c",
+              "title": "ND029 C2 L2 05 Join & Join Types",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "Ec2srSSqGzM",
+                "china_cdn_id": "Ec2srSSqGzM.mp4"
+              }
+            },
+            {
+              "id": 931970,
+              "key": "25626222-96b2-4f5d-bd75-a991a452027e",
+              "title": "Architecture diagram for joins",
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2019/October/5d9f8fce_screen-shot-2019-10-10-at-1.08.34-pm/screen-shot-2019-10-10-at-1.08.34-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/25626222-96b2-4f5d-bd75-a991a452027e",
+              "caption": "**Join Types Supported for Stream and Static Joins (‘x’ means supported)**",
+              "alt": "Join Types Supported for Stream and Static Joins (‘x’ means supported)",
+              "width": 1000,
+              "height": 420,
+              "instructor_notes": null
+            },
+            {
+              "id": 951524,
+              "key": "c3033393-9fc2-40ba-b189-ac60570983cf",
+              "title": "Exercise: JOINs",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Practice Exercise with JOINs\nPlease complete the TODO items in the code below, then execute it in the terminal using the command `spark-submit <filename>.py`.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 951471,
+              "key": "c15ef353-e018-4692-87fe-511b037211d9",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "r899655c932019xJUPYTERLbuzq9dqj",
+              "pool_id": "jupyterlabpython37",
+              "view_id": "jupyter-lab-63wke",
+              "gpu_capable": false,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "disk": null,
+                    "port": 3000,
+                    "ports": [],
+                    "videos": [],
+                    "pageEnd": "",
+                    "pageStart": "",
+                    "allowSubmit": false,
+                    "defaultPath": "/",
+                    "actionButtonText": ""
+                  },
+                  "kind": "jupyter-lab"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        },
+        {
+          "id": 932009,
+          "key": "e7e8e44d-8dbc-4c1c-9d61-099179d9190a",
+          "title": "Watermark",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "e7e8e44d-8dbc-4c1c-9d61-099179d9190a",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 931979,
+              "key": "473eb3f0-4642-499d-b99d-9dea712ce8cc",
+              "title": "ND029 C2 L2 06 Watermark",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "pddtS3NlJBo",
+                "china_cdn_id": "pddtS3NlJBo.mp4"
+              }
+            },
+            {
+              "id": 931974,
+              "key": "09744278-da6c-4e06-8720-32371c4a167e",
+              "title": "Watermark Architecture",
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2019/October/5d9f948b_screen-shot-2019-10-10-at-1.28.44-pm/screen-shot-2019-10-10-at-1.28.44-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/09744278-da6c-4e06-8720-32371c4a167e",
+              "caption": "**Example with Random Input Data Illustrating How Watermark Works**",
+              "alt": "Example with Random Input Data Illustrating How Watermark Works",
+              "width": 780,
+              "height": 874,
+              "instructor_notes": null
+            },
+            {
+              "id": 951475,
+              "key": "484aaaed-920a-47e0-8ca8-4b12f767aaa1",
+              "title": "Recap on Watermark, JOINS",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Recap on JOINs, Aggregation, and Watermark\nJOINs, Aggregation, and Watermark are all commonly used Structured Streaming APIs.\n\n- Types of JOINs\n\nIn streaming, we have to think about static vs. streaming DataFrames. Inner JOINs can be easily applied to static and streaming DataFrames, regardless of which one is the left or right table.\nOuter JOINs are much more difficult because we have to think about late arriving data, and to join on late arriving data, the results will be significantly inconsistent.\n\n- Aggregation vs. Stateful Aggregation\n\nYou can think of aggregation as a plain `sum()` or `count()` in a SQL query. Stateful aggregation involves intervals, which means aggregation over certain intervals. We apply the concept of watermark to achieve stateful aggregation.\n\n- Watermark\n\nWatermark addresses two main problems - dealing with late arriving data and stateful aggregation. Watermark decides which data can be dropped or included - this implies that the application doesn’t have to worry about deciding which data should be ingested in the pipeline, rather, watermark already acknowledges which data can be ingested. Also you can achieve stateful aggregation by setting watermark.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 931989,
+              "key": "ae0f0b0e-cac6-44f8-94a3-69b5738d0411",
+              "title": "JOINS-Watermark",
+              "semantic_type": "CheckboxQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "ae0f0b0e-cac6-44f8-94a3-69b5738d0411",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Which of these JOINs require Watermark? (may be more than one answer)",
+                "answers": [
+                  {
+                    "id": "rbk1",
+                    "text": "Static & Static Left Outer JOIN",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "rbk2",
+                    "text": "Stream & Stream Left Outer JOIN",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "rbk3",
+                    "text": "Stream & Static Right Outer JOIN",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "rbk4",
+                    "text": "Static & Stream Inner JOIN",
+                    "is_correct": false
+                  }
+                ]
+              }
+            },
+            {
+              "id": 951526,
+              "key": "10667de2-b1d3-4a73-bc7a-30acd9a04f8d",
+              "title": "Exercise: Watermarks",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Exercise: Practice with Watermark\nPlease complete the TODO items in the code below, then execute it in the terminal using the command `spark-submit <filename>.py`.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 951472,
+              "key": "ed03956b-317a-42b7-a07a-b3c60887de15",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "r899655c932009xJUPYTERL8kmus5dy",
+              "pool_id": "jupyterlabpython37",
+              "view_id": "jupyter-lab-ix67j",
+              "gpu_capable": false,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "disk": null,
+                    "port": 3000,
+                    "ports": [],
+                    "videos": [],
+                    "pageEnd": "",
+                    "pageStart": "",
+                    "allowSubmit": false,
+                    "defaultPath": "/",
+                    "actionButtonText": ""
+                  },
+                  "kind": "jupyter-lab"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        },
+        {
+          "id": 932016,
+          "key": "9adde7f6-94d5-4151-8c26-d5b445d90248",
+          "title": "Spark UI for Query Plans",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "9adde7f6-94d5-4151-8c26-d5b445d90248",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 931987,
+              "key": "d752738a-1e26-42d5-bd9b-e3d90f78d482",
+              "title": "Spark UI for Query Plan Heading",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Exploration of Query Plans on JOINs and Aggregations",
+              "instructor_notes": ""
+            },
+            {
+              "id": 931994,
+              "key": "cf5bf349-d334-4eab-9bef-1e4e23707652",
+              "title": "ND029 C2 L2 07 Join Query Plan",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "tymDus1TB04",
+                "china_cdn_id": "tymDus1TB04.mp4"
+              }
+            },
+            {
+              "id": 931980,
+              "key": "ca57b059-0273-4ed3-b847-8ab5bcd7b1a2",
+              "title": "join query plan Recap",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## JOIN Query Plans - Recap\n\nFor any query plan, you can apply `.explain()` at the end of the query to visualize the query plan. Unfortunately, this is only available in the Scala version and we’ll have to run this in the Spark-shell to visualize the query plan.\n- FileScan informs how the original file was scanned and loaded into the RDD. You can see the format of the file, the location of the file, and the column names (if appropriate).\n- Spark uses BroadcastHashJoin when the size of the data is below BroadcastJoinThreshold. In the demo, we’re using small sized data and thus we see that the JOIN query is using BroadcastHashJoin.\n- Project limits number of columns to those required by a union (or JOINs).",
+              "instructor_notes": ""
+            },
+            {
+              "id": 931986,
+              "key": "48e32abc-03a3-47aa-a539-11665e9bf230",
+              "title": "ND029 C2 L2 08 Aggregation Query Plan",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "VgVzHSlSw7M",
+                "china_cdn_id": "VgVzHSlSw7M.mp4"
+              }
+            },
+            {
+              "id": 931993,
+              "key": "2bf49fe8-4212-449d-8473-1a4392ee0289",
+              "title": "Query plan summary",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Aggregate Query Plans - Recap\n\nAggregate queries can also be viewed using the `.explain()` operator.\n\n- Spark uses `HashPartitioning` on rather smaller datasets (which is what we’re using). Hash partitioning is nothing more than a partitioner using Java’s Object.hashcode.\n- `HashAggregate` is used for aggregation with HashPartitioning. If a larger dataset is used, then `TungstenAggregate` is used to manage data outside the JVM to save some GC (garbage collection) overhead.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 932012,
+          "key": "c3522f3d-9707-4163-8014-ac2018c3d95f",
+          "title": "Output Sinks",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "c3522f3d-9707-4163-8014-ac2018c3d95f",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 931999,
+              "key": "2083b7fe-b8a1-4974-b3a8-c565aeb847e8",
+              "title": "What are Sinks?",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## What are Sinks?\n\nSpark Structured Streaming uses sinks to add the output of each batch to a destination.\n\nCurrently these are the following types of sinks supported:\n- File sinks\n- Kafka sinks\n- Foreach and foreachBatch sinks\n- Memory sinks\n- Console sinks",
+              "instructor_notes": ""
+            },
+            {
+              "id": 932005,
+              "key": "94dd4d8b-3565-4b93-a2d1-c1444ca548b7",
+              "title": "ND029 C2 L2 09 Built-In Output Sinks",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "K65gHcKGM8U",
+                "china_cdn_id": "K65gHcKGM8U.mp4"
+              }
+            },
+            {
+              "id": 931982,
+              "key": "a74e4769-983c-42b0-96f9-598b933dffab",
+              "title": "Built-in Output Sinks",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Modes for Using Built-in Output Sinks\nThere are a few modes for writing to output sinks:\n- Append - Only new rows are written to the output sink.\n- Complete - All the rows are written to the output sink. This mode is used with aggregations.\n- Update - Similar to complete, but only the updated rows will be written to the output sink.\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 951474,
+              "key": "83a4934f-0eba-4607-9f32-c0b9913f4462",
+              "title": "Which Types of Output Sinks are the Most Useful",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Which Types of Output Sinks are the Most Useful?\nNext let’s discuss which types of output sinks are the most useful.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 932002,
+              "key": "bf442122-6a0b-46b8-a22e-4611b87a869a",
+              "title": "ND029 C2 L2 10 Cases Where You Would Be Using Certain Output Sinks",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "gQuIRhhADss",
+                "china_cdn_id": "gQuIRhhADss.mp4"
+              }
+            },
+            {
+              "id": 932003,
+              "key": "a7d619dd-cc78-468e-a530-10ec94ed9c9d",
+              "title": "Explain in detail which output sink you'd use given a certain business model",
+              "semantic_type": "ReflectAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "a7d619dd-cc78-468e-a530-10ec94ed9c9d",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "title": "",
+                "semantic_type": "TextQuestion",
+                "evaluation_id": null,
+                "text": "Explain in detail which output sink you'd use given a certain business model:\nSuppose you have an application that requires streaming 24/7 in micro-batches, and the total count of events per day is about ~2 billion. How would you start setting applications and what kind of state management and sink that we learned could be applicable?"
+              },
+              "answer": {
+                "text": "Thanks for your response.\nBillions of records are pretty decent amount of data volume. We can start thinking about how much data is coming in per second or per minute (so 2B / 24*60 minutes of 2B / 24*60*60 seconds). There might be peak time of data ingestion depending on your business model, but we can assume the average rate. With these values calculated, now you may be able to gear your thoughts towards to think about what kind of state management and sink that we can use. Consider how many states we’ll need to manage - this will give you a better idea of when and how state management should occur. ",
+                "video": null
+              }
+            },
+            {
+              "id": 951525,
+              "key": "4dc3290c-62b8-4cbb-b6d8-86c9956f1e5f",
+              "title": "Exercise: Practice with Output Sinks",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Exercise: Practice with Output Sinks\nPlease complete the TODO items in the code below. You may execute the file in the terminal using the command `spark-submit <filename>.py`.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 951473,
+              "key": "87259060-2bd3-4f49-940a-e50c13d962ff",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "r899655c932012xJUPYTERL6unyw7a0",
+              "pool_id": "jupyterlabpython37",
+              "view_id": "jupyter-lab-0sx33",
+              "gpu_capable": false,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "disk": null,
+                    "port": 3000,
+                    "ports": [],
+                    "videos": [],
+                    "pageEnd": "",
+                    "pageStart": "",
+                    "allowSubmit": false,
+                    "defaultPath": "/",
+                    "actionButtonText": ""
+                  },
+                  "kind": "jupyter-lab"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        },
+        {
+          "id": 932014,
+          "key": "c338f3c1-9deb-497a-98e8-5e5c8ffa3557",
+          "title": "Checkpointing Data",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "c338f3c1-9deb-497a-98e8-5e5c8ffa3557",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 932004,
+              "key": "21229eb7-8c94-4f6e-ad0b-68a984d1d5f9",
+              "title": "Recap on state management",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## State Store Recap\n\nState management became important when we entered the streaming realm. You always want to save the metadata and data for the state for many purposes - like logging, metrics, metadata about your data, etc. \n\nStoring the location of your state also became important - where would you want to save these data so that you can retrieve them later?\n\nWe’ll begin looking at strategies of using checkpointing and proper state storage next.\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 951294,
+              "key": "0de10f6f-8112-49ca-908a-6f194b175c15",
+              "title": "State Management in DStream and Structured Streaming",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## State Management in DStream and Structured Streaming\n\nSince DStream is built on top of Spark RDD, we can operate transformation and action functions on DStream like we do on Spark RDD. Now that we're dealing with interval, another concept in transformation is introduced - stateless transformation and stateful transformation. We'll go over what is considered \"state\" in Spark Streaming in future lessons.\n\nStateless transformations are like map(), filter(), and reduceByKey(). As previously stated, each DStream is a continuous stream of RDDs. This type of transformation is applied to each RDD.\n\nStateful transformations track data across time. This means that the stateful transformation requires some shuffles between keys in key/value pair. The two main types of shuffles are windowed operations:\n- `updateStateByKey()` - Used to track state across events for each key. `updateStateByKey()` iterates over all incoming batches and affects performance when dealing with a large dataset. \n- `mapWithState()` - Only considers a single batch at a time and provides timeout mechanism.\n\nFurther optional reading on stateful transformations: https://databricks.com/blog/2016/02/01/faster-stateful-stream-processing-in-apache-spark-streaming.html",
+              "instructor_notes": ""
+            },
+            {
+              "id": 951479,
+              "key": "7a271d91-73d8-48d8-80e2-7ba24b9444d4",
+              "title": "Checkpointing",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Checkpointing",
+              "instructor_notes": ""
+            },
+            {
+              "id": 951684,
+              "key": "bba47d82-81bb-491d-bba0-157654b15dc9",
+              "title": "ND029 C2 L2 11 Checkpointing, And Stateful Vs Stateless",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "AOHwSg2mNwA",
+                "china_cdn_id": "AOHwSg2mNwA.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 951480,
+          "key": "05ea173b-7bed-4bc8-bb6c-e66e690b5e8e",
+          "title": "State Store and Checkpointing",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "05ea173b-7bed-4bc8-bb6c-e66e690b5e8e",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 932000,
+              "key": "0504e9c2-6cb2-42ab-86d2-4cbe2691dcf0",
+              "title": "ND029 C2 L2 12 Stateful Vs. Stateless",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "ss3qUGXsdUA",
+                "china_cdn_id": "ss3qUGXsdUA.mp4"
+              }
+            },
+            {
+              "id": 951685,
+              "key": "9526878a-7e37-46b2-a45e-9528ca66d189",
+              "title": "ND029 C2 L2 13 Need Of State Store",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "glFMM4qATbc",
+                "china_cdn_id": "glFMM4qATbc.mp4"
+              }
+            },
+            {
+              "id": 931996,
+              "key": "59146e9f-b3cc-437a-b910-76f29d516046",
+              "title": "When do you want to use checkpointing",
+              "semantic_type": "ReflectAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "59146e9f-b3cc-437a-b910-76f29d516046",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "title": "Reflect",
+                "semantic_type": "TextQuestion",
+                "evaluation_id": null,
+                "text": "In what situations would you want to use checkpointing?"
+              },
+              "answer": {
+                "text": "You always want to use checkpointing. It depends on which data store you want to use to checkpoint (probably not console because it’s volatile) but something stable so that you can query your checkpoint later.",
+                "video": null
+              }
+            },
+            {
+              "id": 931991,
+              "key": "fb07e11e-3694-414d-a5a2-0d49a8d18f29",
+              "title": "Recovery of state",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Recovery of State\n\nThe accumulating result of the state should be stored in a fault-tolerant state store of your choice.\n\nThe purpose of state store is to provide a reliable place in your services so that the application (or the developer) can read the intermediary result of stateful aggregations. Even in the case of driver or worker failures, Spark is able to recover the processing state at the point right before the failure. The state stored is supported by HDFS compatible file system. To guarantee recoverability, Spark recovers the two most recent versions. If batch number 10 fails, then the batch number 9 and 8 are both recovered.\n\nWe can implement the state store by implementing org.apache.spark.sql.execution.streaming.state.StateStore properties.\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 951466,
+              "key": "67474870-de0f-48bb-99aa-6b277b39b864",
+              "title": "Sample Code for Checkpointing",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Sample Code for Checkpointing\nWe are providing the code here rather than in a workspace, because `checkpoint` requires a HDFS-compatible file system but our classroom workspaces do not currently offer HDFS-compatible file systems.\n\n```\nfrom pyspark.sql import SparkSession\n\ndef checkpoint_exercise():\n    \"\"\"\n    note that this code will not run in the classroom workspace because we don't have HDFS-compatible file system\n    :return:\n    \"\"\"\n    spark = SparkSession.builder \\\n            .master(\"local\") \\\n            .appName(\"Checkpoint Example\") \\\n            .getOrCreate()\n\n    df = spark.readStream \\\n        .format(\"rate\") \\\n        .option(\"rowsPerSecond\", 90000) \\\n        .option(\"rampUpTime\", 1) \\\n        .load()\n\n    rate_raw_data = df.selectExpr(\"CAST(timestamp AS STRING)\", \"CAST(value AS string)\")\n\n    stream_query = rate_raw_data.writeStream \\\n        .format(\"console\") \\\n        .queryName(\"Default\") \\\n        .option(\"checkpointLocation\", \"/tmp/checkpoint\") \\ #this checkpoint location requires HDFS-like filesystem\n        .start()\n\nif __name__ == \"__main__\":\n    checkpoint_exercise()\n```",
+              "instructor_notes": ""
+            },
+            {
+              "id": 952220,
+              "key": "2543a08d-0d9c-4fc1-aa4f-eca0d54c2057",
+              "title": "When should we use checkpointing?",
+              "semantic_type": "CheckboxQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "2543a08d-0d9c-4fc1-aa4f-eca0d54c2057",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "In which situations would you want to use checkpointing? (may be more than one answer)",
+                "answers": [
+                  {
+                    "id": "rbk1",
+                    "text": "When there are changes in the state",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "rbk2",
+                    "text": "When you persist, you should checkpoint always.",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "rbk3",
+                    "text": "When you want to save to hdfs",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "rbk4",
+                    "text": "Always checkpoint",
+                    "is_correct": false
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 932018,
+          "key": "66d0d80b-7dd1-45b4-b4e5-e31bf73ea98f",
+          "title": "Configurations/Tuning of Spark Clusters",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "66d0d80b-7dd1-45b4-b4e5-e31bf73ea98f",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 931997,
+              "key": "be15130d-3fa1-460e-b4cd-d6199324ff13",
+              "title": "ND029 C2 L2 14 Configurations-Tuning",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "5_ywJHETpOE",
+                "china_cdn_id": "5_ywJHETpOE.mp4"
+              }
+            },
+            {
+              "id": 931976,
+              "key": "fc08e917-8479-492b-a6af-084379a0b3dd",
+              "title": "Configurations/Tuning Recap",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Configurations/Tuning Key Points\n\nThere are a few ways to tune your Spark Structured Streaming application. But before that, go through your application and try to answer these questions.\n- Study the memory available for your application. Do you have enough memory to process your Spark job? If not, consider vertical scaling. If you do have enough memory but limited resources, consider horizontal scaling.\n- Study your query plans - do they make sense? Are you doing unnecessary shuffles/aggregations? Can you reduce your shuffles?\n- What’s the throughput/latency of your data?\n- How are you saving your data? Are you persisting your data to memory or to disk only, or to both memory and disk?\n- Are you breaking your lineage anywhere?\n\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 931975,
+              "key": "080c49b6-3938-40f1-8f22-e3ead4f0b0e7",
+              "title": "Configurations/Tuning Quiz",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "080c49b6-3938-40f1-8f22-e3ead4f0b0e7",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "What's the first thing to do when it comes to tuning your service?",
+                "answers": [
+                  {
+                    "id": "rbk1",
+                    "text": "You always want to vertically scale out your application in case of errors first.",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "rbk2",
+                    "text": "You always want to persist your data to disk for safety first.",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "rbk3",
+                    "text": "You always want to optimize your code first.",
+                    "is_correct": true
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 932013,
+          "key": "6f44a142-3145-4e99-9331-711089e3a0d5",
+          "title": "Lesson Recap",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "6f44a142-3145-4e99-9331-711089e3a0d5",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 932007,
+              "key": "95330ed4-64fe-4c26-9f3c-a40181af3579",
+              "title": "ND029 C03 L02 17 Lesson Recap",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "BOQdC4guaOs",
+                "china_cdn_id": "BOQdC4guaOs.mp4"
+              }
+            },
+            {
+              "id": 931998,
+              "key": "70cd96bc-6810-4cb3-a6b2-1714a7310341",
+              "title": "Lesson Summary",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Lesson Summary\nIn this lesson, we learned the basic but most useful operations that can be applied to Spark RDDs and DataFrames. We covered in depth how lazy evaluation is built into Spark’s transformations and how it can affect the overall performance of the application. \n\nWe have also started to learn operations that could be applied to Spark Streaming and Structured Streaming. These will be useful in the next lesson, and at your job. In the next lesson we will continue to learn about Structured Streaming, and what kind of methods we can use to fine tune the application to satisfy your business needs.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 951482,
+              "key": "cda76d68-b750-48dc-9570-b82272647b59",
+              "title": "Further Optional Reading",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Further Optional Research\nIn case you are interested in learning more about any of these topics, here are some good resources for you!\n- [Action/Transformations](https://medium.com/@aristo_alex/how-apache-sparks-transformations-and-action-works-ceb0d03b00d0)\n\n- [Stream-Stream JOINs](https://databricks.com/blog/2018/03/13/introducing-stream-stream-joins-in-apache-spark-2-3.html)\n\n- [Spark journal](https://cacm.acm.org/magazines/2016/11/209116-apache-spark/abstract)\n\n- [Spark SQL journal](https://cs.stanford.edu/~matei/papers/2015/sigmod_spark_sql.pdf)\n\n- [Catalyst Optimizer](https://databricks.com/blog/2015/04/13/deep-dive-into-spark-sqls-catalyst-optimizer.html)",
+              "instructor_notes": ""
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "_deprecated": [
+    {
+      "name": "starter_files",
+      "reason": "prefer master_archive_id"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "starter_files",
+      "reason": "prefer master_archive_id"
+    },
+    {
+      "name": "starter_files",
+      "reason": "prefer master_archive_id"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "starter_files",
+      "reason": "prefer master_archive_id"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "starter_files",
+      "reason": "prefer master_archive_id"
+    },
+    {
+      "name": "starter_files",
+      "reason": "prefer master_archive_id"
+    }
+  ]
+}
