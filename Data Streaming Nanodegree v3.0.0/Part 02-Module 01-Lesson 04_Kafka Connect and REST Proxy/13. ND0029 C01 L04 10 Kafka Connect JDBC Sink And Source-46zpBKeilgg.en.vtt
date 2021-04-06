@@ -1,0 +1,88 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:05.160
+The vast majority of Kafka users also have one or more SQL databases that
+
+00:00:05.160 --> 00:00:07.349
+contain data that could be useful to have in
+
+00:00:07.349 --> 00:00:10.619
+Kafka and downstream and stream processing applications.
+
+00:00:10.619 --> 00:00:13.469
+Java, which Kafka Connect is built-in has
+
+00:00:13.470 --> 00:00:16.740
+a standardized API for interfacing with SQL databases,
+
+00:00:16.739 --> 00:00:19.439
+called the Java Database Connector.
+
+00:00:19.440 --> 00:00:23.640
+This is almost always simply abbreviated to JDBC.
+
+00:00:23.640 --> 00:00:28.339
+[inaudible] built a Kafka connector on top of JDBC,
+
+00:00:28.339 --> 00:00:31.789
+which can pull data out of one or more tables in a SQL database,
+
+00:00:31.789 --> 00:00:34.250
+and place them into one or more Kafka topics,
+
+00:00:34.250 --> 00:00:38.030
+or pulled data from Kafka and place them into database tables.
+
+00:00:38.030 --> 00:00:40.804
+To reiterate, the JDBC connector supports
+
+00:00:40.804 --> 00:00:44.750
+source and sync integrations with SQL databases.
+
+00:00:44.750 --> 00:00:47.509
+A source integration is one in which Kafka Connect
+
+00:00:47.509 --> 00:00:50.524
+is pulling data from a data source into Kafka.
+
+00:00:50.524 --> 00:00:54.949
+A sync integration is one in which Kafka Connect is taking data from Kafka,
+
+00:00:54.950 --> 00:00:57.395
+and placing it into another data source.
+
+00:00:57.395 --> 00:01:00.440
+A common use case of the JDBC connector is to
+
+00:01:00.439 --> 00:01:03.820
+publish model updates and changes as events to Kafka.
+
+00:01:03.820 --> 00:01:06.659
+This is a JDBC connector source.
+
+00:01:06.659 --> 00:01:10.429
+The JDBC connector can be modified to perform this task on
+
+00:01:10.430 --> 00:01:13.975
+a periodic basis for all or some of your models.
+
+00:01:13.974 --> 00:01:16.459
+The query that the connector uses can even be
+
+00:01:16.459 --> 00:01:19.939
+customized if you'd like to transform the data in some fashion.
+
+00:01:19.939 --> 00:01:23.989
+Another common use case of the JDBC connector is to save
+
+00:01:23.989 --> 00:01:25.219
+the resulting events from
+
+00:01:25.219 --> 00:01:29.299
+a stream processing application into a database for long-term storage.
+
+00:01:29.299 --> 00:01:34.170
+This is what we would refer to as a JDBC Connector Sync.
+

@@ -1,0 +1,70 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:01.790 --> 00:00:05.280
+By this point, you may be thinking that some changes can be
+
+00:00:05.280 --> 00:00:08.565
+both forward and backward compatible, and you'd be right.
+
+00:00:08.564 --> 00:00:11.640
+This is where full compatibility comes into play.
+
+00:00:11.640 --> 00:00:14.490
+When we say that a change is fully compatible,
+
+00:00:14.490 --> 00:00:18.300
+it means that change is both forward and backward compatible.
+
+00:00:18.300 --> 00:00:20.400
+This means that consumers developed against
+
+00:00:20.399 --> 00:00:24.000
+the latest schema can consume data using the previous schema.
+
+00:00:24.000 --> 00:00:27.030
+Likewise, it also means that consumers developed against
+
+00:00:27.030 --> 00:00:31.020
+the previous schema can still consume data from the latest schema.
+
+00:00:31.019 --> 00:00:34.200
+This type of schema change is most common when
+
+00:00:34.200 --> 00:00:38.325
+changing the default value for a field that has a default value.
+
+00:00:38.325 --> 00:00:41.660
+For example, let's say our purchases model had
+
+00:00:41.659 --> 00:00:45.859
+an action field and the default value on that field was completed,
+
+00:00:45.859 --> 00:00:49.174
+completed might denote that the purchase is finished.
+
+00:00:49.174 --> 00:00:53.239
+Later we could choose to update that default value on that field to something
+
+00:00:53.240 --> 00:00:57.200
+like pending payment to indicate that every purchase has been created,
+
+00:00:57.200 --> 00:00:59.840
+but payment has not yet been received.
+
+00:00:59.840 --> 00:01:03.980
+This type of update which were simply changing the value of
+
+00:01:03.979 --> 00:01:07.685
+the default field is a fully compatible change.
+
+00:01:07.685 --> 00:01:10.210
+With full compatibility changes,
+
+00:01:10.209 --> 00:01:13.414
+you can update either of the producer or consumer first,
+
+00:01:13.415 --> 00:01:15.870
+the order doesn't matter.
+

@@ -1,0 +1,1552 @@
+{
+  "data": {
+    "lesson": {
+      "id": 930499,
+      "key": "9f33b59e-ec20-4bd3-9254-283e904f0de9",
+      "title": "KSQL",
+      "semantic_type": "Lesson",
+      "is_public": true,
+      "version": "1.0.0",
+      "locale": "en-us",
+      "summary": "Learn how to write simple SQL queries to turn Kafka topics into KSQL streams and tables, and then write those tables back out to Kafka.",
+      "lesson_type": "Classroom",
+      "display_workspace_project_only": false,
+      "resources": {
+        "files": [
+          {
+            "name": "Videos Zip File",
+            "uri": "https://zips.udacity-data.com/9f33b59e-ec20-4bd3-9254-283e904f0de9/930499/1578340319946/KSQL+Videos.zip"
+          },
+          {
+            "name": "Transcripts Zip File",
+            "uri": "https://zips.udacity-data.com/9f33b59e-ec20-4bd3-9254-283e904f0de9/930499/1578340314408/KSQL+Subtitles.zip"
+          },
+          {
+            "name": "Lesson 7 slides",
+            "uri": "https://video.udacity-data.com/topher/2019/September/5d7d347c_l7-ksql/l7-ksql.pdf"
+          }
+        ],
+        "google_plus_link": null,
+        "career_resource_center_link": null,
+        "coaching_appointments_link": null,
+        "office_hours_link": null,
+        "aws_provisioning_link": null
+      },
+      "project": null,
+      "lab": null,
+      "concepts": [
+        {
+          "id": 930482,
+          "key": "4f7636cc-7bbd-44a9-9978-eb07039ca966",
+          "title": "Lesson Overview",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "4f7636cc-7bbd-44a9-9978-eb07039ca966",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 930429,
+              "key": "ac60d9a7-5e4c-4e71-a739-2c6dd58f00ad",
+              "title": "ND0029 C01 L07 01 KSQL Lesson Overview",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "C13L6YVh2y0",
+                "china_cdn_id": "C13L6YVh2y0.mp4"
+              }
+            },
+            {
+              "id": 930430,
+              "key": "e183140d-5287-4f66-89d8-f7543ac83316",
+              "title": "Lesson Overview",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Lesson Overview\n\nKSQL is a SQL-like abstraction developed by Confluent, which provides users the ability to create streams and tables. Students will see how to write simple SQL queries to turn their Kafka topics into KSQL streams and tables, and then write those tables back out to Kafka. This section will focus on instructing students on the syntax of KSQL, as well as developing an understanding of how keys, joins, tables, streams, as well as storage works. Students will also learn how to leverage windowing in KSQL.\n\nIn this lesson we will learn:\r - What KSQL is and how it is architected\n - Why you would choose KSQL vs. an application framework like Faust\n - How to turn Kafka Topics into KSQL Tables\n - How to turn Kafka Topics into KSQL Streams\n - How we can query KSQL\n - How we can window in KSQL\n - How to aggregate data in KSQL\n - How to join data in KSQL",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 930490,
+          "key": "3ac6dd9f-f904-420a-8f78-39a11eaf9991",
+          "title": "Glossary of Terms for Lesson",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "3ac6dd9f-f904-420a-8f78-39a11eaf9991",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 930444,
+              "key": "105e7d08-3bf9-459c-96ef-dc6ad6d9cc25",
+              "title": "Glossary of Key Terms You Will Learn in this Lesson",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Glossary of Key Terms You Will Learn in this Lesson\n\n* Kafka Streams - A Java library for constructing stream processing applications. KSQL translates SQL statements to Kafka Streams applications.\n* User Defined Function (UDF) - An extension to the SQL capabilities of KSQL written by the user. For KSQL, these are written in Java.\n* Key (KSQL) - Data which uniquely identifies the value contained in this data message relative to other pieces of data in the stream. For example, a `user_id` may uniquely identify a `user` object.\n* Session Windowing (KSQL) - A system that keeps track of when the last time a particular key was seen. When a new record with the same key arrives, the difference between the timestamps is calculated. If the difference is larger than a defined _session window_, then a new window is started for that session. If the difference is less than the defined session window, the new record is added to the existing window.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 930483,
+          "key": "a6e7dd19-57db-43ae-a893-eab58aa5cd23",
+          "title": "Stream Processing with KSQL",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "a6e7dd19-57db-43ae-a893-eab58aa5cd23",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 930455,
+              "key": "bd289c8c-72c8-4a0f-9d40-2e757434f10e",
+              "title": "Stream Processing with KSQL Heading",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Stream Processing with KSQL\nIn this lesson we’ll review how we can use KSQL to build stream processing applications simply by writing SQL-like statements! In contrast to Faust, we’re not actually going to build an application using a programming language like Python. Instead, KSQL will transform our SQL commands into running stream processing applications for us! \n\nThroughout this lesson, you’ll see how KSQL can express all the familiar concepts of stream processing applications with the exclusive use of SQL syntax.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 930432,
+              "key": "7857ffdf-1458-4143-a005-fb8e961de4d1",
+              "title": "ND0029 C01 L07 02 Stream Processing With KSQL",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "c2V1KA5yA9Q",
+                "china_cdn_id": "c2V1KA5yA9Q.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 930491,
+          "key": "667f675e-c3e1-4a74-a78f-b47761681f85",
+          "title": "Introduction to KSQL",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "667f675e-c3e1-4a74-a78f-b47761681f85",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 930434,
+              "key": "3537d800-d2f1-4fe2-89d7-e4e714e9bedd",
+              "title": "Introduction to KSQL Header",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Intro to KSQL\nKSQL provides a SQL-like interface to transform Kafka Topics into streams and tables. \n\nJoins, aggregates, filtering, and other forms of data manipulation can then be expressed over these streams and tables.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 930451,
+              "key": "8276ed80-028e-4afe-884b-1c46947c468a",
+              "title": "ND0029 C01 L07 03 Introduction To KSQL",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "HUD2vdaxktg",
+                "china_cdn_id": "HUD2vdaxktg.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 930485,
+          "key": "f0812792-c1e7-4778-82e9-c9c0d715d9e2",
+          "title": "KSQL Architecture",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "f0812792-c1e7-4778-82e9-c9c0d715d9e2",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 930450,
+              "key": "58540947-7d06-4b04-bd88-2140a79d032a",
+              "title": "KSQL Architecture Heading",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## KSQL Architecture\nKSQL is a Java application built on top of the Kafka Streams Java stream processing library. KSQL is a web-server with a REST API that accepts incoming or preconfigured requests containing SQL-like commands. These commands are translated by the KSQL server into the equivalent Kafka Streams application and then executed.\n\nUsers can interact with KSQL via a REST API, its dedicated CLI, or predefined SQL files.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 930473,
+              "key": "4205be49-ae96-4b62-8b09-02caf7f2ba23",
+              "title": "ND0029 C01 L07 04 KSQL Architecture",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "tBxwWUiqnAg",
+                "china_cdn_id": "tBxwWUiqnAg.mp4"
+              }
+            },
+            {
+              "id": 930449,
+              "key": "af8d0cc8-768a-492a-a5e3-6cfa2f91fa13",
+              "title": "KSQL Is built on which stream processing framework?",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "af8d0cc8-768a-492a-a5e3-6cfa2f91fa13",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "KSQL is built on which stream processing framework?",
+                "answers": [
+                  {
+                    "id": "rbk1",
+                    "text": "Flink",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "rbk2",
+                    "text": "Faust",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "rbk3",
+                    "text": "Samza",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "rbk4",
+                    "text": "Kafka Streams",
+                    "is_correct": true
+                  }
+                ]
+              }
+            },
+            {
+              "id": 930433,
+              "key": "d4579bed-e3c8-4432-8af0-bf826dc72f2f",
+              "title": "How can you interact with KSQL?",
+              "semantic_type": "CheckboxQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "d4579bed-e3c8-4432-8af0-bf826dc72f2f",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "How can you interact with KSQL? (may be more than one answer)",
+                "answers": [
+                  {
+                    "id": "rbk1",
+                    "text": "CLI",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "rbk2",
+                    "text": "Binary Network Protocol",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "rbk3",
+                    "text": "HTTP REST API",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "rbk4",
+                    "text": "Predefined SQL File",
+                    "is_correct": true
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 930488,
+          "key": "dd6a2b4a-092a-46aa-ba88-469dfbe5eb08",
+          "title": "KSQL vs Traditional Frameworks",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "dd6a2b4a-092a-46aa-ba88-469dfbe5eb08",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 930453,
+              "key": "a50cbec6-8b97-4e46-9f9b-22db2a25e445",
+              "title": "ND0029 C01 L07 05 KSQL Vs Traditional Frameworks",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "8FSxhsLvWRY",
+                "china_cdn_id": "8FSxhsLvWRY.mp4"
+              }
+            },
+            {
+              "id": 930471,
+              "key": "416214ab-3057-4f63-9d20-e1920c6c6236",
+              "title": "KSQL vs Traditional Frameworks",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## KSQL vs. Traditional Frameworks\n\n### Pros\n - It is often simpler to use KSQL and SQL than to build and deploy an entire application\n - KSQL is typically a better fit for rapid experimentation and exploration than a full stream processing application\n - KSQL doesn’t require a particular programming language, like Python for Faust, or Java for Kafka Streams\n - KSQL already comes bundled with standard logs, metrics, and tooling for you to use, so you don’t have to build it yourself\n\n### Cons\n - SQL does not always best capture certain types of data manipulation or remapping scenarios\n - Can’t just use whatever other libraries you want like you can with Faust\n     - However, KSQL does allow User Defined Functions (UDFs), written in Java",
+              "instructor_notes": ""
+            },
+            {
+              "id": 930458,
+              "key": "cda9974b-a949-4b40-819c-4f88bb3a1e89",
+              "title": "Which of the following are reasons you might choose to use KSQL over a streaming framework?",
+              "semantic_type": "CheckboxQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "cda9974b-a949-4b40-819c-4f88bb3a1e89",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Which of the following are reasons you might choose to use KSQL over a traditional streaming framework? (may be more than one answer)",
+                "answers": [
+                  {
+                    "id": "rbk1",
+                    "text": "Faster to iterate and experiment",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "rbk2",
+                    "text": "Includes metrics and logs out of the box",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "rbk3",
+                    "text": "Simpler to deploy KSQL to a server than deploying an entire application",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "rbk4",
+                    "text": "Don’t need to know a particular programming language or tool",
+                    "is_correct": true
+                  }
+                ]
+              }
+            },
+            {
+              "id": 930454,
+              "key": "f486f46c-61d7-4ddc-8188-7905511f85d7",
+              "title": "Which of the following are reasons you might choose to use a streaming framework over KSQL?",
+              "semantic_type": "CheckboxQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "f486f46c-61d7-4ddc-8188-7905511f85d7",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Which of the following are reasons you might choose to use a streaming framework like Faust over KSQL? (may be more than one answer)",
+                "answers": [
+                  {
+                    "id": "rbk1",
+                    "text": "You want to import whatever libraries you want",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "rbk2",
+                    "text": "You want to rapidly iterate on an idea without a definite solution",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "rbk3",
+                    "text": "You already have an application built in a stream processing framework that you are modifying",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "rbk4",
+                    "text": "SQL cannot adequately capture the idea you are trying to express",
+                    "is_correct": true
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 930487,
+          "key": "e14e43fa-a53a-4b5b-ad91-6d68d42411d2",
+          "title": "Topics --> Tables & Streams",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "e14e43fa-a53a-4b5b-ad91-6d68d42411d2",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 930446,
+              "key": "026f479f-5ca4-45a9-b927-0b2ec0865bbf",
+              "title": "ND0029 C01 L07 06 Turning Topics Into Tables And Streams",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "BnGWiV1hqUo",
+                "china_cdn_id": "BnGWiV1hqUo.mp4"
+              }
+            },
+            {
+              "id": 930441,
+              "key": "0d923831-8527-4620-a8b4-3ca736e1b556",
+              "title": "Turning Topics into Tables and Streams",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Turning Kafka Topics into Tables and Streams\n - Every KSQL Table or Stream is derived from an underlying Kafka Topic\n - Use the `SHOW TOPICS` command in KSQL CLI to see all available topics",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 930484,
+          "key": "921b4ef1-597d-4310-b009-6d1be27fc893",
+          "title": "Creating a Stream",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "921b4ef1-597d-4310-b009-6d1be27fc893",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 930459,
+              "key": "449f7314-1bcb-4ff1-8696-bcf794b7e11f",
+              "title": "ND0029 C01 L07 07 Creating A Stream",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "EfV3TZ1foxU",
+                "china_cdn_id": "EfV3TZ1foxU.mp4"
+              }
+            },
+            {
+              "id": 930442,
+              "key": "bdbf0c06-c8d2-4e57-8763-43c2452c312f",
+              "title": "Creating a Stream",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Stream Creation\n - Creating Streams from an underlying topic requires you to specify column names and their types\n - You must also specify the serialization format as one of `JSON`, `AVRO`, or `DELIMITED` (csv)\n - You must also specify the underlying topic name\n - You may create a stream from another existing stream with `CREATE STREAM <stream_name> AS SELECT …`\n - [KSQL Create Stream Documentation](https://docs.confluent.io/current/ksql/docs/developer-guide/syntax-reference.html#create-stream)\n - [KSQL Create Stream from SELECT documentation](https://docs.confluent.io/current/ksql/docs/developer-guide/syntax-reference.html#create-stream-as-select)",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 930513,
+          "key": "29792ca6-6b67-4ce9-a815-61e56bce869b",
+          "title": "Practice: Creating a Stream",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "29792ca6-6b67-4ce9-a815-61e56bce869b",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 930515,
+              "key": "14e05def-ae34-45f7-82f3-c1b63a557a06",
+              "title": "Creating a Stream Demo Pt 1",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Creating a Stream Demo - Part 1",
+              "instructor_notes": ""
+            },
+            {
+              "id": 930457,
+              "key": "5406a14f-258e-4776-bb8a-e833b46a4935",
+              "title": "ND0029 C01 L07 08 Creating A Stream Demonstration",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "TSCGQ5QW7Eg",
+                "china_cdn_id": "TSCGQ5QW7Eg.mp4"
+              }
+            },
+            {
+              "id": 930516,
+              "key": "2ca30120-c527-409c-a16c-f2c35da0dd29",
+              "title": "Creating a Stream Demo - Part 2",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Creating a Stream Demo - Part 2",
+              "instructor_notes": ""
+            },
+            {
+              "id": 930435,
+              "key": "6f53dab1-ceb8-491e-a5a5-228c19d242a9",
+              "title": "ND0029 C01 L07 08.1 Creating A Stream Demonstration",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "I--pujvcL2k",
+                "china_cdn_id": "I--pujvcL2k.mp4"
+              }
+            },
+            {
+              "id": 931244,
+              "key": "c0d32073-e6d4-4ee7-86c5-44a8eddd50aa",
+              "title": "Workspace Exercise: Creating a Stream",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Workspace Exercise: Creating a Stream\n### Important note:\nBefore you execute anything in this workspace, or anytime after you've refreshed, or woken up, or reset data, or used the \"Get New Content\" button in this workspace, you'll need to run this command in the terminal:\n\n`./startup.sh` \n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 930514,
+              "key": "206ffad6-8b8d-4469-be4d-db9f541047be",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "r899655c930513xJUPYTERLu0ezttjk",
+              "pool_id": "jupyterlabpython37",
+              "view_id": "jupyter-lab-cpemg",
+              "gpu_capable": false,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "disk": null,
+                    "port": 3000,
+                    "ports": [],
+                    "pageEnd": "",
+                    "pageStart": "",
+                    "allowSubmit": false,
+                    "defaultPath": "/",
+                    "actionButtonText": ""
+                  },
+                  "kind": "jupyter-lab"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        },
+        {
+          "id": 930496,
+          "key": "4b219c72-fa56-44dd-b72c-1e20cfaeeb05",
+          "title": "Creating a Table",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "4b219c72-fa56-44dd-b72c-1e20cfaeeb05",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 930437,
+              "key": "9c80d699-1a32-4e37-ab56-83487a2697a7",
+              "title": "ND0029 C01 L07 09 Creating A Table",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "gxaEeRbyj-k",
+                "china_cdn_id": "gxaEeRbyj-k.mp4"
+              }
+            },
+            {
+              "id": 930431,
+              "key": "b136237a-318f-4475-99cf-9e9e87727247",
+              "title": "Creating a Table",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Table Creation\n- Creating Tables from an underlying topic requires you to specify column names and their types\n - You must also specify the serialization format as one of `JSON`, `AVRO`, or `DELIMITED` (csv)\n - You must also specify the underlying topic name\n - You may create a table from another existing stream or table with `CREATE STREAM <stream_name> AS SELECT …`\n - [KSQL Key Requirements Documentation](https://docs.confluent.io/current/ksql/docs/developer-guide/syntax-reference.html#ksql-key-requirements)\n - [KSQL Create Table Documentation](https://docs.confluent.io/current/ksql/docs/developer-guide/syntax-reference.html#create-table)\n - [KSQL Create Table from SELECT documentation](https://docs.confluent.io/current/ksql/docs/developer-guide/syntax-reference.html#create-table-as-select)",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 930517,
+          "key": "ad2c0e54-0b12-4299-913f-111fa9ca342b",
+          "title": "Practice: Creating a Table",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "ad2c0e54-0b12-4299-913f-111fa9ca342b",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 930461,
+              "key": "af1b4fff-e6a6-4b11-b576-24af31039039",
+              "title": "ND0029 C01 L07 10 Creating A Table Demonstration",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "OyOv9cVnViA",
+                "china_cdn_id": "OyOv9cVnViA.mp4"
+              }
+            },
+            {
+              "id": 931242,
+              "key": "a8879748-bf41-4884-b583-6340620c269f",
+              "title": "Workspace Exercise: Creating a Table",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Workspace Exercise: Creating a Table\n### Important note:\nBefore you execute anything in this workspace, or anytime after you've refreshed, or woken up, or reset data, or used the \"Get New Content\" button in this workspace, you'll need to run this command in the terminal:\n\n`./startup.sh` \n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 930518,
+              "key": "a8921996-759c-4a5a-868e-b3410f70c441",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "r899655c930517xJUPYTERLrayf5oxw",
+              "pool_id": "jupyterlabpython37",
+              "view_id": "jupyter-lab-01fs1",
+              "gpu_capable": false,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "disk": null,
+                    "port": 3000,
+                    "ports": [],
+                    "pageEnd": "",
+                    "pageStart": "",
+                    "allowSubmit": false,
+                    "defaultPath": "/",
+                    "actionButtonText": ""
+                  },
+                  "kind": "jupyter-lab"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        },
+        {
+          "id": 930498,
+          "key": "f0f09d5c-407c-48ae-8e2c-0bfdc8e41dcb",
+          "title": "Querying",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "f0f09d5c-407c-48ae-8e2c-0bfdc8e41dcb",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 930436,
+              "key": "6db1f679-fb3e-4fde-a762-4f2d76be587e",
+              "title": "ND0029 C01 L07 11 Querying Syntax",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "GlYm7lREy_0",
+                "china_cdn_id": "GlYm7lREy_0.mp4"
+              }
+            },
+            {
+              "id": 930478,
+              "key": "8a4297dd-1dc4-4dee-9f40-3b75b44d2b4f",
+              "title": "Querying Syntax",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Querying Syntax\n - `SELECT` statements may be run in KSQL CLI, but as soon as the session is terminated, so too is the data calculation.\n - Use `CREATE STREAM <stream_name> AS SELECT…` and `CREATE TABLE <table_name> AS SELECT …` to persist your queries for long-term usage\n - [KSQL Querying Syntax Documentation](https://docs.confluent.io/current/ksql/docs/developer-guide/syntax-reference.html#select)\n - [See the KSQL documentation for a list of all Scalar functions supported for querying](https://docs.confluent.io/current/ksql/docs/developer-guide/syntax-reference.html#scalar-functions)",
+              "instructor_notes": ""
+            },
+            {
+              "id": 931240,
+              "key": "2c1fc2b8-f1f3-410e-8f5d-42ce9be40973",
+              "title": "Demo: Querying",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Demo: Querying",
+              "instructor_notes": ""
+            },
+            {
+              "id": 930452,
+              "key": "a7ca9cc9-e193-4dba-a01a-205a9c2738ab",
+              "title": "ND0029 C01 L07 12 Querying Demonstration",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "FTGS2Zk4YIo",
+                "china_cdn_id": "FTGS2Zk4YIo.mp4"
+              }
+            },
+            {
+              "id": 931243,
+              "key": "7956aa20-b3dc-44a5-804e-d17a3057b83f",
+              "title": "Workspace Exercise: Querying",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Workspace Exercise: Querying\n### Important note:\nBefore you execute anything in this workspace, or anytime after you've refreshed, or woken up, or reset data, or used the \"Get New Content\" button in this workspace, you'll need to run this command in the terminal:\n\n`./startup.sh` \n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 930519,
+              "key": "ed683bd5-4d59-4110-928f-dd3dbfe1ab3e",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "r899655c930498xJUPYTERL0dy5zpv6",
+              "pool_id": "jupyterlabpython37",
+              "view_id": "jupyter-lab-klk5r",
+              "gpu_capable": false,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "disk": null,
+                    "port": 3000,
+                    "ports": [],
+                    "pageEnd": "",
+                    "pageStart": "",
+                    "allowSubmit": false,
+                    "defaultPath": "/",
+                    "actionButtonText": ""
+                  },
+                  "kind": "jupyter-lab"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        },
+        {
+          "id": 930495,
+          "key": "a5f24ac7-2bc5-4e89-a18a-af9bc139884d",
+          "title": "Hopping and Tumbling Windowing",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "a5f24ac7-2bc5-4e89-a18a-af9bc139884d",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 930462,
+              "key": "f7858474-9f4c-41c0-9e33-4718b13e0367",
+              "title": "ND0029 C01 L07 13 Windowing",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "kvG5sFJmR2k",
+                "china_cdn_id": "kvG5sFJmR2k.mp4"
+              }
+            },
+            {
+              "id": 930445,
+              "key": "d73da7f4-b583-451a-91e6-c713c3494ed2",
+              "title": "Hopping and Tumbling Windowing",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Hopping and Tumbling Windowing\n - [KSQL supports Tumbling windows with the `WINDOW TUMBLING (SIZE <duration>)` syntax](https://docs.confluent.io/current/ksql/docs/developer-guide/aggregate-streaming-data.html#aggregate-records-over-a-tumbling-window)\n - [KSQL supports Hopping windows with the `WINDOW HOPPING (SIZE <duration>,  ADVANCE BY <interval>)` syntax](https://docs.confluent.io/current/ksql/docs/developer-guide/aggregate-streaming-data.html#aggregate-records-over-a-hopping-window)",
+              "instructor_notes": ""
+            },
+            {
+              "id": 930466,
+              "key": "211ba561-1cc2-4d8d-90c1-cbc02c07d460",
+              "title": "Which parameters are required to specify a Hopping Window?",
+              "semantic_type": "CheckboxQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "211ba561-1cc2-4d8d-90c1-cbc02c07d460",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Which parameters are required to specify a Hopping Window in KSQL? (more than one answer)",
+                "answers": [
+                  {
+                    "id": "rbk1",
+                    "text": "`SIZE <X> <TIME_UNIT>`",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "rbk2",
+                    "text": "`<X> <TIME UNIT>`",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "rbk3",
+                    "text": "`ADVANCE <Y> <TIME_UNIT>`",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "rbk4",
+                    "text": "`ADVANCE BY <Y> <TIME_UNIT>`",
+                    "is_correct": true
+                  }
+                ]
+              }
+            },
+            {
+              "id": 930477,
+              "key": "58c744b0-002b-4cdb-aa6e-c4355ec4c549",
+              "title": "Which best describes a tumbling window?",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "58c744b0-002b-4cdb-aa6e-c4355ec4c549",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "How might you approximate a Sliding Window in KSQL?",
+                "answers": [
+                  {
+                    "id": "rbk1",
+                    "text": "Use a Tumbling Window with a short `SIZE`",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "rbk2",
+                    "text": "Use a Hopping Window with a short `ADVANCE` period",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "rbk3",
+                    "text": "Use a Hopping Window with a short `SIZE` period",
+                    "is_correct": false
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 930486,
+          "key": "3c2c8700-74d0-4755-a759-dbd91f5577a0",
+          "title": "Session Windowing",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "3c2c8700-74d0-4755-a759-dbd91f5577a0",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 930463,
+              "key": "be24452d-7ae5-4c84-8d71-63e75d98ddc6",
+              "title": "ND0029 C01 L07 14 Session Windowing",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "UbPp2G3xj9M",
+                "china_cdn_id": "UbPp2G3xj9M.mp4"
+              }
+            },
+            {
+              "id": 930465,
+              "key": "ddca2ee2-ece6-4711-b393-a94fa1e1cc03",
+              "title": "Session Windowing",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Session Windowing - Key Points\n - Keeps track of differences between the time a key was last seen and the current key arrival time. \n - If the difference between the time a key was last seen and the current key arrival time, for two records with the same key, is larger than the session window length defined, a new window is started.\n - If the difference between the time a key was last seen and the current key arrival time, for two records with the same key, is less than the session window length, the record is added to the current window, and the session expiration time is started anew.\n     - Session expiration denotes that the full session period begins again\n - [KSQL Session window documentation](https://docs.confluent.io/current/ksql/docs/concepts/time-and-windows-in-ksql-queries.html#session-window)",
+              "instructor_notes": ""
+            },
+            {
+              "id": 930472,
+              "key": "d4f8b475-c9cd-4a98-baae-d7e0d54ce7dd",
+              "title": "How many events in a Session Window?",
+              "semantic_type": "ValidatedQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "d4f8b475-c9cd-4a98-baae-d7e0d54ce7dd",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "If we used a session window of 15 minutes and the following actions occurred, how many events would have occurred in the most recent window? \n\n`HH:MM:SS` | `Action`\n--- | ---\n`01:10:10` | `Click`\n`00:59:09` | `Click`\n`00:37:47` | `Click`\n`00:23:37` | `Click`\n`00:17:09` | `Click`\n`00:13:17` | `Click`\n`00:10:48` | `Click`\n`00:09:40` | `Click`\n`00:04:38` | `Click`\n`00:01:03` | `Click`\n`00:00:00` | `Click`\n\n**Tip**: The above timestamps count down in time. A timestamp of `00:00:00` just occured, and a timestamp of `10:30:30` occurred 10 hours, 30 minutes, and 30 seconds ago.",
+                "matchers": [
+                  {
+                    "expression": "9"
+                  }
+                ]
+              }
+            },
+            {
+              "id": 930480,
+              "key": "b5b8091e-8ef9-4fc8-b299-a70a7ed38b00",
+              "title": "Which of the following best describes a Session Window?",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "b5b8091e-8ef9-4fc8-b299-a70a7ed38b00",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Prompt? Which of the following best describes a Session Window?",
+                "answers": [
+                  {
+                    "id": "rbk1",
+                    "text": "A window with a fixed duration that rolls over and restarts after a period of time has elapsed",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "rbk2",
+                    "text": "A window with a duration that progresses in fixed time increments",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "rbk3",
+                    "text": "A window with a duration that is constantly progressing",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "rbk4",
+                    "text": "A window with a variable duration that varies depending on the presence of a specific key value.",
+                    "is_correct": true
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 930494,
+          "key": "03871993-ca26-4f33-8a06-d294f8f4026b",
+          "title": "Practice: Session Windowing",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "03871993-ca26-4f33-8a06-d294f8f4026b",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 930447,
+              "key": "84652aac-c700-4d12-9a9e-8cab41d55677",
+              "title": "ND0029 C01 L07 15 Session Windowing Demonstration",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "gHXxogwtJ9o",
+                "china_cdn_id": "gHXxogwtJ9o.mp4"
+              }
+            },
+            {
+              "id": 931241,
+              "key": "fff77ab2-c40c-47d2-bfff-fa768b7f418c",
+              "title": "Workspace Exercise: Session Windowing",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Workspace Exercise: Session Windowing\n### Important note:\nBefore you execute anything in this workspace, or anytime after you've refreshed, or woken up, or reset data, or used the \"Get New Content\" button in this workspace, you'll need to run this command in the terminal:\n\n`./startup.sh` \n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 930520,
+              "key": "4df5a9bb-c9e2-451e-a828-799f78de14ec",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "r899655c930494xJUPYTERLq59p9ocw",
+              "pool_id": "jupyterlabpython37",
+              "view_id": "jupyter-lab-ls56i",
+              "gpu_capable": false,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "disk": null,
+                    "port": 3000,
+                    "ports": [],
+                    "pageEnd": "",
+                    "pageStart": "",
+                    "allowSubmit": false,
+                    "defaultPath": "/",
+                    "actionButtonText": ""
+                  },
+                  "kind": "jupyter-lab"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        },
+        {
+          "id": 930492,
+          "key": "e95472b9-2540-44a5-8b03-6edd854aa829",
+          "title": "Aggregating Data",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "e95472b9-2540-44a5-8b03-6edd854aa829",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 930476,
+              "key": "80b22457-15bc-475b-bdce-159c22d635b9",
+              "title": "ND0029 C01 L07 16 Aggregating Data",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "3fikRvXoDxs",
+                "china_cdn_id": "3fikRvXoDxs.mp4"
+              }
+            },
+            {
+              "id": 930464,
+              "key": "833f37cf-1d50-45de-beb7-24335885a805",
+              "title": "Aggregating Data",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## KSQL Aggregations\n - [Use `GROUP BY` to create aggregations in KSQL](https://docs.confluent.io/current/ksql/docs/developer-guide/aggregate-streaming-data.html)\n - `GROUP BY` always creates a KSQL Table\n - [KSQL supports aggregations like `COUNT`, `MAX`, `MIN`, `SUM`, `TOPK`, `HISTOGRAM` and more](https://docs.confluent.io/current/ksql/docs/developer-guide/syntax-reference.html#aggregate-functions)\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 930479,
+              "key": "5ba00749-4ba7-4288-8efa-57adde0cda90",
+              "title": "What types of aggregations are available in KSQL?",
+              "semantic_type": "CheckboxQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "5ba00749-4ba7-4288-8efa-57adde0cda90",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "What types of aggregations are available in KSQL?",
+                "answers": [
+                  {
+                    "id": "rbk1",
+                    "text": "COUNT",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "rbk2",
+                    "text": "HISTOGRAM",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "rbk3",
+                    "text": "MAX",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "rbk4",
+                    "text": "TOPK",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "rbk5",
+                    "text": "MIN",
+                    "is_correct": true
+                  }
+                ]
+              }
+            },
+            {
+              "id": 930443,
+              "key": "192ed89b-2d73-4a97-8e1b-0d8fe4a1a6f5",
+              "title": "The result of a group by is always a table",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "192ed89b-2d73-4a97-8e1b-0d8fe4a1a6f5",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "The result of a group-by is always a table.",
+                "answers": [
+                  {
+                    "id": "rbk1",
+                    "text": "True",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "rbk2",
+                    "text": "False",
+                    "is_correct": false
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 930521,
+          "key": "c266127b-3002-469d-b2af-4f5a5623f9d5",
+          "title": "Practice: Aggregating Data",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "c266127b-3002-469d-b2af-4f5a5623f9d5",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 930440,
+              "key": "2345fc22-0da1-424e-b3e3-a837f279c9be",
+              "title": "ND0029 C01 L07 17 Aggregating Data Demonstration",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "BK16TNUWs9A",
+                "china_cdn_id": "BK16TNUWs9A.mp4"
+              }
+            },
+            {
+              "id": 931245,
+              "key": "5f53c9c6-5f64-4434-9e89-5fb7b0269207",
+              "title": "Workspace Exercise: Aggregating Data",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Workspace Exercise: Aggregating Data\n### Important note:\nBefore you execute anything in this workspace, or anytime after you've refreshed, or woken up, or reset data, or used the \"Get New Content\" button in this workspace, you'll need to run this command in the terminal:\n\n`./startup.sh` \n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 930522,
+              "key": "43934f13-e688-4444-a197-e1ecdcff3823",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "r899655c930521xJUPYTERLk1brccz6",
+              "pool_id": "jupyterlabpython37",
+              "view_id": "jupyter-lab-e5e3w",
+              "gpu_capable": false,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "disk": null,
+                    "port": 3000,
+                    "ports": [],
+                    "pageEnd": "",
+                    "pageStart": "",
+                    "allowSubmit": false,
+                    "defaultPath": "/",
+                    "actionButtonText": ""
+                  },
+                  "kind": "jupyter-lab"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        },
+        {
+          "id": 930493,
+          "key": "b2006f4b-6d95-4274-b4f0-3a59c612d407",
+          "title": "Joins",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "b2006f4b-6d95-4274-b4f0-3a59c612d407",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 930481,
+              "key": "ed5290ce-8801-4908-a5b6-1b14853dfaaf",
+              "title": "ND0029 C01 L07 18 Joins",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "0jw-URIaIs0",
+                "china_cdn_id": "0jw-URIaIs0.mp4"
+              }
+            },
+            {
+              "id": 930460,
+              "key": "3f4b37c6-a429-4fff-b273-d3ddc84d905c",
+              "title": "What role does the KEY play in Joining?",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "3f4b37c6-a429-4fff-b273-d3ddc84d905c",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "What role does the `KEY` play in `JOIN`ing?",
+                "answers": [
+                  {
+                    "id": "rbk1",
+                    "text": "The `KEY` is the index on Kafka",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "rbk2",
+                    "text": "The `KEY` is used to specify how the data is stored in RocksDB",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "rbk3",
+                    "text": "The `KEY` determines if the entities we wish to join are co-partitioned",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "rbk4",
+                    "text": "The `KEY` is used to determine the broker that receives the output topic",
+                    "is_correct": false
+                  }
+                ]
+              }
+            },
+            {
+              "id": 930470,
+              "key": "b5e53db8-4937-4134-bf1c-9ef9f4340d76",
+              "title": "The KEY in KSQL and the message key must match",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "b5e53db8-4937-4134-bf1c-9ef9f4340d76",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "The `KEY` used in KSQL and the Kafka Message must match",
+                "answers": [
+                  {
+                    "id": "rbk1",
+                    "text": "True",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "rbk2",
+                    "text": "False",
+                    "is_correct": false
+                  }
+                ]
+              }
+            },
+            {
+              "id": 930448,
+              "key": "bb8f5629-882d-44fe-b247-683049009c82",
+              "title": "Which of the following describe how windowing relates to joins?",
+              "semantic_type": "CheckboxQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "bb8f5629-882d-44fe-b247-683049009c82",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Which of the following statements about `JOIN`s and Windows is true? (may be more than one answer)",
+                "answers": [
+                  {
+                    "id": "rbk1",
+                    "text": "Stream to Stream `JOIN`s are supported",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "rbk2",
+                    "text": "Table to Stream `JOIN`s are supported",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "rbk3",
+                    "text": "Stream to Table `JOIN`s are supported",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "rbk4",
+                    "text": "`JOIN`s may not be windowed",
+                    "is_correct": false
+                  }
+                ]
+              }
+            },
+            {
+              "id": 930456,
+              "key": "04c4d32a-ce4c-48df-b59d-cc3b820b6648",
+              "title": "Which of the following types of joins are supported?",
+              "semantic_type": "CheckboxQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "04c4d32a-ce4c-48df-b59d-cc3b820b6648",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Which of the following `JOIN` types are supported? (may be more than one answer)",
+                "answers": [
+                  {
+                    "id": "rbk1",
+                    "text": "Stream to Stream",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "rbk2",
+                    "text": "Table to Table",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "rbk3",
+                    "text": "Stream to Table",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "rbk4",
+                    "text": "Table to Stream",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "rbk5",
+                    "text": "Farm to Table",
+                    "is_correct": false
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 930497,
+          "key": "0fdd57ba-3bff-4e7c-bd29-e228022f6c50",
+          "title": "Practice: Joins",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "0fdd57ba-3bff-4e7c-bd29-e228022f6c50",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 930469,
+              "key": "4f81c3e3-73f5-4c2c-af06-c2adcf72d94a",
+              "title": "Hands-on with Joins Heading",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## KSQL `JOIN`s\n - [KSQL supports Stream to Stream, Stream to Table, and Table to Table `JOIN`s](https://docs.confluent.io/current/ksql/docs/developer-guide/join-streams-and-tables.html#join-event-streams-with-ksql)\n - [Limitations on the kind of `JOIN`s supported exist for each of the types of `JOIN`s](https://docs.confluent.io/current/ksql/docs/developer-guide/join-streams-and-tables.html#join-capabilities)\n - [Stream to Stream `JOIN`s may be windowed](https://docs.confluent.io/current/ksql/docs/developer-guide/join-streams-and-tables.html#joins-and-windows)\n - [`JOIN`ed entities must be co-partitioned](https://docs.confluent.io/current/ksql/docs/developer-guide/join-streams-and-tables.html#join-requirements)\n - [`JOIN`ed data must share the same `KEY` in KSQL as used for the Kafka record](https://docs.confluent.io/current/ksql/docs/developer-guide/join-streams-and-tables.html#join-requirements)",
+              "instructor_notes": ""
+            },
+            {
+              "id": 930468,
+              "key": "6bbb36bf-8127-4f97-baeb-4b43a78d5309",
+              "title": "ND0029 C01 L07 19 Hands-On With Joins",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "Tgk_Cay1KNQ",
+                "china_cdn_id": "Tgk_Cay1KNQ.mp4"
+              }
+            },
+            {
+              "id": 931246,
+              "key": "a4d62a1f-6f84-4850-b14d-775683a0dff4",
+              "title": "Workspace Exercise: Joins",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Workspace Exercise: Joins\n### Important note:\nBefore you execute anything in this workspace, or anytime after you've refreshed, or woken up, or reset data, or used the \"Get New Content\" button in this workspace, you'll need to run this command in the terminal:\n\n`./startup.sh` \n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 930523,
+              "key": "217c2a59-325f-4da0-876b-d4753431b0ac",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "r899655c930497xJUPYTERL6r1z330s",
+              "pool_id": "jupyterlabpython37",
+              "view_id": "jupyter-lab-ew9qd",
+              "gpu_capable": false,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "disk": null,
+                    "port": 3000,
+                    "ports": [],
+                    "pageEnd": "",
+                    "pageStart": "",
+                    "allowSubmit": false,
+                    "defaultPath": "/",
+                    "actionButtonText": ""
+                  },
+                  "kind": "jupyter-lab"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        },
+        {
+          "id": 930489,
+          "key": "c7801e0e-a793-4976-b1bc-6bc0ab9c1d09",
+          "title": "Summary",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "c7801e0e-a793-4976-b1bc-6bc0ab9c1d09",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 930474,
+              "key": "eea711fd-12f9-4855-8e2a-6d6d446b9cde",
+              "title": "Summary Heading",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Lesson Summary\nIn this lesson you learned:\n - How KSQL is an excellent tool for rapid iteration and deployment of Stream Processing applications\n - That KSQL can `GROUP BY` aggregate data\n - That KSQL supports `HOPPING`, `TUMBLING`, and `SESSION` windows\n - That KSQL supports `JOIN` operations to merge two or more streams",
+              "instructor_notes": ""
+            },
+            {
+              "id": 930439,
+              "key": "e65d3b70-cde9-468b-950a-8f82510d80a3",
+              "title": "ND0029 C01 L07 20 Summary",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "rm62HzRibrY",
+                "china_cdn_id": "rm62HzRibrY.mp4"
+              }
+            },
+            {
+              "id": 930475,
+              "key": "7ae9addf-dae0-46ef-99f8-2166f03cae16",
+              "title": "Glossary of Terms for Lesson",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Glossary of Key Terms for this Lesson (same as glossary at beginning of lesson):\n* Kafka Streams - A Java library for constructing stream processing applications. KSQL translates SQL statements to Kafka Streams applications.\n* User Defined Function (UDF) - An extension to the SQL capabilities of KSQL written by the user. For KSQL, these are written in Java.\n* Key (KSQL) - Data which uniquely identifies the value contained in this data message relative to other pieces of data in the stream. For example, a `user_id` may uniquely identify a `user` object.\n* Session Windowing (KSQL) - A system that keeps track of when the last time a particular key was seen. When a new record with the same key arrives, the difference between the timestamps is calculated. If the difference is larger than a defined _session window_, then a new window is started for that session. If the difference is less than the defined session window, the new record is added to the existing window.",
+              "instructor_notes": ""
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "_deprecated": [
+    {
+      "name": "starter_files",
+      "reason": "prefer master_archive_id"
+    },
+    {
+      "name": "starter_files",
+      "reason": "prefer master_archive_id"
+    },
+    {
+      "name": "starter_files",
+      "reason": "prefer master_archive_id"
+    },
+    {
+      "name": "starter_files",
+      "reason": "prefer master_archive_id"
+    },
+    {
+      "name": "starter_files",
+      "reason": "prefer master_archive_id"
+    },
+    {
+      "name": "starter_files",
+      "reason": "prefer master_archive_id"
+    }
+  ]
+}

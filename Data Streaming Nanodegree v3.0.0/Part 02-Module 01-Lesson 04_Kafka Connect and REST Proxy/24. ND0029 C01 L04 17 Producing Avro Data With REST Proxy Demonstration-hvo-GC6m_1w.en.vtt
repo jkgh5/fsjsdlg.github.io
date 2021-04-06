@@ -1,0 +1,211 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:01.760 --> 00:00:05.730
+Now that we've seen how to produce JSON data,
+
+00:00:05.730 --> 00:00:08.190
+let's swap it out to use Avro instead.
+
+00:00:08.189 --> 00:00:10.139
+So returning to our workspace,
+
+00:00:10.140 --> 00:00:11.760
+we have the produce function.
+
+00:00:11.759 --> 00:00:15.914
+Now, the produce function that we saw before needs to be slightly different.
+
+00:00:15.914 --> 00:00:19.094
+You already seen us set up the post itself,
+
+00:00:19.094 --> 00:00:22.684
+but the way that we form the data and the headers is going to be slightly different.
+
+00:00:22.684 --> 00:00:24.285
+Let's start with the headers.
+
+00:00:24.285 --> 00:00:27.030
+Remember that we always specify content type,
+
+00:00:27.030 --> 00:00:31.260
+and that content type should be a vendor specific one for Kafka.
+
+00:00:31.260 --> 00:00:33.390
+Now, last time we wrote JSON,
+
+00:00:33.390 --> 00:00:35.219
+but this time we want to use Avro.
+
+00:00:35.219 --> 00:00:38.859
+So we're going to specify Avro.v2,
+
+00:00:38.859 --> 00:00:42.240
+and we're still going to be sending the data in JSON format.
+
+00:00:42.240 --> 00:00:45.650
+Now that we've done that, we need to actually define the data again.
+
+00:00:45.649 --> 00:00:48.515
+As you will recall, last time,
+
+00:00:48.515 --> 00:00:51.265
+we created a list of records,
+
+00:00:51.265 --> 00:00:53.399
+and we put a value,
+
+00:00:53.399 --> 00:00:57.284
+and we put in asdict, and made a purchase.
+
+00:00:57.284 --> 00:01:00.604
+Now, there's one thing missing from this.
+
+00:01:00.604 --> 00:01:02.854
+How do we pass in the value schema?
+
+00:01:02.854 --> 00:01:05.629
+Well, thankfully, that's fairly straight forward.
+
+00:01:05.629 --> 00:01:08.524
+Go ahead and just fix my formatting here.
+
+00:01:08.525 --> 00:01:12.455
+So we can't just produce the record.
+
+00:01:12.454 --> 00:01:15.500
+We also need to pass in the schema.
+
+00:01:15.500 --> 00:01:21.000
+So to do that, we're going to specify value schema.
+
+00:01:21.000 --> 00:01:25.745
+Now, I've defined the schema for the purchase records up above,
+
+00:01:25.745 --> 00:01:27.050
+so we're just going to copy this.
+
+00:01:27.049 --> 00:01:28.444
+Notice, this is a string.
+
+00:01:28.444 --> 00:01:29.509
+I just want to emphasize this.
+
+00:01:29.510 --> 00:01:33.665
+This is not a straight Python dictionary, it is a string.
+
+00:01:33.665 --> 00:01:37.925
+You have to send a string as your value schema, or it won't work.
+
+00:01:37.924 --> 00:01:42.170
+So now that we've done that, we've passed in our headers,
+
+00:01:42.170 --> 00:01:43.465
+we've passed in our data,
+
+00:01:43.465 --> 00:01:47.969
+and we're sending to the topic, lesson4.Sample6.purchases.
+
+00:01:47.969 --> 00:01:50.469
+So let's go ahead and run that.
+
+00:01:50.469 --> 00:01:53.734
+It looks like we got the wrong value schema name,
+
+00:01:53.734 --> 00:01:55.849
+the wrong field name.
+
+00:01:55.849 --> 00:01:58.689
+So let's take a look at the documentation, see what we did wrong.
+
+00:01:58.689 --> 00:02:04.304
+Jumping back to the documentation for REST Proxy,
+
+00:02:04.305 --> 00:02:07.610
+we see that the name of the key we're looking for is value schema,
+
+00:02:07.609 --> 00:02:09.650
+but I put it in the wrong place.
+
+00:02:09.650 --> 00:02:13.409
+See, value schema here is under the records key,
+
+00:02:13.409 --> 00:02:15.650
+but it doesn't go with every single record.
+
+00:02:15.650 --> 00:02:17.885
+It actually goes to the top level.
+
+00:02:17.884 --> 00:02:23.375
+So if we delete that key and move it to the top level of our data dictionary,
+
+00:02:23.375 --> 00:02:25.564
+then this should work.
+
+00:02:25.564 --> 00:02:27.240
+The reason that they do this is,
+
+00:02:27.240 --> 00:02:29.600
+just to emphasize the point that we're looking at this,
+
+00:02:29.599 --> 00:02:33.829
+is not only will we be summing the value schema on every record,
+
+00:02:33.830 --> 00:02:36.805
+but if I had multiple records in this records list,
+
+00:02:36.805 --> 00:02:38.780
+and each one of them included the value schema,
+
+00:02:38.780 --> 00:02:41.270
+I'd be repeating that schema for every single message.
+
+00:02:41.270 --> 00:02:44.090
+If I had 10 messages, I'd have 10 copies of the schema.
+
+00:02:44.090 --> 00:02:46.640
+Instead, you specify once at the top level,
+
+00:02:46.639 --> 00:02:48.909
+so you only spin the schema a single time.
+
+00:02:48.909 --> 00:02:51.875
+As you can see, we're producing data once again.
+
+00:02:51.875 --> 00:02:54.110
+So now, this is still running.
+
+00:02:54.110 --> 00:02:56.765
+Let's use the same thing we did in the previous demonstration,
+
+00:02:56.764 --> 00:02:57.964
+and jump into terminal,
+
+00:02:57.965 --> 00:03:00.539
+and use the Kafka console consumer.
+
+00:03:03.710 --> 00:03:08.060
+We're also going to make sure we start from the beginning.
+
+00:03:08.060 --> 00:03:12.229
+All right. You can see the data looks strange when it does print out,
+
+00:03:12.229 --> 00:03:13.849
+and that's because this is binary data.
+
+00:03:13.849 --> 00:03:17.180
+So it's normal for this to look very odd when it's printing out.
+
+00:03:17.180 --> 00:03:19.530
+You can see our cursor moving down,
+
+00:03:19.530 --> 00:03:20.990
+but trust me, the data is there.
+
+00:03:20.990 --> 00:03:22.610
+The problem is that it's in Avro format,
+
+00:03:22.610 --> 00:03:25.350
+so you're not going to see much in the terminal.
+

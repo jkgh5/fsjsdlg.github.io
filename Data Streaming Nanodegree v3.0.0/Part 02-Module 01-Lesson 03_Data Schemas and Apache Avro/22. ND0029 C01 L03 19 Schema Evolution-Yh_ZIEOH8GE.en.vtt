@@ -1,0 +1,58 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:02.850
+Schema evolution is defined as the process of
+
+00:00:02.850 --> 00:00:05.804
+changing the data schema for a given data set.
+
+00:00:05.804 --> 00:00:09.330
+In practical terms, that means a Kafka producer has
+
+00:00:09.330 --> 00:00:13.875
+modified the shape of the data as well as a data schema that it intends to send.
+
+00:00:13.875 --> 00:00:16.785
+For example, we may be adding a field
+
+00:00:16.785 --> 00:00:20.640
+or removing a field those would be types of schema evolution.
+
+00:00:20.640 --> 00:00:23.640
+Even making a field optional or changing the type
+
+00:00:23.640 --> 00:00:26.730
+or meaning of an existing field as a form of schema evolution.
+
+00:00:26.730 --> 00:00:28.190
+To make a long story short,
+
+00:00:28.190 --> 00:00:30.140
+if you're changing the format of your data in any way,
+
+00:00:30.140 --> 00:00:31.745
+you're evolving your schema.
+
+00:00:31.745 --> 00:00:34.280
+As we saw in an earlier exercise in this lesson,
+
+00:00:34.280 --> 00:00:36.020
+changes to an existing schema,
+
+00:00:36.020 --> 00:00:39.460
+any changes, have the potential to disrupt data consumers.
+
+00:00:39.460 --> 00:00:42.259
+Thankfully, schema registry and Avro can help us with
+
+00:00:42.259 --> 00:00:45.769
+this process and practice evolving a scheme schema
+
+00:00:45.770 --> 00:00:48.950
+simply means updating the arrow definition and resubmitting
+
+00:00:48.950 --> 00:00:53.340
+the schema to schema registry with some compatibility information.
+

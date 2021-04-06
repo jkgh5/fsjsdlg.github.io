@@ -1,0 +1,241 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:01.850 --> 00:00:06.240
+Now that we've seen how we can produce data to REST proxy,
+
+00:00:06.240 --> 00:00:09.060
+let's actually walk through a demonstration of how that works.
+
+00:00:09.060 --> 00:00:10.740
+So in our workspace,
+
+00:00:10.740 --> 00:00:12.324
+I pulled up sample5.
+
+00:00:12.324 --> 00:00:15.524
+In this sample5, you can see we have a produce function.
+
+00:00:15.525 --> 00:00:17.640
+But notice, that this produce function
+
+00:00:17.640 --> 00:00:19.800
+is different than the previous produce functions we've used.
+
+00:00:19.800 --> 00:00:23.609
+Here, we're using a request.post and not a native Kafka client,
+
+00:00:23.609 --> 00:00:24.750
+that's because of course,
+
+00:00:24.750 --> 00:00:26.609
+we're going to be using REST proxy.
+
+00:00:26.609 --> 00:00:28.559
+So the first thing we're going to do,
+
+00:00:28.559 --> 00:00:30.089
+is set the appropriate headers.
+
+00:00:30.089 --> 00:00:32.429
+As I emphasized in the previous section,
+
+00:00:32.429 --> 00:00:34.140
+getting that content header right is
+
+00:00:34.140 --> 00:00:37.725
+the most important thing you can do before you start working with REST proxy.
+
+00:00:37.725 --> 00:00:41.414
+So we're going to set content type to "".
+
+00:00:41.414 --> 00:00:43.259
+I'll tell you what, I know what this is.
+
+00:00:43.259 --> 00:00:45.679
+But let's pull the documentation just so that you guys can take
+
+00:00:45.679 --> 00:00:48.200
+a look at how you can look for this information yourself,
+
+00:00:48.200 --> 00:00:49.940
+because it can be confusing to figure out
+
+00:00:49.939 --> 00:00:52.549
+the content type when you first start working with REST proxy.
+
+00:00:52.549 --> 00:00:56.699
+So we're going to pull this up, and you can see then documentation for REST proxy.
+
+00:00:56.700 --> 00:01:00.710
+I'll include a link to this in the course notes as well as in your exercise,
+
+00:01:00.710 --> 00:01:02.990
+you can see they give you the format here.
+
+00:01:02.990 --> 00:01:05.885
+The format for the content type is, and they lay it out.
+
+00:01:05.885 --> 00:01:09.680
+So again, we're going to be using JSON in this example.
+
+00:01:09.680 --> 00:01:14.118
+So we're going to say application/ vnd.kafka, JSON,
+
+00:01:14.118 --> 00:01:16.849
+API version for us will always be v2,
+
+00:01:16.849 --> 00:01:20.049
+and the serialization_format for us will always be JSON.
+
+00:01:20.049 --> 00:01:23.114
+So returning to our example,
+
+00:01:23.114 --> 00:01:25.243
+we're going to fill in our content-type,
+
+00:01:25.243 --> 00:01:30.469
+and then we're going to go ahead and make sure to specify that in our request.
+
+00:01:30.469 --> 00:01:33.664
+Then, we're going to go ahead and define our data.
+
+00:01:33.665 --> 00:01:36.220
+So to define our data,
+
+00:01:36.219 --> 00:01:39.364
+the first thing we're going to do is define a records keep.
+
+00:01:39.364 --> 00:01:44.644
+Records are a list of one or more records to post to the REST proxy.
+
+00:01:44.644 --> 00:01:47.194
+But we don't just dump the data in here.
+
+00:01:47.194 --> 00:01:51.739
+We have to specify that it's a value or that it's a key.
+
+00:01:51.739 --> 00:01:53.359
+So in this example,
+
+00:01:53.359 --> 00:01:57.890
+I'm going to just use the purchase data we've been using for the previous exercises.
+
+00:01:57.890 --> 00:02:03.930
+Once that's done, I'm going to make sure to pass that data in the post.
+
+00:02:05.049 --> 00:02:07.804
+Note that, I've dumps to the data.
+
+00:02:07.805 --> 00:02:10.835
+So I'm taking this dictionary and dumping it out to JSON string.
+
+00:02:10.835 --> 00:02:12.034
+If you don't do this,
+
+00:02:12.034 --> 00:02:14.905
+you're going to get an error from Kafka.
+
+00:02:14.905 --> 00:02:18.155
+Finally, we need to make sure we render out the URL.
+
+00:02:18.155 --> 00:02:20.400
+So I'm going to grab the URL from up above,
+
+00:02:20.400 --> 00:02:25.145
+REST_proxy_URL, and we're going to give this a topic name.
+
+00:02:25.145 --> 00:02:29.880
+So we're going to say lesson4.sample5,
+
+00:02:29.879 --> 00:02:32.879
+I'm going to save, and then we're going to run.
+
+00:02:32.879 --> 00:02:35.974
+Looks like we got a mistake here, let's take a look.
+
+00:02:35.974 --> 00:02:37.639
+Very simple mistake here,
+
+00:02:37.639 --> 00:02:41.149
+just missing brackets around my data.
+
+00:02:41.150 --> 00:02:46.599
+So I was sending in just a key-value pair without wrapping it in a dictionary bracket.
+
+00:02:46.599 --> 00:02:48.935
+So that was just a simple syntactical mistake.
+
+00:02:48.935 --> 00:02:51.920
+All right. Let's try that one more time.
+
+00:02:51.919 --> 00:02:56.119
+We've got a 404 error. I know what the issue is.
+
+00:02:56.120 --> 00:03:00.425
+We specified the REST proxy URL and then just gave it a topic name.
+
+00:03:00.425 --> 00:03:02.314
+That's actually not the correct path.
+
+00:03:02.314 --> 00:03:05.465
+We look at the documentation for topics,
+
+00:03:05.465 --> 00:03:07.555
+we look at posting data,
+
+00:03:07.555 --> 00:03:09.185
+so let's go ahead and find that.
+
+00:03:09.185 --> 00:03:12.199
+We post new topics/topic name.
+
+00:03:12.199 --> 00:03:16.054
+So I just gave it the topic name and left out slash topics.
+
+00:03:16.055 --> 00:03:19.610
+So let's go back, put in topics.
+
+00:03:19.610 --> 00:03:21.980
+Let's go ahead and try that one more time.
+
+00:03:21.979 --> 00:03:24.889
+There you go. You can see that we're publishing the data.
+
+00:03:24.889 --> 00:03:27.649
+Great. Basically all we're doing,
+
+00:03:27.650 --> 00:03:31.099
+is printing off the response that we're getting back from the REST proxy.
+
+00:03:31.099 --> 00:03:32.914
+So it tells us the offset.
+
+00:03:32.914 --> 00:03:35.995
+So let's go ahead and put this in full screen mode.
+
+00:03:35.995 --> 00:03:40.009
+You can see that we're just going to continue to get more data.
+
+00:03:40.009 --> 00:03:42.649
+If we want to prove this is working,
+
+00:03:42.649 --> 00:03:45.330
+we can then open up another terminal,
+
+00:03:45.939 --> 00:03:50.550
+and we can use a Kafka console predict consumer
+
+00:03:50.870 --> 00:03:57.629
+and our topic name was lesson4.sample5.
+
+00:03:57.629 --> 00:04:00.689
+We're going to start from the beginning and
+
+00:04:00.689 --> 00:04:03.484
+you can see our purchase data continuing to flow through.
+
+00:04:03.485 --> 00:04:08.760
+So this was an example of how you can produce data to Kafka REST proxy.
+

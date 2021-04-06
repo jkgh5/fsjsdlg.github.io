@@ -1,0 +1,28 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:01.610 --> 00:00:03.825
+In the previous lessons,
+
+00:00:03.825 --> 00:00:06.530
+we've gotten a few glimpses of data schemas.
+
+00:00:06.530 --> 00:00:10.199
+Up until now, you've sent payloads to a streaming data store Kafka,
+
+00:00:10.199 --> 00:00:12.539
+in string or JSON form.
+
+00:00:12.539 --> 00:00:15.599
+As data flows through our stream processing applications,
+
+00:00:15.599 --> 00:00:21.449
+it's critical for both consumers and producers to understand what data is expected.
+
+00:00:21.449 --> 00:00:25.589
+In this section, we'll highlight the benefits that data schemas can provide us,
+
+00:00:25.589 --> 00:00:29.079
+and how they get used in real-world systems.
+

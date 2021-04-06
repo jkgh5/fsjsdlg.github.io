@@ -1,0 +1,184 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:01.399 --> 00:00:04.650
+In this demonstration, I'm going to show you how to define
+
+00:00:04.650 --> 00:00:07.950
+an arrow schema and then send that data to Kafka in that format.
+
+00:00:07.950 --> 00:00:12.495
+So we're going to jump back over to the work space and I've opened up sample2.
+
+00:00:12.494 --> 00:00:16.304
+So you'll notice we have a schema already defined here.
+
+00:00:16.304 --> 00:00:19.394
+In this schema, we have a type of record,
+
+00:00:19.394 --> 00:00:23.609
+it's going to be a type purchase and the conduct Udacity that
+
+00:00:23.609 --> 00:00:27.539
+lesson3.sample2 namespace and we have a number of fields here.
+
+00:00:27.539 --> 00:00:30.059
+So we have name, username, type string,
+
+00:00:30.059 --> 00:00:33.435
+currency, type string, and amount of type integer.
+
+00:00:33.435 --> 00:00:39.704
+Now, we're parsing the schema using the fastavro parse schema function.
+
+00:00:39.704 --> 00:00:44.579
+I've included a link to this documentation in your exercise, so you can take a look.
+
+00:00:44.579 --> 00:00:47.329
+But I'll pull it up just real quick for you to take a look at.
+
+00:00:47.329 --> 00:00:49.954
+So this is the fastavro documentation,
+
+00:00:49.954 --> 00:00:54.814
+it works and look similarly to the confluent Kafka Python documentation we've been using.
+
+00:00:54.814 --> 00:01:01.489
+So we'll go ahead and search for parse schema and we can go ahead and pull it up.
+
+00:01:01.490 --> 00:01:06.560
+So you can see parse schema takes a schema string and then
+
+00:01:06.560 --> 00:01:08.870
+returns an actual Avro schema that we can go
+
+00:01:08.870 --> 00:01:11.710
+ahead and use to send the data over the Kafka.
+
+00:01:11.709 --> 00:01:13.449
+We also have a writer.
+
+00:01:13.450 --> 00:01:17.344
+A writer is a fastavro utility that actually will take
+
+00:01:17.344 --> 00:01:22.265
+an input chunk of data and write it out in the format that we expect.
+
+00:01:22.265 --> 00:01:24.094
+So let's see what that looks like.
+
+00:01:24.094 --> 00:01:27.719
+Currently, when we serialize or purchase object,
+
+00:01:27.719 --> 00:01:29.840
+we're serializing it into JSON.
+
+00:01:29.840 --> 00:01:33.829
+So we're doing json.dumps and then we're serializing the data
+
+00:01:33.829 --> 00:01:38.090
+into a dictionary and then dumping that out as a string but instead we want to use Avro.
+
+00:01:38.090 --> 00:01:40.079
+So we're going to uncomment this, excuse me,
+
+00:01:40.079 --> 00:01:41.655
+we're going to comment this,
+
+00:01:41.655 --> 00:01:45.680
+we're going to uncomment the code here to use Avro instead.
+
+00:01:45.680 --> 00:01:50.405
+So the first thing we're going to do is create a BytesIO object.
+
+00:01:50.405 --> 00:01:55.625
+The fastavro writer has to write the data into a file-like object.
+
+00:01:55.625 --> 00:01:58.010
+But we're not really interested in writing to disk,
+
+00:01:58.010 --> 00:02:00.079
+we're interested in writing out over the network.
+
+00:02:00.079 --> 00:02:02.935
+So we're going to use BytesIO to keep that in memory,
+
+00:02:02.935 --> 00:02:06.640
+so we're going to instantiate a BytesIO object pass it as
+
+00:02:06.640 --> 00:02:11.044
+the first argument to our writer and then we're going to pass in the schema definition.
+
+00:02:11.044 --> 00:02:14.739
+So again, the schema definition is parse at the class level,
+
+00:02:14.740 --> 00:02:19.879
+so purchase.schema tells the writer object which schema to use.
+
+00:02:19.879 --> 00:02:23.960
+Finally, we're going to pass in a list of
+
+00:02:23.960 --> 00:02:28.640
+the actual objects that we would like to be serialized into Avro format.
+
+00:02:28.639 --> 00:02:30.959
+So we're going to take the self object,
+
+00:02:30.960 --> 00:02:34.909
+so this is the instance of the purchase and serialize it into
+
+00:02:34.909 --> 00:02:39.275
+a dictionary and then pass that in list format to the writer object.
+
+00:02:39.275 --> 00:02:42.110
+Finally, we're going to take the value contained in
+
+00:02:42.110 --> 00:02:45.320
+our BytesIO stream and then get the value and write that out.
+
+00:02:45.319 --> 00:02:47.405
+That's really all there is to it.
+
+00:02:47.405 --> 00:02:49.460
+Let's take a look and see how this works.
+
+00:02:49.460 --> 00:02:51.335
+So now, we're running our application.
+
+00:02:51.335 --> 00:02:53.340
+You'll notice that nothing is printed out,
+
+00:02:53.340 --> 00:02:56.995
+that's because we're just producing data and other Kafka stream.
+
+00:02:56.995 --> 00:02:59.960
+So I'm going to exit this and we're going to use
+
+00:02:59.960 --> 00:03:03.155
+the Kafka console consumer to actually view our data.
+
+00:03:03.155 --> 00:03:11.210
+So we'll say, kafka-console-consumer --bootstrap-server localhost :
+
+00:03:11.210 --> 00:03:13.890
+9092 and we're going to
+
+00:03:13.889 --> 00:03:22.859
+use the topic "com.udacity.lesson3.sample2.purchases".
+
+00:03:22.860 --> 00:03:26.405
+We're also going to make sure to specify the from beginning flag.
+
+00:03:26.405 --> 00:03:28.610
+Recall that if we didn't pass this flag in we
+
+00:03:28.610 --> 00:03:31.475
+wouldn't actually see any data because we've killed our producer.
+
+00:03:31.474 --> 00:03:34.414
+As you can see, there's data in our topic,
+
+00:03:34.414 --> 00:03:37.739
+so there are a number of records here for us to view.
+

@@ -1,0 +1,43 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:02.569 --> 00:00:06.549
+In this lesson, we learned how Kafka Connect can help save us
+
+00:00:06.549 --> 00:00:10.059
+time and effort in integrating Kafka into existing workflows.
+
+00:00:10.060 --> 00:00:12.100
+Whether you have a Postgres database,
+
+00:00:12.099 --> 00:00:15.709
+data and a key-value store like S3 or simply log files on disk,
+
+00:00:15.710 --> 00:00:19.870
+Kafka Connect can help get data into and out of Kafka.
+
+00:00:19.870 --> 00:00:23.304
+Next, we saw how REST Proxy can allow us to integrate
+
+00:00:23.304 --> 00:00:26.975
+any application capable of HTTP with Kafka.
+
+00:00:26.975 --> 00:00:31.990
+Rest Proxy provides an HTTP interface for fetching broker details and metadata,
+
+00:00:31.989 --> 00:00:35.439
+in addition to producing and consuming to Kafka itself.
+
+00:00:35.439 --> 00:00:36.984
+In the upcoming lessons,
+
+00:00:36.984 --> 00:00:38.259
+we're going to see how we can combine
+
+00:00:38.259 --> 00:00:41.589
+the streaming data ingestion skills we've just learned in the previous lessons,
+
+00:00:41.590 --> 00:00:44.680
+to build stream processing applications.
+

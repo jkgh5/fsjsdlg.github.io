@@ -1,0 +1,274 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:01.730 --> 00:00:06.554
+Now, that we've seen and learned a little bit about the Consumer API for REST Proxy,
+
+00:00:06.554 --> 00:00:08.820
+let's actually take a look at how to use it.
+
+00:00:08.820 --> 00:00:11.429
+So returning to the Workspace once again,
+
+00:00:11.429 --> 00:00:14.684
+we're going to take a look at the code before we start filling anything in.
+
+00:00:14.685 --> 00:00:20.339
+As I mentioned there's a lot more to the Consumer API than there is to the Producer API.
+
+00:00:20.339 --> 00:00:26.175
+We have to make at least three calls to successfully consume.
+
+00:00:26.175 --> 00:00:28.650
+So we have this async def
+
+00:00:28.649 --> 00:00:31.559
+consume function,and you can
+
+00:00:31.559 --> 00:00:34.170
+see here that we're going to be making a series of post requests.
+
+00:00:34.170 --> 00:00:37.200
+So the first request is simply going to be to
+
+00:00:37.200 --> 00:00:41.445
+create a consumer group, if that's successful,
+
+00:00:41.445 --> 00:00:45.484
+we're going to make another post to subscribe,
+
+00:00:45.484 --> 00:00:48.185
+and then finally we end this while loop,
+
+00:00:48.185 --> 00:00:53.310
+we're going to make a get request on the records and point.
+
+00:00:53.420 --> 00:00:56.654
+Now, that we've seen the general overview,
+
+00:00:56.654 --> 00:00:58.710
+let's actually start filling this out.
+
+00:00:58.710 --> 00:01:02.990
+So the first thing we're going to need to do is actually create our consumer group.
+
+00:01:02.990 --> 00:01:05.030
+So the headers we're going to use
+
+00:01:05.030 --> 00:01:11.159
+our Content-Type and here we're going to use the JSON embedded format,
+
+00:01:11.769 --> 00:01:13.819
+and then we're going to define
+
+00:01:13.819 --> 00:01:17.719
+the consumer group creation payload using the Avro format which we've done here.
+
+00:01:17.719 --> 00:01:19.280
+So you can see we have the name set to
+
+00:01:19.280 --> 00:01:23.685
+the consumer name which I've defined up here as solution7-consumer.
+
+00:01:23.685 --> 00:01:26.085
+The format is Avro,
+
+00:01:26.084 --> 00:01:30.500
+so when we actually consume we'd like to consume Avro data,
+
+00:01:30.500 --> 00:01:34.849
+and then we're going to post this configuration to the appropriate consumers endpoint.
+
+00:01:34.849 --> 00:01:42.169
+So again REST PROXY URL/ consumers will actually create a consumer group.
+
+00:01:42.170 --> 00:01:44.644
+Let's check the docs to see what that looks like.
+
+00:01:44.644 --> 00:01:49.909
+Jump through here. So you have POST consumers name of the group.
+
+00:01:49.909 --> 00:01:53.750
+So we actually already know what that group name should
+
+00:01:53.750 --> 00:02:02.400
+be or we're going to call it consumer name-group.
+
+00:02:02.750 --> 00:02:04.760
+Once we've done this,
+
+00:02:04.760 --> 00:02:07.685
+this will actually create a consumer group for us.
+
+00:02:07.685 --> 00:02:12.240
+So we'll have solution7-consumer-group.
+
+00:02:12.280 --> 00:02:14.990
+If that's successful, we'll move
+
+00:02:14.990 --> 00:02:19.950
+down to create our data that we'll actually use to subscribe.
+
+00:02:19.949 --> 00:02:22.969
+So what does a subscribe endpoint actually accept?
+
+00:02:22.969 --> 00:02:24.949
+Well, let's take a look at the documentation again.
+
+00:02:24.949 --> 00:02:29.644
+So we'll scroll down and look for subscriptions. Okay, here we are.
+
+00:02:29.645 --> 00:02:33.665
+Post consumers, group name, instances, and subscription.
+
+00:02:33.664 --> 00:02:35.284
+What payload does it take?
+
+00:02:35.284 --> 00:02:37.294
+Well, as I mentioned in the slides,
+
+00:02:37.294 --> 00:02:40.559
+it just takes a simple list of topics.
+
+00:02:40.689 --> 00:02:45.354
+So let's take a look at what we call the topic in our producer.
+
+00:02:45.354 --> 00:02:48.019
+We have an abbreviation topic name.
+
+00:02:48.020 --> 00:02:49.775
+So let's enforce solution7,
+
+00:02:49.775 --> 00:02:53.224
+excuse me this should really should be sample7.
+
+00:02:53.224 --> 00:02:59.500
+Purchases and we're going go to our post and say topics.
+
+00:02:59.500 --> 00:03:03.770
+This is going to be a list of the topics we want to subscribe to it,
+
+00:03:03.770 --> 00:03:08.689
+which in this case it's just topic name we are going to JSON dumps that data,
+
+00:03:08.689 --> 00:03:14.284
+passing the headers and now that we have this base URI from our previous response,
+
+00:03:14.284 --> 00:03:16.609
+we're accessing the key from that response.
+
+00:03:16.610 --> 00:03:19.910
+So if we go back to the consumer group creation
+
+00:03:19.909 --> 00:03:22.159
+and we posted the consumer group to create it,
+
+00:03:22.159 --> 00:03:29.764
+the return object included the instance ID and the base URI in this particular case,
+
+00:03:29.764 --> 00:03:32.884
+you can see that this gives us all the information that we need
+
+00:03:32.884 --> 00:03:36.620
+to complete our URL sands subscriptions.
+
+00:03:36.620 --> 00:03:41.194
+So again, we're just need to post this data to subscription.
+
+00:03:41.194 --> 00:03:43.280
+Now, that we've subscribed to the topic,
+
+00:03:43.280 --> 00:03:45.905
+we actually want to go ahead and start consuming records.
+
+00:03:45.905 --> 00:03:49.370
+So this is a get request and we want to make sure to
+
+00:03:49.370 --> 00:03:53.575
+specify an Accept header not a Content-Type header.
+
+00:03:53.574 --> 00:03:58.424
+So we're going to accept, application, vendor,
+
+00:03:58.425 --> 00:04:04.780
+Kafka Avro, v2, JSON.
+
+00:04:04.819 --> 00:04:11.650
+We're also going to make sure that we're getting from our base URI/ records,
+
+00:04:11.689 --> 00:04:16.779
+and because it can sometimes take a little while to actually fetch the records,
+
+00:04:16.779 --> 00:04:18.819
+were going to put a timeout on this.
+
+00:04:18.819 --> 00:04:23.680
+So I'm going to specify a timeout of say 10 seconds.
+
+00:04:23.680 --> 00:04:25.660
+This is measured in milliseconds.
+
+00:04:25.660 --> 00:04:28.470
+Now, let's take a look at how I knew this was something we could do.
+
+00:04:28.470 --> 00:04:31.375
+In the documentation for
+
+00:04:31.375 --> 00:04:37.045
+our get consumers records where we actually flush the records as a query parameter,
+
+00:04:37.045 --> 00:04:42.009
+we can specify a timeout in milliseconds or a maximum number of bytes,
+
+00:04:42.009 --> 00:04:45.039
+so I'm going to go ahead and use a timeout.
+
+00:04:45.040 --> 00:04:48.560
+Now, let's go ahead and start running this.
+
+00:04:48.560 --> 00:04:53.389
+I also just want to mention that it can take a little while for this to start working,
+
+00:04:53.389 --> 00:04:56.449
+so be patient while it goes ahead and gets setup.
+
+00:04:56.449 --> 00:05:00.199
+All right, and you can see we're starting to get records through
+
+00:05:00.199 --> 00:05:03.680
+our consumer group and that's really all there is to it.
+
+00:05:03.680 --> 00:05:05.750
+It is a little bit of work to get it set up,
+
+00:05:05.750 --> 00:05:06.935
+but once you've configured it,
+
+00:05:06.935 --> 00:05:11.485
+it's fairly straightforward to go ahead and use the REST Proxy Consumer API.
+
+00:05:11.485 --> 00:05:13.470
+Now, that we're consuming data,
+
+00:05:13.470 --> 00:05:16.850
+this will just simply run until we decide to
+
+00:05:16.850 --> 00:05:20.855
+exit the program or until we've received enough records that we don't need anymore.
+
+00:05:20.855 --> 00:05:23.300
+One thing I'll mentioned is that you want to make sure to delete
+
+00:05:23.300 --> 00:05:25.520
+your subscription if you're no longer interested in having
+
+00:05:25.519 --> 00:05:27.604
+a consumer group running on
+
+00:05:27.605 --> 00:05:30.835
+the REST Proxy server otherwise
+
+00:05:30.834 --> 00:05:35.069
+just let the program run and it will continue to consume data indefinitely.
+

@@ -1,0 +1,73 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:03.060
+While we won't build a Kafka Connect plug-in in this course,
+
+00:00:03.060 --> 00:00:07.080
+we should still understand a bit about how the underlying framework works.
+
+00:00:07.080 --> 00:00:11.009
+Thankfully, you're already mostly familiar with how coffee connect plug-ins work.
+
+00:00:11.009 --> 00:00:15.000
+They're very similar to the Kafka consumers and producers you've already built.
+
+00:00:15.000 --> 00:00:19.289
+The Java framework, that is provided for building connectors provides a series
+
+00:00:19.289 --> 00:00:23.309
+of object oriented models that must be satisfied in order to be used.
+
+00:00:23.309 --> 00:00:27.494
+At a high level, every Kafka connect plug and defines a few things.
+
+00:00:27.495 --> 00:00:30.315
+Each Kafka connect plug-in has connectors,
+
+00:00:30.315 --> 00:00:34.320
+which are high level abstractions responsible for managing tasks.
+
+00:00:34.320 --> 00:00:38.159
+Task contain the code that specifically manages how data
+
+00:00:38.159 --> 00:00:42.375
+should be produced into or consumed out of our Kafka brokers.
+
+00:00:42.375 --> 00:00:45.200
+Kafka's data representation is often different
+
+00:00:45.200 --> 00:00:47.690
+from that of systems integrating with, for example,
+
+00:00:47.689 --> 00:00:49.324
+the data in a Cassandra table,
+
+00:00:49.325 --> 00:00:52.010
+or a JSON file and an S3 bucket may not
+
+00:00:52.009 --> 00:00:55.339
+be appropriately formatted for the destination Kafka topic.
+
+00:00:55.340 --> 00:00:59.105
+The Kafka connect framework accommodates for this by defining converters
+
+00:00:59.104 --> 00:01:02.569
+which are responsible for defining a mapping between the source,
+
+00:01:02.570 --> 00:01:05.825
+or destination system and Kafka connected self.
+
+00:01:05.825 --> 00:01:10.055
+Converters can even be used to turn data into Avro or JSON.
+
+00:01:10.055 --> 00:01:13.460
+At times it will make sense for you to build your own reasonable connectors,
+
+00:01:13.459 --> 00:01:15.739
+however the vast majority of the time,
+
+00:01:15.739 --> 00:01:20.209
+you will simply be able to make use of existing open source connectors.
+

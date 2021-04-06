@@ -1,0 +1,13 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:01.909 --> 00:00:08.054
+Up until now, we've manually sent schemas alongside every message we sent through Kafka.
+
+00:00:08.054 --> 00:00:12.179
+In this section, we'll learn how we can use a tool built a confluent called
+
+00:00:12.179 --> 00:00:17.829
+Schema Registry to help streamline this process and help us better manage your schemas.
+

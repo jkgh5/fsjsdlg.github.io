@@ -1,0 +1,58 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:02.924
+Before we explore how to use and configure Kafka Connect,
+
+00:00:02.924 --> 00:00:04.949
+let's review its architecture.
+
+00:00:04.950 --> 00:00:10.304
+Kafka Connect is an extension of the Kafka project and is built in Scala and Java.
+
+00:00:10.304 --> 00:00:12.464
+Because it's built on the JVM,
+
+00:00:12.464 --> 00:00:16.859
+Kafka Connect can run on most types of hardware and operating systems.
+
+00:00:16.859 --> 00:00:20.984
+On its own, that's all Kafka Connect is, a web server.
+
+00:00:20.984 --> 00:00:23.160
+For Kafka Connect to be able to interact with
+
+00:00:23.160 --> 00:00:26.804
+the outside world it needs plug-ins to tell it how to do so.
+
+00:00:26.804 --> 00:00:29.625
+When the Kafka Connect web server boots up,
+
+00:00:29.625 --> 00:00:32.880
+it locates and loads Kafka plug-in jars.
+
+00:00:32.880 --> 00:00:36.260
+So here, each one of these would represent a Kafka
+
+00:00:36.259 --> 00:00:40.714
+plug-in and each one of them will be loaded as a plug-in jar.
+
+00:00:40.715 --> 00:00:44.240
+Kafka Connect plug-ins implement the actual functionality,
+
+00:00:44.240 --> 00:00:47.545
+it must be implemented against the connect framework API.
+
+00:00:47.545 --> 00:00:52.910
+Because of this, all Kafka Connect plugins are written in a JVM language like Java.
+
+00:00:52.909 --> 00:00:57.949
+Kafka Connect uses Kafka to store its configuration and track its internal state.
+
+00:00:57.950 --> 00:01:00.760
+Just as with scheme registry and Kafka itself,
+
+00:01:00.759 --> 00:01:05.459
+Kafka Connect can be run as a single node or as a cluster.
+

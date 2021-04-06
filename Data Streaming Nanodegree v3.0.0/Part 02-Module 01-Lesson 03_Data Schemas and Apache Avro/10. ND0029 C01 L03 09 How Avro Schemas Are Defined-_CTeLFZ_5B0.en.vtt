@@ -1,0 +1,163 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:01.610 --> 00:00:05.640
+These schema definitions have a handful of required fields.
+
+00:00:05.639 --> 00:00:08.265
+The first field that's required, is the name field.
+
+00:00:08.265 --> 00:00:10.845
+The name field identifies the name of the schema.
+
+00:00:10.845 --> 00:00:13.950
+For example, if you were to finding a stock price change schema,
+
+00:00:13.949 --> 00:00:16.589
+you might name it something like stock.price change.
+
+00:00:16.589 --> 00:00:18.945
+In this example, we've used user.
+
+00:00:18.945 --> 00:00:24.195
+You can also optionally specify a name-space such as common.udacity for your record.
+
+00:00:24.195 --> 00:00:27.315
+This isn't required but it can be a good thing to do if you can.
+
+00:00:27.315 --> 00:00:30.740
+Next, all schemas must have a defined type.
+
+00:00:30.739 --> 00:00:32.765
+In this case, we've defined a record.
+
+00:00:32.765 --> 00:00:34.880
+The top-most entry in our JSON,
+
+00:00:34.880 --> 00:00:37.010
+Avro is always of type record.
+
+00:00:37.009 --> 00:00:41.239
+A record is a collection of fields that may or may not have values.
+
+00:00:41.240 --> 00:00:43.625
+Let's make this a little bit less abstract.
+
+00:00:43.625 --> 00:00:45.920
+Returning to the example of our user,
+
+00:00:45.920 --> 00:00:49.070
+the user record might have a few fields on it such as the ID,
+
+00:00:49.070 --> 00:00:51.664
+first and last name, e-mail, and phone.
+
+00:00:51.664 --> 00:00:55.039
+These fields would belong to the user record.
+
+00:00:55.039 --> 00:00:58.835
+We will add each of these attributes to our records array of fields.
+
+00:00:58.835 --> 00:01:00.649
+As you can see an example on the slide,
+
+00:01:00.649 --> 00:01:02.600
+we have an array of fields,
+
+00:01:02.600 --> 00:01:04.450
+we have an id of type int,
+
+00:01:04.450 --> 00:01:06.450
+a first and last name of type string,
+
+00:01:06.450 --> 00:01:09.390
+and an e-mail, and phone number of type string as well.
+
+00:01:09.390 --> 00:01:13.579
+So this defines the expected structure of the user data.
+
+00:01:13.579 --> 00:01:16.670
+Ever also supports the notion of optional fields.
+
+00:01:16.670 --> 00:01:20.225
+Optional fields may or may not be present in the output data.
+
+00:01:20.224 --> 00:01:22.534
+Let's say we made the phone number optional.
+
+00:01:22.534 --> 00:01:24.724
+The phone number may sometimes be empty.
+
+00:01:24.724 --> 00:01:29.194
+To capture that, we describe the type of the phone field as either no or a string.
+
+00:01:29.194 --> 00:01:31.384
+So as you can see here this says,
+
+00:01:31.385 --> 00:01:33.844
+that the phone type is optional.
+
+00:01:33.844 --> 00:01:36.664
+We have an array, a union type,
+
+00:01:36.665 --> 00:01:39.500
+is what this is specifically referred to as either
+
+00:01:39.500 --> 00:01:44.060
+null where there's no phone number or string when there is a phone number.
+
+00:01:44.060 --> 00:01:45.829
+The fields we just discussed,
+
+00:01:45.829 --> 00:01:47.435
+are known as primitive types.
+
+00:01:47.435 --> 00:01:49.100
+A primitive type is similar to
+
+00:01:49.099 --> 00:01:51.769
+the primitive types you would have in a programming language.
+
+00:01:51.769 --> 00:01:53.509
+For example, int string,
+
+00:01:53.510 --> 00:01:55.270
+boolean float, and so on.
+
+00:01:55.269 --> 00:01:59.659
+You can see we're using int string extensively as well as null.
+
+00:01:59.659 --> 00:02:03.694
+A record is what's referred to as a complex type in Avro.
+
+00:02:03.694 --> 00:02:09.334
+Complex types include data structures like arrays, maps, and enumerations.
+
+00:02:09.335 --> 00:02:12.365
+These complex types may contain other types.
+
+00:02:12.365 --> 00:02:15.379
+For example, you may have an array full of
+
+00:02:15.379 --> 00:02:19.009
+numbers but you may also fill it with records or maps.
+
+00:02:19.009 --> 00:02:22.224
+Additionally, records can contain other records.
+
+00:02:22.224 --> 00:02:25.090
+Or complex types may seem confusing at first,
+
+00:02:25.090 --> 00:02:27.740
+they're required for average to be able to fully express
+
+00:02:27.740 --> 00:02:30.590
+the types of data models that applications tend to use.
+
+00:02:30.590 --> 00:02:34.075
+Many of which, involve nesting, arrays, and maps.
+
+00:02:34.074 --> 00:02:38.039
+We'll see more about primitive and complex types shortly.
+

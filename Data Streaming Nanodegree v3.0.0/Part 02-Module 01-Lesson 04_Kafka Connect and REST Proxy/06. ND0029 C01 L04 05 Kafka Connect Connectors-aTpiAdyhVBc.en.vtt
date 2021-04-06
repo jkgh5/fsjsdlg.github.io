@@ -1,0 +1,49 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:01.520 --> 00:00:04.790
+Kafka connects plug-in architecture has led to
+
+00:00:04.790 --> 00:00:08.445
+the development of a strong catalog of open-source connectors.
+
+00:00:08.445 --> 00:00:11.699
+In this section, we will review some of the most useful connectors
+
+00:00:11.699 --> 00:00:15.869
+available in the community and gain some experience in applying them to a data source.
+
+00:00:15.869 --> 00:00:18.914
+There are many types of Kafka connect plug-ins available today.
+
+00:00:18.914 --> 00:00:23.265
+Most existing connector plug-ins are focused on data bases and data sources.
+
+00:00:23.265 --> 00:00:25.664
+Let's review some of the most common categories.
+
+00:00:25.664 --> 00:00:30.559
+First, connectors plug-ins for local file source and local files sink.
+
+00:00:30.559 --> 00:00:35.149
+These plug-ins are popular for moving logs into an out of Kafka.
+
+00:00:35.149 --> 00:00:39.199
+Cloud key value stores such as AWS, S3,
+
+00:00:39.200 --> 00:00:43.415
+or Google Cloud Storage are another key popular source or sync.
+
+00:00:43.414 --> 00:00:50.089
+Traditional SQL data bases such as MySQL or Postgres are also common and useful plug-ins.
+
+00:00:50.090 --> 00:00:54.845
+There are even plug-ins for working with HDFS data sources and rest APIs.
+
+00:00:54.844 --> 00:00:58.475
+Kafka maintains a website with a list of all available connectors.
+
+00:00:58.475 --> 00:01:02.399
+Check the course notes for a link where you can explore more.
+

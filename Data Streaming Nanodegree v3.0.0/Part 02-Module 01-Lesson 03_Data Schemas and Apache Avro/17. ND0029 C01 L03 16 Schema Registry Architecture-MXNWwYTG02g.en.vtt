@@ -1,0 +1,55 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:02.355
+Let's review how schema registry works.
+
+00:00:02.355 --> 00:00:04.529
+At its core, schema registry is simply
+
+00:00:04.530 --> 00:00:08.730
+a web-server built on the JVM using Java and Scala.
+
+00:00:08.730 --> 00:00:13.620
+As with Kafka, the decision to use the JVM to build schema registry means that
+
+00:00:13.619 --> 00:00:18.600
+it's a highly portable application and will run on just by any operating system.
+
+00:00:18.600 --> 00:00:22.470
+Schema registry does not use a traditional database to store a state.
+
+00:00:22.469 --> 00:00:27.254
+Instead, it utilizes Kafka itself to store data in a Schemas topic.
+
+00:00:27.254 --> 00:00:32.884
+Schema Registry uses log compaction to ensure that no data loss will occur.
+
+00:00:32.884 --> 00:00:35.329
+Schema registry simply exposes
+
+00:00:35.329 --> 00:00:39.394
+an HTTP web-server with a REST API for managing your schemas.
+
+00:00:39.395 --> 00:00:42.620
+Whenever you use a client library that integrates with schema registry,
+
+00:00:42.619 --> 00:00:46.674
+it is simply using the schema registry REST API under the hood.
+
+00:00:46.674 --> 00:00:49.279
+You can run more than one schema registry node at
+
+00:00:49.280 --> 00:00:52.145
+a time to form a schema registry cluster.
+
+00:00:52.145 --> 00:00:56.815
+Finally, similar to how Kafka itself uses ZooKeeper,
+
+00:00:56.814 --> 00:00:59.494
+schema registry also uses ZooKeeper to choose
+
+00:00:59.494 --> 00:01:05.759
+a single scheme registry web-server leader in a given cluster of schema registry nodes.
+

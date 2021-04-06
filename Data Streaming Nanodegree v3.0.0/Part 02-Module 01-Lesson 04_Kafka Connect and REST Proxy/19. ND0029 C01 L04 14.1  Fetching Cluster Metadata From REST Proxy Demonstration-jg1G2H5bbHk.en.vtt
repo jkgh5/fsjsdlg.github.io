@@ -1,0 +1,166 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:02.625
+Now, that we have a list of topics,
+
+00:00:02.625 --> 00:00:05.790
+let's actually get the details on a list of topics.
+
+00:00:05.790 --> 00:00:08.714
+We're going to write some similar code to above.
+
+00:00:08.714 --> 00:00:13.800
+We're going to say, "Response equals requests.get," and
+
+00:00:13.800 --> 00:00:19.899
+we're going to use the REST proxy URL slash topics.
+
+00:00:20.030 --> 00:00:23.865
+Then we're going to pass in the topic name.
+
+00:00:23.864 --> 00:00:26.974
+This is going to give us details on that topic.
+
+00:00:26.975 --> 00:00:28.679
+How do I know about this?
+
+00:00:28.679 --> 00:00:31.039
+We can take a look at the documentation again.
+
+00:00:31.039 --> 00:00:32.810
+We can see, get topics,
+
+00:00:32.810 --> 00:00:34.325
+specifying a topic name,
+
+00:00:34.325 --> 00:00:36.630
+will give us metadata about a specific topic.
+
+00:00:36.630 --> 00:00:38.359
+You can actually see what
+
+00:00:38.359 --> 00:00:41.964
+the request and the response format looks like in the documentation.
+
+00:00:41.965 --> 00:00:44.120
+Let's go ahead and see how this works.
+
+00:00:44.119 --> 00:00:49.774
+We're going to just take pretty much the same approach here.
+
+00:00:49.774 --> 00:00:52.744
+We're going to check for an error.
+
+00:00:52.744 --> 00:01:00.070
+Otherwise, we're going to just go ahead and print response topic details.
+
+00:01:00.320 --> 00:01:05.219
+I'm going to do a JSON dumps on this.
+
+00:01:05.219 --> 00:01:06.510
+Just so it formats nicely,
+
+00:01:06.510 --> 00:01:08.100
+I'm going to indent it by two,
+
+00:01:08.099 --> 00:01:09.919
+so that when it prints the JSON out,
+
+00:01:09.920 --> 00:01:14.700
+it's nice and easy for us to read in the terminal. Then I'm going to save.
+
+00:01:15.019 --> 00:01:18.694
+This also needs to be a function call not just an attribute.
+
+00:01:18.694 --> 00:01:21.754
+Let's go ahead and run this code and see what happens.
+
+00:01:21.754 --> 00:01:24.619
+Go into full screen mode here. All right.
+
+00:01:24.620 --> 00:01:28.170
+Now, we have topic details as you can see.
+
+00:01:28.170 --> 00:01:31.879
+I just had it pick the first topic in the list which in this case is
+
+00:01:31.879 --> 00:01:35.959
+confluent support metrics and this is actually a private topic on the Kafka broker.
+
+00:01:35.959 --> 00:01:37.789
+But it doesn't really matter for this exercise.
+
+00:01:37.790 --> 00:01:39.365
+We just want to see what the details are.
+
+00:01:39.364 --> 00:01:41.359
+You can see not only can we see the name of the topic,
+
+00:01:41.359 --> 00:01:44.784
+we can see all the configuration details for this topic as well.
+
+00:01:44.784 --> 00:01:47.795
+This might be really useful if you want to get quick information
+
+00:01:47.795 --> 00:01:50.840
+about your topics into some kind of a user interface,
+
+00:01:50.840 --> 00:01:53.480
+a web page, or even just into your logs.
+
+00:01:53.480 --> 00:01:56.370
+You can even see partition information.
+
+00:01:57.079 --> 00:02:01.640
+We're going to exit out of this and finish our final request here.
+
+00:02:01.640 --> 00:02:05.390
+Now, that we've done that, we want to get information on the broker itself.
+
+00:02:05.390 --> 00:02:09.500
+We can actually get a list of all the brokers that are supported by doing
+
+00:02:09.500 --> 00:02:13.389
+response equal requests dot get f for
+
+00:02:13.389 --> 00:02:22.464
+format string and just talking to the slash brokers end point.
+
+00:02:22.465 --> 00:02:27.330
+We're going to raise for status if this was in
+
+00:02:27.330 --> 00:02:33.195
+a 200 response and exit if it was incorrect.
+
+00:02:33.194 --> 00:02:36.525
+Otherwise, we're going to print broker details.
+
+00:02:36.525 --> 00:02:40.200
+Then we're going to basically just dump out the JSON that we
+
+00:02:40.199 --> 00:02:43.724
+get back from our REST proxy.
+
+00:02:43.724 --> 00:02:46.810
+All right. Let's run that final command.
+
+00:02:47.000 --> 00:02:50.900
+As you can see, our broker details are now printed.
+
+00:02:50.900 --> 00:02:53.090
+We only have one broker in our list
+
+00:02:53.090 --> 00:02:55.819
+because we're in this exercise environment or in this workspace,
+
+00:02:55.819 --> 00:02:57.799
+we only have one broker running.
+
+00:02:57.800 --> 00:02:59.615
+If you had multiple brokers running,
+
+00:02:59.615 --> 00:03:03.060
+you would get a list back with all the brokers listed.
+

@@ -1,0 +1,40 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:01.550 --> 00:00:04.650
+In this lesson, we learn why data schemas
+
+00:00:04.650 --> 00:00:07.140
+are an important part of our stream processing workflow.
+
+00:00:07.139 --> 00:00:10.904
+We saw how unplanned changes can cause serious system failures.
+
+00:00:10.904 --> 00:00:13.184
+As we then saw, Apache Avro,
+
+00:00:13.185 --> 00:00:14.669
+a conflict schema registry,
+
+00:00:14.669 --> 00:00:18.960
+can be used to help ensure that schema changes occur smoothly and without error.
+
+00:00:18.960 --> 00:00:22.500
+We also learned how schema registry can help us clue in clients to
+
+00:00:22.500 --> 00:00:26.085
+whether or not schema changes are compatible with its backward,
+
+00:00:26.085 --> 00:00:28.890
+forward and full compatibility settings.
+
+00:00:28.890 --> 00:00:30.914
+The next lesson, we're going to see
+
+00:00:30.914 --> 00:00:35.579
+how extended Apache Kafka Ecosystem tools like Kafka Connect,
+
+00:00:35.579 --> 00:00:40.329
+and the REST Proxy can help us use Kafka in even more places.
+

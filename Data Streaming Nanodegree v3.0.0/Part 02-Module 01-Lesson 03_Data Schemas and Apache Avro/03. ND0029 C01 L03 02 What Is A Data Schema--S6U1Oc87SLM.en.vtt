@@ -1,0 +1,133 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:02.970
+Data schemas provide both producers and consumers in
+
+00:00:02.970 --> 00:00:06.585
+our stream processing application with a number of important data points.
+
+00:00:06.585 --> 00:00:09.884
+First, they helped to find the shape of the data.
+
+00:00:09.884 --> 00:00:11.849
+When we talk about the shape of the data,
+
+00:00:11.849 --> 00:00:13.919
+we're referring to the names of fields,
+
+00:00:13.919 --> 00:00:16.320
+the expected values assigned to those fields and
+
+00:00:16.320 --> 00:00:19.214
+whether certain data is optional or required.
+
+00:00:19.214 --> 00:00:23.655
+So in this example you can see we're calling this id 123 and int.
+
+00:00:23.655 --> 00:00:25.679
+Ben is a string for the first name.
+
+00:00:25.679 --> 00:00:28.785
+Last name is also a string and same with the email and phone number.
+
+00:00:28.785 --> 00:00:29.835
+They're also strings.
+
+00:00:29.835 --> 00:00:32.640
+So what we're doing here is describing not just the shape
+
+00:00:32.640 --> 00:00:35.429
+of the data but also the type of the data that is expected.
+
+00:00:35.429 --> 00:00:38.625
+Think about when you've worked with JSON data in the past.
+
+00:00:38.625 --> 00:00:40.859
+You typically expect for certain keys to be
+
+00:00:40.859 --> 00:00:43.954
+present and for those keys to have a certain type of value.
+
+00:00:43.954 --> 00:00:45.929
+For example, if you have an email key,
+
+00:00:45.929 --> 00:00:50.185
+you would expect the value to be a string email address just as in this example.
+
+00:00:50.185 --> 00:00:53.859
+SQL databases also enforce schemas.
+
+00:00:53.859 --> 00:00:58.659
+If you try to insert an integer into a string or varchar column,
+
+00:00:58.659 --> 00:01:02.059
+most databases will refuse to allow you to complete that request.
+
+00:01:02.060 --> 00:01:03.920
+So I've added the annotations here.
+
+00:01:03.920 --> 00:01:05.480
+This is the same data as we saw on
+
+00:01:05.480 --> 00:01:09.655
+the previous section but we have here an idea to an integer a first,
+
+00:01:09.655 --> 00:01:10.799
+a last, an email,
+
+00:01:10.799 --> 00:01:12.569
+and a phone, they're all strings.
+
+00:01:12.569 --> 00:01:15.799
+I can insert an integer into the first name column,
+
+00:01:15.799 --> 00:01:17.869
+and likewise I couldn't take the last name which is
+
+00:01:17.870 --> 00:01:20.090
+a string and insert that into the id column.
+
+00:01:20.090 --> 00:01:22.405
+The SQL database simply won't allow it.
+
+00:01:22.405 --> 00:01:27.680
+Importantly, schemas allow applications to be developed independently of one another.
+
+00:01:27.680 --> 00:01:31.610
+If a downstream application can inspect the published schema of a message,
+
+00:01:31.609 --> 00:01:33.920
+it does not necessarily need to be developed alongside
+
+00:01:33.920 --> 00:01:36.575
+the original application to take advantage of its data.
+
+00:01:36.575 --> 00:01:38.240
+Because of these features,
+
+00:01:38.239 --> 00:01:43.174
+data schemas are ubiquitous and to data systems today as well as applications.
+
+00:01:43.174 --> 00:01:45.319
+Let's go through a few examples.
+
+00:01:45.319 --> 00:01:49.699
+Apache Avro is used extensively in the Hadoop ecosystem to aid in
+
+00:01:49.700 --> 00:01:53.775
+communication and as you'll see shortly as well as the coffee ecosystem,
+
+00:01:53.775 --> 00:01:56.180
+gRPC empirical buffers are used in
+
+00:01:56.180 --> 00:02:00.485
+the popular container orchestration framework Kubernetes for most communications.
+
+00:02:00.484 --> 00:02:02.390
+As you'll see throughout this lesson,
+
+00:02:02.390 --> 00:02:06.239
+there's a reason that these schema technologies have become so popular.
+

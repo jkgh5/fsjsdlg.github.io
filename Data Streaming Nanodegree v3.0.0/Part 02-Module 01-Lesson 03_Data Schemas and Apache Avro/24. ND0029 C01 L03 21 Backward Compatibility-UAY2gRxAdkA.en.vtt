@@ -1,0 +1,118 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:02.955
+Let's start by reviewing Backward Compatibility.
+
+00:00:02.955 --> 00:00:06.390
+Backward compatibility indicates that consumers developed against
+
+00:00:06.389 --> 00:00:10.544
+the latest schema can still use data from the prior versions of that schema.
+
+00:00:10.544 --> 00:00:14.070
+Backward compatible changes are typically addition of
+
+00:00:14.070 --> 00:00:18.179
+a new optional field or the deletion of a field and the newest schema.
+
+00:00:18.179 --> 00:00:22.155
+Let's use an example for a purchase event as an example.
+
+00:00:22.155 --> 00:00:24.464
+This schema contains a username,
+
+00:00:24.463 --> 00:00:26.549
+currency, and then amount.
+
+00:00:26.550 --> 00:00:29.964
+Now, let's say we added an optional memo field to the schema.
+
+00:00:29.964 --> 00:00:34.100
+If we developed the consumer application against this latest version of the schema,
+
+00:00:34.100 --> 00:00:37.160
+we would still be able to use all of the previous purchase data,
+
+00:00:37.159 --> 00:00:38.944
+making it backward compatible.
+
+00:00:38.945 --> 00:00:41.240
+Our consumer code already has to deal with
+
+00:00:41.240 --> 00:00:44.440
+the fact that a memo may or may not be present.
+
+00:00:44.439 --> 00:00:47.299
+All previous data does not have a memo field,
+
+00:00:47.299 --> 00:00:50.284
+but our code will still be able to handle that case.
+
+00:00:50.284 --> 00:00:54.454
+Likewise, if we instead deleted a field from the model,
+
+00:00:54.454 --> 00:00:59.479
+say the Currency field and then develop the consumer against this updated schema version,
+
+00:00:59.479 --> 00:01:02.015
+this would also be a backward-compatible change.
+
+00:01:02.015 --> 00:01:04.430
+Even though all the historical data will contain
+
+00:01:04.430 --> 00:01:08.165
+the Currency field our new processing code will simply ignore it.
+
+00:01:08.165 --> 00:01:10.780
+There's one additional detail we need to cover,
+
+00:01:10.780 --> 00:01:13.715
+and that's the applicability of the compatibility setting.
+
+00:01:13.715 --> 00:01:18.545
+Schema Registry defines both backward and backward transitive settings.
+
+00:01:18.545 --> 00:01:22.070
+When you market compatibility change as backward compatible,
+
+00:01:22.069 --> 00:01:26.928
+it means the change is just compatible with the previous version of the schema,
+
+00:01:26.929 --> 00:01:29.269
+but not any versions prior to that.
+
+00:01:29.269 --> 00:01:32.689
+If you mark a compatibility change as backward transitive,
+
+00:01:32.689 --> 00:01:35.390
+that means that the change is backward compatible with
+
+00:01:35.390 --> 00:01:39.140
+all versions of the schema ever published a Schema Registry.
+
+00:01:39.140 --> 00:01:43.640
+Finally, if your producer is making a change which is backward compatible,
+
+00:01:43.640 --> 00:01:46.549
+you need to allow your consumers to update to the latest version of
+
+00:01:46.549 --> 00:01:50.155
+your schema before you release the updated producer.
+
+00:01:50.155 --> 00:01:53.180
+If you don't, your consumers will be unable to process data
+
+00:01:53.180 --> 00:01:56.360
+produced with the new schema until they had been updated.
+
+00:01:56.359 --> 00:01:58.730
+If you update your consumers first to handle
+
+00:01:58.730 --> 00:02:01.579
+the new datatype and then publish the producer change,
+
+00:02:01.579 --> 00:02:05.250
+new data will be handled gracefully in your system.
+

@@ -1,0 +1,1690 @@
+{
+  "data": {
+    "lesson": {
+      "id": 930160,
+      "key": "7de0a1ec-a43e-4a62-8973-00c7c844ff39",
+      "title": "Stream Processing with Faust",
+      "semantic_type": "Lesson",
+      "is_public": true,
+      "version": "1.0.0",
+      "locale": "en-us",
+      "summary": "Students will learn how to use the Python stream processing library Faust to rapidly create powerful stream processing applications.",
+      "lesson_type": "Classroom",
+      "display_workspace_project_only": false,
+      "resources": {
+        "files": [
+          {
+            "name": "Videos Zip File",
+            "uri": "https://zips.udacity-data.com/7de0a1ec-a43e-4a62-8973-00c7c844ff39/930160/1578340317841/Stream+Processing+with+Faust+Videos.zip"
+          },
+          {
+            "name": "Transcripts Zip File",
+            "uri": "https://zips.udacity-data.com/7de0a1ec-a43e-4a62-8973-00c7c844ff39/930160/1578340311715/Stream+Processing+with+Faust+Subtitles.zip"
+          },
+          {
+            "name": "Lesson 6 slides",
+            "uri": "https://video.udacity-data.com/topher/2019/September/5d7d3466_l6-stream-processing-with-faust/l6-stream-processing-with-faust.pdf"
+          }
+        ],
+        "google_plus_link": null,
+        "career_resource_center_link": null,
+        "coaching_appointments_link": null,
+        "office_hours_link": null,
+        "aws_provisioning_link": null
+      },
+      "project": null,
+      "lab": null,
+      "concepts": [
+        {
+          "id": 930145,
+          "key": "85a7a97f-7c6b-427f-80f4-1810733499fc",
+          "title": "Lesson Overview",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "85a7a97f-7c6b-427f-80f4-1810733499fc",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 930117,
+              "key": "5751748a-776d-4f73-a74b-2714ffc67920",
+              "title": "ND0029 C01 L06 01 Faust Lesson Overview",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "yjTqXyxQ42o",
+                "china_cdn_id": "yjTqXyxQ42o.mp4"
+              }
+            },
+            {
+              "id": 930199,
+              "key": "dcca7cee-0c90-4828-b8eb-62be64f95200",
+              "title": "Lesson Overview",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Lesson Overview\nIn this lesson, you will learn how to use the Faust Stream Processing library to create stream processing applications in Python. You will learn serialization and deserialization techniques, see how Faust implements storage, and finally, get hands-on experience with streams, tables, and time windowing.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 930143,
+          "key": "5b194219-558a-4204-b82a-e24811b67aa7",
+          "title": "Glossary of Terms in Lesson",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "5b194219-558a-4204-b82a-e24811b67aa7",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 930078,
+              "key": "3e1861dc-db4c-4eb4-83ca-c48df26f31e4",
+              "title": "Glossary of Key Terms in Lesson",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Glossary of Key Terms You Will Learn in this Lesson\n\n* DSL - Domain Specific Language. A metaprogramming language for specific tasks, such as building database queries or stream processing applications.\n* Dataclass (Python) - A special type of Class in which instances are meant to represent data, but not contain mutating functions\n* Changelog - An append-only log of changes made to a particular component. In the case of Faust and other stream processors, this tracks all changes to a given processor.\n* Processor (Faust) - Functions that take a value and return a value. Can be added in a pre-defined list of callbacks to stream declarations.\n* Operations (Faust) - Actions that can be applied to an incoming stream to create an intermediate stream containing some modification, such as a group-by or filter",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 930148,
+          "key": "f0707f60-f757-4624-beef-f31ce0ffbfa8",
+          "title": "Stream Processing with Faust",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "f0707f60-f757-4624-beef-f31ce0ffbfa8",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 930079,
+              "key": "a0c2f8b9-b712-492b-beba-dfe25339452d",
+              "title": "ND0029 C01 L06 02 What Is Faust-",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "zi3xT3zGWDo",
+                "china_cdn_id": "zi3xT3zGWDo.mp4"
+              }
+            },
+            {
+              "id": 930111,
+              "key": "1d2fba8f-81d2-48ed-a915-21c7db57a924",
+              "title": "Stream Processing with Faust",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Stream Processing with Faust\nIn this lesson, you will learn how to construct stream processing applications using the Faust framework. Faust was developed at the financial services company, Robinhood, as a Python-native alternative to many of the JVM-only stream processing frameworks like Kafka Streams and Flink. By the end of this lesson, you will know how to create powerful stream processing applications quickly, and with minimal code!",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 930153,
+          "key": "e15dffb4-fbaa-41ed-8ba6-5225aa3d4494",
+          "title": "Introduction to Faust",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "e15dffb4-fbaa-41ed-8ba6-5225aa3d4494",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 930103,
+              "key": "26baa5c9-51ec-4e4c-a535-8adebf5cd0bc",
+              "title": "Introduction to Faust Heading",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Introduction to Faust\nFaust is built using modern Python features such as [asyncio](https://docs.python.org/3/library/asyncio.html). Faust is embeddable as a library in existing applications. It can also be configured to be deployed as a stand-alone application in your infrastructure. Faust implements storage, time windowing, streams, tables, and many of the aggregate functions discussed in Lesson 5. It is important to note that Faust requires Python 3.6+ and **does not support Avro or Schema Registry** natively at this time.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 930077,
+              "key": "17f8e87b-5160-470b-b50c-a037ac23d965",
+              "title": "ND0029 C01 L06 03 Introduction To Faust",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "anqYMn6jA7U",
+                "china_cdn_id": "anqYMn6jA7U.mp4"
+              }
+            },
+            {
+              "id": 930120,
+              "key": "003f20c4-8907-420a-be64-de6990fb1aba",
+              "title": "Introduction to Faust",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Robinhood Faust - Key Points\n - [Built at Robinhood to tackle stream processing problems natively in Python](https://robinhood.engineering/faust-stream-processing-for-python-a66d3a51212d?gi=25dc91767251)\n - Faust takes its design inspiration from [Kafka Streams, a JVM-only framework](https://kafka.apache.org/documentation/streams/)\n - Faust is built using [modern Python features like asyncio, and requires Python 3.6 or higher](https://docs.python.org/3/library/asyncio.html)\n - Faust’s API implements the storage, windowing, aggregation, and other concepts discussed in Lesson 5\n - Faust is a native Python API, not a Domain Specific Language (DSL) for metaprogramming\n - Requires no external dependency other than Kafka. Does not require a resource manager like Yarn or Mesos.\n - Faust **does not natively support Avro or Schema Registry**",
+              "instructor_notes": ""
+            },
+            {
+              "id": 930076,
+              "key": "0ee03e33-b71d-493e-868a-4483e0d58020",
+              "title": "Faust is compatible with Python 2 and 3",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "0ee03e33-b71d-493e-868a-4483e0d58020",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Faust is compatible with Python 2.7+ and Python 3.5+",
+                "answers": [
+                  {
+                    "id": "rbk1",
+                    "text": "True",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "rbk2",
+                    "text": "False",
+                    "is_correct": true
+                  }
+                ]
+              }
+            },
+            {
+              "id": 930081,
+              "key": "f8a37f7e-6164-4b33-8e96-c9644640d442",
+              "title": "Faust is a DSL",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "f8a37f7e-6164-4b33-8e96-c9644640d442",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Faust is a Domain Specific Language (DSL)",
+                "answers": [
+                  {
+                    "id": "rbk1",
+                    "text": "True",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "rbk2",
+                    "text": "False",
+                    "is_correct": true
+                  }
+                ]
+              }
+            },
+            {
+              "id": 930101,
+              "key": "ff21af01-bba4-487e-9a94-bbd1e5fb540b",
+              "title": "Faust does not require a resource manager",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "ff21af01-bba4-487e-9a94-bbd1e5fb540b",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Faust does not require a resource manager like Yarn or Mesos",
+                "answers": [
+                  {
+                    "id": "rbk1",
+                    "text": "True",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "rbk2",
+                    "text": "False",
+                    "is_correct": false
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 930141,
+          "key": "89739528-16fb-4d1d-b5d4-acd018d4618b",
+          "title": "Your First Faust Application",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "89739528-16fb-4d1d-b5d4-acd018d4618b",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 930075,
+              "key": "3e894c8e-0cb8-4fa1-9259-af170c4ad299",
+              "title": "ND0029 C01 L06 04 Hello Faust",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "6vLmCcyEXU0",
+                "china_cdn_id": "6vLmCcyEXU0.mp4"
+              }
+            },
+            {
+              "id": 930080,
+              "key": "3aa207d4-0a23-4ffb-be39-54972b69c056",
+              "title": "Further Optional Research - Exploring Faust Functionality in More Depth",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Further Optional Research - Exploring Faust Functionality in More Depth\n - [See the Faust documentation for in-depth documentation of how Faust works](https://faust.readthedocs.io/en/latest/introduction.html)\n - Every Faust application has an [`App` which instantiates the top-level Faust application](https://faust.readthedocs.io/en/latest/userguide/application.html#what-is-an-application)\n - The application must be assigned a [`topic` to subscribe to](https://faust.readthedocs.io/en/latest/userguide/application.html#app-topic-create-a-topic-description)\n - An output [`Table`](https://faust.readthedocs.io/en/latest/userguide/tables.html#id1) or stream receives the output of the processing\n - An asynchronous function is decorated with an [`agent`](https://faust.readthedocs.io/en/latest/introduction.html#id6) which register the function as a callback for the application when data is received",
+              "instructor_notes": ""
+            },
+            {
+              "id": 931235,
+              "key": "73e973e7-8f55-4d8d-826d-4f97924dca4c",
+              "title": "Demo: Your First Faust Application",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Demo: Your First Faust Application",
+              "instructor_notes": ""
+            },
+            {
+              "id": 930091,
+              "key": "0bbabe82-92aa-42e5-9515-efff99c0f422",
+              "title": "ND0029 C01 L06 05 Your First Faust Application Demontration",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "JA5xdY3DjjI",
+                "china_cdn_id": "JA5xdY3DjjI.mp4"
+              }
+            },
+            {
+              "id": 931226,
+              "key": "10086601-2586-4e21-ba80-575db16c5ecc",
+              "title": "Workspace Exercise: Your First Faust Application",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Workspace Exercise: Your First Faust Application\n### Important note:\nBefore you execute anything in this workspace, or anytime after you've refreshed, or woken up, or reset data, or used the \"Get New Content\" button in this workspace, you'll need to run this command in the terminal:\n\n`./startup.sh` \n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 930403,
+              "key": "76ac5fd4-e444-4b2a-b41a-106a250d8398",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "r899655c930141xJUPYTERL7oa86ry2",
+              "pool_id": "jupyterlabpython37",
+              "view_id": "jupyter-lab-bh8wp",
+              "gpu_capable": false,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "disk": null,
+                    "port": 3000,
+                    "ports": [],
+                    "pageEnd": "",
+                    "pageStart": "",
+                    "allowSubmit": false,
+                    "defaultPath": "/",
+                    "actionButtonText": ""
+                  },
+                  "kind": "jupyter-lab"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        },
+        {
+          "id": 930156,
+          "key": "c469ddaf-71d3-42df-9728-8cdccbfd01ab",
+          "title": "Serialization and Deserialization in Faust",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "c469ddaf-71d3-42df-9728-8cdccbfd01ab",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 930097,
+              "key": "092f259e-07d9-433f-a335-7c96fe433f97",
+              "title": "Serialization and Deserialization Header",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Serialization and Deserialization\nDeserializing and serializing data into native Python objects can make working with streaming data simpler and easier to test. In the following section you will see how to map your internal Python data structures to incoming and outgoing data with Faust.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 930093,
+              "key": "769b8aac-dc90-4e3b-8ac9-270c2a37cfaa",
+              "title": "ND0029 C01 L06 06 Serialization And Deserialization",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "pSW3AV6BNww",
+                "china_cdn_id": "pSW3AV6BNww.mp4"
+              }
+            },
+            {
+              "id": 930099,
+              "key": "21e871e2-6d75-4171-8682-cca6ab37821b",
+              "title": "ND0029 C01 L06 07 Python Dataclasses",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "s9Pq18isGnQ",
+                "china_cdn_id": "s9Pq18isGnQ.mp4"
+              }
+            },
+            {
+              "id": 930116,
+              "key": "8268b9b2-e796-45b4-a44c-81af2dd57a8e",
+              "title": "Python Dataclasses",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Python Dataclasses\n - A `dataclass` is a special type of Class in which instances are meant to represent data, but not contain mutating functions.\n - Python `dataclass` objects can be [marked as `frozen`](https://docs.python.org/3/library/dataclasses.html#frozen-instances), which makes them immutable\n     - Nothing in Python is truly immutable, but this attribute gets you about as close as you can get\n - `dataclass` objects require type annotations on fields and will enforce those constraints on creation. This helps ensure you’re always working with data in the expected format, reducing and preventing errors.\n - Can be paired with the [`asdict` function](https://docs.python.org/3/library/dataclasses.html#dataclasses.asdict) to quickly transform dataclasses into dictionaries\n - [New in Python 3.7](https://docs.python.org/3/whatsnew/3.7.html)\n - Default to using `dataclass` to work with data coming into and out of your Faust applications unless you have a good reason not to",
+              "instructor_notes": ""
+            },
+            {
+              "id": 930127,
+              "key": "638d5af9-6b39-4df2-998e-99d663c86d04",
+              "title": "Which of the following are benefits of dataclasses?",
+              "semantic_type": "CheckboxQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "638d5af9-6b39-4df2-998e-99d663c86d04",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Which of the following are benefits of dataclasses? (may be more than one answer)",
+                "answers": [
+                  {
+                    "id": "rbk1",
+                    "text": "Can be marked immutable",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "rbk2",
+                    "text": "Can transform data to Avro",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "rbk3",
+                    "text": "Has an `asdict` convenience function",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "rbk4",
+                    "text": "Has facilities for describing type constraints on fields",
+                    "is_correct": true
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 930159,
+          "key": "dc83049c-404e-4be3-b1e3-4062e09203cc",
+          "title": "Deserialization in Faust",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "dc83049c-404e-4be3-b1e3-4062e09203cc",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 930137,
+              "key": "9ad5a056-3865-47b2-a234-14a2853e5c28",
+              "title": "Deserialization Header",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Faust Deserialization\nTopic deserialization in Faust is a simple and painless process. Similar to how you might specify a schema for key and value to `confluent_kafka`, with Faust you can provide key and value types. These value types may be primitives such as `int` or `str`, or complex types represented as objects.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 930092,
+              "key": "b7b3de27-f7b5-44d4-b610-24f990fe4102",
+              "title": "ND0029 C01 L06 08 Deserialization",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "7bma3FpsMO8",
+                "china_cdn_id": "7bma3FpsMO8.mp4"
+              }
+            },
+            {
+              "id": 930087,
+              "key": "8c7a4a01-a25b-4133-bb4d-c4d18db9f075",
+              "title": "Faust Deserialization",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Faust Deserialization - Key Points\n - All data model classes must inherit from the [`faust.Record` class](https://faust.readthedocs.io/en/latest/userguide/models.html#records) if you wish to use them with a Faust topic.\n - It is a good idea to specify the [`serializer` type on your](https://faust.readthedocs.io/en/latest/userguide/models.html#serialization-deserialization) so that Faust will deserialize data in this format by default.\n - It is a good practice to set [`validation=True` on your data models](https://faust.readthedocs.io/en/latest/userguide/models.html#model-validation). When set to true, Faust will enforce that the data being deserialized from Kafka matches the expected type.\n     - E.g., if we expect a `str` for a field, but receive an `int`, Faust will raise an error.\n - [Use Faust `codecs` to build custom serialization and deserialization](https://faust.readthedocs.io/en/latest/userguide/models.html#codec-registry)",
+              "instructor_notes": ""
+            },
+            {
+              "id": 931238,
+              "key": "7be02da8-fa77-4b63-8e64-64c6dd9f23ef",
+              "title": "Demo: Faust Deserialization",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Demo: Faust Deserialization",
+              "instructor_notes": ""
+            },
+            {
+              "id": 930140,
+              "key": "b9788714-f9c3-46e5-9830-9b076e5884d1",
+              "title": "ND0029 C01 L06 09 Deserialization Demo",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "RfHQzWfHLzc",
+                "china_cdn_id": "RfHQzWfHLzc.mp4"
+              }
+            },
+            {
+              "id": 931229,
+              "key": "717df4dd-9f23-4711-9462-aaafc90b2887",
+              "title": "Workspace Exercise: Deserialization",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Workspace Exercise: Deserialization\n### Important note:\nBefore you execute anything in this workspace, or anytime after you've refreshed, or woken up, or reset data, or used the \"Get New Content\" button in this workspace, you'll need to run this command in the terminal:\n\n`./startup.sh` \n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 930406,
+              "key": "86edaa12-18c1-465e-9b46-976d89dd1c85",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "r899655c930159xJUPYTERLmvzl0h8o",
+              "pool_id": "jupyterlabpython37",
+              "view_id": "jupyter-lab-f2i8j",
+              "gpu_capable": false,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "disk": null,
+                    "port": 3000,
+                    "ports": [],
+                    "pageEnd": "",
+                    "pageStart": "",
+                    "allowSubmit": false,
+                    "defaultPath": "/",
+                    "actionButtonText": ""
+                  },
+                  "kind": "jupyter-lab"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        },
+        {
+          "id": 930150,
+          "key": "1596aeeb-bcd1-473f-8768-751a33ce04af",
+          "title": "Serialization in Faust",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "1596aeeb-bcd1-473f-8768-751a33ce04af",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 930094,
+              "key": "11a4e4bb-4dd6-43ff-8c87-613534fb31bd",
+              "title": "Serialization Header",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Faust Serialization\nSerialization in Faust leverages the same `faust.Record` rules you just learned about for deserialization. In this section, we’ll learn how Faust manages this process.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 930113,
+              "key": "a32500b2-c429-457a-badd-11a234d68637",
+              "title": "ND0029 C01 L06 10 Serialization",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "57WCaASFJcY",
+                "china_cdn_id": "57WCaASFJcY.mp4"
+              }
+            },
+            {
+              "id": 930102,
+              "key": "37b73d93-0dc8-4d7a-9e18-dce367c030dd",
+              "title": "Serialization",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Faust Serialization - Key Points\n - Serialization in Faust leverages the same [faust.Record](https://faust.readthedocs.io/en/latest/userguide/models.html#records) that we saw in the deserialization section. Faust runs the serializer _in reverse_ to serialize the data for the output stream.\n - [Multiple serialization codecs may be specified for a given model](https://faust.readthedocs.io/en/latest/userguide/models.html#manual-serialization)\n     - e.g., `serialization=”binary|json”`. This means, when serializing, encode to json, then base64 encode the data.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 931239,
+              "key": "33b72f7b-6c17-4620-8d46-ef2d559cbdc8",
+              "title": "Demo: Serialization in Faust",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Demo: Serialization in Faust",
+              "instructor_notes": ""
+            },
+            {
+              "id": 930088,
+              "key": "b9d7584c-d24f-40d9-a5e4-32f48393a430",
+              "title": "ND0029 C01 L06 11 Serialization Demo",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "gLjRWokE-vA",
+                "china_cdn_id": "gLjRWokE-vA.mp4"
+              }
+            },
+            {
+              "id": 931232,
+              "key": "1715ada1-9bd6-497f-b4a0-40277df5caa8",
+              "title": "Workspace Exercise: Serialization",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Workspace Exercise: Serialization\n### Important note:\nBefore you execute anything in this workspace, or anytime after you've refreshed, or woken up, or reset data, or used the \"Get New Content\" button in this workspace, you'll need to run this command in the terminal:\n\n`./startup.sh` \n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 930407,
+              "key": "b3d2242c-8080-476f-86dd-ca3996e59f65",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "r899655c930150xJUPYTERL1cxubvw2",
+              "pool_id": "jupyterlabpython37",
+              "view_id": "jupyter-lab-1rv1t",
+              "gpu_capable": false,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "disk": null,
+                    "port": 3000,
+                    "ports": [],
+                    "pageEnd": "",
+                    "pageStart": "",
+                    "allowSubmit": false,
+                    "defaultPath": "/",
+                    "actionButtonText": ""
+                  },
+                  "kind": "jupyter-lab"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        },
+        {
+          "id": 930158,
+          "key": "c769afb9-ca06-4b28-95bf-b7f4f58f10fc",
+          "title": "Summary: Serialization & Deserialization",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "c769afb9-ca06-4b28-95bf-b7f4f58f10fc",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 930121,
+              "key": "e70865bb-dac5-46fa-a323-bd787492ff76",
+              "title": "Serialization and Deserialization Summary Heading",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Faust Serialization and Deserialization - Summary\nThe Faust `faust.Record` type provides a powerful abstraction for both serialization and deserialization. As you’ve seen in this section it is fast and easy to define models for managing our data.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 930090,
+              "key": "fd94dc37-98de-4aeb-8db9-12291ead8a18",
+              "title": "ND0029 C01 L06 12 Serialization And Deserialization Summary",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "Yqmf_yixje0",
+                "china_cdn_id": "Yqmf_yixje0.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 930155,
+          "key": "f17d80a4-f52b-4368-931c-4dca97fed369",
+          "title": "Storage in Faust",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "f17d80a4-f52b-4368-931c-4dca97fed369",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 930086,
+              "key": "7baf86cc-c4e2-4136-88a7-df82b054a78b",
+              "title": "Storage Heading",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Storage in Faust\nIn this section you will learn about the storage options available for Faust applications, including in-memory and RocksDB-based storage.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 930085,
+              "key": "533aebda-7e2f-4a9b-88b7-ae0c2a169919",
+              "title": "ND0029 C01 L06 13 Storage Overview",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "irzbjbarTP8",
+                "china_cdn_id": "irzbjbarTP8.mp4"
+              }
+            },
+            {
+              "id": 930410,
+              "key": "4dff6137-4acb-4a8a-b55f-c735363afb6a",
+              "title": "Kafka State",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Kafka State",
+              "instructor_notes": ""
+            },
+            {
+              "id": 930109,
+              "key": "3dea7614-9020-4f34-a715-9775594735d3",
+              "title": "ND0029 C01 L06 14 Kafka State",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "b2HLVn6ZrZk",
+                "china_cdn_id": "b2HLVn6ZrZk.mp4"
+              }
+            },
+            {
+              "id": 930409,
+              "key": "5785c35f-bdfb-49dc-a071-6aaa4f5f2273",
+              "title": "Storing State In Memory",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Storing State In Memory",
+              "instructor_notes": ""
+            },
+            {
+              "id": 930123,
+              "key": "7ed65b1c-34ba-43b1-9d1a-9eb2e9f62150",
+              "title": "ND0029 C01 L06 15 In-Memory",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "iuWncdDbTp0",
+                "china_cdn_id": "iuWncdDbTp0.mp4"
+              }
+            },
+            {
+              "id": 930408,
+              "key": "7ebee27c-151d-4e8f-85b9-a9fea5135e1e",
+              "title": "Storing State in RocksDB",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Storing State in RocksDB",
+              "instructor_notes": ""
+            },
+            {
+              "id": 930122,
+              "key": "1d8bc042-32ea-4649-83a5-4fc41e1d3887",
+              "title": "ND0029 C01 L06 16 RocksDB",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "xCbcwdiEaUE",
+                "china_cdn_id": "xCbcwdiEaUE.mp4"
+              }
+            },
+            {
+              "id": 930083,
+              "key": "34145570-0315-49dc-bedd-2b7555e8591a",
+              "title": "Why is in-memory storage inappropriate for Production?",
+              "semantic_type": "CheckboxQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "34145570-0315-49dc-bedd-2b7555e8591a",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Why is in-memory storage inappropriate for Production? (may be more than one answer)",
+                "answers": [
+                  {
+                    "id": "rbk1",
+                    "text": "Does not survive restarts of the application",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "rbk2",
+                    "text": "May not be able to fit state in memory",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "rbk3",
+                    "text": "May take a long time to restart when loading data from Kafka Changelog topic",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "rbk4",
+                    "text": "May take up too much storage space on the node",
+                    "is_correct": false
+                  }
+                ]
+              }
+            },
+            {
+              "id": 930106,
+              "key": "e3cd721d-8d65-4a23-b88f-c1437a846e86",
+              "title": "How is Kafka used by Faust?",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "e3cd721d-8d65-4a23-b88f-c1437a846e86",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "How is Kafka used by Faust?",
+                "answers": [
+                  {
+                    "id": "rbk1",
+                    "text": "To store local state for an application",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "rbk2",
+                    "text": "To store application logs from the applications",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "rbk3",
+                    "text": "To store application metrics",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "rbk4",
+                    "text": "To store change events for stateful applications",
+                    "is_correct": true
+                  }
+                ]
+              }
+            },
+            {
+              "id": 930098,
+              "key": "dab2966e-55ea-4bf8-9bd7-def1579d1647",
+              "title": "Why is RocksDB useful?",
+              "semantic_type": "CheckboxQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "dab2966e-55ea-4bf8-9bd7-def1579d1647",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Why is RocksDB useful? (may be more than one answer)",
+                "answers": [
+                  {
+                    "id": "rbk1",
+                    "text": "Persists data between application restarts",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "rbk2",
+                    "text": "Allows us to store all data in memory",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "rbk3",
+                    "text": "Allows applications to work with large datasets that don’t fit in memory",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "rbk4",
+                    "text": "Allows applications to boot quickly between restarts",
+                    "is_correct": true
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 930157,
+          "key": "3ff9cd9f-8023-4992-b72c-0403140fd953",
+          "title": "Streams Basics in Faust",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "3ff9cd9f-8023-4992-b72c-0403140fd953",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 930138,
+              "key": "1082e043-a072-4f01-ac5a-16363b66edc2",
+              "title": "Streams Heading",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Creating Streams with Faust\nIn this section you will learn how to create streams with Faust.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 930100,
+              "key": "c3edc4b1-91dc-4508-8df2-ffdd000ac9ab",
+              "title": "ND0029 C01 L06 17 Streams",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "b15VG6xrBVo",
+                "china_cdn_id": "b15VG6xrBVo.mp4"
+              }
+            },
+            {
+              "id": 930205,
+              "key": "4a315455-0965-49bd-94df-776bd132a89b",
+              "title": "Message Life Cycle and Acknowledgment",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Message Life Cycle and Acknowledgment",
+              "instructor_notes": ""
+            },
+            {
+              "id": 930133,
+              "key": "baba954c-193f-427b-8034-b5f52593d97e",
+              "title": "ND0029 C01 L06 18 Message Life Cycle And Acknowledgement",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "9qTgS42Nbo8",
+                "china_cdn_id": "9qTgS42Nbo8.mp4"
+              }
+            },
+            {
+              "id": 930134,
+              "key": "3ffa05f7-368a-432a-ae16-13c0e9fae738",
+              "title": "Streams Basics",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Faust Streams - Key Points\n - [Faust streams are simply infinite asynchronous iterables which perform some processing on incoming messages](https://faust.readthedocs.io/en/latest/userguide/streams.html#id1)\n - [Faust handles consumption, consumer groups, and offsets for you, in addition to managing message acknowledgements](https://faust.readthedocs.io/en/latest/userguide/streams.html#id3)\n - Faust applications may choose to forward processed messages on to another stream by using the `topic.send(<data>)` function at the end of the processing loop.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 930203,
+          "key": "0320e287-b18f-4c06-adad-e44d7f5f1dfa",
+          "title": "Practice: Streams",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "0320e287-b18f-4c06-adad-e44d7f5f1dfa",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 930131,
+              "key": "fab8ed14-7b7b-4a53-9bb8-b33328584b24",
+              "title": "ND0029 C01 L06 19 Streams Demonstration",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "ABOFNjLxdqM",
+                "china_cdn_id": "ABOFNjLxdqM.mp4"
+              }
+            },
+            {
+              "id": 931227,
+              "key": "a7e33cbc-a350-4c79-b6da-557cc581acd1",
+              "title": "Workspace Exercise: Streams",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Workspace Exercise: Streams\n### Important note:\nBefore you execute anything in this workspace, or anytime after you've refreshed, or woken up, or reset data, or used the \"Get New Content\" button in this workspace, you'll need to run this command in the terminal:\n\n`./startup.sh` \n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 930206,
+              "key": "81bc9ab6-bd46-471b-9508-1f608dffbb7c",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "r899655c930203xJUPYTERLx11yuphy",
+              "pool_id": "jupyterlabpython37",
+              "view_id": "jupyter-lab-t7213",
+              "gpu_capable": false,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "disk": null,
+                    "port": 3000,
+                    "ports": [],
+                    "pageEnd": "",
+                    "pageStart": "",
+                    "allowSubmit": false,
+                    "defaultPath": "/",
+                    "actionButtonText": ""
+                  },
+                  "kind": "jupyter-lab"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        },
+        {
+          "id": 930154,
+          "key": "b5976d42-233b-438a-920c-6e6a4a99439b",
+          "title": "Stream Processors & Operations",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "b5976d42-233b-438a-920c-6e6a4a99439b",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 930125,
+              "key": "e54c8eee-461b-4e94-9517-c4ba577ff862",
+              "title": "Stream Processors and Operations Heading",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Faust Stream Processors and Operations\nFaust provides the ability to provide pre-defined processor callbacks for data streams. Processors can add missing fields, change the meaning of fields, and perform any kind of desired processing.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 930114,
+              "key": "5b2f7e01-b84b-4fd1-bc13-559abca3c500",
+              "title": "ND0029 C01 L06 20 Processors",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "jYHE19qYfnQ",
+                "china_cdn_id": "jYHE19qYfnQ.mp4"
+              }
+            },
+            {
+              "id": 930118,
+              "key": "95c34b45-0bed-4f56-83fa-319b2a36e559",
+              "title": "Processors",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Faust Processors - Key Points\n - [Processors are functions that take a value and return a value and can be added in a pre-defined list of callbacks to your stream declarations](https://faust.readthedocs.io/en/latest/userguide/streams.html#id2)\n - Processors promote reusability and clarity in your code\n - Processors may execute synchronously or asynchronously within the context of your code\n - All defined processors will run, in the order they were defined, before the final value is generated.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 930135,
+              "key": "30c57f5c-626b-4cd2-82b0-0b60c189ffe7",
+              "title": "ND0029 C01 L06 21 Operations",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "iL69jAEOgXc",
+                "china_cdn_id": "iL69jAEOgXc.mp4"
+              }
+            },
+            {
+              "id": 930129,
+              "key": "709ebae3-e2ac-44af-a548-c570471c21e9",
+              "title": "Operations",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Faust Operations - Key Points\n - [Faust Operations are actions that can be applied to an incoming stream to create an intermediate stream containing some modification, such as a group by or filter](https://faust.readthedocs.io/en/latest/userguide/streams.html#operations)\n - The [`group_by`](https://faust.readthedocs.io/en/latest/userguide/streams.html#group-by-repartition-the-stream) operation ingests every incoming event from a source topic, and emits it to an intermediate topic with the newly specified key\n - The [`filter`](https://faust.readthedocs.io/en/latest/userguide/streams.html#filter-filter-values-to-omit-from-stream) operation uses a boolean function to determine whether or not a particular record should be kept or discarded. Any records that are kept are written to a new intermediate stream.\n- The [`take`](https://faust.readthedocs.io/en/latest/userguide/streams.html#take-buffer-up-values-in-the-stream) operation bundles groups of events before invoking another iteration of the stream. Be careful to specify the `within` `datetime.timedelta` argument to this function, otherwise your program may hang.\n - Faust provides a number of other operations that you may use when working with your streams. [Have a look at the documentation for further information](https://faust.readthedocs.io/en/latest/userguide/streams.html#operations).",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 930200,
+          "key": "5c273ce9-39ec-4ac1-96c4-a418aa483d94",
+          "title": "Practice: Processors & Operations",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "5c273ce9-39ec-4ac1-96c4-a418aa483d94",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 930126,
+              "key": "6a2b59c7-ebe6-4a80-b144-7dfb23d4458b",
+              "title": "ND0029 C01 L06 22 Processors And Operations Demo",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "rDhuopuJ5Ds",
+                "china_cdn_id": "rDhuopuJ5Ds.mp4"
+              }
+            },
+            {
+              "id": 931234,
+              "key": "7d463bf1-f7ca-497a-8735-000bc30794eb",
+              "title": "Workspace Exercise: Processors and Operations",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Workspace Exercise: Processors and Operations\n### Important note:\nBefore you execute anything in this workspace, or anytime after you've refreshed, or woken up, or reset data, or used the \"Get New Content\" button in this workspace, you'll need to run this command in the terminal:\n\n`./startup.sh` \n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 930201,
+              "key": "753265cd-c491-414d-9126-6efffafa7770",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "r899655c930200xJUPYTERL8fnrro43",
+              "pool_id": "jupyterlabpython37",
+              "view_id": "jupyter-lab-kuubi",
+              "gpu_capable": false,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "disk": null,
+                    "port": 3000,
+                    "ports": [],
+                    "pageEnd": "",
+                    "pageStart": "",
+                    "allowSubmit": false,
+                    "defaultPath": "/",
+                    "actionButtonText": ""
+                  },
+                  "kind": "jupyter-lab"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        },
+        {
+          "id": 930149,
+          "key": "2ddd85c0-3644-4487-bdda-8acbb7804f72",
+          "title": "Streams Summary",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "2ddd85c0-3644-4487-bdda-8acbb7804f72",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 930110,
+              "key": "a82969c4-1c6a-46dd-a0bb-73f542820fc6",
+              "title": "ND0029 C01 L06 23 Streams Summary",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "YBWgDsjfic8",
+                "china_cdn_id": "YBWgDsjfic8.mp4"
+              }
+            },
+            {
+              "id": 930084,
+              "key": "3df4437c-13fd-4567-ad6a-7391c099015c",
+              "title": "Streams Summary",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Faust Streams - Summary\nIn this section you learned how to take advantage of the Faust Streams functionality. You saw how to define stream applications in Python, manipulate incoming data streams with Faust operations, and how to define and apply reusable processing functions.\n\nFor in-depth documentation of all the concepts covered in this section of the course, please refer to the excellent [Faust documentation on streams](https://faust.readthedocs.io/en/latest/userguide/streams.html)",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 930152,
+          "key": "9fd04d65-d819-4496-9425-463e8ba97130",
+          "title": "Tables in Faust",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "9fd04d65-d819-4496-9425-463e8ba97130",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 930089,
+              "key": "ad072984-9391-4e67-bf1c-18df6caf7284",
+              "title": "Tables Heading",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Faust Tables\nFaust provides an API for creating stateful applications with streaming Tables. \n\nIn this section, you will learn how to fully leverage the Faust Tables API.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 930096,
+              "key": "86f860d2-d55b-456c-b440-3b9d196aa1ea",
+              "title": "ND0029 C01 L06 24 Tables",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "yG2dBoih7tY",
+                "china_cdn_id": "yG2dBoih7tY.mp4"
+              }
+            },
+            {
+              "id": 930139,
+              "key": "c1e5ecf9-479a-4eca-9f6c-35149b72aa39",
+              "title": "Tables",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Faust Tables\n - [Faust tables are defined with `app.Table` and take a table name and default type argument](https://faust.readthedocs.io/en/latest/userguide/tables.html#basics).\n - Tables must be [co-partitioned with the streams they are aggregating](https://faust.readthedocs.io/en/latest/userguide/tables.html#id3). Use the `group_by` operation to ensure co-partitioning.\n - Tables which are not co-partitioned may lead to inaccurate results.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 931228,
+              "key": "93136e91-77b7-40af-b1be-07d046c6b591",
+              "title": "Demo: Tables",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Demo: Tables",
+              "instructor_notes": ""
+            },
+            {
+              "id": 930130,
+              "key": "1d770fc9-8696-4083-ae1f-d8442b61c742",
+              "title": "ND0029 C01 L06 25 Tables Demonstration",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "E1wykLBLPuQ",
+                "china_cdn_id": "E1wykLBLPuQ.mp4"
+              }
+            },
+            {
+              "id": 931230,
+              "key": "ff2b6b2b-babb-415c-a6fb-ebfb58637c78",
+              "title": "Workspace Exercise: Tables",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Workspace Exercise: Tables in Faust",
+              "instructor_notes": ""
+            },
+            {
+              "id": 930413,
+              "key": "12168318-e6ac-4222-b188-f1a98c051927",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "r899655c930152xJUPYTERL1u7h1ndz",
+              "pool_id": "jupyterlabpython37",
+              "view_id": "jupyter-lab-ohyhb",
+              "gpu_capable": false,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "disk": null,
+                    "port": 3000,
+                    "ports": [],
+                    "pageEnd": "",
+                    "pageStart": "",
+                    "allowSubmit": false,
+                    "defaultPath": "/",
+                    "actionButtonText": ""
+                  },
+                  "kind": "jupyter-lab"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        },
+        {
+          "id": 930147,
+          "key": "a4bec254-7c42-4448-a643-b539eda648d1",
+          "title": "Windowing in Faust",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "a4bec254-7c42-4448-a643-b539eda648d1",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 930107,
+              "key": "03bd5241-8eb2-4906-b5b8-ce7ebd596947",
+              "title": "Windowing in Faust Header",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Windowing in Faust\nFaust provides two windowing methods: hopping and tumbling. In this section, you will learn how to use these windowing approaches.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 930115,
+              "key": "8a69f038-f3d9-4bb3-884c-299c2c39a8ca",
+              "title": "ND0029 C01 L06 26 Windowing In Faust",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "QKPHLN0HQZs",
+                "china_cdn_id": "QKPHLN0HQZs.mp4"
+              }
+            },
+            {
+              "id": 930136,
+              "key": "add9e808-b1cd-4656-a1a6-59fbf17e684d",
+              "title": "Windowing in Faust",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Faust Windowing - Key Points\n - Faust supports [Hopping](https://faust.readthedocs.io/en/latest/userguide/tables.html#HoppingWindow) and [Tumbling](https://faust.readthedocs.io/en/latest/userguide/tables.html#TumblingWindow) windows\n - Windowing applies only to Tables\n - Faust provides [semantics for classifying specifically which pool of data is desired from a window](https://faust.readthedocs.io/en/latest/userguide/tables.html#iterating-over-keys-values-items-in-a-windowed-table), such as `current()`, `now()`, `relative_to_now()`, etc.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 930144,
+          "key": "bf9a5799-d0f5-4de6-ac19-5f988b5ed03b",
+          "title": "Practice: Tumbling Windows",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "bf9a5799-d0f5-4de6-ac19-5f988b5ed03b",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 930104,
+              "key": "4e7b9978-ebfd-467f-8239-1a5c333a9a79",
+              "title": "ND0029 C01 L06 27 Tumbling Windows Demonstration",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "A1xZbt5Ne7Q",
+                "china_cdn_id": "A1xZbt5Ne7Q.mp4"
+              }
+            },
+            {
+              "id": 931233,
+              "key": "d8699be5-745c-49d6-a876-4c01a597158a",
+              "title": "Workspace Exercise: Tumbling Windows",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Workspace Exercise: Tumbling Windows",
+              "instructor_notes": ""
+            },
+            {
+              "id": 930414,
+              "key": "18874448-311e-416d-91a8-2d2318c2b2f3",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "r899655c930144xJUPYTERL3hih9ar9",
+              "pool_id": "jupyterlabpython37",
+              "view_id": "jupyter-lab-e2e87",
+              "gpu_capable": false,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "disk": null,
+                    "port": 3000,
+                    "ports": [],
+                    "pageEnd": "",
+                    "pageStart": "",
+                    "allowSubmit": false,
+                    "defaultPath": "/",
+                    "actionButtonText": ""
+                  },
+                  "kind": "jupyter-lab"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        },
+        {
+          "id": 930142,
+          "key": "78d83c42-5b8d-42bd-b156-15f416f7e405",
+          "title": "Practice: Hopping Windows",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "78d83c42-5b8d-42bd-b156-15f416f7e405",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 930105,
+              "key": "c39d142d-1af8-44c6-8667-5285542bdf25",
+              "title": "ND0029 C01 L06 28 Hopping Windows Demonstration",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "-i64VpOw2W4",
+                "china_cdn_id": "-i64VpOw2W4.mp4"
+              }
+            },
+            {
+              "id": 931231,
+              "key": "909a3d06-b203-4e26-b3db-d9c1c4ebd834",
+              "title": "Workspace Exercise: Hopping Windows",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Workspace Exercise: Hopping Windows\n### Important note:\nBefore you execute anything in this workspace, or anytime after you've refreshed, or woken up, or reset data, or used the \"Get New Content\" button in this workspace, you'll need to run this command in the terminal:\n\n`./startup.sh` \n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 930415,
+              "key": "c1bd0e36-2c70-44b9-ab26-d67b9802b094",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "r899655c930142xJUPYTERLwnpeqx1i",
+              "pool_id": "jupyterlabpython37",
+              "view_id": "jupyter-lab-yfirh",
+              "gpu_capable": false,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "disk": null,
+                    "port": 3000,
+                    "ports": [],
+                    "pageEnd": "",
+                    "pageStart": "",
+                    "allowSubmit": false,
+                    "defaultPath": "/",
+                    "actionButtonText": ""
+                  },
+                  "kind": "jupyter-lab"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        },
+        {
+          "id": 930146,
+          "key": "b0ff34d4-9abe-4c31-a771-6e731049fa80",
+          "title": "Faust Windowing Review",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "b0ff34d4-9abe-4c31-a771-6e731049fa80",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 930128,
+              "key": "a8301669-2f12-447f-a13f-820427e6c4de",
+              "title": "Which of the following windowing methods are supported in Faust?",
+              "semantic_type": "CheckboxQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "a8301669-2f12-447f-a13f-820427e6c4de",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Which of the following windowing methods are supported in Faust? (may be more than one answer)",
+                "answers": [
+                  {
+                    "id": "rbk1",
+                    "text": "Hopping",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "rbk2",
+                    "text": "Sliding",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "rbk3",
+                    "text": "Session",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "rbk4",
+                    "text": "Tumbling",
+                    "is_correct": true
+                  }
+                ]
+              }
+            },
+            {
+              "id": 930124,
+              "key": "e2228744-755e-4cc1-9b1f-29ae13a88b9a",
+              "title": "How do you control what the windowing period is based on?",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "e2228744-755e-4cc1-9b1f-29ae13a88b9a",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "How do you control what the windowing period is based on?",
+                "answers": [
+                  {
+                    "id": "rbk1",
+                    "text": "Duration and/or step",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "rbk2",
+                    "text": "Duration",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "rbk3",
+                    "text": "Step",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "rbk4",
+                    "text": "Expiration",
+                    "is_correct": false
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 930151,
+          "key": "d9bb141b-7240-4e14-b36c-f6763a5fa9e7",
+          "title": "Lesson Summary",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "d9bb141b-7240-4e14-b36c-f6763a5fa9e7",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 930132,
+              "key": "4101f848-d363-49f9-848b-42a726310a9f",
+              "title": "Faust Summary Heading",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Lesson Summary\nIn this lesson you learned how to use Faust as a Python-based alternative to build Stream Processing applications. You learned:\n - How to construct a Faust application\n - How to serialize and deserialize data with Python models and dataclasses\n - How Faust stores state with Kafka, In-Memory and RocksDB stores\n - How to create stream applications with operations and processes\n - How to build table applications with windows and co-partitioned streaming data",
+              "instructor_notes": ""
+            },
+            {
+              "id": 930119,
+              "key": "53c37ed9-e2f0-4790-a322-0b32cd93557a",
+              "title": "ND0029 C01 L06 29 Faust Summary",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "gnDWXFSx85k",
+                "china_cdn_id": "gnDWXFSx85k.mp4"
+              }
+            },
+            {
+              "id": 930108,
+              "key": "3d3f7c52-3831-4e75-af2d-0e575829ee99",
+              "title": "Glossary of Key Terms",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Glossary of Key Terms in this Lesson (same as glossary at beginning of lesson)\n\n* DSL - Domain Specific Language. A metaprogramming language for specific tasks, such as building database queries or stream processing applications.\n* Dataclass (Python) - A special type of Class in which instances are meant to represent data, but not contain mutating functions\n* Changelog - An append-only log of changes made to a particular component. In the case of Faust and other stream processors, this tracks all changes to a given processor.\n* Processor (Faust) - Functions that take a value and return a value. Can be added in a pre-defined list of callbacks to stream declarations.\n* Operations (Faust) - Actions that can be applied to an incoming stream to create an intermediate stream containing some modification, such as a group-by or filter",
+              "instructor_notes": ""
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "_deprecated": [
+    {
+      "name": "starter_files",
+      "reason": "prefer master_archive_id"
+    },
+    {
+      "name": "starter_files",
+      "reason": "prefer master_archive_id"
+    },
+    {
+      "name": "starter_files",
+      "reason": "prefer master_archive_id"
+    },
+    {
+      "name": "starter_files",
+      "reason": "prefer master_archive_id"
+    },
+    {
+      "name": "starter_files",
+      "reason": "prefer master_archive_id"
+    },
+    {
+      "name": "starter_files",
+      "reason": "prefer master_archive_id"
+    },
+    {
+      "name": "starter_files",
+      "reason": "prefer master_archive_id"
+    },
+    {
+      "name": "starter_files",
+      "reason": "prefer master_archive_id"
+    }
+  ]
+}

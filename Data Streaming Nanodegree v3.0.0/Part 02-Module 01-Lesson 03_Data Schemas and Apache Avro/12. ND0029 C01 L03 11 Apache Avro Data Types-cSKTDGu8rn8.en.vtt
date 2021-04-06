@@ -1,0 +1,145 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:01.550 --> 00:00:06.599
+We're going to spend a few moments reviewing Avro data types in a little more depth.
+
+00:00:06.599 --> 00:00:08.669
+As we mentioned in the previous section,
+
+00:00:08.669 --> 00:00:11.745
+Avro defines both primitive and complex types.
+
+00:00:11.744 --> 00:00:13.949
+You're likely already familiar with some of
+
+00:00:13.949 --> 00:00:16.425
+the primitive types that Avro offers such as null,
+
+00:00:16.425 --> 00:00:21.789
+boolean, int, long, float, double, and string.
+
+00:00:21.890 --> 00:00:25.469
+Complex types allow for nesting of other types and
+
+00:00:25.469 --> 00:00:28.410
+composition for more complex data representations.
+
+00:00:28.410 --> 00:00:32.414
+Support complex types are records, enumerations,
+
+00:00:32.414 --> 00:00:37.609
+arrays, maps, unions and the fixed type.
+
+00:00:37.609 --> 00:00:39.229
+Records we've already seen,
+
+00:00:39.229 --> 00:00:40.894
+so we're going to skip those for now.
+
+00:00:40.895 --> 00:00:45.830
+Enumerations are a set of what Avro refers to as named symbols.
+
+00:00:45.829 --> 00:00:50.484
+Avro enums are good choice when you have a limited set of items to be defined.
+
+00:00:50.484 --> 00:00:52.310
+For example, if you wanted to enumerate
+
+00:00:52.310 --> 00:00:54.590
+the abbreviations of every State in the United States,
+
+00:00:54.590 --> 00:00:56.675
+you would use an enumeration.
+
+00:00:56.674 --> 00:01:01.129
+Arrays in maps work similar to how they work in traditional programming languages.
+
+00:01:01.130 --> 00:01:06.079
+Array store ordered fields and those fields can be either primitive or complex.
+
+00:01:06.079 --> 00:01:08.090
+You cannot mix types in the array.
+
+00:01:08.090 --> 00:01:13.015
+So here's an example of a type array with items of type record,
+
+00:01:13.015 --> 00:01:15.935
+where there's really just one field.
+
+00:01:15.935 --> 00:01:17.635
+It's an ID of type int.
+
+00:01:17.635 --> 00:01:20.385
+Maps store fields on a key-value basis.
+
+00:01:20.385 --> 00:01:22.775
+The keys in a map are always strings.
+
+00:01:22.775 --> 00:01:24.140
+So as you can see,
+
+00:01:24.140 --> 00:01:26.120
+the definition looks quite similar to our array,
+
+00:01:26.120 --> 00:01:32.740
+difference is that we have values and the values are always of a type that you define.
+
+00:01:32.739 --> 00:01:35.309
+Remember, that the key is always a string.
+
+00:01:35.310 --> 00:01:39.290
+So you can only define the expected value type for your maps.
+
+00:01:39.290 --> 00:01:43.190
+In this case, we're going to say it's a record again of type int id.
+
+00:01:43.189 --> 00:01:46.625
+Unions are used when you want to combine more than one type.
+
+00:01:46.625 --> 00:01:49.305
+For example, earlier when we showed optional fields,
+
+00:01:49.305 --> 00:01:54.530
+we used what's called a union type to have either null or int to be valid choices.
+
+00:01:54.530 --> 00:01:58.265
+In this example, I've used null, int, or string.
+
+00:01:58.265 --> 00:02:00.674
+The union type isn't explicit.
+
+00:02:00.674 --> 00:02:03.890
+In fact, the only thing that really denotes that this is a union type at all,
+
+00:02:03.890 --> 00:02:08.780
+are these array brackets that show that more than one type is accepted for zip code.
+
+00:02:08.780 --> 00:02:12.034
+The fixed type is a fixed size entry in bytes.
+
+00:02:12.034 --> 00:02:14.030
+I've personally not used this type much,
+
+00:02:14.030 --> 00:02:17.150
+but it's worth reviewing what it is so that you know it exists.
+
+00:02:17.150 --> 00:02:19.909
+One of the examples that people tend to use when discussing
+
+00:02:19.909 --> 00:02:23.004
+the fixed type are MD5 entries.
+
+00:02:23.004 --> 00:02:27.724
+So in this case, that's a fixed entry of 16 bytes in every message.
+
+00:02:27.724 --> 00:02:29.870
+You can use a fixed to accomplish
+
+00:02:29.870 --> 00:02:33.094
+MD5 messages of a fixed size in every one of your messages.
+
+00:02:33.094 --> 00:02:38.069
+It is sometimes used for binary data or data with repeatable and specific lengths.
+

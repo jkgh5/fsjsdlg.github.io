@@ -1,0 +1,115 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:01.610 --> 00:00:08.129
+In this course, we have produced and consumed a lot of data to inform our Kafka cluster.
+
+00:00:08.130 --> 00:00:11.385
+However, every time we want to produce or consume that data,
+
+00:00:11.384 --> 00:00:13.349
+we have to let code to do it.
+
+00:00:13.349 --> 00:00:17.280
+In this section, we'll see how we can use Kafka connect to avoid writing
+
+00:00:17.280 --> 00:00:21.285
+boilerplate Kafka code and save some time in the process.
+
+00:00:21.285 --> 00:00:23.579
+The team at confluent recognize there are
+
+00:00:23.579 --> 00:00:26.039
+many common and repeated scenarios that developers
+
+00:00:26.039 --> 00:00:28.844
+encounter to get data into and out of Kafka.
+
+00:00:28.844 --> 00:00:31.500
+So the team set to work to build a pluggable framework for
+
+00:00:31.500 --> 00:00:34.560
+building reusable Kafka producers and consumers.
+
+00:00:34.560 --> 00:00:37.200
+The result of their effort was Kafka connect.
+
+00:00:37.200 --> 00:00:39.770
+Kafka connect is a framework written in Java,
+
+00:00:39.770 --> 00:00:42.830
+which allows developers to build an integration once and then
+
+00:00:42.829 --> 00:00:46.129
+use it repeatedly with just a little bit of configuration.
+
+00:00:46.130 --> 00:00:49.100
+It's possible to avoid using a Kafka client library
+
+00:00:49.100 --> 00:00:52.865
+entirely if Kafka connect can satisfy your needs.
+
+00:00:52.865 --> 00:00:56.570
+Let's walk through an example to see how this applies to us.
+
+00:00:56.570 --> 00:00:59.960
+Pretend that we're working on an e-commerce application together.
+
+00:00:59.960 --> 00:01:02.899
+We have dozens of models and a Postgres database.
+
+00:01:02.899 --> 00:01:04.909
+Some models represent users,
+
+00:01:04.909 --> 00:01:07.744
+some represent purchases and so on.
+
+00:01:07.745 --> 00:01:11.225
+We want all of the data to be available on Kafka.
+
+00:01:11.224 --> 00:01:13.309
+But we don't want to write the dozens of
+
+00:01:13.310 --> 00:01:17.105
+Kafka producers required to put that data in Kafka.
+
+00:01:17.105 --> 00:01:21.355
+It would take weeks of effort and testing to make sure that that would happen.
+
+00:01:21.355 --> 00:01:25.865
+Instead, we could turn to Kafka connect in one of its most popular plugins.
+
+00:01:25.864 --> 00:01:30.664
+The SQL JDBC connector plug-in to do this work for us.
+
+00:01:30.665 --> 00:01:35.570
+We use the rest API of Kafka connect create a periodic task which carries
+
+00:01:35.569 --> 00:01:37.774
+all the tables in SQL database and
+
+00:01:37.775 --> 00:01:41.000
+automatically dumps the records and the topics for each table.
+
+00:01:41.000 --> 00:01:42.409
+Kafka connect is train work,
+
+00:01:42.409 --> 00:01:46.234
+what could have been a few weeks of work and to a few minutes of configuration.
+
+00:01:46.234 --> 00:01:48.950
+Put more technically, Kafka Connect provides
+
+00:01:48.950 --> 00:01:52.189
+a powerful abstraction over Kafka for your applications.
+
+00:01:52.189 --> 00:01:56.075
+Because Kafka connect can integrate with your databases and other sources of data,
+
+00:01:56.075 --> 00:01:58.430
+such as logs, it's possible to avoid
+
+00:01:58.430 --> 00:02:02.490
+integrating Kafka client code into your applications entirely.
+

@@ -1,0 +1,1335 @@
+{
+  "data": {
+    "lesson": {
+      "id": 930069,
+      "key": "3704f722-78b8-423f-ba9f-0c1144b072ac",
+      "title": "Stream Processing Fundamentals",
+      "semantic_type": "Lesson",
+      "is_public": true,
+      "version": "1.0.0",
+      "locale": "en-us",
+      "summary": "Learn to build real-time applications that instantly process events, the concepts of stream processing state storage, windowed processing, and stateful and non-stateful stream processing.",
+      "lesson_type": "Classroom",
+      "display_workspace_project_only": false,
+      "resources": {
+        "files": [
+          {
+            "name": "Videos Zip File",
+            "uri": "https://zips.udacity-data.com/3704f722-78b8-423f-ba9f-0c1144b072ac/930069/1578340312972/Stream+Processing+Fundamentals+Videos.zip"
+          },
+          {
+            "name": "Transcripts Zip File",
+            "uri": "https://zips.udacity-data.com/3704f722-78b8-423f-ba9f-0c1144b072ac/930069/1578340307797/Stream+Processing+Fundamentals+Subtitles.zip"
+          },
+          {
+            "name": "Lesson 5 slides",
+            "uri": "https://video.udacity-data.com/topher/2019/September/5d7d344e_l5-stream-processing-fundamentals/l5-stream-processing-fundamentals.pdf"
+          }
+        ],
+        "google_plus_link": null,
+        "career_resource_center_link": null,
+        "coaching_appointments_link": null,
+        "office_hours_link": null,
+        "aws_provisioning_link": null
+      },
+      "project": null,
+      "lab": null,
+      "concepts": [
+        {
+          "id": 930066,
+          "key": "1751805a-2136-40b8-8854-71e5ea6198fb",
+          "title": "Lesson Overview",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "1751805a-2136-40b8-8854-71e5ea6198fb",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 929998,
+              "key": "663120f1-0cbf-43f6-8220-ae110c7cc3c7",
+              "title": "ND0029 C01 L05 01 Lesson Overview",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "Tpr6gyGbJ1M",
+                "china_cdn_id": "Tpr6gyGbJ1M.mp4"
+              }
+            },
+            {
+              "id": 929995,
+              "key": "641a724c-1929-4ef3-86c6-be07e1f36e89",
+              "title": "Lesson Overview",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Lesson Overview\nIn this lesson, you will learn the core concepts and concerns involved in building stream processing applications:\n - Strategies for Application Design\r - Combining Streams\n - Filtering Streams\n - Remapping Streams\n - Aggregating Streams\n - Handling Time and Windowing\n - Streams vs Tables\n",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 930064,
+          "key": "4de93c59-0978-40ab-ba39-44ec853a5d68",
+          "title": "Glossary of Terms for Lesson",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "4de93c59-0978-40ab-ba39-44ec853a5d68",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 930047,
+              "key": "4407651d-f355-4967-b0a5-f1dbfb5ba8fc",
+              "title": "Glossary of Terms for Lesson",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Glossary of Key Terms You Will Learn in this Lesson\n\n- Join (Streams) - The process of combining one or more streams into an output stream, typically on some related key attribute.\n- Filtering (Streams) - The process of removing certain events in a data stream based on a condition\n- Aggregating (Streams) - The process of summing, reducing, or otherwise grouping data based on a key attribute\n- Remapping (Streams) - The process of modifying the input stream data structure into a different output structure. This may include the addition or removal of fields on a given event.\n- Windowing (Streams) - Defining a period of time from which data is analyzed. Once data falls outside of that period of time, it is no longer valid for streaming analysis.\n- Tumbling Window (Streams) - The tumbling window defines a block of time which rolls over once the duration has elapsed. A tumbling window of one hour, started now, would collect all data for the next 60 minutes. Then, at the 60 minute mark, it would reset all of the data in the topic, and begin collecting a fresh set of data for the next 60 minutes.\n- Hopping Window (Streams) - Hopping windows advance in defined increments of time. A hopping window consists of a window length, e.g. 30 minutes, and an increment time, e.g. 5 minutes. Every time the increment time expires, the window is advanced forward by the increment.\n- Sliding Window (Streams) - Sliding Windows work identically to Hopping Windows, except the increment period is much smaller -- typically measured in seconds. Sliding windows are constantly updated and always represent the most up-to-date state of a given stream aggregation.\n- Stream - Streams contain all events in a topic, immutable, and in order. As new events occur, they are simply appended to the end of the stream.\n- Table - Tables are the result of aggregation operations in stream processing applications. They are a roll-up, point-in-time view of data.\n- Stateful - Stateful operations must store the intermediate results of combining multiple events to represent the latest point-in-time value for a given key",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 930054,
+          "key": "b49d1f75-75ef-48bf-9223-b86724e9722f",
+          "title": "Stream Processing Basics",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "b49d1f75-75ef-48bf-9223-b86724e9722f",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 930021,
+              "key": "ddf1e18f-edb2-48a0-9c22-7e1f726207b4",
+              "title": "Stream Processing Fundamentals Heading",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Stream Processing Fundamentals\nStream processing applications make use of streaming data stores like Apache Kafka to provide real-time analytics. Developing an understanding of common strategies, calculations, and learning how to handle data based on time will prepare you for building these applications and getting the most out of your data.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 930001,
+              "key": "07c33a90-082e-42d7-82eb-e27ed036dfa7",
+              "title": "ND0029 C01 L05 02 Stream Processing Fundamentals",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "036ERc17PFA",
+                "china_cdn_id": "036ERc17PFA.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 930051,
+          "key": "6dfc44f4-efc7-4342-af43-cca3f29f9560",
+          "title": "Stream Processing Strategies",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "6dfc44f4-efc7-4342-af43-cca3f29f9560",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 929988,
+              "key": "ff4ca8cf-e7d8-4f09-ac7d-82e7830b9856",
+              "title": "Stream Processing Strategies Header",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Stream Processing Strategies\nThis section introduces a number of core stream processing strategies, such as combining, filtering, aggregating, and reducing streams.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 930000,
+              "key": "8321dcea-52a1-434e-bb99-7bc58aa41365",
+              "title": "ND0029 C01 L05 03 Stream Processing Strategies",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "AsYdX6Fw9is",
+                "china_cdn_id": "AsYdX6Fw9is.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 930061,
+          "key": "0ac80add-b31d-47f5-bc99-231821a4e799",
+          "title": "Combining Streams",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "0ac80add-b31d-47f5-bc99-231821a4e799",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 930014,
+              "key": "3f8da6f6-5e6a-48e5-a0ab-5a6b00947190",
+              "title": "ND0029 C01 L05 04 Combining Streams",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "VamUN8nHHck",
+                "china_cdn_id": "VamUN8nHHck.mp4"
+              }
+            },
+            {
+              "id": 930041,
+              "key": "d8f3c4b0-fcbb-4e4e-9f8f-9233c37fbb76",
+              "title": "Combining Streams",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Combining Streams\n - Combining, or joining, streams is the action of taking one or more streams and creating a single new output stream.\n - Joined streams always share some common attribute across the data in all of the streams. For example, we might use a `user_id` to merge user streams.\n - State must be kept as events flow through the join calculation, until all of the related data has arrived. Once this happens, the new event can be emitted, and the state can be flushed\r    - If the related data never fully arrives, at some point the data in memory should be cleared\n    - This process is typically accomplished through _windowing_, which is covered in a later section of this lesson.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 930039,
+              "key": "caa48f54-cf46-4315-9471-34b9af980f43",
+              "title": "ND0029 C01 L05 05 Combining Streams In The Real World",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "x0k2lvOZwcs",
+                "china_cdn_id": "x0k2lvOZwcs.mp4"
+              }
+            },
+            {
+              "id": 930008,
+              "key": "74c8292b-50e7-4ba1-83e9-c7cd923d6295",
+              "title": "What are some of the reasons you might want to combine streams?",
+              "semantic_type": "CheckboxQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "74c8292b-50e7-4ba1-83e9-c7cd923d6295",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "What are some of the reasons you might want to combine streams? (may be more than one answer)",
+                "answers": [
+                  {
+                    "id": "rbk1",
+                    "text": "To group related data streams into a single unified stream",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "rbk2",
+                    "text": "To group related data streams into one place, so that you can analyze that data and emit new data based on the contents",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "rbk3",
+                    "text": "To simply take two or more event types and then output their events as-is into one stream",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "rbk4",
+                    "text": "To save space",
+                    "is_correct": false
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 930065,
+          "key": "c74c1ca1-f3b5-4960-9868-cd8e7258f8fa",
+          "title": "Filtering Streams",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "c74c1ca1-f3b5-4960-9868-cd8e7258f8fa",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 929989,
+              "key": "f5c5fe70-f5a3-4a6b-ba34-9881a42eb7d6",
+              "title": "ND0029 C01 L05 06 Filtering Streams",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "OmWAr_kydTk",
+                "china_cdn_id": "OmWAr_kydTk.mp4"
+              }
+            },
+            {
+              "id": 930031,
+              "key": "60cd2930-6e47-442b-bbe5-0d3108e90e02",
+              "title": "Filtering Streams",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Filtering Streams\n - Filtering a stream is the process of removing unwanted or unneeded data from an input stream, and outputting the desired data into a new stream\n - Filtering may be a step in joining or combining two or more streams\n - Filtering is often desirable when data clients don’t need access to all data for throughput or security reasons\n - Applying filters earlier, rather than later, in the processing pipeline, can allow stream processing calculations to scale better and analyze less data.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 930010,
+              "key": "e8fa87a1-0300-4398-bcf7-c0e795682161",
+              "title": "ND0029 C01 L05 07 Filtering Streams In The Real World",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "KJ4-Z767ZB8",
+                "china_cdn_id": "KJ4-Z767ZB8.mp4"
+              }
+            },
+            {
+              "id": 930037,
+              "key": "2b59f6c7-19e4-47fd-8317-9f574ef9437b",
+              "title": "What are some of the reasons you might want to filter streams?",
+              "semantic_type": "CheckboxQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "2b59f6c7-19e4-47fd-8317-9f574ef9437b",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "What are some of the reasons you might want to filter streams? (may be more than one answer)",
+                "answers": [
+                  {
+                    "id": "rbk1",
+                    "text": "To create a tailored dataset for a particular audience",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "rbk2",
+                    "text": "To aggregate the data in a stream",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "rbk3",
+                    "text": "To remove unneeded or unrelated data",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "rbk4",
+                    "text": "To improve performance and scalability of a processing application",
+                    "is_correct": true
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 930058,
+          "key": "6b3dc51b-d6c7-45cd-917c-40305755155b",
+          "title": "Remapping Streams",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "6b3dc51b-d6c7-45cd-917c-40305755155b",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 929990,
+              "key": "2361057e-d128-41d5-8ebe-888cc6d6f0d7",
+              "title": "ND0029 C01 L05 08 Remapping Streams",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "4KYpOSjRKi8",
+                "china_cdn_id": "4KYpOSjRKi8.mp4"
+              }
+            },
+            {
+              "id": 930004,
+              "key": "3d58fa72-136e-480f-b912-5a3f6a59cacf",
+              "title": "Remapping Streams",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Remapping Streams\n - Remapping streams is the process of transforming an input event and outputting it in a different form to a new stream\n - Remapping may be done in conjunction with other processing steps, such as filters or joins\n - Remapping is commonly used for data health, application compatibility, and security reasons\n - Example Scenario 1: Transforming one data serialization format to another. E.g., Avro -> JSON, or JSON-> Avro\n - Example Scenario 2: Removing sensitive or unnecessary fields from an input payload\n - Example Scenario 3: Transforming an input event into a format suitable for downstream use by moving data fields or renaming them",
+              "instructor_notes": ""
+            },
+            {
+              "id": 930038,
+              "key": "0379551c-ae6a-4119-980b-5e92632a4363",
+              "title": "ND0029 C01 L05 09 Remapping Streams In The Real World",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "u7DhPApqkds",
+                "china_cdn_id": "u7DhPApqkds.mp4"
+              }
+            },
+            {
+              "id": 930006,
+              "key": "67027cc5-d27f-489e-91d3-8dfb5ab8e067",
+              "title": "What are some of the reasons you might want to remap streams?",
+              "semantic_type": "CheckboxQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "67027cc5-d27f-489e-91d3-8dfb5ab8e067",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "What are some of the reasons you might want to remap streams? (may be more than one answer)",
+                "answers": [
+                  {
+                    "id": "rbk1",
+                    "text": "Transforming data for applications which expect a different data structure",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "rbk2",
+                    "text": "Changing data serialization format, e.g., JSON to Avro, or vice versa",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "rbk3",
+                    "text": "Removing sensitive fields from input data",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "rbk4",
+                    "text": "Merging the fields of two events together",
+                    "is_correct": false
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 930063,
+          "key": "2914ccf8-821d-43f2-a339-3c1e5c64026a",
+          "title": "Aggregating Streams",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "2914ccf8-821d-43f2-a339-3c1e5c64026a",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 929993,
+              "key": "6a4821ed-7278-4851-aedf-8c857e1d83b5",
+              "title": "ND0029 C01 L05 10 Aggregating Streams",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "tFSRBKHBPl4",
+                "china_cdn_id": "tFSRBKHBPl4.mp4"
+              }
+            },
+            {
+              "id": 929996,
+              "key": "92efea4a-edec-4344-b18c-ab0e65490217",
+              "title": "Aggregating Streams",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Aggregating Streams\n -  An aggregation involves taking two or more distinct events and creating one or more new events based on a transformation function\n - Aggregate Functions: Max, Min, Sum, TopN, HIstograms, Sets, Lists, and more\n - Aggregates in streaming applications almost always involve a timeframe, unless the source topic is compacted",
+              "instructor_notes": ""
+            },
+            {
+              "id": 929991,
+              "key": "0f8d9d02-e92f-4250-9452-7b2dd7ba6676",
+              "title": "ND0029 C01 L05 11 Aggregating Streams In The Real World",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "r3x-s4GxvAc",
+                "china_cdn_id": "r3x-s4GxvAc.mp4"
+              }
+            },
+            {
+              "id": 930026,
+              "key": "dee976ea-8d68-4cdc-858a-5dbde7634773",
+              "title": "What are some of the reasons you might want to aggregate streams?",
+              "semantic_type": "CheckboxQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "dee976ea-8d68-4cdc-858a-5dbde7634773",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "What are some of the reasons you might want to aggregate streams? (may be more than one answer)",
+                "answers": [
+                  {
+                    "id": "rbk1",
+                    "text": "You want to track a sum of some data over a time period",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "rbk2",
+                    "text": "You want to see the max of a stream for all time",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "rbk3",
+                    "text": "You want to bin data into a histogram for a time window",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "rbk4",
+                    "text": "You want to see the max of a stream for a time window",
+                    "is_correct": true
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 930057,
+          "key": "34692791-b529-4253-8287-f525c978d028",
+          "title": "Handling Time",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "34692791-b529-4253-8287-f525c978d028",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 930019,
+              "key": "1044600a-394c-48ad-a10f-8fe211414622",
+              "title": "Handling Time Heading",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Handling Time\nUnderstanding time and how it applies to our data is a critical part of building a successful stream processing application. In the following sections we will review the various types of time windowing.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 930023,
+              "key": "29f5ad55-8fb7-4a9d-b2c8-c64d3f1d2d16",
+              "title": "ND0029 C01 L05 12 Handling Time",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "1Yu7uFzBa9o",
+                "china_cdn_id": "1Yu7uFzBa9o.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 930059,
+          "key": "56241d39-4666-4040-ba09-7c1735b505c6",
+          "title": "Tumbling Window",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "56241d39-4666-4040-ba09-7c1735b505c6",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 930002,
+              "key": "04fcf490-e330-4ba1-9af8-f9a0b80a2aa5",
+              "title": "Tumbling Window",
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2019/September/5d769b29_screen-shot-2019-09-09-at-11.33.56-am/screen-shot-2019-09-09-at-11.33.56-am.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/04fcf490-e330-4ba1-9af8-f9a0b80a2aa5",
+              "caption": "**A tumbling window is a fixed period of time that rolls over after the fixed window has ended**\n",
+              "alt": "Tumbling Window",
+              "width": 700,
+              "height": 192,
+              "instructor_notes": null
+            },
+            {
+              "id": 930011,
+              "key": "fab80079-3943-471a-af3e-50f3055e475b",
+              "title": "ND0029 C01 L05 13 Tumbling Window",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "ARzmk5t6XYQ",
+                "china_cdn_id": "ARzmk5t6XYQ.mp4"
+              }
+            },
+            {
+              "id": 929992,
+              "key": "39cfbad0-5aae-4f1a-bf5f-0e1f6c133c01",
+              "title": "Tumbling Window",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Tumbling Window\n - Tumbling windows represent a fixed period of time that rolls over after that period of time has elapsed\n     - ex: A 15 minute tumbling window started now would include all data from now until the 15th minute. On the 15th minute, the data is cleared and a new 15 minute window is started.\n - Tumbling windows do not overlap\n - Tumbling windows do not have gaps between windowed periods",
+              "instructor_notes": ""
+            },
+            {
+              "id": 930003,
+              "key": "cf77e355-951f-41f9-9ffe-8aac390da36f",
+              "title": "Which of the following outputs would require a tumbling window?",
+              "semantic_type": "CheckboxQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "cf77e355-951f-41f9-9ffe-8aac390da36f",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Which of the following scenarios would require a tumbling window? (may be more than one answer)",
+                "answers": [
+                  {
+                    "id": "rbk1",
+                    "text": "Determine the 10 most active users in the last hour",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "rbk2",
+                    "text": "Determine the link that was clicked on the most, in the last 10-minute rolling period",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "rbk3",
+                    "text": "Determine the link that was clicked on the most, in the last 10 minutes",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "rbk4",
+                    "text": "Determine the number one region by support calls in the past 24 hours",
+                    "is_correct": true
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 930052,
+          "key": "cb047841-6318-4c1d-b62a-ca39d118b1f0",
+          "title": "Hopping Window",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "cb047841-6318-4c1d-b62a-ca39d118b1f0",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 930009,
+              "key": "df46203e-043f-41dd-8d08-1f4c45ac3c46",
+              "title": "Hopping Window",
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2019/September/5d769b96_screen-shot-2019-09-09-at-11.35.54-am/screen-shot-2019-09-09-at-11.35.54-am.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/df46203e-043f-41dd-8d08-1f4c45ac3c46",
+              "caption": "**Hopping windows have a fixed increment which advances the window**",
+              "alt": "Hopping Window",
+              "width": 704,
+              "height": 245,
+              "instructor_notes": null
+            },
+            {
+              "id": 930018,
+              "key": "0bee3895-3535-4db8-98d6-d249242b3d65",
+              "title": "ND0029 C01 L05 14 Hopping Window",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "TCgpKfJQ3MU",
+                "china_cdn_id": "TCgpKfJQ3MU.mp4"
+              }
+            },
+            {
+              "id": 930024,
+              "key": "0d143e65-b5c7-4436-9abe-c483d7f1cc3e",
+              "title": "Hopping Windows",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Hopping Windows\n - Hopping windows have both a duration and an increment by which they are advanced\n     - ex.- A window of 45 minutes with an increment of 5 minutes would advance every 5 minutes. The oldest 5 minutes of the previous window would be dropped, and the newest 5 minutes of data would be added.\n - Hopping windows can overlap with previous windows\n - Hopping windows can have gaps if the increment time is larger than the duration period",
+              "instructor_notes": ""
+            },
+            {
+              "id": 930017,
+              "key": "9996e492-3d10-4295-a10e-3890a13d533f",
+              "title": "Which of the following outputs would require a hopping window?",
+              "semantic_type": "CheckboxQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "9996e492-3d10-4295-a10e-3890a13d533f",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Which of the following scenarios would require a hopping window? (may be more than one answer)",
+                "answers": [
+                  {
+                    "id": "rbk1",
+                    "text": "A team wants to measure the last 10 minutes of errors on a 1-minute rolling basis",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "rbk2",
+                    "text": "A team wants to measure the last 10-minute period of errors",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "rbk3",
+                    "text": "The manufacturing team would like aggregate production numbers from each of their production lines for the last 24 hours, on a 1-hour rolling basis",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "rbk4",
+                    "text": "The manufacturing team would like aggregate production numbers from each of their production lines for the last 24-hour period",
+                    "is_correct": false
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 930056,
+          "key": "4baa5f24-930c-415a-99b1-401c9c53ffef",
+          "title": "Sliding Window",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "4baa5f24-930c-415a-99b1-401c9c53ffef",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 930012,
+              "key": "4398e571-16b5-4a14-b279-8c00aaae3d7b",
+              "title": "Sliding Window",
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2019/September/5d769bf1_screen-shot-2019-09-09-at-11.37.29-am/screen-shot-2019-09-09-at-11.37.29-am.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/4398e571-16b5-4a14-b279-8c00aaae3d7b",
+              "caption": "**Sliding windows are hopping windows that increment in real-time**",
+              "alt": "Sliding Window",
+              "width": 703,
+              "height": 186,
+              "instructor_notes": null
+            },
+            {
+              "id": 929997,
+              "key": "00908d23-51ff-44d4-8387-7ecec2915256",
+              "title": "ND0029 C01 L05 15 Sliding Window",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "2dQ2VT78rr4",
+                "china_cdn_id": "2dQ2VT78rr4.mp4"
+              }
+            },
+            {
+              "id": 930029,
+              "key": "c1027ba6-da83-4728-97b7-e9d0094db24c",
+              "title": "Sliding Window",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Sliding Window\n - Similar to Hopping Window, except the increment is not directly configurable and updates in real-time\n     - A sliding window of the last 12 hours always includes all of the last 12 hours of data. Data is expired as soon as it reaches the 12-hour threshold, and new data is added as soon as it is received.\n - Sliding Windows have no gaps between windows\n - Sliding Windows do overlap",
+              "instructor_notes": ""
+            },
+            {
+              "id": 930040,
+              "key": "833202ac-315c-4887-a700-d53bcecc9416",
+              "title": "Which of the following outputs would require a sliding window?",
+              "semantic_type": "CheckboxQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "833202ac-315c-4887-a700-d53bcecc9416",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Which of the following scenarios would require a sliding window? (may be more than one answer)",
+                "answers": [
+                  {
+                    "id": "rbk1",
+                    "text": "A critical alerting system that analyzes the most recent 5 minutes of data for outages",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "rbk2",
+                    "text": "A monitoring system that analyzes the last 60 minutes of data in 30-second refresh periods",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "rbk3",
+                    "text": "A customer support health dashboard that shows the last hour’s metrics and then resets on the hour",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "rbk4",
+                    "text": "A marketing tool that requires the most recent 15 minutes of cart abandonment data to send follow-up emails",
+                    "is_correct": true
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 930060,
+          "key": "34ed1ad0-f9d0-4760-9205-1d33e78a582b",
+          "title": "Streams and Tables",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "34ed1ad0-f9d0-4760-9205-1d33e78a582b",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 930046,
+              "key": "23d4653b-823e-441e-9eaf-ce9b52850f64",
+              "title": "Streams and Tables Heading",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Streams and Tables\nIn this section you will learn to distinguish between _streams_ and _tables_ in stream processing frameworks. You will also learn when to apply each type of approach.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 930005,
+              "key": "65e730d5-5885-49fe-bc50-367afcbbdc00",
+              "title": "ND0029 C01 L05 16 Streams And Tables",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "xPvnJo7xr9k",
+                "china_cdn_id": "xPvnJo7xr9k.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 930068,
+          "key": "65530097-ad28-4401-b8c7-ff8dd1b8444c",
+          "title": "Streams",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "65530097-ad28-4401-b8c7-ff8dd1b8444c",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 930025,
+              "key": "5118589a-5115-460b-95aa-be367ef9e935",
+              "title": "Streams Heading",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Streams\nStreams contain all events in a topic, immutable, and in order. As new events occur, they are simply appended to the end of the stream.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 930030,
+              "key": "cda12146-e3ae-403a-aeb6-b7399c35b9b0",
+              "title": "ND0029 C01 L05 17 Streams",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "nODSXnYp82Q",
+                "china_cdn_id": "nODSXnYp82Q.mp4"
+              }
+            },
+            {
+              "id": 930028,
+              "key": "e720cf93-bb79-40a0-96bb-458052058495",
+              "title": "What is a Stream?",
+              "semantic_type": "CheckboxQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "e720cf93-bb79-40a0-96bb-458052058495",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "What is a stream? (may be more than one answer)",
+                "answers": [
+                  {
+                    "id": "rbk1",
+                    "text": "A series of ordered events",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "rbk2",
+                    "text": "A series of immutable events",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "rbk3",
+                    "text": "A series of unbounded events",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "rbk4",
+                    "text": "A series of bounded events",
+                    "is_correct": false
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 930062,
+          "key": "6aed2748-616b-4e87-a10d-20d5097a008a",
+          "title": "Tables",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "6aed2748-616b-4e87-a10d-20d5097a008a",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 930043,
+              "key": "7249722d-b23a-4c6d-aa73-415f4b35abfc",
+              "title": "Tables Heading",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Tables\nTables are the result of aggregation operations in stream processing applications. They are a roll-up, point-in-time view of data.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 930045,
+              "key": "dd663672-f2a2-49c7-aeba-9fa46b9e0778",
+              "title": "ND0029 C01 L05 18 Tables",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "_pnZYwIJ2N0",
+                "china_cdn_id": "_pnZYwIJ2N0.mp4"
+              }
+            },
+            {
+              "id": 930036,
+              "key": "6edbba61-5c2b-48c2-be62-2af8fa7cdf4d",
+              "title": "What is a Table?",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "6edbba61-5c2b-48c2-be62-2af8fa7cdf4d",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "What is a Table?",
+                "answers": [
+                  {
+                    "id": "rbk1",
+                    "text": "An unbounded, immutable, ordered sequence of events",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "rbk2",
+                    "text": "A roll-up, point-in-time view of data",
+                    "is_correct": true
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 930055,
+          "key": "1d259dd9-34ca-40eb-9316-b3b8cc934e07",
+          "title": "Streams vs Tables",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "1d259dd9-34ca-40eb-9316-b3b8cc934e07",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 930035,
+              "key": "20316a47-9f50-46eb-960c-11c8d66da99f",
+              "title": "Streams vs Tables Heading",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Comparing Streams and Tables\nStreams and tables are not opposing concepts. In practice, the differentiation of a stream from a table in a stream processing application serves as a description of the type of data that is produced. Applications that are performing aggregations across incoming data are creating tables. Applications that are transforming incoming data into an unending sequence of events are streams.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 929999,
+              "key": "96bbbd6b-51da-4f50-9143-b1da2f08f63f",
+              "title": "ND0029 C01 L05 19 Streams Vs Tables",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "dwBbPcjUlog",
+                "china_cdn_id": "dwBbPcjUlog.mp4"
+              }
+            },
+            {
+              "id": 930034,
+              "key": "3ebd2567-5fd4-452c-899a-9cf4b15d15e8",
+              "title": "Further Reading",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Further Optional Reading on Streams and Tables\n[Of Streams and Tables in Kafka and Stream Processing, Part 1](https://www.michael-noll.com/blog/2018/04/05/of-stream-and-tables-in-kafka-and-stream-processing-part1/)",
+              "instructor_notes": ""
+            },
+            {
+              "id": 930022,
+              "key": "1d40b7e1-aed6-45ca-b2f1-99a72086c72a",
+              "title": "Which of the following scenarios would call for a Stream",
+              "semantic_type": "CheckboxQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "1d40b7e1-aed6-45ca-b2f1-99a72086c72a",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Which of the following scenarios would call for a stream? (may be more than one answer)",
+                "answers": [
+                  {
+                    "id": "rbk1",
+                    "text": "Calculating the top 10 regions by searches over the past 24 hours",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "rbk2",
+                    "text": "Calculating the average purchase price for the past 7 days",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "rbk3",
+                    "text": "Remapping a field on all incoming events in a stream and re-emitting the event",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "rbk4",
+                    "text": "Reading in all events in a stream and filtering some, while re-emitting the rest",
+                    "is_correct": true
+                  }
+                ]
+              }
+            },
+            {
+              "id": 930050,
+              "key": "687e3d0b-ab4e-4148-9e22-66ba63fabe36",
+              "title": "Which of the following scenarios would call for a Table",
+              "semantic_type": "CheckboxQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "687e3d0b-ab4e-4148-9e22-66ba63fabe36",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Which of the following scenarios would call for a table? (may be more than one answer)",
+                "answers": [
+                  {
+                    "id": "rbk1",
+                    "text": "A series of incoming events are scrubbed of sensitive data and re-emitted",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "rbk2",
+                    "text": "A histogram of response times for a page for the past 3 hours",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "rbk3",
+                    "text": "A list of the unique currencies processed in the last hour",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "rbk4",
+                    "text": "A series of incoming events are split out from a raw data feed into smaller sub-feeds based on region",
+                    "is_correct": false
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 930053,
+          "key": "5a9fb339-b393-4b7d-a0c1-77713605d87b",
+          "title": "Data Storage",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "5a9fb339-b393-4b7d-a0c1-77713605d87b",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 930044,
+              "key": "b7e5b5c9-c77b-4aeb-b926-ab0abf0265db",
+              "title": "Data Storage Heading",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Data Storage\nTable operations are stateful, meaning we must store the intermediate results of combining multiple events to represent the latest point-in-time value for a given key. Therefore, table operations require some form of storage. Options range from using in-memory storage, to dedicated databases such as RocksDB. In this section, we’ll review the options that are available.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 930015,
+              "key": "630593b8-4a9d-4967-a50e-131da3eb54c8",
+              "title": "ND0029 C01 L05 20 Data Storage",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "1CNzPsDDWgk",
+                "china_cdn_id": "1CNzPsDDWgk.mp4"
+              }
+            },
+            {
+              "id": 930016,
+              "key": "2f97bf2b-adb5-430e-9b95-52389c737d0f",
+              "title": "ND0029 C01 L05 21 RocksDB",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "dY8QHw6OoIg",
+                "china_cdn_id": "dY8QHw6OoIg.mp4"
+              }
+            },
+            {
+              "id": 930020,
+              "key": "809c1237-0a8c-477e-a04e-569ac7ddb5e8",
+              "title": "Further Reading",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Further Optional Reading - Data Storage\n- [RocksDB](https://rocksdb.org/)\n- [Kafka Streams State](https://docs.confluent.io/current/streams/architecture.html?&_ga=2.265603023.1364268795.1565759077-2091975159.1565759077#state)",
+              "instructor_notes": ""
+            },
+            {
+              "id": 930032,
+              "key": "61bb5ab4-36cd-4585-8c8c-1c0b51ca327d",
+              "title": "What is Kafka's role as a datastore?",
+              "semantic_type": "CheckboxQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "61bb5ab4-36cd-4585-8c8c-1c0b51ca327d",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "What is Kafka’s role as a data store? (may be more than one answer)",
+                "answers": [
+                  {
+                    "id": "rbk1",
+                    "text": "Track all state changes in a stream processing application",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "rbk2",
+                    "text": "Provide local state storage for stream processing nodes",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "rbk3",
+                    "text": "Aid in fault tolerance and recovery if a node reboots",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "rbk4",
+                    "text": "Provide in-memory storage for stream processing nodes",
+                    "is_correct": false
+                  }
+                ]
+              }
+            },
+            {
+              "id": 930027,
+              "key": "5aff62a2-569a-4618-acd0-5ab9e390519a",
+              "title": "What is RocksDB role as a datastore?",
+              "semantic_type": "CheckboxQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "5aff62a2-569a-4618-acd0-5ab9e390519a",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "What is RocksDB’s role as a data store? (may be more than one answer)",
+                "answers": [
+                  {
+                    "id": "rbk1",
+                    "text": "Provide quick boot times between restarts on a given node",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "rbk2",
+                    "text": "Hold the current state of the stream processing application on a given node",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "rbk3",
+                    "text": "Used for fault tolerance between node failures",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "rbk4",
+                    "text": "Used for replicating data between nodes",
+                    "is_correct": false
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 930067,
+          "key": "f2883197-9aec-47ca-a796-3a5466f069e9",
+          "title": "Lesson Summary",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "f2883197-9aec-47ca-a796-3a5466f069e9",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 930033,
+              "key": "e4a29cb3-a7b5-455c-a74f-6d277c3f2228",
+              "title": "Lesson Summary",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Lesson Summary\nIn this lesson you learned:\n -  Common strategies for stream processing applications, such as filtering, joins, and aggregates\n - Time windowing for stateful aggregations\n - What types of data storage options are typical of streaming applications",
+              "instructor_notes": ""
+            },
+            {
+              "id": 930049,
+              "key": "ea69fc36-9206-4107-a96c-4cf11246b437",
+              "title": "ND0029 C01 L05 22 Stream Processing Fundamentals Summary",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "I80ogCinZY4",
+                "china_cdn_id": "I80ogCinZY4.mp4"
+              }
+            },
+            {
+              "id": 930074,
+              "key": "28ed9bcc-46b9-40ac-8ad6-4230553c8003",
+              "title": "Glossary of Key Terms",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Glossary of Key Terms for this Lesson (same as glossary at beginning of lesson)\n\n- Join (Streams) - The process of combining one or more streams into an output stream, typically on some related key attribute.\n- Filtering (Streams) - The process of removing certain events in a data stream based on a condition\n- Aggregating (Streams) - The process of summing, reducing, or otherwise grouping data based on a key attribute\n- Remapping (Streams) - The process of modifying the input stream data structure into a different output structure. This may include the addition or removal of fields on a given event.\n- Windowing (Streams) - Defining a period of time from which data is analyzed. Once data falls outside of that period of time, it is no longer valid for streaming analysis.\n- Tumbling Window (Streams) - The tumbling window defines a block of time which rolls over once the duration has elapsed. A tumbling window of one hour, started now, would collect all data for the next 60 minutes. Then, at the 60 minute mark, it would reset all of the data in the topic, and begin collecting a fresh set of data for the next 60 minutes.\n- Hopping Window (Streams) - Hopping windows advance in defined increments of time. A hopping window consists of a window length, e.g. 30 minutes, and an increment time, e.g. 5 minutes. Every time the increment time expires, the window is advanced forward by the increment.\n- Sliding Window (Streams) - Sliding Windows work identically to Hopping Windows, except the increment period is much smaller -- typically measured in seconds. Sliding windows are constantly updated and always represent the most up-to-date state of a given stream aggregation.\n- Stream - Streams contain all events in a topic, immutable, and in order. As new events occur, they are simply appended to the end of the stream.\n- Table - Tables are the result of aggregation operations in stream processing applications. They are a roll-up, point-in-time view of data.\n- Stateful - Stateful operations must store the intermediate results of combining multiple events to represent the latest point-in-time value for a given key",
+              "instructor_notes": ""
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "_deprecated": [
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    }
+  ]
+}

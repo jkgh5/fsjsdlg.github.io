@@ -1,0 +1,46 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:01.889
+In the previous lesson,
+
+00:00:01.889 --> 00:00:07.889
+we've seen how to use specific Kafka Client Libraries to get data into and out of Kafka.
+
+00:00:07.889 --> 00:00:09.509
+While these libraries are great,
+
+00:00:09.509 --> 00:00:13.649
+it does take development time to actually integrate them into our applications.
+
+00:00:13.650 --> 00:00:16.850
+In this lesson, we're going to see two tools which can help
+
+00:00:16.850 --> 00:00:20.345
+integrate Kafka into almost any application you can imagine.
+
+00:00:20.344 --> 00:00:22.579
+First, we're going to see Kafka Connect.
+
+00:00:22.579 --> 00:00:26.494
+Kafka Connect allows us to reuse existing components to
+
+00:00:26.495 --> 00:00:31.385
+source data into Kafka and sync data out from Kafka into other databases.
+
+00:00:31.385 --> 00:00:34.730
+Likewise, we're going to see how to use Kafka REST Proxy to
+
+00:00:34.729 --> 00:00:38.584
+get data into and out of Kafka with HTTP.
+
+00:00:38.585 --> 00:00:40.399
+By the end of this lesson,
+
+00:00:40.399 --> 00:00:43.714
+you'll have a whole slew of new options at your disposal,
+
+00:00:43.715 --> 00:00:45.870
+to work with Kafka.
+

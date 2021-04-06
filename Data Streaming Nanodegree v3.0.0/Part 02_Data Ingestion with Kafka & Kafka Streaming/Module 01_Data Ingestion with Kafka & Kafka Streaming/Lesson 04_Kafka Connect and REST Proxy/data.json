@@ -1,0 +1,1967 @@
+{
+  "data": {
+    "lesson": {
+      "id": 929920,
+      "key": "f9587e2d-1694-46a0-8e8e-f6562f8a01b8",
+      "title": "Kafka Connect and REST Proxy",
+      "semantic_type": "Lesson",
+      "is_public": true,
+      "version": "1.0.0",
+      "locale": "en-us",
+      "summary": "This lesson covers producing and consuming data into Kafka with Kafka Connect and REST Proxy.",
+      "lesson_type": "Classroom",
+      "display_workspace_project_only": false,
+      "resources": {
+        "files": [
+          {
+            "name": "Videos Zip File",
+            "uri": "https://zips.udacity-data.com/f9587e2d-1694-46a0-8e8e-f6562f8a01b8/929920/1615016442631/Kafka+Connect+and+REST+Proxy+Videos.zip"
+          },
+          {
+            "name": "Transcripts Zip File",
+            "uri": "https://zips.udacity-data.com/f9587e2d-1694-46a0-8e8e-f6562f8a01b8/929920/1615016434754/Kafka+Connect+and+REST+Proxy+Subtitles.zip"
+          },
+          {
+            "name": "Lesson 4 slides",
+            "uri": "https://video.udacity-data.com/topher/2019/September/5d7d3436_l4-kafka-connect-and-rest-proxy/l4-kafka-connect-and-rest-proxy.pdf"
+          }
+        ],
+        "google_plus_link": null,
+        "career_resource_center_link": null,
+        "coaching_appointments_link": null,
+        "office_hours_link": null,
+        "aws_provisioning_link": null
+      },
+      "project": null,
+      "lab": null,
+      "concepts": [
+        {
+          "id": 929893,
+          "key": "3a8b75cf-2ffa-4f1a-9f86-a907308f755b",
+          "title": "Lesson Overview",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "3a8b75cf-2ffa-4f1a-9f86-a907308f755b",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 929822,
+              "key": "7e14562f-b696-4795-90dd-5a9ee4509b47",
+              "title": "ND0029 C01 L04 01 Intro",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "j0AxfZ9rFEI",
+                "china_cdn_id": "j0AxfZ9rFEI.mp4"
+              }
+            },
+            {
+              "id": 929828,
+              "key": "ac2e74b6-7bb1-4d1f-a84a-ed82d2f661de",
+              "title": "Lesson Overview",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Lesson Overview\nIn this lesson you will learn about the greater Kafka ecosystem and how it can save you time and effort and even allow you to integrate legacy applications with Kafka. Specifically, you’ll see how you can use Kafka Connect to quickly integrate common data sources into Kafka, and move data from Kafka into other data stores. You’ll also see how we can use REST Proxy to consume and produce data to and from Kafka using only an HTTP client.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 929892,
+          "key": "b4b1cfb8-7c91-4fb3-8423-4b8d39175985",
+          "title": "Lesson Glossary of Key Terms",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "b4b1cfb8-7c91-4fb3-8423-4b8d39175985",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 929825,
+              "key": "0d3c4868-45f2-46bb-9b3a-8344e0034f5b",
+              "title": "Lesson Glossary of Key Terms",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Glossary of Key Terms You Will Learn in this Lesson\n\n* Kafka Connect - A web server and framework for integrating Kafka with external data sources such as SQL databases, log files, and HTTP endpoints.\n* JAR - **J**ava **AR**chive. Used to distribute Java code reusably in a library format under a single file.\n* Connector - A JAR built on the Kafka Connect framework which integrates to an external system to either source or sink data from Kafka\n* Source - A Kafka client putting data into Kafka from an external location, such as a data store\n* Sink - A Kafka client removing data from Kafka into an external location, such as a data store\n* JDBC - Java Database Connectivity. A Java programming abstraction over SQL database interactions.\n* Task - Responsible for actually interacting with and moving data within a Kafka connector. One or more tasks make up a connector.\n* Kafka REST Proxy - A web server providing APIs for producing and consuming from Kafka, as well as fetching cluster metadata. ",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 929918,
+          "key": "5802948d-0337-4eae-a3c7-0cfa7a176a8b",
+          "title": "Kafka Connect",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "5802948d-0337-4eae-a3c7-0cfa7a176a8b",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 929823,
+              "key": "4cc0ff4d-4571-4324-8951-9340ccc0d6b0",
+              "title": "Kafka Connect Heading",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Kafka Connect\nKafka Connect is a web server and framework for integrating Kafka with external data sources such as SQL databases, log files, and HTTP endpoints.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 929890,
+              "key": "6768cc4c-8a63-46dd-8a06-966d508f265c",
+              "title": "ND0029 C01 L04 02 Kafka Connect",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "v2sSesarsDw",
+                "china_cdn_id": "v2sSesarsDw.mp4"
+              }
+            },
+            {
+              "id": 929824,
+              "key": "56b29ccc-c2a4-4781-b63c-8ac1249fab88",
+              "title": "Why would one choose to use Kafka Connect rather than building their own integration?",
+              "semantic_type": "CheckboxQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "56b29ccc-c2a4-4781-b63c-8ac1249fab88",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Why would you choose to use Kafka Connect rather than a Kafka client library? (may be more than one answer)",
+                "answers": [
+                  {
+                    "id": "rbk1",
+                    "text": "Saves time",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "rbk2",
+                    "text": "Allows users to repeatedly implement similar Kafka integrations",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "rbk3",
+                    "text": "Provides an abstraction from Kafka for application code",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "rbk4",
+                    "text": "Decreases amount of code to maintain",
+                    "is_correct": true
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 929904,
+          "key": "0adb36d1-0bd2-41fa-93bd-94ac07701660",
+          "title": "Kafka Connect Architecture",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "0adb36d1-0bd2-41fa-93bd-94ac07701660",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 929826,
+              "key": "9970caa5-e875-429f-bd7d-5559ea25d095",
+              "title": "ND0029 C01 L04 03 How Kafka Connect Works",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "KQKcpIL0bkE",
+                "china_cdn_id": "KQKcpIL0bkE.mp4"
+              }
+            },
+            {
+              "id": 929835,
+              "key": "785afbb2-1967-468a-97b9-7b9a0697b67d",
+              "title": "Kafka Connect Architecture",
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2019/September/5d72a4cb_screen-shot-2019-09-06-at-11.26.02-am/screen-shot-2019-09-06-at-11.26.02-am.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/785afbb2-1967-468a-97b9-7b9a0697b67d",
+              "caption": "**Kafka Connect uses Kafka as its configuration store and uses Framework JARs to provide functionality**",
+              "alt": "Kafka Connect",
+              "width": 700,
+              "height": 336,
+              "instructor_notes": null
+            },
+            {
+              "id": 929830,
+              "key": "b24119ea-9d58-4945-bd3b-e19c23f9bcb5",
+              "title": "ND0029 C01 L04 04 The Connect Framework",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "MUxxpo9MGXI",
+                "china_cdn_id": "MUxxpo9MGXI.mp4"
+              }
+            },
+            {
+              "id": 929887,
+              "key": "5ba5a3b2-8204-444c-927f-3ebedf8f7224",
+              "title": "Which of the following best describes the Kafka Connect architecture?",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "5ba5a3b2-8204-444c-927f-3ebedf8f7224",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Which of the following best describes the Kafka Connect architecture?",
+                "answers": [
+                  {
+                    "id": "rbk1",
+                    "text": "One or more Python web servers using plugin modules to bridge Kafka and other external data systems",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "rbk2",
+                    "text": "A stand alone Java web servers with predefined and set functionality to bridge Kafka and other external data systems",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "rbk3",
+                    "text": "A series of JARs plugged into Kafka for bridging it with other external data systems",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "rbk4",
+                    "text": "One or more Java web servers using plugin JARs to bridge Kafka and other external data systems",
+                    "is_correct": true
+                  }
+                ]
+              }
+            },
+            {
+              "id": 929827,
+              "key": "ff5bf4a8-64ed-4afe-8ab1-29865de02034",
+              "title": "Which of the following does Kafka Connect support?",
+              "semantic_type": "CheckboxQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "ff5bf4a8-64ed-4afe-8ab1-29865de02034",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Which of the following actions does Kafka Connect support? (may be more than one answer)",
+                "answers": [
+                  {
+                    "id": "rbk1",
+                    "text": "Sourcing data from external data sources into Kafka",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "rbk2",
+                    "text": "Sinking data out of Kafka into external destination data sources",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "rbk3",
+                    "text": "REST API Calls for producing data into Kafka",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "rbk4",
+                    "text": "Deleting data in Kafka topics",
+                    "is_correct": false
+                  }
+                ]
+              }
+            },
+            {
+              "id": 929833,
+              "key": "f2bcbe0c-2fa2-41e1-aa5a-43dc032d9dcc",
+              "title": "Why are Connectors not built into the Web Server?",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "f2bcbe0c-2fa2-41e1-aa5a-43dc032d9dcc",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Why are Connectors not built into the web server directly?",
+                "answers": [
+                  {
+                    "id": "rbk1",
+                    "text": "Because the plugins may be built in any language and would make packaging difficult",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "rbk2",
+                    "text": "The plugin architecture allows developers to create functionality that the original designers may not have imagined",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "rbk3",
+                    "text": "Plug and play connectors allow the web server to run in more places than would otherwise be possible",
+                    "is_correct": false
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 929894,
+          "key": "f0d1fcd9-87d3-40c7-b508-953a08418511",
+          "title": "Kafka Connect Summary",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "f0d1fcd9-87d3-40c7-b508-953a08418511",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 929832,
+              "key": "283c7175-b5dc-4479-82b1-b75e9810528c",
+              "title": "Kafka Connect Summary",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Kafka Connect - Summary\nIn this section you learned that:\n- Kafka Connect can be used to handle common and repeated scenarios.\n- Kafka Connect is a web-server written in Java and Scala, and runs on the JVM.\n- Kafka Connect has a plugin architecture, meaning that you can easily write your own connectors in addition to using the rich open-source ecosystem of connectors.\n- By using Kafka Connect, you may be able to isolate your application entirely from integrating with a Kafka client library.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 929839,
+              "key": "de29a8d4-9433-474f-aab1-e592acfd3895",
+              "title": "Kafka Connect Further Research",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Optional Further Reading on Kafka Connect\n- [Overview of Kafka Connect](https://docs.confluent.io/current/connect/concepts.html)",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 929895,
+          "key": "bc6b75af-02c7-4d60-b3f3-d2e753cf477b",
+          "title": "Kafka Connect Connectors",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "bc6b75af-02c7-4d60-b3f3-d2e753cf477b",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 929847,
+              "key": "7d057304-cbcc-4c4a-b33e-e53225bb20c4",
+              "title": "Kafka Connect Connectors Heading",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Kafka Connect Connectors\nIn this section we will review the catalogue of open-source Kafka Connectors and highlight some of the most commonly used connectors.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 929834,
+              "key": "21aa460d-f87e-435c-99c9-cd04038f7bd7",
+              "title": "ND0029 C01 L04 05 Kafka Connect Connectors",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "aTpiAdyhVBc",
+                "china_cdn_id": "aTpiAdyhVBc.mp4"
+              }
+            },
+            {
+              "id": 929829,
+              "key": "105e033a-d990-4067-bfff-d6283e860407",
+              "title": "Kafka Connect Connectors",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Kafka Connect Connector Plugins\nHere are some popular Kafka Connect plugins:\n- [Confluent Kafka Connect Plugin Search](https://www.confluent.io/hub/?utm_medium=sem&utm_source=google&utm_campaign=ch.sem_br.brand_tp.prs_tgt.confluent-brand_mt.mbm_rgn.namer_lng.eng_dv.all&utm_term=%2Bconfluent%20%2Bconnect&creative=357969856550&device=c&placement=&gclid=Cj0KCQjwp5_qBRDBARIsANxdcikzhat8UGdi8TVVfxhSATPhQqLibR81tnJC0lVGsPaRubygAORySDEaAhrbEALw_wcB)\n- [Amazon S3 Connector](https://www.confluent.io/hub/confluentinc/kafka-connect-s3)\n- [SQL JDBC Connector](https://www.confluent.io/hub/confluentinc/kafka-connect-jdbc)\n- [HDFS Connector](https://www.confluent.io/hub/confluentinc/kafka-connect-hdfs)\n- [HTTP Connector](https://www.confluent.io/hub/confluentinc/kafka-connect-http)",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 929919,
+          "key": "c1e1eb3f-562a-42bd-b94b-185d95b17cf1",
+          "title": "Reviewing Kafka Connectors",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "c1e1eb3f-562a-42bd-b94b-185d95b17cf1",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 929857,
+              "key": "20d7f318-e559-4e5c-8cd3-542557de1cf0",
+              "title": "Which of the following connectors would be useful?",
+              "semantic_type": "CheckboxQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "20d7f318-e559-4e5c-8cd3-542557de1cf0",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Which of the following connectors would be useful if we had an application which stored data in MySQL, kept event data in S3, and logged to disk? (may be more than one answer)",
+                "answers": [
+                  {
+                    "id": "rbk1",
+                    "text": "HDFS",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "rbk2",
+                    "text": "SQL JDBC",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "rbk3",
+                    "text": "Amazon S3",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "rbk4",
+                    "text": "HTTP",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "rbk5",
+                    "text": "Local File",
+                    "is_correct": true
+                  }
+                ]
+              }
+            },
+            {
+              "id": 929838,
+              "key": "24c60f69-b531-4236-b4b3-09f6711e5093",
+              "title": "* In which of the following scenarios would you *not* want to use Kafka Connect?",
+              "semantic_type": "CheckboxQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "24c60f69-b531-4236-b4b3-09f6711e5093",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "In which of the following scenarios would you *not* want to use Kafka Connect? (may be more than one answer)",
+                "answers": [
+                  {
+                    "id": "rbk1",
+                    "text": "The data needs to be sent from Google Cloud storage",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "rbk2",
+                    "text": "The data needs to be sent to an HTTP API from Kafka",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "rbk3",
+                    "text": "The data needs to be transformed before being stored in Kafka",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "rbk4",
+                    "text": "The data must be sent as it occurs rather than being sent periodically by Kafka Connect",
+                    "is_correct": true
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 929896,
+          "key": "df3ea39d-10a2-4987-8758-5af8059584e6",
+          "title": "The Kafka Connect API",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "df3ea39d-10a2-4987-8758-5af8059584e6",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 929852,
+              "key": "4040f65b-b85a-40fe-a476-1163420333bc",
+              "title": "ND0029 C01 L04 06 Kafka Connect API",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "cwKurWqrLKY",
+                "china_cdn_id": "cwKurWqrLKY.mp4"
+              }
+            },
+            {
+              "id": 929842,
+              "key": "bdfa403e-f87d-476f-bf2d-17843710f3e8",
+              "title": "Kafka Connect API",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Kafka Connect REST API\n- Your Connector configuration can be Created, Updated, Deleted and Read (CRUD) via a REST API\n- You can check the status of a specific Connectors task(s) via the API\n- You can start, stop, and restart Connectors via the API\n- The choice of a REST API provides a wide-array of integration and management opportunities\n- [Official REST API Documentation](https://docs.confluent.io/current/connect/references/restapi.html)",
+              "instructor_notes": ""
+            },
+            {
+              "id": 929846,
+              "key": "fa7710e7-e047-4f6a-bd53-216524d6347a",
+              "title": "Which of the following are accessible via the Connect API",
+              "semantic_type": "CheckboxQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "fa7710e7-e047-4f6a-bd53-216524d6347a",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Which of the following are accessible via the Kafka Connect API? (may be more than one answer)",
+                "answers": [
+                  {
+                    "id": "rbk1",
+                    "text": "Create, Read, Update, and Delete (CRUD) Operations on Connectors",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "rbk2",
+                    "text": "Detailed Connector Logs",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "rbk3",
+                    "text": "Start, Stop, or Restart Tasks",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "rbk4",
+                    "text": "Connector Metrics",
+                    "is_correct": false
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 929897,
+          "key": "7838d138-5e6d-42d3-ae37-3023737065ac",
+          "title": "Using the Kafka Connect API",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "7838d138-5e6d-42d3-ae37-3023737065ac",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 929844,
+              "key": "0086964e-f895-45a0-b823-2cb5135aa691",
+              "title": "ND0029 C01 L04 07 Connect API Demonstration",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "Kqr1b0_1_ok",
+                "china_cdn_id": "Kqr1b0_1_ok.mp4"
+              }
+            },
+            {
+              "id": 931132,
+              "key": "e3f47a4e-01ea-45fd-a949-b3ba598512a2",
+              "title": "Workspace Exercise: Using the Kafka Connect API",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Workspace Exercise: Using the Kafka Connect API\n### Important note:\nBefore you execute anything in this workspace, or anytime after you've refreshed, or woken up, or reset data, or used the \"Get New Content\" button in this workspace, you'll need to run this command in the terminal:\n\n`./startup.sh` \n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 929921,
+              "key": "84dfc417-330a-4471-be47-91474e6ac297",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "r899655c929897xJUPYTERLe3a4s1p4",
+              "pool_id": "jupyterlabpython37",
+              "view_id": "jupyter-lab-qxzfe",
+              "gpu_capable": false,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "disk": null,
+                    "port": 3000,
+                    "ports": [],
+                    "pageEnd": "",
+                    "pageStart": "",
+                    "allowSubmit": false,
+                    "defaultPath": "/",
+                    "actionButtonText": ""
+                  },
+                  "kind": "jupyter-lab"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        },
+        {
+          "id": 929909,
+          "key": "655a3926-e113-4d79-bab2-d9698ad7a338",
+          "title": "Summary: Kafka Connect Connectors",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "655a3926-e113-4d79-bab2-d9698ad7a338",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 929864,
+              "key": "b9b38ba6-bef0-464f-9fd3-aeaae978b995",
+              "title": "Kafka Connect Connectors Summary",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Kafka Connect Connectors - Summary\nIn this section you learned:\n- Kafka Connect supports a number of Connectors for common data sources\n    - Files on disk\n    - Amazon S3 and Google Cloud Storage\n    - SQL databases such as MySQL and Postgres\n    - HDFS\n- Kafka Connect has an extensive REST API for managing and creating Connectors",
+              "instructor_notes": ""
+            },
+            {
+              "id": 929891,
+              "key": "72084c13-beff-41fa-8a61-594989806dba",
+              "title": "Kafka Connect Connectors Further Research",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Kafka Connect Connectors - Optional Further Research\n- [Confluent Connector Hub](https://www.confluent.io/hub/?_ga=2.42557541.1345547963.1563205519-78292278.1561645529)\n- [List of core Connectors included with most distributions](https://docs.confluent.io/current/connect/managing/connectors.html)\n- [Connect REST API Documentation](https://docs.confluent.io/current/connect/references/restapi.html)",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 929913,
+          "key": "a0960efd-5961-4fdf-aaa2-e2bf80e9ec4f",
+          "title": "Key Connectors",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "a0960efd-5961-4fdf-aaa2-e2bf80e9ec4f",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 929877,
+              "key": "2ba79db9-e99c-4971-a3e6-01beeacae634",
+              "title": "Key Connectors Heading",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Key Kafka Connectors\nIn this section you will learn how to use some of the most common Kafka Connectors, such as the JDBC sink and source connector and the FileStream Source connector.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 929867,
+              "key": "a19f27de-90ba-4622-a400-2f9ddc52b320",
+              "title": "ND0029 C01 L04 08 Key Connectors",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "yxUVWtPELv0",
+                "china_cdn_id": "yxUVWtPELv0.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 929908,
+          "key": "cc86d700-f13e-42a4-baea-be804d1020fd",
+          "title": "Kafka Connect FileStream Source",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "cc86d700-f13e-42a4-baea-be804d1020fd",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 929889,
+              "key": "338cd509-35ab-4657-9b65-e5cec1a186bf",
+              "title": "Creating a Kafka Connect FileStream Source",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Demo: Creating a Kafka Connect FileStream Source",
+              "instructor_notes": ""
+            },
+            {
+              "id": 929866,
+              "key": "4d849011-3400-45fc-8a0a-7777370fbdf7",
+              "title": "ND0029 C01 L04 09 Kafka Connect File Source Demonstration",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "w62mHdpctPo",
+                "china_cdn_id": "w62mHdpctPo.mp4"
+              }
+            },
+            {
+              "id": 931130,
+              "key": "48c793e1-7bf8-4eb5-a727-97b45576cfba",
+              "title": "Workspace Exercise: Kafka Connect FileStream Source",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Workspace Exercise: Kafka Connect FileStream Source\n### Important note:\nBefore you execute anything in this workspace, or anytime after you've refreshed, or woken up, or reset data, or used the \"Get New Content\" button in this workspace, you'll need to run this command in the terminal:\n\n`./startup.sh` \n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 929922,
+              "key": "acdbf465-31b4-46b6-bd25-cf526c65f44f",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "r899655c929908xJUPYTERLas2mf1ib",
+              "pool_id": "jupyterlabpython37",
+              "view_id": "jupyter-lab-z3ntf",
+              "gpu_capable": false,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "disk": null,
+                    "port": 3000,
+                    "ports": [],
+                    "pageEnd": "",
+                    "pageStart": "",
+                    "allowSubmit": false,
+                    "defaultPath": "/",
+                    "actionButtonText": ""
+                  },
+                  "kind": "jupyter-lab"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        },
+        {
+          "id": 929911,
+          "key": "c52fcdcd-97e4-42c7-a906-e067ea2eb3a4",
+          "title": "JDBC Sinks and Sources",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "c52fcdcd-97e4-42c7-a906-e067ea2eb3a4",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 929878,
+              "key": "cf846ab0-44c6-423b-b30e-501f5070bb3b",
+              "title": "ND0029 C01 L04 10 Kafka Connect JDBC Sink And Source",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "46zpBKeilgg",
+                "china_cdn_id": "46zpBKeilgg.mp4"
+              }
+            },
+            {
+              "id": 929843,
+              "key": "73326b9b-ce32-4017-97f6-35fa184019af",
+              "title": "JDBC Sinks and Sources",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## JDBC Sinks and Sources\n -  JDBC = Java DataBase Connector. The JDBC API is used to abstract the interface to SQL Databases for Java applications. In the case of Kafka Connect, JDBC is used to act as a generic interface to common databases such as MySQL, Postgres, etc.\n - JDBC Sinks are a common way to move data into Kafka from existing databases. Once the data is available in Kafka, it can be used in stream processing operations to enrich data or provide insights that may otherwise be missing\n - JDBC Sources are a common way to move data out of Kafka to traditional SQL datastores. This is a common way of making stream processing insights available for more ad-hoc or batch querying.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 929917,
+          "key": "eda85b6d-34cd-42c0-80de-018454a810a2",
+          "title": "Kafka Connect JDBC Source",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "eda85b6d-34cd-42c0-80de-018454a810a2",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 929883,
+              "key": "82051a8b-7e01-430e-b892-1f2cebf63026",
+              "title": "Demo: Creating a Kafka Connect JDBC Source",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Demo: Creating a Kafka Connect JDBC Source - Part 1",
+              "instructor_notes": ""
+            },
+            {
+              "id": 929841,
+              "key": "1341537c-be51-436f-807c-bf59f1d7a56f",
+              "title": "ND0029 C01 L04 11 Kafka Connect JDBC Source Demonstration",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "C5Os4ixRKxQ",
+                "china_cdn_id": "C5Os4ixRKxQ.mp4"
+              }
+            },
+            {
+              "id": 931138,
+              "key": "e1e9c11b-186f-4ede-8707-dffef4796550",
+              "title": "Demo: Creating a Kafka Connect JDBC Source - Part 2",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Demo: Creating a Kafka Connect JDBC Source - Part 2",
+              "instructor_notes": ""
+            },
+            {
+              "id": 929944,
+              "key": "c486d916-996c-4dd7-8421-6ad870e85ee2",
+              "title": "ND0029 C01 L04 11.1 Kafka Connect JDBC Source Demonstration",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "UzIsrex_DWY",
+                "china_cdn_id": "UzIsrex_DWY.mp4"
+              }
+            },
+            {
+              "id": 929865,
+              "key": "11d5bbf0-e120-4d2d-949d-f4f7443b4660",
+              "title": "Kafka Connect Troubleshooting Tips",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Kafka Connect Troubleshooting Tips\nAs demonstrated in the demo video above, if you run into trouble with Kafka Connect in the workspace exercise below, or during your project, here are some tips to help your debugging:\n- First, use the REST API to check the connector status. `curl http:<connect_url>/connectors/<your_connector>/status` to see what the status of your connector is\n- Next, use the REST API to check the task status for the connector. `curl http:<connect_url>/connectors/<your_connector>/tasks/<task_id>/status` to see what the status of your task is\n\nIf you can’t  deduce the failure from these two options, the next best bet is to examine the logs of Kafka Connect. Typically, a tool like `tail` or `less` is useful in examining the logs for Kafka Connect. On Linux systems, Kafka Connect logs are often available in `/var/log/kafka/`. Kafka Connect is often verbose and will indicate what the issue is that it is experiencing.\n\nIf you are familiar with Java Management Extensions (JMX) and have access to the server, you may also opt to inspect its JMX metrics for information on failures. However, JMX is most useful for automated monitoring, so you likely will not receive any additional insights from using JMX vs the API or the logs. ",
+              "instructor_notes": ""
+            },
+            {
+              "id": 931135,
+              "key": "b05a2a6d-9f3b-4767-99d4-b705c47d8724",
+              "title": "Workspace Exercise: Kafka Connect JDBC Source",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Workspace Exercise: Kafka Connect JDBC Source\n### Important note:\nBefore you execute anything in this workspace, or anytime after you've refreshed, or woken up, or reset data, or used the \"Get New Content\" button in this workspace, you'll need to run this command in the terminal:\n\n`./startup.sh` \n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 929923,
+              "key": "8fe5cedd-81f0-4213-8379-95f178149491",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "r899655c929917xJUPYTERLq9a8kvz1",
+              "pool_id": "jupyterlabpython37",
+              "view_id": "jupyter-lab-xohgg",
+              "gpu_capable": false,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "disk": null,
+                    "port": 3000,
+                    "ports": [],
+                    "pageEnd": "",
+                    "pageStart": "",
+                    "allowSubmit": false,
+                    "defaultPath": "/",
+                    "actionButtonText": ""
+                  },
+                  "kind": "jupyter-lab"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            },
+            {
+              "id": 929941,
+              "key": "ff27e142-03e7-4ebc-98b1-eec7955c31e8",
+              "title": "Kafka Connect JDBC Source Demonstration Pt 2",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "FUvJZrfMv0I",
+                "china_cdn_id": "FUvJZrfMv0I.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 929910,
+          "key": "d3ae3e44-f46b-4a61-9fdd-06b2aa883670",
+          "title": "Key Connectors Summary",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "d3ae3e44-f46b-4a61-9fdd-06b2aa883670",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 929881,
+              "key": "bdfe5eb4-dc41-4339-bdde-b951f429a9f5",
+              "title": "Key Connectors Summary",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Kafka Key Connectors - Summary\nIn this section you learned how to:\n- Apply the Kafka Connect FileStream Source connector to push logs into Kafka\n- Apply the Kafka Connect JDBC Source connector to push SQL data into Kafka",
+              "instructor_notes": ""
+            },
+            {
+              "id": 929885,
+              "key": "71849455-216c-4c18-93a5-74451e0ba5dd",
+              "title": "Key Connectors Further Research",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Kafka Key Connectors - Optional Further Research\n- [Kafka FileStream Connector Documentation](https://docs.confluent.io/current/connect/filestream_connector.html)\n- [Kafka JDBC Source Connector Documentation](https://docs.confluent.io/current/connect/kafka-connect-jdbc/index.html)",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 929901,
+          "key": "5705e891-a5fd-45f7-ad18-cd8c08629a2e",
+          "title": "Kafka REST Proxy",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "5705e891-a5fd-45f7-ad18-cd8c08629a2e",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 929848,
+              "key": "16585bc8-c327-45e1-876a-82edf0b3f486",
+              "title": "Kafka REST Proxy",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Kafka REST Proxy\nSome applications, for legacy reasons or otherwise, will not be able to integrate a Kafka client directly. Kafka REST Proxy can be used to send and receive data to Kafka topics in these scenarios using only HTTP.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 929861,
+              "key": "12dab34c-9239-4ab8-b20b-a0446e6be801",
+              "title": "ND0029 C01 L04 12  Kafka REST Proxy-",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "NuYbCUW4t8g",
+                "china_cdn_id": "NuYbCUW4t8g.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 929902,
+          "key": "7e1683dd-fbf7-4655-95d2-fa9173f68972",
+          "title": "REST Proxy Architecture",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "7e1683dd-fbf7-4655-95d2-fa9173f68972",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 929875,
+              "key": "60efce80-eee2-48e5-aa2f-613030ac4011",
+              "title": "ND0029 C01 L04 13  How REST Proxy Works",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "TPYrzjqdwT4",
+                "china_cdn_id": "TPYrzjqdwT4.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 929916,
+          "key": "dcb38874-f097-413a-a47d-500129672a26",
+          "title": "Review: REST Proxy Architecture",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "dcb38874-f097-413a-a47d-500129672a26",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 929859,
+              "key": "de79889e-271d-45f5-8c18-c905ab470da4",
+              "title": "REST Proxy can create topics (true/false)",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "de79889e-271d-45f5-8c18-c905ab470da4",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "REST Proxy can create topics",
+                "answers": [
+                  {
+                    "id": "rbk1",
+                    "text": "True",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "rbk2",
+                    "text": "False",
+                    "is_correct": true
+                  }
+                ]
+              }
+            },
+            {
+              "id": 929854,
+              "key": "21e671e0-919c-4ae8-a966-56d2b14812cb",
+              "title": "Which of the following types of interactions does REST Proxy support?",
+              "semantic_type": "CheckboxQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "21e671e0-919c-4ae8-a966-56d2b14812cb",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Which of the following types of interactions does REST Proxy support? (may be more than one answer)",
+                "answers": [
+                  {
+                    "id": "rbk1",
+                    "text": "Fetch administrative and metadata information",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "rbk2",
+                    "text": "Consumer from topics",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "rbk3",
+                    "text": "Topic Configuration Changes",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "rbk4",
+                    "text": "Modify existing data",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "rbk5",
+                    "text": "Produce data to an existing topic",
+                    "is_correct": true
+                  }
+                ]
+              }
+            },
+            {
+              "id": 929888,
+              "key": "0cb1a3a7-e59b-40b6-a158-5e8f4cf3af78",
+              "title": "In what scenarios would you not want to use REST proxy?",
+              "semantic_type": "CheckboxQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "0cb1a3a7-e59b-40b6-a158-5e8f4cf3af78",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "In what scenarios would you *not* want to use REST Proxy? (may be more than one answer)",
+                "answers": [
+                  {
+                    "id": "rbk1",
+                    "text": "You want to put logs into Kafka from a server without a Kafka integration",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "rbk2",
+                    "text": "When writing a Python application that can be updated to use new dependencies",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "rbk3",
+                    "text": "When writing a Java application that can be updated to use new dependencies",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "rbk4",
+                    "text": "When you have frontend code that does not have a native Kafka client",
+                    "is_correct": false
+                  }
+                ]
+              }
+            },
+            {
+              "id": 929880,
+              "key": "cbad0c52-4734-4d0a-a829-84b6fb105d0e",
+              "title": "In what scenarios would you want to use REST Proxy?",
+              "semantic_type": "CheckboxQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "cbad0c52-4734-4d0a-a829-84b6fb105d0e",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "In what scenarios would you want to use REST proxy? (may be more than one answer)",
+                "answers": [
+                  {
+                    "id": "rbk1",
+                    "text": "When working on a frontend client without a native Kafka library",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "rbk2",
+                    "text": "When working on a legacy application that supports HTTP but can’t add new dependencies",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "rbk3",
+                    "text": "When working on a new application that can add its own dependencies",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "rbk4",
+                    "text": "For reading administrative and metadata information about the cluster",
+                    "is_correct": true
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 929915,
+          "key": "f4a8bd9f-b230-4e66-8544-014eec493b03",
+          "title": "Practice: REST Proxy Metadata API",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "f4a8bd9f-b230-4e66-8544-014eec493b03",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 929884,
+              "key": "4f855b33-cc40-4bbd-ab47-ed8f7def6b09",
+              "title": "Demo: Fetching Cluster Metadata from REST Proxy",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Demo: Fetching Cluster Metadata from REST Proxy - Part 1",
+              "instructor_notes": ""
+            },
+            {
+              "id": 929874,
+              "key": "0331afa6-1738-43af-99cd-35e7836b587f",
+              "title": "ND0029 C01 L04 14  Fetching Cluster Metadata From REST Proxy Demonstration",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "5xSsBK9Xiyo",
+                "china_cdn_id": "5xSsBK9Xiyo.mp4"
+              }
+            },
+            {
+              "id": 931131,
+              "key": "34c08b62-963b-43a4-860a-883e00a600d0",
+              "title": "Demo: Fetching Cluster Metadata from REST Proxy - Part 2",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Demo: Fetching Cluster Metadata from REST Proxy - Part 2",
+              "instructor_notes": ""
+            },
+            {
+              "id": 929940,
+              "key": "19317a3d-92c8-488d-a42e-1bafcfdf86ca",
+              "title": "ND0029 C01 L04 14.1  Fetching Cluster Metadata From REST Proxy Demonstration",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "jg1G2H5bbHk",
+                "china_cdn_id": "jg1G2H5bbHk.mp4"
+              }
+            },
+            {
+              "id": 931136,
+              "key": "40973da2-bcfc-4e81-9b8c-63ca7a2bd1dd",
+              "title": "Workspace Exercise: Fetching Cluster Metadata from REST Proxy",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Workspace Exercise: Fetching Cluster Metadata from REST Proxy\n### Important note:\nBefore you execute anything in this workspace, or anytime after you've refreshed, or woken up, or reset data, or used the \"Get New Content\" button in this workspace, you'll need to run this command in the terminal:\n\n`./startup.sh` \n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 929924,
+              "key": "d8cfac3e-c077-43de-af1d-c2651fbafc56",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "r899655c929915xJUPYTERL0ai192fy",
+              "pool_id": "jupyterlabpython37",
+              "view_id": "jupyter-lab-0ercb",
+              "gpu_capable": false,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "disk": null,
+                    "port": 3000,
+                    "ports": [],
+                    "pageEnd": "",
+                    "pageStart": "",
+                    "allowSubmit": false,
+                    "defaultPath": "/",
+                    "actionButtonText": ""
+                  },
+                  "kind": "jupyter-lab"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        },
+        {
+          "id": 929914,
+          "key": "1ae71553-dc6f-4c21-9ccf-12eeddcad26f",
+          "title": "REST Proxy Summary",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "1ae71553-dc6f-4c21-9ccf-12eeddcad26f",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 929879,
+              "key": "e5f9fbe2-d327-4182-9032-ccfeee7c010f",
+              "title": "Kafka REST Proxy",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Summary - Kafka REST Proxy\nIn this section we learned that Kafka REST Proxy:\r- Is a web server built in Java and Scala that allows any client capable of HTTP to integrate with Kafka\r- Allows production and consumption of Kafka data\r- Allows read-only operations on administrative information and metadata\n",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 929900,
+          "key": "e64396a5-b54b-418d-a8e1-cfd365e65471",
+          "title": "Using REST Proxy",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "e64396a5-b54b-418d-a8e1-cfd365e65471",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 929869,
+              "key": "2feb03e5-f5e2-4df5-beff-e3db2efb4f43",
+              "title": "Using REST Proxy Heading",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Using REST Proxy\nIn this section you will see first-hand how to produce and consume data with the Kafka REST Proxy. Though REST Proxy is conceptually similar to traditional Kafka clients, we will highlight some of the important differences and considerations.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 929855,
+              "key": "0a961247-8217-4a12-be58-12e7fe05d1a0",
+              "title": "ND0029 C01 L04 15 Using REST Proxy",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "1687mH07T6w",
+                "china_cdn_id": "1687mH07T6w.mp4"
+              }
+            },
+            {
+              "id": 929872,
+              "key": "9997b73e-9831-421f-8055-1cc16bf294fb",
+              "title": "REST Proxy Producer",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## REST Proxy Producer\r - [`POST` data to `/topics/<topic_name>` to produce data](https://docs.confluent.io/current/kafka-rest/api.html#post--topics-(string-topic_name))\r - The Kafka data may be POSTed in Binary, JSON, or Avro\r - When sending Avro data you must always include the schema data as a string\r - [*Always check your Content-Type header* to ensure that it is correctly configured](https://docs.confluent.io/current/kafka-rest/api.html#content-types)\r    - Content-Type is in the format `application/vnd.kafka[.embedded_format].[api_version]+[serialization_format]`\r    - `embedded_format` is how the data destined for Kafka is formatted. Must be one of `binary`, `json`, or `avro`\r    - `api_version` is the API version for REST Proxy -- this should always be `v2` as of this writing\r   - `serialization_format` has nothing to do with your Kafka data, this is how the actual data being sent to REST proxy is serialized. Only `json` is supported for now -- so always set this to `json`!\n - When using REST Proxy, always start by ensuring that the `Content-Type` is correctly set before running your code. A misconfigured `Content-Type` can lead to confusing and hard-to-debug errors.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 929905,
+          "key": "5910e960-2505-4c6c-bd74-f4182a7e7ead",
+          "title": "Review of REST Proxy Usage",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "5910e960-2505-4c6c-bd74-f4182a7e7ead",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 929876,
+              "key": "ab743f66-928a-4a0b-a744-aaacd99788d0",
+              "title": "Which of the following are valid `Content-Type` settings for REST Proxy?",
+              "semantic_type": "CheckboxQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "ab743f66-928a-4a0b-a744-aaacd99788d0",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Which of the following are valid `Content-Type` headers for REST Proxy API Requests? (may be more than one answer)",
+                "answers": [
+                  {
+                    "id": "rbk1",
+                    "text": "`application/vnd.kafka.avro.v2+json`",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "rbk2",
+                    "text": "`application/json`",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "rbk3",
+                    "text": "`application/vnd.kafka.json.v2+binary`",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "rbk4",
+                    "text": "`application/vnd.kafka.binary.v2+binary`",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "rbk5",
+                    "text": "`application/vnd.kafka.json.v2+json`",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "rbk6",
+                    "text": "`application/vnd.kafka.json.v2+avro`",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "rbk7",
+                    "text": "`application/vnd.kafka.binary.v2+json`",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "rbk8",
+                    "text": "`application/xml`",
+                    "is_correct": false
+                  }
+                ]
+              }
+            },
+            {
+              "id": 929837,
+              "key": "7358fd7f-44cc-431a-b5f4-2edf14ea1cf8",
+              "title": "Can you send more than one message at a time to REST Proxy? (True/False)",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "7358fd7f-44cc-431a-b5f4-2edf14ea1cf8",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "You can send more than one message at a time when producing data to REST Proxy.",
+                "answers": [
+                  {
+                    "id": "rbk1",
+                    "text": "True",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "rbk2",
+                    "text": "False",
+                    "is_correct": false
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 929899,
+          "key": "7b07fecd-8c8c-4ad7-94b9-38c3c84e73d3",
+          "title": "Producing JSON Data via REST Proxy",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "7b07fecd-8c8c-4ad7-94b9-38c3c84e73d3",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 929871,
+              "key": "408646d9-b387-4f66-ab17-4094e6ac71f6",
+              "title": "Demo: Producing JSON Data to Kafka with REST Proxy",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Demo: Producing JSON Data to Kafka with REST Proxy",
+              "instructor_notes": ""
+            },
+            {
+              "id": 929856,
+              "key": "7638030a-bfe5-4f9e-a330-4e70747cf377",
+              "title": "ND0029 C01 L04 16 Producing JSON Data With REST Proxy Demonstration",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "xOTEIod6Zjc",
+                "china_cdn_id": "xOTEIod6Zjc.mp4"
+              }
+            },
+            {
+              "id": 931133,
+              "key": "3fb75c0b-dd75-4c76-ab45-3a8ab389e43b",
+              "title": "Workspace Exercise: Producing JSON Data with REST Proxy",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Workspace Exercise: Producing JSON Data with REST Proxy\n### Important note:\nBefore you execute anything in this workspace, or anytime after you've refreshed, or woken up, or reset data, or used the \"Get New Content\" button in this workspace, you'll need to run this command in the terminal:\n\n`./startup.sh` \n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 929925,
+              "key": "df92fd34-91f3-485a-973f-79386ac0f8c2",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "r899655c929899xJUPYTERL3lzs5yho",
+              "pool_id": "jupyterlabpython37",
+              "view_id": "jupyter-lab-tyyty",
+              "gpu_capable": false,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "disk": null,
+                    "port": 3000,
+                    "ports": [],
+                    "pageEnd": "",
+                    "pageStart": "",
+                    "allowSubmit": false,
+                    "defaultPath": "/",
+                    "actionButtonText": ""
+                  },
+                  "kind": "jupyter-lab"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        },
+        {
+          "id": 929898,
+          "key": "85e68143-1f81-430c-8fa6-c44dbac72d23",
+          "title": "Producing Avro Data via REST Proxy",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "85e68143-1f81-430c-8fa6-c44dbac72d23",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 929863,
+              "key": "ce85846c-37fc-44d9-8169-f55356452f65",
+              "title": "Demo: Producing Avro Data to Kafka via REST Proxy",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Demo: Producing Avro Data to Kafka via REST Proxy",
+              "instructor_notes": ""
+            },
+            {
+              "id": 929860,
+              "key": "6c76ed85-f166-4f92-bfa0-20f3658b9390",
+              "title": "ND0029 C01 L04 17 Producing Avro Data With REST Proxy Demonstration",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "hvo-GC6m_1w",
+                "china_cdn_id": "hvo-GC6m_1w.mp4"
+              }
+            },
+            {
+              "id": 931134,
+              "key": "64f196f5-1b14-46ed-aa15-2c63af97ef4c",
+              "title": "Workspace Exercise: Producing Avro Data with REST Proxy",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Workspace Exercise: Producing Avro Data with REST Proxy\n### Important note:\nBefore you execute anything in this workspace, or anytime after you've refreshed, or woken up, or reset data, or used the \"Get New Content\" button in this workspace, you'll need to run this command in the terminal:\n\n`./startup.sh` \n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 929926,
+              "key": "879f85ba-1d45-4a83-bc91-4c96769d842e",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "r899655c929898xJUPYTERLw2ktoi8c",
+              "pool_id": "jupyterlabpython37",
+              "view_id": "jupyter-lab-z9ckt",
+              "gpu_capable": false,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "disk": null,
+                    "port": 3000,
+                    "ports": [],
+                    "pageEnd": "",
+                    "pageStart": "",
+                    "allowSubmit": false,
+                    "defaultPath": "/",
+                    "actionButtonText": ""
+                  },
+                  "kind": "jupyter-lab"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        },
+        {
+          "id": 929906,
+          "key": "701cbc65-9bf3-4348-b46b-01655f655d99",
+          "title": "Consuming Data with REST Proxy",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "701cbc65-9bf3-4348-b46b-01655f655d99",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 929862,
+              "key": "b07b0794-3389-4d7e-9ed9-6da99ceba35d",
+              "title": "ND0029 C01 L04 18 Consuming Data With REST Proxy",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "wKy9Ibi7Rnk",
+                "china_cdn_id": "wKy9Ibi7Rnk.mp4"
+              }
+            },
+            {
+              "id": 929853,
+              "key": "bdff4dfd-9cd5-47f4-8855-aa27c50f6011",
+              "title": "REST Proxy Consumer",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## REST Proxy Consumer\r - [`POST` to `/consumers/<group_name>` to create a consumer group](https://docs.confluent.io/current/kafka-rest/api.html#post--consumers-(string-group_name))\r - [`POST` to `/consumers/<group_name>/instances/<instance_id>/subscriptions` to create a subscription](https://docs.confluent.io/current/kafka-rest/api.html#post--consumers-(string-group_name)-instances-(string-instance)-subscription)\r - [`GET` from `/consumers/<group_name>/instances/<instance_id>/records` to retrieve records](https://docs.confluent.io/current/kafka-rest/api.html#get--consumers-(string-group_name)-instances-(string-instance)-records)\r     - [*Always check your Accept header* to ensure that it is correctly configured](https://docs.confluent.io/current/kafka-rest/api.html#content-types)\r        - Content-Type is in the format `application/vnd.kafka[.embedded_format].[api_version]+[serialization_format]`\r        - `embedded_format` is how the data requested from Kafka is formatted. Must be one of `binary`, `json`, or `avro`\r        - `api_version` is the API version for REST Proxy -- this should always be `v2` as of writing\r        - `serialization_format` has nothing to do with your Kafka data, this is how the actual data being received from REST proxy is serialized. Only `json` is supported for now -- so always set this to `json`!\r - [`DELETE` to `/consumers/<group_name>/instances/<instance_id>/subscriptions` to unsubscribe a coinsumer](https://docs.confluent.io/current/kafka-rest/api.html#delete--consumers-(string-group_name)-instances-(string-instance)-subscription)",
+              "instructor_notes": ""
+            },
+            {
+              "id": 929868,
+              "key": "c0e1d557-1990-41ca-a04e-dac8d2fcad5b",
+              "title": "How can REST Proxy clients determine how much data to fetch?",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "c0e1d557-1990-41ca-a04e-dac8d2fcad5b",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "How can REST Proxy clients specify how much data to fetch?",
+                "answers": [
+                  {
+                    "id": "rbk1",
+                    "text": "By setting the `max_records` setting on the `GET` request",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "rbk2",
+                    "text": "By specifying the `max_bytes` setting on the `GET` request",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "rbk3",
+                    "text": "By specifying the `timeout` setting on the `GET` request",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "rbk4",
+                    "text": "By setting the `max_bytes` setting on the `POST` request to create the consumer",
+                    "is_correct": false
+                  }
+                ]
+              }
+            },
+            {
+              "id": 929873,
+              "key": "7f4e4c4e-3add-4b16-80b7-b572011fd62f",
+              "title": "REST Proxy clients cannot choose offsets (true/false)",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "7f4e4c4e-3add-4b16-80b7-b572011fd62f",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "REST Proxy clients cannot choose offsets.",
+                "answers": [
+                  {
+                    "id": "rbk1",
+                    "text": "True",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "rbk2",
+                    "text": "False",
+                    "is_correct": true
+                  }
+                ]
+              }
+            },
+            {
+              "id": 929886,
+              "key": "51028aab-a8de-4f79-9aa1-7175157bee5c",
+              "title": "REST Proxy clients do not need to unsubscribe from topics (true/false)",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "51028aab-a8de-4f79-9aa1-7175157bee5c",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "REST Proxy clients do not need to unsubscribe from topics.",
+                "answers": [
+                  {
+                    "id": "rbk1",
+                    "text": "True",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "rbk2",
+                    "text": "False",
+                    "is_correct": true
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 929907,
+          "key": "21b72cd5-f123-4259-910b-fb5cfdb0fd27",
+          "title": "Practice: Consuming Avro Data via REST Proxy",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "21b72cd5-f123-4259-910b-fb5cfdb0fd27",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 929858,
+              "key": "3ca9e9ec-1ae8-4fc7-9470-219c8196c793",
+              "title": "ND0029 C01 L04 19 Consuming Avro Data With REST Proxy Demonstration",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "HGuwzwjTi-o",
+                "china_cdn_id": "HGuwzwjTi-o.mp4"
+              }
+            },
+            {
+              "id": 931137,
+              "key": "d6c18018-1bb6-48f2-97a1-df7961b5756e",
+              "title": "Workspace Exercise: Consuming Avro Data with REST Proxy",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Workspace Exercise: Consuming Avro Data with REST Proxy\n### Important note:\nBefore you execute anything in this workspace, or anytime after you've refreshed, or woken up, or reset data, or used the \"Get New Content\" button in this workspace, you'll need to run this command in the terminal:\n\n`./startup.sh` \n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 929927,
+              "key": "53093a7c-fb4f-4f41-a3e5-36da2f67ae69",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "r899655c929907xJUPYTERLifxu6iqd",
+              "pool_id": "jupyterlabpython37",
+              "view_id": "jupyter-lab-mufcq",
+              "gpu_capable": false,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "disk": null,
+                    "port": 3000,
+                    "ports": [],
+                    "pageEnd": "",
+                    "pageStart": "",
+                    "allowSubmit": false,
+                    "defaultPath": "/",
+                    "actionButtonText": ""
+                  },
+                  "kind": "jupyter-lab"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        },
+        {
+          "id": 929903,
+          "key": "ea14e1f4-165b-427a-aaf4-52c801739a7e",
+          "title": "Summary: Using REST Proxy",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "ea14e1f4-165b-427a-aaf4-52c801739a7e",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 929849,
+              "key": "95dedcde-0eca-4d38-a762-02a776f65320",
+              "title": "Using REST Proxy Summary",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Using REST Proxy - Summary\nREST Proxy is a powerful tool for integration applications into Kafka that could not otherwise use it.\n\nREST Proxy offers a comprehensive API for producing and consuming data from Kafka topics, and even provides fine-grained control over consumer groups, offsets, and partitions.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 929882,
+              "key": "e67c5413-b809-4781-9aac-5a3115cbb4cf",
+              "title": "Using REST Proxy",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Keep REST Proxy in Mind!\nThroughout this section you’ve seen how you can easily leverage the HTTP API of REST Proxy to integrate applications directly into your Kafka ecosystem. While the HTTP API may not be as nice as a native Kafka client, it still provides a fairly straightforward path for integration. \n\nAs Kafka grows within your organization, you will likely find applications that can’t integrate with Kafka for one reason or another. When that happens, look to REST Proxy!",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 929912,
+          "key": "40ac5bb3-7a2b-4aaa-a456-cb67e2b9eca5",
+          "title": "Lesson Summary",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "40ac5bb3-7a2b-4aaa-a456-cb67e2b9eca5",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 929870,
+              "key": "36f7ba45-b354-4c3b-bd90-29c33f207b8b",
+              "title": "ND0029 C01 L04 20 Summary",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "pYevCHgKVpg",
+                "china_cdn_id": "pYevCHgKVpg.mp4"
+              }
+            },
+            {
+              "id": 929850,
+              "key": "4f5a77e1-712c-4bd9-89b7-c2bfd5354aa8",
+              "title": "Lesson Recap",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Lesson Recap\nIn this lesson you learned how to use Kafka Connect to quickly integrate Kafka into a number of your existing data stores and workflows. We went hands-on with the JDBC and FileStream connectors and saw how to configure and deploy them. Next, we saw how REST Proxy can be used to bring Kafka to applications that can’t integrate native clients, but do have REST capabilities.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 929851,
+              "key": "5f7a17fb-55e1-42b4-be42-4ee778267d26",
+              "title": "Lesson Glossary",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Glossary of Key Terms in this Lesson: (same as provided in beginning of lesson)\n\n* Kafka Connect - A web server and framework for integrating Kafka with external data sources such as SQL databases, log files, and HTTP endpoints.\n* JAR - **J**ava **AR**chive. Used to distribute Java code reusably in a library format under a single file.\n* Connector - A JAR built on the Kafka Connect framework which integrates to an external system to either source or sink data from Kafka\n* Source - A Kafka client putting data into Kafka from an external location, such as a data store\n* Sink - A Kafka client remove data from Kafka into an external location, such as a data store\n* JDBC - Java Database Connectivity. A Java programming abstraction over SQL database interactions.\n* Task - Responsible for actually interacting with and moving data within a Kafka connector. One or more tasks make up a connector.\n* Kafka REST Proxy - A web server providing APIs for producing and consuming from Kafka, as well as fetching cluster metadata. ",
+              "instructor_notes": ""
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "_deprecated": [
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "starter_files",
+      "reason": "prefer master_archive_id"
+    },
+    {
+      "name": "starter_files",
+      "reason": "prefer master_archive_id"
+    },
+    {
+      "name": "starter_files",
+      "reason": "prefer master_archive_id"
+    },
+    {
+      "name": "starter_files",
+      "reason": "prefer master_archive_id"
+    },
+    {
+      "name": "starter_files",
+      "reason": "prefer master_archive_id"
+    },
+    {
+      "name": "starter_files",
+      "reason": "prefer master_archive_id"
+    },
+    {
+      "name": "starter_files",
+      "reason": "prefer master_archive_id"
+    }
+  ]
+}

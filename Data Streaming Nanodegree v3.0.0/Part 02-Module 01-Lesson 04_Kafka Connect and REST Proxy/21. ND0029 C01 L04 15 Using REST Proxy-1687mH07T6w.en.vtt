@@ -1,0 +1,229 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:01.459 --> 00:00:05.040
+Producing and consuming data to REST proxy works
+
+00:00:05.040 --> 00:00:08.730
+largely like traditional Kafka consumer or producer client code.
+
+00:00:08.730 --> 00:00:11.609
+There are some differences though because you're going to be
+
+00:00:11.609 --> 00:00:14.684
+working with a REST API and not a native client.
+
+00:00:14.685 --> 00:00:17.310
+We'll review some special considerations for managing
+
+00:00:17.309 --> 00:00:20.939
+consumer groups ever schemas and content types.
+
+00:00:20.940 --> 00:00:23.040
+To produce data to a Kafka topic,
+
+00:00:23.039 --> 00:00:26.000
+you simply use the post REST verb to send
+
+00:00:26.000 --> 00:00:29.515
+data to a topic URL ending in the name of the topic.
+
+00:00:29.515 --> 00:00:32.929
+REST proxy allows you to post a list of data
+
+00:00:32.929 --> 00:00:36.979
+to a topic at once so you can send more than one message at a time.
+
+00:00:36.979 --> 00:00:42.744
+The simplest way to produce data is by sending binary data with no schema whatsoever.
+
+00:00:42.744 --> 00:00:45.469
+However, sending schemas data into Kafka has
+
+00:00:45.469 --> 00:00:48.350
+all the same drawbacks that we discussed in a previous lesson.
+
+00:00:48.350 --> 00:00:50.960
+So you're going to want to avoid doing that if you can.
+
+00:00:50.960 --> 00:00:55.195
+Beyond binary data you may also publish JSON and Avro data.
+
+00:00:55.195 --> 00:00:58.865
+In the image on screen notice that the records are in JSON format.
+
+00:00:58.865 --> 00:01:02.315
+This is how you send JSON data to REST proxy.
+
+00:01:02.314 --> 00:01:04.734
+Also notice this content type.
+
+00:01:04.734 --> 00:01:07.834
+We're going to talk a little bit more about this especially during the demonstration
+
+00:01:07.834 --> 00:01:11.164
+but notice that this is not just application slash JSON.
+
+00:01:11.165 --> 00:01:14.750
+Kafka's using the vendor specific verb here so that they can add
+
+00:01:14.750 --> 00:01:16.640
+an additional information about how
+
+00:01:16.640 --> 00:01:19.265
+the REST proxy should handle the data that you're sending it.
+
+00:01:19.265 --> 00:01:22.700
+Publishing Avro data requires some special consideration.
+
+00:01:22.700 --> 00:01:25.549
+Every message you send through REST proxy must include
+
+00:01:25.549 --> 00:01:29.015
+your Avro schema alongside the data that it describes.
+
+00:01:29.015 --> 00:01:36.454
+Note that value schema defines the Avro schema and that it's a JSON string not raw JSON.
+
+00:01:36.454 --> 00:01:39.530
+Don't overlook this detail when you use REST proxy.
+
+00:01:39.530 --> 00:01:42.890
+I've abbreviated the string here to fit on the slide.
+
+00:01:42.890 --> 00:01:46.250
+So again we specify the Avro schema here.
+
+00:01:46.250 --> 00:01:48.245
+Notice this backslash quote.
+
+00:01:48.245 --> 00:01:49.775
+This is a JSON string,
+
+00:01:49.775 --> 00:01:51.785
+this is not raw JSON.
+
+00:01:51.784 --> 00:01:53.560
+So records and value here,
+
+00:01:53.560 --> 00:01:56.510
+this is raw JSON, this is just normal JSON object.
+
+00:01:56.510 --> 00:01:59.645
+This is a string, I just want to emphasize this fact.
+
+00:01:59.644 --> 00:02:01.984
+You might be thinking that this introduces a lot of
+
+00:02:01.984 --> 00:02:04.329
+overhead relative to a normal Kafka client.
+
+00:02:04.329 --> 00:02:08.405
+In other words sending this value schema on every message and you'd be right.
+
+00:02:08.405 --> 00:02:11.390
+This is one of the drawbacks of using the REST proxy.
+
+00:02:11.389 --> 00:02:15.119
+If your API call is successful or encounters an error,
+
+00:02:15.120 --> 00:02:18.425
+you'll receive standard HTTP error codes from the API.
+
+00:02:18.425 --> 00:02:23.765
+Successful call result in a 200 being returned and errors will either be 422 for
+
+00:02:23.764 --> 00:02:26.029
+unprocessable or 44 for
+
+00:02:26.030 --> 00:02:31.430
+an unknown topic or some 500 level error if REST proxy is not working for some reason.
+
+00:02:31.430 --> 00:02:33.710
+These error codes are the same regardless of
+
+00:02:33.710 --> 00:02:36.110
+what type of data serialization format you choose.
+
+00:02:36.110 --> 00:02:37.940
+Again, I also just want to point out
+
+00:02:37.939 --> 00:02:41.079
+this content type that again it's not application JSON,
+
+00:02:41.080 --> 00:02:46.850
+it's application and then a vendor specific format and notice we've specified Avro here.
+
+00:02:46.849 --> 00:02:52.579
+Finally, let's review the HTTP header content types that you must send a REST proxy.
+
+00:02:52.580 --> 00:02:56.150
+We've already pointed these out in a few of the previous lessons but I want
+
+00:02:56.150 --> 00:02:59.405
+to make sure to go over them because they're incredibly important when using this tool.
+
+00:02:59.405 --> 00:03:01.430
+If you don't use the correct content-type,
+
+00:03:01.430 --> 00:03:04.009
+you will not be able to use REST proxy successfully,
+
+00:03:04.008 --> 00:03:06.424
+and you will receive confusing errors.
+
+00:03:06.425 --> 00:03:09.380
+REST proxy is the content type that you send it to make
+
+00:03:09.379 --> 00:03:12.604
+decisions about how to handle the data that's being sent to it.
+
+00:03:12.604 --> 00:03:15.879
+Again, if you don't correctly supply your HTTP header,
+
+00:03:15.879 --> 00:03:19.969
+you will almost certainly end up receiving a confusing error back from the REST proxy.
+
+00:03:19.969 --> 00:03:22.430
+So my recommendation is to make sure that you get this right
+
+00:03:22.430 --> 00:03:26.075
+before you even try to send the data to REST proxy at all.
+
+00:03:26.074 --> 00:03:28.269
+So how did these headers work?
+
+00:03:28.270 --> 00:03:32.030
+See the content notes for extensive documentation but the gist of it
+
+00:03:32.030 --> 00:03:35.794
+is that you supply the embedded format of the data for Kafka.
+
+00:03:35.794 --> 00:03:38.629
+The embedded format is what's in bold here;
+
+00:03:38.629 --> 00:03:41.599
+binary, JSON, and Avro.
+
+00:03:41.599 --> 00:03:43.759
+In addition to the serialization format of
+
+00:03:43.759 --> 00:03:47.284
+the actual message that we're sending to Kafka REST proxy.
+
+00:03:47.284 --> 00:03:49.939
+For now this is always going to be JSON.
+
+00:03:49.939 --> 00:03:52.655
+That's what's Kafka REST proxy supports for now.
+
+00:03:52.655 --> 00:03:56.094
+If you're confused, don't worry we're going to walk through demonstration.
+
+00:03:56.094 --> 00:03:59.240
+Additionally, like I said links to the REST proxy documentation
+
+00:03:59.240 --> 00:04:03.330
+for further details can be found in the accompanying notes to this section.
+

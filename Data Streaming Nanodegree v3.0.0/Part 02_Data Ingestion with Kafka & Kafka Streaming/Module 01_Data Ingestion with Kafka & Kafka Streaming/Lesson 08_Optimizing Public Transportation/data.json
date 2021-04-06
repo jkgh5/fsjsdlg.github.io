@@ -1,0 +1,411 @@
+{
+  "data": {
+    "lesson": {
+      "id": 900461,
+      "key": "b2809b6c-fff1-41e0-a827-37c4aeb595ce",
+      "title": "Optimizing Public Transportation",
+      "semantic_type": "Lesson",
+      "is_public": true,
+      "version": "1.0.0",
+      "locale": "en-us",
+      "summary": "For your first project, you’ll be streaming public transit status using Kafka and the Kafka ecosystem to build a stream processing application that shows the status of trains in real-time.",
+      "lesson_type": "Classroom",
+      "display_workspace_project_only": false,
+      "resources": {
+        "files": [
+          {
+            "name": "Videos Zip File",
+            "uri": "https://zips.udacity-data.com/b2809b6c-fff1-41e0-a827-37c4aeb595ce/900461/1578340321883/Optimizing+Public+Transportation+Videos.zip"
+          },
+          {
+            "name": "Transcripts Zip File",
+            "uri": "https://zips.udacity-data.com/b2809b6c-fff1-41e0-a827-37c4aeb595ce/900461/1578340318107/Optimizing+Public+Transportation+Subtitles.zip"
+          },
+          {
+            "name": "project_starter_resources.zip",
+            "uri": "https://video.udacity-data.com/topher/2019/August/5d54730e_starter/starter.zip"
+          }
+        ],
+        "google_plus_link": null,
+        "career_resource_center_link": null,
+        "coaching_appointments_link": null,
+        "office_hours_link": null,
+        "aws_provisioning_link": null
+      },
+      "project": {
+        "key": "bb812668-e487-40d4-977b-565ba9bb5e0b",
+        "version": "1.0.0",
+        "locale": "en-us",
+        "duration": 40320,
+        "semantic_type": "Project",
+        "title": "Optimizing Public Transportation",
+        "description": "Congratulations on putting in the hard work to complete this project! Now you can look forward to receiving valuable feedback from a project reviewer.\n\nBefore you submit your project, please check your work against the project [rubric](https://review.udacity.com/#!/rubrics/2660/view). Your reviewer will be using this rubric to assess your project work.\n\nThe only thing you need to submit for this project is your code. You have two options to do this:\n- Submit a link to your GitHub repo.\n- Submit your code directly from the classroom project workspace.",
+        "is_public": true,
+        "summary": null,
+        "forum_path": "",
+        "rubric_id": "2660",
+        "terminal_project_id": null,
+        "resources": null,
+        "image": null
+      },
+      "lab": null,
+      "concepts": [
+        {
+          "id": 900778,
+          "key": "779e753b-8f70-4bc9-8c87-0bcd0ad855a1",
+          "title": "Project Overview",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "779e753b-8f70-4bc9-8c87-0bcd0ad855a1",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 901205,
+              "key": "bcca3d82-60b3-4673-847d-295ea76c028f",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Overview\nIn this project, you will construct a streaming event pipeline around Apache Kafka and its ecosystem. Using public data from the [Chicago Transit Authority](https://www.transitchicago.com/data/) we will construct an event pipeline around Kafka that allows us to simulate and display the status of train lines in real time.\n\nWhen the project is complete, you will be able to monitor a website to watch trains move from station to station. So a sample static view of the website page you create might look like this:",
+              "instructor_notes": ""
+            },
+            {
+              "id": 901206,
+              "key": "5fa5e6d4-d141-4a26-b250-541d92d56fd7",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2019/July/5d352372_screen-shot-2019-07-19-at-10.41.29-am/screen-shot-2019-07-19-at-10.41.29-am.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/5fa5e6d4-d141-4a26-b250-541d92d56fd7",
+              "caption": "",
+              "alt": "",
+              "width": 1750,
+              "height": 1020,
+              "instructor_notes": null
+            },
+            {
+              "id": 901207,
+              "key": "e2ae0233-c08a-4323-9f04-b6a18d20bea8",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Prerequisites\nTo complete your project locally, the following are required:\n- Docker\n- Python 3.7\n- A minimum of 16gb+ RAM and a 4-core CPU on your computer to execute the simulation\n\nAlternatively, you may complete the project entirely in the Project Workspace we provide.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 900777,
+          "key": "57dc5b19-05eb-4109-af9b-02337828670c",
+          "title": "Project Directions",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "57dc5b19-05eb-4109-af9b-02337828670c",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 916805,
+              "key": "61cbcacd-705d-4fbb-82bd-76d3b53dc53d",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Starter Code and Data\nPlease find in the Resources tab, in the left sidebar of your classroom here, a zip file with all of the starter files and code referred to here in these directions. You can download those files and run your code locally, or you can use the Project Workspace we provide.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 900782,
+              "key": "80396eba-e5db-40d5-a945-a368d89ef080",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Project Directions\nThe Chicago Transit Authority (CTA) has asked us to develop a dashboard displaying system status for its commuters. We have decided to use Kafka and ecosystem tools like REST Proxy and Kafka Connect to accomplish this task.\n\nOur architecture will look like so:",
+              "instructor_notes": ""
+            },
+            {
+              "id": 900783,
+              "key": "a81c2235-740b-4be0-8d9a-c0791057e360",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2019/July/5d320154_screen-shot-2019-07-19-at-10.43.38-am/screen-shot-2019-07-19-at-10.43.38-am.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/a81c2235-740b-4be0-8d9a-c0791057e360",
+              "caption": "",
+              "alt": "",
+              "width": 1758,
+              "height": 748,
+              "instructor_notes": null
+            },
+            {
+              "id": 900786,
+              "key": "bde97ef1-c300-4649-8d5f-5e9d3bbd964d",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "#### Step 1: Create Kafka Producers\nThe first step in our plan is to configure the train stations to emit some of the events that we need. The CTA has placed a sensor on each side of every train station that can be programmed to take an action whenever a train arrives at the station.\n\nTo accomplish this, you must complete the following tasks:\n\n1. Complete the code in `producers/models/producer.py`.\n\n2. Define a value schema for the arrival event in `producers/models/schemas/arrival_value.json` with the following attributes:\n - station_id\n - train_id\n - direction\n - line\n - train_status\n - prev_station_id\n - prev_direction\n3. Complete the code in `producers/models/station.py` so that:\n  - A topic is created for each station in Kafka to track the arrival events\n  - The station emits an arrival event to Kafka whenever the `Station.run()` function is called.\n  - Ensure that events emitted to Kafka are paired with the Avro key and value schemas\n4. Define a value schema for the turnstile event in `producers/models/schemas/turnstile_value.json` with the following attributes\n  - station_id\n  - station_name\n  - line\n5. Complete the code in `producers/models/turnstile.py` so that:\n  - A topic is created for each turnstile for each station in Kafka to track the turnstile events\n  - The station emits a turnstile event to Kafka whenever the `Turnstile.run()` function is called.\n  - Events emitted to Kafka are paired with the Avro key and value schemas",
+              "instructor_notes": ""
+            },
+            {
+              "id": 900789,
+              "key": "40dd7bbd-f3ad-4a43-b5b6-017b3f1b5d68",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "#### Step 2: Configure Kafka REST Proxy Producer\nOur partners at the CTA have asked that we also send weather readings into Kafka from their weather hardware. Unfortunately, this hardware is old and we cannot use the Python Client Library due to hardware restrictions. Instead, we are going to use HTTP REST to send the data to Kafka from the hardware using Kafka's REST Proxy.\n\nTo accomplish this, you must complete the following tasks:\n1. Define a value schema for the weather event in `producers/models/schemas/weather_value.json` with the following attributes:\n  - temperature\n  - status\n2. Complete the code in `producers/models/weather.py` so that:\n  - A topic is created for weather events\n  - The weather model emits weather event to Kafka REST Proxy whenever the Weather.run() function is called.\n    - NOTE: When sending HTTP requests to Kafka REST Proxy, be careful to include the correct Content-Type. Pay close attention to the [examples in the documentation](https://docs.confluent.io/current/kafka-rest/api.html#post--topics-(string-topic_name) for more information.\n  - Events emitted to REST Proxy are paired with the Avro key and value schemas",
+              "instructor_notes": ""
+            },
+            {
+              "id": 900790,
+              "key": "63e6ee23-ee58-400c-a1f5-3cd9c4d95508",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "#### Step 3: Configure Kafka Connect\nFinally, we need to extract station information from our PostgreSQL database into Kafka. We've decided to use the [Kafka JDBC Source Connector](https://docs.confluent.io/current/connect/kafka-connect-jdbc/source-connector/index.html).\n\nTo accomplish this, you must complete the following tasks:\n1. Complete the code and configuration in producers/connectors.py\n  - Please refer to the [Kafka Connect JDBC Source Connector Configuration Options](https://docs.confluent.io/current/connect/kafka-connect-jdbc/source-connector/source_config_options.html) for documentation on the options you must complete.\n  - You can run this file directly to test your connector, rather than running the entire simulation.\n  - Make sure to use the Kafka Connect API, kafka-console-consumer, and kafka-topics CLI tool to check the status and output of the Connector\n  - To delete a misconfigured connector: CURL -X DELETE localhost:8083/connectors/stations",
+              "instructor_notes": ""
+            },
+            {
+              "id": 908266,
+              "key": "7f1eecf2-1a40-4887-acf0-ed0b80cb73a0",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "#### Step 4: Configure the Faust Stream Processor\nWe will leverage Faust Stream Processing to transform the raw Stations table that we ingested from Kafka Connect. The raw format from the database has more data than we need, and the line color information is not conveniently configured. To remediate this, we're going to ingest data from our Kafka Connect topic, and transform the data.\n\nTo accomplish this, you must complete the following tasks:\n- Complete the code and configuration in `consumers/faust_stream.py`\n\n**Watch Out!**\nYou must run this Faust processing application with the following command:\n\n`faust -A faust_stream worker -l info`",
+              "instructor_notes": ""
+            },
+            {
+              "id": 908267,
+              "key": "ef9661e4-5281-4167-9754-b4e1477f0d3c",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "#### Step 5: Configure the KSQL Table\nNext, we will use KSQL to aggregate turnstile data for each of our stations. Recall that when we produced turnstile data, we simply emitted an event, not a count. What would make this data more useful would be to summarize it by station so that downstream applications always have an up-to-date count.\n\nTo accomplish this, you must complete the following tasks:\n- Complete the queries in `consumers/ksql.py`.\n\n**Tips**\n- The KSQL CLI is the best place to build your queries. Try `ksql` in your workspace to enter the CLI.\n- You can run this file on its own simply by running `python ksql.py`.\n- Made a mistake in table creation? `DROP TABLE <your_table>`. If the CLI asks you to terminate a running query, you can `TERMINATE <query_name>`.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 900791,
+              "key": "76ade3a1-4e35-4ca0-9167-703f6c302c44",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "#### Step 6: Create Kafka Consumers\nWith all of the data in Kafka, our final task is to consume the data in the web server that is going to serve the transit status pages to our commuters.\n\nTo accomplish this, you must complete the following tasks:\n1. Complete the code in `consumers/consumer.py`\n2. Complete the code in `consumers/models/line.py`\n3. Complete the code in `consumers/models/weather.py`\n4. Complete the code in `consumers/models/station.py`",
+              "instructor_notes": ""
+            },
+            {
+              "id": 900793,
+              "key": "3af8fd6f-316f-4fa2-b9e4-49c56a7fa7d2",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Other Resources and Documentation\nIn addition to the course content you have already reviewed, you may find the following examples and documentation helpful in completing this project:\n  - [Confluent Python Client Documentation](https://docs.confluent.io/current/clients/confluent-kafka-python/#)\n\n  - [Confluent Python Client Usage and Examples](https://github.com/confluentinc/confluent-kafka-python#usage)\n\n  - [REST Proxy API Reference](https://docs.confluent.io/current/kafka-rest/api.html#post--topics-(string-topic_name)\n\n  - [Kafka Connect JDBC Source Connector Configuration Options](https://docs.confluent.io/current/connect/kafka-connect-jdbc/source-connector/source_config_options.html)",
+              "instructor_notes": ""
+            },
+            {
+              "id": 901195,
+              "key": "ca561c7e-e005-4f1e-8351-520718ceb375",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Directory Layout\n\nThe project consists of two main directories, `producers` and `consumers`.\n\nThe following directory layout indicates with a * the files that the student is responsible for modifying. Instructions for what is required are present as comments in each file.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 901196,
+              "key": "19abe614-7b64-48c6-a54b-1e1ef221edd0",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2019/July/5d3518ca_screen-shot-2019-07-21-at-7.00.34-pm/screen-shot-2019-07-21-at-7.00.34-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/19abe614-7b64-48c6-a54b-1e1ef221edd0",
+              "caption": "",
+              "alt": "",
+              "width": 1776,
+              "height": 1290,
+              "instructor_notes": null
+            },
+            {
+              "id": 901198,
+              "key": "7bfb3dce-6fef-4496-af4d-1c6c75345dba",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Running and Testing\n\n### Running in the Classroom Project Workspace (recommended)\nThe Project Workspace environment is already preconfigured with all of the services you need to complete your project. No additional configuration is required.\n\nThe following services are available in the classroom workspace environment:\n\n\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 928436,
+              "key": "8c4b1f9a-de14-4525-9c79-83d96a934b58",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2019/September/5d71588a_screen-shot-2019-09-05-at-11.47.37-am/screen-shot-2019-09-05-at-11.47.37-am.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/8c4b1f9a-de14-4525-9c79-83d96a934b58",
+              "caption": "",
+              "alt": "",
+              "width": 1588,
+              "height": 672,
+              "instructor_notes": null
+            },
+            {
+              "id": 928435,
+              "key": "a34dffff-dc01-488e-a2d9-7d82edd17594",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Running on Your Computer\n**NOTE: You must allocate _at least_ 4gb RAM to your Docker-Compose environment to run locally.**\n\nTo run the simulation, you must first start up the Kafka ecosystem on your machine utilizing Docker-Compose.\n\n`%> docker-compose up`\n\nDocker-Compose will take 3-5 minutes to start, depending on your hardware. Please be patient and wait for the Docker-Compose logs to slow down or stop before beginning the simulation.\n\nOnce Docker-Compose is ready, the following services will be available on your local machine:",
+              "instructor_notes": ""
+            },
+            {
+              "id": 901199,
+              "key": "9367ab8e-e5c7-4196-af2e-f0b6e4d64a26",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2019/September/5d715921_screen-shot-2019-09-05-at-11.50.46-am/screen-shot-2019-09-05-at-11.50.46-am.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/9367ab8e-e5c7-4196-af2e-f0b6e4d64a26",
+              "caption": "",
+              "alt": "",
+              "width": 1586,
+              "height": 738,
+              "instructor_notes": null
+            },
+            {
+              "id": 901202,
+              "key": "4be960b2-be45-4fdd-b252-ac48e1b3f632",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Note that to access these services from your own machine, you will always use the `Host URL` column.\n\nWhen configuring services that run within Docker-Compose, like Kafka Connect, **you must use the `Docker URL`**. When you configure the JDBC Source Kafka Connector, for example, you will want to use the value from the `Docker URL` column.\n\n### Running the Simulation\n\nThere are two pieces to the simulation, the `producer` and `consumer`. As you develop each piece of the code, it is recommended that you only run one piece of the project at a time.\n\nHowever, when you are ready to verify the end-to-end system prior to submission, it is critical that you open a terminal window for each piece and run them at the same time. **If you do not run both the `producer` and `consumer` at the same time you will not be able to successfully complete the project.**\n\n**To run the `producer`:**\n\nIf using Project Workspace:\n1. `cd producers`\n2. `python simulation.py`\n\nIf using your computer:\n\n1. `cd producers`\n2. `virtualenv venv`\n3. `. venv/bin/activate`\n4. `pip install -r requirements.txt`\n5. `python simulation.py`\n\nOnce the simulation is running, you may hit `Ctrl+C` at any time to exit.\n\n**To run the Faust Stream Processing Application:**\n\nIf using Project Workspace:\n1. `cd consumers`\n2. `faust -A faust_stream worker -l info`\n\nIf using your computer:\n1. `cd consumers`\n2. `virtualenv venv`\n3. `. venv/bin/activate`\n4. `pip install -r requirements.txt`\n5. `faust -A faust_stream worker -l info`\n\n**To run the KSQL Creation Script:**\n\nIf using Project Workspace:\n1. `cd consumers`\n2. `python ksql.py`\n\nIf using your computer:\n1. `cd consumers`\n2. `virtualenv venv`\n3. `. venv/bin/activate`\n4. `pip install -r requirements.txt`\n5. `python ksql.py`\n\n**To run the `consumer`:**    (**NOTE**: Do not run the consumer until you have reached Step 6!)\n\nIf using Project Workspace:\n1. `cd consumers`\n2. `python server.py`\n\nIf using your computer:\n1. `cd consumers`\n2. `virtualenv venv`\n3. `. venv/bin/activate`\n4. `pip install -r requirements.txt`\n5. `python server.py`\n\nOnce the server is running, you may hit `Ctrl+C` at any time to exit.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 908270,
+              "key": "7a32020a-660c-4e62-a58b-32fa54cfbe1e",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Project Submission\n\nPlease check your work against the project [rubric](https://review.udacity.com/#!/rubrics/2660/view) before you submit it. Your reviewer will be using this rubric to assess your project work.\n\nThe only thing you need to submit for this project is your code. To do this, you have two options:\n- You may submit a link to your GitHub repo on the project page: \"Optimizing Public Transportation.\"\n- Or for those of you developing your code in the classroom workspace, you may submit your workspace code directly. \n",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 906241,
+          "key": "d4440087-4852-4fb9-bb5c-137feba98f8f",
+          "title": "Project Walkthrough",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "d4440087-4852-4fb9-bb5c-137feba98f8f",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 921989,
+              "key": "08a44396-2897-46b0-b165-932f5d83ebcf",
+              "title": "ND0029 C01 Project Overview",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "OyhgMQiWBjg",
+                "china_cdn_id": "OyhgMQiWBjg.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 909729,
+          "key": "f79cecb6-21e0-46ab-b47c-227d142ba8a9",
+          "title": "Project Workspace",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "f79cecb6-21e0-46ab-b47c-227d142ba8a9",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 922043,
+              "key": "39ef91ef-4e71-4219-9b11-d4ee484eefec",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Important note:\nBefore you execute anything in this workspace, or anytime after you've refreshed, or woken up, or reset data, or used the \"Get New Content\" button in this workspace, you'll need to run this command in the terminal:\n\n`./startup.sh`\n\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 909730,
+              "key": "1a576d50-78e3-4e7d-a794-6646ea2725f8",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "r899655c909729xJUPYTERL9ob0nm5z",
+              "pool_id": "jupyterlabpython37",
+              "view_id": "jupyter-lab-h72sw",
+              "gpu_capable": false,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "disk": null,
+                    "port": 3000,
+                    "ports": [],
+                    "videos": [],
+                    "pageEnd": "",
+                    "pageStart": "",
+                    "allowSubmit": true,
+                    "defaultPath": "/",
+                    "actionButtonText": ""
+                  },
+                  "kind": "jupyter-lab"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "_deprecated": [
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "starter_files",
+      "reason": "prefer master_archive_id"
+    }
+  ]
+}

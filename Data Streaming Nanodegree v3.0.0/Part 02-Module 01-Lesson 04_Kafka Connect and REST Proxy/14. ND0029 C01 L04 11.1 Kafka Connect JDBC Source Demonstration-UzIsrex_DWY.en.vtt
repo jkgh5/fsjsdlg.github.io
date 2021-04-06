@@ -1,0 +1,94 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:04.769
+Now if at this point you get to this point in the exercise and you're having problems,
+
+00:00:04.769 --> 00:00:08.219
+it's going to be worth knowing how to debug Kafka Connect.
+
+00:00:08.220 --> 00:00:10.515
+So I'm going to pretend like something broke.
+
+00:00:10.515 --> 00:00:13.050
+I'm going to show you how to get into the Kafka Connect logs where it
+
+00:00:13.050 --> 00:00:15.990
+will give you detailed information about why it's failing.
+
+00:00:15.990 --> 00:00:19.740
+So you're going to want to use the tail command and we'll use
+
+00:00:19.739 --> 00:00:23.639
+dash f to follow and look at var/log.
+
+00:00:23.640 --> 00:00:26.685
+Then we're going to look into Kafka.
+
+00:00:26.684 --> 00:00:30.489
+Excuse me. We're going to look into journal/confluent-kafka-connect.service.log.
+
+00:00:36.979 --> 00:00:41.194
+This is going to show us the logs from Kafka Connect.
+
+00:00:41.195 --> 00:00:43.850
+This will be included in the notes for this section,
+
+00:00:43.850 --> 00:00:45.050
+so you don't need to memorize this.
+
+00:00:45.049 --> 00:00:48.964
+But you can actually watch what Kafka Connect is up to by taking a look at its logs.
+
+00:00:48.965 --> 00:00:51.680
+So whether it's in this exercise or
+
+00:00:51.679 --> 00:00:54.259
+it's in your project when you're working with Kafka Connect,
+
+00:00:54.259 --> 00:00:55.655
+if you're having a problem,
+
+00:00:55.655 --> 00:00:59.570
+the first place you should look after you've looked at the status URL is
+
+00:00:59.570 --> 00:01:03.605
+to come into the logs and see if you can diagnose what the issue is.
+
+00:01:03.604 --> 00:01:08.634
+More often than not, it'll give you a descriptive failure message for you to work with.
+
+00:01:08.635 --> 00:01:13.480
+Finally, what's actually see that data is showing up in our topic.
+
+00:01:13.480 --> 00:01:19.655
+So again, we're going to use Kafka topics to list the available topics for us.
+
+00:01:19.655 --> 00:01:22.954
+You'll simply have connect-purchases.
+
+00:01:22.954 --> 00:01:26.914
+This is the topic that was created to contain our JDBC source information.
+
+00:01:26.915 --> 00:01:31.780
+So we're going to do Kafka console consumer, bootstrap server,
+
+00:01:31.780 --> 00:01:35.879
+localhost 9092, the topic is connect to cash
+
+00:01:35.879 --> 00:01:39.259
+purchases and we want to make sure we start from the beginning,
+
+00:01:39.260 --> 00:01:41.075
+because we want to see all the data.
+
+00:01:41.075 --> 00:01:46.650
+If you look in here, we can see all the data from our database is now present.
+
+00:01:46.700 --> 00:01:49.915
+So as you can see, working with Kafka Connect,
+
+00:01:49.915 --> 00:01:52.230
+can save you quite a bit of time.
+

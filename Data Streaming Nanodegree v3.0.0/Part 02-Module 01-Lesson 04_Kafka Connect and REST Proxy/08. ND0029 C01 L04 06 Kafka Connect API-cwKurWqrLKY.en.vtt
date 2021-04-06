@@ -1,0 +1,61 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:01.550 --> 00:00:07.125
+Kafka Connect is managed entirely through an HTTP REST API.
+
+00:00:07.125 --> 00:00:08.535
+What's great about this,
+
+00:00:08.535 --> 00:00:12.719
+is that it makes managing connectors as easy as making a single HTTP call.
+
+00:00:12.720 --> 00:00:16.019
+The Kafka Connect API supports creating,
+
+00:00:16.018 --> 00:00:19.799
+updating, deleting, and reading connector configuration.
+
+00:00:19.800 --> 00:00:24.705
+It also has APIs for tracking the status of connectors and the tasks that make them up.
+
+00:00:24.704 --> 00:00:26.504
+You can even stop, start,
+
+00:00:26.504 --> 00:00:29.259
+and restart tasks from the API.
+
+00:00:29.260 --> 00:00:33.935
+If you have access to the server or servers on which Kafka Connect is running,
+
+00:00:33.935 --> 00:00:36.260
+you can add additional connector plugins while the
+
+00:00:36.259 --> 00:00:39.094
+server's running and configure the server to load them.
+
+00:00:39.094 --> 00:00:42.829
+The robustness of the Kafka Connect API means that you have
+
+00:00:42.829 --> 00:00:46.280
+many options for managing and monitoring your Kafka connectors.
+
+00:00:46.280 --> 00:00:49.734
+This is in part what makes Kafka Connect such a powerful tool.
+
+00:00:49.734 --> 00:00:51.630
+One thing that's worth noting,
+
+00:00:51.630 --> 00:00:54.050
+is that Kafka Connect itself does not necessarily
+
+00:00:54.049 --> 00:00:56.419
+surface many logs or metrics for you to make use of.
+
+00:00:56.420 --> 00:00:58.910
+So you'll want to make sure that you have a plan to get
+
+00:00:58.909 --> 00:01:03.479
+this information so that you can keep your Kafka Connect plugins running well.
+

@@ -1,0 +1,139 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:01.580 --> 00:00:05.009
+Let's revisit the previous exercise and see what it might
+
+00:00:05.009 --> 00:00:07.844
+look like to take advantage of Avro complex types.
+
+00:00:07.844 --> 00:00:09.044
+Return to our workspace,
+
+00:00:09.044 --> 00:00:10.980
+I've now opened the third sample.
+
+00:00:10.980 --> 00:00:14.400
+We're going to see that we've got our purchase type which we've seen before,
+
+00:00:14.400 --> 00:00:19.980
+and we've added this new field called line items which is a list of type line item.
+
+00:00:19.980 --> 00:00:23.100
+Line item is defined up here as another data class and it
+
+00:00:23.100 --> 00:00:26.640
+contains a description string and are mount integer.
+
+00:00:26.640 --> 00:00:30.945
+Now we need to update our Avro schema to include this information.
+
+00:00:30.945 --> 00:00:33.793
+So returning to our schema definition,
+
+00:00:33.793 --> 00:00:35.744
+let's add the line items type.
+
+00:00:35.744 --> 00:00:37.554
+So the first thing we're going to do,
+
+00:00:37.554 --> 00:00:41.219
+is add an entry into the fields section.
+
+00:00:41.219 --> 00:00:46.280
+We're going to give it a name of line items,
+
+00:00:46.280 --> 00:00:51.890
+and a type of a complex type.
+
+00:00:51.890 --> 00:00:53.649
+Why is it a complex type?
+
+00:00:53.649 --> 00:00:56.989
+Well, it's an array and we have to define what the array looks like.
+
+00:00:56.990 --> 00:01:01.025
+So we're going to have a type of array,
+
+00:01:01.024 --> 00:01:05.799
+and then we're going to have fields in that type array.
+
+00:01:05.799 --> 00:01:08.579
+So we're going to have our items.
+
+00:01:08.579 --> 00:01:12.894
+Now again, if we look back at line item,
+
+00:01:12.894 --> 00:01:15.829
+line item is itself an object.
+
+00:01:15.829 --> 00:01:17.644
+So it's actually going to be a record.
+
+00:01:17.644 --> 00:01:22.765
+So our items are going to be yet another nested object.
+
+00:01:22.765 --> 00:01:26.525
+Just type the name is going to be line item,
+
+00:01:26.525 --> 00:01:29.900
+and the type is going to be record.
+
+00:01:29.900 --> 00:01:32.875
+Then we're going to have two fields.
+
+00:01:32.875 --> 00:01:36.525
+So the first field is going to have type,
+
+00:01:36.525 --> 00:01:44.685
+and it's going to be int and the name is going to be amount.
+
+00:01:44.685 --> 00:01:48.370
+Then we're going to have a second field of type string,
+
+00:01:48.370 --> 00:01:53.314
+and the name is going to be description.
+
+00:01:53.314 --> 00:01:56.254
+So as we can see just to recap,
+
+00:01:56.254 --> 00:02:00.170
+we've added a new field to the top level record of purchase.
+
+00:02:00.170 --> 00:02:02.674
+So this is the field of the purchase type.
+
+00:02:02.674 --> 00:02:06.649
+We added a dictionary that includes
+
+00:02:06.650 --> 00:02:11.840
+the name line items with an array type contained within.
+
+00:02:11.840 --> 00:02:16.069
+The items in the array are line items of
+
+00:02:16.069 --> 00:02:21.544
+type record and each line item includes an amount and a description.
+
+00:02:21.544 --> 00:02:23.449
+So we're going to save this.
+
+00:02:23.449 --> 00:02:26.489
+Then we're going to go ahead and run this program.
+
+00:02:29.599 --> 00:02:32.229
+Similar to the last example,
+
+00:02:32.229 --> 00:02:34.039
+the program will simply run.
+
+00:02:34.039 --> 00:02:35.870
+If you're interested in seeing the output,
+
+00:02:35.870 --> 00:02:38.180
+you can use the Kafka conflict consumer to go ahead and
+
+00:02:38.180 --> 00:02:41.510
+connect to your topic and see what it looks like in your exercise.
+

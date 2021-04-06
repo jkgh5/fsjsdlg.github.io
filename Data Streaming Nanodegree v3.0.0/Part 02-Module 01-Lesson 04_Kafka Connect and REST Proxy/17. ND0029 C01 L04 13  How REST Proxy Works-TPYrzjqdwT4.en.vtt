@@ -1,0 +1,70 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:02.595
+Like the rest of the Kafka ecosystem tools,
+
+00:00:02.595 --> 00:00:06.734
+REST Proxy is written in Scala and Java and runs on the JVM.
+
+00:00:06.735 --> 00:00:08.115
+Because of this choice,
+
+00:00:08.115 --> 00:00:11.039
+REST Proxy can run just about anywhere.
+
+00:00:11.039 --> 00:00:15.179
+REST Proxy is a simple HTTP web server and you may choose to
+
+00:00:15.179 --> 00:00:19.094
+deploy just one instance or a cluster of many instances.
+
+00:00:19.094 --> 00:00:22.634
+At its core, all Rest Proxy does is transform
+
+00:00:22.635 --> 00:00:28.695
+structured JSON data from your application into Kafka's binary data format.
+
+00:00:28.695 --> 00:00:31.740
+Conversely, it can also translate data from
+
+00:00:31.739 --> 00:00:35.984
+Kafka into a JSON payload for your application.
+
+00:00:35.984 --> 00:00:38.519
+REST Proxy surfaces a number of
+
+00:00:38.520 --> 00:00:42.380
+useful administrative and metadata endpoints for your Kafka cluster.
+
+00:00:42.380 --> 00:00:46.315
+But it's worth mentioning that you cannot create topics via REST Proxy.
+
+00:00:46.314 --> 00:00:48.890
+REST Proxy can optionally be made aware of
+
+00:00:48.890 --> 00:00:52.414
+Schema Registry so that it can help you manage your Avro schemas.
+
+00:00:52.414 --> 00:00:55.579
+Finally, it's worth mentioning that REST Proxy is most
+
+00:00:55.579 --> 00:00:59.179
+useful when you really can't use a Kafka client directly.
+
+00:00:59.179 --> 00:01:03.259
+If using a Kafka client is a possible or viable option,
+
+00:01:03.259 --> 00:01:06.079
+I strongly recommend that you take that route instead.
+
+00:01:06.079 --> 00:01:10.010
+Kafka clients not only help abstract some of the interaction with Kafka in
+
+00:01:10.010 --> 00:01:13.010
+a more efficient way than in the REST Proxy but they
+
+00:01:13.010 --> 00:01:17.010
+also have substantial speed and payload size benefits as well.
+

@@ -1,0 +1,325 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:02.029 --> 00:00:06.240
+Now we're going to actually see how the file streams source works.
+
+00:00:06.240 --> 00:00:08.054
+Now we're back in our work space,
+
+00:00:08.054 --> 00:00:10.574
+and we're going to take a look at our next example.
+
+00:00:10.574 --> 00:00:13.994
+So here, we have a new function, configure_connector,
+
+00:00:13.994 --> 00:00:15.959
+and this function essentially will talk to
+
+00:00:15.960 --> 00:00:19.185
+the Kafka Connect API and actually create a connector.
+
+00:00:19.184 --> 00:00:20.669
+We're going to skip this for now.
+
+00:00:20.670 --> 00:00:21.840
+We'll come back to this in a moment.
+
+00:00:21.839 --> 00:00:23.850
+But essentially all this is doing is asking
+
+00:00:23.850 --> 00:00:27.300
+Kafka Connect if the desired connector name already exists.
+
+00:00:27.300 --> 00:00:29.625
+If it does, we're not going to do anything.
+
+00:00:29.625 --> 00:00:34.094
+Now, what we're really interested in here is actually creating the Kafka connector.
+
+00:00:34.094 --> 00:00:39.284
+In this case, we're actually going to go ahead and create a file stream source connector.
+
+00:00:39.284 --> 00:00:41.359
+So I'm going to pull up the docs just to
+
+00:00:41.359 --> 00:00:44.164
+show you what the configuration would look like for it.
+
+00:00:44.164 --> 00:00:46.494
+So I'm going to open a new tab.
+
+00:00:46.494 --> 00:00:50.039
+Now, you can see here we have FileSource Connector,
+
+00:00:50.039 --> 00:00:54.530
+and it tells you the basic configuration that you are required to provide to it.
+
+00:00:54.530 --> 00:00:56.645
+So we might come back here in a second.
+
+00:00:56.645 --> 00:00:59.575
+For now we're going to copy this connector class.
+
+00:00:59.575 --> 00:01:02.685
+We send a post to Kafka connect,
+
+00:01:02.685 --> 00:01:05.795
+it's important that we obviously provide the URL,
+
+00:01:05.795 --> 00:01:08.480
+but that we also provide the correct headers that we're
+
+00:01:08.480 --> 00:01:11.660
+sending it application JSON style data.
+
+00:01:11.659 --> 00:01:14.215
+We also need to make sure to specify the data,
+
+00:01:14.215 --> 00:01:16.465
+and not just to send it a Python dictionary,
+
+00:01:16.465 --> 00:01:18.890
+but to dump it out to string first.
+
+00:01:18.890 --> 00:01:21.484
+We also need to provide a connector name.
+
+00:01:21.484 --> 00:01:24.415
+In this case, we're going to call it connector_name.
+
+00:01:24.415 --> 00:01:27.140
+In addition, we also need to make sure that we're not just
+
+00:01:27.140 --> 00:01:29.435
+posting against the base Kafka connect URL,
+
+00:01:29.435 --> 00:01:32.644
+we want to make sure that we're hitting the slash connector's URL.
+
+00:01:32.644 --> 00:01:34.250
+Now, how do I know that?
+
+00:01:34.250 --> 00:01:38.060
+Well, that's because if we look at the API documentation,
+
+00:01:38.060 --> 00:01:39.775
+which I'm pulling up right now,
+
+00:01:39.775 --> 00:01:41.805
+we go to connectors.
+
+00:01:41.805 --> 00:01:44.280
+You saw us use get in the previous exercise,
+
+00:01:44.280 --> 00:01:46.019
+but now we need to do a post.
+
+00:01:46.019 --> 00:01:49.649
+As we can see, a post against slash connectors will
+
+00:01:49.650 --> 00:01:54.125
+create a new connector and returns the current information if successful.
+
+00:01:54.125 --> 00:01:57.019
+So let's go ahead and take a look at how do we do that.
+
+00:01:57.019 --> 00:02:00.289
+So Kafka Connect URL is defined at the top of the file,
+
+00:02:00.290 --> 00:02:06.005
+and it only includes the slash connectors end point in the path.
+
+00:02:06.004 --> 00:02:08.185
+So to come back down,
+
+00:02:08.185 --> 00:02:11.224
+and now we're going to setup the connector class.
+
+00:02:11.224 --> 00:02:13.085
+So as we saw earlier,
+
+00:02:13.085 --> 00:02:16.280
+the connector class is FileStreamSource,
+
+00:02:16.280 --> 00:02:18.590
+and what this essentially is doing is telling
+
+00:02:18.590 --> 00:02:22.175
+the underlying Kafka Connect server that's going to receive the request,
+
+00:02:22.175 --> 00:02:26.895
+which of the classes it should load to actually service this connector.
+
+00:02:26.895 --> 00:02:29.555
+Next, we need to give it a topic name.
+
+00:02:29.555 --> 00:02:33.885
+For this, we'll use lesson4.
+
+00:02:33.884 --> 00:02:37.229
+sample2 as our topic name.
+
+00:02:37.229 --> 00:02:39.439
+Well, actually we will add logs here as well.
+
+00:02:39.439 --> 00:02:41.574
+Since this is going to contain logs,
+
+00:02:41.574 --> 00:02:44.134
+we're going to give it a maximum number of tasks.
+
+00:02:44.134 --> 00:02:46.250
+In this case, we only want to have one,
+
+00:02:46.250 --> 00:02:48.560
+but what the setting is essentially doing is telling
+
+00:02:48.560 --> 00:02:51.560
+Kafka Connect how many tasks it should run on its server.
+
+00:02:51.560 --> 00:02:53.780
+We only need one for this example.
+
+00:02:53.780 --> 00:02:56.435
+Finally, we need to give it a file to use.
+
+00:02:56.435 --> 00:02:58.655
+So let's think about that for a second.
+
+00:02:58.655 --> 00:03:02.044
+We actually have created a sample log file here
+
+00:03:02.044 --> 00:03:05.899
+that will actually open a file for you and start to write out logs.
+
+00:03:05.900 --> 00:03:09.545
+So I've placed that at tmp/connector_name.log.
+
+00:03:09.544 --> 00:03:11.869
+So we're going to grab this,
+
+00:03:11.870 --> 00:03:15.409
+and we're going to tell Kafka connect that it should look
+
+00:03:15.409 --> 00:03:19.215
+for logged data in this location. All right.
+
+00:03:19.215 --> 00:03:21.844
+With that, you should be ready to go ahead and run.
+
+00:03:21.844 --> 00:03:23.659
+So let's see what happens.
+
+00:03:23.659 --> 00:03:27.319
+I also just really quickly want to mention that we are going to use
+
+00:03:27.319 --> 00:03:31.489
+the Kafka console consumer to actually see this data stream through.
+
+00:03:31.490 --> 00:03:37.975
+So we're going to say, python sample2.py.
+
+00:03:37.974 --> 00:03:41.750
+It looks like we have a missing comma again.
+
+00:03:41.750 --> 00:03:43.490
+So we've got a missing comma in our JSON,
+
+00:03:43.490 --> 00:03:45.610
+so we updated that and we saved.
+
+00:03:45.610 --> 00:03:47.460
+So now, we're going to run that.
+
+00:03:47.460 --> 00:03:51.820
+We can see that has created our connector successfully.
+
+00:03:51.830 --> 00:03:54.290
+Now, we're running the producer.
+
+00:03:54.289 --> 00:03:59.750
+So the log producer is actually going to be writing data out into this log.
+
+00:03:59.750 --> 00:04:00.875
+So while it's doing that,
+
+00:04:00.875 --> 00:04:02.960
+let's open up a new terminal,
+
+00:04:02.960 --> 00:04:06.780
+and let's actually start a Kafka console consumer.
+
+00:04:06.919 --> 00:04:11.274
+So we're going to say the topic name is,
+
+00:04:11.275 --> 00:04:17.269
+we set it to lesson4.sample2.log. So we'll grab that.
+
+00:04:18.689 --> 00:04:22.374
+Make sure you put that inside of the quotes,
+
+00:04:22.374 --> 00:04:24.235
+and then we're going to say,
+
+00:04:24.235 --> 00:04:28.389
+bootstrap.server is local host 1992.
+
+00:04:28.389 --> 00:04:30.834
+We'll also have a start from the beginning.
+
+00:04:30.834 --> 00:04:33.174
+All right. You can see,
+
+00:04:33.175 --> 00:04:35.949
+every few seconds we're going to get a few more log messages.
+
+00:04:35.949 --> 00:04:37.750
+So you may be thinking, well,
+
+00:04:37.750 --> 00:04:40.404
+how is this any different from any of the producers you've ever seen?
+
+00:04:40.404 --> 00:04:41.619
+What's neat about this is,
+
+00:04:41.620 --> 00:04:43.899
+this is actually coming from a log file.
+
+00:04:43.899 --> 00:04:46.029
+Let's actually show you what that looks like.
+
+00:04:46.029 --> 00:04:49.589
+So I'm going to open a new terminal window once again,
+
+00:04:49.589 --> 00:04:51.959
+and I'm going to go to CD tmp,
+
+00:04:51.959 --> 00:04:55.504
+and you can see we have that file name as sample2,
+
+00:04:55.504 --> 00:04:57.334
+which we're going to open up here.
+
+00:04:57.334 --> 00:05:02.274
+So you can see that we're actually writing out the logs into this file.
+
+00:05:02.274 --> 00:05:04.289
+If I tail the file,
+
+00:05:04.290 --> 00:05:06.724
+we can see our application
+
+00:05:06.723 --> 00:05:10.039
+continuing to add data to the end of this file on a periodic basis.
+
+00:05:10.040 --> 00:05:12.610
+If we switch back to our Kafka consumer,
+
+00:05:12.610 --> 00:05:15.185
+we can see that it's getting the same data.
+
+00:05:15.185 --> 00:05:20.459
+So this is a very straightforward way of actually getting data into Kafka.
+

@@ -1,0 +1,79 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:03.495
+When we say that we send an updated schema to schema registry,
+
+00:00:03.495 --> 00:00:06.330
+we also send along a compatibility setting.
+
+00:00:06.330 --> 00:00:09.810
+This compatibility setting indicates to schema registry what
+
+00:00:09.810 --> 00:00:13.665
+downstream consumers can expect when they start to consume new data.
+
+00:00:13.664 --> 00:00:17.564
+What's great about this, is that as downstream consumers fetch data from Kafka,
+
+00:00:17.565 --> 00:00:21.690
+the client code will also fetch the updated schema from schema registry.
+
+00:00:21.690 --> 00:00:25.230
+When scheme registry delivers the schema to the consumer client,
+
+00:00:25.230 --> 00:00:27.660
+clients can request compatibility information from
+
+00:00:27.660 --> 00:00:30.795
+schema registry with a simple HTTP request.
+
+00:00:30.795 --> 00:00:32.640
+If the schema is compatible,
+
+00:00:32.640 --> 00:00:36.420
+the consumer can simply continue to pull data from Kafka.
+
+00:00:36.420 --> 00:00:39.099
+If the schema is not compatible,
+
+00:00:39.098 --> 00:00:40.879
+then the consumer will not pull the data from
+
+00:00:40.880 --> 00:00:43.700
+Kafka until the consumer code has been updated.
+
+00:00:43.700 --> 00:00:46.609
+This process can help catch data changes early on,
+
+00:00:46.609 --> 00:00:49.865
+and prevent expensive outages and missed process data.
+
+00:00:49.865 --> 00:00:52.594
+It's worth noting that this process is not magic.
+
+00:00:52.594 --> 00:00:53.750
+When you write producer code,
+
+00:00:53.750 --> 00:00:55.820
+you are responsible for telling schema registry
+
+00:00:55.820 --> 00:00:58.609
+what kind of compatibility the change represents.
+
+00:00:58.609 --> 00:01:00.890
+Additionally, your consumer code needs to
+
+00:01:00.890 --> 00:01:04.195
+know how to fetch and handle these compatibility changes.
+
+00:01:04.194 --> 00:01:07.674
+Schema registry supports four categories of compatibility,
+
+00:01:07.674 --> 00:01:11.530
+backwards, forwards, full compatibility, and none.
+
+00:01:11.530 --> 00:01:15.530
+We'll review these categories in depth in the next few sections.
+

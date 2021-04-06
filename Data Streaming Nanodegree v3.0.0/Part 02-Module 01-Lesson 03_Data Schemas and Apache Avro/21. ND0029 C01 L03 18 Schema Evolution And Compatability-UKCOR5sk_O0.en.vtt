@@ -1,0 +1,31 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:02.029 --> 00:00:06.060
+Data and software systems rarely remains static.
+
+00:00:06.059 --> 00:00:09.269
+As requirements change, so too will our schemas.
+
+00:00:09.269 --> 00:00:13.304
+The process of schema change is referred to as Schema Evolution.
+
+00:00:13.304 --> 00:00:16.530
+Understanding how schemas evolve and how it will impact
+
+00:00:16.530 --> 00:00:20.385
+our software is an important part of managing streaming data.
+
+00:00:20.385 --> 00:00:23.970
+Schema registry provides explicit compatibility types to help
+
+00:00:23.969 --> 00:00:26.460
+downstream consumers understand whether new data is
+
+00:00:26.460 --> 00:00:29.160
+compatible or not as the schema evolves.
+
+00:00:29.160 --> 00:00:32.020
+Let's dive in to how this works.
+

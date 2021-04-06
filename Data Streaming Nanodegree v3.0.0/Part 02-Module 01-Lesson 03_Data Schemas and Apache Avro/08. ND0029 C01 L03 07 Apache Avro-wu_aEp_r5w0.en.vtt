@@ -1,0 +1,25 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:01.490 --> 00:00:06.089
+Now that we understand the benefits of data schemas generally,
+
+00:00:06.089 --> 00:00:09.195
+we're going to dive in and take a look at Apache Avro.
+
+00:00:09.195 --> 00:00:14.535
+Apache Avro is one of the most popular data schemas in the data engineering space today,
+
+00:00:14.535 --> 00:00:18.269
+and is especially heavily used in the Kafka ecosystem.
+
+00:00:18.269 --> 00:00:22.769
+This won't be an exhaustive review of Avro and all of its features,
+
+00:00:22.769 --> 00:00:24.210
+but you can expect to develop
+
+00:00:24.210 --> 00:00:29.050
+a strong understanding of Avro's course syntax and concepts.
+

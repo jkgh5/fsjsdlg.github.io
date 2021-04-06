@@ -1,0 +1,73 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:01.409 --> 00:00:05.919
+Streaming applications are highly dependent on data schemas.
+
+00:00:05.919 --> 00:00:08.769
+Schemas are widely used in data streaming applications,
+
+00:00:08.769 --> 00:00:11.695
+to codify the data being produced and received.
+
+00:00:11.695 --> 00:00:15.099
+Because of the real-time nature of streaming applications and the
+
+00:00:15.099 --> 00:00:18.250
+fact that these systems are consuming data from other applications,
+
+00:00:18.250 --> 00:00:21.339
+that may not even be aware of the streaming application exists,
+
+00:00:21.339 --> 00:00:25.704
+schemas are absolutely critical for maintaining a functioning streaming application.
+
+00:00:25.704 --> 00:00:28.719
+Schemas allow for data producers to evolve largely
+
+00:00:28.719 --> 00:00:32.989
+independently of a data consumers, namely streaming applications.
+
+00:00:32.990 --> 00:00:37.065
+In many organizations, the data engineers building a streaming applications,
+
+00:00:37.064 --> 00:00:41.049
+may not even interact with the developers building the producer applications at all.
+
+00:00:41.049 --> 00:00:43.829
+Application developers may not be aware or
+
+00:00:43.829 --> 00:00:47.420
+interested in the needs of the data engineering streaming applications.
+
+00:00:47.420 --> 00:00:52.070
+Given this dynamic, both data producers and the consuming streaming applications,
+
+00:00:52.070 --> 00:00:55.115
+must be able to evolve independently without failure.
+
+00:00:55.115 --> 00:00:57.740
+This is critical for the organization's ability to
+
+00:00:57.740 --> 00:01:01.400
+scale and successfully utilize stream processing technology.
+
+00:01:01.399 --> 00:01:04.939
+Schemas provide the tool that stream processing applications
+
+00:01:04.939 --> 00:01:08.599
+need to evolve independently of their upstream producers.
+
+00:01:08.599 --> 00:01:13.069
+Schemas can help shield data consumers from unexpected changes in the system.
+
+00:01:13.069 --> 00:01:18.349
+Some schema systems even provide detailed information about data compatibility to help
+
+00:01:18.349 --> 00:01:20.689
+applications understand what they can or
+
+00:01:20.689 --> 00:01:24.689
+cannot do with a given piece of data as it arrives.
+

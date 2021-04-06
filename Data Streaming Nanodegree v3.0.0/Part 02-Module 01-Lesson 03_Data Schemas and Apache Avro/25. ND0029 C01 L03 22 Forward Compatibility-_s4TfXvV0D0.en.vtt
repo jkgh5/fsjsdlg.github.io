@@ -1,0 +1,88 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:02.220
+Forward compatibility indicates that
+
+00:00:02.220 --> 00:00:05.290
+consumer code developed against the previous version of a schema,
+
+00:00:05.290 --> 00:00:08.339
+can consume data using the latest form of the schema.
+
+00:00:08.339 --> 00:00:10.830
+Forward compatible changes include
+
+00:00:10.830 --> 00:00:14.580
+the addition of new fields or the deletion of an optional field.
+
+00:00:14.580 --> 00:00:17.445
+Let's return to our purchase example once again.
+
+00:00:17.445 --> 00:00:21.164
+Recall the schema has the following fields: Username,
+
+00:00:21.164 --> 00:00:23.744
+currency, amount, and an optional memo.
+
+00:00:23.745 --> 00:00:25.890
+If we were to delete the optional memo field,
+
+00:00:25.890 --> 00:00:29.130
+this would be a forward compatible change.
+
+00:00:29.129 --> 00:00:32.609
+Because the current code already has to handle the case,
+
+00:00:32.609 --> 00:00:34.814
+in which the memo field may not be present,
+
+00:00:34.814 --> 00:00:38.984
+total removal of the memo field will not cause any processing issues.
+
+00:00:38.984 --> 00:00:43.435
+Instead, the field will simply not be present in any new data going forward.
+
+00:00:43.435 --> 00:00:46.810
+Likewise, if we added a required field, say,
+
+00:00:46.810 --> 00:00:48.978
+an area code to the newest schema,
+
+00:00:48.978 --> 00:00:51.679
+our existing consumer would simply ignore that field.
+
+00:00:51.679 --> 00:00:53.464
+As with backward compatibility,
+
+00:00:53.465 --> 00:00:57.340
+forward compatibility has two types: Forward and forward transitive.
+
+00:00:57.340 --> 00:01:00.360
+Forward compatibility indicates the newest schema version
+
+00:01:00.359 --> 00:01:02.380
+is compatible with the previous version,
+
+00:01:02.380 --> 00:01:04.790
+but not any versions prior to that.
+
+00:01:04.790 --> 00:01:07.340
+For transitive compatibility, indicates
+
+00:01:07.340 --> 00:01:10.180
+the newest version is compatible with all prior versions,
+
+00:01:10.180 --> 00:01:11.870
+not just the previous version.
+
+00:01:11.870 --> 00:01:13.515
+With forward compatible changes,
+
+00:01:13.515 --> 00:01:15.170
+you need to update producers to use
+
+00:01:15.170 --> 00:01:19.109
+the latest version of the schema before updating your consumers.
+

@@ -1,0 +1,25 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:01.940 --> 00:00:05.879
+Well, the Kafka Client Libraries and Kafka Connect
+
+00:00:05.879 --> 00:00:08.504
+will be sufficient for most Kafka integrations.
+
+00:00:08.505 --> 00:00:12.915
+There are times where existing systems will be unable to use either approach.
+
+00:00:12.914 --> 00:00:17.099
+In these cases, any client that can manage HTTP requests can
+
+00:00:17.100 --> 00:00:22.125
+integrate with Kafka over HTTP REST using the Kafka REST proxy.
+
+00:00:22.125 --> 00:00:24.359
+This section you'll learn how rest proxy
+
+00:00:24.359 --> 00:00:27.789
+works and how it can help you in these scenarios.
+

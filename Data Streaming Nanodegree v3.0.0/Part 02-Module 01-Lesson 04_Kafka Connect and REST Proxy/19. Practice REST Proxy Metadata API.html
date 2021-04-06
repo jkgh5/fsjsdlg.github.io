@@ -1,0 +1,295 @@
+<!-- udacity2.0 -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Practice: REST Proxy Metadata API</title>
+  <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../assets/css/plyr.css">
+  <link rel="stylesheet" href="../assets/css/katex.min.css">
+  <link rel="stylesheet" href="../assets/css/jquery.mCustomScrollbar.min.css">
+  <link rel="stylesheet" href="../assets/css/styles.css">
+  <link rel="shortcut icon" type="image/png" href="../assets/img/udacimak.png" />
+</head>
+
+<body>
+  <div class="wrapper">
+    <nav id="sidebar">
+  <div class="sidebar-header">
+    <h3>Kafka Connect and REST Proxy</h3>
+  </div>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled components">
+    <li class="">
+      <a href="01. Lesson Overview.html">01. Lesson Overview</a>
+    </li>
+    <li class="">
+      <a href="02. Lesson Glossary of Key Terms.html">02. Lesson Glossary of Key Terms</a>
+    </li>
+    <li class="">
+      <a href="03. Kafka Connect.html">03. Kafka Connect</a>
+    </li>
+    <li class="">
+      <a href="04. Kafka Connect Architecture.html">04. Kafka Connect Architecture</a>
+    </li>
+    <li class="">
+      <a href="05. Kafka Connect Summary.html">05. Kafka Connect Summary</a>
+    </li>
+    <li class="">
+      <a href="06. Kafka Connect Connectors.html">06. Kafka Connect Connectors</a>
+    </li>
+    <li class="">
+      <a href="07. Reviewing Kafka Connectors.html">07. Reviewing Kafka Connectors</a>
+    </li>
+    <li class="">
+      <a href="08. The Kafka Connect API.html">08. The Kafka Connect API</a>
+    </li>
+    <li class="">
+      <a href="09. Using the Kafka Connect API.html">09. Using the Kafka Connect API</a>
+    </li>
+    <li class="">
+      <a href="10. Summary Kafka Connect Connectors.html">10. Summary: Kafka Connect Connectors</a>
+    </li>
+    <li class="">
+      <a href="11. Key Connectors.html">11. Key Connectors</a>
+    </li>
+    <li class="">
+      <a href="12. Kafka Connect FileStream Source.html">12. Kafka Connect FileStream Source</a>
+    </li>
+    <li class="">
+      <a href="13. JDBC Sinks and Sources.html">13. JDBC Sinks and Sources</a>
+    </li>
+    <li class="">
+      <a href="14. Kafka Connect JDBC Source.html">14. Kafka Connect JDBC Source</a>
+    </li>
+    <li class="">
+      <a href="15. Key Connectors Summary.html">15. Key Connectors Summary</a>
+    </li>
+    <li class="">
+      <a href="16. Kafka REST Proxy.html">16. Kafka REST Proxy</a>
+    </li>
+    <li class="">
+      <a href="17. REST Proxy Architecture.html">17. REST Proxy Architecture</a>
+    </li>
+    <li class="">
+      <a href="18. Review REST Proxy Architecture.html">18. Review: REST Proxy Architecture</a>
+    </li>
+    <li class="">
+      <a href="19. Practice REST Proxy Metadata API.html">19. Practice: REST Proxy Metadata API</a>
+    </li>
+    <li class="">
+      <a href="20. REST Proxy Summary.html">20. REST Proxy Summary</a>
+    </li>
+    <li class="">
+      <a href="21. Using REST Proxy.html">21. Using REST Proxy</a>
+    </li>
+    <li class="">
+      <a href="22. Review of REST Proxy Usage.html">22. Review of REST Proxy Usage</a>
+    </li>
+    <li class="">
+      <a href="23. Producing JSON Data via REST Proxy.html">23. Producing JSON Data via REST Proxy</a>
+    </li>
+    <li class="">
+      <a href="24. Producing Avro Data via REST Proxy.html">24. Producing Avro Data via REST Proxy</a>
+    </li>
+    <li class="">
+      <a href="25. Consuming Data with REST Proxy.html">25. Consuming Data with REST Proxy</a>
+    </li>
+    <li class="">
+      <a href="26. Practice Consuming Avro Data via REST Proxy.html">26. Practice: Consuming Avro Data via REST Proxy</a>
+    </li>
+    <li class="">
+      <a href="27. Summary Using REST Proxy.html">27. Summary: Using REST Proxy</a>
+    </li>
+    <li class="">
+      <a href="28. Lesson Summary.html">28. Lesson Summary</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+</nav>
+
+    <div id="content">
+      <header class="container-fluild header">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <div class="align-items-middle">
+                <button type="button" id="sidebarCollapse" class="btn btn-toggle-sidebar">
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                </button>
+
+                <h1 style="display: inline-block">19. Practice: REST Proxy Metadata API</h1>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <main class="container">
+        <div class="row">
+          <div class="col-12">
+            <div class="ud-atom">
+  <h3><p>Demo: Fetching Cluster Metadata from REST Proxy</p></h3>
+  <div>
+  <h2 id="demo-fetching-cluster-metadata-from-rest-proxy---part-1">Demo: Fetching Cluster Metadata from REST Proxy - Part 1</h2>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3><p>ND0029 C01 L04 14  Fetching Cluster Metadata From REST Proxy Demonstration</p></h3>
+  <video controls>
+  <source src="19. ND0029 C01 L04 14  Fetching Cluster Metadata From REST Proxy Demonstration-5xSsBK9Xiyo.mp4" type="video/mp4">
+
+  <track default="true" kind="subtitles" srclang="en" src="19. ND0029 C01 L04 14  Fetching Cluster Metadata From REST Proxy Demonstration-5xSsBK9Xiyo.en.vtt" label="en">
+</video>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3><p>Demo: Fetching Cluster Metadata from REST Proxy - Part 2</p></h3>
+  <div>
+  <h2 id="demo-fetching-cluster-metadata-from-rest-proxy---part-2">Demo: Fetching Cluster Metadata from REST Proxy - Part 2</h2>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3><p>ND0029 C01 L04 14.1  Fetching Cluster Metadata From REST Proxy Demonstration</p></h3>
+  <video controls>
+  <source src="19. ND0029 C01 L04 14.1  Fetching Cluster Metadata From REST Proxy Demonstration-jg1G2H5bbHk.mp4" type="video/mp4">
+
+  <track default="true" kind="subtitles" srclang="en" src="19. ND0029 C01 L04 14.1  Fetching Cluster Metadata From REST Proxy Demonstration-jg1G2H5bbHk.en.vtt" label="en">
+</video>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3><p>Workspace Exercise: Fetching Cluster Metadata from REST Proxy</p></h3>
+  <div>
+  <h2 id="workspace-exercise-fetching-cluster-metadata-from-rest-proxy">Workspace Exercise: Fetching Cluster Metadata from REST Proxy</h2>
+<h3 id="important-note">Important note:</h3>
+<p>Before you execute anything in this workspace, or anytime after you've refreshed, or woken up, or reset data, or used the "Get New Content" button in this workspace, you'll need to run this command in the terminal:</p>
+<p><code>./startup.sh</code> </p>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div class="jumbotron">
+  <h3>Code</h3>
+
+  <p class="lead">If you need a code on the <a href="https://github.com/udacity"
+    target="_blank">https://github.com/udacity</a>. </p>
+
+  </ul>
+</div>
+
+</div>
+<div class="divider"></div>
+          </div>
+
+          <div class="col-12">
+            <p class="text-right">
+              <a href="20. REST Proxy Summary.html" class="btn btn-outline-primary mt-4" role="button">Next Concept</a>
+            </p>
+          </div>
+        </div>
+      </main>
+
+      <footer class="footer">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <p class="text-center">
+                <a href="https://us-udacity.github.io/" target="_blank">【udacity2.0 】If you need more courses, please add wechat：udacity6</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </div>
+
+
+  <script src="../assets/js/jquery-3.3.1.min.js"></script>
+  <script src="../assets/js/plyr.polyfilled.min.js"></script>
+  <script src="../assets/js/bootstrap.min.js"></script>
+  <script src="../assets/js/jquery.mCustomScrollbar.concat.min.js"></script>
+  <script src="../assets/js/katex.min.js"></script>
+  <script>
+    // Initialize Plyr video players
+    const players = Array.from(document.querySelectorAll('video')).map(p => new Plyr(p));
+
+    // render math equations
+    let elMath = document.getElementsByClassName('mathquill');
+    for (let i = 0, len = elMath.length; i < len; i += 1) {
+      const el = elMath[i];
+
+      katex.render(el.textContent, el, {
+        throwOnError: false
+      });
+    }
+
+    // this hack will make sure Bootstrap tabs work when using Handlebars
+    if ($('#question-tabs').length && $('#user-answer-tabs').length) {
+      $("#question-tabs a.nav-link").on('click', function () {
+        $("#question-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+      $("#user-answer-tabs a.nav-link").on('click', function () {
+        $("#user-answer-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    } else {
+      $("a.nav-link").on('click', function () {
+        $(".tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    }
+
+    // side bar events
+    $(document).ready(function () {
+      $("#sidebar").mCustomScrollbar({
+        theme: "minimal"
+      });
+
+      $('#sidebarCollapse').on('click', function () {
+        $('#sidebar, #content').toggleClass('active');
+        $('.collapse.in').toggleClass('in');
+        $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+      });
+
+      // scroll to first video on page loading
+      if ($('video').length) {
+        $('html,body').animate({ scrollTop: $('div.plyr').prev().offset().top});
+      }
+
+      // auto play first video: this may not work with chrome/safari due to autoplay policy
+      if (players && players.length > 0) {
+        players[0].play();
+      }
+
+      // scroll sidebar to current concept
+      const currentInSideBar = $( "ul.sidebar-list.components li a:contains('19. Practice: REST Proxy Metadata API')" )
+      currentInSideBar.css( "text-decoration", "underline" );
+      $("#sidebar").mCustomScrollbar('scrollTo', currentInSideBar);
+    });
+  </script>
+</body>
+
+</html>

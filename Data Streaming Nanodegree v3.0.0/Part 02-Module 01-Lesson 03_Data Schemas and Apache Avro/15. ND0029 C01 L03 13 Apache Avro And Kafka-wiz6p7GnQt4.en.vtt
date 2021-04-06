@@ -1,0 +1,85 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:01.730 --> 00:00:05.490
+As the Kafka development team began to tackle the problem of
+
+00:00:05.490 --> 00:00:09.224
+schema evolution between producers and consumers in the ecosystem,
+
+00:00:09.224 --> 00:00:13.050
+they knew they needed to identify a schema technology to work with.
+
+00:00:13.050 --> 00:00:16.440
+Apache Avro was identified early in the development of Kafka,
+
+00:00:16.440 --> 00:00:19.679
+and its prevalence and the tooling has grown ever since.
+
+00:00:19.679 --> 00:00:22.739
+Although Avro is not required to use Kafka,
+
+00:00:22.739 --> 00:00:26.189
+and you can in fact use any other schema format that you like,
+
+00:00:26.190 --> 00:00:29.140
+Avro is used extensively in the Kafka ecosystem,
+
+00:00:29.140 --> 00:00:32.054
+and using it will drastically improve your experience.
+
+00:00:32.054 --> 00:00:34.375
+When using Avro with Apache Kafka,
+
+00:00:34.375 --> 00:00:39.515
+the producer must define an Avro schema for messages they would like to produce to Kafka.
+
+00:00:39.515 --> 00:00:43.700
+Many client libraries including the one we're going to use for this course,
+
+00:00:43.700 --> 00:00:45.710
+have built-in support for Avro.
+
+00:00:45.710 --> 00:00:48.770
+That means that all you have to do is define your schema,
+
+00:00:48.770 --> 00:00:51.950
+and pass it along to special Avro produced functions.
+
+00:00:51.950 --> 00:00:55.880
+In this case, the library will simply handle encoding the data for you.
+
+00:00:55.880 --> 00:01:00.109
+When you use the confluent Kafka Python libraries, special Avro consumer,
+
+00:01:00.109 --> 00:01:03.260
+it will automatically unpack the Avro data it receives from Kafka,
+
+00:01:03.259 --> 00:01:06.799
+using the Avro schema that was packaged alongside it.
+
+00:01:06.799 --> 00:01:09.799
+This functionality is extremely convenient,
+
+00:01:09.799 --> 00:01:13.984
+and a perfect example of why it is beneficial to use Avro when you work with Kafka.
+
+00:01:13.984 --> 00:01:16.459
+The ecosystem and its libraries supply you
+
+00:01:16.459 --> 00:01:19.265
+a significant benefits with very little effort.
+
+00:01:19.265 --> 00:01:21.799
+While it does take a little more effort to define your schema in
+
+00:01:21.799 --> 00:01:24.234
+Avro versus JSON or plaintext,
+
+00:01:24.234 --> 00:01:26.239
+you'll be grateful to have spent that effort when
+
+00:01:26.239 --> 00:01:30.569
+your application tolerates downstream data changes more gracefully.
+

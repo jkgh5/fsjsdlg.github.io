@@ -1,0 +1,52 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:05.820
+The final type of compatibility offered by Schema Registry is none compatibility.
+
+00:00:05.820 --> 00:00:08.460
+This type of compatibility could be used to
+
+00:00:08.460 --> 00:00:11.460
+indicate a breaking change in our schema definition.
+
+00:00:11.460 --> 00:00:15.929
+For example, if we change the amount field in our purchase schema from int to float,
+
+00:00:15.929 --> 00:00:20.089
+this is a change that does not satisfy a backward or forward compatibility changes.
+
+00:00:20.089 --> 00:00:25.824
+Changing a field from int to float or int to string is a complete breaking change.
+
+00:00:25.824 --> 00:00:28.125
+The wrinkle here is that none,
+
+00:00:28.125 --> 00:00:30.899
+tell Schema Registry to stop tracking changes.
+
+00:00:30.899 --> 00:00:33.280
+When you run into this kind of scenario,
+
+00:00:33.280 --> 00:00:37.039
+it's a best practice to start a new topic with your new schema,
+
+00:00:37.039 --> 00:00:40.159
+rather than putting incompatible data into the new topic.
+
+00:00:40.159 --> 00:00:44.494
+Not following this best practice will almost certainly break downstream consumers
+
+00:00:44.494 --> 00:00:49.144
+and result in messy consumer code to handle incompatible data within the same topic.
+
+00:00:49.145 --> 00:00:53.720
+It's worth mentioning that not using schema registry to attract compatibility,
+
+00:00:53.719 --> 00:00:57.229
+in a sense almost wipes out the benefit of using the tool.
+
+00:00:57.229 --> 00:01:01.529
+So please avoid using this unless there's a really strong reason to.
+

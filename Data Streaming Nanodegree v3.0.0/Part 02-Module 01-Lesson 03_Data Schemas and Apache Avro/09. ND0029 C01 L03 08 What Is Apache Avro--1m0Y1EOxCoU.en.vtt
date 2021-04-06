@@ -1,0 +1,70 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:04.080
+Throughout this course, we've largely made use of JSON as our schema format.
+
+00:00:04.080 --> 00:00:07.650
+While JSON helps us get part of the way there in terms of defining a schema,
+
+00:00:07.650 --> 00:00:09.554
+it has significant drawbacks.
+
+00:00:09.554 --> 00:00:13.259
+First, JSON doesn't help us determine what the type of a field is,
+
+00:00:13.259 --> 00:00:15.990
+or whether or not we should always expect a key to be present.
+
+00:00:15.990 --> 00:00:18.059
+I'm sure many of you watching this lesson,
+
+00:00:18.059 --> 00:00:20.609
+can relate to handling malformed JSON data.
+
+00:00:20.609 --> 00:00:23.085
+This is where Apache Avro comes in.
+
+00:00:23.085 --> 00:00:27.960
+Apache Avro is a data serialization system that uses a binary data format.
+
+00:00:27.960 --> 00:00:31.589
+Meaning, when data in your application is shared in the Avro format,
+
+00:00:31.589 --> 00:00:35.034
+it is compressed into a binary format over the network.
+
+00:00:35.034 --> 00:00:37.969
+This binary format improves speed over the network,
+
+00:00:37.969 --> 00:00:40.144
+and can help reduce storage overhead.
+
+00:00:40.145 --> 00:00:42.470
+Binary format of Avro includes
+
+00:00:42.469 --> 00:00:46.250
+not just your application data in the schema format you define,
+
+00:00:46.250 --> 00:00:49.250
+but it also includes the schema definition itself.
+
+00:00:49.250 --> 00:00:52.484
+When clients receive data from the application in Avro format,
+
+00:00:52.484 --> 00:00:54.798
+and not only do they receive the actual data,
+
+00:00:54.798 --> 00:00:58.280
+but they also get the Avro instructions or the schema for how to
+
+00:00:58.280 --> 00:01:03.140
+deserialize the data from binary into their own application model representation.
+
+00:01:03.140 --> 00:01:06.650
+This is one of the key features that differentiates Apache Avro
+
+00:01:06.650 --> 00:01:10.710
+from other schema tools like gRPC and protocol buffers.
+
