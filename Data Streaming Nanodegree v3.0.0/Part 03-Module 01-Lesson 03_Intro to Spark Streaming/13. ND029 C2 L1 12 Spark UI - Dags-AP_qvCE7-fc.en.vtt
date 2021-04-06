@@ -1,0 +1,79 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:02.924
+DAG, stands for Directed Acyclic Graph.
+
+00:00:02.924 --> 00:00:06.960
+This means that the graph has a direction and is not circular.
+
+00:00:06.960 --> 00:00:10.960
+Like many graphs, DAG also has vertices and edges.
+
+00:00:10.960 --> 00:00:14.400
+The vertices of DAG are RDDs and the edges are
+
+00:00:14.400 --> 00:00:18.660
+operations like transformation functions applied on the RDDs.
+
+00:00:18.660 --> 00:00:23.600
+Stages are a terminology used in Spark to annotate grouped tasks.
+
+00:00:23.600 --> 00:00:27.080
+These will all be available as visuals on Spark UI,
+
+00:00:27.079 --> 00:00:29.884
+and you can set the port number on your application
+
+00:00:29.885 --> 00:00:33.965
+using the config parameter on Spark.ui.ports.
+
+00:00:33.965 --> 00:00:36.245
+How do DAGs work in Spark?
+
+00:00:36.244 --> 00:00:40.864
+DAG is an optimized execution plan with minimized data shuffling.
+
+00:00:40.865 --> 00:00:44.225
+When any action is called on an RDD,
+
+00:00:44.225 --> 00:00:48.145
+Spark creates a DAG and submits it to the DAG Scheduler.
+
+00:00:48.145 --> 00:00:52.295
+The DAG Scheduler devise operators into stages of tasks.
+
+00:00:52.295 --> 00:00:55.940
+That DAG Scheduler knows how to pipeline operators together,
+
+00:00:55.939 --> 00:01:00.804
+and many map operators may be scheduled into a single stage depending on your code.
+
+00:01:00.804 --> 00:01:04.605
+The stages are passed onto the Task Scheduler.
+
+00:01:04.605 --> 00:01:09.109
+The Task Scheduler launches tasks through a cluster manager.
+
+00:01:09.109 --> 00:01:11.584
+This is your yarn or amazes.
+
+00:01:11.584 --> 00:01:14.509
+Although tasks scheduler launches the task,
+
+00:01:14.510 --> 00:01:18.475
+it doesn't always know about the dependencies of the stages.
+
+00:01:18.474 --> 00:01:23.669
+Finally, the primary node assigns the tasks to secondary nodes.
+
+00:01:23.670 --> 00:01:27.680
+The lineage graph explains a history of RDD transformations.
+
+00:01:27.680 --> 00:01:31.495
+It's a graph of all the parent RDDs of the current RDD.
+
+00:01:31.495 --> 00:01:36.910
+DAG will show all the different stages, transformations and actions.
+

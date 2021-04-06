@@ -1,0 +1,64 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:05.179 --> 00:00:07.349
+In the last lesson,
+
+00:00:07.349 --> 00:00:10.640
+you learned how Spark fits into the greater big data ecosystem,
+
+00:00:10.640 --> 00:00:13.030
+and why Spark is central to this field.
+
+00:00:13.029 --> 00:00:17.204
+Spark is built for large datasets that require distributed system
+
+00:00:17.204 --> 00:00:21.869
+of multiple computers and is optimized to use memory efficiently.
+
+00:00:21.870 --> 00:00:26.445
+In this lesson, you will use Spark to get hands on experience wrangling data.
+
+00:00:26.445 --> 00:00:27.899
+You will get familiar with
+
+00:00:27.899 --> 00:00:31.919
+functional programming concepts that you will encounter everyday in Spark,
+
+00:00:31.920 --> 00:00:35.115
+such as maps, Lambda functions, and closures.
+
+00:00:35.115 --> 00:00:38.520
+Then you will learn how to read in and write out data using
+
+00:00:38.520 --> 00:00:41.910
+common formats such as CSV files and JSON.
+
+00:00:41.909 --> 00:00:45.319
+You will also get comfortable with the Spark environment and learn
+
+00:00:45.320 --> 00:00:48.768
+how to wrangle data with the two most popular Spark KPIs,
+
+00:00:48.768 --> 00:00:51.259
+Spark DataFrames and Spark SQL.
+
+00:00:51.259 --> 00:00:53.869
+You will practice using the Sparks syntax on
+
+00:00:53.869 --> 00:00:58.384
+smaller datasets before you start to scale to big data in lesson three.
+
+00:00:58.384 --> 00:01:02.750
+Finally, we'll also touch on the low-level RDD API
+
+00:01:02.750 --> 00:01:05.120
+which you'll run into from time to time,
+
+00:01:05.120 --> 00:01:07.790
+even when you're using the high level dataframe
+
+00:01:07.790 --> 00:01:11.820
+and Spark SQL APIs. Now, let's dig in.
+

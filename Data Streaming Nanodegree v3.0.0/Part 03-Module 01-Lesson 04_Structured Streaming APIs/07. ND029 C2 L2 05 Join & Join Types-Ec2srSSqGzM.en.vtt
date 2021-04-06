@@ -1,0 +1,64 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:03.839
+One of the more commonly used APIs we'll be exploring is join.
+
+00:00:03.839 --> 00:00:09.059
+The concept of join will be very similar to the ones that we've used before in SQL.
+
+00:00:09.060 --> 00:00:12.495
+Inner, outer, left outer, right outer, etc.
+
+00:00:12.494 --> 00:00:17.114
+But in streaming, we add another concept of streaming versus static DataFrames.
+
+00:00:17.114 --> 00:00:20.744
+This table shows what types of joins are supported.
+
+00:00:20.745 --> 00:00:25.169
+It's clear that inner join is supported,
+
+00:00:25.169 --> 00:00:28.425
+whether it is a static or a streaming dataset.
+
+00:00:28.425 --> 00:00:32.174
+When you use inner join on two streaming datasets,
+
+00:00:32.174 --> 00:00:35.234
+you can use the concept of watermark.
+
+00:00:35.234 --> 00:00:37.100
+We'll discuss it in our joining of
+
+00:00:37.100 --> 00:00:40.310
+two streaming data sets and water mark in a later section.
+
+00:00:40.310 --> 00:00:44.679
+A full outer join is not supported with a streaming dataset,
+
+00:00:44.679 --> 00:00:47.750
+this is because there can be late arriving data.
+
+00:00:47.750 --> 00:00:50.615
+Let's say some even was generated at time x,
+
+00:00:50.615 --> 00:00:53.600
+but the arrival to the application was actually y,
+
+00:00:53.600 --> 00:00:55.295
+because of these cases,
+
+00:00:55.295 --> 00:00:57.575
+and these cases do happen often,
+
+00:00:57.575 --> 00:01:02.344
+this could result in inconsistency in the output and produce undesired output.
+
+00:01:02.344 --> 00:01:05.870
+We also know sometimes outer joins produce null rows,
+
+00:01:05.870 --> 00:01:09.480
+and this could also create undesired output.
+

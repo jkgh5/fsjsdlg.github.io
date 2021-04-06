@@ -1,0 +1,73 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:05.660 --> 00:00:10.009
+There's one last piece of hardware that's crucial to understanding big data.
+
+00:00:10.009 --> 00:00:12.949
+The network that connects all of our computers.
+
+00:00:12.949 --> 00:00:14.649
+In the past few decades,
+
+00:00:14.650 --> 00:00:16.554
+every part of your computer has improved,
+
+00:00:16.554 --> 00:00:18.984
+doubling in efficiency every few years.
+
+00:00:18.984 --> 00:00:21.899
+Unfortunately, the speed of our network has lagged behind
+
+00:00:21.899 --> 00:00:25.459
+the improvements in CPU memory and storage.
+
+00:00:25.460 --> 00:00:28.830
+As a result, moving data across the network from one machine
+
+00:00:28.829 --> 00:00:32.549
+to another is the most common bottleneck when working with big data.
+
+00:00:32.549 --> 00:00:35.250
+For example, the same hour of tweets that
+
+00:00:35.250 --> 00:00:37.789
+would take half a second to process from storage,
+
+00:00:37.789 --> 00:00:42.379
+would take 30 seconds to download from the Twitter API on a typical network.
+
+00:00:42.380 --> 00:00:45.385
+Network speeds depend on a lot of factors like,
+
+00:00:45.384 --> 00:00:48.244
+if your roommate is binging through Netflix at the same time.
+
+00:00:48.244 --> 00:00:52.070
+But it usually takes at least 20 times longer to process data,
+
+00:00:52.070 --> 00:00:54.869
+when you have to download it from another machine first.
+
+00:00:54.869 --> 00:00:58.234
+For this reason, distributed systems try to minimize
+
+00:00:58.234 --> 00:01:02.465
+shuffling data back and forth across different computers.
+
+00:01:02.465 --> 00:01:05.549
+Since Spark and any distributed technology for
+
+00:01:05.549 --> 00:01:09.109
+that matter uses the cluster of servers connected by a network,
+
+00:01:09.109 --> 00:01:11.989
+we can't entirely avoid moving data around.
+
+00:01:11.989 --> 00:01:15.619
+Still minimizing network input and output is crucial to
+
+00:01:15.620 --> 00:01:20.570
+mastering Spark programming and we'll cover how to do this in lesson three.
+

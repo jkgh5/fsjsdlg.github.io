@@ -1,0 +1,97 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:04.184
+I want to discuss a bit more about specific types of transformations.
+
+00:00:04.184 --> 00:00:07.679
+There are two types of transformations, narrow and wide.
+
+00:00:07.679 --> 00:00:09.074
+In terms of Hadoop,
+
+00:00:09.074 --> 00:00:14.579
+narrow transformations are like map and the wide transformations are like reduce.
+
+00:00:14.580 --> 00:00:19.079
+In narrow transformations, each partition only depends on a subset of
+
+00:00:19.079 --> 00:00:24.764
+the parent partitions and a limited subset of partitions is used to calculate the result.
+
+00:00:24.765 --> 00:00:29.370
+Narrow transformations are the result of map, filter and flatmap.
+
+00:00:29.370 --> 00:00:32.189
+In wide transformations, the parent RDDs of
+
+00:00:32.189 --> 00:00:35.804
+elements that are being calculated may live in different partitions,
+
+00:00:35.804 --> 00:00:39.954
+which means there can be shuffles between machines and networks.
+
+00:00:39.954 --> 00:00:45.364
+groupByKey and reduceByKey are the two most popular wide transformations.
+
+00:00:45.365 --> 00:00:47.795
+Between narrow and wide transformations,
+
+00:00:47.795 --> 00:00:51.395
+wide transformations will likely slow down your job more.
+
+00:00:51.395 --> 00:00:53.345
+This doesn't mean you shouldn't use it,
+
+00:00:53.344 --> 00:00:56.945
+but be aware that these transformations will affect your time more.
+
+00:00:56.945 --> 00:01:01.130
+This is because wide transformations require that all the partitions are
+
+00:01:01.130 --> 00:01:05.870
+evaluated and they require shuffling data between executors and machines.
+
+00:01:05.870 --> 00:01:09.365
+We're going to be looking at how transformations and actions work.
+
+00:01:09.364 --> 00:01:11.989
+This is a hypothetical distribution of RDDs and
+
+00:01:11.989 --> 00:01:15.004
+how transformations and actions are applied.
+
+00:01:15.004 --> 00:01:17.030
+Here in the example diagram,
+
+00:01:17.030 --> 00:01:19.840
+we see different types of narrow transformations,
+
+00:01:19.840 --> 00:01:25.530
+which we do a file scan from an arbitrary datalake.
+
+00:01:25.530 --> 00:01:28.480
+Datalake is any data storage like it's your job,
+
+00:01:28.480 --> 00:01:32.094
+it could be a WSS3 or Hadoop file system.
+
+00:01:32.094 --> 00:01:36.185
+RDDs are generated when we do a file scan or file read.
+
+00:01:36.185 --> 00:01:42.170
+We apply narrow transformations which stays with the parent RDDs in the same machine,
+
+00:01:42.170 --> 00:01:48.064
+and then we apply a wide transformation which cause a shuffle between two RDDs,
+
+00:01:48.064 --> 00:01:51.185
+and then we apply an action.
+
+00:01:51.185 --> 00:01:54.799
+This action is probably a write operation which
+
+00:01:54.799 --> 00:01:58.950
+writes the data to a desired output or another datalake.
+

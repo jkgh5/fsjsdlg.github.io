@@ -1,0 +1,73 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:06.049 --> 00:00:08.585
+Before we start using Spark,
+
+00:00:08.585 --> 00:00:11.755
+let's discuss how it fits into the greater Big Data environment.
+
+00:00:11.755 --> 00:00:15.400
+If you want to learn Big Data technologies and you do a quick search,
+
+00:00:15.400 --> 00:00:17.605
+you'll find dozens of different tools.
+
+00:00:17.605 --> 00:00:22.324
+It's hard to know where to start since there's practically a jungle of technologies.
+
+00:00:22.324 --> 00:00:26.410
+Like a jungle, these different tools form a complex ecosystem,
+
+00:00:26.410 --> 00:00:29.230
+each of them playing a different role in exchanging and
+
+00:00:29.230 --> 00:00:32.410
+manipulating data using their unique strengths.
+
+00:00:32.409 --> 00:00:35.679
+These diverse technologies work together and in some cases,
+
+00:00:35.679 --> 00:00:39.700
+compete to process and enrich data throughout its life-cycle.
+
+00:00:39.700 --> 00:00:42.565
+While every part of this ecosystem is important,
+
+00:00:42.564 --> 00:00:45.769
+there's one technology that plays an out-sized role.
+
+00:00:45.770 --> 00:00:49.120
+Spark is central to the Big Data ecosystem
+
+00:00:49.119 --> 00:00:53.049
+and is the first tool you should learn if you want to work with Big Data.
+
+00:00:53.049 --> 00:00:57.024
+In this sense, Spark is the king of the Big Data jungle.
+
+00:00:57.024 --> 00:00:59.859
+In this lesson, we'll explore this ecosystem
+
+00:00:59.859 --> 00:01:02.439
+by explaining what we mean when we say Big Data.
+
+00:01:02.439 --> 00:01:05.620
+We'll go over how this environment developed and discuss how
+
+00:01:05.620 --> 00:01:09.655
+Spark evolved as the leading framework for dealing with data at scale.
+
+00:01:09.655 --> 00:01:12.700
+We'll also discuss some of the cooperating technologies
+
+00:01:12.700 --> 00:01:16.885
+that you use alongside Spark, like stream processing and databases.
+
+00:01:16.885 --> 00:01:21.010
+Finally, we'll discuss some of the competing tools and the data food chain
+
+00:01:21.010 --> 00:01:25.870
+and walk through their pros and cons, as compared to Spark
+

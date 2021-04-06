@@ -1,0 +1,70 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:03.044
+Which of the output things are the most useful?
+
+00:00:03.044 --> 00:00:05.025
+We have several options here.
+
+00:00:05.025 --> 00:00:07.515
+Option 1, console, Option 2,
+
+00:00:07.514 --> 00:00:10.259
+memory, and Option 3, an actual file.
+
+00:00:10.259 --> 00:00:13.379
+In real-world applications, anything that requires
+
+00:00:13.380 --> 00:00:18.390
+streaming application receives anywhere from millions to trillions of records per day.
+
+00:00:18.390 --> 00:00:22.410
+Realistically, you'd want to save your output to some database.
+
+00:00:22.410 --> 00:00:25.469
+Usually, Hadoop file system, or on-premise,
+
+00:00:25.469 --> 00:00:28.529
+or cloud storage so that you can always retrieve
+
+00:00:28.530 --> 00:00:32.204
+your data and metadata due to the amount of data you will be getting.
+
+00:00:32.204 --> 00:00:35.429
+Saving anything to console or memory will be volatile.
+
+00:00:35.429 --> 00:00:38.840
+In memory might be useful for a couple of hours or a day
+
+00:00:38.840 --> 00:00:42.080
+at max but again this will eat up your resources and
+
+00:00:42.079 --> 00:00:45.244
+you'll have to think about the cost to keep this in-memory table
+
+00:00:45.244 --> 00:00:49.719
+alive and if it is ever useful to keep this in-memory table alive.
+
+00:00:49.719 --> 00:00:53.030
+You probably will need to create more than one table as well.
+
+00:00:53.030 --> 00:00:56.149
+The usefulness of output sync is to support
+
+00:00:56.149 --> 00:01:00.304
+pipeline fault tolerance by saving output to a stable destination.
+
+00:01:00.304 --> 00:01:03.070
+Having console or memory is useful to debug,
+
+00:01:03.070 --> 00:01:05.780
+also to quickly view on sample amount of data,
+
+00:01:05.780 --> 00:01:07.900
+but to keep default tolerant,
+
+00:01:07.900 --> 00:01:12.180
+make sure we save it out to a stable destination.
+

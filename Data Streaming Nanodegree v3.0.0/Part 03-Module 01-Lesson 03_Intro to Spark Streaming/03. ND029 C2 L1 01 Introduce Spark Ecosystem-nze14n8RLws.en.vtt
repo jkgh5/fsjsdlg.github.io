@@ -1,0 +1,82 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:02.730
+All right. So let's talk about components in spark.
+
+00:00:02.730 --> 00:00:05.459
+The Spark Core component is the underlying engine
+
+00:00:05.459 --> 00:00:08.625
+for parallel and distributed processing of large datasets.
+
+00:00:08.625 --> 00:00:11.970
+All other functionalities are built on top of this component.
+
+00:00:11.970 --> 00:00:15.195
+Spark Core provides in-memory computing capabilities,
+
+00:00:15.195 --> 00:00:18.600
+fault recovery, efficient memory management and so on.
+
+00:00:18.600 --> 00:00:22.020
+Spark Core uses a data structure known as RDD,
+
+00:00:22.019 --> 00:00:25.410
+Resilient Distributed Datasets, for operations on data.
+
+00:00:25.410 --> 00:00:29.429
+Spark SQL components sits on top of the core component.
+
+00:00:29.429 --> 00:00:34.380
+DataFrame and dataset are two core building blocks of the SQL component.
+
+00:00:34.380 --> 00:00:40.024
+Developers can run SQL like queries on Spark data present in RDDs and DataFrame,
+
+00:00:40.024 --> 00:00:42.740
+datasets, and other external sources.
+
+00:00:42.740 --> 00:00:48.650
+Users can extract and transform and load the data set then apply functions on the data.
+
+00:00:48.649 --> 00:00:53.643
+The data can come from various sources formats like SJSON, Parquet,
+
+00:00:53.643 --> 00:00:59.515
+HIVE, CSV or even plaintexts and then run ad-hoc queries using Spark SQL.
+
+00:00:59.515 --> 00:01:03.094
+The Spark SQL in API interface provides information
+
+00:01:03.094 --> 00:01:07.084
+about the structure of the data in the computations that you perform.
+
+00:01:07.084 --> 00:01:12.319
+It also makes the process of extracting and merging multiple datasets easier so that
+
+00:01:12.319 --> 00:01:13.834
+the finalized datasets or
+
+00:01:13.834 --> 00:01:18.004
+even intermediary datasets are ready to be used for anything you'd like,
+
+00:01:18.004 --> 00:01:21.454
+usually to perform analytics or machine learning algorithms.
+
+00:01:21.454 --> 00:01:25.429
+Discretized streams is a basic abstraction in Spark Streaming.
+
+00:01:25.430 --> 00:01:31.595
+It uses a continuous stream of input data to process data as micro-batch or in real-time.
+
+00:01:31.594 --> 00:01:35.644
+Spark Streaming inherits the fault tolerance characteristics as well.
+
+00:01:35.644 --> 00:01:39.469
+There are other components like MLlib, SparkR,
+
+00:01:39.469 --> 00:01:44.849
+and GraphX, but we won't be going over those components in this course.
+

@@ -1,0 +1,124 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:04.490 --> 00:00:08.490
+In the past sections, we covered how to wrangle data
+
+00:00:08.490 --> 00:00:11.565
+in two different ways, Python and SQL.
+
+00:00:11.564 --> 00:00:15.299
+At this point, you might be wondering which one you should use.
+
+00:00:15.300 --> 00:00:18.300
+The code you write in this higher level APIs,
+
+00:00:18.300 --> 00:00:21.150
+first goes through a query optimizer to turn
+
+00:00:21.149 --> 00:00:24.419
+it into an actual execution plan before it can be ran.
+
+00:00:24.420 --> 00:00:27.570
+Spark's optimizer is called catalysts.
+
+00:00:27.570 --> 00:00:31.850
+Under the hood, catalysts will translate your code to the same DAG.
+
+00:00:31.850 --> 00:00:34.745
+So the good news is that when you run your application,
+
+00:00:34.744 --> 00:00:39.689
+you won't notice much difference between using either SQL or by Spark.
+
+00:00:40.119 --> 00:00:43.789
+The code generated based on the execution plan,
+
+00:00:43.789 --> 00:00:46.490
+operates on a lower level data abstraction called
+
+00:00:46.490 --> 00:00:49.750
+RDD or Resilient Distributed Data set.
+
+00:00:49.750 --> 00:00:53.000
+When checking the Spark UI, you will often come across
+
+00:00:53.000 --> 00:00:56.795
+the acronym RDD as well as methods mentioning it.
+
+00:00:56.795 --> 00:00:59.059
+In Spark's early versions,
+
+00:00:59.058 --> 00:01:01.924
+RDDs were the only available data abstraction,
+
+00:01:01.924 --> 00:01:04.715
+and developers had to program using them.
+
+00:01:04.715 --> 00:01:08.885
+In version 1.3, the DataFrame API was introduced.
+
+00:01:08.885 --> 00:01:10.960
+Then in version 2.0,
+
+00:01:10.959 --> 00:01:14.574
+the DataFrames and data sets APIs were unified.
+
+00:01:14.575 --> 00:01:17.650
+In some cases, we need more flexibility than
+
+00:01:17.650 --> 00:01:19.850
+what the higher level APIs can provide.
+
+00:01:19.849 --> 00:01:22.574
+So we need to directly interact with RDDs.
+
+00:01:22.575 --> 00:01:25.760
+You might remember the example I used for explaining
+
+00:01:25.760 --> 00:01:29.030
+the difference between imperative and declarative programming.
+
+00:01:29.030 --> 00:01:32.284
+I said that an imperative statement could look like,
+
+00:01:32.284 --> 00:01:33.530
+let's get in the car,
+
+00:01:33.530 --> 00:01:36.364
+drive two miles down the road to my favorite bakery,
+
+00:01:36.364 --> 00:01:39.319
+go into the shop, search the cake from the counter,
+
+00:01:39.319 --> 00:01:41.314
+purchase cake, drive home.
+
+00:01:41.314 --> 00:01:43.204
+When you deal with RDDs,
+
+00:01:43.204 --> 00:01:47.719
+you need to use even more detailed through the imperative statements such as,
+
+00:01:47.719 --> 00:01:52.489
+let's open the car door, take a seat, start the engine, and so on so forth.
+
+00:01:52.489 --> 00:01:58.384
+Using RDDs gives us a lot of flexibility but the code is harder to write and read.
+
+00:01:58.385 --> 00:02:01.700
+We also lose access to catalysts since this flexibility
+
+00:02:01.700 --> 00:02:05.495
+makes it much more difficult to optimize the code under the hood.
+
+00:02:05.495 --> 00:02:06.965
+In the next lesson,
+
+00:02:06.965 --> 00:02:10.640
+we will focus on different ways to optimize your Spark code,
+
+00:02:10.639 --> 00:02:14.649
+and will cover how to work with RDDs in more detail.
+

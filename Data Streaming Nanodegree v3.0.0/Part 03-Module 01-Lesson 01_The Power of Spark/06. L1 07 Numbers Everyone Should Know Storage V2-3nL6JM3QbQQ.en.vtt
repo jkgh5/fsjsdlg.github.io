@@ -1,0 +1,43 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:05.269 --> 00:00:10.259
+While long-term storage like a hard drive disk is cheap and durable,
+
+00:00:10.259 --> 00:00:12.050
+it's much slower than memory.
+
+00:00:12.050 --> 00:00:15.490
+Loading data from magnetic disk can be 200 times slower.
+
+00:00:15.490 --> 00:00:18.780
+Even the newer solid-state drives known as SSDs,
+
+00:00:18.780 --> 00:00:20.964
+are still about 15 times slower.
+
+00:00:20.964 --> 00:00:24.870
+For example, processing an hour of tweets from memory,
+
+00:00:24.870 --> 00:00:27.355
+would take about 30 milliseconds on my laptop.
+
+00:00:27.355 --> 00:00:31.760
+It will be closer to half a second if I had to load that data from my SSD storage,
+
+00:00:31.760 --> 00:00:35.054
+or four seconds if I had an older magnetic hard drive.
+
+00:00:35.054 --> 00:00:38.914
+This difference between milliseconds and seconds may seem small,
+
+00:00:38.914 --> 00:00:43.539
+but once we're working with gigabytes or terabytes of data, it really adds up.
+
+00:00:43.539 --> 00:00:46.859
+Luckily, we'll see that Spark was designed specifically,
+
+00:00:46.859 --> 00:00:50.130
+to optimize our use of memory and avoid this problem.
+

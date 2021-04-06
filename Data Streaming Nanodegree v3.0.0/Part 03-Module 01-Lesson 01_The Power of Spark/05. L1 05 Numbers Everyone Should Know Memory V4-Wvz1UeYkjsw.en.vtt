@@ -1,0 +1,43 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:06.530 --> 00:00:08.865
+But there's a catch.
+
+00:00:08.865 --> 00:00:12.675
+Most of the time, your CPU isn't processing data.
+
+00:00:12.675 --> 00:00:17.535
+Instead, it's sitting idle as it waits for input data from your main memory.
+
+00:00:17.535 --> 00:00:21.320
+It takes about 250 times longer to find and
+
+00:00:21.320 --> 00:00:25.940
+load a random byte from memory than to process that same byte with your CPU.
+
+00:00:25.940 --> 00:00:28.429
+In other words, and the time it takes to load
+
+00:00:28.429 --> 00:00:31.009
+an hour's worth of random tweets from memory,
+
+00:00:31.010 --> 00:00:33.910
+a CPU could process over a week of tweets.
+
+00:00:33.909 --> 00:00:37.369
+Fortunately, we usually organize the data in memory,
+
+00:00:37.369 --> 00:00:41.375
+so it's lined up and ready for immediate processing by the CPU.
+
+00:00:41.375 --> 00:00:43.924
+By loading data sequentially, say,
+
+00:00:43.924 --> 00:00:45.634
+all the tweets for a single hour,
+
+00:00:45.634 --> 00:00:47.600
+we can avoid this bottleneck.
+

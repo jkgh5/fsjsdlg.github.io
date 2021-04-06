@@ -1,0 +1,112 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:07.519 --> 00:00:10.949
+Then, we talk about distributed computing.
+
+00:00:10.949 --> 00:00:13.859
+We generally refer to a big computational job,
+
+00:00:13.859 --> 00:00:16.439
+executive across a cluster of nodes.
+
+00:00:16.440 --> 00:00:21.225
+Each node is responsible for a set of operations on a subset of the data.
+
+00:00:21.225 --> 00:00:26.595
+At the end, we combine these partial results to get the final answer.
+
+00:00:26.594 --> 00:00:31.335
+But how do the nodes know which task to run and demote order?
+
+00:00:31.335 --> 00:00:33.045
+Are all nodes equal?
+
+00:00:33.045 --> 00:00:37.189
+Which machine are you interacting with when you run your code?
+
+00:00:37.189 --> 00:00:42.289
+Most computational frameworks are organized into master worker hierarchy.
+
+00:00:42.289 --> 00:00:47.869
+Where the master node is responsible for orchestrating the tasks across the cluster,
+
+00:00:47.869 --> 00:00:52.369
+while the workers are performing the actual computations.
+
+00:00:52.369 --> 00:00:55.789
+There are four different modes to setup Spark.
+
+00:00:55.789 --> 00:00:58.054
+The first one, is local mode.
+
+00:00:58.054 --> 00:01:01.100
+In this case, everything happens on a single machine.
+
+00:01:01.100 --> 00:01:03.304
+So, while we use spark's APIs,
+
+00:01:03.304 --> 00:01:06.275
+we don't really do any distributed computing.
+
+00:01:06.275 --> 00:01:11.255
+Local mode can be useful to learn syntax and to prototype your project.
+
+00:01:11.254 --> 00:01:15.310
+In lesson two, you will be performing operations in local mode
+
+00:01:15.310 --> 00:01:19.754
+in the classroom work spaces to become comfortable with the Spark syntax.
+
+00:01:19.754 --> 00:01:24.439
+The other three modes are distributed and declare a cluster manager.
+
+00:01:24.439 --> 00:01:29.524
+The cluster manager is a separate process that monitors the available resources,
+
+00:01:29.525 --> 00:01:34.085
+and makes sure that all machines are responsive during the job.
+
+00:01:34.084 --> 00:01:37.640
+There are three different options of cluster managers,
+
+00:01:37.640 --> 00:01:40.715
+Sparks on Standalone Customer Manager,
+
+00:01:40.715 --> 00:01:43.280
+YARN from the Hadoop project,
+
+00:01:43.280 --> 00:01:49.314
+and then other open source manager from UC Berkeley's AMPLab Coordinators.
+
+00:01:49.314 --> 00:01:53.700
+YARN are necessary useful when you are sharing a cluster with a team,
+
+00:01:53.700 --> 00:01:56.085
+so you won't need them in this course.
+
+00:01:56.084 --> 00:01:59.029
+Instead, you will set up and use
+
+00:01:59.030 --> 00:02:04.135
+your own distributed Spark cluster using Standalone mode in lesson three.
+
+00:02:04.135 --> 00:02:08.280
+In Spark's Standalone, we also have a so-called Driver Process.
+
+00:02:08.280 --> 00:02:10.180
+If you open a Spark shell,
+
+00:02:10.180 --> 00:02:12.085
+either Python or Scala,
+
+00:02:12.085 --> 00:02:14.974
+you are directly interacting with the driver program.
+
+00:02:14.974 --> 00:02:19.335
+It acts as the master and is responsible for scheduling tasks,
+
+00:02:19.335 --> 00:02:22.270
+that the executors we are performed.
+

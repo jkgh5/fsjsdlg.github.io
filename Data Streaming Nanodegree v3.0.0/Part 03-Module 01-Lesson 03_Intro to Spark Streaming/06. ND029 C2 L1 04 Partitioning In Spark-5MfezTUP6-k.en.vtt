@@ -1,0 +1,58 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:04.200
+There are two types of partitioning in Spark; Hash and Range.
+
+00:00:04.200 --> 00:00:08.085
+Hash partitioning consists of the traditional way of hash partitioning,
+
+00:00:08.085 --> 00:00:12.525
+like partition equals hash code modulus number of partitions.
+
+00:00:12.525 --> 00:00:15.240
+Range partitioning is where tuples
+
+00:00:15.240 --> 00:00:18.615
+containing the same key will appear in the same machine.
+
+00:00:18.614 --> 00:00:23.044
+The order and the range of the keys determine where the data will be stored.
+
+00:00:23.045 --> 00:00:27.145
+This means there could be skewed data and skewed data is unavoidable.
+
+00:00:27.144 --> 00:00:29.419
+Also, this might not be a spark problem,
+
+00:00:29.420 --> 00:00:30.905
+but rather a data problem.
+
+00:00:30.905 --> 00:00:32.179
+So as a data engineer,
+
+00:00:32.179 --> 00:00:36.140
+it's our job to make sure that the data can be processed with minimal skill.
+
+00:00:36.140 --> 00:00:40.855
+For example, let's say you're a data engineer in retail organization,
+
+00:00:40.854 --> 00:00:42.814
+and your data is partitioned by date,
+
+00:00:42.814 --> 00:00:44.509
+like year, month, day.
+
+00:00:44.509 --> 00:00:47.524
+Let's say during the holidays like Black Friday,
+
+00:00:47.524 --> 00:00:49.460
+bunch of people buy a bunch of stuff,
+
+00:00:49.460 --> 00:00:54.835
+then your data will be heavily skewed if you choose to use or date as partition key.
+
+00:00:54.835 --> 00:00:59.280
+This means you'll have to come up with another way of partitioning your data.
+

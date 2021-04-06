@@ -1,0 +1,223 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:04.349
+Let's check out one of the most common functions in Spark, Maps.
+
+00:00:04.349 --> 00:00:07.529
+Maps simply make a copy of the original input data,
+
+00:00:07.530 --> 00:00:09.330
+and transform that copy according to
+
+00:00:09.330 --> 00:00:11.550
+whatever function you put inside the map.
+
+00:00:11.550 --> 00:00:15.150
+The term Map comes from the mathematical concept
+
+00:00:15.150 --> 00:00:18.570
+of mapping inputs to outputs, not the maps you'd get
+
+00:00:18.570 --> 00:00:20.685
+if you Googled for the nearest Starbucks.
+
+00:00:20.684 --> 00:00:23.160
+Still you can think about them as directions for
+
+00:00:23.160 --> 00:00:26.789
+the data telling each input how to get to the output,
+
+00:00:26.789 --> 00:00:29.699
+after some initialization to use Spark in our notebook,
+
+00:00:29.699 --> 00:00:33.710
+we convert our log of songs which is just a normal Python list,
+
+00:00:33.710 --> 00:00:36.560
+and to a distributed dataset that Spark can use.
+
+00:00:36.560 --> 00:00:40.015
+This uses the special Spark context object,
+
+00:00:40.015 --> 00:00:42.795
+that is normally abbreviated to SC.
+
+00:00:42.795 --> 00:00:46.190
+The Spark context has a method parallelize that takes
+
+00:00:46.189 --> 00:00:48.739
+a Python object and distributes the object
+
+00:00:48.740 --> 00:00:50.399
+across the machines in your cluster,
+
+00:00:50.399 --> 00:00:53.479
+so Spark can use its functional features on the dataset.
+
+00:00:53.479 --> 00:00:57.109
+Once we have this small dataset accessible to Spark,
+
+00:00:57.109 --> 00:00:58.789
+we want to do something with it.
+
+00:00:58.789 --> 00:01:01.879
+One example is to simply convert the song title to
+
+00:01:01.880 --> 00:01:04.579
+a lowercase which can be a common pre-processing
+
+00:01:04.579 --> 00:01:06.200
+step to standardize your data.
+
+00:01:06.200 --> 00:01:08.465
+You wouldn't want to get the play count wrong,
+
+00:01:08.465 --> 00:01:13.070
+just because some people enter the song with uppercase
+
+00:01:13.069 --> 00:01:16.024
+while others use lowercase.
+
+00:01:16.025 --> 00:01:19.280
+To do this, we can write a very simple Python function
+
+00:01:19.280 --> 00:01:21.230
+that converts the song to lowercase
+
+00:01:21.230 --> 00:01:24.895
+using Python's built in lower function.
+
+00:01:24.894 --> 00:01:27.530
+Next, we'll use the Spark function map
+
+00:01:27.530 --> 00:01:30.590
+to apply our converts song to lowercase function
+
+00:01:30.590 --> 00:01:32.719
+on each song in our dataset.
+
+00:01:32.719 --> 00:01:34.609
+You'll notice that all of these steps
+
+00:01:34.609 --> 00:01:37.129
+appear to run instantly but remember,
+
+00:01:37.129 --> 00:01:40.004
+the spark commands are using lazy evaluation,
+
+00:01:40.004 --> 00:01:42.890
+they haven't really converted the songs to lowercase yet.
+
+00:01:42.890 --> 00:01:48.034
+So far, Spark is still procrastinating to transform the songs to lowercase,
+
+00:01:48.034 --> 00:01:52.060
+since you might have several other processing steps like removing punctuation,
+
+00:01:52.060 --> 00:01:56.150
+Spark wants to wait until the last minute to see if they can streamline its work,
+
+00:01:56.150 --> 00:02:00.035
+and combine these into a single stage before getting the actual data.
+
+00:02:00.034 --> 00:02:03.069
+If we want to force Spark to take some action on the data,
+
+00:02:03.069 --> 00:02:06.199
+we can use the Collect Function which gathers the results
+
+00:02:06.200 --> 00:02:07.909
+from all of the machines in our cluster
+
+00:02:07.909 --> 00:02:10.115
+back to the machine running this notebook.
+
+00:02:10.115 --> 00:02:15.100
+Also, keep in mind that Spark didn't mutate the original dataset we gave it.
+
+00:02:15.099 --> 00:02:17.389
+Spark made a copy of the dataset,
+
+00:02:17.389 --> 00:02:21.904
+but left the original distributed song log with all of its uppercase letters.
+
+00:02:21.905 --> 00:02:24.169
+So that's Maps, they're pretty simple
+
+00:02:24.169 --> 00:02:27.039
+but they play a big role in Spark programming,
+
+00:02:27.039 --> 00:02:29.569
+but if you're like me, you probably found it a little
+
+00:02:29.569 --> 00:02:32.209
+annoying to create a brand new Python function,
+
+00:02:32.210 --> 00:02:34.040
+convert song to lowercase,
+
+00:02:34.039 --> 00:02:36.859
+just to use Python's built-in lower function,
+
+00:02:36.860 --> 00:02:38.990
+the code to define and call the function
+
+00:02:38.990 --> 00:02:41.210
+was longer than the core logic inside it.
+
+00:02:41.210 --> 00:02:43.460
+Fortunately Python has a nice feature
+
+00:02:43.460 --> 00:02:46.340
+from functional programming called Anonymous Functions
+
+00:02:46.340 --> 00:02:50.300
+which don't require you to define a new function for small pieces of code.
+
+00:02:50.300 --> 00:02:52.850
+So you use anonymous functions in Python,
+
+00:02:52.849 --> 00:02:55.549
+use this special keyword Lambda,
+
+00:02:55.550 --> 00:02:58.969
+and then write the input of the function followed by a colon,
+
+00:02:58.969 --> 00:03:00.634
+and the expected output.
+
+00:03:00.634 --> 00:03:03.139
+In other words, the left side of the colon is
+
+00:03:03.139 --> 00:03:06.244
+the input argument that you'd put it into the function definition,
+
+00:03:06.245 --> 00:03:09.439
+and the right side is what you would return in the function.
+
+00:03:09.439 --> 00:03:11.569
+Since this is a lot more convenient,
+
+00:03:11.569 --> 00:03:14.659
+you'll see anonymous functions all over the place in Spark.
+
+00:03:14.659 --> 00:03:18.604
+They're completely optional, you could just define functions if you prefer,
+
+00:03:18.604 --> 00:03:22.000
+but there are best-practice, and small examples like these.
+
+00:03:22.000 --> 00:03:28.145
+Also, you'll often see examples with more concise inputs like X, which also works.
+
+00:03:28.145 --> 00:03:31.189
+However, I prefer more expressive argument names
+
+00:03:31.189 --> 00:03:33.859
+since they make it easier to read the code and understand
+
+00:03:33.860 --> 00:03:37.410
+the logic of what your function is doing with the data.
+

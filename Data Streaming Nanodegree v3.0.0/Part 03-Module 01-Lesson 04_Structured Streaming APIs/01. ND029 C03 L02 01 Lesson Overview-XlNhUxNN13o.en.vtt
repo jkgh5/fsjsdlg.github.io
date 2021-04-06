@@ -1,0 +1,22 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:01.429 --> 00:00:05.519
+In this lesson, we'll go over Spark streaming APIs.
+
+00:00:05.519 --> 00:00:08.834
+Before doing so, we'll do a review on lazy evaluation,
+
+00:00:08.835 --> 00:00:11.700
+transformation, and action functions in Spark.
+
+00:00:11.699 --> 00:00:15.539
+We'll take a look at both Spark streaming and structured streaming which is
+
+00:00:15.539 --> 00:00:19.785
+supported onward from version 2.2.0 to present,
+
+00:00:19.785 --> 00:00:24.490
+and we'll be mostly be using structured streaming throughout the course.
+

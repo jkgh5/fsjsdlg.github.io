@@ -1,0 +1,490 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:02.970
+Now that you know how to import data to data frames
+
+00:00:02.970 --> 00:00:06.140
+and use the most essential methods, let's wrangle some data.
+
+00:00:06.139 --> 00:00:10.800
+We may use the same music streaming service log data set we used previously.
+
+00:00:10.800 --> 00:00:12.240
+So let's just get started.
+
+00:00:12.240 --> 00:00:15.855
+First, let me import a few things here from pyspark.
+
+00:00:15.855 --> 00:00:17.399
+I already typed these in.
+
+00:00:17.399 --> 00:00:22.484
+We will need a few functions as well as types for our calculations later.
+
+00:00:22.484 --> 00:00:26.879
+I also imported date time as well as Numpy and pandas.
+
+00:00:26.879 --> 00:00:30.375
+Let's load our input data set from HDFS as well.
+
+00:00:30.375 --> 00:00:33.645
+We will use the sparky file looks more than JSON file,
+
+00:00:33.645 --> 00:00:36.395
+and read it into the user log data frame.
+
+00:00:36.395 --> 00:00:39.234
+Let's take a look at the first five records.
+
+00:00:39.234 --> 00:00:40.755
+As we saw it earlier,
+
+00:00:40.755 --> 00:00:44.530
+Kenneth is listening to a "Showaddywaddy" song.
+
+00:00:44.530 --> 00:00:46.295
+The records are a bit hard to read.
+
+00:00:46.295 --> 00:00:48.590
+So as a reminder, let's print the schema,
+
+00:00:48.590 --> 00:00:51.875
+so we can see the columns we have in this data frame.
+
+00:00:51.875 --> 00:00:55.744
+We can also call described on the whole frame to see the count,
+
+00:00:55.744 --> 00:00:59.570
+mean, standard deviation, min and max values of each column.
+
+00:00:59.570 --> 00:01:01.410
+Previously when we used this method,
+
+00:01:01.409 --> 00:01:02.969
+we only saw the column names.
+
+00:01:02.969 --> 00:01:06.679
+If we had to show, we will see the actual statistics.
+
+00:01:06.680 --> 00:01:08.975
+This is still a bit hard to read as is.
+
+00:01:08.974 --> 00:01:12.339
+So we can just take a look at individual columns.
+
+00:01:12.340 --> 00:01:15.090
+For example, describing the artist field,
+
+00:01:15.090 --> 00:01:16.905
+give us these stats.
+
+00:01:16.905 --> 00:01:19.905
+Not sure about mean and standard deviation.
+
+00:01:19.905 --> 00:01:22.144
+Means in this particular case.
+
+00:01:22.144 --> 00:01:25.759
+If we select a column with the numeric type,
+
+00:01:25.760 --> 00:01:29.030
+we will see more meaningful values.
+
+00:01:29.030 --> 00:01:30.680
+So as you can see,
+
+00:01:30.680 --> 00:01:33.845
+we have 10,000 of the session IDs.
+
+00:01:33.844 --> 00:01:36.629
+The values are between 9-7,144,
+
+00:01:38.349 --> 00:01:42.304
+and we have some mean and standard deviation here.
+
+00:01:42.305 --> 00:01:44.750
+To check how many rows we have in the data frame,
+
+00:01:44.750 --> 00:01:47.689
+we can just use the count method.
+
+00:01:47.689 --> 00:01:50.284
+We have 10,000 rows here.
+
+00:01:50.284 --> 00:01:53.009
+So, by session ID,
+
+00:01:53.010 --> 00:01:55.245
+has a value for all of our records,
+
+00:01:55.245 --> 00:01:58.260
+the artist field, that currently doesn't.
+
+00:01:58.260 --> 00:02:01.190
+This make sense, since if the record
+
+00:02:01.189 --> 00:02:03.109
+doesn't refer to playing a song,
+
+00:02:03.109 --> 00:02:05.254
+we should not have any artist.
+
+00:02:05.254 --> 00:02:08.674
+Let's see what sort of page requests do we have,
+
+00:02:08.675 --> 00:02:11.075
+by looking at the page field.
+
+00:02:11.074 --> 00:02:14.209
+Using drop duplicates, just means
+
+00:02:14.210 --> 00:02:16.760
+that we will see each kind once,
+
+00:02:16.759 --> 00:02:21.125
+and sort code on the page field again.
+
+00:02:21.125 --> 00:02:26.224
+Just sorts these different options alphabetically.
+
+00:02:26.224 --> 00:02:29.299
+Users can log in and out.
+
+00:02:29.300 --> 00:02:31.250
+They might visit the homepage,
+
+00:02:31.250 --> 00:02:34.699
+that just home here or play a song.
+
+00:02:34.699 --> 00:02:37.409
+Later we will focus on users who chose
+
+00:02:37.409 --> 00:02:39.750
+to downgrade their paid account to a free one.
+
+00:02:39.750 --> 00:02:43.870
+So let's make comment on that of the submit downgrades field.
+
+00:02:43.870 --> 00:02:47.539
+We can get the events associated with a particular user ID
+
+00:02:47.539 --> 00:02:51.034
+by filtering for a particular value.
+
+00:02:51.034 --> 00:02:56.039
+Let's pick a few columns and the user ID and collect all the events.
+
+00:02:56.389 --> 00:03:02.018
+As we see here, user Kenneth was listening to a few songs,
+
+00:03:02.019 --> 00:03:06.740
+visited the homepage, and then listened to a few more songs here.
+
+00:03:06.740 --> 00:03:10.990
+So this is how a typical user event log might look like.
+
+00:03:10.990 --> 00:03:13.129
+Let's say that we are interested in
+
+00:03:13.129 --> 00:03:16.564
+how many songs users are listening to in a particular hour.
+
+00:03:16.564 --> 00:03:19.250
+To compute this, first we need to convert
+
+00:03:19.250 --> 00:03:21.909
+the timestamps to date time from epoch time,
+
+00:03:21.909 --> 00:03:24.484
+so we can get the hour of the day.
+
+00:03:24.485 --> 00:03:31.355
+To do this, we will define a user-defined function called get hour.
+
+00:03:31.354 --> 00:03:37.750
+Using get hour, we can add a new column called hour to our data frame.
+
+00:03:37.750 --> 00:03:40.794
+Since Spark lazy evaluation,
+
+00:03:40.794 --> 00:03:42.694
+nothing happened so far.
+
+00:03:42.694 --> 00:03:45.769
+But if we take a look at the head,
+
+00:03:45.770 --> 00:03:48.710
+the hour value will be computed,
+
+00:03:48.710 --> 00:03:51.745
+at least for this first record.
+
+00:03:51.745 --> 00:03:57.170
+So this particular song was played at 10:00 PM.
+
+00:03:57.169 --> 00:04:01.054
+The next step is to count the next song page request,
+
+00:04:01.055 --> 00:04:04.050
+group by the hour we just computed.
+
+00:04:04.219 --> 00:04:07.379
+Let's also order the result,
+
+00:04:07.379 --> 00:04:10.280
+so we get the hours of the day in order.
+
+00:04:10.280 --> 00:04:15.395
+We also need to add show other advisors statement when we evaluated.
+
+00:04:15.395 --> 00:04:17.660
+To visualize these results,
+
+00:04:17.660 --> 00:04:20.610
+we can turn this small Spark data frame into
+
+00:04:20.610 --> 00:04:25.520
+a Pandas data frame and use matplotlib to plot a graph.
+
+00:04:25.519 --> 00:04:30.289
+We can make our graph a little bit prettier.
+
+00:04:30.290 --> 00:04:34.260
+We can certainly see some trends in
+
+00:04:34.259 --> 00:04:39.394
+how many songs our users played in different hours of the day.
+
+00:04:39.394 --> 00:04:42.919
+Before we continue to compute any other aggregates on the data frame,
+
+00:04:42.920 --> 00:04:45.875
+let's make sure that we don't have any missing values.
+
+00:04:45.875 --> 00:04:49.370
+As we saw earlier, some of the fields are meant to be none,
+
+00:04:49.370 --> 00:04:52.699
+but we would like to make sure that we have,
+
+00:04:52.699 --> 00:04:56.904
+for example the user ID and the session ID for all the records.
+
+00:04:56.904 --> 00:04:59.079
+With the drop-any method,
+
+00:04:59.079 --> 00:05:03.439
+we can drop all the records that have none in either of these fields.
+
+00:05:03.439 --> 00:05:05.300
+If we count our rules again,
+
+00:05:05.300 --> 00:05:07.730
+we will see that we haven't list any records.
+
+00:05:07.730 --> 00:05:10.825
+So let's take a look at the user IDs.
+
+00:05:10.824 --> 00:05:15.349
+There is no none value in the user ID column.
+
+00:05:15.350 --> 00:05:20.495
+There is certainly one suspicious here, an empty string.
+
+00:05:20.495 --> 00:05:22.699
+Let's just filter out all the rows that has
+
+00:05:22.699 --> 00:05:25.805
+this empty string value as the user ID.
+
+00:05:25.805 --> 00:05:28.105
+If we count our rows again,
+
+00:05:28.105 --> 00:05:32.045
+we will see that we lost about 340 records.
+
+00:05:32.045 --> 00:05:33.949
+So this way, we made sure that they
+
+00:05:33.949 --> 00:05:37.779
+only include user IDs that have a valid value.
+
+00:05:37.779 --> 00:05:40.504
+In our computation, we might want to distinguish
+
+00:05:40.504 --> 00:05:43.774
+a user's activity before and after a particular event,
+
+00:05:43.774 --> 00:05:45.919
+for example, before and after they have
+
+00:05:45.920 --> 00:05:49.555
+downgraded their account from a paid one to free one.
+
+00:05:49.555 --> 00:05:53.180
+Let's find the user who downgraded their service first.
+
+00:05:53.180 --> 00:05:57.605
+Apparently, user ID 1138,
+
+00:05:57.605 --> 00:06:02.254
+a user called Kelly downgraded her service.
+
+00:06:02.254 --> 00:06:06.389
+So let's just list her user activity.
+
+00:06:06.389 --> 00:06:10.719
+Let's also include the level column.
+
+00:06:10.720 --> 00:06:14.810
+So now we can see that she was listening
+
+00:06:14.810 --> 00:06:18.084
+to some songs still using the paid service.
+
+00:06:18.084 --> 00:06:21.589
+After a while, she submitted this downgrade
+
+00:06:21.589 --> 00:06:25.699
+and she became a free user.
+
+00:06:25.699 --> 00:06:28.579
+Our final goal is to create a new column
+
+00:06:28.579 --> 00:06:30.919
+which divides the events of a particular user,
+
+00:06:30.920 --> 00:06:33.629
+based on these special events.
+
+00:06:33.629 --> 00:06:35.985
+Let's call this column phase.
+
+00:06:35.985 --> 00:06:39.920
+So, user inventory should have a different value in
+
+00:06:39.920 --> 00:06:44.455
+the phase column before and after she downgraded her service.
+
+00:06:44.454 --> 00:06:46.879
+To get phase, first we need to flag
+
+00:06:46.879 --> 00:06:49.439
+the records that refer to this special event,
+
+00:06:49.439 --> 00:06:52.985
+in our case, downgrading the service.
+
+00:06:52.985 --> 00:06:57.035
+So let's create a column called downgraded first.
+
+00:06:57.035 --> 00:07:00.510
+The values here will be one,
+
+00:07:00.509 --> 00:07:06.024
+if the event refers to a downgrade, and zero otherwise.
+
+00:07:06.024 --> 00:07:11.209
+So I just defined this function flag downgrade event.
+
+00:07:11.209 --> 00:07:14.659
+That returns an integer either one or zero,
+
+00:07:14.660 --> 00:07:18.290
+depending on if the event was a submit downgrade.
+
+00:07:18.290 --> 00:07:23.290
+If we take a look at the head of user log valid,
+
+00:07:23.290 --> 00:07:26.080
+we can see that the column downgraded appeared,
+
+00:07:26.079 --> 00:07:29.754
+and in this particular case it's very easy.
+
+00:07:29.754 --> 00:07:33.024
+To compute phase, we can use a trick.
+
+00:07:33.024 --> 00:07:37.419
+If we sort our records for a particular user in reverse time order,
+
+00:07:37.420 --> 00:07:42.925
+and add up the values in the downgraded column up onto the particular role,
+
+00:07:42.925 --> 00:07:44.829
+we can use that as phase,
+
+00:07:44.829 --> 00:07:47.634
+and we will achieve exactly what we wanted to do.
+
+00:07:47.634 --> 00:07:53.214
+You can find an illustration after these videos to see why this actually work.
+
+00:07:53.214 --> 00:07:57.804
+We can use a window function to compute this cumulative sums using
+
+00:07:57.805 --> 00:08:05.030
+all preceding rows in reverse chronological order, okay?
+
+00:08:05.029 --> 00:08:08.344
+So I forgot to import window.
+
+00:08:08.345 --> 00:08:11.255
+Let's do it first.
+
+00:08:11.254 --> 00:08:16.490
+So now I define this window function, where we partition,
+
+00:08:16.490 --> 00:08:19.160
+or you can think of it as a group by as well,
+
+00:08:19.160 --> 00:08:25.050
+by the user ID, order arguments in a descending time order,
+
+00:08:25.050 --> 00:08:28.650
+and take into account all previous rows,
+
+00:08:28.649 --> 00:08:32.054
+but no rows afterwards.
+
+00:08:32.054 --> 00:08:35.009
+Now we can, using this window function,
+
+00:08:35.009 --> 00:08:38.024
+actually compute the phase column.
+
+00:08:38.024 --> 00:08:41.529
+Let's select Kelly's events again.
+
+00:08:41.529 --> 00:08:45.889
+I just added timestamp and the phase columns.
+
+00:08:45.889 --> 00:08:50.884
+Let's sort this data frame by timestamp.
+
+00:08:50.884 --> 00:08:54.125
+Now if it we take a look at the records,
+
+00:08:54.125 --> 00:08:56.990
+all the events before the downgrade event
+
+00:08:56.990 --> 00:09:00.595
+belong to phase one, like this.
+
+00:09:00.595 --> 00:09:02.769
+If we scroll down,
+
+00:09:02.769 --> 00:09:06.875
+we will see that after the submit downgrade,
+
+00:09:06.875 --> 00:09:09.470
+we switched to phase zero.
+
+00:09:09.470 --> 00:09:11.345
+If we had more than one phase,
+
+00:09:11.345 --> 00:09:16.170
+we will see the phase values decreasing from n to zero.
+

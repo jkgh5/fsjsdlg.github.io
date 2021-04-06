@@ -1,0 +1,61 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:07.519 --> 00:00:11.910
+Then we have so much data that we need distributed computing.
+
+00:00:11.910 --> 00:00:16.605
+The data itself often needs to be stored in a distributed way as well.
+
+00:00:16.605 --> 00:00:20.609
+Distributed file systems, many storage services,
+
+00:00:20.609 --> 00:00:24.975
+and distributed databases store data in a fault tolerant way.
+
+00:00:24.975 --> 00:00:28.440
+So if a machine breaks or becomes unavailable,
+
+00:00:28.440 --> 00:00:31.500
+we don't lose the information we have collected.
+
+00:00:31.500 --> 00:00:34.020
+As we mentioned in the previous lesson,
+
+00:00:34.020 --> 00:00:36.345
+Hadoop has a Distributed File System,
+
+00:00:36.344 --> 00:00:38.634
+HDFS, to store data.
+
+00:00:38.634 --> 00:00:44.059
+HDFS splits files inton64 or 128 megabyte blocks
+
+00:00:44.060 --> 00:00:47.060
+and replicates these blocks across the cluster.
+
+00:00:47.060 --> 00:00:50.390
+This way, the data is stored in a fault tolerant way
+
+00:00:50.390 --> 00:00:53.674
+and can be accessed in digestible chunks.
+
+00:00:53.674 --> 00:00:56.629
+If you don't want to maintain our own cluster,
+
+00:00:56.630 --> 00:00:58.700
+we can use many services such as
+
+00:00:58.700 --> 00:01:03.290
+the Amazon Simple Storage Service or S3 to store objects
+
+00:01:03.289 --> 00:01:06.920
+entered to retrieve any random data from anywhere.
+
+00:01:06.920 --> 00:01:11.090
+Companies using AWS or Amazon Web Services
+
+00:01:11.090 --> 00:01:15.719
+often use S3 to store the raw data they have collected.
+

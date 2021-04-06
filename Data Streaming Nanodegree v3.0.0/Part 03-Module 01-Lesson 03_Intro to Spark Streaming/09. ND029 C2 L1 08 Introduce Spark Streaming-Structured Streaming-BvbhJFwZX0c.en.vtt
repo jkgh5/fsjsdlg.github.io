@@ -1,0 +1,43 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:03.180
+Let's talk about how D Stream ingest the data.
+
+00:00:03.180 --> 00:00:04.950
+Most likely, your data in
+
+00:00:04.950 --> 00:00:09.150
+real-world application will have a bunch of data coming in a few seconds.
+
+00:00:09.150 --> 00:00:13.109
+So instead of processing the streaming data one record at a time,
+
+00:00:13.109 --> 00:00:17.129
+Spark Streaming discretizes the streaming data into micro batches.
+
+00:00:17.129 --> 00:00:19.739
+Each batch of data is an RDD.
+
+00:00:19.739 --> 00:00:22.469
+This allows the developers like us to apply
+
+00:00:22.469 --> 00:00:26.414
+basic RDD operations on top of D Streams as well.
+
+00:00:26.414 --> 00:00:31.769
+In D Stream, each message is guaranteed to be processed once and only once.
+
+00:00:31.769 --> 00:00:34.789
+There are many applicable domains where we need to
+
+00:00:34.789 --> 00:00:38.269
+process large data streams like ETL operations,
+
+00:00:38.270 --> 00:00:41.425
+operations monitoring, ad monetization,
+
+00:00:41.424 --> 00:00:44.919
+retail, fraud detection, and etc.
+

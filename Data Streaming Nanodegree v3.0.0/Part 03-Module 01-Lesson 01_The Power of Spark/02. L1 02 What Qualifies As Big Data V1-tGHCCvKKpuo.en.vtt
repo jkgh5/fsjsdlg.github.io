@@ -1,0 +1,70 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:04.650 --> 00:00:07.960
+Before you can understand the power of Spark,
+
+00:00:07.960 --> 00:00:11.504
+you need to understand how it fits into the context of big data.
+
+00:00:11.505 --> 00:00:15.580
+Big data is an overloaded term with no single definition,
+
+00:00:15.580 --> 00:00:19.510
+but most data scientists and engineers have a good sense of what we mean when we say,
+
+00:00:19.510 --> 00:00:22.090
+Spark is good for working with big data.
+
+00:00:22.089 --> 00:00:26.949
+For me, you know you're working with big data when instead of using a single machine,
+
+00:00:26.949 --> 00:00:30.324
+it's easier to use a distributed system of multiple computers.
+
+00:00:30.324 --> 00:00:33.189
+Perhaps dozens or hundreds of servers that you wenr
+
+00:00:33.189 --> 00:00:36.674
+from an Amazon data center than working on your own machine.
+
+00:00:36.674 --> 00:00:39.759
+To understand when our data becomes big data,
+
+00:00:39.759 --> 00:00:43.070
+you need to be familiar with the capabilities of modern hardware.
+
+00:00:43.070 --> 00:00:47.755
+For example, how long does it take for your CPU to add two numbers?
+
+00:00:47.755 --> 00:00:50.260
+How quickly can you look up an appointment if
+
+00:00:50.259 --> 00:00:53.030
+your calendar is already cached in your laptop's memory?
+
+00:00:53.030 --> 00:00:58.135
+How many seconds does it take to load your favorite song from your laptop's SSD storage?
+
+00:00:58.134 --> 00:01:01.614
+How much data can you download from Netflix in a minute?
+
+00:01:01.615 --> 00:01:07.085
+Knowing the rough answers to these type of questions is so critical that Peter Norvig,
+
+00:01:07.084 --> 00:01:08.824
+director of research at Google,
+
+00:01:08.825 --> 00:01:11.299
+has advised every programmer to learn them.
+
+00:01:11.299 --> 00:01:16.879
+In fact, the data community often refers to them as the numbers everyone should know.
+
+00:01:16.879 --> 00:01:20.839
+We'll explore these numbers now to give us context on big data,
+
+00:01:20.840 --> 00:01:24.329
+but these hardware concepts will show up throughout this course.
+

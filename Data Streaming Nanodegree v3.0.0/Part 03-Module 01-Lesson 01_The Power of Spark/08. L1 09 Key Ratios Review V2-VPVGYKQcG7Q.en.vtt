@@ -1,0 +1,40 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:06.080 --> 00:00:08.699
+By going through the Twitter example,
+
+00:00:08.699 --> 00:00:11.594
+you're more familiar with the different aspects of hardware.
+
+00:00:11.595 --> 00:00:13.915
+Let's put all these numbers together.
+
+00:00:13.914 --> 00:00:17.349
+The fastest component of your hardware is the CPU,
+
+00:00:17.350 --> 00:00:21.179
+which is 200 times faster than loading data randomly from memory.
+
+00:00:21.179 --> 00:00:27.245
+Speaking of memory, it's about 15 times faster than long-term storage like SSDs.
+
+00:00:27.245 --> 00:00:30.435
+Finally, network is the worst bottleneck.
+
+00:00:30.434 --> 00:00:32.850
+It's about 20 times slower to work with data,
+
+00:00:32.850 --> 00:00:34.855
+when you have to download it first.
+
+00:00:34.854 --> 00:00:36.674
+If you know these ratios,
+
+00:00:36.674 --> 00:00:38.399
+you'll know when you have big data,
+
+00:00:38.399 --> 00:00:41.729
+and when to use a distributed technology like Spark.
+

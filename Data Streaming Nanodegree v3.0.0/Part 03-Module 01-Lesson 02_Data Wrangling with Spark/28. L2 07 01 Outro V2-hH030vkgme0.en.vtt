@@ -1,0 +1,61 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:05.089 --> 00:00:08.445
+We've covered quite a bit in this lesson.
+
+00:00:08.445 --> 00:00:12.510
+First, you've learned how to wrangle data with functional programming,
+
+00:00:12.509 --> 00:00:16.785
+and you saw this programming style helps us scale across distributed systems,
+
+00:00:16.785 --> 00:00:21.629
+then you practice reading data into Spark, and writing data out.
+
+00:00:21.629 --> 00:00:25.049
+You also gained experience with the high level APIs,
+
+00:00:25.050 --> 00:00:27.839
+Spark DataFrames, and Spark SQL.
+
+00:00:27.839 --> 00:00:30.344
+Like any programming language or tool,
+
+00:00:30.344 --> 00:00:33.254
+you won't master it without a fair amount of practice.
+
+00:00:33.255 --> 00:00:36.030
+Now that you know how to wrangle data with Spark,
+
+00:00:36.030 --> 00:00:39.120
+go and find some datasets that you are interested in,
+
+00:00:39.119 --> 00:00:41.664
+and start exploring them with Spark.
+
+00:00:41.664 --> 00:00:44.200
+Once you play with a few of these datasets,
+
+00:00:44.200 --> 00:00:46.740
+especially messy real-world data,
+
+00:00:46.740 --> 00:00:48.760
+you probably run into a few errors,
+
+00:00:48.759 --> 00:00:51.875
+or cases where Spark runs particularly slowly.
+
+00:00:51.875 --> 00:00:56.570
+Up to this point, we've focused on running Spark on smaller datasets,
+
+00:00:56.570 --> 00:00:59.284
+just to get you comfortable with the basic syntax.
+
+00:00:59.284 --> 00:01:03.279
+In the next lesson, we're going to talk about debugging your Spark code,
+
+00:01:03.280 --> 00:01:07.469
+and how to speed it up to work on true big data.
+

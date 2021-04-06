@@ -1,0 +1,46 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:04.910 --> 00:00:07.140
+Congratulations.
+
+00:00:07.139 --> 00:00:10.504
+You have completed the first lesson on Spark.
+
+00:00:10.505 --> 00:00:14.130
+In this lesson, we have discussed what we mean by big data,
+
+00:00:14.130 --> 00:00:16.385
+Spark's typical use cases,
+
+00:00:16.385 --> 00:00:18.995
+and you should, or shouldn't use Spark,
+
+00:00:18.995 --> 00:00:21.144
+and some tools surrounding Spark,
+
+00:00:21.144 --> 00:00:23.245
+in the big data ecosystem.
+
+00:00:23.245 --> 00:00:28.539
+If you would like to learn more about the topics and tools in the big data ecosystem,
+
+00:00:28.539 --> 00:00:31.739
+check out the additional resources provided below.
+
+00:00:31.739 --> 00:00:34.140
+This course, we are focused on Spark,
+
+00:00:34.140 --> 00:00:38.020
+so we touched on the other tools only for your exposure.
+
+00:00:38.020 --> 00:00:43.745
+Now that you have a high-level understanding of the big data ecosystem, the next lesson,
+
+00:00:43.744 --> 00:00:46.399
+we'll take a closer look at how to use Spark,
+
+00:00:46.399 --> 00:00:49.739
+to solve real world big data problems.
+

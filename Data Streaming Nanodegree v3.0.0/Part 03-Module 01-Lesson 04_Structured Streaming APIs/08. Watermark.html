@@ -1,0 +1,296 @@
+<!-- udacity2.0 -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Watermark</title>
+  <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../assets/css/plyr.css">
+  <link rel="stylesheet" href="../assets/css/katex.min.css">
+  <link rel="stylesheet" href="../assets/css/jquery.mCustomScrollbar.min.css">
+  <link rel="stylesheet" href="../assets/css/styles.css">
+  <link rel="shortcut icon" type="image/png" href="../assets/img/udacimak.png" />
+</head>
+
+<body>
+  <div class="wrapper">
+    <nav id="sidebar">
+  <div class="sidebar-header">
+    <h3>Structured Streaming APIs</h3>
+  </div>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled components">
+    <li class="">
+      <a href="01. Lesson Overview.html">01. Lesson Overview</a>
+    </li>
+    <li class="">
+      <a href="02. RDDDataFrame Functions.html">02. RDD/DataFrame Functions</a>
+    </li>
+    <li class="">
+      <a href="03. Lazy Evaluation.html">03. Lazy Evaluation</a>
+    </li>
+    <li class="">
+      <a href="04. Transformations.html">04. Transformations</a>
+    </li>
+    <li class="">
+      <a href="05. Actions.html">05. Actions</a>
+    </li>
+    <li class="">
+      <a href="06. Transformations in DAGs.html">06. Transformations in DAGs</a>
+    </li>
+    <li class="">
+      <a href="07. Structured Streaming APIs.html">07. Structured Streaming APIs</a>
+    </li>
+    <li class="">
+      <a href="08. Watermark.html">08. Watermark</a>
+    </li>
+    <li class="">
+      <a href="09. Spark UI for Query Plans.html">09. Spark UI for Query Plans</a>
+    </li>
+    <li class="">
+      <a href="10. Output Sinks.html">10. Output Sinks</a>
+    </li>
+    <li class="">
+      <a href="11. Checkpointing Data.html">11. Checkpointing Data</a>
+    </li>
+    <li class="">
+      <a href="12. State Store and Checkpointing.html">12. State Store and Checkpointing</a>
+    </li>
+    <li class="">
+      <a href="13. ConfigurationsTuning of Spark Clusters.html">13. Configurations/Tuning of Spark Clusters</a>
+    </li>
+    <li class="">
+      <a href="14. Lesson Recap.html">14. Lesson Recap</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+</nav>
+
+    <div id="content">
+      <header class="container-fluild header">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <div class="align-items-middle">
+                <button type="button" id="sidebarCollapse" class="btn btn-toggle-sidebar">
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                </button>
+
+                <h1 style="display: inline-block">08. Watermark</h1>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <main class="container">
+        <div class="row">
+          <div class="col-12">
+            <div class="ud-atom">
+  <h3><p>ND029 C2 L2 06 Watermark</p></h3>
+  <video controls>
+  <source src="08. ND029 C2 L2 06 Watermark-pddtS3NlJBo.mp4" type="video/mp4">
+
+  <track default="true" kind="subtitles" srclang="en" src="08. ND029 C2 L2 06 Watermark-pddtS3NlJBo.en.vtt" label="en">
+</video>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3><p>Watermark Architecture</p></h3>
+  <div>
+  <figure class="figure">
+    <img src="img/screen-shot-2019-10-10-at-1.28.44-pm.png" alt="**Example with Random Input Data Illustrating How Watermark Works**" class="img img-fluid">
+    <figcaption class="figure-caption">
+      <p><strong>Example with Random Input Data Illustrating How Watermark Works</strong></p>
+    </figcaption>
+  </figure>
+</div>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3><p>Recap on Watermark, JOINS</p></h3>
+  <div>
+  <h2 id="recap-on-joins-aggregation-and-watermark">Recap on JOINs, Aggregation, and Watermark</h2>
+<p>JOINs, Aggregation, and Watermark are all commonly used Structured Streaming APIs.</p>
+<ul>
+<li>Types of JOINs</li>
+</ul>
+<p>In streaming, we have to think about static vs. streaming DataFrames. Inner JOINs can be easily applied to static and streaming DataFrames, regardless of which one is the left or right table.<br />
+Outer JOINs are much more difficult because we have to think about late arriving data, and to join on late arriving data, the results will be significantly inconsistent.</p>
+<ul>
+<li>Aggregation vs. Stateful Aggregation</li>
+</ul>
+<p>You can think of aggregation as a plain <code>sum()</code> or <code>count()</code> in a SQL query. Stateful aggregation involves intervals, which means aggregation over certain intervals. We apply the concept of watermark to achieve stateful aggregation.</p>
+<ul>
+<li>Watermark</li>
+</ul>
+<p>Watermark addresses two main problems - dealing with late arriving data and stateful aggregation. Watermark decides which data can be dropped or included - this implies that the application doesn’t have to worry about deciding which data should be ingested in the pipeline, rather, watermark already acknowledges which data can be ingested. Also you can achieve stateful aggregation by setting watermark.</p>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3><p>JOINS-Watermark</p></h3>
+  <div>
+  <form>
+    <fieldset>
+      <legend><p>Which of these JOINs require Watermark? (may be more than one answer)</p></legend>
+    </fieldset>
+
+    <div>
+      <input type="checkbox" value="rbk1" name="931989" id="rbk1">
+      <label for="rbk1"><p>Static &amp; Static Left Outer JOIN</p></label>
+    </div>
+    <div>
+      <input type="checkbox" value="rbk2" name="931989" id="rbk2">
+      <label for="rbk2"><p>Stream &amp; Stream Left Outer JOIN</p></label>
+    </div>
+    <div>
+      <input type="checkbox" value="rbk3" name="931989" id="rbk3">
+      <label for="rbk3"><p>Stream &amp; Static Right Outer JOIN</p></label>
+    </div>
+    <div>
+      <input type="checkbox" value="rbk4" name="931989" id="rbk4">
+      <label for="rbk4"><p>Static &amp; Stream Inner JOIN</p></label>
+    </div>
+  </form>
+
+  <details>
+    <summary><strong>SOLUTION:</strong></summary>
+    <ul>
+      <li>Stream & Stream Left Outer JOIN</li>
+  </ul>
+  </details>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3><p>Exercise: Watermarks</p></h3>
+  <div>
+  <h2 id="exercise-practice-with-watermark">Exercise: Practice with Watermark</h2>
+<p>Please complete the TODO items in the code below, then execute it in the terminal using the command <code>spark-submit &lt;filename&gt;.py</code>.</p>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div class="jumbotron">
+  <h3>Code</h3>
+
+  <p class="lead">If you need a code on the <a href="https://github.com/udacity"
+    target="_blank">https://github.com/udacity</a>. </p>
+
+  </ul>
+</div>
+
+</div>
+<div class="divider"></div>
+          </div>
+
+          <div class="col-12">
+            <p class="text-right">
+              <a href="09. Spark UI for Query Plans.html" class="btn btn-outline-primary mt-4" role="button">Next Concept</a>
+            </p>
+          </div>
+        </div>
+      </main>
+
+      <footer class="footer">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <p class="text-center">
+                <a href="https://us-udacity.github.io/" target="_blank">【udacity2.0 】If you need more courses, please add wechat：udacity6</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </div>
+
+
+  <script src="../assets/js/jquery-3.3.1.min.js"></script>
+  <script src="../assets/js/plyr.polyfilled.min.js"></script>
+  <script src="../assets/js/bootstrap.min.js"></script>
+  <script src="../assets/js/jquery.mCustomScrollbar.concat.min.js"></script>
+  <script src="../assets/js/katex.min.js"></script>
+  <script>
+    // Initialize Plyr video players
+    const players = Array.from(document.querySelectorAll('video')).map(p => new Plyr(p));
+
+    // render math equations
+    let elMath = document.getElementsByClassName('mathquill');
+    for (let i = 0, len = elMath.length; i < len; i += 1) {
+      const el = elMath[i];
+
+      katex.render(el.textContent, el, {
+        throwOnError: false
+      });
+    }
+
+    // this hack will make sure Bootstrap tabs work when using Handlebars
+    if ($('#question-tabs').length && $('#user-answer-tabs').length) {
+      $("#question-tabs a.nav-link").on('click', function () {
+        $("#question-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+      $("#user-answer-tabs a.nav-link").on('click', function () {
+        $("#user-answer-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    } else {
+      $("a.nav-link").on('click', function () {
+        $(".tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    }
+
+    // side bar events
+    $(document).ready(function () {
+      $("#sidebar").mCustomScrollbar({
+        theme: "minimal"
+      });
+
+      $('#sidebarCollapse').on('click', function () {
+        $('#sidebar, #content').toggleClass('active');
+        $('.collapse.in').toggleClass('in');
+        $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+      });
+
+      // scroll to first video on page loading
+      if ($('video').length) {
+        $('html,body').animate({ scrollTop: $('div.plyr').prev().offset().top});
+      }
+
+      // auto play first video: this may not work with chrome/safari due to autoplay policy
+      if (players && players.length > 0) {
+        players[0].play();
+      }
+
+      // scroll sidebar to current concept
+      const currentInSideBar = $( "ul.sidebar-list.components li a:contains('08. Watermark')" )
+      currentInSideBar.css( "text-decoration", "underline" );
+      $("#sidebar").mCustomScrollbar('scrollTo', currentInSideBar);
+    });
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,55 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:03.419
+In this lesson, we'll go over the components of Apache Spark
+
+00:00:03.419 --> 00:00:06.929
+and focus on the ones that we'll be using throughout the course.
+
+00:00:06.929 --> 00:00:09.059
+Many compare Hadoop and Spark,
+
+00:00:09.060 --> 00:00:13.214
+but Spark is more comparable to the MapReduce algorithm of Hadoop ecosystem.
+
+00:00:13.214 --> 00:00:15.960
+Apache Spark is a powerful alternative to
+
+00:00:15.960 --> 00:00:19.804
+Hadoop MapReduce with several rich functionalities like machine learning,
+
+00:00:19.804 --> 00:00:23.129
+real time stream processing, and graph computations.
+
+00:00:23.129 --> 00:00:26.519
+Apache Spark is gaining popularity and is emerging as
+
+00:00:26.519 --> 00:00:31.785
+the standard execution engine in Hadoop because of it's extensible and flexible APIs,
+
+00:00:31.785 --> 00:00:33.570
+high-performance, ease of use,
+
+00:00:33.570 --> 00:00:35.865
+and increased developer productivity.
+
+00:00:35.865 --> 00:00:39.240
+Mainly, we'd like to focus on Spark Core, SQL,
+
+00:00:39.240 --> 00:00:42.789
+and streaming components, and explore commonly used APIs,
+
+00:00:42.789 --> 00:00:44.659
+and how those really work behind.
+
+00:00:44.659 --> 00:00:47.689
+We'll also look at the core building blocks for Spark,
+
+00:00:47.689 --> 00:00:49.594
+which are RDDs, DataFrame,
+
+00:00:49.594 --> 00:00:53.759
+and data set, and how the functions for these collections work.
+

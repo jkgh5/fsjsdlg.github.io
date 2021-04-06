@@ -1,0 +1,127 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:06.889 --> 00:00:11.460
+Just like bread companies make copies of the starter from their mother dough,
+
+00:00:11.460 --> 00:00:14.670
+every Spark function makes a copy of its input data
+
+00:00:14.669 --> 00:00:17.144
+and never changes the original parent data.
+
+00:00:17.144 --> 00:00:20.774
+Because Spark doesn't change or mutate the input data,
+
+00:00:20.774 --> 00:00:22.919
+it's known as immutible.
+
+00:00:22.920 --> 00:00:25.500
+This makes sense when you have a single function.
+
+00:00:25.500 --> 00:00:28.495
+But what happens when you have lots of functions in your program?
+
+00:00:28.495 --> 00:00:32.109
+After all, there are usually a lot of steps when you wrangle data,
+
+00:00:32.109 --> 00:00:34.700
+just like there are many steps in baking bread.
+
+00:00:34.700 --> 00:00:38.390
+In Spark, you do this by chaining together multiple functions
+
+00:00:38.390 --> 00:00:41.285
+that each accomplish a small chunk of the work.
+
+00:00:41.284 --> 00:00:45.469
+You'll often see a function that is composed of multiple subfunctions,
+
+00:00:45.469 --> 00:00:48.079
+and in order for this big function to be peer,
+
+00:00:48.079 --> 00:00:50.689
+each sub function also has to be peer.
+
+00:00:50.689 --> 00:00:53.119
+It would seem that Spark needs to make a copy
+
+00:00:53.119 --> 00:00:56.034
+of the input data for each subfunction.
+
+00:00:56.034 --> 00:00:58.459
+If this was the case, your Spark program
+
+00:00:58.460 --> 00:01:00.679
+would run out of memory pretty quickly.
+
+00:01:00.679 --> 00:01:03.619
+Fortunately, Spark avoids this by using
+
+00:01:03.619 --> 00:01:07.159
+a functional programming concept called lazy evaluation.
+
+00:01:07.159 --> 00:01:10.039
+Before Spark does anything with the data in your program,
+
+00:01:10.040 --> 00:01:15.050
+it first built step-by-step directions of what functions and data it will need.
+
+00:01:15.049 --> 00:01:18.379
+These directions are like the recipe for your bread,
+
+00:01:18.379 --> 00:01:22.354
+and in Spark, this is called a Directed Acyclic Graph.
+
+00:01:22.355 --> 00:01:23.960
+Now, that's a mouthful.
+
+00:01:23.959 --> 00:01:27.664
+So almost everyone just uses the abbreviation DAG.
+
+00:01:27.665 --> 00:01:30.185
+Once Spark builds the DAG from your code,
+
+00:01:30.185 --> 00:01:32.135
+it checks if it can procrastinate,
+
+00:01:32.135 --> 00:01:35.405
+waiting until the last possible moment to get the data.
+
+00:01:35.405 --> 00:01:38.799
+This is exactly what you would do if you were baking bread.
+
+00:01:38.799 --> 00:01:41.814
+You want to grab the flour, bring it back to your bowl,
+
+00:01:41.814 --> 00:01:45.259
+and then go back to the pantry and get some sugar and add it to the bowl,
+
+00:01:45.260 --> 00:01:47.060
+and then go back to the cupboard for salt,
+
+00:01:47.060 --> 00:01:48.920
+and so on for every ingredient.
+
+00:01:48.920 --> 00:01:53.560
+This would be the cooking equivalent of thrashing as we discussed in lesson one.
+
+00:01:53.560 --> 00:01:57.290
+Instead, you would look at the recipe before you start mixing
+
+00:01:57.290 --> 00:02:01.655
+ingredients together to see what you can grab and mix together in one big step.
+
+00:02:01.655 --> 00:02:04.929
+In fact, you often mix all your dry ingredients,
+
+00:02:04.929 --> 00:02:06.665
+then mix all your wet ingredients,
+
+00:02:06.665 --> 00:02:09.185
+and then combine them together before baking.
+
+00:02:09.185 --> 00:02:14.310
+In Spark, these multi-step combos are called stages.
+

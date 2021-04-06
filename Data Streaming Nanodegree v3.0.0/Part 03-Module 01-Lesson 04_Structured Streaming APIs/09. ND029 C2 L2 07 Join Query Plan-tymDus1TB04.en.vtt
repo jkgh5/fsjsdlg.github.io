@@ -1,0 +1,127 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:03.915
+In this video, we'll start to take a look at the join query plan.
+
+00:00:03.915 --> 00:00:07.679
+Query plans are helpful to look at especially when you're using Spark.
+
+00:00:07.679 --> 00:00:12.300
+Query plans are part of the catalyst optimizer which contains a library that
+
+00:00:12.300 --> 00:00:17.550
+presents a tree structure of relational operators of a structured query you generated.
+
+00:00:17.550 --> 00:00:22.380
+Query plans also provide information about how the output schema was generated.
+
+00:00:22.379 --> 00:00:26.564
+We're going to load some parquet files from two different locations.
+
+00:00:26.565 --> 00:00:33.240
+You can do the same operations in Python as in thought explained to see this.
+
+00:00:33.240 --> 00:00:35.850
+So we're going to load two data frames.
+
+00:00:35.850 --> 00:00:38.594
+This is under Facilities.
+
+00:00:38.594 --> 00:00:42.769
+Then we're going to load another data frame under Tiers.
+
+00:00:42.770 --> 00:00:47.995
+We're just going to do a quick show on these files to see the content.
+
+00:00:47.994 --> 00:00:51.084
+So that shows a region,
+
+00:00:51.085 --> 00:00:54.289
+a district and the facility name which is
+
+00:00:54.289 --> 00:00:58.369
+the hospital names and the types of the hospitals,
+
+00:00:58.369 --> 00:01:01.299
+town, ownership and the location.
+
+00:01:01.299 --> 00:01:02.519
+Then when you do this,
+
+00:01:02.520 --> 00:01:03.560
+this shows a region,
+
+00:01:03.560 --> 00:01:10.219
+facilities and the tiers of the facilities and the name in lowercase.
+
+00:01:10.219 --> 00:01:15.935
+So we're going to do a join to see the tiers of the each facilities.
+
+00:01:15.935 --> 00:01:19.260
+So I'm going to keep facilities df as
+
+00:01:19.260 --> 00:01:23.430
+a left table and I'm going to keep the tiers df on the right table.
+
+00:01:23.430 --> 00:01:26.240
+Join and when I do this.
+
+00:01:26.239 --> 00:01:28.819
+So when I do an operation like this,
+
+00:01:28.819 --> 00:01:31.399
+this means I'll be joining over two columns.
+
+00:01:31.400 --> 00:01:34.205
+Then I'm going to choose inner join.
+
+00:01:34.204 --> 00:01:36.454
+Then when I apply dot explain,
+
+00:01:36.454 --> 00:01:41.194
+this actually show us a physical plan of how this query was generated.
+
+00:01:41.194 --> 00:01:50.189
+Here you'll see a file-scan parquet which means this was scanned as a parquet format.
+
+00:01:50.189 --> 00:01:54.629
+It also shows a location so that's the pixels of facilities df.
+
+00:01:54.629 --> 00:02:02.715
+Here we have another one for tiers also in parquet and also in the Tiers folder.
+
+00:02:02.715 --> 00:02:05.079
+We also see the project.
+
+00:02:05.079 --> 00:02:08.454
+This shows a schema of each data frame.
+
+00:02:08.455 --> 00:02:12.030
+We also see this BroadcastHashJoin.
+
+00:02:12.030 --> 00:02:16.824
+So SortMergeJoin is a standard plan for join operation by keys.
+
+00:02:16.824 --> 00:02:22.039
+Usually you will see that but right now we're seeing BroadcastHashJoin.
+
+00:02:22.039 --> 00:02:26.079
+This shows when your joined dataset is small.
+
+00:02:26.080 --> 00:02:30.219
+The usual threshold is 10 megabytes and it is defined
+
+00:02:30.219 --> 00:02:35.370
+by the Spark.SQL, AutobroadcastHashJoin threshold.
+
+00:02:35.370 --> 00:02:39.115
+Spark will choose BroadcastHashJoin when
+
+00:02:39.115 --> 00:02:43.075
+your dataset is less than 10 megabytes which is a default value,
+
+00:02:43.074 --> 00:02:48.379
+and sometimes ShuffleHashJoin which happens much less occasionally.
+

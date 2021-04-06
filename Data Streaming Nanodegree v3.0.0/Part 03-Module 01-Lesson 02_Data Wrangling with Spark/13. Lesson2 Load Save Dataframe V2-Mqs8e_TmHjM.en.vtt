@@ -1,0 +1,220 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:03.044
+In this video, we will go through an example of how to
+
+00:00:03.044 --> 00:00:06.794
+import and export data to and from Spark data frames.
+
+00:00:06.794 --> 00:00:08.685
+So let's just get started.
+
+00:00:08.685 --> 00:00:11.804
+First, let's take a look at our Spark session.
+
+00:00:11.804 --> 00:00:14.129
+As we discussed in the previous videos,
+
+00:00:14.130 --> 00:00:15.705
+we can set its parameters.
+
+00:00:15.705 --> 00:00:18.839
+For example, we can add the name of our application.
+
+00:00:18.839 --> 00:00:22.440
+Let me just first import Spark session.
+
+00:00:22.440 --> 00:00:24.225
+We'd get or create,
+
+00:00:24.225 --> 00:00:26.970
+if the session already exists, we will update it,
+
+00:00:26.969 --> 00:00:28.515
+if it doesn't exist,
+
+00:00:28.515 --> 00:00:32.174
+a new one will be created as we discussed in a previous video.
+
+00:00:32.174 --> 00:00:35.369
+So let's see what happen to the parameters.
+
+00:00:35.369 --> 00:00:39.839
+As you can see I just made a typo, this should be capital C,
+
+00:00:39.840 --> 00:00:42.590
+and now we can see all the parameters here.
+
+00:00:42.590 --> 00:00:45.950
+We have successfully updated the name of our application,
+
+00:00:45.950 --> 00:00:50.285
+and now it's called our first Spark SQL example.
+
+00:00:50.284 --> 00:00:53.750
+You can also take a look at the other parameters here.
+
+00:00:53.750 --> 00:00:57.515
+Let's just load a JSON file into a Spark data frame.
+
+00:00:57.515 --> 00:01:00.770
+In the next few videos, we will use a dataset
+
+00:01:00.770 --> 00:01:04.540
+that describes log events coming from a music streaming service.
+
+00:01:04.540 --> 00:01:08.035
+As users use different pages of the application,
+
+00:01:08.034 --> 00:01:10.414
+their page requests are logged.
+
+00:01:10.415 --> 00:01:16.455
+Let's define the pass of this first example called sparkify_log_small.json.
+
+00:01:16.454 --> 00:01:22.474
+I previously saved this file to HDFS on the cluster we run our Spark application on.
+
+00:01:22.474 --> 00:01:25.549
+This is just the IP address of the master node.
+
+00:01:25.549 --> 00:01:29.914
+So let's load the JSON file into a data frame called user_log.
+
+00:01:29.915 --> 00:01:31.550
+To see what we got here,
+
+00:01:31.549 --> 00:01:35.015
+let's print the schema with the printSchema method.
+
+00:01:35.015 --> 00:01:38.435
+We have a couple of fields describing the user,
+
+00:01:38.435 --> 00:01:41.465
+for example, we have user ID here,
+
+00:01:41.465 --> 00:01:43.655
+first name and last name,
+
+00:01:43.655 --> 00:01:47.284
+and also have information about the request, for example,
+
+00:01:47.284 --> 00:01:49.879
+the page the user accessed,
+
+00:01:49.879 --> 00:01:54.199
+the HTTP method, or the status of the request.
+
+00:01:54.200 --> 00:01:58.520
+Let's try the describe method to see what we can learn from our data.
+
+00:01:58.519 --> 00:02:03.289
+As you can see, the describe returned the columns we have in this data frame,
+
+00:02:03.290 --> 00:02:07.100
+and their type just as printSchema did.
+
+00:02:07.099 --> 00:02:10.055
+We can also take a look at a particular record.
+
+00:02:10.055 --> 00:02:13.474
+So let's just see how the first one looks like.
+
+00:02:13.474 --> 00:02:15.829
+Apparently, cannot make use.
+
+00:02:15.830 --> 00:02:19.355
+Was just listening to a, showaddywaddy.
+
+00:02:19.354 --> 00:02:23.719
+We can also use the take method to grab the first few records.
+
+00:02:23.719 --> 00:02:25.609
+The first record is still the same,
+
+00:02:25.610 --> 00:02:29.525
+but we can see a couple more example how our dataset looks like.
+
+00:02:29.525 --> 00:02:32.780
+Now that we have successfully loaded our data into this frame,
+
+00:02:32.780 --> 00:02:35.759
+let's see how to save it into a different format,
+
+00:02:35.759 --> 00:02:38.280
+for example, into a CSV file.
+
+00:02:38.280 --> 00:02:42.169
+I use the same HDFS folder as the input files,
+
+00:02:42.169 --> 00:02:44.669
+and specify the file name here.
+
+00:02:44.669 --> 00:02:50.750
+Let's call our CSV version of this file, sparkify_ log_file.csv.
+
+00:02:50.750 --> 00:02:55.319
+We can use the right.save method to save this file.
+
+00:02:55.319 --> 00:02:57.974
+I specify the format as CSV,
+
+00:02:57.974 --> 00:03:00.549
+and also set the header to true,
+
+00:03:00.550 --> 00:03:04.460
+just to make sure that we can preserve the column names.
+
+00:03:04.460 --> 00:03:07.099
+All right, let's just load the CSV file
+
+00:03:07.099 --> 00:03:09.939
+we just saved into another data frame.
+
+00:03:09.939 --> 00:03:14.759
+We can use the read.csv method, specify the same.
+
+00:03:14.759 --> 00:03:17.639
+If I pass here, that'll be saved,
+
+00:03:17.639 --> 00:03:22.500
+our CSV file, and also set the header to true.
+
+00:03:22.500 --> 00:03:25.240
+Let's check our schema first,
+
+00:03:25.240 --> 00:03:27.545
+as the same as it was before.
+
+00:03:27.544 --> 00:03:31.864
+We can also take a look at the first few records.
+
+00:03:31.865 --> 00:03:35.060
+Again, we see the same records as we saw
+
+00:03:35.060 --> 00:03:38.199
+with the other data frame just as expected.
+
+00:03:38.199 --> 00:03:41.179
+In this video, we went through an example on how to
+
+00:03:41.180 --> 00:03:45.125
+load and save data frames from and to HDFS.
+
+00:03:45.125 --> 00:03:47.145
+If a file is stored in S3,
+
+00:03:47.145 --> 00:03:48.795
+you can use the same methods.
+
+00:03:48.794 --> 00:03:50.534
+When specifying the file past,
+
+00:03:50.534 --> 00:03:52.969
+we just need to make sure that we are pointing to
+
+00:03:52.969 --> 00:03:56.939
+the S3 bucket that stores our target file.
+

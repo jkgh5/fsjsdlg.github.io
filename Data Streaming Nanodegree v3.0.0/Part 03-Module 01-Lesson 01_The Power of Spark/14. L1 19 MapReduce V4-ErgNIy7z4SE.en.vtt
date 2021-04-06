@@ -1,0 +1,151 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:06.950 --> 00:00:11.655
+When David talked about how much data qualifies as big data,
+
+00:00:11.654 --> 00:00:14.969
+he went through an example of how we can potentially
+
+00:00:14.970 --> 00:00:18.685
+analyse big file by dividing it into smaller pieces,
+
+00:00:18.684 --> 00:00:20.910
+sending the chunks to our colleagues,
+
+00:00:20.910 --> 00:00:22.850
+running the processing in parallel,
+
+00:00:22.850 --> 00:00:24.865
+and then collecting the results.
+
+00:00:24.864 --> 00:00:29.434
+The spherical resembles the MapReduce logic quite closely.
+
+00:00:29.434 --> 00:00:34.524
+All those pride provides higher level abstractions and in-memory computation,
+
+00:00:34.524 --> 00:00:38.679
+it's useful to know a bit more about the idea that inspired it.
+
+00:00:38.679 --> 00:00:42.378
+Let's use MapReduce on a four node cluster to calculate
+
+00:00:42.378 --> 00:00:47.524
+how many times each song was played in the last year in our music streaming service.
+
+00:00:47.524 --> 00:00:50.030
+Since our company has grown quite larget,
+
+00:00:50.030 --> 00:00:52.700
+the log data containing all these events is
+
+00:00:52.700 --> 00:00:57.255
+hundreds of gigs and cannot be processed on a single machine.
+
+00:00:57.255 --> 00:01:01.800
+In the MapReduce job we have three well-defined steps,
+
+00:01:01.799 --> 00:01:04.504
+Map, shuffle, and reduce.
+
+00:01:04.504 --> 00:01:08.954
+Let us assume that we stored our big log file on HDFS.
+
+00:01:08.954 --> 00:01:11.780
+First, we need to break the data up into
+
+00:01:11.780 --> 00:01:16.210
+smaller chunks so commodity machines can handle the computational load.
+
+00:01:16.209 --> 00:01:20.004
+Fortunately, HDFS we'll take care of this for us.
+
+00:01:20.004 --> 00:01:23.015
+Let's call these chunks partitions.
+
+00:01:23.015 --> 00:01:27.109
+In the first step, each map processors partition from
+
+00:01:27.109 --> 00:01:31.078
+disk transforms each record in that given partition,
+
+00:01:31.078 --> 00:01:34.764
+then rises modify records to an intermediate file.
+
+00:01:34.765 --> 00:01:38.625
+The transformation in this case consists of five steps,
+
+00:01:38.625 --> 00:01:41.275
+we read each line of the log file,
+
+00:01:41.275 --> 00:01:45.675
+check if it's an event describing you use your listening to a song,
+
+00:01:45.674 --> 00:01:49.344
+then we check that the timestamp is in the correct range,
+
+00:01:49.344 --> 00:01:51.584
+then extract the name of the song,
+
+00:01:51.584 --> 00:01:56.309
+and finally create a tuple with the name and the number one.
+
+00:01:56.310 --> 00:01:58.064
+At the end of the step,
+
+00:01:58.064 --> 00:02:00.409
+we will have multiple intermediate files
+
+00:02:00.409 --> 00:02:04.344
+containing pairs of a song title and the number one.
+
+00:02:04.344 --> 00:02:11.224
+These type of pairs show up a lot in big data and are called key-value pairs or tuples.
+
+00:02:11.224 --> 00:02:13.280
+Even with four machines,
+
+00:02:13.280 --> 00:02:14.810
+the data is so large.
+
+00:02:14.810 --> 00:02:20.515
+We will need many map processes one after another to Maestro all the records we have.
+
+00:02:20.514 --> 00:02:23.103
+Once all the map processes are complete,
+
+00:02:23.104 --> 00:02:25.000
+the second step is the shuffle.
+
+00:02:25.000 --> 00:02:29.955
+All the records from these intermediate files are shuffled across the cluster,
+
+00:02:29.955 --> 00:02:31.895
+so the pairs with the same song,
+
+00:02:31.895 --> 00:02:35.495
+the key of the key value pair end up on the same machine.
+
+00:02:35.495 --> 00:02:38.930
+This way when the node aggregates the values for key,
+
+00:02:38.930 --> 00:02:41.960
+it can be sure that it has all the corresponding data for
+
+00:02:41.960 --> 00:02:45.900
+a song and can compute the correct final result.
+
+00:02:45.900 --> 00:02:48.689
+In the last, reduce step,
+
+00:02:48.689 --> 00:02:51.530
+the values for a given key can be combined.
+
+00:02:51.530 --> 00:02:55.495
+In this case, we just need to sum all the ones for a given key.
+
+00:02:55.495 --> 00:02:59.930
+Finally the count results are written to the output files.
+

@@ -1,0 +1,79 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:05.809 --> 00:00:11.125
+Let's say you want to build the dashboard with big data to support a team of analysts,
+
+00:00:11.125 --> 00:00:14.669
+this usually starts with extracting and transforming data.
+
+00:00:14.669 --> 00:00:19.454
+Similar to what we described for the Sparkify report on top artists for Canadians.
+
+00:00:19.454 --> 00:00:22.919
+The final step is to load the results into a database,
+
+00:00:22.920 --> 00:00:24.929
+where they can be quickly retrieved by
+
+00:00:24.929 --> 00:00:29.184
+a data visualization tool to make an interactive dashboard.
+
+00:00:29.184 --> 00:00:31.535
+This process of extracting,
+
+00:00:31.535 --> 00:00:33.804
+transforming, and loading data,
+
+00:00:33.804 --> 00:00:37.420
+is so common, hence it's abbreviation ETL,
+
+00:00:37.420 --> 00:00:39.620
+has become a verb in the industry.
+
+00:00:39.619 --> 00:00:44.059
+ETLing data is the bread and butter of systems like Spark,
+
+00:00:44.060 --> 00:00:47.725
+and is an essential skill for anyone working with big data.
+
+00:00:47.725 --> 00:00:50.054
+The second use case for Spark,
+
+00:00:50.054 --> 00:00:53.435
+is to train machine learning models on big data.
+
+00:00:53.435 --> 00:00:57.170
+Spark is particularly useful for iterative algorithms,
+
+00:00:57.170 --> 00:01:00.385
+like Logistic Regression or calculating Page Rank.
+
+00:01:00.384 --> 00:01:04.765
+These algorithms repeat calculations with slightly different parameters,
+
+00:01:04.765 --> 00:01:07.129
+over and over on the same data.
+
+00:01:07.129 --> 00:01:10.589
+Spark is designed to keep this data in your memory,
+
+00:01:10.590 --> 00:01:12.909
+considerably speeding up the training.
+
+00:01:12.909 --> 00:01:15.530
+Spark strength that these two use cases,
+
+00:01:15.530 --> 00:01:18.109
+general-purpose big data analytics and machine
+
+00:01:18.109 --> 00:01:22.010
+learning is what makes it king of the big data ecosystem.
+
+00:01:22.010 --> 00:01:27.640
+It does this by using all the distributed processing techniques of Hadoop MapReduce,
+
+00:01:27.640 --> 00:01:30.000
+but with a more efficient use of memory.
+

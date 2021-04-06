@@ -1,0 +1,151 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:07.339 --> 00:00:13.480
+While distributed computing and big-data applications have existed for a long time,
+
+00:00:13.480 --> 00:00:16.105
+most people associate the recent big-data boom
+
+00:00:16.105 --> 00:00:18.935
+with the emergence of the Hadoop Ecosystem.
+
+00:00:18.934 --> 00:00:22.299
+We will take a look at the backbones of Hadoop and talk a
+
+00:00:22.300 --> 00:00:25.734
+bit about the related technologies you might come across.
+
+00:00:25.734 --> 00:00:28.379
+But as David mentioned at the beginning,
+
+00:00:28.379 --> 00:00:31.809
+the ecosystem is fairly complex and you definitely don't
+
+00:00:31.809 --> 00:00:35.560
+need to know all these tools to get started with Spark.
+
+00:00:35.560 --> 00:00:40.359
+Doug Cutting and Mike Cafarella co-founded the open source Hadoop framework in
+
+00:00:40.359 --> 00:00:46.000
+2006 based on previous Google Research published in the early 2000s.
+
+00:00:46.000 --> 00:00:49.744
+The Hadoop framework consists of four main components.
+
+00:00:49.744 --> 00:00:54.524
+The first is the Hadoop Distributed File System or HDFS in short.
+
+00:00:54.524 --> 00:00:58.554
+HDFS stores data on commodity machines with application,
+
+00:00:58.554 --> 00:01:02.215
+hence providing very high aggregate bandwidth across the cluster.
+
+00:01:02.215 --> 00:01:06.140
+The second is Hadoop MapReduce an implementation
+
+00:01:06.140 --> 00:01:10.234
+of the MapReduce programming model for large scale data processing.
+
+00:01:10.234 --> 00:01:12.049
+Most people think of this,
+
+00:01:12.049 --> 00:01:13.849
+when they think of MapReduce.
+
+00:01:13.849 --> 00:01:17.329
+The third is a resource manager called Hadoop YARN,
+
+00:01:17.329 --> 00:01:21.314
+that schedules the computation over code of users applications.
+
+00:01:21.314 --> 00:01:28.640
+Finally, Hadoop Common contains libraries and utilities needed by other Hadoop modules.
+
+00:01:28.640 --> 00:01:31.840
+Soon after the MapReduce projects started,
+
+00:01:31.840 --> 00:01:37.704
+other projects began to provide higher-level abstraction on top of this Java Framework.
+
+00:01:37.704 --> 00:01:39.700
+Apache Pig for example,
+
+00:01:39.700 --> 00:01:43.155
+was developed by Yahoo to allow researchers to run
+
+00:01:43.155 --> 00:01:47.859
+Ad hoc MapReduce jobs using a language similar to SQL.
+
+00:01:47.859 --> 00:01:51.484
+Apache Hive, is another tool that provides
+
+00:01:51.484 --> 00:01:57.314
+higher level interface for SQL data summarization, query, and analysis.
+
+00:01:57.314 --> 00:02:02.030
+The problem with the traditional MapReduce approach is that after each step,
+
+00:02:02.030 --> 00:02:04.340
+the results are saved to disk.
+
+00:02:04.340 --> 00:02:06.900
+If you remember the previous videos,
+
+00:02:06.900 --> 00:02:09.189
+Disk ayo is relatively so,
+
+00:02:09.189 --> 00:02:11.560
+so these jobs can take too long.
+
+00:02:11.560 --> 00:02:15.545
+The slowness motivated Matei Zaharia to start
+
+00:02:15.544 --> 00:02:20.089
+disbarred project at UC Berkeley's AmpLab in 2009.
+
+00:02:20.090 --> 00:02:24.680
+Spark doesn't have to write intermediate results to disk and can perform
+
+00:02:24.680 --> 00:02:29.495
+fast in-memory computations for multiple Map and Reduce steps.
+
+00:02:29.495 --> 00:02:36.770
+The projects has open source in 2010 and became a top-level Apache project in 2014.
+
+00:02:36.770 --> 00:02:41.930
+Since then, it's popularity and adaptation has been growing steadily.
+
+00:02:41.930 --> 00:02:44.360
+There are two other distributed streaming
+
+00:02:44.360 --> 00:02:48.200
+processing projects that started around the same time as Spark,
+
+00:02:48.199 --> 00:02:52.879
+and later became top-level Apache projects, Storm and Flink.
+
+00:02:52.879 --> 00:02:55.814
+Storm was originally created by Nathan Marz,
+
+00:02:55.814 --> 00:02:59.484
+where he was at a social media startup called BackType.
+
+00:02:59.485 --> 00:03:03.010
+Twitter later acquired BackType and open sourced Storm.
+
+00:03:03.009 --> 00:03:08.823
+Flink started as a collaboration between German universities and research institutes.
+
+00:03:08.824 --> 00:03:11.835
+Both tools are designed for fast streaming,
+
+00:03:11.835 --> 00:03:14.120
+so you can get results in milliseconds,
+
+00:03:14.120 --> 00:03:18.730
+which is much shorter than you can accomplish with Spark's streaming library.
+

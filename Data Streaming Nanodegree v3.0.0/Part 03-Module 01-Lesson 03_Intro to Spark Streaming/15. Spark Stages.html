@@ -1,0 +1,299 @@
+<!-- udacity2.0 -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Spark Stages</title>
+  <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../assets/css/plyr.css">
+  <link rel="stylesheet" href="../assets/css/katex.min.css">
+  <link rel="stylesheet" href="../assets/css/jquery.mCustomScrollbar.min.css">
+  <link rel="stylesheet" href="../assets/css/styles.css">
+  <link rel="shortcut icon" type="image/png" href="../assets/img/udacimak.png" />
+</head>
+
+<body>
+  <div class="wrapper">
+    <nav id="sidebar">
+  <div class="sidebar-header">
+    <h3>Intro to Spark Streaming</h3>
+  </div>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled components">
+    <li class="">
+      <a href="01. Welcome to Data Streaming.html">01. Welcome to Data Streaming</a>
+    </li>
+    <li class="">
+      <a href="02. Lesson Overview.html">02. Lesson Overview</a>
+    </li>
+    <li class="">
+      <a href="03. Introduce Spark Ecosystem.html">03. Introduce Spark Ecosystem</a>
+    </li>
+    <li class="">
+      <a href="04. Review Spark Ecosystem.html">04. Review: Spark Ecosystem</a>
+    </li>
+    <li class="">
+      <a href="05. Intro to Spark RDDs.html">05. Intro to Spark RDDs</a>
+    </li>
+    <li class="">
+      <a href="06. Partitioning in Spark.html">06. Partitioning in Spark</a>
+    </li>
+    <li class="">
+      <a href="07. DataFrames and Datasets.html">07. DataFrames and Datasets</a>
+    </li>
+    <li class="">
+      <a href="08. Create RDD and DataFrame.html">08. Create RDD and DataFrame</a>
+    </li>
+    <li class="">
+      <a href="09. Intro to Spark Streaming.html">09. Intro to Spark Streaming</a>
+    </li>
+    <li class="">
+      <a href="10. Review Spark Streaming &amp; DStream.html">10. Review: Spark Streaming &amp; DStream</a>
+    </li>
+    <li class="">
+      <a href="11. Spark Structured Streaming.html">11. Spark Structured Streaming</a>
+    </li>
+    <li class="">
+      <a href="12. State Management.html">12. State Management</a>
+    </li>
+    <li class="">
+      <a href="13. Spark UI  DAGs.html">13. Spark UI / DAGs</a>
+    </li>
+    <li class="">
+      <a href="14. More on the Spark UI.html">14. More on the Spark UI</a>
+    </li>
+    <li class="">
+      <a href="15. Spark Stages.html">15. Spark Stages</a>
+    </li>
+    <li class="">
+      <a href="16. Establishing Schema.html">16. Establishing Schema</a>
+    </li>
+    <li class="">
+      <a href="17. Lesson Recap.html">17. Lesson Recap</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+</nav>
+
+    <div id="content">
+      <header class="container-fluild header">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <div class="align-items-middle">
+                <button type="button" id="sidebarCollapse" class="btn btn-toggle-sidebar">
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                </button>
+
+                <h1 style="display: inline-block">15. Spark Stages</h1>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <main class="container">
+        <div class="row">
+          <div class="col-12">
+            <div class="ud-atom">
+  <h3><p>ND029 C2 L1 14 Spark Stages</p></h3>
+  <video controls>
+  <source src="15. ND029 C2 L1 14 Spark Stages-VZvCtgs40Bo.mp4" type="video/mp4">
+
+  <track default="true" kind="subtitles" srclang="en" src="15. ND029 C2 L1 14 Spark Stages-VZvCtgs40Bo.en.vtt" label="en">
+</video>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3><p>Advanced - Spark Stages and Spark UI</p></h3>
+  <div>
+  <h2 id="advanced-demo-spark-stages-and-spark-ui">Advanced Demo: Spark Stages and Spark UI</h2>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3><p>ND029 C2 L1 15 Spark Stages And Spark UI Advanced Demo</p></h3>
+  <video controls>
+  <source src="15. ND029 C2 L1 15 Spark Stages And Spark UI Advanced Demo-0Xi7NipF0sU.mp4" type="video/mp4">
+
+  <track default="true" kind="subtitles" srclang="en" src="15. ND029 C2 L1 15 Spark Stages And Spark UI Advanced Demo-0Xi7NipF0sU.en.vtt" label="en">
+</video>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3><p>Spark UI / DAGs / Stages</p></h3>
+  <div>
+  <h2 id="example-of-spark-ui-dags-stages-and-code">Example of Spark UI, DAGs, stages and code</h2>
+<p>This is the code that was used to generate the image below.</p>
+<pre><code>from pyspark.sql import SparkSession
+spark = SparkSession.builder \
+        .config('spark.ui.port', 3000) \
+        .master("local[2]") \
+        .appName("data exploration") \
+        .getOrCreate()
+
+spark.conf.set('spark.executor.memory', '3g')
+spark.conf.set('spark.executor.cores', '3g')
+
+df = spark.read.csv('AB_NYC_2019.csv', header=True)
+df1 = df.select('neighbourhood', 'price').distinct()
+import pyspark.sql.functions
+df1.rdd.getNumPartitions()
+df1.repartition(10).agg({"price": "max"}).collect()</code></pre>
+<p>This will give you some nonsense data at the end, but we can take a closer look at how the tasks were split.</p>
+<p>Since the code annotates <code>local[2]</code>, it's using 2 partitions at the beginning. <code>local[*]</code> means <code>local[{Runtime.getRuntime.availableProcessors()}]</code>. And then depending on the data, there are 200 tasks. Then there is <code>repartition(10)</code> which brought down the number of tasks to 10. Finally the last <code>collect()</code> has 1 task.</p>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3><p>Spark UI / dags / stages Graphic</p></h3>
+  <div>
+  <figure class="figure">
+    <img src="img/screen-shot-2019-10-09-at-8.25.34-pm.png" alt="**Spark UI Stages Tab**" class="img img-fluid">
+    <figcaption class="figure-caption">
+      <p><strong>Spark UI Stages Tab</strong></p>
+    </figcaption>
+  </figure>
+</div>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3><p>Spark UI advanced tab</p></h3>
+  <div>
+  <figure class="figure">
+    <img src="img/screen-shot-2019-10-09-at-8.26.11-pm.png" alt="**SQL Tab Seen When You Use SparkSession**
+(If used with SparkContext, you will not see the SQL tab though, since SparkContext is the entry point for RDD, which is in the Core component.)" class="img img-fluid">
+    <figcaption class="figure-caption">
+      <p><strong>SQL Tab Seen When You Use SparkSession</strong><br />
+(If used with SparkContext, you will not see the SQL tab though, since SparkContext is the entry point for RDD, which is in the Core component.)</p>
+    </figcaption>
+  </figure>
+</div>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3><p>Logical Plan and Physical Plan of Spark job</p></h3>
+  <div>
+  <figure class="figure">
+    <img src="img/screen-shot-2019-10-09-at-8.32.36-pm.png" alt="**Detailed Logical Plan and Physical Plan of Spark Job**" class="img img-fluid">
+    <figcaption class="figure-caption">
+      <p><strong>Detailed Logical Plan and Physical Plan of Spark Job</strong></p>
+    </figcaption>
+  </figure>
+</div>
+
+
+</div>
+<div class="divider"></div>
+          </div>
+
+          <div class="col-12">
+            <p class="text-right">
+              <a href="16. Establishing Schema.html" class="btn btn-outline-primary mt-4" role="button">Next Concept</a>
+            </p>
+          </div>
+        </div>
+      </main>
+
+      <footer class="footer">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <p class="text-center">
+                <a href="https://us-udacity.github.io/" target="_blank">【udacity2.0 】If you need more courses, please add wechat：udacity6</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </div>
+
+
+  <script src="../assets/js/jquery-3.3.1.min.js"></script>
+  <script src="../assets/js/plyr.polyfilled.min.js"></script>
+  <script src="../assets/js/bootstrap.min.js"></script>
+  <script src="../assets/js/jquery.mCustomScrollbar.concat.min.js"></script>
+  <script src="../assets/js/katex.min.js"></script>
+  <script>
+    // Initialize Plyr video players
+    const players = Array.from(document.querySelectorAll('video')).map(p => new Plyr(p));
+
+    // render math equations
+    let elMath = document.getElementsByClassName('mathquill');
+    for (let i = 0, len = elMath.length; i < len; i += 1) {
+      const el = elMath[i];
+
+      katex.render(el.textContent, el, {
+        throwOnError: false
+      });
+    }
+
+    // this hack will make sure Bootstrap tabs work when using Handlebars
+    if ($('#question-tabs').length && $('#user-answer-tabs').length) {
+      $("#question-tabs a.nav-link").on('click', function () {
+        $("#question-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+      $("#user-answer-tabs a.nav-link").on('click', function () {
+        $("#user-answer-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    } else {
+      $("a.nav-link").on('click', function () {
+        $(".tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    }
+
+    // side bar events
+    $(document).ready(function () {
+      $("#sidebar").mCustomScrollbar({
+        theme: "minimal"
+      });
+
+      $('#sidebarCollapse').on('click', function () {
+        $('#sidebar, #content').toggleClass('active');
+        $('.collapse.in').toggleClass('in');
+        $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+      });
+
+      // scroll to first video on page loading
+      if ($('video').length) {
+        $('html,body').animate({ scrollTop: $('div.plyr').prev().offset().top});
+      }
+
+      // auto play first video: this may not work with chrome/safari due to autoplay policy
+      if (players && players.length > 0) {
+        players[0].play();
+      }
+
+      // scroll sidebar to current concept
+      const currentInSideBar = $( "ul.sidebar-list.components li a:contains('15. Spark Stages')" )
+      currentInSideBar.css( "text-decoration", "underline" );
+      $("#sidebar").mCustomScrollbar('scrollTo', currentInSideBar);
+    });
+  </script>
+</body>
+
+</html>

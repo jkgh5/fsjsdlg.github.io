@@ -1,0 +1,139 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:06.450 --> 00:00:08.919
+After all the excitement of using
+
+00:00:08.919 --> 00:00:12.224
+your coworkers laptops as a makeshift distributed cluster,
+
+00:00:12.224 --> 00:00:14.169
+you almost forgot the whole point.
+
+00:00:14.169 --> 00:00:17.964
+You're trying to find the top artists for your Canadian users.
+
+00:00:17.964 --> 00:00:20.530
+So far, we've filtered out the activity from
+
+00:00:20.530 --> 00:00:24.175
+non Canadian users and extracted the artist's name.
+
+00:00:24.175 --> 00:00:27.070
+We still need to sum up the number of times each artist
+
+00:00:27.070 --> 00:00:30.490
+appears and sort this to find the top artists.
+
+00:00:30.489 --> 00:00:33.004
+Since you only need the artist's name and
+
+00:00:33.005 --> 00:00:35.955
+Canadians only make up a small part of your users,
+
+00:00:35.954 --> 00:00:41.359
+the results that your coworkers email back to you only add up to 10 gigs of data.
+
+00:00:41.359 --> 00:00:44.630
+This data won't fit into the memory on your single machine.
+
+00:00:44.630 --> 00:00:47.655
+So, as it big data, as it turns out,
+
+00:00:47.655 --> 00:00:51.079
+it's easier to use your own laptop to solve this,
+
+00:00:51.079 --> 00:00:55.049
+even though it would take more than 10 gigs of memory to sort the artist,
+
+00:00:55.049 --> 00:00:57.729
+since sorting as a superlinear algorithm.
+
+00:00:57.729 --> 00:01:01.904
+This problem doesn't require us to sort all 10 gigabytes.
+
+00:01:01.905 --> 00:01:05.165
+A program could start by summing up the number of times
+
+00:01:05.165 --> 00:01:09.680
+each artist appears and we end up with one sum for each artist.
+
+00:01:09.680 --> 00:01:12.310
+Rather than dealing with millions of numbers,
+
+00:01:12.310 --> 00:01:14.260
+we only need to sort the artists,
+
+00:01:14.260 --> 00:01:17.060
+and there's probably only a few thousand of them,
+
+00:01:17.060 --> 00:01:18.950
+a few measly kilobytes.
+
+00:01:18.950 --> 00:01:21.465
+Once we have this intermediate result,
+
+00:01:21.465 --> 00:01:24.590
+we can easily sort this in your laptop's memory.
+
+00:01:24.590 --> 00:01:27.140
+But how do you get this intermediate result?
+
+00:01:27.140 --> 00:01:31.150
+One clever trick is to start by writing a very simple program that
+
+00:01:31.150 --> 00:01:35.280
+separates all the data for the artists whose name begins with A through M,
+
+00:01:35.280 --> 00:01:38.269
+from all the artists from the latter half of the alphabet.
+
+00:01:38.269 --> 00:01:41.280
+After that step, you can fit each half,
+
+00:01:41.280 --> 00:01:43.400
+which will be roughly five gigs each,
+
+00:01:43.400 --> 00:01:47.425
+into your memory and you can sum up each artist independently.
+
+00:01:47.424 --> 00:01:51.920
+It's tempting to assume that if your dataset is bigger than your computer's memory,
+
+00:01:51.920 --> 00:01:53.795
+it's automatically big data.
+
+00:01:53.795 --> 00:01:57.165
+But this example shows it's more complicated than that.
+
+00:01:57.165 --> 00:01:59.140
+It can go the other way too.
+
+00:01:59.140 --> 00:02:01.000
+Sometimes you have a smaller dataset,
+
+00:02:01.000 --> 00:02:02.855
+maybe only two gigs,
+
+00:02:02.855 --> 00:02:04.840
+but you want to do something sophisticated,
+
+00:02:04.840 --> 00:02:06.965
+like training a deep learning model.
+
+00:02:06.965 --> 00:02:09.509
+This may be easier to do with more hardware,
+
+00:02:09.509 --> 00:02:11.965
+and thus would qualify as big data.
+
+00:02:11.965 --> 00:02:15.360
+This is why there's no simple definition for big data.
+
+00:02:15.360 --> 00:02:18.350
+But if you understand the capabilities of your computer,
+
+00:02:18.349 --> 00:02:23.079
+then you can decide when you have big data and when it makes sense to use Spark.
+

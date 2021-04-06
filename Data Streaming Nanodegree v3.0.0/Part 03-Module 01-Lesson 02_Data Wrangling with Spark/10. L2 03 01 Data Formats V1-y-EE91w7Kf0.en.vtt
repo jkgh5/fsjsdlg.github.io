@@ -1,0 +1,121 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:05.040 --> 00:00:08.169
+Before we can start any data wrangling,
+
+00:00:08.169 --> 00:00:10.314
+we need to load our data into Spark.
+
+00:00:10.314 --> 00:00:13.674
+In this section, we will take a look at how to do that.
+
+00:00:13.675 --> 00:00:16.600
+The most common data formats you might come across
+
+00:00:16.600 --> 00:00:20.140
+are CSV, JSON, HTML, and XML.
+
+00:00:20.140 --> 00:00:24.355
+A CSV file or comma-separated values file,
+
+00:00:24.355 --> 00:00:27.535
+source tabular data in index format.
+
+00:00:27.535 --> 00:00:30.879
+Each line represents a record where fields are always in
+
+00:00:30.879 --> 00:00:34.839
+the same order defined usually by the first header.
+
+00:00:34.840 --> 00:00:36.580
+As the name suggests,
+
+00:00:36.579 --> 00:00:38.784
+the records are separated with a comma.
+
+00:00:38.784 --> 00:00:43.349
+This might be problematic though if the records can contain commas as well.
+
+00:00:43.350 --> 00:00:46.545
+So oftentimes, the records are wrapped in quotes,
+
+00:00:46.545 --> 00:00:49.505
+or alternative separators actualism.
+
+00:00:49.505 --> 00:00:52.550
+There is no standard for CSV files.
+
+00:00:52.549 --> 00:00:57.694
+So different libraries provide a different degree of support to handle such cases,
+
+00:00:57.695 --> 00:01:01.685
+such as new like characters within a record.
+
+00:01:01.685 --> 00:01:07.519
+JSON or JavaScript object notation storage records in attribute value pairs.
+
+00:01:07.519 --> 00:01:11.750
+The values may contain simple often numeric types or arrays.
+
+00:01:11.750 --> 00:01:15.200
+By JSON was derived from JavaScript is a language
+
+00:01:15.200 --> 00:01:17.635
+independent human-readable format.
+
+00:01:17.635 --> 00:01:21.770
+JSON is very commonly used for browser server communication.
+
+00:01:21.769 --> 00:01:25.625
+So web server log files often contain this format.
+
+00:01:25.625 --> 00:01:29.474
+HTML or hypertext markup language,
+
+00:01:29.474 --> 00:01:34.179
+is a standard markup language for creating web pages and web applications.
+
+00:01:34.180 --> 00:01:36.355
+If you scrape data from the Internet,
+
+00:01:36.355 --> 00:01:38.350
+you will need to update HTML.
+
+00:01:38.349 --> 00:01:41.769
+An HTML page consists of type input commands
+
+00:01:41.769 --> 00:01:44.869
+and the texts are marked by angle brackets.
+
+00:01:44.870 --> 00:01:47.715
+There are different texts to represent images,
+
+00:01:47.715 --> 00:01:50.980
+links, and other specifics of the content.
+
+00:01:50.980 --> 00:01:55.480
+You can think of XML or extensible markup language,
+
+00:01:55.480 --> 00:02:00.984
+as a generalized version of HTML where the tags don't have a specific meaning.
+
+00:02:00.984 --> 00:02:04.299
+Within XML, you can define your own tags to
+
+00:02:04.299 --> 00:02:08.365
+encode the information in both a machine and human readable.
+
+00:02:08.365 --> 00:02:14.465
+The difficulty of dealing with HTML and XML files is that amines can be nested.
+
+00:02:14.465 --> 00:02:16.330
+So why we process these files,
+
+00:02:16.330 --> 00:02:18.860
+we need to keep track of all the opening tags
+
+00:02:18.860 --> 00:02:22.230
+we have seen to preserve the structure.
+

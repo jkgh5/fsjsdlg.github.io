@@ -1,0 +1,73 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:07.730 --> 00:00:12.035
+While memory is efficient for feeding our CPU's data,
+
+00:00:12.035 --> 00:00:14.060
+we run into two problems.
+
+00:00:14.060 --> 00:00:17.149
+The first problem with memory is that it's ephemeral.
+
+00:00:17.149 --> 00:00:21.214
+We'd lose all the data in our memory every time we shut down our machines.
+
+00:00:21.214 --> 00:00:23.640
+There simply isn't an option when you're holding onto
+
+00:00:23.640 --> 00:00:26.850
+valuable data about your customers and business.
+
+00:00:26.850 --> 00:00:29.820
+Secondly, memory is expensive.
+
+00:00:29.820 --> 00:00:32.804
+So, most laptops only come with 8 gigs of memory.
+
+00:00:32.804 --> 00:00:34.524
+Back in the late 90s,
+
+00:00:34.524 --> 00:00:37.109
+when CPU speed starting to level off,
+
+00:00:37.109 --> 00:00:41.384
+many companies invested in very expensive hardware with lots of memory.
+
+00:00:41.384 --> 00:00:45.079
+One of the key strategies that set Google apart was bypassing
+
+00:00:45.079 --> 00:00:49.354
+this expense by building distributed systems using commodity hardware.
+
+00:00:49.354 --> 00:00:51.829
+Rather than relying on lots of memory,
+
+00:00:51.829 --> 00:00:56.379
+Google leveraged long-term storage on cheap pre-used hardware.
+
+00:00:56.380 --> 00:00:58.270
+Oh, and by the way,
+
+00:00:58.270 --> 00:01:01.640
+if you didn't know a distributed system or cluster is
+
+00:01:01.640 --> 00:01:05.905
+just a bunch of connected machines and these machines are usually called nodes.
+
+00:01:05.905 --> 00:01:08.870
+Also, when I mentioned commodity hardware,
+
+00:01:08.870 --> 00:01:13.655
+I'm talking about the computers that you and I would buy if we're on a tight budget.
+
+00:01:13.655 --> 00:01:18.500
+Using distributed clusters of commodity hardware has become the industry standard.
+
+00:01:18.500 --> 00:01:20.299
+Those are early systems at Google,
+
+00:01:20.299 --> 00:01:23.560
+where the foundation for technologies like Spark.
+

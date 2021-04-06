@@ -1,0 +1,34 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:05.120 --> 00:00:08.759
+To get a sense of the speed for each piece of hardware,
+
+00:00:08.759 --> 00:00:11.280
+let's take a look at an example with Twitter data.
+
+00:00:11.279 --> 00:00:16.399
+On a typical day, the entire world generates about 6,000 tweets every second.
+
+00:00:16.399 --> 00:00:19.729
+With each tweet coming in at around 200 bytes.
+
+00:00:19.730 --> 00:00:24.594
+This adds up to 1.2 million bytes or roughly 1 megabyte per second.
+
+00:00:24.594 --> 00:00:30.015
+The typical CPU can execute over 2.5 billion operations per second.
+
+00:00:30.015 --> 00:00:34.265
+This means that the CPU in your laptop can do a live character count
+
+00:00:34.265 --> 00:00:38.954
+on every tweet with over 99.9 percent of its time to spare.
+
+00:00:38.954 --> 00:00:43.314
+In fact, your computer probably has two CPUs, if it's a dual core.
+
+00:00:43.314 --> 00:00:46.269
+So, this would be no problem for a single machine.
+

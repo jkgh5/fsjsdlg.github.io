@@ -1,0 +1,85 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:02.430
+Here's a concrete example of a potential issue
+
+00:00:02.430 --> 00:00:04.455
+with procedural programming in Python.
+
+00:00:04.455 --> 00:00:06.269
+This code counts up the number of times
+
+00:00:06.269 --> 00:00:08.490
+a specific song was played assuming
+
+00:00:08.490 --> 00:00:11.220
+the log of songs was converted to a Python list.
+
+00:00:11.220 --> 00:00:14.429
+We start by setting a global variable, play count,
+
+00:00:14.429 --> 00:00:17.250
+to keep track of the number of times the song was played,
+
+00:00:17.250 --> 00:00:19.230
+and we initialize it to zero.
+
+00:00:19.230 --> 00:00:23.399
+We then use a for loop to iterate through all the songs in the list.
+
+00:00:23.399 --> 00:00:28.969
+If the song title is "Despacito," then we increase our play count by one.
+
+00:00:28.969 --> 00:00:31.329
+When we run this procedure in the final statement,
+
+00:00:31.329 --> 00:00:35.359
+the code that runs actually changes the variable play count.
+
+00:00:35.359 --> 00:00:38.630
+As a result, running the same code again with
+
+00:00:38.630 --> 00:00:43.580
+the exact same input of "Despacito," gives a different result each time.
+
+00:00:43.579 --> 00:00:46.244
+The problem in this example is easy to see,
+
+00:00:46.244 --> 00:00:49.669
+but when you have dozens of machines running code in parallel,
+
+00:00:49.670 --> 00:00:51.800
+and sometimes you need to restart a calculation
+
+00:00:51.799 --> 00:00:54.004
+if one of the machines has a temporary issue.
+
+00:00:54.005 --> 00:00:57.530
+These unintended side effects can lead to a major headache.
+
+00:00:57.530 --> 00:01:00.094
+The confusion comes from sloppy language.
+
+00:01:00.094 --> 00:01:05.659
+In Python, we casually refer to anything after a def as a function.
+
+00:01:05.659 --> 00:01:10.640
+But technically, these are often methods or procedures, not functions.
+
+00:01:10.640 --> 00:01:12.239
+To clear up any confusion,
+
+00:01:12.239 --> 00:01:16.579
+let's call the type of functions we know from math, pure functions.
+
+00:01:16.579 --> 00:01:19.489
+To get out of the math class and make this more clear,
+
+00:01:19.489 --> 00:01:21.530
+let's go through an analogy that will make
+
+00:01:21.530 --> 00:01:24.689
+functional programming more digestible.
+

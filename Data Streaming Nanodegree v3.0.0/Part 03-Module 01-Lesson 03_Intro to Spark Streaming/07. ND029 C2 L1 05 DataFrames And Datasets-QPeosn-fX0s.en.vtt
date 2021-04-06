@@ -1,0 +1,64 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:03.585
+In this video, I'll talk about Spark DataFrames and datasets.
+
+00:00:03.585 --> 00:00:08.175
+DataFrames and datasets are a core collections of the Spark SQL component.
+
+00:00:08.175 --> 00:00:10.800
+The idea behind DataFrames is that they allow
+
+00:00:10.800 --> 00:00:13.485
+processing of a large amount of structured data.
+
+00:00:13.484 --> 00:00:16.530
+A DataFrame contains rows with Schema.
+
+00:00:16.530 --> 00:00:21.240
+A DataFrame in Apache Spark has more extensive API than RDD,
+
+00:00:21.239 --> 00:00:23.369
+but they still share some common features.
+
+00:00:23.370 --> 00:00:28.469
+The features common to RDDs and DataFrames are: immutability,
+
+00:00:28.469 --> 00:00:33.329
+in-memory, resilience, distributed-computing capabilities.
+
+00:00:33.329 --> 00:00:35.034
+This all sounds like a lot,
+
+00:00:35.034 --> 00:00:40.058
+but you can basically think of a DataFrame as a table in relational database,
+
+00:00:40.058 --> 00:00:42.824
+or like a dataframe in pandas library.
+
+00:00:42.825 --> 00:00:46.100
+A dataset is a data structure in Spark SQL,
+
+00:00:46.100 --> 00:00:50.225
+which is a strongly typed and is a mapped to a relational schema.
+
+00:00:50.225 --> 00:00:52.789
+It represents structured queries.
+
+00:00:52.789 --> 00:00:55.295
+It is an extension to DataFrame API.
+
+00:00:55.295 --> 00:01:00.439
+Spark datasets provide both type safety and on object-oriented programming interface.
+
+00:01:00.439 --> 00:01:05.164
+The dataset API has been available since the release of spark 1.6.
+
+00:01:05.165 --> 00:01:08.465
+But datasets are only available in Scala and Java.
+
+00:01:08.465 --> 00:01:12.270
+So we won't be discussing them too much in this course.
+

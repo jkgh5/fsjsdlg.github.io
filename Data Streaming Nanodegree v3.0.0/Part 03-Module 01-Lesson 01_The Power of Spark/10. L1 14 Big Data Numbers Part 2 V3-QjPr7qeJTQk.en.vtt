@@ -1,0 +1,202 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:06.480 --> 00:00:09.685
+When you check the output file for your program,
+
+00:00:09.685 --> 00:00:11.935
+you see a few 100 lines with artists.
+
+00:00:11.935 --> 00:00:14.470
+But you would've expected millions of lines.
+
+00:00:14.470 --> 00:00:17.109
+It seems to have worked for a short while,
+
+00:00:17.109 --> 00:00:18.715
+but then it got stuck.
+
+00:00:18.714 --> 00:00:20.969
+In order to debug your program,
+
+00:00:20.969 --> 00:00:22.699
+you run the program again,
+
+00:00:22.699 --> 00:00:25.960
+but this time with every other program closed,
+
+00:00:25.960 --> 00:00:29.545
+except for your system's built-in activity monitor.
+
+00:00:29.545 --> 00:00:31.840
+What you see when you start your program,
+
+00:00:31.839 --> 00:00:35.530
+is a small spike of activity for your storage, memory,
+
+00:00:35.530 --> 00:00:37.960
+and CPU as the first part of the data
+
+00:00:37.960 --> 00:00:40.299
+is transferred from storage to memory,
+
+00:00:40.299 --> 00:00:42.769
+and then processed by the CPU.
+
+00:00:42.770 --> 00:00:46.815
+After that initial spike, the CPU activity flatlines,
+
+00:00:46.814 --> 00:00:49.609
+but the input-output known as IO,
+
+00:00:49.609 --> 00:00:53.134
+for the memory and storage stays near 100 percent.
+
+00:00:53.134 --> 00:00:56.089
+The CPU has some small blips of activity,
+
+00:00:56.090 --> 00:00:58.000
+but it's clear that your system CPU
+
+00:00:58.000 --> 00:01:01.375
+is being slowed down by the memory and disk.
+
+00:01:01.375 --> 00:01:04.090
+Here's what's going on inside your machine.
+
+00:01:04.090 --> 00:01:07.750
+The program loaded nearly eight gigs of data into your memory,
+
+00:01:07.750 --> 00:01:11.575
+leaving almost no memory for other programs and your operating system.
+
+00:01:11.575 --> 00:01:15.159
+Your CPU process this data pretty quickly and pass
+
+00:01:15.159 --> 00:01:17.649
+the relatively small results back to memory
+
+00:01:17.650 --> 00:01:20.665
+to be written back to the output file on disk.
+
+00:01:20.665 --> 00:01:22.390
+This is the same as what happened
+
+00:01:22.390 --> 00:01:24.709
+when the data was only four gigabytes.
+
+00:01:24.709 --> 00:01:28.989
+But after the first batch of roughly eight gigs was processed by the CPU,
+
+00:01:28.989 --> 00:01:31.009
+it was ready to handle more.
+
+00:01:31.010 --> 00:01:33.890
+This is when the CPU activity dropped.
+
+00:01:33.890 --> 00:01:38.194
+Unfortunately, the next batch of eight gigabytes wasn't ready yet.
+
+00:01:38.194 --> 00:01:41.229
+It's still had to be loaded from storage to memory,
+
+00:01:41.230 --> 00:01:42.995
+and that's much slower.
+
+00:01:42.995 --> 00:01:46.250
+If you recall, it's about 3,000 times slower
+
+00:01:46.250 --> 00:01:49.900
+to read data from disk than to process it in the CPU,
+
+00:01:49.900 --> 00:01:52.130
+and you have to do this process dozens of
+
+00:01:52.129 --> 00:01:55.414
+times to get through the entire 200 gigs of data.
+
+00:01:55.415 --> 00:01:58.685
+This is why your system seems to grind to a stop.
+
+00:01:58.685 --> 00:02:03.004
+It's spending most of its time moving data in and out of memory.
+
+00:02:03.004 --> 00:02:07.219
+Most of the CPU activity is actually from coordinating this movement,
+
+00:02:07.219 --> 00:02:10.234
+which is like context switching for your computer's brain.
+
+00:02:10.235 --> 00:02:13.730
+This back and forth is known as thrashing,
+
+00:02:13.729 --> 00:02:16.989
+and it can be a major problem for dealing with big data.
+
+00:02:16.990 --> 00:02:20.659
+But then, you remember your idea from the previous year.
+
+00:02:20.659 --> 00:02:26.254
+What if you split this data into multiple pieces and email it to your coworkers?
+
+00:02:26.254 --> 00:02:28.840
+You email the data to 40 of your colleagues,
+
+00:02:28.840 --> 00:02:31.039
+so each chunk is only five gigs,
+
+00:02:31.039 --> 00:02:32.750
+and will fit into their memories.
+
+00:02:32.750 --> 00:02:35.030
+Since there's no thrashing involved,
+
+00:02:35.030 --> 00:02:38.300
+they get the results quickly and email them back to you.
+
+00:02:38.300 --> 00:02:42.415
+It still takes a long time to email the 200 gigs of data,
+
+00:02:42.414 --> 00:02:44.304
+since the network is so slow.
+
+00:02:44.305 --> 00:02:46.909
+But you only have to distribute the data once
+
+00:02:46.909 --> 00:02:49.449
+to avoid the thrashing problem completely.
+
+00:02:49.449 --> 00:02:52.879
+In fact, you could get around this problem by splitting the data
+
+00:02:52.879 --> 00:02:56.569
+into 80 pieces and sending each coworker two of them.
+
+00:02:56.569 --> 00:02:59.525
+This way, they can download their first chunk
+
+00:02:59.525 --> 00:03:02.740
+and start processing it while they download the second one.
+
+00:03:02.740 --> 00:03:05.540
+Like the previous year, you still have to deal
+
+00:03:05.539 --> 00:03:09.079
+with incompatible Python versions, busy colleagues,
+
+00:03:09.080 --> 00:03:12.050
+but this trade-off seems worth it compared to the paralysis
+
+00:03:12.050 --> 00:03:16.010
+your laptop was facing when it tried to handle the data on its own.
+
+00:03:16.009 --> 00:03:19.789
+It's now easier to distribute the data and process it
+
+00:03:19.789 --> 00:03:22.084
+in parallel on multiple machines.
+
+00:03:22.085 --> 00:03:25.409
+You're now in the world of big data
+

@@ -1,0 +1,70 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:07.490 --> 00:00:11.070
+We have talked about where to store huge data files
+
+00:00:11.070 --> 00:00:13.155
+and what format the data might be in.
+
+00:00:13.154 --> 00:00:16.664
+So let's take a look at how Spark Program looks.
+
+00:00:16.664 --> 00:00:21.149
+The first component of each Spark Program is the SparkContext.
+
+00:00:21.149 --> 00:00:23.879
+The SparkContext is the main entry point for
+
+00:00:23.879 --> 00:00:27.869
+Spark functionality and connects the cluster with the application.
+
+00:00:27.870 --> 00:00:30.975
+If we would like to use lower level abstractions,
+
+00:00:30.975 --> 00:00:33.704
+we will create objects with SparkContext.
+
+00:00:33.704 --> 00:00:35.579
+To create a SparkContext,
+
+00:00:35.579 --> 00:00:38.519
+we first need a SparkConf object to specify
+
+00:00:38.520 --> 00:00:40.620
+some information aboutnthe application
+
+00:00:40.619 --> 00:00:44.929
+such as its name and the master's nodes IP address.
+
+00:00:44.929 --> 00:00:47.119
+If we run Spark in local mode,
+
+00:00:47.119 --> 00:00:50.809
+we can just put the string 'local' as master.
+
+00:00:50.810 --> 00:00:54.815
+To read data frames, we need to use SparkContext,
+
+00:00:54.814 --> 00:00:58.079
+Spark Sequel equivalent, the SparkSession.
+
+00:00:58.079 --> 00:00:59.960
+Similarity to the SparkConf,
+
+00:00:59.960 --> 00:01:03.785
+we can specify some parameters to create a SparkSession.
+
+00:01:03.784 --> 00:01:08.810
+GetOrCreate for example, means that if you already have a SparkSession running,
+
+00:01:08.810 --> 00:01:10.670
+instead of creating a new one,
+
+00:01:10.670 --> 00:01:12.710
+the old one will be returned and
+
+00:01:12.709 --> 00:01:16.919
+its parameters will be modified to the new configurations.
+

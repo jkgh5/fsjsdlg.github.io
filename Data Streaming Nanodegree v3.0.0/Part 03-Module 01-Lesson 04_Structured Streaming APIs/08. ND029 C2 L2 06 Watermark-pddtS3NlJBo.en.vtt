@@ -1,0 +1,184 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:02.669
+In structural streaming, watermark was introduced
+
+00:00:02.669 --> 00:00:05.459
+to solve two main problems with Spark streaming.
+
+00:00:05.459 --> 00:00:08.445
+In real world, there will be a ton of
+
+00:00:08.445 --> 00:00:13.150
+unexpected disruptions within applications and systems like loss of node,
+
+00:00:13.150 --> 00:00:14.910
+failure to allocate memory,
+
+00:00:14.910 --> 00:00:17.609
+applications losing connections, etc.
+
+00:00:17.609 --> 00:00:20.100
+Because of these kinds of disruptions,
+
+00:00:20.100 --> 00:00:24.075
+the data might not actually arrive in the order that they were generated.
+
+00:00:24.074 --> 00:00:25.859
+To handle these kind of data,
+
+00:00:25.859 --> 00:00:29.285
+structure streaming introduced a concept called watermark.
+
+00:00:29.285 --> 00:00:32.405
+Basically, watermark handles two problems.
+
+00:00:32.405 --> 00:00:35.539
+It determines which late data can be accepted in
+
+00:00:35.539 --> 00:00:39.034
+the pipeline and then discard the ones that is too old.
+
+00:00:39.034 --> 00:00:42.709
+So unacceptable, data from the state store.
+
+00:00:42.710 --> 00:00:44.615
+To handle watermark successfully,
+
+00:00:44.615 --> 00:00:46.940
+we need to know two things.
+
+00:00:46.939 --> 00:00:52.625
+A column that defines event time and a value for the delay threshold.
+
+00:00:52.625 --> 00:00:56.450
+Let's take a look at these diagrams to understand the differences between
+
+00:00:56.450 --> 00:01:01.780
+plain aggregation and watermark and what happens when you use with watermark constraint.
+
+00:01:01.780 --> 00:01:06.635
+This diagram depicts a simple aggregation except it's happening over a window.
+
+00:01:06.635 --> 00:01:08.325
+For the sake of simplicity,
+
+00:01:08.325 --> 00:01:09.579
+let's say we're receiving
+
+00:01:09.579 --> 00:01:13.539
+a random animal names at any random time over five minutes interval.
+
+00:01:13.540 --> 00:01:17.670
+So during the interval of 12:00 and 12:05,
+
+00:01:17.670 --> 00:01:19.530
+we get a cat,
+
+00:01:19.530 --> 00:01:23.349
+and three dogs, and a donkey.
+
+00:01:23.349 --> 00:01:26.890
+During the interval of 12:05 and 12:10,
+
+00:01:26.890 --> 00:01:30.004
+we get two dolphins and a cat,
+
+00:01:30.004 --> 00:01:31.674
+and this continues over.
+
+00:01:31.674 --> 00:01:35.125
+As you can see, it shows aggregation over the interval time.
+
+00:01:35.125 --> 00:01:36.519
+So here you see one cat,
+
+00:01:36.519 --> 00:01:38.424
+three dogs, and a donkey.
+
+00:01:38.424 --> 00:01:42.769
+Over here, you get a aggregation over 12:00
+
+00:01:42.769 --> 00:01:49.465
+and 12:10 which includes two cats and a donkey and two dolphins and three dogs.
+
+00:01:49.465 --> 00:01:54.409
+Let's look at another diagram which now has watermark constraint added.
+
+00:01:54.409 --> 00:01:58.929
+Now consider what happens if one of the event arrives late to your application.
+
+00:01:58.930 --> 00:02:03.155
+The blue box here is that delay threshold.
+
+00:02:03.155 --> 00:02:05.659
+So let's say we have it for 10 minutes.
+
+00:02:05.659 --> 00:02:12.030
+The word donkey was generated at 11:55 and arrived at the application at 12:02.
+
+00:02:12.030 --> 00:02:14.055
+Since it doesn't fall within the threshold,
+
+00:02:14.055 --> 00:02:15.719
+it will not be aggregated.
+
+00:02:15.719 --> 00:02:22.909
+Consider this case when donkey was created at 12:04 but arrived into the system at 12:07.
+
+00:02:22.909 --> 00:02:27.409
+This data was generated of n arrived late but falls within the threshold.
+
+00:02:27.409 --> 00:02:31.224
+So we'll keep in the aggregation which is annotated in red.
+
+00:02:31.224 --> 00:02:33.379
+Imagine you're running this application for
+
+00:02:33.379 --> 00:02:36.079
+days then it becomes necessary for the system to
+
+00:02:36.080 --> 00:02:40.910
+know the amount of intermediate in memory state that the system accumulates.
+
+00:02:40.909 --> 00:02:43.669
+This implies a system actually needs to know when
+
+00:02:43.669 --> 00:02:47.164
+an old aggregate can be dropped from the in-memory state.
+
+00:02:47.164 --> 00:02:51.319
+This is called watermarking which lets the system automatically track
+
+00:02:51.319 --> 00:02:56.049
+the current event time in the data and attempt to clean up old state accordingly.
+
+00:02:56.050 --> 00:02:59.465
+The computation for a watermark is based on the max of
+
+00:02:59.465 --> 00:03:04.715
+event time seen by the engine minus the delay threshold.
+
+00:03:04.715 --> 00:03:08.854
+In other words, late data within the threshold will be aggregated.
+
+00:03:08.854 --> 00:03:12.169
+But data later than the threshold will start getting dropped.
+
+00:03:12.169 --> 00:03:13.804
+From the previous example,
+
+00:03:13.805 --> 00:03:17.159
+we can say that the threshold was 10 minutes and
+
+00:03:17.159 --> 00:03:20.359
+the max time seen by the engine was at 12:10.
+
+00:03:20.360 --> 00:03:24.050
+So any data coming between 12:00 and 12:10 will be
+
+00:03:24.050 --> 00:03:29.460
+evaluated by watermark and either be accepted to the application or discarded.
+

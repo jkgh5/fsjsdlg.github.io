@@ -1,0 +1,79 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:03.930
+Action functions do not generate a new RDD like transformations.
+
+00:00:03.930 --> 00:00:07.110
+Unlike transformation, when an action function is applied,
+
+00:00:07.110 --> 00:00:11.370
+RDDs give non RDD values and return the value to the driver.
+
+00:00:11.369 --> 00:00:15.855
+The values of actions are stored to the driver or to the external storage system.
+
+00:00:15.855 --> 00:00:18.754
+It brings laziness of RDD into motion.
+
+00:00:18.754 --> 00:00:23.179
+An action is one of the ways of sending data from executor to the driver.
+
+00:00:23.179 --> 00:00:26.660
+Remember from our previous discussion of spark architecture,
+
+00:00:26.660 --> 00:00:29.780
+executors are responsible for executing a task,
+
+00:00:29.780 --> 00:00:32.719
+while the driver is a JVM process by coordinates,
+
+00:00:32.719 --> 00:00:35.254
+workers and execution of the task.
+
+00:00:35.255 --> 00:00:38.780
+So it is important that your final result of action
+
+00:00:38.780 --> 00:00:43.015
+fits to the JVM or else you'll have the out-of-memory errors.
+
+00:00:43.015 --> 00:00:45.899
+Here are some action functions.
+
+00:00:45.899 --> 00:00:50.185
+Count returns the number of elements in the RDD.
+
+00:00:50.185 --> 00:00:54.155
+Collect is the most common and simplest operation
+
+00:00:54.155 --> 00:00:58.789
+that returns our entire RDDs content to the driver program.
+
+00:00:58.789 --> 00:01:03.500
+Take returns any number of elements from an RDD.
+
+00:01:03.500 --> 00:01:06.680
+It tries to cut the number of partitions in excesses.
+
+00:01:06.680 --> 00:01:08.930
+We cannot presume the order of elements,
+
+00:01:08.930 --> 00:01:15.200
+meaning when you execute a take and it will return different results every time.
+
+00:01:15.200 --> 00:01:18.230
+The foreach function is useful when we have
+
+00:01:18.230 --> 00:01:22.670
+a situation where we want to apply an operation on each element of RDD,
+
+00:01:22.670 --> 00:01:25.150
+but not return a value to the driver.
+
+00:01:25.150 --> 00:01:29.460
+The write function saves your RDD in a desired format, Parquet,
+
+00:01:29.459 --> 00:01:34.139
+JSON, text to wherever you want to store your DataFrame to.
+

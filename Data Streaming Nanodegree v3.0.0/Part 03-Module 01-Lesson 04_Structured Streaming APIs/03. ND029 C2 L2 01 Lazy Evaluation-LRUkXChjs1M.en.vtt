@@ -1,0 +1,91 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:05.250
+Lazy evaluation or call-by-need is an evaluation strategy where an expression
+
+00:00:05.250 --> 00:00:10.605
+isn't evaluated until it's first used to postpone the evaluation until it is demanded.
+
+00:00:10.605 --> 00:00:15.120
+Functional programming languages like Scala or Haskell uses this idea.
+
+00:00:15.119 --> 00:00:18.224
+We are going to use Scala to show lazy evaluation.
+
+00:00:18.225 --> 00:00:22.260
+First we're going to enter a Scala so that we start a Scala REPL.
+
+00:00:22.260 --> 00:00:25.320
+I'm going to create a list with numbers,
+
+00:00:25.320 --> 00:00:31.170
+so I just create a list and then I'm going to apply a map function on top of it.
+
+00:00:31.170 --> 00:00:37.035
+So I put list times 2, like this.
+
+00:00:37.034 --> 00:00:38.994
+So looking at this,
+
+00:00:38.994 --> 00:00:41.659
+we can tell the value of the output is calculated
+
+00:00:41.659 --> 00:00:43.939
+as soon as the operation is applied on top of it.
+
+00:00:43.939 --> 00:00:47.015
+Well, let's create another list and we're going to apply
+
+00:00:47.015 --> 00:00:51.274
+a lazy annotation to the example.
+
+00:00:51.274 --> 00:00:55.479
+It's going to be a same list but when we do this,
+
+00:00:55.479 --> 00:00:58.519
+the next one we're going to apply a lazy evaluation here.
+
+00:00:58.520 --> 00:01:01.850
+Lazy val and is going the same operation.
+
+00:01:01.850 --> 00:01:08.394
+You can see now it's called lazy and then you see how in the first output,
+
+00:01:08.394 --> 00:01:11.750
+you saw that when the map was applied it changed immediately,
+
+00:01:11.750 --> 00:01:13.805
+but it hasn't done that for this one.
+
+00:01:13.805 --> 00:01:20.270
+So when we do a print line which is the practically the action operation,
+
+00:01:20.269 --> 00:01:23.719
+and you're going to see that it's then applied here,
+
+00:01:23.719 --> 00:01:26.765
+instead of when you apply the map.
+
+00:01:26.765 --> 00:01:30.905
+So that's one simple demo for the lazy evaluation.
+
+00:01:30.905 --> 00:01:36.260
+One of the advantages of lazy evaluation is that it helps in optimizing the process
+
+00:01:36.260 --> 00:01:42.035
+by evaluating the expression only when it's needed, like print line.
+
+00:01:42.034 --> 00:01:45.034
+Then it avoids unnecessary overhead.
+
+00:01:45.034 --> 00:01:48.884
+So why lazy evaluation when we're talking about Spark?
+
+00:01:48.885 --> 00:01:53.480
+Well, spark is written in Scala and there are two different function types when operating
+
+00:01:53.480 --> 00:01:59.070
+on RDD dataframe dataset and a good amount of them are lazily evaluated.
+

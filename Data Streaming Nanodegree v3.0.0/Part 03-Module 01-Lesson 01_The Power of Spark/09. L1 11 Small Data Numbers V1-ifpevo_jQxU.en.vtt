@@ -1,0 +1,169 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:06.620 --> 00:00:09.419
+We'll now go through a few examples that you'll
+
+00:00:09.419 --> 00:00:12.425
+frequently run into when working with data in the industry,
+
+00:00:12.425 --> 00:00:15.795
+and discuss whether it makes sense to use a tool like Spark.
+
+00:00:15.794 --> 00:00:19.425
+One of the first steps in every data problem is extraction,
+
+00:00:19.425 --> 00:00:21.890
+point out just the data you need.
+
+00:00:21.890 --> 00:00:25.140
+Let's say you're working at a new startup named Sparkify.
+
+00:00:25.140 --> 00:00:27.800
+It's a digital music company where users can play
+
+00:00:27.800 --> 00:00:31.370
+their favorite songs similar to Spotify or Pandora.
+
+00:00:31.370 --> 00:00:33.649
+In order for Sparkify to grow,
+
+00:00:33.649 --> 00:00:37.034
+you need to understand how your customers use your product.
+
+00:00:37.034 --> 00:00:40.204
+For example, your content team needs to figure out
+
+00:00:40.204 --> 00:00:43.850
+which artists were played the most in Canada in the last year.
+
+00:00:43.850 --> 00:00:48.350
+Often, content deals are negotiated separately for each country,
+
+00:00:48.350 --> 00:00:51.829
+so this will help them decide which artist contracts to renew.
+
+00:00:51.829 --> 00:00:55.125
+Every time a user listen to a song in the past year,
+
+00:00:55.125 --> 00:00:58.799
+the Sparkify app wrote a single record in a big log file,
+
+00:00:58.799 --> 00:01:01.649
+which you downloaded on your laptop overnight.
+
+00:01:01.649 --> 00:01:04.704
+Each record, contains a large number of fields,
+
+00:01:04.704 --> 00:01:07.685
+the song, the artists, timestamps,
+
+00:01:07.685 --> 00:01:09.575
+and user information like name,
+
+00:01:09.575 --> 00:01:12.299
+geographic location, browser information,
+
+00:01:12.299 --> 00:01:13.789
+and much, much more.
+
+00:01:13.790 --> 00:01:16.220
+The first step is to pull out the subset of
+
+00:01:16.219 --> 00:01:19.525
+data that you care about from the raw data logs.
+
+00:01:19.525 --> 00:01:23.430
+In this case, we only need the artist for Canadian users,
+
+00:01:23.430 --> 00:01:25.745
+so our processing is pretty simple.
+
+00:01:25.745 --> 00:01:28.365
+You filter out all the non Canadian users,
+
+00:01:28.364 --> 00:01:30.754
+and extract the artist field.
+
+00:01:30.754 --> 00:01:33.099
+Since Sparkify is still small,
+
+00:01:33.099 --> 00:01:35.134
+and you only have a few thousand users,
+
+00:01:35.135 --> 00:01:37.370
+this data is modest in size.
+
+00:01:37.370 --> 00:01:39.890
+The last year of data is only four gigs,
+
+00:01:39.890 --> 00:01:43.995
+so it easily fit into the eight gigabytes of memory on your laptop.
+
+00:01:43.995 --> 00:01:48.219
+This means that you can load all the data sequentially in your memory,
+
+00:01:48.219 --> 00:01:50.409
+and you can write a simple Python program to have
+
+00:01:50.409 --> 00:01:53.424
+your CPU filter and extract the artists.
+
+00:01:53.424 --> 00:01:55.700
+Since you're at an adventurous startup,
+
+00:01:55.700 --> 00:01:57.109
+willing to try anything,
+
+00:01:57.109 --> 00:02:01.189
+you spend a while thinking if there's an easier way to process the data.
+
+00:02:01.189 --> 00:02:04.179
+One possible idea is to split the data.
+
+00:02:04.180 --> 00:02:08.540
+Perhaps, emailing a month of data to 12 of your co-workers laptops.
+
+00:02:08.539 --> 00:02:10.905
+They could each run your Python program,
+
+00:02:10.905 --> 00:02:13.890
+and then email you back the results when they're done.
+
+00:02:13.889 --> 00:02:15.814
+But this one would be worth it.
+
+00:02:15.814 --> 00:02:20.444
+Emailing the data across the network is the slowest part of this process.
+
+00:02:20.444 --> 00:02:26.424
+Also, what if one of your co-workers is using Python 2 but your program uses Python 3,
+
+00:02:26.425 --> 00:02:28.175
+now your code won't work.
+
+00:02:28.175 --> 00:02:30.530
+Or what if another co-worker was busy,
+
+00:02:30.530 --> 00:02:33.500
+and took an extra 20 minutes to start the program?
+
+00:02:33.500 --> 00:02:36.039
+Even if you have 11 months of data,
+
+00:02:36.039 --> 00:02:40.454
+you don't know the most popular artist until you have all the results back.
+
+00:02:40.455 --> 00:02:44.740
+These are some of the problems you run into when you have distributed systems like Spark.
+
+00:02:44.740 --> 00:02:48.385
+In this case, it's easier to stick to go Python.
+
+00:02:48.384 --> 00:02:50.245
+So, according to our definition,
+
+00:02:50.245 --> 00:02:52.400
+you don't have big data.
+

@@ -1,0 +1,351 @@
+<!-- udacity2.0 -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Actions</title>
+  <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../assets/css/plyr.css">
+  <link rel="stylesheet" href="../assets/css/katex.min.css">
+  <link rel="stylesheet" href="../assets/css/jquery.mCustomScrollbar.min.css">
+  <link rel="stylesheet" href="../assets/css/styles.css">
+  <link rel="shortcut icon" type="image/png" href="../assets/img/udacimak.png" />
+</head>
+
+<body>
+  <div class="wrapper">
+    <nav id="sidebar">
+  <div class="sidebar-header">
+    <h3>Structured Streaming APIs</h3>
+  </div>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled components">
+    <li class="">
+      <a href="01. Lesson Overview.html">01. Lesson Overview</a>
+    </li>
+    <li class="">
+      <a href="02. RDDDataFrame Functions.html">02. RDD/DataFrame Functions</a>
+    </li>
+    <li class="">
+      <a href="03. Lazy Evaluation.html">03. Lazy Evaluation</a>
+    </li>
+    <li class="">
+      <a href="04. Transformations.html">04. Transformations</a>
+    </li>
+    <li class="">
+      <a href="05. Actions.html">05. Actions</a>
+    </li>
+    <li class="">
+      <a href="06. Transformations in DAGs.html">06. Transformations in DAGs</a>
+    </li>
+    <li class="">
+      <a href="07. Structured Streaming APIs.html">07. Structured Streaming APIs</a>
+    </li>
+    <li class="">
+      <a href="08. Watermark.html">08. Watermark</a>
+    </li>
+    <li class="">
+      <a href="09. Spark UI for Query Plans.html">09. Spark UI for Query Plans</a>
+    </li>
+    <li class="">
+      <a href="10. Output Sinks.html">10. Output Sinks</a>
+    </li>
+    <li class="">
+      <a href="11. Checkpointing Data.html">11. Checkpointing Data</a>
+    </li>
+    <li class="">
+      <a href="12. State Store and Checkpointing.html">12. State Store and Checkpointing</a>
+    </li>
+    <li class="">
+      <a href="13. ConfigurationsTuning of Spark Clusters.html">13. Configurations/Tuning of Spark Clusters</a>
+    </li>
+    <li class="">
+      <a href="14. Lesson Recap.html">14. Lesson Recap</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+</nav>
+
+    <div id="content">
+      <header class="container-fluild header">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <div class="align-items-middle">
+                <button type="button" id="sidebarCollapse" class="btn btn-toggle-sidebar">
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                </button>
+
+                <h1 style="display: inline-block">05. Actions</h1>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <main class="container">
+        <div class="row">
+          <div class="col-12">
+            <div class="ud-atom">
+  <h3><p>ND029 C2 L2 03 Action</p></h3>
+  <video controls>
+  <source src="05. ND029 C2 L2 03 Action-Lb_kxAgQwx0.mp4" type="video/mp4">
+
+  <track default="true" kind="subtitles" srclang="en" src="05. ND029 C2 L2 03 Action-Lb_kxAgQwx0.en.vtt" label="en">
+</video>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3><p>Actions - Key Points</p></h3>
+  <div>
+  <h2 id="actions---key-points">Actions - Key Points</h2>
+<p>Actions are operations that produce non-RDD values. Actions send the values from the executors to be stored to the driver. Since the value is sent back to the driver, the final value must fit into the driver JVM. Unlike transformations, which are lazily evaluated, actions evaluate the expression on RDD.</p>
+<p>A few action functions that are used often are:</p>
+<ul>
+<li>save()</li>
+<li>collect()</li>
+<li>count()</li>
+<li>reduce()</li>
+<li>getNumPartitions()</li>
+<li>aggregate()</li>
+</ul>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3><p>Action/transformation functions architecture</p></h3>
+  <div>
+  <figure class="figure">
+    <img src="img/screen-shot-2019-10-10-at-12.46.02-pm.png" alt="**Some Commonly Used Transformation and Action Functions**" class="img img-fluid">
+    <figcaption class="figure-caption">
+      <p><strong>Some Commonly Used Transformation and Action Functions</strong></p>
+    </figcaption>
+  </figure>
+</div>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3><p>What is an action and how does it produce data in Spark?</p></h3>
+  <div>
+  <form>
+    <fieldset>
+      <legend><p>What is an action and how does it produce data in Spark?</p></legend>
+    </fieldset>
+
+      <div>
+        <input type="radio" value="rbk1" name="951291" id="rbk1">
+        <label for="rbk1"><p>An action is one of the ways of sending data from the driver to the executor, and generates a new Resilient Distributed Dataset. They also trigger execution of accumulated lineage.</p></label>
+      </div>
+      <div>
+        <input type="radio" value="rbk2" name="951291" id="rbk2">
+        <label for="rbk2"><p>An action is one of the ways of sending data from the executor to the driver. Actions return the final result of RDD computations to the driver. They also also trigger execution of accumulated lineage.</p></label>
+      </div>
+      <div>
+        <input type="radio" value="rbk3" name="951291" id="rbk3">
+        <label for="rbk3"><p>An action is one of the ways of sending data from the executor to the driver, and generates a new Resilient Distributed Dataset.</p></label>
+      </div>
+  </form>
+
+  <details>
+    <summary><strong>SOLUTION:</strong></summary>
+    An action is one of the ways of sending data from the executor to the driver. Actions return the final result of RDD computations to the driver. They also also trigger execution of accumulated lineage.
+  </details>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3><p>Which of these are transformation functions?</p></h3>
+  <div>
+  <form>
+    <fieldset>
+      <legend><p>Which of these are transformation functions?</p></legend>
+    </fieldset>
+
+    <div>
+      <input type="checkbox" value="rbk1" name="931990" id="rbk1">
+      <label for="rbk1"><p>count()</p></label>
+    </div>
+    <div>
+      <input type="checkbox" value="rbk2" name="931990" id="rbk2">
+      <label for="rbk2"><p>groupByKey()</p></label>
+    </div>
+    <div>
+      <input type="checkbox" value="rbk3" name="931990" id="rbk3">
+      <label for="rbk3"><p>collect()</p></label>
+    </div>
+    <div>
+      <input type="checkbox" value="rbk4" name="931990" id="rbk4">
+      <label for="rbk4"><p>mapPartitionWithIndex()</p></label>
+    </div>
+  </form>
+
+  <details>
+    <summary><strong>SOLUTION:</strong></summary>
+    <ul>
+      <li>groupByKey()</li>
+      <li>mapPartitionWithIndex()</li>
+  </ul>
+  </details>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3><p>How can you identify if a function is an action vs transformation in your program?</p></h3>
+  <div>
+  <form>
+    <fieldset>
+      <legend><p>How can you identify if a function is an action or a transformation in your program?</p></legend>
+    </fieldset>
+
+      <div>
+        <input type="radio" value="rbk1" name="951292" id="rbk1">
+        <label for="rbk1"><p>Compare the output of each function and determine which produces a new RDD/DataFrame/Dataset.</p></label>
+      </div>
+      <div>
+        <input type="radio" value="rbk2" name="951292" id="rbk2">
+        <label for="rbk2"><p>Compare each function and determine which function parallelizes your dataset.</p></label>
+      </div>
+      <div>
+        <input type="radio" value="rbk3" name="951292" id="rbk3">
+        <label for="rbk3"><p>A function is a transformation when it sends the value to the driver.</p></label>
+      </div>
+  </form>
+
+  <details>
+    <summary><strong>SOLUTION:</strong></summary>
+    Compare the output of each function and determine which produces a new RDD/DataFrame/Dataset.
+  </details>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3><p>Exercise: Actions</p></h3>
+  <div>
+  <h2 id="exercise-actions">Exercise: Actions</h2>
+<p>Please complete the TODO items in the code below, then execute it in the terminal using the command <code>spark-submit example_code_transformation.py</code>.</p>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div class="jumbotron">
+  <h3>Code</h3>
+
+  <p class="lead">If you need a code on the <a href="https://github.com/udacity"
+    target="_blank">https://github.com/udacity</a>. </p>
+
+  </ul>
+</div>
+
+</div>
+<div class="divider"></div>
+          </div>
+
+          <div class="col-12">
+            <p class="text-right">
+              <a href="06. Transformations in DAGs.html" class="btn btn-outline-primary mt-4" role="button">Next Concept</a>
+            </p>
+          </div>
+        </div>
+      </main>
+
+      <footer class="footer">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <p class="text-center">
+                <a href="https://us-udacity.github.io/" target="_blank">【udacity2.0 】If you need more courses, please add wechat：udacity6</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </div>
+
+
+  <script src="../assets/js/jquery-3.3.1.min.js"></script>
+  <script src="../assets/js/plyr.polyfilled.min.js"></script>
+  <script src="../assets/js/bootstrap.min.js"></script>
+  <script src="../assets/js/jquery.mCustomScrollbar.concat.min.js"></script>
+  <script src="../assets/js/katex.min.js"></script>
+  <script>
+    // Initialize Plyr video players
+    const players = Array.from(document.querySelectorAll('video')).map(p => new Plyr(p));
+
+    // render math equations
+    let elMath = document.getElementsByClassName('mathquill');
+    for (let i = 0, len = elMath.length; i < len; i += 1) {
+      const el = elMath[i];
+
+      katex.render(el.textContent, el, {
+        throwOnError: false
+      });
+    }
+
+    // this hack will make sure Bootstrap tabs work when using Handlebars
+    if ($('#question-tabs').length && $('#user-answer-tabs').length) {
+      $("#question-tabs a.nav-link").on('click', function () {
+        $("#question-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+      $("#user-answer-tabs a.nav-link").on('click', function () {
+        $("#user-answer-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    } else {
+      $("a.nav-link").on('click', function () {
+        $(".tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    }
+
+    // side bar events
+    $(document).ready(function () {
+      $("#sidebar").mCustomScrollbar({
+        theme: "minimal"
+      });
+
+      $('#sidebarCollapse').on('click', function () {
+        $('#sidebar, #content').toggleClass('active');
+        $('.collapse.in').toggleClass('in');
+        $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+      });
+
+      // scroll to first video on page loading
+      if ($('video').length) {
+        $('html,body').animate({ scrollTop: $('div.plyr').prev().offset().top});
+      }
+
+      // auto play first video: this may not work with chrome/safari due to autoplay policy
+      if (players && players.length > 0) {
+        players[0].play();
+      }
+
+      // scroll sidebar to current concept
+      const currentInSideBar = $( "ul.sidebar-list.components li a:contains('05. Actions')" )
+      currentInSideBar.css( "text-decoration", "underline" );
+      $("#sidebar").mCustomScrollbar('scrollTo', currentInSideBar);
+    });
+  </script>
+</body>
+
+</html>

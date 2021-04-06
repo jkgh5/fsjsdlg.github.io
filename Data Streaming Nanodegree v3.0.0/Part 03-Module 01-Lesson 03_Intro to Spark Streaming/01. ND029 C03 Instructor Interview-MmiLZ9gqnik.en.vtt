@@ -1,0 +1,130 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:04.804
+Hi. My name is Jillian and I have worked at Samsung,
+
+00:00:04.804 --> 00:00:09.309
+in Korea and also an ad tech startup in San Francisco.
+
+00:00:09.310 --> 00:00:18.679
+Mostly my career has been building actually big data platforms and ingestion pipelines.
+
+00:00:24.239 --> 00:00:28.119
+The concept that I'll be teaching in this course,
+
+00:00:28.120 --> 00:00:31.644
+I will be applying or I have applied at my previous jobs
+
+00:00:31.644 --> 00:00:36.719
+that when a streaming analytics was required,
+
+00:00:36.719 --> 00:00:44.239
+I've used Spark streaming and Kafka which will be actually the students final project.
+
+00:00:49.539 --> 00:00:54.725
+Everything has been about data recently,
+
+00:00:54.725 --> 00:01:01.155
+and it is crucial to a lot of businesses that are streaming,
+
+00:01:01.155 --> 00:01:05.465
+not just streaming but small micro batches or
+
+00:01:05.465 --> 00:01:10.775
+even a single event of streams have been happening more recently like retails,
+
+00:01:10.775 --> 00:01:15.710
+banks like finances, anything that you can think of.
+
+00:01:15.709 --> 00:01:19.024
+So I think it is very important that you stay on top of
+
+00:01:19.025 --> 00:01:25.380
+the new technology and start learning on streaming analytics.
+
+00:01:30.739 --> 00:01:37.564
+Throughout this course, the students will learn a generic idea of streaming.
+
+00:01:37.564 --> 00:01:39.590
+We'll be using Spark Streaming but you can also apply
+
+00:01:39.590 --> 00:01:43.909
+these ideas to Apache Flink, ApacheSpark,
+
+00:01:43.909 --> 00:01:47.929
+any other streaming libraries and also we'll be using one of
+
+00:01:47.930 --> 00:01:51.845
+the most popular data ingestion for streaming.
+
+00:01:51.844 --> 00:01:54.679
+This course we'll be using Kafka but you can apply the same
+
+00:01:54.680 --> 00:01:59.600
+constant to either use Kubernetes or GCP if you really want to use that,
+
+00:01:59.599 --> 00:02:04.369
+and we'll be integrating these two concepts to generate and
+
+00:02:04.370 --> 00:02:09.960
+repeat like a POC product that you can use for your showcase or portfolio.
+
+00:02:15.430 --> 00:02:21.805
+The students can definitely apply for any data engineering jobs,
+
+00:02:21.805 --> 00:02:25.760
+although we are not going heavily over data warehousing projects.
+
+00:02:25.759 --> 00:02:30.544
+But the students who will be able to make
+
+00:02:30.544 --> 00:02:35.674
+a small pipeline that is a simple ETL pipeline for example.
+
+00:02:35.675 --> 00:02:43.600
+So I think they can definitely apply for a starting out data engineering jobs.
+
+00:02:48.770 --> 00:02:54.980
+I will say the hiring managers would look for some data warehousing skills,
+
+00:02:54.979 --> 00:02:58.789
+data analytic skills, and data pipeline skills.
+
+00:02:58.789 --> 00:03:02.060
+So this is more like a software engineer who
+
+00:03:02.060 --> 00:03:06.545
+is building out an application that does data streaming and analytics.
+
+00:03:06.544 --> 00:03:10.369
+I'll be covering building out an ETL pipeline mostly so
+
+00:03:10.370 --> 00:03:15.890
+that we integrate a data source and data streaming pipelines,
+
+00:03:15.889 --> 00:03:17.759
+and some statistical analysis at the end.
+
+00:03:17.759 --> 00:03:21.334
+We'll be able to definitely cover some essential part
+
+00:03:21.335 --> 00:03:26.159
+of the skill set that's required by some hiring managers.
+
+00:03:31.900 --> 00:03:37.020
+I've used it for some real-time analytics,
+
+00:03:37.020 --> 00:03:42.270
+it's helpful when you have a bunch of data coming in so you don't
+
+00:03:42.270 --> 00:03:45.675
+always want to do
+
+00:03:45.675 --> 00:03:50.465
+a batch like an hour or two or even like a half a day of batch processing,
+
+00:03:50.465 --> 00:03:55.920
+this is useful when you're using few minutes or even few seconds on Windows.
+

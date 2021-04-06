@@ -1,0 +1,124 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:03.089
+Let's talk about configuration and tuning in Spark.
+
+00:00:03.089 --> 00:00:06.540
+In what cases do you want to tune your Spark application?
+
+00:00:06.540 --> 00:00:09.689
+Probably all the time but how can we tell?
+
+00:00:09.689 --> 00:00:11.774
+Once you run the Spark Jump once,
+
+00:00:11.775 --> 00:00:14.625
+you might encounter several errors or delays.
+
+00:00:14.625 --> 00:00:18.629
+Sometimes your code might take longer to run than you expected.
+
+00:00:18.629 --> 00:00:21.719
+In this case, your codes couldn't be
+
+00:00:21.719 --> 00:00:25.379
+not completely optimize and it should always be optimized.
+
+00:00:25.379 --> 00:00:29.160
+This can be done through studying your query plan
+
+00:00:29.160 --> 00:00:33.704
+thoroughly and finding out where your code is taking too long to execute.
+
+00:00:33.704 --> 00:00:36.184
+You'll see Out Of Memory errors.
+
+00:00:36.185 --> 00:00:37.855
+Why did this occur?
+
+00:00:37.854 --> 00:00:42.954
+Well, is it that your dataset was too large to be loaded into driver and executor?
+
+00:00:42.954 --> 00:00:44.844
+How do we solve this problem?
+
+00:00:44.844 --> 00:00:49.254
+For code optimization, this should be done through your peer code reviews.
+
+00:00:49.255 --> 00:00:50.900
+For Out Of Memory errors,
+
+00:00:50.899 --> 00:00:53.435
+maybe you should reconsider your data size.
+
+00:00:53.435 --> 00:00:55.085
+If it's the data size,
+
+00:00:55.085 --> 00:00:57.230
+you'd immediately get an error even before
+
+00:00:57.229 --> 00:00:59.890
+starting to execute any functions on your data.
+
+00:00:59.890 --> 00:01:02.990
+However, if it's coming from the some part of your code,
+
+00:01:02.990 --> 00:01:06.379
+it might be that your code is doing unnecessary shuffles or
+
+00:01:06.379 --> 00:01:10.849
+too many aggregations and then causing your executors to run out of memory.
+
+00:01:10.849 --> 00:01:15.209
+If the Out Of Memory error is happening in the driver at the results stage,
+
+00:01:15.209 --> 00:01:19.519
+then your final output is too large to fit into a driver as well.
+
+00:01:19.519 --> 00:01:22.579
+This probably relates back to the first bullet point,
+
+00:01:22.579 --> 00:01:24.215
+is your code optimized?
+
+00:01:24.215 --> 00:01:28.295
+Let's say it is and you really need these shuffles and aggregations.
+
+00:01:28.295 --> 00:01:33.049
+The easiest thing will probably be increase the memory size of your driver and
+
+00:01:33.049 --> 00:01:38.045
+executor so more data shuffles and aggregations can happen in an executor.
+
+00:01:38.045 --> 00:01:44.954
+You can use properties like Spark.executor.memory and Spark.driver.memory.
+
+00:01:44.954 --> 00:01:48.439
+You can set the memory for both executor and driver but this
+
+00:01:48.439 --> 00:01:53.134
+requires you to know exactly how many memory is available in your machine.
+
+00:01:53.135 --> 00:01:56.600
+You can also set partitions and parallelism.
+
+00:01:56.599 --> 00:02:02.134
+Spark. sql.shuffle.partitions configures the number
+
+00:02:02.135 --> 00:02:07.165
+of partitions that are used when shuffling like joints or aggregations.
+
+00:02:07.165 --> 00:02:11.629
+Spark. default.parallelism gives a default number
+
+00:02:11.629 --> 00:02:16.329
+of partitions returned by an RDD operations like flatMap or map.
+
+00:02:16.330 --> 00:02:19.375
+Next, if the job is still taking too long,
+
+00:02:19.375 --> 00:02:24.509
+we can increase the number of nodes so jobs can run faster.
+

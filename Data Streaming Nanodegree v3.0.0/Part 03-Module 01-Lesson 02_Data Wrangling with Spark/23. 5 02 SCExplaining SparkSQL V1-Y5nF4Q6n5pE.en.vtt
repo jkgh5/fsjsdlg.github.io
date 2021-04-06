@@ -1,0 +1,133 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:02.609
+To compare DataFrames with Spark SQL,
+
+00:00:02.609 --> 00:00:05.939
+let's walk through the same data wrangling and examples that you'd covered.
+
+00:00:05.940 --> 00:00:09.130
+Though, we'll use a different section of the music streaming logs,
+
+00:00:09.130 --> 00:00:11.325
+so our results will vary slightly.
+
+00:00:11.324 --> 00:00:14.324
+As you can see, we're working with the same form of data.
+
+00:00:14.324 --> 00:00:16.454
+It has the same schema as before.
+
+00:00:16.454 --> 00:00:20.774
+But unlike before, we have to create a temporary view of the DataFrame.
+
+00:00:20.774 --> 00:00:24.719
+This effectively creates a temporary SQL table from the DataFrame,
+
+00:00:24.719 --> 00:00:27.689
+enabling you to make the same queries that you'd write if
+
+00:00:27.690 --> 00:00:31.020
+you were using a database like Postgres or MySQL.
+
+00:00:31.019 --> 00:00:34.594
+We do this by using the create or replace temp view function.
+
+00:00:34.594 --> 00:00:38.780
+As you might guess, this will create a view if it doesn't already exist,
+
+00:00:38.780 --> 00:00:42.484
+or update the existing one if the underlying DataFrame changed.
+
+00:00:42.484 --> 00:00:45.634
+Unlike a database table, this view is temporary.
+
+00:00:45.634 --> 00:00:47.809
+If you end the session by closing the notebook,
+
+00:00:47.810 --> 00:00:50.914
+you'll have to rerun this function before you can write queries.
+
+00:00:50.914 --> 00:00:54.814
+With the view setup, here's an example of a Spark SQL query.
+
+00:00:54.814 --> 00:00:57.574
+But, remember the lazy evaluation.
+
+00:00:57.575 --> 00:01:00.859
+You'll need to use either collect or show to force Spark
+
+00:01:00.859 --> 00:01:03.545
+to take action on the data, and show you results.
+
+00:01:03.545 --> 00:01:07.085
+You can write simple SQL queries using the inline notation.
+
+00:01:07.084 --> 00:01:09.829
+But I prefer to use three apostrophes to write
+
+00:01:09.829 --> 00:01:13.144
+multi inline queries and make the SQL easier to read.
+
+00:01:13.144 --> 00:01:17.524
+This is the same notation you'd use to make multi-line comments in Python.
+
+00:01:17.525 --> 00:01:20.510
+As you can see, you can run the same calculations with
+
+00:01:20.510 --> 00:01:23.090
+Spark SQL as you could with DataFrames.
+
+00:01:23.090 --> 00:01:25.250
+Though, the syntax is slightly different.
+
+00:01:25.250 --> 00:01:29.269
+For example, use distinct instead of dropped duplicates.
+
+00:01:29.269 --> 00:01:32.599
+Another small difference is that UDFs have to be registered
+
+00:01:32.599 --> 00:01:34.069
+before they can be used.
+
+00:01:34.069 --> 00:01:38.554
+Though this is very similar to the way you would define a UDF with DataFrames.
+
+00:01:38.555 --> 00:01:41.270
+Just like DataFrames, you can easily convert
+
+00:01:41.269 --> 00:01:44.089
+the results of your queries into Pandas DataFrames,
+
+00:01:44.090 --> 00:01:47.150
+and use all the features in libraries that come with Pandas.
+
+00:01:47.150 --> 00:01:51.815
+Ultimately, Spark SQL offers nearly the same functionality of DataFrames.
+
+00:01:51.814 --> 00:01:54.969
+Which one you use is mostly a matter of preference.
+
+00:01:54.969 --> 00:01:57.629
+Spark SQL is great for users and teams who know
+
+00:01:57.629 --> 00:01:59.849
+SQL better than they know Pandas.
+
+00:01:59.849 --> 00:02:01.814
+Whichever API you prefer,
+
+00:02:01.814 --> 00:02:03.614
+it's a good idea to choose one,
+
+00:02:03.614 --> 00:02:06.634
+and practice it consistently for the rest of this course.
+
+00:02:06.635 --> 00:02:09.634
+It's better to learn the tips and tricks of one API,
+
+00:02:09.634 --> 00:02:12.389
+rather than switching back and forth.
+

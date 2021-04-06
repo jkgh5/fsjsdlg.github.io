@@ -1,0 +1,79 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:01.740
+In old Spark streaming,
+
+00:00:01.740 --> 00:00:03.915
+state management was quite inefficient,
+
+00:00:03.915 --> 00:00:06.660
+so it was not fit for stateful processing.
+
+00:00:06.660 --> 00:00:10.439
+This was because of two major limitations in its design.
+
+00:00:10.439 --> 00:00:15.179
+For every micro-batch, the state was persisted along with the checkpoint metadata,
+
+00:00:15.179 --> 00:00:17.714
+like offsets or progress of streaming.
+
+00:00:17.714 --> 00:00:20.370
+This step of persistent was done at the end of
+
+00:00:20.370 --> 00:00:24.345
+every micro-batch process when there was no change in the state.
+
+00:00:24.344 --> 00:00:27.058
+The snapshot of each state was persisted
+
+00:00:27.059 --> 00:00:31.039
+unnecessarily and then was saved to the store in a file system,
+
+00:00:31.039 --> 00:00:34.700
+instead of the snapshot that only contained changes in the state.
+
+00:00:34.700 --> 00:00:38.375
+This means saving state-to-store was tightly coupled.
+
+00:00:38.375 --> 00:00:41.494
+This persistent of state management also cause
+
+00:00:41.494 --> 00:00:45.125
+overhead of processing delay as well as waste in resources.
+
+00:00:45.125 --> 00:00:51.505
+These can cause limitations on scalability along with serious performance issues.
+
+00:00:51.505 --> 00:00:54.734
+Apache Spark introduced new SQL-based streaming,
+
+00:00:54.734 --> 00:00:56.780
+which is called structured streaming.
+
+00:00:56.780 --> 00:01:02.575
+This concept was introduced in Spark version 2.2.0 in July 2017.
+
+00:01:02.575 --> 00:01:05.484
+Currently, we're on version 2.4.4.
+
+00:01:05.484 --> 00:01:10.310
+Structured streaming has taken a fundamental shift in approach to managing state.
+
+00:01:10.310 --> 00:01:15.439
+It has introduced major changes to address the issues of older Spark streaming.
+
+00:01:15.439 --> 00:01:18.109
+The state management is now decoupled from
+
+00:01:18.109 --> 00:01:22.519
+metadata checkpointing and is not part of Spark jobs and tasks anymore.
+
+00:01:22.519 --> 00:01:25.774
+It is asynchronous to RDD execution now,
+
+00:01:25.775 --> 00:01:30.030
+and it supports incremental state persistent as well.
+

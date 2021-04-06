@@ -1,0 +1,28 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:03.960
+So now that we've covered the building blocks of Apache Spark's core component,
+
+00:00:03.960 --> 00:00:06.734
+I'd like to start talking about the streaming component.
+
+00:00:06.735 --> 00:00:11.820
+Spark DStream discretized stream is the basic abstraction of Spark Streaming.
+
+00:00:11.820 --> 00:00:14.070
+There are two ways of generating DStream;
+
+00:00:14.070 --> 00:00:17.295
+receive input from various sources like Kafka, Flume,
+
+00:00:17.295 --> 00:00:19.695
+Kinesis or TCP sockets,
+
+00:00:19.695 --> 00:00:23.190
+or generate a new DStream from an existing DStream.
+
+00:00:23.190 --> 00:00:28.060
+Any operation on a DStream applies to the underlying RDDs.
+

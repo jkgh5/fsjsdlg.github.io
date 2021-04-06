@@ -1,0 +1,139 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:02.759
+With the same use cases as Spark Streaming,
+
+00:00:02.759 --> 00:00:07.484
+Spark introduced structure streaming which is built on top of Spark SQL.
+
+00:00:07.485 --> 00:00:12.705
+Since dataframe and dataset are the core building blocks of spark SQL component,
+
+00:00:12.705 --> 00:00:15.359
+we can apply the same operations we use on
+
+00:00:15.359 --> 00:00:18.449
+Spark dataframes and dataset to structure streaming.
+
+00:00:18.449 --> 00:00:21.199
+One thing to note about structure streaming is that it
+
+00:00:21.199 --> 00:00:23.929
+doesn't have the notion of the batch processing.
+
+00:00:23.929 --> 00:00:27.739
+Instead, structure streaming receives data by a trigger,
+
+00:00:27.739 --> 00:00:31.984
+and the data is appended to the data stream which is continuously flowing.
+
+00:00:31.984 --> 00:00:36.469
+Each row of a data stream is processed unlike a batch processing system,
+
+00:00:36.469 --> 00:00:40.789
+and then the result is updated into the unbounded result table.
+
+00:00:40.789 --> 00:00:45.920
+This is a simple demo for structure streaming using a console output.
+
+00:00:45.920 --> 00:00:51.155
+We'll learn more about in next lesson for it which I'll put multiple can use.
+
+00:00:51.155 --> 00:00:57.079
+What this code does is that this takes a JSON file in a JSON folder,
+
+00:00:57.079 --> 00:01:01.000
+and then it will output the results in the console.
+
+00:01:01.000 --> 00:01:08.510
+For example, we have the writing stream in the output mode in the console format,
+
+00:01:08.510 --> 00:01:12.575
+and this depicts that we'll be writing out to the console.
+
+00:01:12.575 --> 00:01:18.004
+We'll be reading the input files from the JSON folder here,
+
+00:01:18.004 --> 00:01:21.155
+it's in the text format, but it's actually a JSON format.
+
+00:01:21.155 --> 00:01:25.730
+The way you can trigger this is that we go to launcher,
+
+00:01:25.730 --> 00:01:27.605
+and then we're going to open up a terminal,
+
+00:01:27.605 --> 00:01:33.680
+and we'll use the spark-submit to submit this job.
+
+00:01:33.680 --> 00:01:38.410
+So we'll just stream in example.py.
+
+00:01:38.409 --> 00:01:44.329
+This will actually get your file contents here where status equal to processed.
+
+00:01:44.329 --> 00:01:46.564
+Now, if we go here,
+
+00:01:46.564 --> 00:01:49.480
+there are input rows.
+
+00:01:49.480 --> 00:01:52.484
+That's what it's important to look at.
+
+00:01:52.484 --> 00:01:55.054
+It's saying it process 1,000 rows,
+
+00:01:55.055 --> 00:01:57.890
+it's only going to show the top 20 rows for default.
+
+00:01:57.890 --> 00:02:01.834
+Also show the file stream source where it's reading from.
+
+00:02:01.834 --> 00:02:05.569
+It has trigger execution and process rows per second.
+
+00:02:05.569 --> 00:02:12.604
+We can tell it's about five seconds to process these because we process 1,000 rows.
+
+00:02:12.604 --> 00:02:15.289
+In here, what's interesting about
+
+00:02:15.289 --> 00:02:19.009
+the file stream source is that you will only read a new file.
+
+00:02:19.009 --> 00:02:23.344
+So all the batches that are coming in future will not have any rosier.
+
+00:02:23.344 --> 00:02:25.669
+But as soon as I create a duplicate file,
+
+00:02:25.669 --> 00:02:27.114
+let's just duplicate this,
+
+00:02:27.115 --> 00:02:32.195
+it will actually read another one because it thinks another data arrived.
+
+00:02:32.194 --> 00:02:36.459
+So when you write your spark streaming application,
+
+00:02:36.460 --> 00:02:39.650
+you always need to drop a new file atomically,
+
+00:02:39.650 --> 00:02:43.099
+for your application to read continuously.
+
+00:02:43.099 --> 00:02:47.764
+Since each row you can tell each file is containing too many rows,
+
+00:02:47.764 --> 00:02:52.564
+we'll learn it in next lesson is how to manage the offset.
+
+00:02:52.564 --> 00:02:54.590
+How many records you can read per second,
+
+00:02:54.590 --> 00:02:56.939
+and that's it for the demo.
+

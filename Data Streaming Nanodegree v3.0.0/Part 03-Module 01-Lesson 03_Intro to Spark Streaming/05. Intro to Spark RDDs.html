@@ -1,0 +1,331 @@
+<!-- udacity2.0 -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Intro to Spark RDDs</title>
+  <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../assets/css/plyr.css">
+  <link rel="stylesheet" href="../assets/css/katex.min.css">
+  <link rel="stylesheet" href="../assets/css/jquery.mCustomScrollbar.min.css">
+  <link rel="stylesheet" href="../assets/css/styles.css">
+  <link rel="shortcut icon" type="image/png" href="../assets/img/udacimak.png" />
+</head>
+
+<body>
+  <div class="wrapper">
+    <nav id="sidebar">
+  <div class="sidebar-header">
+    <h3>Intro to Spark Streaming</h3>
+  </div>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled components">
+    <li class="">
+      <a href="01. Welcome to Data Streaming.html">01. Welcome to Data Streaming</a>
+    </li>
+    <li class="">
+      <a href="02. Lesson Overview.html">02. Lesson Overview</a>
+    </li>
+    <li class="">
+      <a href="03. Introduce Spark Ecosystem.html">03. Introduce Spark Ecosystem</a>
+    </li>
+    <li class="">
+      <a href="04. Review Spark Ecosystem.html">04. Review: Spark Ecosystem</a>
+    </li>
+    <li class="">
+      <a href="05. Intro to Spark RDDs.html">05. Intro to Spark RDDs</a>
+    </li>
+    <li class="">
+      <a href="06. Partitioning in Spark.html">06. Partitioning in Spark</a>
+    </li>
+    <li class="">
+      <a href="07. DataFrames and Datasets.html">07. DataFrames and Datasets</a>
+    </li>
+    <li class="">
+      <a href="08. Create RDD and DataFrame.html">08. Create RDD and DataFrame</a>
+    </li>
+    <li class="">
+      <a href="09. Intro to Spark Streaming.html">09. Intro to Spark Streaming</a>
+    </li>
+    <li class="">
+      <a href="10. Review Spark Streaming &amp; DStream.html">10. Review: Spark Streaming &amp; DStream</a>
+    </li>
+    <li class="">
+      <a href="11. Spark Structured Streaming.html">11. Spark Structured Streaming</a>
+    </li>
+    <li class="">
+      <a href="12. State Management.html">12. State Management</a>
+    </li>
+    <li class="">
+      <a href="13. Spark UI  DAGs.html">13. Spark UI / DAGs</a>
+    </li>
+    <li class="">
+      <a href="14. More on the Spark UI.html">14. More on the Spark UI</a>
+    </li>
+    <li class="">
+      <a href="15. Spark Stages.html">15. Spark Stages</a>
+    </li>
+    <li class="">
+      <a href="16. Establishing Schema.html">16. Establishing Schema</a>
+    </li>
+    <li class="">
+      <a href="17. Lesson Recap.html">17. Lesson Recap</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+</nav>
+
+    <div id="content">
+      <header class="container-fluild header">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <div class="align-items-middle">
+                <button type="button" id="sidebarCollapse" class="btn btn-toggle-sidebar">
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                </button>
+
+                <h1 style="display: inline-block">05. Intro to Spark RDDs</h1>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <main class="container">
+        <div class="row">
+          <div class="col-12">
+            <div class="ud-atom">
+  <h3><p>ND029 C2 L1 02 Introduce Spark RDDs</p></h3>
+  <video controls>
+  <source src="05. ND029 C2 L1 02 Introduce Spark RDDs-rgxr4NHUNt0.mp4" type="video/mp4">
+
+  <track default="true" kind="subtitles" srclang="en" src="05. ND029 C2 L1 02 Introduce Spark RDDs-rgxr4NHUNt0.en.vtt" label="en">
+</video>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3><p>Spark RDD Recap</p></h3>
+  <div>
+  <h2 id="rdd-key-points">RDD Key Points</h2>
+<ul>
+<li>RDD stands for Resilient Distributed Dataset:<ul>
+<li>Resilient because its fault-tolerance comes from maintaining RDD lineage, so even with loss during the operations, you can always go back to where the operation was lost.</li>
+<li>Distributed because the data is distributed across many partitions and workers.</li>
+<li>Dataset is a collection of partitioned data.<br />
+RDD has characteristics like in-memory, immutability, lazily evaluated, cacheable, and typed (we don't see this much in Python, but you'd see this in Scala or Java).</li></ul></li>
+</ul>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3><p>Coding Notes on RDD Demo</p></h3>
+  <div>
+  <h2 id="code-used-in-sparkcontext-example">Code Used in SparkContext Example</h2>
+<pre><code>from pyspark import SparkConf, SparkContext
+
+conf = SparkConf().setMaster("local[2]").setAppName("RDD Example")
+sc = SparkContext(conf=conf)
+
+# different way of setting configurations 
+#conf.setMaster('some url')
+#conf.set('spark.executor.memory', '2g')
+#conf.set('spark.executor.cores', '4')
+#conf.set('spark.cores.max', '40')
+#conf.set('spark.logConf', True)
+
+# sparkContext.parallelize materializes data into RDD 
+# documentation: https://spark.apache.org/docs/2.1.1/programming-guide.html#parallelized-collections
+rdd = sc.parallelize([('Richard', 22), ('Alfred', 23), ('Loki',4), ('Albert', 12), ('Alfred', 9)])
+
+rdd.collect() # [('Richard', 22), ('Alfred', 23), ('Loki', 4), ('Albert', 12), ('Alfred', 9)]
+
+# create two different RDDs
+left = sc.parallelize([("Richard", 1), ("Alfred", 4)])
+right = sc.parallelize([("Richard", 2), ("Alfred", 5)])
+
+joined_rdd = left.join(right)
+collected = joined_rdd.collect()
+
+collected #[('Alfred', (4, 5)), ('Richard', (1, 2))]</code></pre>
+<h2 id="code-used-in-sparksession-example">Code Used in SparkSession Example</h2>
+<pre><code># Notice we’re using pyspark.sql library here
+from pyspark.sql import SparkSession
+
+spark = SparkSession.builder \
+        .master("local") \
+        .appName("CSV file loader") \
+        .getOrCreate()
+
+# couple ways of setting configurations
+#spark.conf.set("spark.executor.memory", '8g')
+#spark.conf.set('spark.executor.cores', '3')
+#spark.conf.set('spark.cores.max', '3')
+#spark.conf.set("spark.driver.memory", '8g')
+
+file_path = "./AB_NYC_2019.csv"
+# Always load csv files with header=True
+df = spark.read.csv(file_path, header=True)
+
+df.printSchema()
+
+df.select('neighbourhood').distinct().show(10, False)</code></pre>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3><p>RDD Demo</p></h3>
+  <div>
+  <h2 id="demo-for-rdds">Demo for RDDs</h2>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3><p>ND029 C2 L1 03 Demo For RDD</p></h3>
+  <video controls>
+  <source src="05. ND029 C2 L1 03 Demo For RDD-f3lViDkep50.mp4" type="video/mp4">
+
+  <track default="true" kind="subtitles" srclang="en" src="05. ND029 C2 L1 03 Demo For RDD-f3lViDkep50.en.vtt" label="en">
+</video>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3><p>Why is Spark RDD immutable?</p></h3>
+  <div>
+  <form>
+    <fieldset>
+      <legend><p>Why is a Spark RDD immutable?</p></legend>
+    </fieldset>
+
+      <div>
+        <input type="radio" value="rbk1" name="951225" id="rbk1">
+        <label for="rbk1"><p>Immutable data is always safe to share across multiple processes as well as multiple threads.</p></label>
+      </div>
+      <div>
+        <input type="radio" value="rbk2" name="951225" id="rbk2">
+        <label for="rbk2"><p>Spark RDDs are fault tolerant as they track data lineage information to rebuild lost data automatically on failure.</p></label>
+      </div>
+      <div>
+        <input type="radio" value="rbk3" name="951225" id="rbk3">
+        <label for="rbk3"><p>If the computation is time-consuming, we can cache the RDD, which results in performance improvement.</p></label>
+      </div>
+  </form>
+
+  <details>
+    <summary><strong>SOLUTION:</strong></summary>
+    Spark RDDs are fault tolerant as they track data lineage information to rebuild lost data automatically on failure.
+  </details>
+</div>
+
+</div>
+<div class="divider"></div>
+          </div>
+
+          <div class="col-12">
+            <p class="text-right">
+              <a href="06. Partitioning in Spark.html" class="btn btn-outline-primary mt-4" role="button">Next Concept</a>
+            </p>
+          </div>
+        </div>
+      </main>
+
+      <footer class="footer">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <p class="text-center">
+                <a href="https://us-udacity.github.io/" target="_blank">【udacity2.0 】If you need more courses, please add wechat：udacity6</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </div>
+
+
+  <script src="../assets/js/jquery-3.3.1.min.js"></script>
+  <script src="../assets/js/plyr.polyfilled.min.js"></script>
+  <script src="../assets/js/bootstrap.min.js"></script>
+  <script src="../assets/js/jquery.mCustomScrollbar.concat.min.js"></script>
+  <script src="../assets/js/katex.min.js"></script>
+  <script>
+    // Initialize Plyr video players
+    const players = Array.from(document.querySelectorAll('video')).map(p => new Plyr(p));
+
+    // render math equations
+    let elMath = document.getElementsByClassName('mathquill');
+    for (let i = 0, len = elMath.length; i < len; i += 1) {
+      const el = elMath[i];
+
+      katex.render(el.textContent, el, {
+        throwOnError: false
+      });
+    }
+
+    // this hack will make sure Bootstrap tabs work when using Handlebars
+    if ($('#question-tabs').length && $('#user-answer-tabs').length) {
+      $("#question-tabs a.nav-link").on('click', function () {
+        $("#question-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+      $("#user-answer-tabs a.nav-link").on('click', function () {
+        $("#user-answer-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    } else {
+      $("a.nav-link").on('click', function () {
+        $(".tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    }
+
+    // side bar events
+    $(document).ready(function () {
+      $("#sidebar").mCustomScrollbar({
+        theme: "minimal"
+      });
+
+      $('#sidebarCollapse').on('click', function () {
+        $('#sidebar, #content').toggleClass('active');
+        $('.collapse.in').toggleClass('in');
+        $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+      });
+
+      // scroll to first video on page loading
+      if ($('video').length) {
+        $('html,body').animate({ scrollTop: $('div.plyr').prev().offset().top});
+      }
+
+      // auto play first video: this may not work with chrome/safari due to autoplay policy
+      if (players && players.length > 0) {
+        players[0].play();
+      }
+
+      // scroll sidebar to current concept
+      const currentInSideBar = $( "ul.sidebar-list.components li a:contains('05. Intro to Spark RDDs')" )
+      currentInSideBar.css( "text-decoration", "underline" );
+      $("#sidebar").mCustomScrollbar('scrollTo', currentInSideBar);
+    });
+  </script>
+</body>
+
+</html>

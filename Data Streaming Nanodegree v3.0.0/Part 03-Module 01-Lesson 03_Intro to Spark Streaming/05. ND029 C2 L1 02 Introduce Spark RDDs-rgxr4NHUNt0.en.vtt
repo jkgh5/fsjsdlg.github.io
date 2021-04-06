@@ -1,0 +1,52 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:01.889
+Let's start talking about RDDs.
+
+00:00:01.889 --> 00:00:07.710
+The RDD, Resilient Distributed Dataset is the fundamental data structure of Apache Spark.
+
+00:00:07.710 --> 00:00:10.650
+An RDD is an immutable collection of objects.
+
+00:00:10.650 --> 00:00:13.620
+This means an RDD is a read only dataset,
+
+00:00:13.619 --> 00:00:18.539
+and the only way to create an RDD is to load a dataset or paralyze a dataset
+
+00:00:18.539 --> 00:00:24.105
+or to convert an existing RDD into a new one using transformation operations.
+
+00:00:24.105 --> 00:00:27.644
+RDDs compute on a different nodes of the cluster.
+
+00:00:27.644 --> 00:00:31.410
+Each and every dataset in a spark RDD is logically partitioned
+
+00:00:31.410 --> 00:00:36.585
+across many servers so that they can be computed on different nodes of the cluster.
+
+00:00:36.585 --> 00:00:40.270
+RDD stands for Resilient.
+
+00:00:40.270 --> 00:00:42.575
+RDDs are fault tolerant, in other words,
+
+00:00:42.575 --> 00:00:46.250
+they possess self recovery capabilities in case of failure.
+
+00:00:46.250 --> 00:00:49.895
+Distributed. Since data resides on multiple nodes,
+
+00:00:49.895 --> 00:00:53.375
+a dataset represents records of the data you work with.
+
+00:00:53.375 --> 00:00:57.890
+The user can load a dataset externally which can be either adjacent file,
+
+00:00:57.890 --> 00:01:03.390
+CSV file, text file or database with no specific data structure.
+

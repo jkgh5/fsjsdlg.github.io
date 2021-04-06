@@ -1,0 +1,175 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:04.394
+It's important to maintain a State Store for a state full stream processing
+
+00:00:04.394 --> 00:00:06.269
+because the state is basically
+
+00:00:06.269 --> 00:00:09.689
+the intermediary object that you will want to retrieve later.
+
+00:00:09.689 --> 00:00:11.160
+For the State Store,
+
+00:00:11.160 --> 00:00:13.138
+you can use in-memory hashmap,
+
+00:00:13.138 --> 00:00:14.684
+Hadoop Distributed File System,
+
+00:00:14.685 --> 00:00:17.969
+Cassandra, AWS, DynamoDB, etc.
+
+00:00:17.969 --> 00:00:20.429
+Although you can use in-memory hashmap,
+
+00:00:20.429 --> 00:00:23.295
+using a reliable external State Stores
+
+00:00:23.295 --> 00:00:27.015
+is highly recommended so that you can read the data later.
+
+00:00:27.015 --> 00:00:31.260
+In this concept, we'll take a deep dive to understand how a State Store has been
+
+00:00:31.260 --> 00:00:35.594
+internally implemented in structured streaming as of the 2.3 version.
+
+00:00:35.594 --> 00:00:36.969
+In the previous lesson,
+
+00:00:36.969 --> 00:00:38.359
+we talked about how there was
+
+00:00:38.359 --> 00:00:41.825
+an inefficient design for state management in Spark streaming.
+
+00:00:41.825 --> 00:00:46.410
+Now that State Store has been implemented in Spark structured streaming,
+
+00:00:46.409 --> 00:00:50.579
+even when the failure occurs in the driver or the executor,
+
+00:00:50.579 --> 00:00:53.179
+users can recover the state of
+
+00:00:53.179 --> 00:00:57.005
+stateful stream processing from the point right before the failure.
+
+00:00:57.005 --> 00:01:02.250
+This is a quick walk through on the code that show the checkpoint and location.
+
+00:01:02.250 --> 00:01:04.364
+Everything is the same,
+
+00:01:04.364 --> 00:01:06.359
+you'll initialize a Spark session.
+
+00:01:06.359 --> 00:01:07.438
+You get a builder,
+
+00:01:07.438 --> 00:01:10.454
+appName, and then get0rCreate.
+
+00:01:10.454 --> 00:01:13.679
+You're going to be reading from a socket,
+
+00:01:13.680 --> 00:01:16.030
+and the host is our local host,
+
+00:01:16.030 --> 00:01:19.010
+and the port is anything you can configure to,
+
+00:01:19.010 --> 00:01:21.960
+preferably, the ones that are not open yet.
+
+00:01:21.959 --> 00:01:29.405
+I'm going to use the column-column value and do a select on it.
+
+00:01:29.405 --> 00:01:30.799
+When you write this query,
+
+00:01:30.799 --> 00:01:33.469
+writeStream out to a parquet,
+
+00:01:33.469 --> 00:01:36.980
+you're going to use an option called checkpointLocation,
+
+00:01:36.980 --> 00:01:40.850
+and you're going to save to a location that you desire.
+
+00:01:40.849 --> 00:01:44.089
+One thing to note is that this checkpointLocation
+
+00:01:44.090 --> 00:01:47.844
+has to be a path in an Hadoop compatible file system,
+
+00:01:47.844 --> 00:01:49.519
+which means it's distributed.
+
+00:01:49.519 --> 00:01:54.649
+So it cannot be saved to your C drive or your users folder,
+
+00:01:54.650 --> 00:01:58.250
+and this will actually start the execution of the query.
+
+00:01:58.250 --> 00:02:01.359
+This whole code here returns
+
+00:02:01.359 --> 00:02:07.954
+a streaming query object which is to handle a continuous running execution.
+
+00:02:07.954 --> 00:02:12.414
+Right now unfortunately, this code will not run because we don't have
+
+00:02:12.414 --> 00:02:16.689
+a Hadoop compatible file system in our workspace.
+
+00:02:16.689 --> 00:02:20.724
+Then you have another query that you can write out to a console,
+
+00:02:20.724 --> 00:02:24.370
+and this is a time.sleep that I put in
+
+00:02:24.370 --> 00:02:28.550
+so that we have two seconds in between our generation.
+
+00:02:28.949 --> 00:02:33.009
+This means it's going to wait for termination.
+
+00:02:33.009 --> 00:02:36.729
+The state management for a structure streaming is now decoupled from
+
+00:02:36.729 --> 00:02:40.854
+metadata checkpointing and is not part of Spark jobs or tasks anymore.
+
+00:02:40.854 --> 00:02:45.469
+Which means Spark applications will not try to save state unnecessarily.
+
+00:02:45.469 --> 00:02:47.810
+It is asynchronous to add the execution
+
+00:02:47.810 --> 00:02:51.560
+now before it used to be synchronous and cause problems.
+
+00:02:51.560 --> 00:02:54.740
+So even though we can't run this code because
+
+00:02:54.740 --> 00:02:57.995
+the workspace does not support distributed file system,
+
+00:02:57.995 --> 00:02:59.900
+but you can note that at your job,
+
+00:02:59.900 --> 00:03:03.349
+you should have a distributed file system that allows checkpointing.
+
+00:03:03.349 --> 00:03:06.594
+When you do, you can use this option,
+
+00:03:06.594 --> 00:03:12.270
+checkpointLocation to save your checkpoints.
+

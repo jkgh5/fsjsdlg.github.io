@@ -1,0 +1,25 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:03.870
+In this concept, we'll learn what a DAG is in Apache Spark.
+
+00:00:03.870 --> 00:00:06.855
+DAG stands for Directed Acyclic Graphs.
+
+00:00:06.855 --> 00:00:09.359
+We'll take a look at what the DAG scheduler is,
+
+00:00:09.359 --> 00:00:11.189
+how to create DAGs in Spark,
+
+00:00:11.189 --> 00:00:13.664
+and how they help in achieving fault-tolerance.
+
+00:00:13.664 --> 00:00:18.929
+We'll also learn how DAGs work in RDD and the advantages of DAGs in Spark,
+
+00:00:18.929 --> 00:00:23.649
+which creates the differences between Apache Spark and Hadoop MapReduce.
+

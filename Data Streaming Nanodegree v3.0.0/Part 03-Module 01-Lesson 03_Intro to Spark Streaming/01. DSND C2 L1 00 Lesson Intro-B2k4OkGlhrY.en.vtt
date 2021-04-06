@@ -1,0 +1,37 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:03.149
+Welcome to the Spark and data and streaming course.
+
+00:00:03.149 --> 00:00:05.915
+You'll be first learning Apache Spark fundamentals,
+
+00:00:05.915 --> 00:00:10.199
+which will help you build a Spark batch application and then we'll be learning
+
+00:00:10.199 --> 00:00:12.779
+general concepts of about streaming in the data world and
+
+00:00:12.779 --> 00:00:15.855
+specifically learning to use Spark structured streaming.
+
+00:00:15.855 --> 00:00:19.410
+We will prepare you to start using structured streaming APIs and
+
+00:00:19.410 --> 00:00:22.800
+then dive into integrating Spark structured streaming with Kafka,
+
+00:00:22.800 --> 00:00:24.975
+which you learned about it in previous course.
+
+00:00:24.975 --> 00:00:26.370
+By the end of the course,
+
+00:00:26.370 --> 00:00:28.650
+you will complete a project that will prepare you to
+
+00:00:28.649 --> 00:00:31.959
+start building streaming applications at your job.
+

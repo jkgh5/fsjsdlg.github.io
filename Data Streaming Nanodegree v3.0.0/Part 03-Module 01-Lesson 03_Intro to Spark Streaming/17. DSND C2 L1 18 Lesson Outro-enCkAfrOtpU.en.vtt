@@ -1,0 +1,25 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:01.590
+So in this lesson,
+
+00:00:01.590 --> 00:00:05.264
+we learned the fundamentals of Spark's core building blocks, RDDs,
+
+00:00:05.264 --> 00:00:11.189
+DataFrames, and datasets, and how to use Spark web UI to monitor and debug Spark jobs.
+
+00:00:11.189 --> 00:00:15.779
+You can now build a simple Spark application that focuses on batch processing.
+
+00:00:15.779 --> 00:00:17.460
+Now, in the next lesson,
+
+00:00:17.460 --> 00:00:19.920
+you're ready to dive into building Spark
+
+00:00:19.920 --> 00:00:23.980
+streaming applications using structural streaming APIs.
+

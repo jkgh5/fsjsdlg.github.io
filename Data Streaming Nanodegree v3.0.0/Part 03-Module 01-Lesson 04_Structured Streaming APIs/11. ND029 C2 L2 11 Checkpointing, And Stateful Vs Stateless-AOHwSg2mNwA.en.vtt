@@ -1,0 +1,226 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:03.339
+Now that we've explored some types of syncs in Spark,
+
+00:00:03.339 --> 00:00:05.474
+the concept of saving and maintaining
+
+00:00:05.474 --> 00:00:09.054
+intermediary information to these syncs is called checkpointing.
+
+00:00:09.054 --> 00:00:13.695
+Checkpointing is important in structure streaming because processing incoming records
+
+00:00:13.695 --> 00:00:18.315
+depends on the previously processed records in stateful stream processing,
+
+00:00:18.315 --> 00:00:23.295
+and we would like to save the state of these incoming records in some things.
+
+00:00:23.295 --> 00:00:27.465
+Spark Streaming achieves fault tolerance by using checkpointing.
+
+00:00:27.464 --> 00:00:30.000
+It's a process to truncate RDD lineage.
+
+00:00:30.000 --> 00:00:35.564
+Meaning it saves the application state to a reliable storage like Hadoop file system.
+
+00:00:35.564 --> 00:00:38.439
+There are two types of data with checkpoint,
+
+00:00:38.439 --> 00:00:41.849
+which are metadata and data.
+
+00:00:41.850 --> 00:00:45.344
+Metadata is data about data, for example,
+
+00:00:45.344 --> 00:00:47.564
+some metrics size of data,
+
+00:00:47.564 --> 00:00:50.504
+when the data came in, these metrics.
+
+00:00:50.505 --> 00:00:53.100
+Data is the actual content of the data.
+
+00:00:53.100 --> 00:00:55.670
+The persisting functionality in Spark Core
+
+00:00:55.670 --> 00:00:58.715
+fulfill some of the same purposes as checkpointing.
+
+00:00:58.715 --> 00:01:02.585
+But let's let's discuss some important differences between them.
+
+00:01:02.585 --> 00:01:06.230
+When we persist RDD with disk only storage level,
+
+00:01:06.230 --> 00:01:08.840
+the RDD gets saved in that location and then
+
+00:01:08.840 --> 00:01:11.915
+doesn't have to be recomputed to reach that point.
+
+00:01:11.915 --> 00:01:18.080
+Basically, Spark remembers the lineage of RDD and then when the job run is complete,
+
+00:01:18.079 --> 00:01:19.750
+the cache is cleared.
+
+00:01:19.750 --> 00:01:24.784
+Checkpointing actually deletes the lineage and on the completion of the job run,
+
+00:01:24.784 --> 00:01:26.554
+the cache is now deleted.
+
+00:01:26.555 --> 00:01:29.735
+We can actually visualize this in the console.
+
+00:01:29.734 --> 00:01:32.344
+We're going to import the storage level.
+
+00:01:32.344 --> 00:01:37.429
+This library has the disk only feature.
+
+00:01:37.430 --> 00:01:41.734
+I'm going to create a temporary RDD,
+
+00:01:41.733 --> 00:01:46.399
+not temporary but just a fake one and I'm going to
+
+00:01:46.400 --> 00:01:51.635
+take just the ones that are divisible by four maybe,
+
+00:01:51.635 --> 00:01:54.275
+I'm going to do reduceByKey,
+
+00:01:54.275 --> 00:01:58.150
+so we have generated an RDD.
+
+00:01:58.150 --> 00:02:00.980
+I'm going to create a DataFrame and I'm
+
+00:02:00.980 --> 00:02:03.740
+going to take the ones that are greater than three.
+
+00:02:03.739 --> 00:02:10.414
+RDD mapValues that are greater than three.
+
+00:02:10.414 --> 00:02:16.419
+I am going to persist this DataFrame to disk only.
+
+00:02:16.419 --> 00:02:20.939
+Storage disk only.
+
+00:02:20.939 --> 00:02:26.329
+All right, so now I have a MapPartition and mapValues.
+
+00:02:26.330 --> 00:02:30.995
+There's a feature called toDebugString to take a look at what's really going on.
+
+00:02:30.995 --> 00:02:36.569
+So I'm going to do df.toDebugString.
+
+00:02:36.849 --> 00:02:44.180
+I do this, this actually shows the parallelized collection and then I had a MapPartition,
+
+00:02:44.180 --> 00:02:47.689
+which was this map and there's a shuffled RDD which is
+
+00:02:47.689 --> 00:02:52.599
+a reduceByKey and there's another mapValues, so this one right here.
+
+00:02:52.599 --> 00:02:55.364
+If I do df.count,
+
+00:02:55.365 --> 00:03:00.840
+which is a action and I get a long.
+
+00:03:00.840 --> 00:03:05.319
+If I do another df.toDebugString.
+
+00:03:05.599 --> 00:03:10.879
+Now, this actually showed there is a cached partition,
+
+00:03:10.879 --> 00:03:15.650
+a memory size in the shuffled RDD and the MapPartition.
+
+00:03:15.650 --> 00:03:21.969
+So it shows all the way up to before the count but it also shows that it was cached.
+
+00:03:21.969 --> 00:03:28.064
+Now let's take a look at with the same RDD that we'd parallelized,
+
+00:03:28.064 --> 00:03:33.400
+let's take a look at what happens when we do a checkpointing.
+
+00:03:33.400 --> 00:03:36.180
+So we're going do the same thing,
+
+00:03:36.180 --> 00:03:41.295
+but with a create a new DataFrame and we're going to do
+
+00:03:41.294 --> 00:03:50.949
+another mapValues greater than three and then I'm going to set a checkpoint directory.
+
+00:03:50.949 --> 00:03:58.489
+I'm going to do temporary folder point example.
+
+00:03:59.370 --> 00:04:04.030
+You need to set a checkpoint directory to actually checkpoint.
+
+00:04:04.030 --> 00:04:07.819
+I'm going to do a df.toDebugString.
+
+00:04:08.939 --> 00:04:11.829
+So we have seen this before;
+
+00:04:11.830 --> 00:04:14.450
+ParallelizedCollection MapPartition,
+
+00:04:14.449 --> 00:04:17.784
+reduceByKey, and the mapValues, so all the way up here.
+
+00:04:17.785 --> 00:04:21.215
+If I do the same thing,
+
+00:04:21.214 --> 00:04:24.979
+before I do the.count, let's do checkpoint.
+
+00:04:24.980 --> 00:04:29.730
+So now I'm actually going to checkpoint this DataFrame and then I do a
+
+00:04:29.730 --> 00:04:34.850
+df2.count which will give me the same result.
+
+00:04:34.850 --> 00:04:37.980
+But if I do df.toDebugString,
+
+00:04:40.939 --> 00:04:46.310
+now this actually returns a reliable checkpoint RDD.
+
+00:04:46.310 --> 00:04:49.610
+Before it showed a cached partition,
+
+00:04:49.610 --> 00:04:52.485
+but it's lost all the lineage from parallelized,
+
+00:04:52.485 --> 00:04:56.300
+MapPartition to reduceByKey, but now
+
+00:04:56.300 --> 00:05:00.800
+it's just showing the reliable checkpoint in the MapPartition at mapValues.
+
+00:05:00.800 --> 00:05:04.405
+We just saw the differences between persisting and checkpointing.
+
+00:05:04.404 --> 00:05:09.153
+Next, we will discuss the differences between stateful and stateless stream processing,
+
+00:05:09.153 --> 00:05:12.509
+and then we'll talk about why checkpointing matters.
+

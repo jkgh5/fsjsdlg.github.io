@@ -1,0 +1,79 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:04.049
+In this video, we'll go through query plans for aggregation.
+
+00:00:04.049 --> 00:00:08.384
+Aggregation is an execution planning strategy that spark planner uses.
+
+00:00:08.384 --> 00:00:11.429
+Spark planner selects an aggregate physical operator
+
+00:00:11.429 --> 00:00:14.925
+for an aggregate logical operator in a logical query plan.
+
+00:00:14.925 --> 00:00:18.285
+It sounds a lot, but let's go through our code.
+
+00:00:18.285 --> 00:00:23.899
+Let's actually go back to the join query plan and we'll operate a aggregation there.
+
+00:00:23.899 --> 00:00:28.029
+So here we're going to aggregate on the region,
+
+00:00:28.030 --> 00:00:33.225
+by region column, and let's do a count on this,
+
+00:00:33.225 --> 00:00:35.460
+then we'll do a explain.
+
+00:00:35.460 --> 00:00:41.320
+The group-by operator, groups the rows in a dataset by column.
+
+00:00:41.320 --> 00:00:44.509
+Then scan plan projects the columns in
+
+00:00:44.509 --> 00:00:47.854
+need from the original RDD and loads them into unsafe row.
+
+00:00:47.854 --> 00:00:50.404
+So right here to FileScan.
+
+00:00:50.405 --> 00:00:55.490
+Reversing the file scan parquet from the local saved the files like how we did before.
+
+00:00:55.490 --> 00:00:58.140
+So this comes from facilities,
+
+00:00:58.140 --> 00:01:00.670
+and this is a parquet,
+
+00:01:00.670 --> 00:01:05.344
+then we're only reading the Region: string.
+
+00:01:05.344 --> 00:01:08.554
+We also have this HashAggregate.
+
+00:01:08.555 --> 00:01:11.720
+It's essential to build a tungsten aggregation
+
+00:01:11.719 --> 00:01:15.754
+iterator to process the aggregation for a given partition.
+
+00:01:15.754 --> 00:01:18.784
+Tungsten aggregation iterator operates directly on
+
+00:01:18.784 --> 00:01:22.579
+unsafe row to make aggregation faster and more efficient.
+
+00:01:22.579 --> 00:01:25.429
+After the aggregation by partition is done,
+
+00:01:25.430 --> 00:01:29.585
+exchange plans shuffles the data and the by keys.
+
+00:01:29.584 --> 00:01:33.329
+Here we chose region for our keys.
+

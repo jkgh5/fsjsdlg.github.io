@@ -1,0 +1,163 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:03.419
+In this video, we'll take a look at how you can create an RDD.
+
+00:00:03.419 --> 00:00:08.175
+SparkContext and SparkSession are both entry points of our spark application,
+
+00:00:08.175 --> 00:00:10.785
+SparkContext specifically for RDD,
+
+00:00:10.785 --> 00:00:14.789
+but SparkContext has been deprecated since version 2.0,
+
+00:00:14.789 --> 00:00:18.000
+and we'll use sparkcontext for this RDD example,
+
+00:00:18.000 --> 00:00:20.789
+and then use sparksession for the next example.
+
+00:00:20.789 --> 00:00:23.969
+So we're going to import sparkcontext and sparkcom
+
+00:00:23.969 --> 00:00:26.849
+from pyspark because we're using Python,
+
+00:00:26.850 --> 00:00:31.830
+we'll be specifically importing pyspark library not SparkLibrary.
+
+00:00:31.829 --> 00:00:36.929
+Now, we're going to use some configuration values to the spark conf,
+
+00:00:36.929 --> 00:00:42.000
+and we'll be using SparkConf to create a sparkcontext.
+
+00:00:42.000 --> 00:00:48.560
+Now, we're going to create a sparkcontext using the configuration values.
+
+00:00:48.560 --> 00:00:51.150
+There are few other ways of setting this.
+
+00:00:51.149 --> 00:01:01.335
+For example you can do conf.setMaster instead of chaining like that some URL.
+
+00:01:01.335 --> 00:01:09.125
+Then usually this will be your yarn or mesos master URL like 33,
+
+00:01:09.125 --> 00:01:13.359
+like actual APIs, actual IPs, so on.
+
+00:01:13.359 --> 00:01:17.719
+You can see a key value pairs like conf.set. Let's see.
+
+00:01:17.719 --> 00:01:21.620
+Maybe if you want to set your executor memory separately,
+
+00:01:21.620 --> 00:01:25.829
+then it would be spark.executor.memory,
+
+00:01:26.170 --> 00:01:30.605
+let's say like two gigabytes.
+
+00:01:30.605 --> 00:01:33.500
+You can also load your configuration from
+
+00:01:33.500 --> 00:01:37.204
+an external file if you're configuration gets really long.
+
+00:01:37.204 --> 00:01:39.620
+Now we'll be creating an RDD.
+
+00:01:39.620 --> 00:01:44.555
+The way we're going to do this is because we're creating the first one.
+
+00:01:44.555 --> 00:01:47.180
+We're not going to load it from a text file or external file,
+
+00:01:47.180 --> 00:01:49.265
+but we're going to be just parallelizing it.
+
+00:01:49.265 --> 00:01:52.174
+So lets do a parallelize.
+
+00:01:52.174 --> 00:01:54.905
+I'm going to create a list of
+
+00:01:54.905 --> 00:02:00.090
+tuples,and it's going to have a person's name and their age.
+
+00:02:00.090 --> 00:02:03.990
+So this is a tuple and then we're going to do [inaudible] Alfred.
+
+00:02:03.989 --> 00:02:11.009
+Let's do another Alfred, another person.
+
+00:02:11.009 --> 00:02:18.039
+Then we're going to do our duty collect on this just to see what it looks like.
+
+00:02:18.039 --> 00:02:22.280
+Cool. This actually shows what your RDD contains.
+
+00:02:22.280 --> 00:02:25.379
+This was a way of creating an RDD.
+
+00:02:25.379 --> 00:02:31.030
+Now, we're going to try to create an RDD using a transformation.
+
+00:02:31.030 --> 00:02:36.490
+We're going to use the same parallelize method to create a new one.
+
+00:02:36.490 --> 00:02:39.510
+Let's just copy some values here,
+
+00:02:39.509 --> 00:02:43.344
+and then let's create another table.
+
+00:02:43.344 --> 00:02:46.373
+What I'm planning to do is to join these two tables,
+
+00:02:46.373 --> 00:02:50.555
+and we're going to make one of them have both contain the same value.
+
+00:02:50.555 --> 00:02:54.939
+Cool. Now we have two tables that we can join on.
+
+00:02:54.939 --> 00:03:03.008
+What I'm going to do is now to join these two RDD left join right,
+
+00:03:03.008 --> 00:03:05.709
+and we're going to try and get with joint RDD is.
+
+00:03:05.710 --> 00:03:07.885
+So this is just a Python RDD.
+
+00:03:07.884 --> 00:03:12.924
+What we can do is we can collect these to show the values again. All right.
+
+00:03:12.925 --> 00:03:21.435
+You can see how the key and the values are mapped together by the same keys.
+
+00:03:21.435 --> 00:03:27.140
+So this was a quick way to show how to create an RDD by using that parallelize.
+
+00:03:27.139 --> 00:03:31.549
+The first example just showed a simple way to generate RDD,
+
+00:03:31.550 --> 00:03:33.395
+then collect the value.
+
+00:03:33.395 --> 00:03:37.170
+The second example generated two new RDDs,
+
+00:03:37.169 --> 00:03:42.244
+and then generated a third RDD by applying transformation
+
+00:03:42.245 --> 00:03:47.230
+on top of another RDD which was by using a join operation.
+
+00:03:47.229 --> 00:03:53.459
+Later, we'll take a look at how to create data frame using sparksession entry point.
+

@@ -1,0 +1,139 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:05.400
+In Spark, the concept of lazy evaluation is used with transformation operations.
+
+00:00:05.400 --> 00:00:07.980
+The transformation expressions do not get
+
+00:00:07.980 --> 00:00:10.980
+evaluated until the external expressions are called.
+
+00:00:10.980 --> 00:00:13.185
+Transformations are lazy in nature.
+
+00:00:13.185 --> 00:00:15.510
+Meaning, when they call some operation in RDD,
+
+00:00:15.509 --> 00:00:17.294
+it does not execute immediately.
+
+00:00:17.295 --> 00:00:22.020
+Spark maintains a record of which operation is being called through DAG.
+
+00:00:22.019 --> 00:00:27.329
+We can think Spark RDD as the data that we built up through a transformation.
+
+00:00:27.329 --> 00:00:30.209
+Since transformations are lazy in nature,
+
+00:00:30.210 --> 00:00:34.109
+so we can execute operation anytime by calling an action on data.
+
+00:00:34.109 --> 00:00:35.865
+Hence in lazy evaluation,
+
+00:00:35.865 --> 00:00:38.640
+data is not loaded until it is necessary.
+
+00:00:38.640 --> 00:00:41.310
+Let's open up our Jupyter Notebook.
+
+00:00:41.310 --> 00:00:44.420
+We're going to go through a simple word count example.
+
+00:00:44.420 --> 00:00:49.160
+This is a great example because this uses all the examples of transformation like wide,
+
+00:00:49.159 --> 00:00:51.439
+narrow transformations, and actions.
+
+00:00:51.439 --> 00:00:54.289
+We'll revisit this code a couple more times.
+
+00:00:54.289 --> 00:01:01.795
+First, what you need is a file path which is in our file, it's called shakespeare.text.
+
+00:01:01.795 --> 00:01:04.125
+We'll be reading this text file,
+
+00:01:04.125 --> 00:01:07.200
+and then we're going to transform into an RDD,
+
+00:01:07.200 --> 00:01:09.150
+and then we're going to map through this.
+
+00:01:09.150 --> 00:01:12.230
+Then we are going to apply a flatMap and it has
+
+00:01:12.230 --> 00:01:14.980
+some lambda function which cleans up the text,
+
+00:01:14.980 --> 00:01:21.395
+puts it to lowercase and it's split by a space because the words are spaced by a space.
+
+00:01:21.394 --> 00:01:24.780
+Then we're going to do a map which is a word count,
+
+00:01:24.780 --> 00:01:27.719
+and then we're going to reduceByKey on this one.
+
+00:01:27.719 --> 00:01:31.849
+Then we're going to apply an action word which is a collect,
+
+00:01:31.849 --> 00:01:33.784
+and then when we run this,
+
+00:01:33.784 --> 00:01:37.819
+you will only see the word collect here which is
+
+00:01:37.819 --> 00:01:41.989
+the action word because a DAG isn't generated until we operate an action.
+
+00:01:41.989 --> 00:01:43.744
+Once you click on here,
+
+00:01:43.745 --> 00:01:48.340
+you'll be able to see the blue boxes and red boxes here.
+
+00:01:48.340 --> 00:01:51.005
+The blue boxes are noted as
+
+00:01:51.004 --> 00:01:53.625
+the narrow transformation and then the red box
+
+00:01:53.625 --> 00:01:57.034
+annotates the wide transformation which we'll take a look at in future.
+
+00:01:57.034 --> 00:01:58.429
+If you click on these,
+
+00:01:58.430 --> 00:02:02.870
+you will see an operation that you have applied on top of the RDD.
+
+00:02:02.870 --> 00:02:06.050
+So FileScan, and there's a MapPartition which probably relates
+
+00:02:06.049 --> 00:02:11.400
+to a bunch of map functions and flatMaps that we operated.
+
+00:02:11.400 --> 00:02:14.750
+There's also the reduceByKey which actually
+
+00:02:14.750 --> 00:02:18.395
+takes it to the next stage because this is stage 0.
+
+00:02:18.395 --> 00:02:21.275
+The key takeaway is that even though you're applying
+
+00:02:21.275 --> 00:02:24.289
+a bunch of transformations like map and flatMap,
+
+00:02:24.289 --> 00:02:28.864
+they don't immediately show up on Spark UI until the action word is called,
+
+00:02:28.865 --> 00:02:33.120
+and that is because the transformations are lazily evaluated.
+

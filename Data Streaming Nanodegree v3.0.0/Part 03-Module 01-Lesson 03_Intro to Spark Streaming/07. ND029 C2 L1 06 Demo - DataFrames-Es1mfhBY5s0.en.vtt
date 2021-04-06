@@ -1,0 +1,166 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:02.955
+In this video we'll do a simple demo on how to create
+
+00:00:02.955 --> 00:00:06.134
+a data frame and apply some operations on top of it.
+
+00:00:06.134 --> 00:00:08.339
+Instead of importing just pyspark,
+
+00:00:08.339 --> 00:00:11.160
+we're actually going to import pyspark.sql
+
+00:00:11.160 --> 00:00:14.804
+library because we'll be using data frame instead of RDD.
+
+00:00:14.804 --> 00:00:17.820
+Then we'll use a builder to added configurations,
+
+00:00:17.820 --> 00:00:23.100
+and then we're going to create a spark variable that uses SparkSession.
+
+00:00:23.100 --> 00:00:26.940
+This will use the builder to adding configurations
+
+00:00:26.940 --> 00:00:32.414
+like master.appName and then we're going to do a getorCreate.
+
+00:00:32.414 --> 00:00:37.539
+Like another way of setting configurations could be spark.conf.set.
+
+00:00:38.570 --> 00:00:42.799
+Spark.executor.memory, this will be
+
+00:00:42.799 --> 00:00:47.780
+your key value and then it can do like to give it like how we did before.
+
+00:00:47.780 --> 00:00:52.439
+We're going to load a Airbnb data that I got from Kaggle,
+
+00:00:52.439 --> 00:00:55.265
+it's under Resources folder.
+
+00:00:55.265 --> 00:01:03.560
+So we'll give a path and that's what it's called and it is also CSV file.
+
+00:01:03.560 --> 00:01:06.140
+So when we do this,
+
+00:01:06.140 --> 00:01:11.555
+we're going to be using a CSV offer operator spark.read.
+
+00:01:11.555 --> 00:01:16.115
+So if you're loading a JSON file you'll be using JSON.
+
+00:01:16.114 --> 00:01:19.954
+If you're using a park eighth file you'll be using just a load function.
+
+00:01:19.954 --> 00:01:24.724
+Well here we're going to use CSV and then we're going to give a path.
+
+00:01:24.724 --> 00:01:29.405
+Also what we want to do is that we want to use the header that isn't CSV.
+
+00:01:29.405 --> 00:01:32.150
+So we're going to say header is True.
+
+00:01:32.150 --> 00:01:35.570
+If you don't want to use it you'll default but then it won't
+
+00:01:35.569 --> 00:01:38.884
+be useful because you are not going to get the column names.
+
+00:01:38.885 --> 00:01:44.755
+We're going to do print schema just so we can see what it's in there.
+
+00:01:44.754 --> 00:01:51.500
+Another cool thing is that to view the content of RDD we had to collect.
+
+00:01:51.500 --> 00:01:56.230
+But on Data Frame you can just do data.show,
+
+00:01:56.230 --> 00:02:00.365
+this will show column names here and the values here.
+
+00:02:00.364 --> 00:02:03.890
+Obviously some of them aren't caught because they're along.
+
+00:02:03.890 --> 00:02:08.389
+If you don't want to do this you can give a false variable.
+
+00:02:08.389 --> 00:02:11.489
+So like let's do show like two rows,
+
+00:02:11.490 --> 00:02:17.580
+one row I guess and then we can pass in another value called False.
+
+00:02:17.580 --> 00:02:22.120
+This will actually show all the values in
+
+00:02:22.120 --> 00:02:24.560
+your data frame and it will also say
+
+00:02:24.560 --> 00:02:27.545
+only showing top one row because I asked to show in one row.
+
+00:02:27.544 --> 00:02:33.259
+Now that we have this data set I'm going to try to see
+
+00:02:33.259 --> 00:02:39.599
+how many distinct doing neighborhood groups are in New York City in this data frame.
+
+00:02:39.599 --> 00:02:45.289
+So what we can do is apply a traditional SQL syntax.
+
+00:02:45.289 --> 00:02:51.034
+We can do is df.select on the column name.
+
+00:02:51.034 --> 00:02:56.689
+Here we're going to copy this down and what we can do is do a distinct.
+
+00:02:56.689 --> 00:02:59.875
+We're going to do a count on it to see how many there are.
+
+00:02:59.875 --> 00:03:04.759
+The way we can see this is to do a show on it but instead of doing a count we're going
+
+00:03:04.759 --> 00:03:10.419
+to create a new data frame because we're applying transformation.
+
+00:03:10.419 --> 00:03:16.919
+Now I can do a show, they were 78 of them.
+
+00:03:16.919 --> 00:03:22.759
+You can put 78 exact or you can put a 100 just in case if there are more but since we
+
+00:03:22.759 --> 00:03:25.459
+saw they were 78 I'm going to put 78 and then we're going to
+
+00:03:25.460 --> 00:03:28.685
+do a false to see all the names.
+
+00:03:28.685 --> 00:03:34.474
+So here now you are able to see all the neighborhood groups in New York City.
+
+00:03:34.474 --> 00:03:37.250
+So that was a quick way to load data and apply
+
+00:03:37.250 --> 00:03:40.235
+some operations like Show and Select and Distinct.
+
+00:03:40.235 --> 00:03:43.370
+I think you are able to recognize some differences between RDDs
+
+00:03:43.370 --> 00:03:46.580
+like using SparkSession instead of contexts and there
+
+00:03:46.580 --> 00:03:53.630
+were SQL rappers like obviously select the distinct weren't existent in RDDs.
+
+00:03:53.629 --> 00:03:58.829
+Okay. So next concept we're going to be talking about Spark Streaming.
+

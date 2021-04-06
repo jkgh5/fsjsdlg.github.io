@@ -1,0 +1,238 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:03.960
+We'll start talking about how you can use Spark UI for this course.
+
+00:00:03.960 --> 00:00:05.609
+Right now in the workspace,
+
+00:00:05.610 --> 00:00:09.044
+the port is configured to 3000 but in your application later,
+
+00:00:09.044 --> 00:00:11.265
+you can freely configured this.
+
+00:00:11.265 --> 00:00:13.919
+So let's take a look at the code.
+
+00:00:13.919 --> 00:00:16.350
+The way you can configure this is that,
+
+00:00:16.350 --> 00:00:21.675
+you pass in a config parameter Spark that UI that port with 3000.
+
+00:00:21.675 --> 00:00:25.740
+I'm going to run all this code on all cells.
+
+00:00:25.739 --> 00:00:27.659
+If you run all of this,
+
+00:00:27.660 --> 00:00:33.090
+you can click on this preview button and that will direct you to Spark UI.
+
+00:00:33.090 --> 00:00:35.870
+Right now the job is getting executed and probably doesn't
+
+00:00:35.869 --> 00:00:38.884
+have any action word to trigger the DAG.
+
+00:00:38.884 --> 00:00:40.924
+Now, when I refresh this,
+
+00:00:40.924 --> 00:00:44.799
+you can see all the different jobs that I run.
+
+00:00:44.799 --> 00:00:47.239
+So first, let's go back to the code.
+
+00:00:47.240 --> 00:00:50.810
+I have some Read CSV file.
+
+00:00:50.810 --> 00:00:54.230
+There are two of them reading two different CSV files,
+
+00:00:54.229 --> 00:00:56.869
+and there's a show string.
+
+00:00:56.869 --> 00:00:59.884
+There's another show to look at the DataFrame.
+
+00:00:59.884 --> 00:01:03.064
+There's another filter and then show,
+
+00:01:03.064 --> 00:01:04.715
+and then print schema.
+
+00:01:04.715 --> 00:01:09.895
+This is a function to operate on a row and we'll take a look at it later.
+
+00:01:09.894 --> 00:01:14.593
+There is with column, another show,
+
+00:01:14.593 --> 00:01:17.114
+another width column, and then show,
+
+00:01:17.114 --> 00:01:21.500
+there are a lot of shows, and there's join and there's collect.
+
+00:01:21.500 --> 00:01:23.584
+So when we go back to here,
+
+00:01:23.584 --> 00:01:26.974
+we see a lot of the CSV in the shows string which
+
+00:01:26.974 --> 00:01:30.799
+we actually saw that in the code and there's collect.
+
+00:01:30.799 --> 00:01:33.500
+So this us back in the main page,
+
+00:01:33.500 --> 00:01:36.019
+and there's a lot of information on this page.
+
+00:01:36.019 --> 00:01:39.905
+Here you can see the Spark version, we're running 2.3.3,
+
+00:01:39.905 --> 00:01:43.579
+and then this is the name of the application which actually we
+
+00:01:43.579 --> 00:01:48.219
+configured at the beginning up here as a join query plan,
+
+00:01:48.219 --> 00:01:50.060
+and this is a stages,
+
+00:01:50.060 --> 00:01:53.135
+specifically through stages which we'll look take a look at later.
+
+00:01:53.135 --> 00:01:55.475
+There's a storage tab.
+
+00:01:55.474 --> 00:01:57.814
+It doesn't show anything right now because we don't have
+
+00:01:57.814 --> 00:02:00.379
+Hadoop file system configured in this workspace,
+
+00:02:00.379 --> 00:02:02.619
+but you will see once you have that.
+
+00:02:02.620 --> 00:02:05.400
+Environment shows environment variables.
+
+00:02:05.400 --> 00:02:08.569
+So we can see we're running Java 1.8 version,
+
+00:02:08.569 --> 00:02:14.060
+Scala 2.11, and there is an app ID during query name.
+
+00:02:14.060 --> 00:02:16.879
+Port the master is local.
+
+00:02:16.879 --> 00:02:19.069
+We're running a standalone.
+
+00:02:19.069 --> 00:02:21.859
+There is a port number that we configured.
+
+00:02:21.860 --> 00:02:25.790
+There's also a bunch of other useful informations like,
+
+00:02:25.789 --> 00:02:29.989
+these are Java configurations that is important to
+
+00:02:29.990 --> 00:02:34.504
+know once you're actually running it in Linux not your Mac OS.
+
+00:02:34.504 --> 00:02:37.789
+Also this is the actual command that SparkSubmit.
+
+00:02:37.789 --> 00:02:39.544
+So when you do SparkSubmit,
+
+00:02:39.544 --> 00:02:42.489
+it will run with the configuration of Master of local two,
+
+00:02:42.490 --> 00:02:46.689
+and the configuration of Spark UI port 3000 and app name.
+
+00:02:46.689 --> 00:02:49.145
+Then we're running in Spark shell.
+
+00:02:49.145 --> 00:02:50.640
+This is all the jar file,
+
+00:02:50.639 --> 00:02:54.529
+is probably irrelevant to whoever is running this in Python,
+
+00:02:54.530 --> 00:02:57.409
+is hard to tell because these are all Java jar file.
+
+00:02:57.409 --> 00:02:58.954
+So you can pass that.
+
+00:02:58.955 --> 00:03:01.370
+Usually, there are some times it tells you
+
+00:03:01.370 --> 00:03:03.980
+if you configure it which Python version you're running.
+
+00:03:03.979 --> 00:03:06.209
+I don't see it now,
+
+00:03:06.210 --> 00:03:09.159
+but that is also important to know because
+
+00:03:09.159 --> 00:03:12.909
+sometimes although your code shouldn't be really running Python 2 anymore,
+
+00:03:12.909 --> 00:03:17.150
+sometimes it is important to know what it is you're executing on.
+
+00:03:17.150 --> 00:03:19.705
+This is the executors tab.
+
+00:03:19.705 --> 00:03:23.575
+This basically has information of your machine.
+
+00:03:23.574 --> 00:03:29.344
+It shows we have one driver and it's active, and so on.
+
+00:03:29.344 --> 00:03:32.699
+While it's getting executed.
+
+00:03:32.699 --> 00:03:36.459
+The job's actually finished right now but when the job is actually being executed,
+
+00:03:36.460 --> 00:03:39.939
+you'll see the workers as well and see their stages.
+
+00:03:39.939 --> 00:03:44.724
+There's SQL which is because we ran it on the DataFrame,
+
+00:03:44.724 --> 00:03:48.364
+if we go back to the code, we initialize SparkSession.
+
+00:03:48.365 --> 00:03:50.990
+So these Spark variable is actually
+
+00:03:50.990 --> 00:03:53.719
+a SparkSession which means we ran this on a DataFrame.
+
+00:03:53.719 --> 00:03:57.370
+So the SQL tab is also showing.
+
+00:03:57.370 --> 00:03:59.230
+So when you click on this,
+
+00:03:59.229 --> 00:04:03.619
+this shows the information about what
+
+00:04:03.620 --> 00:04:08.085
+we ran on each DataFrame and this is where you can see logical plans.
+
+00:04:08.085 --> 00:04:13.439
+We'll also take a look at physical plans and logical plans later in the lesson.
+

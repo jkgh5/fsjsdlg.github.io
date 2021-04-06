@@ -1,0 +1,94 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:05.179 --> 00:00:08.820
+In my experience, one of the hardest parts of learning
+
+00:00:08.820 --> 00:00:12.734
+Spark is becoming familiar with the functional style of programming.
+
+00:00:12.734 --> 00:00:14.669
+Under the hood, Spark is written
+
+00:00:14.669 --> 00:00:17.625
+in a functional programming language called Scala.
+
+00:00:17.625 --> 00:00:20.190
+When you're programming with functional languages,
+
+00:00:20.190 --> 00:00:23.160
+you end up solving problems in a pretty different way than you
+
+00:00:23.160 --> 00:00:26.760
+would if you're using a general purpose language like Python.
+
+00:00:26.760 --> 00:00:28.935
+Although Spark is written in Scala,
+
+00:00:28.934 --> 00:00:30.808
+you can use it with other languages
+
+00:00:30.809 --> 00:00:33.960
+like Java, R, and even Python.
+
+00:00:33.960 --> 00:00:37.280
+In this course, you'll be developing applications with
+
+00:00:37.280 --> 00:00:41.350
+the Python programming interface or PySpark for short.
+
+00:00:41.350 --> 00:00:44.270
+Even when you're using the PySpark API,
+
+00:00:44.270 --> 00:00:48.005
+you'll see the functional programming influence of Scala.
+
+00:00:48.005 --> 00:00:51.260
+For example, in the last lesson,
+
+00:00:51.259 --> 00:00:53.179
+Udith showed you a MapReduce problem
+
+00:00:53.179 --> 00:00:56.060
+that counted up the number of times a song was played.
+
+00:00:56.060 --> 00:00:58.820
+This code went through each record and spit out
+
+00:00:58.820 --> 00:01:02.000
+a tuple with the name of the song, and the number one.
+
+00:01:02.000 --> 00:01:04.069
+These tuples were shuffled and
+
+00:01:04.069 --> 00:01:07.699
+reduced to sum up of the ones that came with each song name.
+
+00:01:07.700 --> 00:01:12.528
+If you're used to counting with For Loops and found that logic a little strange,
+
+00:01:12.528 --> 00:01:16.084
+it's because this was a functional approach to summing up songs,
+
+00:01:16.084 --> 00:01:19.789
+and the procedural style that most Python programmers know,
+
+00:01:19.790 --> 00:01:24.170
+you'd use a counter variable to keep track of the play count for each song.
+
+00:01:24.170 --> 00:01:27.155
+Then you'd iterate through all the songs,
+
+00:01:27.155 --> 00:01:30.775
+and increment the counter by one if the song name matched.
+
+00:01:30.775 --> 00:01:33.195
+If you want to use Spark effectively,
+
+00:01:33.194 --> 00:01:35.629
+you'll have to go beyond the procedural style,
+
+00:01:35.629 --> 00:01:39.869
+and get comfortable with a few tools from functional programming.
+

@@ -1,0 +1,64 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:04.669 --> 00:00:07.859
+Before we dive into specific techniques,
+
+00:00:07.860 --> 00:00:11.565
+you might be curious why Spark uses functional programming in the first place.
+
+00:00:11.564 --> 00:00:16.559
+The core reason is that functional programming is perfect for distributed systems.
+
+00:00:16.559 --> 00:00:19.769
+Last lesson, I described a distributed system
+
+00:00:19.769 --> 00:00:22.649
+as just a bunch of computers working together.
+
+00:00:22.649 --> 00:00:26.265
+Another useful and amusing description of these systems
+
+00:00:26.265 --> 00:00:30.570
+comes from the computer science pioneer, Leslie Lamport.
+
+00:00:30.570 --> 00:00:34.350
+He said that you know your system is distributed when your own computer
+
+00:00:34.350 --> 00:00:38.750
+crashes because someone you didn't even know about made a mistake.
+
+00:00:38.750 --> 00:00:41.630
+Functional programming helps minimize these sort of
+
+00:00:41.630 --> 00:00:45.125
+mistakes that can cripple an entire distributed system.
+
+00:00:45.125 --> 00:00:50.255
+Functional programming gets its name from the functions you saw in your algebra class.
+
+00:00:50.255 --> 00:00:55.190
+These functions are more strict than your average Python function because in math,
+
+00:00:55.189 --> 00:00:58.879
+a function can only give you one answer when you give it an input.
+
+00:00:58.880 --> 00:01:02.915
+On the other hand, Python allows you to make some flexible,
+
+00:01:02.914 --> 00:01:08.674
+albeit complex, functions that depend on the input and other parameters.
+
+00:01:08.674 --> 00:01:12.189
+Also in math class, when you evaluate a function,
+
+00:01:12.189 --> 00:01:15.185
+you would never change the inputs of that function.
+
+00:01:15.185 --> 00:01:16.894
+But as weird as this seems,
+
+00:01:16.894 --> 00:01:20.129
+this is exactly what can happen in Python.
+

@@ -1,0 +1,73 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:06.440 --> 00:00:08.595
+Over the next year,
+
+00:00:08.595 --> 00:00:11.670
+you and the rest of the Sparkify team work very hard to become
+
+00:00:11.669 --> 00:00:16.750
+a worldwide success with millions of customers streaming music every day.
+
+00:00:16.750 --> 00:00:19.919
+With several of the content deals expiring soon,
+
+00:00:19.919 --> 00:00:22.830
+the content team needs you to make the same report of
+
+00:00:22.829 --> 00:00:26.294
+the most popular artists played by your Canadian users.
+
+00:00:26.295 --> 00:00:28.715
+But after a year of stellar growth,
+
+00:00:28.714 --> 00:00:32.575
+the log of songs exploded to 200 gigabytes,
+
+00:00:32.575 --> 00:00:35.255
+way beyond the four gigs that was last year.
+
+00:00:35.255 --> 00:00:37.380
+So, what happens when you try using
+
+00:00:37.380 --> 00:00:41.020
+the same Python program that worked so well the previous year?
+
+00:00:41.020 --> 00:00:42.755
+When you run the program,
+
+00:00:42.755 --> 00:00:45.290
+which should read in records of song activity for
+
+00:00:45.289 --> 00:00:48.695
+all users and spit out the artists for the Canadian users,
+
+00:00:48.695 --> 00:00:51.820
+it seems to go well for a few seconds,
+
+00:00:51.820 --> 00:00:55.844
+but then your entire laptop seems to screech to a halt.
+
+00:00:55.844 --> 00:00:58.384
+The music you are listening to stops,
+
+00:00:58.384 --> 00:01:01.765
+your Internet browser takes several seconds to load,
+
+00:01:01.765 --> 00:01:04.954
+and your mouse, which is now a spinning wheel,
+
+00:01:04.954 --> 00:01:09.075
+barely crawls across the screen as you drag it around.
+
+00:01:09.075 --> 00:01:11.195
+After a few more minutes of this,
+
+00:01:11.194 --> 00:01:13.909
+you give up and kill the Python program,
+
+00:01:13.909 --> 00:01:18.200
+which releases your system from this slow motion. What happened?
+
