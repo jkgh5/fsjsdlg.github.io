@@ -1,0 +1,241 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:02.569 --> 00:00:04.859
+We've now created some streams,
+
+00:00:04.860 --> 00:00:06.690
+let's see how we can create tables.
+
+00:00:06.690 --> 00:00:09.150
+Returning back to the workspace,
+
+00:00:09.150 --> 00:00:13.414
+we can see that I've got Sample 2 open and I'm still in the KSQL.
+
+00:00:13.414 --> 00:00:15.599
+Now, before we do anything else,
+
+00:00:15.599 --> 00:00:19.710
+I want to just quickly talk about an option which KSQL provides to us.
+
+00:00:19.710 --> 00:00:21.810
+So we're not going to quite create a table yet.
+
+00:00:21.809 --> 00:00:24.890
+But if you recall from earlier lessons when we talked in
+
+00:00:24.890 --> 00:00:28.054
+detail about how we can manage some of the settings of Kafka.
+
+00:00:28.054 --> 00:00:32.975
+There was this auto offset reset option that we use in our Kafka consumers.
+
+00:00:32.975 --> 00:00:35.810
+Well, KSQL is a Kafka consumer
+
+00:00:35.810 --> 00:00:38.914
+and we can actually set some of these settings ourselves if we want.
+
+00:00:38.914 --> 00:00:43.549
+For this demonstration, I want you to go ahead and set auto offset reset to earliest.
+
+00:00:43.549 --> 00:00:46.369
+What this will say is that the Kafka consumer will
+
+00:00:46.369 --> 00:00:50.074
+start consuming from the earliest known offset of that topic.
+
+00:00:50.075 --> 00:00:52.375
+So we're going to go ahead and set this.
+
+00:00:52.375 --> 00:00:55.109
+You can see that it says, "I successfully changed
+
+00:00:55.109 --> 00:00:58.475
+the property to earliest" from the default.
+
+00:00:58.475 --> 00:01:01.445
+If you want to get rid of the setting,
+
+00:01:01.445 --> 00:01:04.644
+you can simply use the unset command.
+
+00:01:04.644 --> 00:01:08.089
+I'm going to go ahead and leave it set though because we're going to be using
+
+00:01:08.090 --> 00:01:12.395
+user data which I would like to always start from the earliest offset.
+
+00:01:12.394 --> 00:01:16.579
+So again, creating a table is very similar to creating a stream.
+
+00:01:16.579 --> 00:01:21.469
+The only real difference here is I'm saying create table instead of create stream.
+
+00:01:21.469 --> 00:01:24.094
+Then, notice that I'm specifying the key here.
+
+00:01:24.094 --> 00:01:26.344
+So I'm specifying the key as username.
+
+00:01:26.344 --> 00:01:28.730
+Otherwise, the only difference here is that I'm using
+
+00:01:28.730 --> 00:01:32.765
+the users' topic instead of the purchases topic.
+
+00:01:32.765 --> 00:01:35.150
+So the users' topic has a username,
+
+00:01:35.150 --> 00:01:38.570
+e-mail, phone number, and address and all VARCHAR fields.
+
+00:01:38.569 --> 00:01:42.664
+You can see we specify the topic and told it that the value format will be JSON.
+
+00:01:42.665 --> 00:01:46.680
+So let's keep that create table command and run it.
+
+00:01:46.719 --> 00:01:49.325
+Now, we get this table created message.
+
+00:01:49.325 --> 00:01:51.335
+So if I show tables,
+
+00:01:51.334 --> 00:01:54.034
+we'll see I now have one table.
+
+00:01:54.034 --> 00:02:00.849
+So let's again, do select star from users and let's limit it to five.
+
+00:02:02.030 --> 00:02:05.480
+You can see we have some users in here.
+
+00:02:05.480 --> 00:02:08.735
+So we've got five users and we can see their data.
+
+00:02:08.735 --> 00:02:14.300
+Now that we've done that, let's also see how we can create a table from a query.
+
+00:02:14.300 --> 00:02:17.240
+So we're going to create a table where we
+
+00:02:17.240 --> 00:02:20.344
+only select users whose first name starts with a.
+
+00:02:20.344 --> 00:02:23.150
+So you can see from users where username like a.
+
+00:02:23.150 --> 00:02:27.159
+So a_username_users.
+
+00:02:27.159 --> 00:02:36.639
+We're going to create this as select star from users where the username starts with a.
+
+00:02:36.639 --> 00:02:39.639
+Let's go ahead and run that.
+
+00:02:39.680 --> 00:02:42.120
+Let's take just a moment,
+
+00:02:42.120 --> 00:02:44.700
+and then if we do show tables,
+
+00:02:44.699 --> 00:02:46.844
+we should have two tables.
+
+00:02:46.844 --> 00:02:49.109
+Now, before we go any further,
+
+00:02:49.110 --> 00:02:52.670
+I also just want to show you something because just like when we created a stream,
+
+00:02:52.669 --> 00:02:54.049
+we're also using a query here.
+
+00:02:54.050 --> 00:02:55.594
+So if we do show queries,
+
+00:02:55.594 --> 00:03:00.300
+we should see an underlying query for that username query and we do,
+
+00:03:00.300 --> 00:03:01.610
+we can see it here, a query string,
+
+00:03:01.610 --> 00:03:05.855
+create table as select star from users where username like a.
+
+00:03:05.854 --> 00:03:08.314
+So again, when we go to drop this table later,
+
+00:03:08.314 --> 00:03:10.490
+we're going to have to first terminate this query.
+
+00:03:10.490 --> 00:03:13.760
+But now that we've done that, I also want to show you another useful command.
+
+00:03:13.759 --> 00:03:18.185
+I'm going to go full screen and close this out.
+
+00:03:18.185 --> 00:03:21.580
+We're simply going to describe the users table.
+
+00:03:21.580 --> 00:03:23.835
+Now, this is a useful thing.
+
+00:03:23.835 --> 00:03:26.330
+Say that you're working in an organization which has a number of
+
+00:03:26.330 --> 00:03:29.765
+KSQL tables and you want to learn more about what that table looks like.
+
+00:03:29.764 --> 00:03:33.109
+The describe command will tell you what that table looks like.
+
+00:03:33.110 --> 00:03:34.880
+You can also use this for strings.
+
+00:03:34.879 --> 00:03:40.354
+So I'm going to do describe purchases and you can see the information about the string.
+
+00:03:40.354 --> 00:03:44.094
+Just a little aside and some useful information for you.
+
+00:03:44.094 --> 00:03:48.710
+Moving along, let's go ahead and see how we can delete the table.
+
+00:03:48.710 --> 00:03:51.530
+As I mentioned, we're going to do show queries.
+
+00:03:51.530 --> 00:03:53.270
+We see that running query.
+
+00:03:53.270 --> 00:03:58.260
+We're going to grab that, and then we're going to go ahead and terminate the query.
+
+00:03:58.460 --> 00:04:01.104
+Once the query is terminated,
+
+00:04:01.104 --> 00:04:04.520
+then we can actually delete from that table,
+
+00:04:04.520 --> 00:04:06.844
+we can actually drop that table.
+
+00:04:06.844 --> 00:04:10.609
+So drop table a username users.
+
+00:04:10.610 --> 00:04:12.640
+So now, when you show tables,
+
+00:04:12.639 --> 00:04:15.069
+we're only going to see the one.
+
+00:04:15.979 --> 00:04:20.284
+That's all there is to it when we go ahead and create tables in KSQL.
+
+00:04:20.285 --> 00:04:24.210
+Again, really straightforward and easy to use.
+

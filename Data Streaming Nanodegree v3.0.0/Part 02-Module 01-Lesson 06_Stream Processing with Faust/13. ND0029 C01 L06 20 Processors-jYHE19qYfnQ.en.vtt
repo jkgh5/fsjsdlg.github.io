@@ -1,0 +1,55 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:02.504
+Once you start building out stream applications,
+
+00:00:02.504 --> 00:00:06.990
+it's typical that you'll find yourself performing similar operations over and over.
+
+00:00:06.990 --> 00:00:09.810
+Faust provides a mechanism by which you can define
+
+00:00:09.810 --> 00:00:12.120
+stream processing functions and then chain them
+
+00:00:12.119 --> 00:00:15.389
+together automatically as data arrives in your application.
+
+00:00:15.390 --> 00:00:18.240
+Once you've defined one of these functions once,
+
+00:00:18.239 --> 00:00:22.469
+you can reuse it on any other new or existing streams you may already have.
+
+00:00:22.469 --> 00:00:25.619
+The one caveat is that the other streams must use
+
+00:00:25.620 --> 00:00:29.460
+the same model and expect the same output as the function you defined.
+
+00:00:29.460 --> 00:00:32.024
+Defining processor functions is simple.
+
+00:00:32.024 --> 00:00:35.149
+As you can see, you simply define a function that accepts
+
+00:00:35.149 --> 00:00:40.484
+the input stream model and outputs the output stream model, is that simple?
+
+00:00:40.484 --> 00:00:44.629
+Finally, these functions can be synchronous or asynchronous.
+
+00:00:44.630 --> 00:00:46.460
+To make this function asynchronous,
+
+00:00:46.460 --> 00:00:50.980
+we would simply add the a sync keyword to the front of the function definition.
+
+00:00:50.979 --> 00:00:54.259
+Whether the processors are synchronous or asynchronous,
+
+00:00:54.259 --> 00:00:58.500
+they will all complete before the output value is generated.
+

@@ -1,0 +1,67 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:04.710
+Faust was created in Silicon Valley by a financial services company called Robinhood.
+
+00:00:04.710 --> 00:00:07.049
+The data engineering team at Robinhood found
+
+00:00:07.049 --> 00:00:09.629
+themselves wanting to build stream processing applications,
+
+00:00:09.630 --> 00:00:15.030
+but saw that most of the technology in space was built to be used in Java or the JVM.
+
+00:00:15.029 --> 00:00:18.329
+Given the team was most comfortable working with Python,
+
+00:00:18.329 --> 00:00:21.809
+Robinhood set out to create a stream processing framework in Python that
+
+00:00:21.809 --> 00:00:26.729
+implemented many of the same concepts found in Confluence Kafka streams library.
+
+00:00:26.730 --> 00:00:29.280
+Faust was written entirely in Python from
+
+00:00:29.280 --> 00:00:32.429
+the underlying Kafka libraries to the framework code itself.
+
+00:00:32.429 --> 00:00:34.399
+Their effort was a success almost
+
+00:00:34.399 --> 00:00:37.239
+immediately and even drew positive accolades from Jay Craps,
+
+00:00:37.240 --> 00:00:41.365
+one of the original authors of Kafka and the CEO of Confluent.
+
+00:00:41.365 --> 00:00:43.740
+We're covering Faustness lesson,
+
+00:00:43.740 --> 00:00:45.060
+and it is a wonderful tool.
+
+00:00:45.060 --> 00:00:46.840
+If you prefer a Python workflow,
+
+00:00:46.840 --> 00:00:51.655
+be aware that there are other excellent stream processing frameworks in other languages,
+
+00:00:51.655 --> 00:00:56.390
+namely, if you're comfortable with Java Scala or other JVM languages,
+
+00:00:56.390 --> 00:00:58.585
+make sure to look into Kafka streams.
+
+00:00:58.585 --> 00:01:01.219
+Thankfully, if you decide to experiment with Kafka streams,
+
+00:01:01.219 --> 00:01:03.949
+you'll find that the skills you developed in this class and specifically in
+
+00:01:03.950 --> 00:01:07.680
+this lesson will map nicely onto that framework.
+

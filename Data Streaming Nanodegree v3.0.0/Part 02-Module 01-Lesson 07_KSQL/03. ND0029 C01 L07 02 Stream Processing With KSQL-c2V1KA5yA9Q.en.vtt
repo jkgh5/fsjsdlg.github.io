@@ -1,0 +1,25 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:02.419 --> 00:00:07.455
+KSQL is a new and very exciting entering the stream processing space.
+
+00:00:07.455 --> 00:00:10.289
+Without writing any application logic whatsoever,
+
+00:00:10.289 --> 00:00:13.919
+you can write SQL statements that KSQL can then use to transform
+
+00:00:13.919 --> 00:00:17.835
+the data in your Kafka topics into stream processing applications.
+
+00:00:17.835 --> 00:00:20.280
+What's so wonderful about KSQL is that it allows
+
+00:00:20.280 --> 00:00:22.845
+developers to use a SQL-like syntax that they're
+
+00:00:22.844 --> 00:00:28.899
+already very familiar with to quickly and easily create stream processing applications.
+

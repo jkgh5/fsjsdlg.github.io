@@ -1,0 +1,58 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:02.040
+It's common first learning about streams and
+
+00:00:02.040 --> 00:00:04.629
+tables to think of them in opposition to each other.
+
+00:00:04.629 --> 00:00:07.154
+It's true that they do in fact satisfy
+
+00:00:07.155 --> 00:00:10.349
+different types of problems and give us different type of data,
+
+00:00:10.349 --> 00:00:12.509
+but they're not in opposition to each other.
+
+00:00:12.509 --> 00:00:14.115
+In fact, they're complimentary.
+
+00:00:14.115 --> 00:00:16.844
+When we talk about a stream or we talk about a table,
+
+00:00:16.844 --> 00:00:20.265
+what we're really describing is the expected output of our streaming application.
+
+00:00:20.265 --> 00:00:23.175
+It's a way of describing how we expect to convey meaning
+
+00:00:23.175 --> 00:00:26.850
+from the action our stream processing application is performing.
+
+00:00:26.850 --> 00:00:30.330
+Streams describe applications that are transforming or filtering
+
+00:00:30.329 --> 00:00:34.259
+input data into an unending sequence of immutable events.
+
+00:00:34.259 --> 00:00:36.679
+Tables describe applications that are creating
+
+00:00:36.679 --> 00:00:41.494
+a roll up point-in-time view that is continually updated as new data is generated.
+
+00:00:41.494 --> 00:00:43.909
+Many stream processing frameworks will ask you to
+
+00:00:43.909 --> 00:00:46.625
+choose between a stream or a table type,
+
+00:00:46.625 --> 00:00:49.280
+but what you're really being asked to choose between is
+
+00:00:49.280 --> 00:00:52.800
+the expected output type of your application.
+

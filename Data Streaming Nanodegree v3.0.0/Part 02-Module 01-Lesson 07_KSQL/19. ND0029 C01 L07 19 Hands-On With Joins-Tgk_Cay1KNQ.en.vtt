@@ -1,0 +1,250 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:01.669 --> 00:00:05.474
+Now let's switch back to our workspace and see how we can use
+
+00:00:05.474 --> 00:00:09.809
+a join to merge two tables or streams using KSQL.
+
+00:00:09.810 --> 00:00:12.570
+So we're back in our workspace and we're going to go
+
+00:00:12.570 --> 00:00:15.210
+ahead and first perform a left outer join to
+
+00:00:15.210 --> 00:00:20.580
+create a table which represents a combination of both user data and purchase data.
+
+00:00:20.579 --> 00:00:26.369
+We're going to join users onto the purchases table by joining on the username.
+
+00:00:26.370 --> 00:00:29.550
+Both the purchases and the users table and stream.
+
+00:00:29.550 --> 00:00:34.274
+So users is the table, purchases is a stream are both keyed on username,
+
+00:00:34.274 --> 00:00:37.070
+and we're going to basically select the join of the two.
+
+00:00:37.070 --> 00:00:40.280
+So we're going to say, grab the username from user or their address,
+
+00:00:40.280 --> 00:00:41.664
+their phone number, or their e-mail,
+
+00:00:41.664 --> 00:00:42.875
+but then from the purchase,
+
+00:00:42.875 --> 00:00:44.570
+grab the amount and currency.
+
+00:00:44.570 --> 00:00:48.170
+So we're going to join these two into one single output stream.
+
+00:00:48.170 --> 00:00:49.789
+Let's go ahead and run this.
+
+00:00:49.789 --> 00:00:52.144
+Whoops, that should be a create stream,
+
+00:00:52.145 --> 00:00:53.510
+let's go ahead and do that one more time.
+
+00:00:53.509 --> 00:00:56.284
+Now, why would it be a stream versus a table?
+
+00:00:56.284 --> 00:01:00.049
+Well, the answer here is because essentially for
+
+00:01:00.049 --> 00:01:03.890
+every single purchase event that comes in,
+
+00:01:03.890 --> 00:01:06.019
+we're selecting from purchases,
+
+00:01:06.019 --> 00:01:10.504
+we're going to actually be creating an equivalent event on the output stream.
+
+00:01:10.504 --> 00:01:13.009
+So this means that we're creating another stream.
+
+00:01:13.010 --> 00:01:16.234
+We're taking an event, adding some data to it, and then emitting an event.
+
+00:01:16.234 --> 00:01:17.644
+It's a one-to-one operation.
+
+00:01:17.644 --> 00:01:20.734
+So essentially what we're doing here is creating stream and not a table,
+
+00:01:20.734 --> 00:01:22.950
+which is why we got this error.
+
+00:01:22.959 --> 00:01:25.159
+So now we've created that stream,
+
+00:01:25.159 --> 00:01:28.134
+let's take a look and monitor the output.
+
+00:01:28.135 --> 00:01:32.255
+Let's see what we get. So we should see a lot more data in here.
+
+00:01:32.254 --> 00:01:35.390
+I'm just going to exit really quick. So we can look at this.
+
+00:01:35.390 --> 00:01:41.075
+So you can see that we have the time at which this occurred, the username,
+
+00:01:41.075 --> 00:01:43.390
+let's see what else we have here,
+
+00:01:43.390 --> 00:01:45.269
+we've got the address,
+
+00:01:45.269 --> 00:01:47.414
+we've got phone number,
+
+00:01:47.415 --> 00:01:51.225
+e-mail, purchase amount, and currency.
+
+00:01:51.224 --> 00:01:53.780
+Great. So that was a left outer join.
+
+00:01:53.780 --> 00:01:56.290
+Now, let's take a look at how we can do an inner join.
+
+00:01:56.290 --> 00:01:59.150
+The syntax is essentially identical to what we
+
+00:01:59.150 --> 00:02:02.315
+just saw but I just want to demonstrate that it's possible to do this.
+
+00:02:02.314 --> 00:02:04.909
+So we're going to go ahead and simply run.
+
+00:02:04.909 --> 00:02:10.590
+But first, we're going to terminate the previous query because we no longer need it.
+
+00:02:11.139 --> 00:02:14.089
+So we're going to grab this,
+
+00:02:14.090 --> 00:02:17.189
+and we're going to terminate the query,
+
+00:02:18.699 --> 00:02:21.589
+and then we're going to show our streams,
+
+00:02:21.590 --> 00:02:24.640
+and get rid of that stream since we're going to reuse it,
+
+00:02:24.639 --> 00:02:29.579
+and we're going to drop stream user purchases.
+
+00:02:30.099 --> 00:02:32.989
+Next, we're going to do that inner join.
+
+00:02:32.990 --> 00:02:35.780
+Like I said, it's exactly the same as syntax.
+
+00:02:35.780 --> 00:02:37.384
+We're simply saying inner join.
+
+00:02:37.384 --> 00:02:39.280
+Now, it's worth mentioning again,
+
+00:02:39.280 --> 00:02:41.895
+stream to stream, table table,
+
+00:02:41.895 --> 00:02:44.545
+and stream to table joins are possible in KSQL,
+
+00:02:44.544 --> 00:02:50.014
+and all three of those types support both left outer and inner joins.
+
+00:02:50.014 --> 00:02:52.444
+So this is still supported.
+
+00:02:52.444 --> 00:02:55.169
+So we're going to go ahead and run this.
+
+00:02:55.169 --> 00:02:59.989
+Again, I have the same mistake here that I call this a table but it's actually a stream,
+
+00:02:59.990 --> 00:03:01.760
+so I apologize for that.
+
+00:03:01.759 --> 00:03:04.465
+So you can go ahead and create that stream,
+
+00:03:04.465 --> 00:03:06.620
+and you can see that stream is up and running.
+
+00:03:06.620 --> 00:03:10.280
+So again, we can just do select star from user purchases.
+
+00:03:10.280 --> 00:03:12.455
+Seeing the data's flowing through.
+
+00:03:12.455 --> 00:03:16.315
+Again, we can see that we now have this inner join.
+
+00:03:16.314 --> 00:03:20.734
+Now, in this particular example in this particular workspace,
+
+00:03:20.735 --> 00:03:24.570
+there's always going to be a one-to-one mapping between users and purchase,
+
+00:03:24.569 --> 00:03:27.639
+and that's because the simulation behind the scenes that's actually generated
+
+00:03:27.639 --> 00:03:31.129
+the data always generates a purchase based on some user in the system.
+
+00:03:31.129 --> 00:03:35.870
+So we're never really going to encounter any of the areas where
+
+00:03:35.870 --> 00:03:37.640
+the join may actually lose
+
+00:03:37.639 --> 00:03:41.979
+information or not have something to join into in the other table.
+
+00:03:42.250 --> 00:03:44.764
+So let me run that query.
+
+00:03:44.764 --> 00:03:47.609
+Let's finally do a full outer join.
+
+00:03:48.069 --> 00:03:51.719
+So we're going to terminate this query,
+
+00:03:51.830 --> 00:03:54.230
+and we're going to drop
+
+00:03:54.229 --> 00:03:59.369
+stream user purchases and let's finally show off this full outer join.
+
+00:03:59.439 --> 00:04:03.639
+So let's take that and notice the only thing different here is full outer join,
+
+00:04:03.639 --> 00:04:08.779
+and remember we're performing a full outer join on a stream to table.
+
+00:04:08.780 --> 00:04:15.469
+So recall that stream to table joins have some special circumstances around them,
+
+00:04:15.469 --> 00:04:18.800
+and you can see it immediately fails because we cannot
+
+00:04:18.800 --> 00:04:22.634
+perform a full outer join from a stream to a table.
+
+00:04:22.634 --> 00:04:27.875
+Full outer joins are only supported on streams to streams or tables to tables.
+
+00:04:27.875 --> 00:04:31.850
+So unfortunately, we can't actually do this full outer join.
+

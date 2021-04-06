@@ -1,0 +1,190 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:01.520 --> 00:00:03.899
+Now, let's take the starter code in
+
+00:00:03.899 --> 00:00:07.214
+the previous slide and actually build a working application together.
+
+00:00:07.214 --> 00:00:09.539
+So now we're back in our workspace and we're actually
+
+00:00:09.539 --> 00:00:12.434
+looking at our first Faust application.
+
+00:00:12.435 --> 00:00:14.669
+So the first thing that we're going to do,
+
+00:00:14.669 --> 00:00:15.824
+as we saw on the slides,
+
+00:00:15.824 --> 00:00:18.000
+is actually define our Faust app.
+
+00:00:18.000 --> 00:00:20.490
+So we're going to uncomment this.
+
+00:00:20.489 --> 00:00:24.794
+The first argument to our Faust application is always the name of the application.
+
+00:00:24.795 --> 00:00:28.725
+So we're just going to call this application Helloworld Faust.
+
+00:00:28.725 --> 00:00:33.164
+The next argument you supply is the broker URL which in this case,
+
+00:00:33.164 --> 00:00:35.100
+is going to be localhost 1992,
+
+00:00:35.100 --> 00:00:37.965
+as it's been in all of our previous exercises.
+
+00:00:37.965 --> 00:00:40.630
+Next, we're going to define the topic,
+
+00:00:40.630 --> 00:00:44.240
+and this is analogous to the Kafka topic that we're interested in consuming from.
+
+00:00:44.240 --> 00:00:46.280
+So we're going to uncomment this and
+
+00:00:46.280 --> 00:00:48.590
+simply provide the name of the topic that we're interested in.
+
+00:00:48.590 --> 00:00:52.550
+Now, we're going to be using the same two topics throughout
+
+00:00:52.549 --> 00:00:56.390
+these samples and you'll be using the same handful of topics throughout your exercises.
+
+00:00:56.390 --> 00:00:58.070
+If you want to see what those are,
+
+00:00:58.070 --> 00:01:03.034
+you can always use the kafka-topics client list and then
+
+00:01:03.034 --> 00:01:08.674
+we'll see com.udacity.streams.purchases, com.udacity.stream.users.
+
+00:01:08.674 --> 00:01:10.489
+You'll have two different streams in
+
+00:01:10.489 --> 00:01:15.049
+your exercises but you can check out the notes in your exercise documentation for more.
+
+00:01:15.049 --> 00:01:17.194
+For now, we're going to be using this stream.
+
+00:01:17.194 --> 00:01:20.209
+Let's copy that name, paste it in,
+
+00:01:20.209 --> 00:01:25.104
+and the only thing left to do is decorate our function with an app agent.
+
+00:01:25.105 --> 00:01:28.850
+So remember, the app comes from the Faust app.
+
+00:01:29.010 --> 00:01:31.660
+We're going to pass in the topic here,
+
+00:01:31.659 --> 00:01:33.984
+so this essentially says,
+
+00:01:33.984 --> 00:01:36.129
+you don't want to delete that at.
+
+00:01:36.129 --> 00:01:38.349
+So this essentially says,
+
+00:01:38.349 --> 00:01:41.359
+that we're going to create a topic on this app
+
+00:01:41.359 --> 00:01:44.950
+and then anytime an event occurs in this topic,
+
+00:01:44.950 --> 00:01:47.590
+we're going to call this purchase function.
+
+00:01:47.590 --> 00:01:51.520
+Now remember, this function is defined asynchronously
+
+00:01:51.519 --> 00:01:56.079
+as is this for-loop and these are required by the Faust framework.
+
+00:01:56.079 --> 00:02:00.099
+So purchases is essentially a stream and every time an event occurs
+
+00:02:00.099 --> 00:02:04.019
+in this infinite stream of data, we get this purchase.
+
+00:02:04.019 --> 00:02:07.429
+So that loop will iterate and then we can do anything we want this purchase.
+
+00:02:07.430 --> 00:02:09.800
+In this case, we're simply going to print it.
+
+00:02:09.800 --> 00:02:16.135
+Finally, notice that in this if name equals main block, we've defined app.main.
+
+00:02:16.134 --> 00:02:19.844
+This is the same app as the Faust app above.
+
+00:02:19.844 --> 00:02:25.234
+All this says, is that if you were to run this file sample1.py,
+
+00:02:25.235 --> 00:02:27.680
+that it should use the app.main function.
+
+00:02:27.680 --> 00:02:33.960
+So let's see what happens if I simply run sample1.py, without any arguments.
+
+00:02:34.639 --> 00:02:37.029
+You'll notice that if I got to
+
+00:02:37.030 --> 00:02:40.550
+single document mode that it prints out a bunch of options.
+
+00:02:40.550 --> 00:02:43.550
+So you can see Python sample1.py,
+
+00:02:43.550 --> 00:02:47.665
+you can see it gives us usage options and a number of commands.
+
+00:02:47.664 --> 00:02:50.194
+Specifically, we're interested in the worker command.
+
+00:02:50.194 --> 00:02:54.305
+This will actually run the application that we've defined as a Faust worker,
+
+00:02:54.305 --> 00:02:56.240
+which is what we'd want for now.
+
+00:02:56.240 --> 00:03:00.925
+So we'll say Python sample1.py worker.
+
+00:03:00.925 --> 00:03:02.975
+We'll go ahead and wait.
+
+00:03:02.974 --> 00:03:05.449
+So you can see the Faust application is starting up,
+
+00:03:05.449 --> 00:03:07.310
+it tells us a little bit of information about what
+
+00:03:07.310 --> 00:03:09.500
+the underlying components it's using are which
+
+00:03:09.500 --> 00:03:14.030
+Kafka broker is subscribed to and now you can see it's consuming data,
+
+00:03:14.030 --> 00:03:17.219
+purchase data from our stream.
+
+00:03:17.219 --> 00:03:22.984
+To shut it down we hit "Control C" and then we can see it will shut down and then exit.
+
+00:03:22.985 --> 00:03:27.810
+All right and that is your first ever Faust application.
+

@@ -1,0 +1,58 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:01.879 --> 00:00:05.699
+Throughout this lesson, you've learned a great deal about Faust and
+
+00:00:05.700 --> 00:00:09.134
+how you can use it to build your own stream processing applications.
+
+00:00:09.134 --> 00:00:12.750
+You've seen how to create a basic Faust application from scratch.
+
+00:00:12.750 --> 00:00:16.304
+You've also seen how to serialize and de-serialize data,
+
+00:00:16.304 --> 00:00:17.625
+and in the process,
+
+00:00:17.625 --> 00:00:20.519
+how Faust can give us a hand in type verification.
+
+00:00:20.519 --> 00:00:23.954
+We learned how Faust uses Kafka to store the change log
+
+00:00:23.954 --> 00:00:27.584
+and uses either an in-memory or RocksDB based store,
+
+00:00:27.585 --> 00:00:29.745
+to store its own local state.
+
+00:00:29.745 --> 00:00:33.210
+Finally, we learned about building stream applications and
+
+00:00:33.210 --> 00:00:37.664
+table applications and the nuances of both of those approaches.
+
+00:00:37.664 --> 00:00:42.280
+Faust is an awesome tool for building world-class stream processing applications.
+
+00:00:42.280 --> 00:00:44.929
+I hope that you enjoyed this lesson and find these skills
+
+00:00:44.929 --> 00:00:48.664
+useful next time you'd like to try to build one of these applications on your own.
+
+00:00:48.664 --> 00:00:52.159
+I think you'll especially enjoy contrasting Faust with
+
+00:00:52.159 --> 00:00:55.534
+KSQL which we're about to learn about in the upcoming lesson.
+
+00:00:55.534 --> 00:00:58.309
+Both of them are incredible tools that will help
+
+00:00:58.310 --> 00:01:02.370
+you build some really amazing stream processing applications.
+

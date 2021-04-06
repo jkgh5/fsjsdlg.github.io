@@ -1,0 +1,67 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:02.895
+Now that we've created a few tables and the streams,
+
+00:00:02.895 --> 00:00:04.919
+it's time that we see how to query these streams
+
+00:00:04.919 --> 00:00:07.935
+for information that might be useful for us to use.
+
+00:00:07.934 --> 00:00:11.820
+The example on screen is a simple query that we might want to run to
+
+00:00:11.820 --> 00:00:15.554
+find all purchases in US dollars that are more than 100,000.
+
+00:00:15.554 --> 00:00:16.829
+If we wait long enough,
+
+00:00:16.829 --> 00:00:20.114
+we'll eventually see records begin to return into a running query.
+
+00:00:20.114 --> 00:00:21.704
+Here's the catch though.
+
+00:00:21.704 --> 00:00:24.584
+If I "Control C" and exit this query while it's running,
+
+00:00:24.585 --> 00:00:26.685
+the data's going to be lost forever.
+
+00:00:26.684 --> 00:00:30.814
+The query is not persistent and does not continue to run in the background.
+
+00:00:30.815 --> 00:00:35.450
+This is a very important concept to understand with KSQL
+
+00:00:35.450 --> 00:00:39.995
+if you want your streaming query to keep running and to be able to use that data,
+
+00:00:39.994 --> 00:00:45.064
+you need to use create table as or create stream as syntax.
+
+00:00:45.064 --> 00:00:47.929
+Otherwise, when your client session closes,
+
+00:00:47.929 --> 00:00:49.505
+your data will be wiped out.
+
+00:00:49.505 --> 00:00:52.850
+So again, if I were to run this select statement,
+
+00:00:52.850 --> 00:00:59.079
+it would simply be printing it out the values that it's getting into my KSQL CLI,
+
+00:00:59.079 --> 00:01:02.045
+it would just be informational for me to review.
+
+00:01:02.045 --> 00:01:05.239
+As soon as I hit "Control C" and exit out of the CLI,
+
+00:01:05.239 --> 00:01:07.530
+that query stops running.
+

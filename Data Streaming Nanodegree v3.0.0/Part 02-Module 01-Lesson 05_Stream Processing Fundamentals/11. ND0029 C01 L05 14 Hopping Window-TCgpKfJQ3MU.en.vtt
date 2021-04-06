@@ -1,0 +1,37 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:04.889
+Hopping windows have both a duration and an increment by which they are advanced.
+
+00:00:04.889 --> 00:00:07.500
+If we were to define a hopping window of 10 minutes in
+
+00:00:07.500 --> 00:00:10.830
+duration and an increment time of one minute,
+
+00:00:10.830 --> 00:00:13.530
+every one minute the window would be advanced forward.
+
+00:00:13.529 --> 00:00:16.335
+So let's visualize that again.
+
+00:00:16.335 --> 00:00:19.394
+So if I have Window 1 here,
+
+00:00:19.394 --> 00:00:25.199
+I'm going to have some overlap which is our increment with Window 2.
+
+00:00:25.199 --> 00:00:29.939
+Window 3 will have some overlap with Window 2 and so on.
+
+00:00:29.940 --> 00:00:34.289
+So we can't have overlapping windows and it's
+
+00:00:34.289 --> 00:00:38.490
+also possible although we don't show it on the slide that I increment is too large,
+
+00:00:38.490 --> 00:00:41.920
+we may actually have gaps between the windows as well.
+

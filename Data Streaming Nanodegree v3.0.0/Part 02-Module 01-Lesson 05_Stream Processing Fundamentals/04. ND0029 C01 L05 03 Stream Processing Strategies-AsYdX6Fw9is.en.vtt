@@ -1,0 +1,61 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:01.820 --> 00:00:04.620
+In your experience as a data engineer,
+
+00:00:04.620 --> 00:00:06.480
+you've likely combined data sources,
+
+00:00:06.480 --> 00:00:08.790
+filter them, merge them, and more.
+
+00:00:08.789 --> 00:00:10.899
+When you performed these actions in the past,
+
+00:00:10.900 --> 00:00:14.565
+you were likely working with a fixed set of data in batches.
+
+00:00:14.564 --> 00:00:17.399
+Many traditional data stores such as PostgreSQL and
+
+00:00:17.399 --> 00:00:21.599
+MySQL offer this type of functionality as part of the query language.
+
+00:00:21.600 --> 00:00:24.090
+For example, you might use a join in SQL to
+
+00:00:24.089 --> 00:00:27.285
+combine data sources or where clause to filter data.
+
+00:00:27.285 --> 00:00:30.643
+While it's great that traditional data stores provide this functionality,
+
+00:00:30.643 --> 00:00:34.320
+we have to rerun the query every time we want the result updated.
+
+00:00:34.320 --> 00:00:37.619
+Stream processing applications never stop running.
+
+00:00:37.619 --> 00:00:39.419
+How do you join a dataset that is
+
+00:00:39.420 --> 00:00:42.030
+evolving while you're actually performing a calculation?
+
+00:00:42.030 --> 00:00:45.890
+How do you filter a dataset that's changing as your code runs?
+
+00:00:45.890 --> 00:00:50.674
+Kafka provides us no functionality to help us with these problems out of the box.
+
+00:00:50.674 --> 00:00:53.794
+This is where stream processing frameworks come into play.
+
+00:00:53.795 --> 00:00:55.310
+In the following sections,
+
+00:00:55.310 --> 00:01:00.210
+we'll see how we can accomplish this functionality on constantly evolving streams.
+

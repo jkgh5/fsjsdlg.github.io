@@ -1,0 +1,58 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:01.820 --> 00:00:06.839
+Windowing in KSQL, is largely similar to what we've seen before with Faust.
+
+00:00:06.839 --> 00:00:09.929
+KSQL supports both hopping and tumbling
+
+00:00:09.929 --> 00:00:13.515
+windows with the same rules that you're already familiar with.
+
+00:00:13.515 --> 00:00:17.669
+KSQL also supports a type of windowing known as Session Windowing,
+
+00:00:17.669 --> 00:00:20.685
+which we're going to review in depth in this section.
+
+00:00:20.684 --> 00:00:23.789
+As with Faust or any other stream processing framework,
+
+00:00:23.789 --> 00:00:27.329
+Windows in KSQL are used during aggregate operations.
+
+00:00:27.329 --> 00:00:31.154
+Like Faust, KSQL Supports Hopping and Tumbling Windows.
+
+00:00:31.155 --> 00:00:35.745
+The example on the screen demonstrates the usage of a tumbling window.
+
+00:00:35.744 --> 00:00:39.329
+You simply specify the Windows tumbling and specify that
+
+00:00:39.329 --> 00:00:42.689
+the size of the window should be 10 minutes.
+
+00:00:42.689 --> 00:00:47.344
+This can be seconds or hours or other time sizes.
+
+00:00:47.344 --> 00:00:51.799
+We could easily turn this into a hopping window by modifying the query it to use
+
+00:00:51.799 --> 00:00:56.494
+the hopping keyword and adding the advanced keyword with an interval.
+
+00:00:56.494 --> 00:00:59.269
+So again, the only difference here is that this now says,
+
+00:00:59.270 --> 00:01:03.745
+"Hopping" and we've added advance by one minute.
+
+00:01:03.744 --> 00:01:07.549
+Here, we're simply asking KSQL to take this 10-minute window
+
+00:01:07.549 --> 00:01:11.870
+that we've defined and move it forward every one minute.
+

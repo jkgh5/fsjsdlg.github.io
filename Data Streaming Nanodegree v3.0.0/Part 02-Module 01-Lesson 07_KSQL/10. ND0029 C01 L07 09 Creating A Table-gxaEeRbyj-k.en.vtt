@@ -1,0 +1,79 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:04.440
+Creating tables in case SQL works very similarly to creating streams.
+
+00:00:04.440 --> 00:00:06.770
+The major difference is that when we create a table,
+
+00:00:06.769 --> 00:00:10.109
+a key is used to uniquely identify the data.
+
+00:00:10.109 --> 00:00:13.369
+Recall that a table is an aggregated view of our data.
+
+00:00:13.369 --> 00:00:17.669
+It's non-infinite sequence of immutable data events like a stream.
+
+00:00:17.670 --> 00:00:20.205
+As you can see to create a table,
+
+00:00:20.204 --> 00:00:25.024
+we apply a table name as well as column names and their associated types.
+
+00:00:25.024 --> 00:00:28.129
+We also use the width clause to specify the name of
+
+00:00:28.129 --> 00:00:30.469
+the underlying Kafka topic as well as
+
+00:00:30.469 --> 00:00:34.280
+the serialization format used to create the data in this topic.
+
+00:00:34.280 --> 00:00:38.524
+Finally, you'll notice that we specified a key attribute.
+
+00:00:38.524 --> 00:00:41.015
+The key attribute is required.
+
+00:00:41.015 --> 00:00:45.995
+Specifying a key is used for when aggregates and joins are performed.
+
+00:00:45.994 --> 00:00:51.004
+The key attribute helps clue in case SQL how to repartition topics.
+
+00:00:51.005 --> 00:00:54.484
+Keys must be a varchar or strings.
+
+00:00:54.484 --> 00:00:57.335
+Keys cannot be JSON or Avro values.
+
+00:00:57.335 --> 00:00:59.210
+They have to be strings.
+
+00:00:59.210 --> 00:01:04.055
+As in streams, you may also create table as select.
+
+00:01:04.055 --> 00:01:09.260
+As you can see, we're saying again with this we're creating
+
+00:01:09.260 --> 00:01:11.390
+a purchases high-value table as
+
+00:01:11.390 --> 00:01:15.840
+select star from purchases where amount is greater than 100,000.
+
+00:01:15.840 --> 00:01:18.049
+What's interesting about this is that we'll go
+
+00:01:18.049 --> 00:01:20.689
+ahead and use the key of the purchases stream,
+
+00:01:20.689 --> 00:01:22.310
+which in this case is username,
+
+00:01:22.310 --> 00:01:27.810
+and it will keep the highest purchase for each one of our usernames.
+

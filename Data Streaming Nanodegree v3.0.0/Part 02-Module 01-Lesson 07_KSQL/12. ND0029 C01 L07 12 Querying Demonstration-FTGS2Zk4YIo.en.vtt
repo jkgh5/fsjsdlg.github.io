@@ -1,0 +1,190 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:01.850 --> 00:00:07.140
+Now, let's actually go ahead and see how easy it is to query with KSQL.
+
+00:00:07.139 --> 00:00:10.649
+Now, I know I mentioned that as soon as we stopped running one of these queries,
+
+00:00:10.650 --> 00:00:12.419
+that we're going to lose the data,
+
+00:00:12.419 --> 00:00:15.314
+but that doesn't mean this is an incredibly useful thing for us to do.
+
+00:00:15.314 --> 00:00:18.149
+It's worth mentioning that this kind of querying is
+
+00:00:18.149 --> 00:00:21.089
+really useful for testing and exploration purposes.
+
+00:00:21.089 --> 00:00:23.789
+So let's go ahead and try running this first query.
+
+00:00:23.789 --> 00:00:26.684
+Now we've already seen how to filter data.
+
+00:00:26.684 --> 00:00:29.029
+We're going to do it one more time just to show you what it looks
+
+00:00:29.030 --> 00:00:31.400
+like outside of the context of a create statement.
+
+00:00:31.399 --> 00:00:33.289
+So I'm going to go ahead and say,
+
+00:00:33.289 --> 00:00:35.929
+"Select the username and amount from purchases,
+
+00:00:35.929 --> 00:00:39.564
+where the amount is greater than say,
+
+00:00:39.564 --> 00:00:48.189
+let's do 150,000, and the username starts with a K this time."
+
+00:00:48.770 --> 00:00:51.450
+So let this run for just a moment,
+
+00:00:51.450 --> 00:00:57.080
+and you can see we can already see that we're only getting results that match
+
+00:00:57.079 --> 00:01:03.185
+their query that the values over a 150,000 and the name starts with K. Now,
+
+00:01:03.185 --> 00:01:07.644
+we can also apply some other scalar functions to our queries,
+
+00:01:07.644 --> 00:01:09.979
+and this is actually where things get a little interesting.
+
+00:01:09.980 --> 00:01:13.340
+Now, I understand that this query probably looks totally crazy,
+
+00:01:13.340 --> 00:01:16.100
+and in a sense that's because it is.
+
+00:01:16.099 --> 00:01:19.309
+But let's take a look at what we're up to here and explore some of
+
+00:01:19.310 --> 00:01:22.715
+the scalar functions that KSQL provides to us.
+
+00:01:22.715 --> 00:01:26.960
+So let's start by just doing a normal select username,
+
+00:01:26.959 --> 00:01:31.204
+currency, and amount divided by 100,
+
+00:01:31.204 --> 00:01:33.200
+and we're going to do this from purchases,
+
+00:01:33.200 --> 00:01:39.780
+again where the value is say, greater than 150,000,
+
+00:01:39.780 --> 00:01:48.769
+and the username starts with a K. So what we're saying here is I want the username,
+
+00:01:48.769 --> 00:01:49.969
+the currency, and the amount.
+
+00:01:49.969 --> 00:01:51.679
+So I don't just want the username and amount,
+
+00:01:51.680 --> 00:01:54.905
+I also want the amount divided by 100 and I want the currency.
+
+00:01:54.905 --> 00:01:59.439
+So you can see that you can modify the values so we can divide by 100,
+
+00:01:59.439 --> 00:02:01.564
+and well, this is interesting.
+
+00:02:01.564 --> 00:02:05.780
+Maybe I really also want this output to get streamed out as CSV.
+
+00:02:05.780 --> 00:02:08.419
+I don't actually want three separate columns,
+
+00:02:08.419 --> 00:02:13.854
+I want one column where everything's concatenated by a comma and a space,
+
+00:02:13.854 --> 00:02:15.829
+and that's essentially what's going on here.
+
+00:02:15.830 --> 00:02:20.030
+So KSQL has this very useful function called CONCAT.
+
+00:02:20.030 --> 00:02:24.604
+So CONCAT says, "I want to take two strings and join them together."
+
+00:02:24.604 --> 00:02:27.429
+So if we return to this query,
+
+00:02:27.430 --> 00:02:33.265
+I could say CONCAT username and currency,
+
+00:02:33.264 --> 00:02:36.439
+and this would merge the two of those things together.
+
+00:02:36.439 --> 00:02:39.574
+So this isn't a particularly useful thing.
+
+00:02:39.574 --> 00:02:41.704
+In fact, the output is going to look a little funny,
+
+00:02:41.705 --> 00:02:43.640
+but you can see that this is how CONCAT works.
+
+00:02:43.639 --> 00:02:47.299
+It takes the username and it takes the currency and puts them together.
+
+00:02:47.300 --> 00:02:49.685
+We can do some useful things with this.
+
+00:02:49.685 --> 00:02:52.270
+So if I wanted to generate that CSV I was talking about,
+
+00:02:52.270 --> 00:02:54.360
+I can do something like this,
+
+00:02:54.360 --> 00:02:56.325
+and now if I look at this again,
+
+00:02:56.324 --> 00:03:00.000
+we can see that I don't have those pipes anymore,
+
+00:03:00.000 --> 00:03:01.469
+I now have commas.
+
+00:03:01.469 --> 00:03:04.789
+In addition to that, you'll notice I've also used
+
+00:03:04.789 --> 00:03:07.954
+the UCASE function to uppercase the username.
+
+00:03:07.955 --> 00:03:10.745
+So now all of my data is an uppercase.
+
+00:03:10.745 --> 00:03:15.530
+So this something you could do if you were interested in just outputting
+
+00:03:15.530 --> 00:03:20.525
+something that'll be friendly for any tool that uses CSV data.
+
+00:03:20.525 --> 00:03:24.064
+Finally, I just want to reiterate that nothing is running.
+
+00:03:24.064 --> 00:03:26.990
+So once you hit CTRL+C, the query terminates.
+
+00:03:26.990 --> 00:03:30.320
+So if I do show queries unlike when we did
+
+00:03:30.319 --> 00:03:34.009
+create table as or create stream as, there's nothing running.
+
+00:03:34.009 --> 00:03:36.719
+The query is simply gone.
+

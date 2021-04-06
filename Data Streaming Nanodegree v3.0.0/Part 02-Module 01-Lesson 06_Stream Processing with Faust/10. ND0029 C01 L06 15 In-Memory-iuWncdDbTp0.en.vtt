@@ -1,0 +1,70 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:03.180
+When a Faust application starts and read state and
+
+00:00:03.180 --> 00:00:07.169
+the change log topic or as it processes data during execution,
+
+00:00:07.169 --> 00:00:10.484
+it needs to store the current state of the application somewhere.
+
+00:00:10.484 --> 00:00:15.375
+The first and default option is to simply store the state in memory.
+
+00:00:15.375 --> 00:00:18.750
+This means that an up-to-date copy of the state of a table
+
+00:00:18.750 --> 00:00:21.870
+is kept in application memory on every single node.
+
+00:00:21.870 --> 00:00:24.630
+Well, this is fast and simple to reason about,
+
+00:00:24.629 --> 00:00:27.089
+it has significant disadvantages.
+
+00:00:27.089 --> 00:00:30.000
+Every time the application restarts,
+
+00:00:30.000 --> 00:00:33.435
+it has to completely rebuild state from the Kafka changelog topic.
+
+00:00:33.435 --> 00:00:38.465
+What happens if we have tens or hundreds of millions of events in our changelog topic.
+
+00:00:38.465 --> 00:00:41.000
+It might take our application minutes or
+
+00:00:41.000 --> 00:00:43.475
+even hours to recover and begin processing again,
+
+00:00:43.475 --> 00:00:44.734
+and for many applications,
+
+00:00:44.734 --> 00:00:46.100
+that's simply not acceptable.
+
+00:00:46.100 --> 00:00:50.530
+The point of stream processing application is typically to be fast and work in real-time.
+
+00:00:50.530 --> 00:00:53.329
+Additionally, what happens if the state of the table is
+
+00:00:53.329 --> 00:00:56.304
+too large to fit in memory. What do we do?
+
+00:00:56.304 --> 00:00:58.689
+Because of these significant disadvantages,
+
+00:00:58.689 --> 00:01:01.849
+it is not recommended to use in-memory storage for anything but
+
+00:01:01.850 --> 00:01:04.609
+your local testing and development or
+
+00:01:04.609 --> 00:01:08.579
+datasets are limited and recovery times aren't critical.
+

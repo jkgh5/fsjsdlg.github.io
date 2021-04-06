@@ -1,0 +1,31 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:01.700 --> 00:00:04.844
+Congratulations on completing this course.
+
+00:00:04.844 --> 00:00:07.320
+In this class, we've taken a long journey through
+
+00:00:07.320 --> 00:00:10.425
+the world of Kafka and its extensive ecosystem.
+
+00:00:10.425 --> 00:00:15.330
+We've also taken a look at stream processing tools like Faust and K SQL,
+
+00:00:15.330 --> 00:00:20.129
+and seen how we can rapidly build stream processing applications with these tools.
+
+00:00:20.129 --> 00:00:22.649
+With the skills you've worked so hard to build in this class,
+
+00:00:22.649 --> 00:00:24.359
+you're now ready to go and build cutting
+
+00:00:24.359 --> 00:00:27.539
+edge applications that can offer insights in real time.
+
+00:00:27.539 --> 00:00:31.089
+I hope you've enjoyed this journey as much as I have.
+

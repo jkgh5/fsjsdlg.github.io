@@ -1,0 +1,121 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:02.029 --> 00:00:07.410
+So let's go ahead and have a look at how we can apply windows to the previous example.
+
+00:00:07.410 --> 00:00:09.195
+Jumping back into the workspace,
+
+00:00:09.195 --> 00:00:11.940
+let's go ahead and modify the previous demonstration.
+
+00:00:11.939 --> 00:00:16.050
+So again, remember that we have a group_by, purchase.currency.
+
+00:00:16.050 --> 00:00:20.205
+We're keeping track of by currency the total amount of value we've seen.
+
+00:00:20.204 --> 00:00:24.859
+Now we need to go ahead and actually add to our table definition.
+
+00:00:24.859 --> 00:00:27.304
+We need to add a tumbling window.
+
+00:00:27.304 --> 00:00:28.850
+So to do this,
+
+00:00:28.850 --> 00:00:31.715
+we're simply going to pass in a time Delta.
+
+00:00:31.714 --> 00:00:35.494
+We'll go ahead and give it a time Delta of 30 seconds.
+
+00:00:35.494 --> 00:00:38.669
+I'll make it a little easier for us to see the time Delta expiring,
+
+00:00:38.670 --> 00:00:41.315
+or excuse me, to see the window expiring.
+
+00:00:41.314 --> 00:00:43.699
+Now that we've defined our tumbling window,
+
+00:00:43.700 --> 00:00:45.859
+we're ready to actually run our application.
+
+00:00:45.859 --> 00:00:47.644
+So let's go ahead and do that.
+
+00:00:47.645 --> 00:00:50.480
+Now you'll notice when the application starts to print,
+
+00:00:50.479 --> 00:00:52.939
+that it's not going to print exactly what we'd expect,
+
+00:00:52.939 --> 00:00:56.780
+and that's because we've changed this to be a windowed table.
+
+00:00:56.780 --> 00:01:02.960
+You'll see it's going to print out a window set for the actual value. That's this.
+
+00:01:02.960 --> 00:01:07.579
+Why is it printing a window set instead of actually printing the value?
+
+00:01:07.579 --> 00:01:09.769
+Well, that's because under the covers,
+
+00:01:09.769 --> 00:01:13.359
+Faust is actually doing some windowing itself to actually track the value.
+
+00:01:13.359 --> 00:01:15.640
+So when you go to access what the value is,
+
+00:01:15.640 --> 00:01:20.275
+Faust actually has to do some work to determine what you want it to give back to you.
+
+00:01:20.275 --> 00:01:24.535
+So to do that, we're simply just going to pass in the current function.
+
+00:01:24.534 --> 00:01:28.179
+Now you can learn more about printing values
+
+00:01:28.180 --> 00:01:31.960
+with these functions by actually going to the documentation and learning more about it.
+
+00:01:31.959 --> 00:01:36.744
+Now I'll provide a link to this in your exercise,
+
+00:01:36.745 --> 00:01:39.115
+but for now we're simply going to use current.
+
+00:01:39.114 --> 00:01:42.384
+So let's go ahead and run our application one more time.
+
+00:01:42.385 --> 00:01:45.745
+So you can see now that we're seeing actual values print out.
+
+00:01:45.745 --> 00:01:48.650
+Now we define the time window of about 30 seconds.
+
+00:01:48.650 --> 00:01:52.715
+So we're just going to wait a little while and see these numbers reset.
+
+00:01:52.715 --> 00:01:56.975
+So you'll notice these numbers just continued to go up and up and up and up.
+
+00:01:56.974 --> 00:01:59.659
+But after that 30-second tumbling window expires,
+
+00:01:59.659 --> 00:02:02.119
+we should see them simply reset.
+
+00:02:02.120 --> 00:02:04.700
+So we're going to wait here just a moment.
+
+00:02:04.700 --> 00:02:09.664
+You can see it looks like those numbers have reset and they're starting to go back up.
+
+00:02:09.664 --> 00:02:13.090
+All right. So that's all there is to it.
+

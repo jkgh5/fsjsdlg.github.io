@@ -1,0 +1,67 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:03.509
+There are two options for creating streams in KSQL.
+
+00:00:03.509 --> 00:00:05.549
+The first option is to simply define
+
+00:00:05.549 --> 00:00:08.384
+the stream attributes and types with a create statement,
+
+00:00:08.384 --> 00:00:09.974
+as you see on the screen.
+
+00:00:09.974 --> 00:00:13.980
+We always start by declaring the name of the stream we wish to declare.
+
+00:00:13.980 --> 00:00:16.260
+Here, we're using purchases.
+
+00:00:16.260 --> 00:00:18.165
+Next, in the parentheses,
+
+00:00:18.164 --> 00:00:20.280
+we declare the attributes or
+
+00:00:20.280 --> 00:00:24.585
+the columns and the type that we expect for each one of those.
+
+00:00:24.585 --> 00:00:28.469
+The final portion of the create statement is this width portion.
+
+00:00:28.469 --> 00:00:33.239
+This provides additional information so the KSQL knows which Kafka topic to source from,
+
+00:00:33.240 --> 00:00:35.340
+and the value format simply describes
+
+00:00:35.340 --> 00:00:38.895
+the serialization format of the data in the Kafka topic.
+
+00:00:38.895 --> 00:00:42.510
+This can be one of Avro, JSON, or delimited.
+
+00:00:42.509 --> 00:00:45.394
+Delimited basically just means that it's a CSV.
+
+00:00:45.395 --> 00:00:50.000
+It's also possible to create a stream with a "select"
+
+00:00:50.000 --> 00:00:55.414
+that excludes or modifies data from another preexisting stream.
+
+00:00:55.414 --> 00:00:57.155
+So you can see in this example,
+
+00:00:57.155 --> 00:01:02.689
+we're creating a stream called purchases_high_value by selecting all of
+
+00:01:02.689 --> 00:01:05.480
+the attributes from our purchases stream but only
+
+00:01:05.480 --> 00:01:09.600
+where the amount is greater than 100,000.
+

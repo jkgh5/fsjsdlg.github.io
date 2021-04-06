@@ -1,0 +1,76 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:03.509
+When we combine or join two or more streams,
+
+00:00:03.509 --> 00:00:06.285
+we're interested in merging the data from these streams together.
+
+00:00:06.285 --> 00:00:08.460
+Consider an example in which we had
+
+00:00:08.460 --> 00:00:12.615
+a streaming purchase data which we wanted to enrich with user actions prior to checkout.
+
+00:00:12.615 --> 00:00:15.780
+In this example, we may want the output to be
+
+00:00:15.779 --> 00:00:19.425
+a purchase with a list of events from the session related to that purchase.
+
+00:00:19.425 --> 00:00:21.310
+To accomplish this ourselves,
+
+00:00:21.309 --> 00:00:25.904
+we would need to store user actions in our application as they arrive,
+
+00:00:25.905 --> 00:00:28.635
+until the related purchase event arrives as well.
+
+00:00:28.635 --> 00:00:31.830
+Once that happens, we can add the user action events to
+
+00:00:31.829 --> 00:00:35.655
+the purchase event and emit a new event with the join data sources.
+
+00:00:35.655 --> 00:00:38.945
+In general, this is how join across streams work.
+
+00:00:38.945 --> 00:00:40.969
+All the stream involved in a join have
+
+00:00:40.969 --> 00:00:44.195
+a related key upon which the data in the streams can be combined.
+
+00:00:44.195 --> 00:00:47.990
+It's not necessary to include all the data from all the streams.
+
+00:00:47.990 --> 00:00:50.510
+In fact, it's pretty common to select some subset
+
+00:00:50.509 --> 00:00:53.274
+of the data before sending the joint data downstream.
+
+00:00:53.274 --> 00:00:57.344
+Simple, right? Well, what happens if the user doesn't purchase?
+
+00:00:57.344 --> 00:00:59.685
+Do we store that information forever?
+
+00:00:59.685 --> 00:01:02.670
+What happens if we get a purchase with no related user actions?
+
+00:01:02.670 --> 00:01:05.135
+Maybe the user went right to the checkout page.
+
+00:01:05.135 --> 00:01:09.844
+Handling corner cases like this is difficult without a stream processing framework.
+
+00:01:09.844 --> 00:01:11.450
+As you'll see later in this lesson,
+
+00:01:11.450 --> 00:01:15.770
+the concept of data windowing will help us handle these types of corner cases.
+

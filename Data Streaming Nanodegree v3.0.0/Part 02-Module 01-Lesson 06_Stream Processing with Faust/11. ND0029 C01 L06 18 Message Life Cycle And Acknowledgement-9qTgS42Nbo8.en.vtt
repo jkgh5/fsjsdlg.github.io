@@ -1,0 +1,67 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:02.459
+When we reviewed Kafka consumers in lesson two,
+
+00:00:02.459 --> 00:00:04.814
+we learned about consumers and consumer groups.
+
+00:00:04.815 --> 00:00:08.490
+We learned that the offset of a consumer is how Kafka keeps track,
+
+00:00:08.490 --> 00:00:11.144
+of what that consumer has already seen.
+
+00:00:11.144 --> 00:00:13.605
+How does Faust manage that state?
+
+00:00:13.605 --> 00:00:19.019
+Thankfully, Faust is always for you automatically, using aioKafka.
+
+00:00:19.019 --> 00:00:22.769
+But it's still worth understanding what it's doing behind the scenes.
+
+00:00:22.769 --> 00:00:27.109
+Faust creates a Kafka consumer within the context of the underlying library,
+
+00:00:27.109 --> 00:00:29.449
+which is responsible for subscribing and concealing events,
+
+00:00:29.449 --> 00:00:31.285
+from any requests and topics.
+
+00:00:31.285 --> 00:00:35.210
+The aioKafka consumer is responsible for managing the offsets,
+
+00:00:35.210 --> 00:00:38.750
+and will periodically commit its own offsets back to Kafka.
+
+00:00:38.750 --> 00:00:41.210
+The consumer can then forward the message on to
+
+00:00:41.210 --> 00:00:44.064
+the subscribed agent for the topic, where it's processed.
+
+00:00:44.064 --> 00:00:46.695
+But the processing of an event completes, in other words,
+
+00:00:46.695 --> 00:00:49.375
+when that iteration of the Async Iterable ends,
+
+00:00:49.375 --> 00:00:51.469
+the message is automatically acknowledged.
+
+00:00:51.469 --> 00:00:53.689
+What's neat about how Faust handles data,
+
+00:00:53.689 --> 00:00:56.059
+is that it only subscribes to topics at once.
+
+00:00:56.060 --> 00:00:58.775
+So if you have multiple agents subscribed to the same topic,
+
+00:00:58.774 --> 00:01:02.399
+Faust consumers will only fetch at once.
+

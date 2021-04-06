@@ -1,0 +1,202 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:01.520 --> 00:00:05.189
+Now that we've learned how to create a case equals stream,
+
+00:00:05.190 --> 00:00:07.380
+let's actually jump over the workspace and use
+
+00:00:07.379 --> 00:00:10.664
+the KSQL CLI to see how to do this ourselves.
+
+00:00:10.664 --> 00:00:12.989
+We now have the workspace open once again,
+
+00:00:12.990 --> 00:00:15.164
+and I'm going to show you how to create a stream.
+
+00:00:15.164 --> 00:00:17.849
+But before we begin, I want to walk through a few details.
+
+00:00:17.850 --> 00:00:20.670
+First, we're going to have two streams just as we did in
+
+00:00:20.670 --> 00:00:24.120
+the previous lesson that we're going to use throughout Lesson 7,
+
+00:00:24.120 --> 00:00:27.030
+the user stream and the purchases stream.
+
+00:00:27.030 --> 00:00:31.605
+I've defined here the expected values and their types for each one of these streams.
+
+00:00:31.605 --> 00:00:35.759
+So for users, we can expect the key will always be a username and a string,
+
+00:00:35.759 --> 00:00:40.679
+and these are the attributes we can expect on the JSON blob in the value.
+
+00:00:40.679 --> 00:00:45.170
+Likewise, we have purchases which is also keyed on username,
+
+00:00:45.170 --> 00:00:48.155
+and we have username, currency, and amount.
+
+00:00:48.155 --> 00:00:51.800
+The first thing we want to do is actually show the topics.
+
+00:00:51.799 --> 00:00:54.169
+So we've opened up KSQL,
+
+00:00:54.170 --> 00:00:56.240
+I'm going to exit and just reopen here.
+
+00:00:56.240 --> 00:00:59.719
+So we're going to open KSQL by simply typing KSQL on
+
+00:00:59.719 --> 00:01:04.909
+the command line and hit "Enter" and just wait a moment while it connects to Kafka,
+
+00:01:04.909 --> 00:01:08.405
+and now we're in a KSQL command line.
+
+00:01:08.405 --> 00:01:11.840
+The first thing we're going to do is actually show topics.
+
+00:01:11.840 --> 00:01:13.130
+So to do that,
+
+00:01:13.129 --> 00:01:16.189
+we're simply going to write SHOW TOPICS.
+
+00:01:16.189 --> 00:01:19.504
+So type in SHOW TOPICS;
+
+00:01:19.504 --> 00:01:22.310
+and always remember to use a semicolon at the end of the line,
+
+00:01:22.310 --> 00:01:25.055
+otherwise KSQL will continue on to the next line,
+
+00:01:25.055 --> 00:01:26.960
+and go ahead and hit "Enter".
+
+00:01:26.959 --> 00:01:30.754
+So I'm going to go full screen so this output is a little bit nicer looking.
+
+00:01:30.754 --> 00:01:35.000
+But you can see it's a little hard to read but you can see Kafka topic,
+
+00:01:35.000 --> 00:01:36.965
+you can see the name of the topics,
+
+00:01:36.965 --> 00:01:39.650
+and you can see some other attributes around them as well.
+
+00:01:39.650 --> 00:01:42.080
+So basically, how many partitions?
+
+00:01:42.079 --> 00:01:43.534
+How many replications?
+
+00:01:43.534 --> 00:01:46.009
+How many consumers and consumer groups?
+
+00:01:46.010 --> 00:01:49.520
+So I wanted to show this to you just so you can get a feeling of
+
+00:01:49.519 --> 00:01:53.614
+how you can use KSQL to actually see what streams are available for you to work with.
+
+00:01:53.614 --> 00:01:55.549
+So now that we've seen that,
+
+00:01:55.549 --> 00:01:58.084
+let's actually go ahead and create a stream.
+
+00:01:58.084 --> 00:02:02.599
+Scrolling down, we're going to go ahead and create a stream for purchases.
+
+00:02:02.599 --> 00:02:05.405
+So to do this, we're going to use this create stream command.
+
+00:02:05.405 --> 00:02:10.520
+But before we begin, I just want to reference where am I getting these field values from?
+
+00:02:10.520 --> 00:02:19.439
+If I scroll up, you'll recognize that they're coming from the purchases data.
+
+00:02:19.439 --> 00:02:22.659
+So again, the value type is defined here as username, currency,
+
+00:02:22.659 --> 00:02:24.444
+and amount and we have a string, a string,
+
+00:02:24.444 --> 00:02:27.079
+and an int, and a key type of string.
+
+00:02:27.080 --> 00:02:30.215
+It's going back, let's actually run our creation command.
+
+00:02:30.215 --> 00:02:32.284
+So let's quickly review what's going on here.
+
+00:02:32.284 --> 00:02:34.669
+We're saying we want to create a stream called purchases,
+
+00:02:34.669 --> 00:02:37.054
+we want a username as varchar,
+
+00:02:37.055 --> 00:02:38.120
+and currency as varchar,
+
+00:02:38.120 --> 00:02:39.379
+so they're both strings,
+
+00:02:39.379 --> 00:02:41.484
+and we want the amount to be an integer.
+
+00:02:41.485 --> 00:02:44.090
+We're pointing to the Kafka topic we want to use which in
+
+00:02:44.090 --> 00:02:46.610
+this case is the com.udacity.streams.purchases
+
+00:02:46.610 --> 00:02:51.980
+stream and we're telling KSQL that the values are going to be in JSON format.
+
+00:02:51.979 --> 00:02:54.394
+So let's go ahead and try running that command.
+
+00:02:54.395 --> 00:02:56.570
+So I'm going to hit "Enter",
+
+00:02:56.569 --> 00:02:59.435
+and you should get a message like this that says stream created.
+
+00:02:59.435 --> 00:03:02.270
+Now, if you want to confirm that it's been created,
+
+00:03:02.270 --> 00:03:04.505
+you can type show streams.
+
+00:03:04.504 --> 00:03:08.824
+You can see we have one here com.udacity.streams.purchases.
+
+00:03:08.824 --> 00:03:10.409
+We could also quickly do,
+
+00:03:10.409 --> 00:03:13.439
+select star from purchases.
+
+00:03:13.439 --> 00:03:18.689
+Limit 10 just as get 10 messages out of our stream, and there you go.
+
+00:03:18.689 --> 00:03:21.949
+You can see we've got 10 purchases selected out of our stream.
+
+00:03:21.949 --> 00:03:24.359
+So we know that that create worked.
+

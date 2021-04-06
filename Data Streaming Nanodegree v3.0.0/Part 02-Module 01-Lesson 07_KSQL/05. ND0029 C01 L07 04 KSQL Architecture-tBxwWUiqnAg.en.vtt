@@ -1,0 +1,82 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:02.730
+KSQL was built by Confluent and released in
+
+00:00:02.730 --> 00:00:06.810
+2018 in an attempt to bring stream processing to more users.
+
+00:00:06.809 --> 00:00:09.914
+As with Kafka, connect and rest proxy,
+
+00:00:09.914 --> 00:00:13.949
+KSQL is built in Java and Scala and runs on the JVM.
+
+00:00:13.949 --> 00:00:16.724
+KSQL has built an open source by Confluent,
+
+00:00:16.724 --> 00:00:20.594
+the major contributors and maintainers to the Apache Kafka open-source project.
+
+00:00:20.594 --> 00:00:26.160
+KSQL itself is simply a web server that accepts incoming HTTP rest calls to
+
+00:00:26.160 --> 00:00:29.010
+configure underlying Kafka streams components to
+
+00:00:29.010 --> 00:00:32.460
+execute the stream processes described in our SQL queries.
+
+00:00:32.460 --> 00:00:35.155
+Because KSQL uses Kafka Streams,
+
+00:00:35.155 --> 00:00:37.850
+it uses a Kafka topic as a change log and
+
+00:00:37.850 --> 00:00:42.475
+RocksDB store local state on every node where KSQL is deployed.
+
+00:00:42.475 --> 00:00:45.965
+KSQL provides a few options for interaction.
+
+00:00:45.965 --> 00:00:48.365
+First, you can use as rest API.
+
+00:00:48.365 --> 00:00:50.405
+We're not going to cover this in this class,
+
+00:00:50.405 --> 00:00:53.524
+but it is an option that you can feel free to explore if you'd like.
+
+00:00:53.524 --> 00:00:57.875
+My personal favorite option for exploration is to use KSQL CLI,
+
+00:00:57.875 --> 00:01:01.554
+and you'll see me use this in all the demos in this class section.
+
+00:01:01.554 --> 00:01:08.180
+A KSQL CLI is a commandline tool that works similarly to tools like PSQL for postgres.
+
+00:01:08.180 --> 00:01:11.405
+You connect to a server and can then run interactive queries.
+
+00:01:11.405 --> 00:01:14.704
+It's really fun to see your applications come together in real-time.
+
+00:01:14.704 --> 00:01:17.709
+The final option is what you should do in production.
+
+00:01:17.709 --> 00:01:20.299
+In production, you should place a file containing
+
+00:01:20.299 --> 00:01:23.869
+your desired SQL queries on your KSQL hosts and start them up.
+
+00:01:23.870 --> 00:01:25.969
+The KSQL web server will then load
+
+00:01:25.969 --> 00:01:31.019
+this SQL file and automatically execute the queries described within it.
+

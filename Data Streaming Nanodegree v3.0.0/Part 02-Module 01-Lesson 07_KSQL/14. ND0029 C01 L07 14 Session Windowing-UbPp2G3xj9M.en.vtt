@@ -1,0 +1,124 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:04.320
+KSQL also supports type of windowing we haven't yet learned about.
+
+00:00:04.320 --> 00:00:06.195
+This is called session windowing.
+
+00:00:06.195 --> 00:00:10.169
+Session windowing isn't supported in Faust but it is in KSQL.
+
+00:00:10.169 --> 00:00:13.230
+The way session windowing works is by keeping
+
+00:00:13.230 --> 00:00:16.500
+track of one last time a particular key was seen.
+
+00:00:16.500 --> 00:00:19.160
+When a new record with the same key arrives,
+
+00:00:19.160 --> 00:00:23.384
+the difference between the timestamps is calculated and the time is extended.
+
+00:00:23.385 --> 00:00:26.400
+If the difference is less than a defined session window,
+
+00:00:26.399 --> 00:00:29.099
+the new record is added to the existing window
+
+00:00:29.100 --> 00:00:32.070
+and the window is extended by that size as you can see here.
+
+00:00:32.070 --> 00:00:34.980
+So the original window was about this large.
+
+00:00:34.979 --> 00:00:36.699
+When this a event arrived,
+
+00:00:36.700 --> 00:00:38.445
+we extended it out to here.
+
+00:00:38.445 --> 00:00:39.965
+When this third event arrived,
+
+00:00:39.965 --> 00:00:42.395
+we contain to extend our time window.
+
+00:00:42.395 --> 00:00:46.490
+Otherwise, if the difference is larger than defined session window,
+
+00:00:46.490 --> 00:00:49.025
+then a new window starter for that session.
+
+00:00:49.024 --> 00:00:51.530
+If you're familiar with sessions in web analytics,
+
+00:00:51.530 --> 00:00:55.219
+this is the same general idea but applied to your data streams.
+
+00:00:55.219 --> 00:00:58.009
+Session windowing is quite useful for analyzing,
+
+00:00:58.009 --> 00:01:00.890
+understanding engagement and user activity on your website.
+
+00:01:00.890 --> 00:01:05.960
+So I just want to emphasize the reason that window 1 stopped and window 2
+
+00:01:05.959 --> 00:01:12.364
+started is because event A occurred outside of the end of the extended session window.
+
+00:01:12.364 --> 00:01:15.159
+If A had occurred within the context of windows 1,
+
+00:01:15.159 --> 00:01:17.369
+window 1 would have been extended again.
+
+00:01:17.370 --> 00:01:19.865
+But it didn't, so a new window was started.
+
+00:01:19.864 --> 00:01:23.569
+There can be significant gaps between window 1 and window 2.
+
+00:01:23.569 --> 00:01:25.834
+For example, if window 1 ended here,
+
+00:01:25.834 --> 00:01:28.399
+we would have had a gap with no window whatsoever
+
+00:01:28.400 --> 00:01:31.955
+for event A because no records had been received.
+
+00:01:31.954 --> 00:01:34.084
+Creating a session window is simple.
+
+00:01:34.084 --> 00:01:36.859
+You simply indicate the session duration.
+
+00:01:36.859 --> 00:01:38.989
+So here you can see we've defined
+
+00:01:38.989 --> 00:01:41.929
+a session window and we simply tell it how long we want it to be.
+
+00:01:41.930 --> 00:01:45.235
+In this case, we're defining a session as 30 minutes long.
+
+00:01:45.234 --> 00:01:47.310
+What's great about this is,
+
+00:01:47.310 --> 00:01:48.710
+this is really all there is to it.
+
+00:01:48.709 --> 00:01:51.509
+This is fairly complex functionality but under the covers,
+
+00:01:51.510 --> 00:01:53.975
+KSQL manages all the complexity for you.
+
+00:01:53.974 --> 00:01:58.439
+So it's going to by key managed the window data.
+

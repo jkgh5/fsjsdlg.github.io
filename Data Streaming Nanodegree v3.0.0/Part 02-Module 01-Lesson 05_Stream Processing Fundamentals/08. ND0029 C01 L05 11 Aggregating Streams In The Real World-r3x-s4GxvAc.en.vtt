@@ -1,0 +1,58 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:01.919
+Aggregation functions provides some of
+
+00:00:01.919 --> 00:00:04.245
+the most exciting insights from our streaming data.
+
+00:00:04.245 --> 00:00:07.665
+Let's pretend you work at a software as a service company together.
+
+00:00:07.665 --> 00:00:11.039
+We're trying to understand the kinds of problems that our customers have as well as
+
+00:00:11.039 --> 00:00:12.929
+the types of problems that particular categories
+
+00:00:12.929 --> 00:00:14.834
+have so that we can better improve our product.
+
+00:00:14.835 --> 00:00:17.310
+We might have a raw data stream of all page views
+
+00:00:17.309 --> 00:00:20.129
+for our support site broken down by user.
+
+00:00:20.129 --> 00:00:23.234
+If we simply counted this data page by page,
+
+00:00:23.234 --> 00:00:26.960
+we could see by time frame what are most visited support pages were.
+
+00:00:26.960 --> 00:00:29.339
+So there're page no internet,
+
+00:00:29.339 --> 00:00:30.585
+now with have a count of one,
+
+00:00:30.585 --> 00:00:32.745
+timed out count of one,
+
+00:00:32.744 --> 00:00:34.349
+another timed out page here,
+
+00:00:34.350 --> 00:00:35.855
+so this count will go to two.
+
+00:00:35.854 --> 00:00:40.189
+This is exactly what you would see in a typical group by in a SQL function.
+
+00:00:40.189 --> 00:00:44.119
+The difference here is as events run through Kafka and through our stream processor,
+
+00:00:44.119 --> 00:00:47.789
+we're going to update our aggregated group by view.
+

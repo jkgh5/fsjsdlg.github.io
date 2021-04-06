@@ -1,0 +1,82 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:01.490 --> 00:00:04.054
+Now we know how to create streams,
+
+00:00:04.054 --> 00:00:08.559
+we're going to shift our focus to building stateful applications with Faust tables.
+
+00:00:08.560 --> 00:00:09.910
+In the coming section,
+
+00:00:09.910 --> 00:00:12.160
+you'll learn how to create and manage files tables to
+
+00:00:12.160 --> 00:00:15.220
+create powerful aggregated streaming data programs.
+
+00:00:15.220 --> 00:00:17.769
+Creating stateful applications in Faust is
+
+00:00:17.769 --> 00:00:21.364
+nearly identical programmatically to creating a stream application.
+
+00:00:21.364 --> 00:00:27.049
+To use a table, we simply declare an app.table instance with a name and a default type.
+
+00:00:27.050 --> 00:00:33.009
+In this example, I named my table my first table and made the default type a stream.
+
+00:00:33.009 --> 00:00:35.004
+With this table defined,
+
+00:00:35.005 --> 00:00:37.915
+I can start using it with my stream operations.
+
+00:00:37.914 --> 00:00:42.984
+In the example, I added a table and started using it as I would a Python dictionary.
+
+00:00:42.984 --> 00:00:44.344
+This is no mistake.
+
+00:00:44.344 --> 00:00:48.079
+The syntax for Faust tables is the same as Python dictionaries.
+
+00:00:48.079 --> 00:00:50.579
+In this case, I'm using the value as
+
+00:00:50.579 --> 00:00:56.344
+my key and I'm just keeping a count of how many times the value has appeared.
+
+00:00:56.344 --> 00:00:59.420
+The source stream and the destination table must share
+
+00:00:59.420 --> 00:01:02.780
+the same partitioning scheme for table processing to work correctly.
+
+00:01:02.780 --> 00:01:05.275
+This is referred to as co-partitioning.
+
+00:01:05.275 --> 00:01:07.130
+For example, if I wanted to aggregate
+
+00:01:07.129 --> 00:01:10.310
+the purchase stream on total value of purchases per currency,
+
+00:01:10.310 --> 00:01:13.040
+I would first need to group by the purchase currency.
+
+00:01:13.040 --> 00:01:15.515
+This would create a co-partition stream for use.
+
+00:01:15.515 --> 00:01:17.120
+If we were to skip this step,
+
+00:01:17.120 --> 00:01:20.285
+Faust can't guarantee that workers will receive the appropriate data.
+
+00:01:20.284 --> 00:01:23.369
+So make sure not to skip this step.
+

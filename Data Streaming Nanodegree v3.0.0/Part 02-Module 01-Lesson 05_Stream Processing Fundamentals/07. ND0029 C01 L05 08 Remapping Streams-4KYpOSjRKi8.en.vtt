@@ -1,0 +1,67 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:02.879
+Remapping streams is the process of transforming
+
+00:00:02.879 --> 00:00:06.554
+an input event and outputting it in a different form to a new stream.
+
+00:00:06.554 --> 00:00:09.554
+So here were have JSON data color red.
+
+00:00:09.554 --> 00:00:14.789
+Sending it through our stream processor where we're going to turn from JSON into Avro.
+
+00:00:14.789 --> 00:00:17.835
+Remapping data is a common task in data engineering,
+
+00:00:17.835 --> 00:00:20.850
+and it's frequently used for data health and security reasons.
+
+00:00:20.850 --> 00:00:24.660
+There are a few scenarios that fall under the bucket of remapping.
+
+00:00:24.660 --> 00:00:27.750
+The first might be that an input data-set is in
+
+00:00:27.750 --> 00:00:30.929
+one format but it's needed in another by a downstream client.
+
+00:00:30.929 --> 00:00:34.670
+For example, I might have a stream that consists of JSON data,
+
+00:00:34.670 --> 00:00:37.420
+but a downstream application only accepts Avro.
+
+00:00:37.420 --> 00:00:40.440
+A remapping process would involve adjusting the JSON data,
+
+00:00:40.439 --> 00:00:42.494
+transferring it to Avro,
+
+00:00:42.494 --> 00:00:45.079
+and then rewriting it into a new stream.
+
+00:00:45.079 --> 00:00:48.934
+Another common scenario is to remove specific or necessary fields.
+
+00:00:48.935 --> 00:00:51.500
+This is similar to filtering as we just discussed.
+
+00:00:51.500 --> 00:00:55.325
+The key distinction here though is that we're not removing the entire event,
+
+00:00:55.325 --> 00:00:58.385
+we're simply removing one or more fields from the event.
+
+00:00:58.384 --> 00:01:01.099
+It's also quite common to receive a data structure in
+
+00:01:01.100 --> 00:01:04.894
+one format but have an application that requires that data in a different form.
+
+00:01:04.894 --> 00:01:10.619
+This is often a simple as renaming fields or changing the hierarchy of the input data.
+

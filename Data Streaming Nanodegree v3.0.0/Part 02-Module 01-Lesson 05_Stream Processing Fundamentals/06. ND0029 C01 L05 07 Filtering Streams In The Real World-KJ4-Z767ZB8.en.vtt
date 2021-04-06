@@ -1,0 +1,79 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:05.655
+A classic example of data filtering is refining a given data-set for a specific audience.
+
+00:00:05.655 --> 00:00:09.630
+Many streaming data stores house what are referred to as raw streams.
+
+00:00:09.630 --> 00:00:11.985
+These are streams in which all data is present.
+
+00:00:11.984 --> 00:00:14.549
+For example we might work in a marketing firm and we want to
+
+00:00:14.550 --> 00:00:17.880
+perform some sentiment analysis on our client's brands.
+
+00:00:17.879 --> 00:00:20.369
+Given that we want to perform sentiment analysis,
+
+00:00:20.370 --> 00:00:24.690
+we might pipe in raw social data feeds and example of this might be Twitter.
+
+00:00:24.690 --> 00:00:28.950
+Even if we limit the data and the raw data feed to tweets that mentioned our clients,
+
+00:00:28.949 --> 00:00:31.335
+this will still be quite a lot of data.
+
+00:00:31.335 --> 00:00:34.200
+So we might apply a filter that splits out the raw data
+
+00:00:34.200 --> 00:00:37.065
+feed for each one of our clients into their own field.
+
+00:00:37.064 --> 00:00:39.210
+This is a simple example of filtering.
+
+00:00:39.210 --> 00:00:40.469
+So in this example,
+
+00:00:40.469 --> 00:00:44.119
+we have apples and oranges and we're summing them through Kafka and then
+
+00:00:44.119 --> 00:00:46.459
+our stream processor is filtering anything that
+
+00:00:46.460 --> 00:00:49.234
+isn't an apple out of the output data stream.
+
+00:00:49.234 --> 00:00:52.939
+So here we have two apples which are sent through after they'd been
+
+00:00:52.939 --> 00:00:57.744
+filtered and the oranges rejected because it's not the company that we're interested in.
+
+00:00:57.744 --> 00:01:02.809
+We could in addition also filter those individual company fields a second time to
+
+00:01:02.810 --> 00:01:04.939
+remove any tweets that don't actually have an opinion about
+
+00:01:04.939 --> 00:01:07.909
+the brand in question in simply mentioning and passing.
+
+00:01:07.909 --> 00:01:10.159
+In this example we've taken what was originally a
+
+00:01:10.159 --> 00:01:12.439
+massive difficult to understand data-set,
+
+00:01:12.439 --> 00:01:15.379
+remember it's raw data from Twitter and quickly refine
+
+00:01:15.379 --> 00:01:19.319
+it into smaller relevant chunks for each of our customers.
+

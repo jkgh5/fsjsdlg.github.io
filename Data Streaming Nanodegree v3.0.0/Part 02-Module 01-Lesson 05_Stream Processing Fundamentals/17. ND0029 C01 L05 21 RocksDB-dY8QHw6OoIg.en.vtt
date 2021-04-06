@@ -1,0 +1,88 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:03.299
+By storing data in Kafka is great for recovery,
+
+00:00:03.299 --> 00:00:07.769
+clients still need a data store to utilize while running on the various nodes.
+
+00:00:07.769 --> 00:00:13.154
+By default, most dream frameworks will simply use an in-memory store to hold state.
+
+00:00:13.154 --> 00:00:14.744
+While this is fast,
+
+00:00:14.744 --> 00:00:18.230
+and the usage of the compacted Kafka topics provides fault tolerance,
+
+00:00:18.230 --> 00:00:21.250
+there are better strategies to a boot times on our nodes,
+
+00:00:21.250 --> 00:00:23.550
+than to use in-memory storage.
+
+00:00:23.550 --> 00:00:27.240
+RocksDB, is a highly optimized local state store
+
+00:00:27.239 --> 00:00:31.259
+that was built at Facebook for situations just like this.
+
+00:00:31.260 --> 00:00:35.149
+In production, RocksDB can run on every single one of
+
+00:00:35.149 --> 00:00:37.250
+your application nodes and source state
+
+00:00:37.250 --> 00:00:40.159
+for that particular stream processing application.
+
+00:00:40.159 --> 00:00:44.059
+This local state store can dramatically speed up recovery times,
+
+00:00:44.060 --> 00:00:46.300
+especially for high-throughput streams.
+
+00:00:46.299 --> 00:00:49.659
+While you don't need to be an expert in how to actually use RocksDB,
+
+00:00:49.659 --> 00:00:53.989
+it's important that you know why you would use it versus an in-memory store.
+
+00:00:53.990 --> 00:00:56.600
+What you need to remember is that RocksDB is used for
+
+00:00:56.600 --> 00:00:59.675
+quickstart times between reboots on the same node.
+
+00:00:59.674 --> 00:01:04.819
+It's worth noting, that RocksDB is used by all the major stream processing frameworks,
+
+00:01:04.819 --> 00:01:07.434
+as an option to store state, Case SQL,
+
+00:01:07.435 --> 00:01:09.829
+Kafka Streams Faust and Flink,
+
+00:01:09.829 --> 00:01:12.459
+all use RocksDB as an option.
+
+00:01:12.459 --> 00:01:14.719
+I just want to state one more time,
+
+00:01:14.719 --> 00:01:18.200
+it's always a good idea to use RocksDB in production and
+
+00:01:18.200 --> 00:01:22.189
+lower environments are on your local computer or in our exercises,
+
+00:01:22.189 --> 00:01:25.310
+for example, it's always okay to use an in-memory data store.
+
+00:01:25.310 --> 00:01:27.159
+But if you're doing something in production,
+
+00:01:27.159 --> 00:01:30.909
+try to use RocksDB unless you absolutely can't.
+

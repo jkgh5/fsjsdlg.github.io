@@ -1,0 +1,46 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:02.069
+Like most stream processing frameworks,
+
+00:00:02.069 --> 00:00:07.109
+files keeps track of all of its state in a Kafka Topic dedicated for each stream.
+
+00:00:07.110 --> 00:00:11.760
+Doing so, keeping this changelog allows Faust to scale up from
+
+00:00:11.759 --> 00:00:16.675
+one node to thousands of processing nodes without skipping a beat. How does this work?
+
+00:00:16.675 --> 00:00:19.830
+Well, similar to the way any Kafka producer works.
+
+00:00:19.829 --> 00:00:21.979
+As events happen in our stateful table,
+
+00:00:21.980 --> 00:00:24.125
+say a user makes an additional purchase,
+
+00:00:24.125 --> 00:00:26.719
+and we update the total value of their lifetime purchases,
+
+00:00:26.719 --> 00:00:29.904
+an event is emitted for that specific event.
+
+00:00:29.905 --> 00:00:33.030
+Essentially, anytime a change occurs,
+
+00:00:33.030 --> 00:00:37.429
+Faust emits an event to the changelog topic with the change details.
+
+00:00:37.429 --> 00:00:39.515
+Using this compact changelog topic,
+
+00:00:39.515 --> 00:00:41.840
+files can recreate state on boot by
+
+00:00:41.840 --> 00:00:45.570
+reading through the topic before beginning to process messages.
+

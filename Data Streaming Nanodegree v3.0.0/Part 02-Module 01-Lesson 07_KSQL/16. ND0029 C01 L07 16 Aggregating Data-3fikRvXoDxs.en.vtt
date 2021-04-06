@@ -1,0 +1,109 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:01.575
+In the previous section,
+
+00:00:01.575 --> 00:00:03.000
+you already got a taste for
+
+00:00:03.000 --> 00:00:07.139
+how aggregating data works in KSQL when you saw how we can apply windowing.
+
+00:00:07.139 --> 00:00:11.414
+Now, we're going to dive a little deeper into aggregation in this section.
+
+00:00:11.414 --> 00:00:15.314
+Group By's are another very useful form of aggregation.
+
+00:00:15.314 --> 00:00:19.019
+The output of a Group By in KSQL is always a table.
+
+00:00:19.019 --> 00:00:21.899
+Why is that? Well, let's think a bit about
+
+00:00:21.899 --> 00:00:25.034
+how a Group By works in a traditional SQL database.
+
+00:00:25.035 --> 00:00:29.699
+We're asking the database to take a particular attribute such as currency in the on
+
+00:00:29.699 --> 00:00:34.445
+screen example,and then perform some aggregation related to that attribute.
+
+00:00:34.445 --> 00:00:38.795
+So here we're summing by amount and grouping by currency.
+
+00:00:38.795 --> 00:00:42.695
+This aggregation here, of sum and amount,
+
+00:00:42.695 --> 00:00:45.304
+this aggregation implies state.
+
+00:00:45.304 --> 00:00:46.905
+The on screen examples,
+
+00:00:46.905 --> 00:00:48.195
+perfect example of this.
+
+00:00:48.195 --> 00:00:52.820
+We're keeping track by currency the sum of all purchase amounts.
+
+00:00:52.820 --> 00:00:55.039
+In this example, we're taking a series of
+
+00:00:55.039 --> 00:00:58.310
+incoming events and creating a table with a currency key,
+
+00:00:58.310 --> 00:01:01.310
+and then continually updating the values for that key.
+
+00:01:01.310 --> 00:01:03.109
+Once we've aggregated our data,
+
+00:01:03.109 --> 00:01:06.364
+KSQL provides a number of useful aggregation functions.
+
+00:01:06.364 --> 00:01:08.015
+You've already seen the sum function,
+
+00:01:08.015 --> 00:01:11.718
+but KSQL provides a number of other useful functions such as histogram,
+
+00:01:11.718 --> 00:01:15.000
+max and min, count,top k and more.
+
+00:01:15.000 --> 00:01:17.375
+Check the course notes for more information.
+
+00:01:17.375 --> 00:01:21.950
+For example, we might want to bucket purchase amounts into a histogram so
+
+00:01:21.950 --> 00:01:23.329
+we can see a distribution of
+
+00:01:23.329 --> 00:01:26.390
+purchases relative to some metric we may be measuring internally.
+
+00:01:26.390 --> 00:01:27.859
+In the example on screen though,
+
+00:01:27.859 --> 00:01:30.185
+what we're saying is we want to group by currency,
+
+00:01:30.185 --> 00:01:32.180
+and then for each currency code,
+
+00:01:32.180 --> 00:01:35.165
+keep account of how many times we've seen it occur.
+
+00:01:35.165 --> 00:01:37.340
+Or we might want to keep track of
+
+00:01:37.340 --> 00:01:41.810
+the top 10 most expensive purchases by value in the last hour.
+
+00:01:41.810 --> 00:01:48.000
+To do that, we could use the top k function and specify a tumbling window of one hour.
+

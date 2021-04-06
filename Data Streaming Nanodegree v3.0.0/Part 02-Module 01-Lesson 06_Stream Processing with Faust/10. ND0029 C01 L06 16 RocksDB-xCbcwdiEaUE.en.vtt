@@ -1,0 +1,49 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:04.799
+The second option for storing application state locally is to use RocksDB.
+
+00:00:04.799 --> 00:00:07.410
+RocksDB as we learned in the previous lesson,
+
+00:00:07.410 --> 00:00:09.839
+is a highly performing datastore that runs
+
+00:00:09.839 --> 00:00:13.004
+side-by-side with your stream processing application.
+
+00:00:13.005 --> 00:00:15.645
+As changes are made in your streaming tables,
+
+00:00:15.644 --> 00:00:17.850
+the state is stored in RocksDB,
+
+00:00:17.850 --> 00:00:20.445
+in addition to being sent to Kafka.
+
+00:00:20.445 --> 00:00:26.149
+The RocksDB instance simply stores the state of the world at that point in time on disk.
+
+00:00:26.149 --> 00:00:29.390
+If your application were to crash or restart for any reason,
+
+00:00:29.390 --> 00:00:31.850
+as soon as it recovers it will connect RocksDB
+
+00:00:31.850 --> 00:00:34.804
+and instantly begin processing records once again.
+
+00:00:34.804 --> 00:00:36.679
+Because of these characteristics,
+
+00:00:36.679 --> 00:00:40.104
+it's always recommended to use RocksDB in production.
+
+00:00:40.104 --> 00:00:44.284
+RocksDB is simple to use and requires no configuration on your part.
+
+00:00:44.284 --> 00:00:48.659
+You simply need to have the library installed in your machine to make use of it.
+

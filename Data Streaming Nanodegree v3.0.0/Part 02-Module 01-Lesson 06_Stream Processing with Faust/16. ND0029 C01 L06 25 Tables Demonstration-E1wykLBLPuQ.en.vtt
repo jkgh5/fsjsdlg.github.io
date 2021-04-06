@@ -1,0 +1,139 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:01.790 --> 00:00:05.445
+Now, let's go ahead and build this example from our slides.
+
+00:00:05.445 --> 00:00:08.970
+We're going to build a table that's an aggregator purchase value by currency code.
+
+00:00:08.970 --> 00:00:12.135
+So we have sample six open in our workspace.
+
+00:00:12.134 --> 00:00:16.695
+You can see we have the familiar purchase class with the username, currency, and amount.
+
+00:00:16.695 --> 00:00:20.449
+We're going to be going ahead and creating a currency summary table.
+
+00:00:20.449 --> 00:00:25.820
+Now the currency summary table is going to output for each currency code that we have,
+
+00:00:25.820 --> 00:00:30.785
+a running total of the amount of currency that we've seen in purchases.
+
+00:00:30.785 --> 00:00:32.255
+So to do that,
+
+00:00:32.255 --> 00:00:36.500
+we're going to use the familiar purchase function
+
+00:00:36.500 --> 00:00:40.219
+that we've been working on over the previous few demonstrations.
+
+00:00:40.219 --> 00:00:44.030
+So the first thing we're going to do is group by currency,
+
+00:00:44.030 --> 00:00:50.750
+because we must be co-partitioned for tables to work correctly.
+
+00:00:50.750 --> 00:00:57.945
+So we have to take our incoming purchases stream and group by purchase dot currency.
+
+00:00:57.945 --> 00:01:00.265
+So if we scroll up,
+
+00:01:00.265 --> 00:01:03.950
+we have our purchase data class and it has currency.
+
+00:01:03.950 --> 00:01:06.665
+Now the string that's incoming,
+
+00:01:06.665 --> 00:01:10.165
+the purchases stream is keyed on the username,
+
+00:01:10.165 --> 00:01:12.210
+and that's not the currency code.
+
+00:01:12.209 --> 00:01:14.353
+So to use this string appropriately,
+
+00:01:14.353 --> 00:01:17.605
+we have to re-group or re-partition by the currency.
+
+00:01:17.605 --> 00:01:20.870
+So by doing this the purchase events that come into
+
+00:01:20.870 --> 00:01:26.150
+this inner loop will be partitioned on currency or have currency as the key.
+
+00:01:26.150 --> 00:01:29.660
+Then we're going to say currency summary table.
+
+00:01:29.659 --> 00:01:32.269
+We're going to use it just like a dictionary.
+
+00:01:32.269 --> 00:01:35.994
+We're going to say purchase.currency
+
+00:01:35.995 --> 00:01:40.465
+plus equal because we're keeping a running total of purchase.amount.
+
+00:01:40.465 --> 00:01:42.905
+This will keep track for each currency,
+
+00:01:42.905 --> 00:01:46.760
+the total amount of purchases that we've seen for that currency.
+
+00:01:46.760 --> 00:01:51.469
+Then we're going to print the currency code next
+
+00:01:51.469 --> 00:01:56.825
+to the total value of the transactions that we made in this currency.
+
+00:01:56.825 --> 00:02:00.140
+Now we're ready to run it. So let's go ahead and see what happens.
+
+00:02:00.140 --> 00:02:02.674
+So files are starting up.
+
+00:02:02.674 --> 00:02:06.679
+Let's make this a little bigger so we can see the values as they print out.
+
+00:02:06.680 --> 00:02:08.659
+All right. So you can see the output.
+
+00:02:08.659 --> 00:02:10.889
+So let's go ahead and stop.
+
+00:02:11.050 --> 00:02:14.090
+Let's see if we can see that the values are incrementing.
+
+00:02:14.090 --> 00:02:16.085
+So here we have US dollars,
+
+00:02:16.085 --> 00:02:22.985
+52026538, and here we have US dollars again 51791709.
+
+00:02:22.985 --> 00:02:26.825
+So what we're seeing here is that files is using this table to keep
+
+00:02:26.824 --> 00:02:35.060
+a constantly incrementing count for each one of these currencies of all the purchases.
+
+00:02:35.060 --> 00:02:37.520
+We also can see this for the other currency.
+
+00:02:37.520 --> 00:02:41.040
+So we have the Norwegian Kroner, is also increasing.
+
+00:02:41.039 --> 00:02:44.114
+So if we look for an okay,
+
+00:02:44.115 --> 00:02:47.870
+so we can see that that value also increased.
+
+00:02:47.870 --> 00:02:52.650
+We can see this is true for all the currencies that are on the page.
+

@@ -1,0 +1,73 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:03.134
+Filtering streams is the process of identifying
+
+00:00:03.134 --> 00:00:05.459
+unneeded or unwanted data and creating
+
+00:00:05.459 --> 00:00:08.324
+a new data stream in which the data is not present.
+
+00:00:08.324 --> 00:00:12.149
+Importantly, single streams or joined streams can be filtered.
+
+00:00:12.150 --> 00:00:16.050
+You may choose to both join and filter streams all at the same time.
+
+00:00:16.050 --> 00:00:18.150
+Filtering is a common operation.
+
+00:00:18.149 --> 00:00:20.774
+It's most commonly used if you take a general data set
+
+00:00:20.774 --> 00:00:23.909
+and make it more specifically tailored to a given audience.
+
+00:00:23.910 --> 00:00:27.910
+For example, if we had a purchases stream with all purchases globally,
+
+00:00:27.910 --> 00:00:30.920
+that might be far more information than our data clients actually need.
+
+00:00:30.920 --> 00:00:35.090
+Instead, we might decide to ingest single global purchases stream and
+
+00:00:35.090 --> 00:00:37.070
+then filter out any events that aren't related to
+
+00:00:37.070 --> 00:00:39.710
+a specific department or a specific region.
+
+00:00:39.710 --> 00:00:42.995
+We can repeat this for as many departments are regions as needed.
+
+00:00:42.994 --> 00:00:44.674
+In the example you just saw,
+
+00:00:44.674 --> 00:00:46.954
+we took the numbered events,
+
+00:00:46.954 --> 00:00:49.204
+so 10, seven, and three,
+
+00:00:49.204 --> 00:00:50.795
+sent them through Kafka,
+
+00:00:50.795 --> 00:00:52.399
+and then the stream processor said,
+
+00:00:52.399 --> 00:00:56.149
+"Reject any event with a value less than five."
+
+00:00:56.149 --> 00:01:00.064
+So 10 and seven are both greater than five so they were left in the stream.
+
+00:01:00.064 --> 00:01:02.674
+But three is less than five so we filtered it out.
+
+00:01:02.674 --> 00:01:05.730
+Oftentimes, filters can be this simple.
+

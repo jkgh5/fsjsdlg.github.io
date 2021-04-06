@@ -1,0 +1,85 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:04.349
+One of the most common use cases of data remapping is filtering out
+
+00:00:04.349 --> 00:00:09.750
+Personally Identifiable Information or PII from input data streams.
+
+00:00:09.750 --> 00:00:11.564
+Let's take a look at an example.
+
+00:00:11.564 --> 00:00:13.289
+Here we have a signup action,
+
+00:00:13.289 --> 00:00:15.464
+we have an e-mail, phone and address.
+
+00:00:15.464 --> 00:00:17.894
+This may be sensitive data so let's strike it out.
+
+00:00:17.894 --> 00:00:20.910
+So here we've removed this sensitive data.
+
+00:00:20.910 --> 00:00:24.990
+Then, we emit an event with all the nonsensitive data.
+
+00:00:24.989 --> 00:00:28.579
+Here we have an action and a user ID but we removed phone,
+
+00:00:28.579 --> 00:00:32.015
+email and other information that's private to the user.
+
+00:00:32.015 --> 00:00:34.399
+For example, if we're working in
+
+00:00:34.399 --> 00:00:37.905
+an e-commerce company we may put this user sign-up data into a topic.
+
+00:00:37.905 --> 00:00:42.500
+But it's likely that there's only a few privilege applications that actually need to
+
+00:00:42.500 --> 00:00:47.524
+see that kind of information such as e-mail and phone and so on and so forth.
+
+00:00:47.524 --> 00:00:50.269
+For most applications at our company,
+
+00:00:50.270 --> 00:00:52.330
+this will probably be enough information.
+
+00:00:52.329 --> 00:00:54.045
+So we'll filter it out.
+
+00:00:54.045 --> 00:00:57.170
+Let's pretend that same company that we built an application
+
+00:00:57.170 --> 00:01:00.020
+which relies on a purchase stream that we built a few years ago.
+
+00:01:00.020 --> 00:01:02.859
+While this application worked great for a few years,
+
+00:01:02.859 --> 00:01:06.079
+we've now determined that we need to reimagine the data model.
+
+00:01:06.079 --> 00:01:13.715
+So items is a list of laptop instead of just an item with a single instance.
+
+00:01:13.715 --> 00:01:18.049
+Unfortunately, we don't have time to update to application that uses this old data model.
+
+00:01:18.049 --> 00:01:19.849
+So to handle this scenario we could update
+
+00:01:19.849 --> 00:01:23.959
+the application to have a stream processor in front of it that
+
+00:01:23.959 --> 00:01:26.524
+actually just remaps the field item to
+
+00:01:26.525 --> 00:01:31.170
+items so that our old application can keep working without being updated.
+

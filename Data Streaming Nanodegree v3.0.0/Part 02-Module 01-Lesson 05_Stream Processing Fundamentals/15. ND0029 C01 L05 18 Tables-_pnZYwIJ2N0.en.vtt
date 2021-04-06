@@ -1,0 +1,103 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:02.890
+When we aggregate data in our streaming applications,
+
+00:00:02.890 --> 00:00:05.610
+we're creating a point in time view of the data.
+
+00:00:05.610 --> 00:00:10.109
+This point in time analysis represents the equivalent of a snapshot in time.
+
+00:00:10.109 --> 00:00:13.439
+Unlike streams which are ordered, boundless, and immutable,
+
+00:00:13.439 --> 00:00:15.359
+tables are bounded, mutable,
+
+00:00:15.359 --> 00:00:17.219
+and not necessarily ordered.
+
+00:00:17.219 --> 00:00:19.399
+Tables are how we most often derive
+
+00:00:19.399 --> 00:00:22.269
+insights from the influx of data from our streams and topics.
+
+00:00:22.269 --> 00:00:24.754
+As new data arrives into our aggregate calculations,
+
+00:00:24.754 --> 00:00:29.210
+our stream processing applications update an aggregated view of that data in time.
+
+00:00:29.210 --> 00:00:32.030
+This process is in effect constructing a table.
+
+00:00:32.030 --> 00:00:34.250
+So here, as events flow through,
+
+00:00:34.250 --> 00:00:36.490
+this is an example of what we previously saw.
+
+00:00:36.490 --> 00:00:39.039
+Timed out page flows through Kafka,
+
+00:00:39.039 --> 00:00:40.429
+or grouping by the page,
+
+00:00:40.429 --> 00:00:44.750
+and then updating a table which contains the page count that we've seen.
+
+00:00:44.750 --> 00:00:47.390
+Returning to the example from our stream section,
+
+00:00:47.390 --> 00:00:50.960
+we might use tables in our real-time pricing application to aggregate demand
+
+00:00:50.960 --> 00:00:54.965
+by neighborhood and city over a sliding window of the last 30 minutes.
+
+00:00:54.965 --> 00:00:58.795
+This type of operation is a common use case of streaming tables.
+
+00:00:58.795 --> 00:01:00.670
+To accomplish building a table,
+
+00:01:00.670 --> 00:01:03.289
+we could perform a group by on the incoming demand data
+
+00:01:03.289 --> 00:01:06.635
+to map neighborhood name to number of search requests.
+
+00:01:06.635 --> 00:01:09.230
+The output table that we build will be constantly
+
+00:01:09.230 --> 00:01:12.185
+updating as a new search request actions arrive.
+
+00:01:12.185 --> 00:01:14.420
+So here, we have an action that someone
+
+00:01:14.420 --> 00:01:17.450
+searched and the area or neighborhood that they searched in.
+
+00:01:17.450 --> 00:01:20.765
+Here we're going to group by the neighborhood and count a total.
+
+00:01:20.765 --> 00:01:24.019
+So as these events flow through Kafka and our stream processor,
+
+00:01:24.019 --> 00:01:29.734
+will constantly be updating the values in our table with new counts.
+
+00:01:29.734 --> 00:01:31.609
+So here we search wicker park.
+
+00:01:31.609 --> 00:01:33.304
+If this were to flow through a stream processor,
+
+00:01:33.305 --> 00:01:39.990
+we will update wicker park to be 8,473 after this event flows through.
+

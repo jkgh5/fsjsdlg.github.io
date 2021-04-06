@@ -1,0 +1,40 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:01.669 --> 00:00:06.375
+One of the most confusing terminology issues to stream processing newcomers is
+
+00:00:06.375 --> 00:00:10.365
+understanding the difference between a stream processing stream,
+
+00:00:10.365 --> 00:00:12.285
+and a stream processing table.
+
+00:00:12.285 --> 00:00:14.115
+I'm just going to refer to them as a Stream,
+
+00:00:14.115 --> 00:00:15.675
+and Table from here on out.
+
+00:00:15.675 --> 00:00:18.480
+We'll cover the differences in depth in this section,
+
+00:00:18.480 --> 00:00:23.745
+but the key difference is that a Table imply state and aggregation of some kind whereas
+
+00:00:23.745 --> 00:00:29.250
+a Stream is a never ending immutable series of ordered events.
+
+00:00:29.250 --> 00:00:33.435
+Let's just repeat that. Table is an aggregated view,
+
+00:00:33.435 --> 00:00:36.825
+and a Stream is a never ending series of events.
+
+00:00:36.825 --> 00:00:40.245
+Both Streams and Tables are important to stream processing application.
+
+00:00:40.244 --> 00:00:43.059
+So let's learn more about how they're used
+

@@ -1,0 +1,76 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:03.060
+Let's spend a moment to understand what some of the pros and cons of
+
+00:00:03.060 --> 00:00:07.515
+KSQL relative traditional stream processing application frameworks like Faust.
+
+00:00:07.514 --> 00:00:09.119
+We're going start the benefits.
+
+00:00:09.119 --> 00:00:12.854
+First, it's almost always simpler and faster to write SQL
+
+00:00:12.855 --> 00:00:16.649
+than it is to build and deploy entire application like you might with Faust.
+
+00:00:16.649 --> 00:00:20.379
+If you know SQL, it's usually pretty quick to write SQL queries.
+
+00:00:20.379 --> 00:00:23.339
+Second, KSQL is a great fit for
+
+00:00:23.339 --> 00:00:26.759
+problems where you're not exactly sure what the solution is just yet.
+
+00:00:26.760 --> 00:00:30.060
+With KSQL, you can rapidly iterate on ideas with
+
+00:00:30.059 --> 00:00:35.250
+very little work because of the fact that it provides this simple SQL syntax.
+
+00:00:35.250 --> 00:00:37.740
+KSQL also doesn't require to have
+
+00:00:37.740 --> 00:00:40.160
+any particular programming language experience such as
+
+00:00:40.159 --> 00:00:43.174
+knowing Python for Faust or Java for Kafka streams.
+
+00:00:43.174 --> 00:00:47.079
+This means that it's accessible to a much, much wider audience.
+
+00:00:47.079 --> 00:00:50.539
+KSQL also comes bundled with important features that you
+
+00:00:50.539 --> 00:00:54.019
+have to build yourself with Faust like logs and standard metrics.
+
+00:00:54.020 --> 00:00:57.800
+Some of the downsides of KSQL is that SQL can at times be
+
+00:00:57.799 --> 00:01:01.924
+difficult to use to handle certain types of data manipulation or remapping.
+
+00:01:01.924 --> 00:01:03.765
+Another downside is that,
+
+00:01:03.765 --> 00:01:05.810
+unlike Faust you can't just import
+
+00:01:05.810 --> 00:01:08.990
+whatever Python library you want to use to make your life easier.
+
+00:01:08.989 --> 00:01:11.929
+Instead, you're limited to what KSQL provides you.
+
+00:01:11.930 --> 00:01:13.640
+What's worth noting though is that,
+
+00:01:13.640 --> 00:01:19.739
+you can actually write your own user-defined functions but you have to do so in Java.
+

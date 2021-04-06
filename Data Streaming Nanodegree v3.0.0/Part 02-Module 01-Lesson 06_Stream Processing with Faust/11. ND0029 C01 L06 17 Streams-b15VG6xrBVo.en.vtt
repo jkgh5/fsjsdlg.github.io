@@ -1,0 +1,61 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:01.730 --> 00:00:05.279
+Let's have a look at how Faust can be used to create
+
+00:00:05.280 --> 00:00:08.250
+an infinite series of ordered immutable events,
+
+00:00:08.250 --> 00:00:10.140
+otherwise known as a stream.
+
+00:00:10.140 --> 00:00:11.700
+Creating streams with Faust,
+
+00:00:11.699 --> 00:00:15.974
+is as simple as defining a Faust topic in an app agent decorated processing function.
+
+00:00:15.974 --> 00:00:17.609
+An example on the screen,
+
+00:00:17.609 --> 00:00:20.469
+we can see that we first create a subscription to a topic,
+
+00:00:20.469 --> 00:00:23.219
+then we define an a-sync function called process which is
+
+00:00:23.219 --> 00:00:26.354
+decorated with an app agent subscribed to our source topic.
+
+00:00:26.355 --> 00:00:27.810
+Within the function, we have
+
+00:00:27.809 --> 00:00:32.375
+an infinite a-sync iterable which receives data from the stream as it's produced.
+
+00:00:32.375 --> 00:00:36.740
+The stream is the argument provided to our agent processing function.
+
+00:00:36.740 --> 00:00:38.060
+Once we have the message,
+
+00:00:38.060 --> 00:00:39.440
+we can transform it,
+
+00:00:39.439 --> 00:00:42.679
+print it or do any type of processing that we're interested in.
+
+00:00:42.679 --> 00:00:47.479
+Parsing data to a data stream is as simple as declaring another topic.
+
+00:00:47.479 --> 00:00:49.399
+Once we have our topic instance,
+
+00:00:49.399 --> 00:00:53.299
+we can simply call SEND on the topic as you saw in the previous demonstration,
+
+00:00:53.299 --> 00:00:56.640
+with an optional key and a value.
+

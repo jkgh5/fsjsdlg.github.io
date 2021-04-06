@@ -1,0 +1,79 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:01.439
+In the previous lesson,
+
+00:00:01.439 --> 00:00:03.719
+we learned about three windowing approaches.
+
+00:00:03.720 --> 00:00:06.330
+Tumbling, hopping and sliding windows.
+
+00:00:06.330 --> 00:00:09.449
+Remember that sliding and hopping are related windowing approaches,
+
+00:00:09.449 --> 00:00:13.649
+but that sliding is typically implemented as a very minimal hopping increment.
+
+00:00:13.650 --> 00:00:16.245
+Faust provides tumbling and hopping windows,
+
+00:00:16.245 --> 00:00:18.480
+but doesn't provide a sliding window type.
+
+00:00:18.480 --> 00:00:23.144
+Now, you can approximate it with your own hopping window definition if you'd like.
+
+00:00:23.144 --> 00:00:25.574
+Windows only applied at tables.
+
+00:00:25.574 --> 00:00:29.774
+Windows define what period of data we should keep for aggregated data.
+
+00:00:29.774 --> 00:00:32.579
+Tumbling windows take only one argument,
+
+00:00:32.579 --> 00:00:34.004
+the size of the window.
+
+00:00:34.005 --> 00:00:37.000
+The argument is specified as a Python timedelta.
+
+00:00:37.000 --> 00:00:40.850
+So the onscreen example is a five-minute tumbling window.
+
+00:00:40.850 --> 00:00:45.579
+Hopping windows take two arguments: the size of the window and the step.
+
+00:00:45.579 --> 00:00:47.384
+In the example on screen,
+
+00:00:47.384 --> 00:00:49.820
+we've again defined a size of five minutes.
+
+00:00:49.820 --> 00:00:54.320
+However, we've also defined that we'd like our hopping windows step to be one-minute.
+
+00:00:54.320 --> 00:00:58.965
+Both tumbling and hopping windows accept an optional expires key,
+
+00:00:58.965 --> 00:01:03.170
+which tells Faust how long to maintain the data for each window.
+
+00:01:03.170 --> 00:01:04.730
+So here we've said,
+
+00:01:04.730 --> 00:01:07.040
+keep the data for 60 minutes,
+
+00:01:07.040 --> 00:01:09.285
+which means that all the window data,
+
+00:01:09.284 --> 00:01:13.459
+even if it's a previous window that's no longer current,
+
+00:01:13.459 --> 00:01:16.619
+will be kept for at least an hour.
+

@@ -1,0 +1,64 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:04.049
+The first type of windowing we'll discuss is the tumbling window.
+
+00:00:04.049 --> 00:00:07.080
+A tumbling window is a fixed period of time that
+
+00:00:07.080 --> 00:00:10.500
+rolls over after that first fixed window has ended.
+
+00:00:10.500 --> 00:00:15.015
+Tumbling windows don't overlap and there's never a gap between the windows.
+
+00:00:15.015 --> 00:00:17.219
+Let's see an example of this.
+
+00:00:17.219 --> 00:00:19.439
+Lets say we define a tumbling window of
+
+00:00:19.440 --> 00:00:23.310
+15 minutes and started running [inaudible] application right now.
+
+00:00:23.309 --> 00:00:27.539
+Each 15 minute time window will identify a series of events,
+
+00:00:27.539 --> 00:00:29.984
+and aggregate those events during a time period.
+
+00:00:29.984 --> 00:00:31.524
+When that time we know ends,
+
+00:00:31.524 --> 00:00:33.979
+all the data is evicted from the window and we're
+
+00:00:33.979 --> 00:00:37.265
+just left with what's in an upcoming newest window.
+
+00:00:37.265 --> 00:00:40.160
+One more thing I just want to point out before I move on,
+
+00:00:40.159 --> 00:00:42.784
+since we have this visualization in front of us,
+
+00:00:42.784 --> 00:00:46.849
+you can see for each one of these windows that they butt up against each other,
+
+00:00:46.850 --> 00:00:48.454
+but they don't overlap.
+
+00:00:48.454 --> 00:00:52.589
+So events from window 1 will not be present in window 2,
+
+00:00:52.590 --> 00:00:56.595
+and events from window 2 will not be present in window 3 and so on.
+
+00:00:56.594 --> 00:00:58.509
+So just keep that in mind,
+
+00:00:58.509 --> 00:01:03.059
+these windows don't overlap and there is no gap between them.
+

@@ -1,0 +1,19 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:02.149 --> 00:00:04.259
+In the previous lesson,
+
+00:00:04.259 --> 00:00:08.580
+we developed a strong conceptual understanding of the fundamentals of stream processing.
+
+00:00:08.580 --> 00:00:11.984
+Now, it's time that we apply that knowledge in Python.
+
+00:00:11.984 --> 00:00:16.019
+In this lesson, we're going to learn how to use the Python stream processing library
+
+00:00:16.019 --> 00:00:21.339
+Faust to rapidly create powerful stream processing applications.
+

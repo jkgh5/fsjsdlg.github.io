@@ -1,0 +1,148 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:03.480
+Now, the next thing we want to do is actually create a stream with the query.
+
+00:00:03.480 --> 00:00:08.669
+So we're going to repeat essentially the creation command one more time.
+
+00:00:08.669 --> 00:00:11.759
+But this time, we're going to create stream as.
+
+00:00:11.759 --> 00:00:14.730
+So we're going to create a high value purchases stream.
+
+00:00:14.730 --> 00:00:17.254
+This is the important syntactical difference here.
+
+00:00:17.254 --> 00:00:19.504
+We say create stream, table name.
+
+00:00:19.504 --> 00:00:24.814
+Instead of putting a parenthesis and describing the fields and their types, we say as,
+
+00:00:24.814 --> 00:00:30.405
+then select star from purchases which we've just created,
+
+00:00:30.405 --> 00:00:39.320
+and then we're going to say where amount is greater than 100,000; and hit "Enter".
+
+00:00:39.320 --> 00:00:41.920
+Now, we've created this stream as well.
+
+00:00:41.920 --> 00:00:45.135
+So again, if I type show streams,
+
+00:00:45.134 --> 00:00:47.729
+we're going to see two streams here;
+
+00:00:47.729 --> 00:00:50.449
+high value purchases and purchases.
+
+00:00:50.450 --> 00:00:53.705
+So let's select 10.
+
+00:00:53.704 --> 00:00:57.339
+Select all fields from high value purchases,
+
+00:00:57.340 --> 00:01:01.275
+but limit that output to 10 rows.
+
+00:01:01.274 --> 00:01:04.019
+Let's see what we get. So there we go.
+
+00:01:04.019 --> 00:01:06.089
+As these events stream in,
+
+00:01:06.090 --> 00:01:07.549
+we're getting high value events.
+
+00:01:07.549 --> 00:01:12.739
+So all of these events are in excess of 100,000 in value.
+
+00:01:12.739 --> 00:01:16.099
+Now, I think it's really nice to just stop and reflect on
+
+00:01:16.099 --> 00:01:19.329
+how easy this was to do in comparison to Faust.
+
+00:01:19.329 --> 00:01:22.340
+Faust is still quite simple but all it took was us opening up
+
+00:01:22.340 --> 00:01:27.475
+a command line and typing it in one single line of SQL to get this complete.
+
+00:01:27.474 --> 00:01:30.919
+Finally, let's see how we can actually delete a stream.
+
+00:01:30.920 --> 00:01:38.099
+So I'm going to type drop stream, high_value_purchases;.
+
+00:01:38.920 --> 00:01:42.920
+Now, this isn't going to work and I'll tell you why.
+
+00:01:42.920 --> 00:01:46.864
+The reason it's not working is because we have a running query.
+
+00:01:46.864 --> 00:01:51.019
+Well, what's going on here is when we ran this create stream command,
+
+00:01:51.019 --> 00:01:56.164
+we provided this select query here to actually populate the stream.
+
+00:01:56.165 --> 00:01:57.620
+So behind the scenes,
+
+00:01:57.620 --> 00:02:00.560
+KSQL is actually executing this query,
+
+00:02:00.560 --> 00:02:03.034
+and we need to stop executing that query
+
+00:02:03.034 --> 00:02:05.840
+before we can actually delete or drop the stream.
+
+00:02:05.840 --> 00:02:09.830
+So the first thing we need to do is list the running queries.
+
+00:02:09.830 --> 00:02:12.945
+So we can do that with this show queries command.
+
+00:02:12.944 --> 00:02:16.459
+Now, I understand this is a little hard to see so I apologize.
+
+00:02:16.460 --> 00:02:18.200
+But you'll see show queries.,
+
+00:02:18.199 --> 00:02:20.449
+query ID is what we care about.
+
+00:02:20.449 --> 00:02:24.679
+So you can see the query ID here is CSAS high value purchases zeros.
+
+00:02:24.680 --> 00:02:29.765
+So let's grab that. So we need to terminate this query before we can drop the table.
+
+00:02:29.764 --> 00:02:32.484
+So if we're going to terminate this query,
+
+00:02:32.485 --> 00:02:35.180
+I can see we've got a query terminated message,
+
+00:02:35.180 --> 00:02:38.075
+and then we're going to run our drop command one more time.
+
+00:02:38.074 --> 00:02:41.224
+So we're now we're going to try dropping the stream and this should now succeed.
+
+00:02:41.224 --> 00:02:43.310
+You can see that that source has been dropped.
+
+00:02:43.310 --> 00:02:46.800
+If we do so streams,
+
+00:02:46.800 --> 00:02:49.510
+we now only have the one stream.
+

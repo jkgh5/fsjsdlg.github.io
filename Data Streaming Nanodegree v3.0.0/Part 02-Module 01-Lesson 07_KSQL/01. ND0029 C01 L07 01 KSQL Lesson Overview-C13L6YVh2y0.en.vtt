@@ -1,0 +1,28 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:02.120 --> 00:00:06.240
+In this lesson, we'll learn about a SQL-like interface
+
+00:00:06.240 --> 00:00:09.855
+for building stream processing applications called KSQL.
+
+00:00:09.855 --> 00:00:13.080
+You'll see how you can use simple SQL statements to contract
+
+00:00:13.080 --> 00:00:17.024
+complex stream processing applications just like we built Anfaust,
+
+00:00:17.024 --> 00:00:20.609
+and run ad hoc queries to explore your streaming data sets.
+
+00:00:20.609 --> 00:00:22.050
+By the end of this lesson,
+
+00:00:22.050 --> 00:00:23.475
+you'll be ready to build and deploy
+
+00:00:23.475 --> 00:00:27.760
+your very own stream processing applications on top of KSQL.
+

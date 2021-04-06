@@ -1,0 +1,205 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:01.850 --> 00:00:07.320
+Now, let's have a look about how we can apply processors and operations to our streams.
+
+00:00:07.320 --> 00:00:10.410
+In this demo, we're going to enumerate our incoming stream and
+
+00:00:10.410 --> 00:00:13.605
+add a fraud score processor to all incoming purchases.
+
+00:00:13.605 --> 00:00:17.609
+All right, so now we're back in the workspace with sample five open.
+
+00:00:17.609 --> 00:00:21.509
+Let's go ahead and start by defining how fraud score function.
+
+00:00:21.510 --> 00:00:24.300
+Now remember we have this purchase model that we've used in
+
+00:00:24.300 --> 00:00:28.695
+the previous exercises and the previous samples and we have the familiar username,
+
+00:00:28.695 --> 00:00:30.615
+currency, and amount fields.
+
+00:00:30.614 --> 00:00:37.560
+Well, we also have this new fraud score field which is a float initialized to zero.
+
+00:00:37.560 --> 00:00:41.829
+Now, we don't actually need to define a fraud score calculation,
+
+00:00:41.829 --> 00:00:44.434
+that's really absolutely outside of the scope of this class,
+
+00:00:44.435 --> 00:00:46.550
+so what we're going to deduce instead is
+
+00:00:46.549 --> 00:00:51.364
+a simple random number to actually populate the fraud score on these purchase models.
+
+00:00:51.365 --> 00:00:53.990
+Now we're going to send the ad fraud score function as
+
+00:00:53.990 --> 00:00:58.219
+a processor on our stream for incoming data.
+
+00:00:58.219 --> 00:01:00.679
+So we need to make sure that we satisfy
+
+00:01:00.679 --> 00:01:03.755
+the processor function signature which means that we need to
+
+00:01:03.755 --> 00:01:10.605
+define an input parameter and then once we actually have that input parameter,
+
+00:01:10.605 --> 00:01:14.180
+we need to go ahead and modify it in some way.
+
+00:01:14.180 --> 00:01:16.060
+So here we're going to say purchase.fraud
+
+00:01:16.060 --> 00:01:19.879
+score and our fraud score algorithm is not very good,
+
+00:01:19.879 --> 00:01:22.414
+it's going to be a random number generator.
+
+00:01:22.415 --> 00:01:25.234
+So this would give us a random number between zero and one,
+
+00:01:25.234 --> 00:01:27.829
+and obviously you'd never do this in
+
+00:01:27.829 --> 00:01:33.019
+a real processing application but it's really just for demonstration purposes here.
+
+00:01:33.019 --> 00:01:36.899
+Finally, we need to make sure that we return the purchase.
+
+00:01:38.379 --> 00:01:40.920
+With our fraud score defined,
+
+00:01:40.920 --> 00:01:46.265
+we're now ready to move on and actually pass this information on to the stream.
+
+00:01:46.265 --> 00:01:47.689
+So we have our input stream,
+
+00:01:47.689 --> 00:01:52.370
+the purchase of stream, and then we're going to iterate over our purchases stream here.
+
+00:01:52.370 --> 00:01:55.079
+Now to apply the processor function,
+
+00:01:55.079 --> 00:01:57.829
+we need to actually tell the purchases stream that we
+
+00:01:57.829 --> 00:02:01.325
+wanted to use this processor before we start to iterate on it.
+
+00:02:01.325 --> 00:02:04.549
+So we're going to say purchases.add
+
+00:02:04.549 --> 00:02:09.764
+processor and we want to make sure we got the function name,
+
+00:02:09.764 --> 00:02:14.759
+add fraud score, and go ahead and save.
+
+00:02:14.759 --> 00:02:18.474
+So now we've said, to the purchases stream,
+
+00:02:18.474 --> 00:02:22.044
+for you for the event into this loop,
+
+00:02:22.044 --> 00:02:27.454
+we want for you to process through this ad fraud score function.
+
+00:02:27.455 --> 00:02:29.060
+So now that's done,
+
+00:02:29.060 --> 00:02:32.120
+we should see a fraud score on every one of our purchase messages.
+
+00:02:32.120 --> 00:02:37.985
+So the only thing left to do is to forward that message through to our fraud topic.
+
+00:02:37.985 --> 00:02:40.805
+Actually I had the fraud information added to it.
+
+00:02:40.805 --> 00:02:44.360
+So we're adding a purchase username as the key and then we're going to say
+
+00:02:44.360 --> 00:02:48.700
+the value is equal to our purchase which should now have a fraud score on it.
+
+00:02:48.699 --> 00:02:52.054
+I also just want to point out really quickly that we have
+
+00:02:52.055 --> 00:02:56.150
+a default value assigned to our fraud score float here.
+
+00:02:56.150 --> 00:02:58.879
+The reason for this is because the records from
+
+00:02:58.879 --> 00:03:03.169
+the incoming purchases topic don't actually have a fraud score yet.
+
+00:03:03.169 --> 00:03:05.809
+So when Faust goes to actually
+
+00:03:05.810 --> 00:03:10.655
+instantiate each one of the purchase objects incoming from the KAFKA purchases topic,
+
+00:03:10.655 --> 00:03:12.875
+it needs to have a default fraud score.
+
+00:03:12.875 --> 00:03:14.509
+Here we're simply telling it,
+
+00:03:14.509 --> 00:03:16.114
+if there's no fraud score present,
+
+00:03:16.115 --> 00:03:18.400
+initialize it to 0.0.
+
+00:03:18.400 --> 00:03:23.158
+Then, as it forwards that event through the ad fraud score processor,
+
+00:03:23.158 --> 00:03:25.560
+it will actually set the fraud score.
+
+00:03:25.560 --> 00:03:29.155
+Finally, we'll go ahead and send that data.
+
+00:03:29.155 --> 00:03:32.530
+So let's go ahead and run our example.
+
+00:03:32.530 --> 00:03:35.780
+Okay, give us just a moment to start up and then we'll go over and
+
+00:03:35.780 --> 00:03:38.780
+use the KAFKA Console Consumer to actually consume this data.
+
+00:03:38.780 --> 00:03:42.949
+Here we have KAFKA Console Consumer local host 9092 and then we have
+
+00:03:42.949 --> 00:03:47.619
+the purchases fraud topic. Let's see what data we get.
+
+00:03:47.620 --> 00:03:50.444
+Great, and as you can see,
+
+00:03:50.444 --> 00:03:52.939
+I was going to go ahead and stop processing here.
+
+00:03:52.939 --> 00:03:56.449
+You can see that we actually have a fraud score.
+
+00:03:56.449 --> 00:04:02.429
+So now all the output data in this topic will have a fraud score assigned to it.
+

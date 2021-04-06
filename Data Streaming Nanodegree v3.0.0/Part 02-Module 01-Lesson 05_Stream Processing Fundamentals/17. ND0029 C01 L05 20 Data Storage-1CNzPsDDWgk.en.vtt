@@ -1,0 +1,79 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:01.429 --> 00:00:05.054
+As you've just seen, tables have state.
+
+00:00:05.054 --> 00:00:07.049
+Because our tables have state,
+
+00:00:07.049 --> 00:00:09.794
+we also need to determine how to store it.
+
+00:00:09.794 --> 00:00:13.695
+In this section, we'll learn how stream processing frameworks store their state.
+
+00:00:13.695 --> 00:00:16.993
+Whether you're using K-S-Q-L or KSQL,
+
+00:00:16.993 --> 00:00:19.545
+Faust, Kafka streams Flink,
+
+00:00:19.545 --> 00:00:22.590
+all of these stream processing frameworks use Kafka topics to
+
+00:00:22.589 --> 00:00:26.100
+store the internal state of the stream processing applications they're running.
+
+00:00:26.100 --> 00:00:28.845
+This may be referred to as a changelog.
+
+00:00:28.844 --> 00:00:31.500
+Stream processing frameworks create topics on
+
+00:00:31.500 --> 00:00:34.145
+Kafka to track all the changes occurring in a stream.
+
+00:00:34.145 --> 00:00:37.305
+So that state can easily be recreated if needed.
+
+00:00:37.304 --> 00:00:39.600
+The stream processing frameworks use
+
+00:00:39.600 --> 00:00:43.390
+Kafka's log compaction to ensure that these topics do not grow unbounded.
+
+00:00:43.390 --> 00:00:47.179
+In addition, compaction helps keep the size of these topics smaller as well,
+
+00:00:47.179 --> 00:00:48.979
+which can aid in startup time.
+
+00:00:48.979 --> 00:00:52.519
+This feature is critical for tolerating failures and crashes in
+
+00:00:52.520 --> 00:00:56.385
+your streaming application especially in modern Cloud computing stacks,
+
+00:00:56.384 --> 00:00:57.719
+hardware is a commodity.
+
+00:00:57.719 --> 00:00:59.210
+It can come and go quickly,
+
+00:00:59.210 --> 00:01:01.219
+fail for reasons that we can't predict.
+
+00:01:01.219 --> 00:01:03.799
+When we have this changelog,
+
+00:01:03.799 --> 00:01:05.909
+we have the ability to recover quickly,
+
+00:01:05.909 --> 00:01:08.030
+and this ability to recover quickly is absolutely
+
+00:01:08.030 --> 00:01:11.640
+critical to building high-quality applications.
+

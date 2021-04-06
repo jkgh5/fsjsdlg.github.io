@@ -1,0 +1,88 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:04.410
+Writing Faust application looks a lot like writing a normal Python application.
+
+00:00:04.410 --> 00:00:08.310
+Faust is a simple library that uses normal Python idioms,
+
+00:00:08.310 --> 00:00:10.964
+not a domain specific language or DSL.
+
+00:00:10.964 --> 00:00:14.205
+Faust simply surfaces many of the concepts we discussed
+
+00:00:14.205 --> 00:00:17.850
+in Lesson 5 through a standard Python API.
+
+00:00:17.850 --> 00:00:20.835
+Faust doesn't require any external dependencies
+
+00:00:20.835 --> 00:00:23.984
+other than Kafka itself and the library itself.
+
+00:00:23.984 --> 00:00:26.024
+As with most other streaming frameworks,
+
+00:00:26.024 --> 00:00:30.524
+Faust keeps a change log in a Kafka topic to track the state of its applications.
+
+00:00:30.524 --> 00:00:33.920
+This means that you don't have to worry about maintaining a resource manager
+
+00:00:33.920 --> 00:00:37.160
+like Apache Yarn or Mesos to run your applications.
+
+00:00:37.159 --> 00:00:41.494
+Faust relies heavily on the brand new Python async IO library.
+
+00:00:41.494 --> 00:00:42.829
+So to make use of Faust,
+
+00:00:42.829 --> 00:00:45.964
+you must be running at least Python 3.6.
+
+00:00:45.965 --> 00:00:49.355
+Again, you have to be running Python 3.6 or higher.
+
+00:00:49.354 --> 00:00:54.069
+In this exercise and lessons that we've gone through it we'd been using Python 3.7.
+
+00:00:54.070 --> 00:00:56.719
+Faust processing functionality can be embedded in
+
+00:00:56.719 --> 00:00:59.509
+applications that have already been created as libraries,
+
+00:00:59.509 --> 00:01:02.079
+or they can be run as standalone servers.
+
+00:01:02.079 --> 00:01:04.670
+Finally, it's important to mention that although we've learned to use
+
+00:01:04.670 --> 00:01:07.415
+Avro in this course and have seen many of its benefits,
+
+00:01:07.415 --> 00:01:09.740
+Faust unfortunately did not currently implement
+
+00:01:09.739 --> 00:01:13.189
+native support for Avro or for that matter for schema registry.
+
+00:01:13.189 --> 00:01:16.060
+This doesn't mean that you can't use Avro or schema registry,
+
+00:01:16.060 --> 00:01:18.939
+it simply means that you'd have to build support for yourself.
+
+00:01:18.939 --> 00:01:22.969
+Better yet, you contribute your changes upstream to the Faust open-source project.
+
+00:01:22.969 --> 00:01:24.959
+In any case, for the rest of this lesson,
+
+00:01:24.959 --> 00:01:28.569
+we're going to be using JSON as our serialization format.
+

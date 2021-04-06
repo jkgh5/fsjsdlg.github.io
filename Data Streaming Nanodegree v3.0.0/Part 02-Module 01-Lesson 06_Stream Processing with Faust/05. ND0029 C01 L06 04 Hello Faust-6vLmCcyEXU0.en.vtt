@@ -1,0 +1,100 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:02.745
+First, we instantiate the Faust application.
+
+00:00:02.745 --> 00:00:06.240
+Every Faust application has a name and a Kafka broker connection.
+
+00:00:06.240 --> 00:00:08.130
+So here, we provided the name, and here,
+
+00:00:08.130 --> 00:00:10.455
+we have provided our Kafka broker connection,
+
+00:00:10.455 --> 00:00:13.259
+and we've instantiated a Faust app.
+
+00:00:13.259 --> 00:00:17.039
+Next, we tell the App which topic we're interested in,
+
+00:00:17.039 --> 00:00:21.119
+as well as the key and value types expected for this particular Kafka topic.
+
+00:00:21.120 --> 00:00:23.370
+So here, we're instantiating a topic for
+
+00:00:23.370 --> 00:00:25.019
+our Faust application and simply
+
+00:00:25.019 --> 00:00:26.969
+providing the name of the topic that we're interested in.
+
+00:00:26.969 --> 00:00:30.129
+In this case, I've named it a-Kafka-topic.
+
+00:00:30.260 --> 00:00:33.109
+Once we've defined our topic and app,
+
+00:00:33.109 --> 00:00:37.490
+we create an async function to be called when an event is received from our Kafka topic.
+
+00:00:37.490 --> 00:00:39.920
+This function is decorated with an app agent which
+
+00:00:39.920 --> 00:00:42.965
+tells Faust to route events from this topic to this function.
+
+00:00:42.965 --> 00:00:45.530
+So here, you can see we defined a function
+
+00:00:45.530 --> 00:00:48.230
+called purchase which takes a purchases stream,
+
+00:00:48.229 --> 00:00:50.419
+we'll talk about this more in a few slides,
+
+00:00:50.420 --> 00:00:52.445
+and we've used the async keyword.
+
+00:00:52.445 --> 00:00:56.450
+This async keyword is part of some of the most recent versions of Python and this
+
+00:00:56.450 --> 00:01:00.380
+is why you have to use a recent version of Python to use Faust.
+
+00:01:00.380 --> 00:01:02.615
+We've also decorated the function with
+
+00:01:02.615 --> 00:01:07.415
+app.agent and told it which topic we're interested in subscribing to.
+
+00:01:07.415 --> 00:01:09.680
+So as events come into this topic,
+
+00:01:09.680 --> 00:01:12.845
+they'll be piped into this async def purchase function.
+
+00:01:12.844 --> 00:01:15.079
+The inner for loop is iterating on
+
+00:01:15.079 --> 00:01:18.914
+an infinite stream of purchase events coming through the purchases stream.
+
+00:01:18.915 --> 00:01:22.745
+Notice the async keyword indicating that we're using async IO again.
+
+00:01:22.745 --> 00:01:26.855
+This keyword is not optional on either the function or on the loop.
+
+00:01:26.855 --> 00:01:30.094
+Essentially, as events occur in this topic,
+
+00:01:30.094 --> 00:01:32.569
+this iterator will be evoked and we'll
+
+00:01:32.569 --> 00:01:36.239
+get a purchase event which we can then do something with.
+

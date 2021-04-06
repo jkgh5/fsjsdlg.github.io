@@ -1,0 +1,85 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:01.850 --> 00:00:06.625
+In the first lesson, we saw how stream processing works at a high level.
+
+00:00:06.625 --> 00:00:09.370
+We then reviewed one of those popular streaming data stores
+
+00:00:09.369 --> 00:00:12.184
+today Apache Kafka and its ecosystem.
+
+00:00:12.185 --> 00:00:15.429
+With a strong understanding of streaming data stores we are now
+
+00:00:15.429 --> 00:00:18.820
+going to shift our focus to stream processing applications.
+
+00:00:18.820 --> 00:00:20.935
+In this section, you'll learn strategies,
+
+00:00:20.934 --> 00:00:23.515
+design patterns and concepts around time.
+
+00:00:23.515 --> 00:00:25.240
+Once you've worked this lesson,
+
+00:00:25.239 --> 00:00:29.529
+you'll be ready for the following lessons we'll go hands-on and apply this new knowledge.
+
+00:00:29.530 --> 00:00:30.880
+As you've already seen,
+
+00:00:30.879 --> 00:00:33.159
+Kafka is a highly flexible message queue with
+
+00:00:33.159 --> 00:00:36.079
+a large ecosystem and a rich set of functionality.
+
+00:00:36.079 --> 00:00:38.979
+However, so far, we've really just moved data from
+
+00:00:38.979 --> 00:00:42.459
+point A to point B. Kafka's exactly once
+
+00:00:42.460 --> 00:00:45.530
+guarantees an excellent scalability are great for sending
+
+00:00:45.530 --> 00:00:48.800
+these messages but we haven't used Kafka to its full extent.
+
+00:00:48.799 --> 00:00:53.765
+We will truly see the benefits of these features by performing calculations in real-time.
+
+00:00:53.765 --> 00:00:58.340
+In other words, by processing these data streams as events actually occur.
+
+00:00:58.340 --> 00:01:02.180
+Building stream processing applications sounds simple when you think about it,
+
+00:01:02.179 --> 00:01:06.665
+just in destined data from one or more topics and do some calculations.
+
+00:01:06.665 --> 00:01:10.234
+Unfortunately, the reality isn't actually quite so simple.
+
+00:01:10.234 --> 00:01:13.534
+How does time impact what data we're interested in?
+
+00:01:13.534 --> 00:01:15.640
+What data do we store in memory?
+
+00:01:15.640 --> 00:01:19.670
+Will it be able to hold state in memory given throughput of replication?
+
+00:01:19.670 --> 00:01:21.500
+What if we want to join data from
+
+00:01:21.500 --> 00:01:24.590
+multiple streams but we haven't seen the data from one stream yet?
+
+00:01:24.590 --> 00:01:26.730
+How do we deal with that?
+

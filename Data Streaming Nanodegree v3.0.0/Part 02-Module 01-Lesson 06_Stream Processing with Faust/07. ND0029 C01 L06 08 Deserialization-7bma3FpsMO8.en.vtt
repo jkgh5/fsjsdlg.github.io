@@ -1,0 +1,91 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:02.580
+Deserializing data in Faust is primarily
+
+00:00:02.580 --> 00:00:04.049
+a painless operation due to
+
+00:00:04.049 --> 00:00:07.349
+the simple API that is provided through the topic creation process.
+
+00:00:07.349 --> 00:00:11.849
+You can see we simply provided a key type and value type.
+
+00:00:11.849 --> 00:00:14.820
+The key type is primitive because it's a string and
+
+00:00:14.820 --> 00:00:17.879
+the value type is complex because its purchase.
+
+00:00:17.879 --> 00:00:21.239
+These simple annotations help files automatically unpack
+
+00:00:21.239 --> 00:00:25.754
+that data from our Kafka streams into objects for our processor functions.
+
+00:00:25.754 --> 00:00:30.479
+For complex models, we do need to inherit from the faust.Record.
+
+00:00:30.480 --> 00:00:33.814
+This ensures that files can correctly handle the data.
+
+00:00:33.814 --> 00:00:36.619
+You can see that our purchase type now inherits from faust.
+
+00:00:36.619 --> 00:00:38.899
+Record. This means that we can use purchase as
+
+00:00:38.899 --> 00:00:42.939
+the key or value type for a faust topic as we have here.
+
+00:00:42.939 --> 00:00:47.119
+In addition, you'll notice that we have specified that validation is true.
+
+00:00:47.119 --> 00:00:49.939
+This means that Faust will attempt to help verify that we
+
+00:00:49.939 --> 00:00:52.689
+received the correct type for the fields we described.
+
+00:00:52.689 --> 00:00:54.530
+So here, they would verify that username and
+
+00:00:54.530 --> 00:00:57.350
+currency are strings and that amount is an int.
+
+00:00:57.350 --> 00:01:00.575
+If somebody were to set the username for example to an int,
+
+00:01:00.575 --> 00:01:02.465
+that record would fail validation.
+
+00:01:02.465 --> 00:01:05.450
+The serializer field tells files what datatype to
+
+00:01:05.450 --> 00:01:08.765
+expect by default for serialization coming from the Kafka topic.
+
+00:01:08.765 --> 00:01:11.915
+In this case, we specified that we expect to JSON.
+
+00:01:11.915 --> 00:01:14.665
+Unfortunately, Faust doesn't support Avro.
+
+00:01:14.665 --> 00:01:17.620
+If you want to use Avro in your deserialization process,
+
+00:01:17.620 --> 00:01:19.910
+you're going to need to write your own deserializer.
+
+00:01:19.909 --> 00:01:22.609
+It is possible to define your own serialization codecs,
+
+00:01:22.609 --> 00:01:24.515
+but we're not going to cover it in this class.
+
+00:01:24.515 --> 00:01:28.920
+Check out the links in the accompanying lesson text for more information.
+

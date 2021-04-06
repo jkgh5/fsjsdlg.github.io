@@ -1,0 +1,31 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:04.830
+Using KSQL, we can transform our Kafka topics into streams and tables.
+
+00:00:04.830 --> 00:00:07.919
+Once we've turned these topics into either streams or tables,
+
+00:00:07.919 --> 00:00:12.495
+we're free to use KSQL's SQL Syntax to perform many familiar operations.
+
+00:00:12.494 --> 00:00:15.059
+For example, you can join or
+
+00:00:15.060 --> 00:00:18.045
+aggregate these tables and streams once they've been created.
+
+00:00:18.045 --> 00:00:21.390
+Behind the scenes, the KSQL web server is translating your
+
+00:00:21.390 --> 00:00:25.289
+SQL commands into a series of instantiated Kafka Streams.
+
+00:00:25.289 --> 00:00:28.304
+So a KSQL is transforming this command,
+
+00:00:28.304 --> 00:00:33.369
+your SQL command, into Kafka Stream applications.
+

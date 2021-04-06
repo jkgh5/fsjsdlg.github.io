@@ -1,0 +1,37 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:03.059
+Before we can actually use tables or streams in KSQL,
+
+00:00:03.059 --> 00:00:09.765
+we need to transform one or more existing input Kafka topic into a KSQL table stream.
+
+00:00:09.765 --> 00:00:13.140
+First, we can ask KSQL to show us the topics that
+
+00:00:13.140 --> 00:00:16.440
+it's aware of by using this "SHOW TOPICS" command.
+
+00:00:16.440 --> 00:00:20.745
+"SHOW TOPICS" simply displays all of the available topics on the broker.
+
+00:00:20.745 --> 00:00:22.830
+Once you've identified a topic we want to use,
+
+00:00:22.829 --> 00:00:25.304
+we're ready to actually create a tabular stream.
+
+00:00:25.304 --> 00:00:27.539
+Before we move on and actually see how to
+
+00:00:27.539 --> 00:00:29.399
+create tables and streams in the coming sections,
+
+00:00:29.399 --> 00:00:31.259
+I want to note that just as in Faust,
+
+00:00:31.260 --> 00:00:37.170
+a Kafka topic always underlies the stream or tables that we actually create.
+

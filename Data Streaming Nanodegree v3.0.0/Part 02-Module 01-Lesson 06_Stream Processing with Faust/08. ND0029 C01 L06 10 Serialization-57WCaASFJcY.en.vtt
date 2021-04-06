@@ -1,0 +1,67 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:03.960
+One of my favorite features of Faust is that the simple semantics of defining
+
+00:00:03.960 --> 00:00:09.495
+a Faust record helps us build deserialized and serialized data. What do I mean?
+
+00:00:09.494 --> 00:00:13.183
+Well, in the previous section when we defined a Faust record for purchases,
+
+00:00:13.183 --> 00:00:15.674
+we were using it to deserialize data.
+
+00:00:15.675 --> 00:00:18.705
+We would then take that same exact purchase model
+
+00:00:18.704 --> 00:00:21.539
+and try to write data out to an output stream.
+
+00:00:21.539 --> 00:00:23.579
+In other words, if we were to serialize it,
+
+00:00:23.579 --> 00:00:25.559
+we wouldn't need to make any changes.
+
+00:00:25.559 --> 00:00:28.589
+The Faust library code manages the mappings of the fields we
+
+00:00:28.589 --> 00:00:32.219
+defined to the serialized representation and vice versa.
+
+00:00:32.219 --> 00:00:34.964
+Since we've already seen how to find a model,
+
+00:00:34.965 --> 00:00:37.815
+what's upgrade the representation we've already created.
+
+00:00:37.814 --> 00:00:42.959
+Notice how we've added this binary pipe in front of JSON.
+
+00:00:42.960 --> 00:00:46.429
+This means that when we want to use two serializers here in
+
+00:00:46.429 --> 00:00:50.375
+succession when we send the data to Kafka and receive it from Kafka.
+
+00:00:50.375 --> 00:00:56.534
+This would encode our model as JSON as if we sent it and then base 64 encode it.
+
+00:00:56.534 --> 00:00:59.204
+Likewise, if we we're deserializing data,
+
+00:00:59.204 --> 00:01:03.094
+the Faust model will automatically run this process and reverse.
+
+00:01:03.094 --> 00:01:09.454
+It would base 64 decode the binary data and then unpack the JSON into our model.
+
+00:01:09.454 --> 00:01:12.289
+As I mentioned, the Faust record API is not only
+
+00:01:12.290 --> 00:01:16.050
+simple and easy to work with but extremely powerful.
+

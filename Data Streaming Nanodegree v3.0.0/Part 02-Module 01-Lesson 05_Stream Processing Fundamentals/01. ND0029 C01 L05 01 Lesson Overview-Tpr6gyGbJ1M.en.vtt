@@ -1,0 +1,19 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:01.550 --> 00:00:05.835
+In this lesson, we're going to shift our focus away from Kafka
+
+00:00:05.835 --> 00:00:09.719
+or streaming data store and focus on stream processing.
+
+00:00:09.720 --> 00:00:13.830
+In this lesson, you'll learn common stream processing strategies as
+
+00:00:13.830 --> 00:00:18.195
+well as a number of common functions in use in stream processing.
+
+00:00:18.195 --> 00:00:23.560
+We're also going to review time windowing management and data storage options.
+

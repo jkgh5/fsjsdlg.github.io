@@ -1,0 +1,19 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:01.580 --> 00:00:06.719
+Faust handling of records is one of the most fun parts of using the framework.
+
+00:00:06.719 --> 00:00:10.019
+As you've seen, you can define a model once and use it for
+
+00:00:10.019 --> 00:00:14.564
+both serialization and deserialization, and type validation.
+
+00:00:14.564 --> 00:00:18.419
+Make sure you spend some time familiarizing yourself with the Faust record type.
+
+00:00:18.420 --> 00:00:21.520
+It can really help improve your programs.
+

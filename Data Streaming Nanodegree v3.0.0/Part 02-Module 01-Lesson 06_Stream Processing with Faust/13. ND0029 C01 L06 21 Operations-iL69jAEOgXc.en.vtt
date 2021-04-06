@@ -1,0 +1,91 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:03.600
+Sounds defines a number of general purpose operations for streams.
+
+00:00:03.600 --> 00:00:08.115
+Most of which you'll recognize in a previous lesson in the common strategy section.
+
+00:00:08.115 --> 00:00:12.509
+The Faust group_by operation takes an input stream and redirects it to
+
+00:00:12.509 --> 00:00:14.459
+another intermediate stream with
+
+00:00:14.460 --> 00:00:17.850
+a group_by key as the new key on the intermediate stream.
+
+00:00:17.850 --> 00:00:22.140
+For example, our purchase stream has values but no key in Kafka.
+
+00:00:22.140 --> 00:00:24.120
+If we were to group by currency,
+
+00:00:24.120 --> 00:00:26.685
+that would now be the key in Kafka.
+
+00:00:26.684 --> 00:00:32.864
+This is also known as re-partitioning or co partitioning if you're going to do a join.
+
+00:00:32.865 --> 00:00:35.750
+A filter operation is provided that takes
+
+00:00:35.750 --> 00:00:38.259
+a callback function that returns either true or false,
+
+00:00:38.259 --> 00:00:40.429
+as we saw in the previous demonstration.
+
+00:00:40.429 --> 00:00:42.844
+If a value should be capture discarded,
+
+00:00:42.844 --> 00:00:47.524
+the filter function will decide that and remove it from the output stream.
+
+00:00:47.524 --> 00:00:51.289
+Any events that are not filtered out or rewritten to an intermediate stream,
+
+00:00:51.289 --> 00:00:53.600
+just like group_by, and then those values are
+
+00:00:53.600 --> 00:00:56.615
+passed back to the next step in the processing chain.
+
+00:00:56.615 --> 00:01:00.350
+The take operation can be used to group bundles of stream events
+
+00:01:00.350 --> 00:01:03.755
+together between iterations of your stream processing loop.
+
+00:01:03.755 --> 00:01:06.340
+For example, you may want to gather groups of messages,
+
+00:01:06.340 --> 00:01:12.549
+say 10,15 at a time into bundles and then send them off into other downstream topics,
+
+00:01:12.549 --> 00:01:15.734
+or process them 10 or 15 at a time.
+
+00:01:15.734 --> 00:01:17.370
+Be careful with take,
+
+00:01:17.370 --> 00:01:19.064
+if you don't provide the within parameter,
+
+00:01:19.064 --> 00:01:23.075
+the processor will wait forever until the desired number of messages are gathered.
+
+00:01:23.075 --> 00:01:27.695
+So if it takes an hour or two hours to get 15 messages in your stream,
+
+00:01:27.694 --> 00:01:31.504
+the function will block until it's received that many messages.
+
+00:01:31.504 --> 00:01:35.769
+Faust finds a number of other operations which I encourage you to read more about.
+
+00:01:35.769 --> 00:01:39.239
+Check the notes in the section for a link to an overview.
+

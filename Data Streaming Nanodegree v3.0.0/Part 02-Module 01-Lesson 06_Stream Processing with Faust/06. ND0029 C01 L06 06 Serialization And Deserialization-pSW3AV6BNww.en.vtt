@@ -1,0 +1,25 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:01.700 --> 00:00:06.719
+Faust provides model types that can be plugged into standard Python objects to
+
+00:00:06.719 --> 00:00:11.324
+make serialization and deserialization of topic data a simple exercise.
+
+00:00:11.324 --> 00:00:13.079
+As you learned in lesson 3,
+
+00:00:13.080 --> 00:00:17.219
+managing data schemas is an important part of the process of working with streaming data.
+
+00:00:17.219 --> 00:00:19.634
+Thankfully, Faust makes it easy.
+
+00:00:19.635 --> 00:00:20.940
+In the following sections,
+
+00:00:20.940 --> 00:00:26.920
+you'll learn how to use Faust to pack and unpack data with very few lines of code.
+

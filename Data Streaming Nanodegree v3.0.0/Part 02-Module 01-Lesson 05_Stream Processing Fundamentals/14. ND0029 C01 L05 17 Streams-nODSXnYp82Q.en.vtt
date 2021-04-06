@@ -1,0 +1,118 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:02.810
+Streams will likely sound familiar to you at this point.
+
+00:00:02.810 --> 00:00:05.474
+Like the underlying Kafka topics that power them,
+
+00:00:05.474 --> 00:00:09.059
+streams are simply in-ordered series of immutable events.
+
+00:00:09.060 --> 00:00:10.470
+As new events occur,
+
+00:00:10.470 --> 00:00:12.075
+they're added to the stream.
+
+00:00:12.074 --> 00:00:16.515
+The output of many stream processing applications are themselves streams.
+
+00:00:16.515 --> 00:00:17.800
+Earlier in the lesson,
+
+00:00:17.800 --> 00:00:19.755
+we discussed filtering and remapping.
+
+00:00:19.754 --> 00:00:22.019
+These are common examples of scenarios in which
+
+00:00:22.019 --> 00:00:25.739
+a stream processing application might emit another stream.
+
+00:00:25.739 --> 00:00:31.369
+So here, we're simply emitting new events based on incoming events.
+
+00:00:31.370 --> 00:00:33.245
+We're not performing any aggregation,
+
+00:00:33.244 --> 00:00:35.464
+data comes in the Kafka for multiple streams,
+
+00:00:35.465 --> 00:00:37.145
+flows through our stream processor,
+
+00:00:37.145 --> 00:00:40.820
+and we simply event another form of message or event.
+
+00:00:40.820 --> 00:00:44.000
+Streams are used in many stream processing workflows.
+
+00:00:44.000 --> 00:00:46.130
+Data enrichment is a great example of
+
+00:00:46.130 --> 00:00:48.740
+a scenario in which we might take advantage of a stream.
+
+00:00:48.740 --> 00:00:51.950
+Pretend that we are working for a ride-sharing company again.
+
+00:00:51.950 --> 00:00:55.280
+This time, we might want to simply add some properties to
+
+00:00:55.280 --> 00:00:56.810
+an existing stream to help improve
+
+00:00:56.810 --> 00:00:59.645
+the processing capabilities of downstream applications.
+
+00:00:59.645 --> 00:01:01.610
+For example, we might want to calculate
+
+00:01:01.609 --> 00:01:05.900
+the walking distance of the user's destination from where they are currently located.
+
+00:01:05.900 --> 00:01:07.955
+So here, we have a search,
+
+00:01:07.954 --> 00:01:11.914
+and we're going to add walking distance to that search and then re-emit it.
+
+00:01:11.915 --> 00:01:15.230
+This information might be useful to our data science team to
+
+00:01:15.230 --> 00:01:18.500
+help them better understand when users ride share over-walking.
+
+00:01:18.500 --> 00:01:21.310
+In this scenario, we're simply ingesting the data,
+
+00:01:21.310 --> 00:01:22.590
+adding the walking distance,
+
+00:01:22.590 --> 00:01:25.865
+and then emitting a new version of the same event into a stream,
+
+00:01:25.864 --> 00:01:28.655
+which then our data scientists can actually go ahead and use.
+
+00:01:28.655 --> 00:01:31.099
+We could just as easily have filtered out or
+
+00:01:31.099 --> 00:01:33.199
+modified the structure of the input topic data,
+
+00:01:33.200 --> 00:01:35.255
+and I've created another output stream.
+
+00:01:35.254 --> 00:01:39.034
+The key takeaway here though is that streams are not aggregates.
+
+00:01:39.034 --> 00:01:41.974
+They are boundless order immutable set of events.
+
+00:01:41.974 --> 00:01:46.379
+Events come in, we change the event, and the event goes out.
+

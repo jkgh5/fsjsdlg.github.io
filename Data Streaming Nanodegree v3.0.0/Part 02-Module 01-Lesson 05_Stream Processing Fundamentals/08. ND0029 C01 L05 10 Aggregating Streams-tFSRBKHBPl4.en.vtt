@@ -1,0 +1,115 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:04.275
+Actual analysis of our data is typically performed by aggregate functions.
+
+00:00:04.275 --> 00:00:08.054
+Examples of aggregate functions and stream processors are max,
+
+00:00:08.054 --> 00:00:11.594
+min, sum, histograms, sets, and lists.
+
+00:00:11.595 --> 00:00:14.940
+An aggregation involves taking two or more distinct events,
+
+00:00:14.939 --> 00:00:18.855
+including one or more new events based on a calculation of some kind.
+
+00:00:18.855 --> 00:00:21.015
+So here we have the number 10,
+
+00:00:21.015 --> 00:00:22.844
+put it into our sum processor,
+
+00:00:22.844 --> 00:00:25.603
+7 plus 10 becomes 17,
+
+00:00:25.603 --> 00:00:28.634
+3 plus 17 will become 20,
+
+00:00:28.635 --> 00:00:30.705
+and then we would output that event.
+
+00:00:30.704 --> 00:00:33.899
+In this example we're using a sum aggregate to add the value of
+
+00:00:33.899 --> 00:00:37.304
+events as they pass through our stream processing application.
+
+00:00:37.304 --> 00:00:41.469
+Streaming aggregates almost always involve a specific time frame.
+
+00:00:41.469 --> 00:00:45.034
+Unlike batch processing where we can calculate the maximum column,
+
+00:00:45.034 --> 00:00:48.169
+calculating a max in a stream processing application is more
+
+00:00:48.170 --> 00:00:52.204
+complex because the stream itself is unbounded by time.
+
+00:00:52.204 --> 00:00:54.214
+Let's put this more concretely.
+
+00:00:54.215 --> 00:00:57.280
+Say I want a sum of all sales for the India region,.
+
+00:00:57.280 --> 00:00:58.475
+With a SQL database,
+
+00:00:58.475 --> 00:01:01.745
+I can simply sum over all the data in my purchases table.
+
+00:01:01.744 --> 00:01:04.429
+The SQL database contains a time bounded set of
+
+00:01:04.430 --> 00:01:08.050
+data with the most up to date representations of the purchase data.
+
+00:01:08.049 --> 00:01:09.700
+With the purchase of stream,
+
+00:01:09.700 --> 00:01:12.260
+it's possible that unless the topic is compacted,
+
+00:01:12.260 --> 00:01:16.460
+much of our historical data has been expired off the topic already.
+
+00:01:16.459 --> 00:01:19.039
+That's okay though, you can still see a sum of sales
+
+00:01:19.040 --> 00:01:21.350
+in any region in a stream processing application,
+
+00:01:21.349 --> 00:01:24.149
+it would just need to be bound by a particular time window.
+
+00:01:24.150 --> 00:01:27.380
+The same concept applies across all aggregate functions.
+
+00:01:27.379 --> 00:01:30.679
+Now, it's worth noting that if you have a compacted topic,
+
+00:01:30.680 --> 00:01:34.175
+you will have an up-to-date view of all the data.
+
+00:01:34.174 --> 00:01:38.479
+So it's important to understand what kind of topic you're working with.
+
+00:01:38.480 --> 00:01:40.590
+If you're working with the compacted topic,
+
+00:01:40.590 --> 00:01:43.505
+you can actually run aggregate functions across
+
+00:01:43.504 --> 00:01:46.875
+all the data available for all time for a given topic,
+
+00:01:46.875 --> 00:01:48.930
+but most comfort topics for
+
+00:01:48.930 --> 00:01:53.200
+stream processing applications will be expired and not compacted.
+

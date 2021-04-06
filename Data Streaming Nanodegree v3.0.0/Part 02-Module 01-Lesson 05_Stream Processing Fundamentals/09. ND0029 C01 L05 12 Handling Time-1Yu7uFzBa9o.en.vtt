@@ -1,0 +1,109 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:01.550 --> 00:00:06.059
+Streaming applications are often concerned with blocks of time,
+
+00:00:06.059 --> 00:00:09.404
+not just a running aggregate of all data ever produced.
+
+00:00:09.404 --> 00:00:12.419
+Thus, most stream processing frameworks have built-in
+
+00:00:12.419 --> 00:00:15.855
+time framing tooling often referred to as windowing.
+
+00:00:15.855 --> 00:00:20.539
+The following sections we'll see how we can use windowing to achieve our analysis goals.
+
+00:00:20.539 --> 00:00:23.960
+In the previous sections, we learned about the types of processing we might
+
+00:00:23.960 --> 00:00:27.969
+perform on an input data stream and a stream processing application.
+
+00:00:27.969 --> 00:00:31.189
+We also vaguely touched on the notion of time periods noting that in
+
+00:00:31.190 --> 00:00:35.734
+stream processing we don't usually look at all the data in a stream at once.
+
+00:00:35.734 --> 00:00:38.479
+How we decide the time frame contain the data that
+
+00:00:38.479 --> 00:00:41.449
+we do look at is a process known as windowing.
+
+00:00:41.450 --> 00:00:46.010
+A window in a stream processing application is a period of time with
+
+00:00:46.009 --> 00:00:51.439
+a start and an end in which data is gathered for analysis key by key.
+
+00:00:51.439 --> 00:00:54.379
+So here, the start might be at this event at this point in
+
+00:00:54.380 --> 00:00:58.850
+time and the end would be at this event at this point in time.
+
+00:00:58.850 --> 00:01:05.049
+For example, we might decide we want to analyze all the purchases in the last one hour.
+
+00:01:05.049 --> 00:01:10.795
+The window of the last one hour would start right now and end 60 minutes in the past.
+
+00:01:10.795 --> 00:01:13.989
+As time progresses forward say by a minute,
+
+00:01:13.989 --> 00:01:17.140
+any data that's older than one hour would be removed from our window.
+
+00:01:17.140 --> 00:01:18.250
+So for in this example,
+
+00:01:18.250 --> 00:01:21.430
+all this data would be outside of the scope of our window.
+
+00:01:21.430 --> 00:01:24.460
+Windows can also take place in the past.
+
+00:01:24.459 --> 00:01:27.324
+They don't always have to be relative to the current moment of time.
+
+00:01:27.325 --> 00:01:30.340
+We could run the same one hour purchase analysis but run it for
+
+00:01:30.340 --> 00:01:33.730
+the same time yesterday when we could go and so on.
+
+00:01:33.730 --> 00:01:35.469
+So we could pretend in this example on
+
+00:01:35.469 --> 00:01:38.424
+the screen that maybe we're delaying this window by an hour.
+
+00:01:38.424 --> 00:01:42.435
+So the start time is now minus one hour,
+
+00:01:42.435 --> 00:01:46.769
+to now minus two hours if this is a one hour window.
+
+00:01:46.769 --> 00:01:49.849
+Windows are the building blocks of the aggregation and joined
+
+00:01:49.849 --> 00:01:53.689
+functions that allow us to create interesting stream processing applications.
+
+00:01:53.689 --> 00:01:55.459
+That the rest of this section I will review
+
+00:01:55.459 --> 00:01:58.384
+the specific flavors of time windowing available.
+
+00:01:58.385 --> 00:02:01.895
+One final note, not all stream processing frameworks
+
+00:02:01.894 --> 00:02:06.420
+implement the same windowing types though most will implement what we're about to cover.
+

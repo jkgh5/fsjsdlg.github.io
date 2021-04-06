@@ -1,0 +1,118 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:01.940 --> 00:00:05.820
+Let's update our basic streams application with the purchase type.
+
+00:00:05.820 --> 00:00:09.945
+This way we can get a feel for how we can de-serialize data from a Kafika stream.
+
+00:00:09.945 --> 00:00:11.730
+So we're back in the workspace now,
+
+00:00:11.730 --> 00:00:15.690
+and we're going to go ahead and start by defining our purchase model so that we can
+
+00:00:15.689 --> 00:00:20.085
+de-serialize data coming into our purchases topic into this model.
+
+00:00:20.085 --> 00:00:23.039
+So we'll begin by uncommenting it,
+
+00:00:23.039 --> 00:00:27.015
+and having it inherit from the faust.record type.
+
+00:00:27.015 --> 00:00:31.785
+Once that's done, we'll define the fields that we expect on the purchase class.
+
+00:00:31.785 --> 00:00:34.799
+Which in this case, is a username of type string,
+
+00:00:34.799 --> 00:00:37.875
+the currency code of type string,
+
+00:00:37.875 --> 00:00:40.350
+and an amount of type int.
+
+00:00:40.350 --> 00:00:46.130
+With that done, we then need to pass this type into our purchases topic.
+
+00:00:46.130 --> 00:00:49.010
+We also need to indicate what the key type is.
+
+00:00:49.009 --> 00:00:51.070
+So we're going to modify this,
+
+00:00:51.070 --> 00:00:55.039
+and as you can see we've already passed in the value type as purchased to this topic,
+
+00:00:55.039 --> 00:00:58.009
+but we have not yet specified the key type.
+
+00:00:58.009 --> 00:01:01.774
+Now, this Kafka topic is keyed on the username.
+
+00:01:01.774 --> 00:01:06.189
+So the key type is going to be just a primitive string.
+
+00:01:06.189 --> 00:01:08.480
+Then we have the purchases topic.
+
+00:01:08.480 --> 00:01:12.520
+We can pass it in to our app agent as we saw in the previous demonstration.
+
+00:01:12.519 --> 00:01:17.959
+Then we can define this function which handles all the event data for this app agent,
+
+00:01:17.959 --> 00:01:22.739
+and iterates over all the purchases and the purchases stream as they arrive.
+
+00:01:22.739 --> 00:01:26.724
+All we're doing here is taking the purchase data,
+
+00:01:26.724 --> 00:01:29.069
+dumping it to a dictionary,
+
+00:01:29.069 --> 00:01:31.674
+and then pretty printing it as JSON,
+
+00:01:31.674 --> 00:01:34.009
+so that it's easier to view on the command line.
+
+00:01:34.010 --> 00:01:38.600
+So let's go ahead and run this function and see how it works.
+
+00:01:38.599 --> 00:01:43.099
+So we're using the worker class again, and unfortunately,
+
+00:01:43.099 --> 00:01:47.254
+I forgot to decorate our purchase class as a data class.
+
+00:01:47.254 --> 00:01:49.295
+So let's go ahead and do that real quick.
+
+00:01:49.295 --> 00:01:54.905
+So now this is a data class which means that it has access to the asdict() functionality,
+
+00:01:54.905 --> 00:01:57.620
+and it also indicates that this class is specifically
+
+00:01:57.620 --> 00:02:00.680
+only used for shepherding and unshepherding data.
+
+00:02:00.680 --> 00:02:05.205
+Let's go ahead and save that, and try one more time.
+
+00:02:05.204 --> 00:02:10.234
+You can see that now we're printing out all the purchases that are occurring.
+
+00:02:10.235 --> 00:02:12.290
+As you can see it's pretty printed,
+
+00:02:12.289 --> 00:02:14.530
+so it's a little easier for us to read.
+
+00:02:14.530 --> 00:02:20.759
+All right. That's how you would go ahead and de-serialized data with model definitions.
+

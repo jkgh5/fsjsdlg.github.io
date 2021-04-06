@@ -1,0 +1,43 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:02.700
+Sliding windows operate nearly identically to
+
+00:00:02.700 --> 00:00:05.205
+hopping windows with one important difference.
+
+00:00:05.205 --> 00:00:07.665
+Sliding windows don't have an increment period.
+
+00:00:07.665 --> 00:00:10.199
+They simply increase on a very fast basis,
+
+00:00:10.199 --> 00:00:12.524
+typically a basis measured in seconds.
+
+00:00:12.525 --> 00:00:14.400
+So let's see what this looks like.
+
+00:00:14.400 --> 00:00:17.594
+As you can see, the window simply slides along,
+
+00:00:17.594 --> 00:00:21.419
+and as time progresses so too does our window.
+
+00:00:21.420 --> 00:00:25.020
+In practice, this means that a sliding window always contains
+
+00:00:25.019 --> 00:00:28.844
+the most up-to-date representation of a defined time period possible.
+
+00:00:28.844 --> 00:00:31.994
+Sliding windows are overlapping and typically gapless.
+
+00:00:31.995 --> 00:00:34.170
+Again, because the window is sliding,
+
+00:00:34.170 --> 00:00:38.140
+there is no opportunity for there to be a gap between windows.
+

@@ -1,0 +1,31 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:01.760 --> 00:00:07.544
+In this section, we reviewed common concepts amongst all stream processing applications.
+
+00:00:07.544 --> 00:00:10.410
+You learned about common strategies and how to interact with streaming
+
+00:00:10.410 --> 00:00:13.710
+data such as filters, joins, and aggregates.
+
+00:00:13.710 --> 00:00:15.660
+We also saw how windowing works,
+
+00:00:15.660 --> 00:00:18.359
+and when you would use the different types of windowing.
+
+00:00:18.359 --> 00:00:21.719
+We also learned about streaming applications and how they maintain
+
+00:00:21.719 --> 00:00:25.859
+state with Kafka and local state source such as RocksDB.
+
+00:00:25.859 --> 00:00:29.100
+With all this conceptual information under our belt,
+
+00:00:29.100 --> 00:00:33.460
+we're ready to move on to the upcoming lessons and put these skills to work.
+

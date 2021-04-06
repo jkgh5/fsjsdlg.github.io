@@ -1,0 +1,79 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:01.669 --> 00:00:04.679
+Now, let's return back to
+
+00:00:04.679 --> 00:00:08.134
+the previous example one more time and instead of using a tumbling window,
+
+00:00:08.134 --> 00:00:10.099
+let's use a hopping window.
+
+00:00:10.099 --> 00:00:15.359
+The first thing we're going to do is define the size of the window.
+
+00:00:15.890 --> 00:00:18.899
+Here we're going to have a three second size.
+
+00:00:18.899 --> 00:00:23.049
+We're going to have a step of five seconds,
+
+00:00:23.359 --> 00:00:29.324
+and we'll use an expires time of 10 minutes.
+
+00:00:29.324 --> 00:00:33.100
+So the expires time isn't something that we really need to see in this demo.
+
+00:00:33.100 --> 00:00:35.065
+I just want to show you how to pass this variable.
+
+00:00:35.064 --> 00:00:38.169
+Remember, expires tells first
+
+00:00:38.170 --> 00:00:43.760
+that it can keep around the data from previous windows for up to 10 minutes.
+
+00:00:43.759 --> 00:00:47.945
+Size says I want a window size of 30 seconds.
+
+00:00:47.945 --> 00:00:50.344
+But the step says every five seconds,
+
+00:00:50.344 --> 00:00:53.314
+I want you to move that window forward.
+
+00:00:53.314 --> 00:00:59.239
+So let's go ahead and run this example. All right.
+
+00:00:59.240 --> 00:01:01.550
+So we can see our example advancing forward,
+
+00:01:01.549 --> 00:01:05.469
+and it's little hard to see because of how fast it's running.
+
+00:01:05.469 --> 00:01:12.405
+But you can see here USD is 18547078 and if we keep scrolling,
+
+00:01:12.405 --> 00:01:14.460
+let's see where we got twos.
+
+00:01:14.459 --> 00:01:22.530
+Now you can see that the US dollar is now reset to 91494.
+
+00:01:22.530 --> 00:01:23.890
+So it's a little hard to see,
+
+00:01:23.890 --> 00:01:25.430
+but you can see we went from this number.
+
+00:01:25.430 --> 00:01:30.640
+So we went from 18547078 to 91494.
+
+00:01:30.640 --> 00:01:33.349
+So you can see that the window is rolling
+
+00:01:33.349 --> 00:01:36.959
+over and incrementing at these five second chance.
+
