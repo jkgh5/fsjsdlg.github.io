@@ -1,0 +1,94 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:04.140
+The first thing I'm going to do is make sure that Kafka and Spark are running.
+
+00:00:04.140 --> 00:00:07.410
+I'm going to type ps-ef, and sure enough,
+
+00:00:07.410 --> 00:00:10.530
+I see two processes running Spark,
+
+00:00:10.530 --> 00:00:15.270
+and I have several Java processes which tells me Kafka is up and running.
+
+00:00:15.270 --> 00:00:18.030
+Now that I have my solution written,
+
+00:00:18.030 --> 00:00:19.665
+let's go over that together.
+
+00:00:19.665 --> 00:00:23.970
+The first thing I'm going to do is create a file handle for my test file.
+
+00:00:23.970 --> 00:00:25.620
+I'm going to create a Spark session,
+
+00:00:25.620 --> 00:00:27.510
+set my log level to one,
+
+00:00:27.510 --> 00:00:32.175
+and then I'm going to read in the log data using the Spark session.
+
+00:00:32.175 --> 00:00:35.480
+Now I'm going to filter my log data and
+
+00:00:35.480 --> 00:00:38.480
+count the rows that have the letter D and the rows
+
+00:00:38.480 --> 00:00:41.330
+that have the letter S. I'm going to put some markers in
+
+00:00:41.330 --> 00:00:44.465
+that make it easier for me to see the data as I scrolls past,
+
+00:00:44.465 --> 00:00:47.810
+and I'm going to show the actual line number counts.
+
+00:00:47.810 --> 00:00:49.700
+Then I'm going do spark.stop,
+
+00:00:49.700 --> 00:00:52.730
+which will actually quit the Spark application for me.
+
+00:00:52.730 --> 00:01:00.270
+I have a script written that runs this and it's in my folder here called spark,
+
+00:01:00.270 --> 00:01:04.725
+so its home workspace spark, like this.
+
+00:01:04.725 --> 00:01:06.720
+Then if I ls,
+
+00:01:06.720 --> 00:01:10.180
+I see a submit.
+
+00:01:10.180 --> 00:01:14.269
+In this case, I'm actually going to run it just manually,
+
+00:01:14.269 --> 00:01:17.515
+so I'm going to go like this,
+
+00:01:17.515 --> 00:01:22.245
+data spark bin spark-submit,
+
+00:01:22.245 --> 00:01:30.660
+home workspace spark, hellospark.py if you're using your script name.
+
+00:01:30.660 --> 00:01:34.000
+Mine is called.solution.py.
+
+00:01:36.920 --> 00:01:42.610
+Home workspace hellospark.solution.py,
+
+00:01:42.950 --> 00:01:48.305
+and including all of the libraries and starting to Spark application.
+
+00:01:48.305 --> 00:01:51.860
+When we see a blinking cursor, we know we're running.
+
+00:01:51.860 --> 00:01:56.970
+There's my output, two lines with D and two lines with S.
+

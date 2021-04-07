@@ -1,0 +1,40 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:04.995
+What are some things you should think about when working with joins and JSON in Spark.
+
+00:00:04.995 --> 00:00:08.535
+JSON is universally used to transmit data.
+
+00:00:08.535 --> 00:00:10.875
+It is simple to read and write.
+
+00:00:10.875 --> 00:00:13.680
+Almost any system will accept it.
+
+00:00:13.680 --> 00:00:18.060
+JSON format can be used to describe most record types.
+
+00:00:18.060 --> 00:00:21.380
+Joining streaming data is typically difficult.
+
+00:00:21.380 --> 00:00:25.140
+Usually joining streams of data is not straight forward.
+
+00:00:25.140 --> 00:00:28.230
+Without built-in streaming join functionality,
+
+00:00:28.230 --> 00:00:33.315
+you have to write code to cache or query and extract data.
+
+00:00:33.315 --> 00:00:37.500
+This can be very IO intensive because the data is often
+
+00:00:37.500 --> 00:00:42.309
+stored in very large tables and may be difficult to index.
+
+00:00:42.309 --> 00:00:47.550
+The time to retrieve the secondary data is often prohibitive.
+

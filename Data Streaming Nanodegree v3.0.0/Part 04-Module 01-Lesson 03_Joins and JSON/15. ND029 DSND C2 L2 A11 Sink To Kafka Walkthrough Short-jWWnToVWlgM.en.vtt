@@ -1,0 +1,163 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:04.320
+The first thing I'm going to do is make sure that Spark and Kafka are running.
+
+00:00:04.320 --> 00:00:06.570
+If I run the ps -ef command,
+
+00:00:06.570 --> 00:00:08.670
+I see Spark here and Spark here,
+
+00:00:08.670 --> 00:00:11.460
+so I have two Spark processes,
+
+00:00:11.460 --> 00:00:14.685
+then I have all these Java processes that are running Kafka.
+
+00:00:14.685 --> 00:00:17.805
+That means we're up. That's good.
+
+00:00:17.805 --> 00:00:20.790
+Now, before we did the vehicle checkin solution,
+
+00:00:20.790 --> 00:00:22.365
+we wrote it to the console.
+
+00:00:22.365 --> 00:00:24.690
+Now, we're going to change that and we're,
+
+00:00:24.690 --> 00:00:28.080
+actually, going to write it to Kafka.
+
+00:00:28.080 --> 00:00:31.940
+We've commented out printing to the console and we are going to
+
+00:00:31.940 --> 00:00:36.215
+now stream that data to Kafka instead.
+
+00:00:36.215 --> 00:00:40.130
+The same DataFrame that we used for the console can easily be used
+
+00:00:40.130 --> 00:00:44.315
+for taking information and putting it into Kafka.
+
+00:00:44.315 --> 00:00:47.030
+We need to make sure it's in JSON format, though,
+
+00:00:47.030 --> 00:00:50.885
+so that it'll be usable by some other system other than Spark.
+
+00:00:50.885 --> 00:00:55.450
+We're going to cast the statusTruckNumber as a string and make that our Kafka key.
+
+00:00:55.450 --> 00:00:58.890
+All the fields from the checkinStatusDF DataFrame,
+
+00:00:58.890 --> 00:01:02.010
+and we're going to use the
+
+00:01:02.010 --> 00:01:09.315
+struct(★) method call to insert all those fields in the to_json function.
+
+00:01:09.315 --> 00:01:11.845
+Then we'll cast those as a value,
+
+00:01:11.845 --> 00:01:14.600
+which will all just be a single JSON payload.
+
+00:01:14.600 --> 00:01:17.870
+We're going to do writeStream to Kafka format,
+
+00:01:17.870 --> 00:01:21.380
+put it in a broker called localhost:9092,
+
+00:01:21.380 --> 00:01:24.220
+and the topic will be checkin-status.
+
+00:01:24.220 --> 00:01:27.060
+We need to include this checkpointLocation which should be
+
+00:01:27.060 --> 00:01:30.390
+a writable path on the Spark worker.
+
+00:01:30.390 --> 00:01:33.135
+In this case, it's just a /tmp,
+
+00:01:33.135 --> 00:01:36.465
+and then a forward slash and a file name.
+
+00:01:36.465 --> 00:01:40.170
+Then I'm going to say.start and.awaitTermination.
+
+00:01:40.170 --> 00:01:43.365
+I'm going to save that file.
+
+00:01:43.365 --> 00:01:50.900
+If I cd to home/workspace/spark and ls,
+
+00:01:50.900 --> 00:01:52.220
+then I have a script for that
+
+00:01:52.220 --> 00:02:02.545
+called./submit-vehicle-checkin.solution.sh, actually.
+
+00:02:02.545 --> 00:02:10.210
+Line 95, it's saying unexpected indentation.
+
+00:02:12.440 --> 00:02:18.405
+Now, the blinking cursor means it's going to our Spark application and it's running it.
+
+00:02:18.405 --> 00:02:21.310
+It has an error.
+
+00:02:21.910 --> 00:02:26.670
+Let's change this to kafkacheckpoint2.
+
+00:02:32.240 --> 00:02:36.080
+With joins, it can take a couple minutes to run.
+
+00:02:36.080 --> 00:02:38.780
+Now, we are streaming this to another topic,
+
+00:02:38.780 --> 00:02:40.640
+which means we won't see the output here.
+
+00:02:40.640 --> 00:02:46.335
+We need to open up a Kafka console in order to read that information.
+
+00:02:46.335 --> 00:02:50.920
+I'm going to cd to /data/kafka/bin and I'm going to run
+
+00:02:50.920 --> 00:02:59.700
+the./kafka-console-consumer --bootstrap-server is localhost:9092,
+
+00:02:59.700 --> 00:03:05.380
+topic is checkin-status, and from the beginning.
+
+00:03:05.810 --> 00:03:10.575
+There is the JSON. I'm going to "Control C" so I can see some of it.
+
+00:03:10.575 --> 00:03:14.220
+Here's the statusTruckNumber, that's 8810.
+
+00:03:14.220 --> 00:03:15.900
+The destination is Pennsylvania.
+
+00:03:15.900 --> 00:03:17.985
+We're 433 miles from the shop.
+
+00:03:17.985 --> 00:03:20.685
+The odometer reading, the reservation ID,
+
+00:03:20.685 --> 00:03:23.295
+the location name, and the checkinTruckNumber,
+
+00:03:23.295 --> 00:03:25.735
+status is checked out.
+
+00:03:25.735 --> 00:03:31.170
+I'm going to stop this Spark application with "Control C".
+

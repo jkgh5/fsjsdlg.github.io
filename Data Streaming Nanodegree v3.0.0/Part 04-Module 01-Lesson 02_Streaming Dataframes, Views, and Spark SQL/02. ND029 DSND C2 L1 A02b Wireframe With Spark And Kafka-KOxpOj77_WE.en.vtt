@@ -1,0 +1,280 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:02.325
+When approaching a streaming problem,
+
+00:00:02.325 --> 00:00:05.310
+it is important to consider the use of infrastructure,
+
+00:00:05.310 --> 00:00:07.829
+and its potential costs and benefits.
+
+00:00:07.829 --> 00:00:13.305
+A very cheap way to do this is to use a free diagramming tool like draw.io.
+
+00:00:13.305 --> 00:00:18.150
+Feel free to go to draw.io in your browser to follow along.
+
+00:00:18.150 --> 00:00:22.170
+Using draw.io can be really useful to sketch out ideas.
+
+00:00:22.170 --> 00:00:25.335
+It's also a lot easier to communicate electronically,
+
+00:00:25.335 --> 00:00:30.435
+if you have a need to send drawings to other people who are not located with you.
+
+00:00:30.435 --> 00:00:34.135
+Let's draw what we are going to build in this lesson,
+
+00:00:34.135 --> 00:00:36.175
+starting in Lesson 1.
+
+00:00:36.175 --> 00:00:40.130
+A lot of times when we're doing an architectural drawing,
+
+00:00:40.130 --> 00:00:44.135
+we're going to use an element that looks like a sideways pipe.
+
+00:00:44.135 --> 00:00:46.040
+This is a topic,
+
+00:00:46.040 --> 00:00:48.875
+so whenever you see this symbol,
+
+00:00:48.875 --> 00:00:51.724
+it means it's a Kafka topic.
+
+00:00:51.724 --> 00:00:57.520
+Usually what we'll do is label the topic name inside of that symbol.
+
+00:00:57.520 --> 00:01:00.930
+You'll find in some applications like draw.io,
+
+00:01:00.930 --> 00:01:03.455
+it may be hard to get the name to display correctly,
+
+00:01:03.455 --> 00:01:08.900
+so you can drag a text onto it,
+
+00:01:08.900 --> 00:01:13.980
+and then you should be able to make the name look correct.
+
+00:01:13.980 --> 00:01:18.665
+Let's look at the topics that we're going to use in this lesson.
+
+00:01:18.665 --> 00:01:22.340
+First of all, where are the topics coming from?
+
+00:01:22.340 --> 00:01:24.265
+They're all coming from Kafka,
+
+00:01:24.265 --> 00:01:26.420
+so let's draw Kafka.
+
+00:01:26.420 --> 00:01:28.610
+Now later on in the lesson,
+
+00:01:28.610 --> 00:01:30.530
+we're not going to draw Kafka,
+
+00:01:30.530 --> 00:01:32.240
+because a lot of times,
+
+00:01:32.240 --> 00:01:35.275
+people when they see topic like this,
+
+00:01:35.275 --> 00:01:39.395
+they assume that that topic is connecting to a message broker,
+
+00:01:39.395 --> 00:01:43.955
+and so really the only thing they'll need to know is which message broker you're using,
+
+00:01:43.955 --> 00:01:47.230
+and the drawing will become intuitive to them.
+
+00:01:47.230 --> 00:01:48.815
+Because we're starting off,
+
+00:01:48.815 --> 00:01:51.380
+we're going to draw Kafka in this diagram.
+
+00:01:51.380 --> 00:02:00.075
+One of the topics that we're going to use in this lesson is called gear position.
+
+00:02:00.075 --> 00:02:04.000
+That topic has vehicle IDs,
+
+00:02:04.000 --> 00:02:06.470
+and then what gear the truck is in,
+
+00:02:06.470 --> 00:02:09.170
+whether it's neutral or so on.
+
+00:02:09.170 --> 00:02:11.240
+Now I'm going to create a couple other topics,
+
+00:02:11.240 --> 00:02:13.685
+so I just copied this symbol,
+
+00:02:13.685 --> 00:02:15.560
+and then I'm just going to paste it.
+
+00:02:15.560 --> 00:02:19.760
+An easy way to create this symbol if you're trying to figure out how I did it,
+
+00:02:19.760 --> 00:02:24.030
+is to take a database and turn it sideways.
+
+00:02:24.080 --> 00:02:29.690
+I just click on this database and click the little rotate icon,
+
+00:02:29.690 --> 00:02:32.150
+then it rotates to the right,
+
+00:02:32.150 --> 00:02:38.840
+and then I can make it the right size by stretching it with the blue arrows.
+
+00:02:38.980 --> 00:02:45.695
+Let's see, so I actually hovered over the blue dot instead of the blue arrow,
+
+00:02:45.695 --> 00:02:47.240
+and then I stretched it,
+
+00:02:47.240 --> 00:02:49.475
+so that's how I made these symbols.
+
+00:02:49.475 --> 00:02:54.070
+Okay, so we've got three different topics so far,
+
+00:02:54.070 --> 00:03:00.630
+and the topics are going to be topics we read from in our Spark application.
+
+00:03:00.650 --> 00:03:05.270
+I'm going to label each of them with their topic name.
+
+00:03:05.270 --> 00:03:09.635
+Another topic we might work with is called vehicle status,
+
+00:03:09.635 --> 00:03:15.060
+and another one is called vehicle check-in.
+
+00:03:15.060 --> 00:03:17.510
+You'll notice with just a little bit of work,
+
+00:03:17.510 --> 00:03:23.305
+I can create a pretty clear high overview of what my data pipeline looks like.
+
+00:03:23.305 --> 00:03:28.519
+Then later on we're actually going to create data that we're going to send to Kafka,
+
+00:03:28.519 --> 00:03:30.995
+and we're going to name that topic as well,
+
+00:03:30.995 --> 00:03:32.570
+so let's label that.
+
+00:03:32.570 --> 00:03:35.230
+So I've just copied another topic,
+
+00:03:35.230 --> 00:03:38.800
+and I'm going to label this one.
+
+00:03:38.990 --> 00:03:43.510
+You might get to choose the name of the topic you create,
+
+00:03:43.510 --> 00:03:46.635
+I called mine chicken status.
+
+00:03:46.635 --> 00:03:48.525
+What are we missing?
+
+00:03:48.525 --> 00:03:51.180
+We have Kafka, we have the topics,
+
+00:03:51.180 --> 00:03:52.965
+we don't have Spark.
+
+00:03:52.965 --> 00:03:56.790
+So I'm going to copy this block and paste,
+
+00:03:56.790 --> 00:03:59.835
+and then I'm going to call that Spark.
+
+00:03:59.835 --> 00:04:02.415
+The arrows become important here.
+
+00:04:02.415 --> 00:04:07.400
+They help us know which way the topics are being generated and read from.
+
+00:04:07.400 --> 00:04:11.645
+So which is the source and which is the sink basically?
+
+00:04:11.645 --> 00:04:14.750
+When we're reading from gear position,
+
+00:04:14.750 --> 00:04:20.330
+we're going to connect to Kafka to read from it.
+
+00:04:20.780 --> 00:04:24.059
+So the data's coming from Kafka,
+
+00:04:24.059 --> 00:04:27.135
+and we're reading it in Spark,
+
+00:04:27.135 --> 00:04:31.085
+and that is the same with the vehicle status topic,
+
+00:04:31.085 --> 00:04:32.550
+we're reading from it,
+
+00:04:32.550 --> 00:04:34.430
+we're not writing to it in Spark.
+
+00:04:34.430 --> 00:04:39.575
+So Spark is the sink and Kafka is the source.
+
+00:04:39.575 --> 00:04:42.965
+There may be some other system generating that data,
+
+00:04:42.965 --> 00:04:45.785
+and we will talk more about that later.
+
+00:04:45.785 --> 00:04:51.620
+So vehicle checking as well is being sinked to Spark,
+
+00:04:51.620 --> 00:04:54.020
+so we're going to draw it like that.
+
+00:04:54.020 --> 00:04:57.139
+So Spark is going to read in all of these topics
+
+00:04:57.139 --> 00:05:01.075
+at different stages and do something with them.
+
+00:05:01.075 --> 00:05:06.240
+Then Spark is going to create and write to a topic.
+
+00:05:06.240 --> 00:05:11.910
+In this case, the topic is called check-in status.
+
+00:05:11.910 --> 00:05:17.245
+So I'm going to draw a line that goes to that,
+
+00:05:17.245 --> 00:05:22.265
+and then I'm going to reflect that data being put into Kafka.
+
+00:05:22.265 --> 00:05:24.620
+This is really a simple tool,
+
+00:05:24.620 --> 00:05:26.905
+and just using some basic shapes,
+
+00:05:26.905 --> 00:05:30.590
+you can draw a good high level diagram that helps people
+
+00:05:30.590 --> 00:05:37.200
+visualize what your plans are with a Spark streaming and a Kafka project.
+

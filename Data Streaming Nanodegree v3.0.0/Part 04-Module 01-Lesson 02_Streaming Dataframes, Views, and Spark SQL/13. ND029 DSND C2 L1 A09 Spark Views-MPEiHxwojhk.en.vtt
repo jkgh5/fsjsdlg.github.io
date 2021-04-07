@@ -1,0 +1,196 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:02.070
+Let's move on to section 3,
+
+00:00:02.070 --> 00:00:04.470
+talking about Spark views.
+
+00:00:04.470 --> 00:00:06.180
+In the previous section,
+
+00:00:06.180 --> 00:00:10.665
+you learned about how to create streaming DataFrames using Kafka as a source.
+
+00:00:10.665 --> 00:00:13.110
+In this part, we explore creating a view.
+
+00:00:13.110 --> 00:00:16.530
+We learn how to query the view using SQL syntax.
+
+00:00:16.530 --> 00:00:22.110
+Last we learned to sink a stream to Kafka. Part one.
+
+00:00:22.110 --> 00:00:24.510
+Let's work on creating a view.
+
+00:00:24.510 --> 00:00:28.815
+In a Spark application a Spark view is a session bound
+
+00:00:28.815 --> 00:00:32.820
+representation of data in a certain configuration.
+
+00:00:32.820 --> 00:00:37.020
+For example, you might wanna view of discounted inventory.
+
+00:00:37.020 --> 00:00:42.445
+Creating a view is like using a colored filter that changes certain things in a picture.
+
+00:00:42.445 --> 00:00:45.695
+Using Spark, you can create temporary views of data
+
+00:00:45.695 --> 00:00:48.830
+which emphasize or reveal certain attributes.
+
+00:00:48.830 --> 00:00:53.630
+For example, if you wanted to extract a year from a field that contains a month,
+
+00:00:53.630 --> 00:00:56.585
+day, and year, you could save that as a view.
+
+00:00:56.585 --> 00:01:01.010
+The purpose of temporary views is to save a certain configuration of
+
+00:01:01.010 --> 00:01:05.480
+a Dataframe for later reference within the same spark application.
+
+00:01:05.480 --> 00:01:09.320
+The view won't be available to other Spark applications.
+
+00:01:09.320 --> 00:01:14.035
+In this example, we started with several fields available from our source.
+
+00:01:14.035 --> 00:01:18.035
+We had an urgent need for some combination of these fields.
+
+00:01:18.035 --> 00:01:22.115
+We then create a subset interview for later querying.
+
+00:01:22.115 --> 00:01:25.070
+In this snippet, we are working with a DataFrame
+
+00:01:25.070 --> 00:01:29.180
+previously instantiated called fuel Level StreamingDF.
+
+00:01:29.180 --> 00:01:32.675
+Using the create or replace temp view function call,
+
+00:01:32.675 --> 00:01:35.545
+we create a temporary view fuel level.
+
+00:01:35.545 --> 00:01:40.415
+Notice the view has a name which is the way we will clutter query the view.
+
+00:01:40.415 --> 00:01:45.200
+Any filtering we want applied to the DataFrame can be done before this point.
+
+00:01:45.200 --> 00:01:48.940
+The DataFrame will be represented by the temporary view.
+
+00:01:48.940 --> 00:01:51.635
+You just learned about creating a view in Spark.
+
+00:01:51.635 --> 00:01:54.455
+Next, you will learn how to query a Spark view.
+
+00:01:54.455 --> 00:01:57.230
+In this snippet, we are working with a DataFrame
+
+00:01:57.230 --> 00:02:00.800
+previously instantiated called fuel Level StreamingDF.
+
+00:02:00.800 --> 00:02:03.830
+Using the create or replace temp view function call,
+
+00:02:03.830 --> 00:02:06.275
+we create a temporary view fuel level.
+
+00:02:06.275 --> 00:02:10.115
+Notice the view name is the way we access in query the view.
+
+00:02:10.115 --> 00:02:13.475
+This is different from the way we act on DataFrames.
+
+00:02:13.475 --> 00:02:16.685
+We query the view using a select statement,
+
+00:02:16.685 --> 00:02:18.860
+which includes the name of the view.
+
+00:02:18.860 --> 00:02:26.525
+The Spark dot SQL call results in another DataFrame called fuel Level Select StarDF.
+
+00:02:26.525 --> 00:02:29.695
+This DataFrame holds the results of the query.
+
+00:02:29.695 --> 00:02:34.205
+Fuse give you a lot of flexibility in querying your streaming data.
+
+00:02:34.205 --> 00:02:37.385
+SQL syntaxes familiar to many people.
+
+00:02:37.385 --> 00:02:41.125
+Spark has SQL functions for data manipulation.
+
+00:02:41.125 --> 00:02:44.300
+You can use the usual field aliasing.
+
+00:02:44.300 --> 00:02:49.325
+There are many other features of SQL included in the query syntax.
+
+00:02:49.325 --> 00:02:53.870
+You've just learned how to query a spark view using SQL syntax.
+
+00:02:53.870 --> 00:02:58.015
+Next, you will learn to select and then send some data to Kafka.
+
+00:02:58.015 --> 00:03:00.035
+After querying your view,
+
+00:03:00.035 --> 00:03:02.690
+you have something to offer to other systems.
+
+00:03:02.690 --> 00:03:06.350
+Let's learn how to share that data via a Kafka topic.
+
+00:03:06.350 --> 00:03:10.430
+First select the fields using Spark dot SQL.
+
+00:03:10.430 --> 00:03:16.555
+Next uses select expression on the resulting DataFrame to cast the fields.
+
+00:03:16.555 --> 00:03:20.810
+Be sure to pass the Kafka bootstrap servers parameter.
+
+00:03:20.810 --> 00:03:26.485
+Last, sync the DataFrame to your new Kafka topic using the right stream.
+
+00:03:26.485 --> 00:03:29.900
+Now any Kafka consumer can access your data
+
+00:03:29.900 --> 00:03:33.685
+by subscribing to the topic called field-changes.
+
+00:03:33.685 --> 00:03:36.115
+Here are some key points to remember,
+
+00:03:36.115 --> 00:03:39.560
+Kafka topics have two fields, key and value.
+
+00:03:39.560 --> 00:03:46.150
+Cast binary data from Kafka using the dot select Expr function on the DataFrame.
+
+00:03:46.150 --> 00:03:50.835
+Read from Kafka using the readStream field on the Spark session.
+
+00:03:50.835 --> 00:03:55.980
+Write to Kafka using the writeStream field on the DataFrame.
+
+00:03:55.980 --> 00:03:57.900
+Now let's create and query,
+
+00:03:57.900 --> 00:04:00.880
+a Spark view and sync to Kafka.
+

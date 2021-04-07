@@ -1,0 +1,394 @@
+<!-- udacity2.0 -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Quiz: Query a Spark View</title>
+  <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../assets/css/plyr.css">
+  <link rel="stylesheet" href="../assets/css/katex.min.css">
+  <link rel="stylesheet" href="../assets/css/jquery.mCustomScrollbar.min.css">
+  <link rel="stylesheet" href="../assets/css/styles.css">
+  <link rel="shortcut icon" type="image/png" href="../assets/img/udacimak.png" />
+</head>
+
+<body>
+  <div class="wrapper">
+    <nav id="sidebar">
+  <div class="sidebar-header">
+    <h3>Streaming Dataframes, Views, and Spark SQL</h3>
+  </div>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled components">
+    <li class="">
+      <a href="01. Lesson Overview.html">01. Lesson Overview</a>
+    </li>
+    <li class="">
+      <a href="02. Importance of Spark.html">02. Importance of Spark</a>
+    </li>
+    <li class="">
+      <a href="03. Spark Clusters.html">03. Spark Clusters</a>
+    </li>
+    <li class="">
+      <a href="04. Walkthrough 1 Start a Spark Cluster.html">04. Walkthrough 1: Start a Spark Cluster</a>
+    </li>
+    <li class="">
+      <a href="05. Quiz Spark Clusters.html">05. Quiz: Spark Clusters</a>
+    </li>
+    <li class="">
+      <a href="06. Exercise 1 Spark Clusters.html">06. Exercise 1: Spark Clusters</a>
+    </li>
+    <li class="">
+      <a href="07. Solution Spark Clusters.html">07. Solution: Spark Clusters</a>
+    </li>
+    <li class="">
+      <a href="08. Create a Spark Streaming Dataframe with a Kafka Source.html">08. Create a Spark Streaming Dataframe with a Kafka Source</a>
+    </li>
+    <li class="">
+      <a href="09. Walkthrough 2 Create a Spark Streaming Dataframe.html">09. Walkthrough 2: Create a Spark Streaming Dataframe</a>
+    </li>
+    <li class="">
+      <a href="10. Quiz Create a Spark Streaming Dataframe.html">10. Quiz: Create a Spark Streaming Dataframe</a>
+    </li>
+    <li class="">
+      <a href="11. Exercise  Create a Spark Streaming Dataframe.html">11. Exercise : Create a Spark Streaming Dataframe</a>
+    </li>
+    <li class="">
+      <a href="12. Solution 2 Create a Spark Streaming Dataframe.html">12. Solution 2: Create a Spark Streaming Dataframe</a>
+    </li>
+    <li class="">
+      <a href="13. Spark Views.html">13. Spark Views</a>
+    </li>
+    <li class="">
+      <a href="14. Walkthrough 3 Query a Spark View.html">14. Walkthrough 3: Query a Spark View</a>
+    </li>
+    <li class="">
+      <a href="15. Quiz Query a Spark View.html">15. Quiz: Query a Spark View</a>
+    </li>
+    <li class="">
+      <a href="16. Exercise Spark Views.html">16. Exercise: Spark Views</a>
+    </li>
+    <li class="">
+      <a href="17. Solution 3 Spark Views.html">17. Solution 3: Spark Views</a>
+    </li>
+    <li class="">
+      <a href="18. Edge Cases.html">18. Edge Cases</a>
+    </li>
+    <li class="">
+      <a href="19. Glossary.html">19. Glossary</a>
+    </li>
+    <li class="">
+      <a href="20. Further Reading.html">20. Further Reading</a>
+    </li>
+    <li class="">
+      <a href="21. Lesson Review.html">21. Lesson Review</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+</nav>
+
+    <div id="content">
+      <header class="container-fluild header">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <div class="align-items-middle">
+                <button type="button" id="sidebarCollapse" class="btn btn-toggle-sidebar">
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                </button>
+
+                <h1 style="display: inline-block">15. Quiz: Query a Spark View</h1>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <main class="container">
+        <div class="row">
+          <div class="col-12">
+            <div class="ud-atom">
+  <h3><p>Quiz: Query a Spark view and an in memory table Heading</p></h3>
+  <div>
+  <h2 id="quiz-create-and-query-spark-view">Quiz: Create and Query Spark View</h2>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <form>
+    <fieldset>
+      <legend><p>Which of the following is the correct syntax to create a temporary view of the carLocation DataFrame?</p></legend>
+    </fieldset>
+
+      <div>
+        <input type="radio" value="602f9426-d22b-4b91-9a78-db894ddb05be" name="1095204" id="602f9426-d22b-4b91-9a78-db894ddb05be">
+        <label for="602f9426-d22b-4b91-9a78-db894ddb05be"><p><code>carLocationDF.view("CarLocation")</code></p></label>
+      </div>
+      <div>
+        <input type="radio" value="c69722f2-27c0-4d8d-b018-4a39f560ef4f" name="1095204" id="c69722f2-27c0-4d8d-b018-4a39f560ef4f">
+        <label for="c69722f2-27c0-4d8d-b018-4a39f560ef4f"><p><code>carLocation.show()</code></p></label>
+      </div>
+      <div>
+        <input type="radio" value="cb175490-9452-4186-b7a2-6a792fcc1f2c" name="1095204" id="cb175490-9452-4186-b7a2-6a792fcc1f2c">
+        <label for="cb175490-9452-4186-b7a2-6a792fcc1f2c"><p><code>carLocationDF.createOrReplaceTempView("CarLocation")</code></p></label>
+      </div>
+  </form>
+
+  <details>
+    <summary><strong>SOLUTION:</strong></summary>
+    ```carLocationDF.createOrReplaceTempView("CarLocation")```
+  </details>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <p><strong>QUIZ QUESTION:</strong>: <p>Match the correct Spark writeStream option with its purpose</p></p>
+  <p><strong>ANSWER CHOICES:</strong></p>
+  <button class="btn btn-primary"><p>This is the communication channel we will use to communicate with Kafka</p></button>
+  <button class="btn btn-primary"><p>This is a temporary file used by Spark, that needs to be writable by the Spark worker</p></button>
+  <button class="btn btn-primary"><p>This is the server name and port of one or more Kafka brokers</p></button>
+
+  <br><br>
+
+  <table class="table">
+    <tr class="thead-dark table-hover">
+      <th>
+        <p>Option</p>
+      </th>
+      <th>
+        <p>Purpose</p>
+      </th>
+    </tr>
+
+    <tr>
+      <td><p>kafka.bootstrap.servers</p></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><p>topic</p></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><p>checkpointLocation</p></td>
+      <td></td>
+    </tr>
+  </table>
+
+  <details>
+    <summary><strong>SOLUTION:</strong></summary>
+
+    <table class="table">
+      <tr class="thead-dark table-hover">
+        <th>
+          <p>Option</p>
+        </th>
+        <th>
+          <p>Purpose</p>
+        </th>
+      </tr>
+
+      <tr>
+        <td>
+          <p>topic</p>
+        </td>
+        <td>
+            <button class="btn btn-primary"><p>This is the communication channel we will use to communicate with Kafka</p></button>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <p>checkpointLocation</p>
+        </td>
+        <td>
+            <button class="btn btn-primary"><p>This is a temporary file used by Spark, that needs to be writable by the Spark worker</p></button>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <p>kafka.bootstrap.servers</p>
+        </td>
+        <td>
+            <button class="btn btn-primary"><p>This is the server name and port of one or more Kafka brokers</p></button>
+        </td>
+      </tr>
+    </table>
+  </details>
+</div>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <form>
+    <fieldset>
+      <legend><p>Which is correct syntax for directly querying the accountBalance DataFrame?</p></legend>
+    </fieldset>
+
+    <div>
+      <input type="checkbox" value="c9227168-16c1-4538-b766-1493acdf7950" name="1095255" id="c9227168-16c1-4538-b766-1493acdf7950">
+      <label for="c9227168-16c1-4538-b766-1493acdf7950"><p>accountBalanceDF.selectExpr("accountNumber","balance")</p></label>
+    </div>
+    <div>
+      <input type="checkbox" value="2fc05210-9c9a-4d52-a6f2-0a6561b4bc32" name="1095255" id="2fc05210-9c9a-4d52-a6f2-0a6561b4bc32">
+      <label for="2fc05210-9c9a-4d52-a6f2-0a6561b4bc32"><p>accountBalanceDF.query("select accountNumber, balance from accountBalanceDF"</p></label>
+    </div>
+    <div>
+      <input type="checkbox" value="f1a80461-52a5-4c2f-bbf9-86eb9ad02819" name="1095255" id="f1a80461-52a5-4c2f-bbf9-86eb9ad02819">
+      <label for="f1a80461-52a5-4c2f-bbf9-86eb9ad02819"><p>spark.sql(select accountNumber, balance from accountBalanceDF)</p></label>
+    </div>
+  </form>
+
+  <details>
+    <summary><strong>SOLUTION:</strong></summary>
+    <ul>
+      <li>accountBalanceDF.selectExpr("accountNumber","balance")</li>
+  </ul>
+  </details>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <form>
+    <fieldset>
+      <legend><p>Which is correct syntax for querying a Spark View called AccountBalance?</p></legend>
+    </fieldset>
+
+    <div>
+      <input type="checkbox" value="63d18d1c-75f1-4880-a3ec-08fc8087c3a5" name="1095265" id="63d18d1c-75f1-4880-a3ec-08fc8087c3a5">
+      <label for="63d18d1c-75f1-4880-a3ec-08fc8087c3a5"><p>spark.sql("select * from AccountBalance")</p></label>
+    </div>
+    <div>
+      <input type="checkbox" value="da177a93-7d52-4674-bec0-23e1a867447b" name="1095265" id="da177a93-7d52-4674-bec0-23e1a867447b">
+      <label for="da177a93-7d52-4674-bec0-23e1a867447b"><p>AcccountBalance.selectExpr("select * from AccountBalance")</p></label>
+    </div>
+    <div>
+      <input type="checkbox" value="9166b96d-a95d-401b-af7f-98c8289c6aa6" name="1095265" id="9166b96d-a95d-401b-af7f-98c8289c6aa6">
+      <label for="9166b96d-a95d-401b-af7f-98c8289c6aa6"><p>spark.select("select * from AccountBalance")</p></label>
+    </div>
+  </form>
+
+  <details>
+    <summary><strong>SOLUTION:</strong></summary>
+    <ul>
+      <li>spark.sql("select * from AccountBalance")</li>
+  </ul>
+  </details>
+</div>
+
+</div>
+<div class="divider"></div>
+          </div>
+
+          <div class="col-12">
+            <p class="text-right">
+              <a href="16. Exercise Spark Views.html" class="btn btn-outline-primary mt-4" role="button">Next Concept</a>
+            </p>
+          </div>
+        </div>
+      </main>
+
+      <footer class="footer">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <p class="text-center">
+                <a href="https://us-udacity.github.io/" target="_blank">【udacity2.0 】If you need more courses, please add wechat：udacity6</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </div>
+
+
+  <script src="../assets/js/jquery-3.3.1.min.js"></script>
+  <script src="../assets/js/plyr.polyfilled.min.js"></script>
+  <script src="../assets/js/bootstrap.min.js"></script>
+  <script src="../assets/js/jquery.mCustomScrollbar.concat.min.js"></script>
+  <script src="../assets/js/katex.min.js"></script>
+  <script>
+    // Initialize Plyr video players
+    const players = Array.from(document.querySelectorAll('video')).map(p => new Plyr(p));
+
+    // render math equations
+    let elMath = document.getElementsByClassName('mathquill');
+    for (let i = 0, len = elMath.length; i < len; i += 1) {
+      const el = elMath[i];
+
+      katex.render(el.textContent, el, {
+        throwOnError: false
+      });
+    }
+
+    // this hack will make sure Bootstrap tabs work when using Handlebars
+    if ($('#question-tabs').length && $('#user-answer-tabs').length) {
+      $("#question-tabs a.nav-link").on('click', function () {
+        $("#question-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+      $("#user-answer-tabs a.nav-link").on('click', function () {
+        $("#user-answer-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    } else {
+      $("a.nav-link").on('click', function () {
+        $(".tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    }
+
+    // side bar events
+    $(document).ready(function () {
+      $("#sidebar").mCustomScrollbar({
+        theme: "minimal"
+      });
+
+      $('#sidebarCollapse').on('click', function () {
+        $('#sidebar, #content').toggleClass('active');
+        $('.collapse.in').toggleClass('in');
+        $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+      });
+
+      // scroll to first video on page loading
+      if ($('video').length) {
+        $('html,body').animate({ scrollTop: $('div.plyr').prev().offset().top});
+      }
+
+      // auto play first video: this may not work with chrome/safari due to autoplay policy
+      if (players && players.length > 0) {
+        players[0].play();
+      }
+
+      // scroll sidebar to current concept
+      const currentInSideBar = $( "ul.sidebar-list.components li a:contains('15. Quiz: Query a Spark View')" )
+      currentInSideBar.css( "text-decoration", "underline" );
+      $("#sidebar").mCustomScrollbar('scrollTo', currentInSideBar);
+    });
+  </script>
+</body>
+
+</html>

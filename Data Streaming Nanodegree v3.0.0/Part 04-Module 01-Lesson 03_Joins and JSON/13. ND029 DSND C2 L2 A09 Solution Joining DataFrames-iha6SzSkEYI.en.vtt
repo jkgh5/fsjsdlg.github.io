@@ -1,0 +1,403 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:03.645
+Let's look at one solution to the joining exercise.
+
+00:00:03.645 --> 00:00:08.805
+The first thing I'm going to do is make sure that Spark and Kafka are both running.
+
+00:00:08.805 --> 00:00:11.265
+I'm going to do ps_ef.
+
+00:00:11.265 --> 00:00:13.425
+If you've just started your workspace,
+
+00:00:13.425 --> 00:00:16.950
+then you'll need to start both Kafka and Spark.
+
+00:00:16.950 --> 00:00:20.370
+I see spark and spark,
+
+00:00:20.370 --> 00:00:23.130
+which means my worker and my master are both running
+
+00:00:23.130 --> 00:00:26.355
+and I also see several Java processes,
+
+00:00:26.355 --> 00:00:29.235
+which means my Kafka is still up.
+
+00:00:29.235 --> 00:00:37.125
+Now I'm going to write my code and be ready to submit it to the spark cluster.
+
+00:00:37.125 --> 00:00:41.850
+The first thing I'm going to do is look at the data that I'll be processing.
+
+00:00:41.850 --> 00:00:47.000
+This payload has the deposit schema,
+
+00:00:47.000 --> 00:00:49.175
+the deposit JSON format.
+
+00:00:49.175 --> 00:00:50.780
+I have an account number,
+
+00:00:50.780 --> 00:00:52.475
+an amount, date and time.
+
+00:00:52.475 --> 00:00:56.015
+This message has the customer,
+
+00:00:56.015 --> 00:00:58.970
+which has various customer fields.
+
+00:00:58.970 --> 00:01:04.370
+I'm going to create a schema for both of these JSON data types.
+
+00:01:04.370 --> 00:01:08.765
+First one I'm going to call deposit message schema.
+
+00:01:08.765 --> 00:01:13.295
+I'm going to pass it an array of struct fields,
+
+00:01:13.295 --> 00:01:18.115
+and each field needs to match the JSON field name and type.
+
+00:01:18.115 --> 00:01:21.740
+I can tell if there are quotes that it's supposed to be a string.
+
+00:01:21.740 --> 00:01:23.315
+If there's no quotes,
+
+00:01:23.315 --> 00:01:25.910
+then it might be another data type.
+
+00:01:25.910 --> 00:01:30.180
+The amount is going to be a float type.
+
+00:01:30.320 --> 00:01:36.000
+That's actually the only fields we need for the deposit.
+
+00:01:36.000 --> 00:01:39.390
+Now am going to create the customer message schema,
+
+00:01:39.390 --> 00:01:42.900
+and I need another array of struct fields.
+
+00:01:42.900 --> 00:01:48.105
+The first one's going to be our customer name string.
+
+00:01:48.105 --> 00:01:51.360
+Second one's going to be email.
+
+00:01:51.360 --> 00:01:54.150
+Third one's going to be phone.
+
+00:01:54.150 --> 00:01:57.435
+Next one is going to be birthday,
+
+00:01:57.435 --> 00:02:02.675
+and we're going to treat the date like a string for our purposes.
+
+00:02:02.675 --> 00:02:06.400
+Account number has quotes around it.
+
+00:02:06.400 --> 00:02:09.075
+We're calling it a string as well,
+
+00:02:09.075 --> 00:02:12.315
+and location is a string.
+
+00:02:12.315 --> 00:02:15.465
+I'm going to connect to my spark cluster
+
+00:02:15.465 --> 00:02:19.700
+and I'm going to call my application bank deposits.
+
+00:02:19.700 --> 00:02:24.334
+Now I'm going to read from the ATM visits topic.
+
+00:02:24.334 --> 00:02:27.440
+Create a data frame to hold that.
+
+00:02:27.440 --> 00:02:32.264
+I'm going to read from the broker,
+
+00:02:32.264 --> 00:02:35.485
+and I need to indicate where that's located.
+
+00:02:35.485 --> 00:02:40.355
+Am going to tell the name of the topic to subscribe to,
+
+00:02:40.355 --> 00:02:48.355
+which is bank deposits and I'm going to tell it the starting offsets, which is earliest.
+
+00:02:48.355 --> 00:02:51.675
+Tell it to start that.
+
+00:02:51.675 --> 00:02:56.250
+Right now I've got to convert that one to non-binary.
+
+00:02:56.250 --> 00:02:59.400
+Let's make another data frame for that,
+
+00:02:59.400 --> 00:03:03.275
+and we're going to cast the key as a string
+
+00:03:03.275 --> 00:03:09.005
+and the key is probably going to be the account number.
+
+00:03:09.005 --> 00:03:13.855
+The value is going to be bank deposit JSON.
+
+00:03:13.855 --> 00:03:16.665
+We've just named those two fields.
+
+00:03:16.665 --> 00:03:18.480
+Now were going to,
+
+00:03:18.480 --> 00:03:23.325
+deserialize that JSON using the schema we created.
+
+00:03:23.325 --> 00:03:28.750
+Let's call the width column method.
+
+00:03:28.850 --> 00:03:34.250
+We're going to overwrite the bank deposit JSON field.
+
+00:03:34.250 --> 00:03:37.580
+Seeing the from JSON method,
+
+00:03:37.580 --> 00:03:39.950
+and we're going to pull data out of
+
+00:03:39.950 --> 00:03:48.360
+the bank deposit JSON field and we're going to reference the deposit message schema.
+
+00:03:48.520 --> 00:03:55.250
+Then we're going to select the subfields that just got
+
+00:03:55.250 --> 00:04:02.665
+created and put those into view, called bank deposits.
+
+00:04:02.665 --> 00:04:11.900
+Now, I'm going to select from the bank deposits where the deposit amount is over $300.
+
+00:04:11.900 --> 00:04:19.200
+Now I'm going to read in the customer topic into a data frame.
+
+00:04:19.200 --> 00:04:24.295
+I'm sailing at the Kafka format and then reading from the localhost.
+
+00:04:24.295 --> 00:04:28.620
+Am reading from the topic called bank customers.
+
+00:04:28.620 --> 00:04:33.260
+That's a predefined topic that I've been told has the information I need.
+
+00:04:33.260 --> 00:04:36.715
+That's the reason I'm calling that specific topic.
+
+00:04:36.715 --> 00:04:39.525
+I want to get the earliest messages.
+
+00:04:39.525 --> 00:04:42.295
+I'm going to load this data frame.
+
+00:04:42.295 --> 00:04:48.424
+We're going to convert this one as well from binary to string.
+
+00:04:48.424 --> 00:04:51.650
+Create a new data frame for that.
+
+00:04:51.730 --> 00:04:59.465
+We're going to cast the Kafka key as a string and we're going to call it,
+
+00:04:59.465 --> 00:05:04.270
+let's see, I'm thinking the account number.
+
+00:05:04.670 --> 00:05:08.600
+The account number is probably our key.
+
+00:05:08.600 --> 00:05:11.620
+You wouldn't know what the name of the key is,
+
+00:05:11.620 --> 00:05:15.780
+unless someone had told you or you would looked into the topic yourself.
+
+00:05:15.780 --> 00:05:21.525
+We're going to call the value customer JSON.
+
+00:05:21.525 --> 00:05:25.910
+Now we're going to parse the JSON using the schema we created.
+
+00:05:25.910 --> 00:05:29.610
+We're taking the customers streaming data frame and
+
+00:05:29.610 --> 00:05:33.345
+we're calling it the dot width column method on it.
+
+00:05:33.345 --> 00:05:42.390
+We're going to overwrite the customer JSON field with the new fields we find.
+
+00:05:42.390 --> 00:05:47.190
+We're pulling it out of customer JSON and putting it into customer JSON.
+
+00:05:47.190 --> 00:05:49.010
+But when we put it back in,
+
+00:05:49.010 --> 00:05:51.950
+it's got all the fields separated out.
+
+00:05:51.950 --> 00:05:57.440
+We need to reference the customer message schema and we're going to
+
+00:05:57.440 --> 00:06:02.810
+take that information as a data frame.
+
+00:06:02.810 --> 00:06:09.240
+We're going to select the column called customer JSON.
+
+00:06:09.260 --> 00:06:12.330
+We're going to get all the fields out of that,
+
+00:06:12.330 --> 00:06:15.720
+they were just created subfields,
+
+00:06:15.720 --> 00:06:18.465
+put those into a view.
+
+00:06:18.465 --> 00:06:20.360
+Since they are customers,
+
+00:06:20.360 --> 00:06:23.350
+we're going to call them bank customers in the view
+
+00:06:23.350 --> 00:06:29.055
+and that'll be able to be queryed now.
+
+00:06:29.055 --> 00:06:34.350
+Let's query it using spark sql.
+
+00:06:34.350 --> 00:06:38.250
+I'm going to put the results in this D frame,
+
+00:06:38.250 --> 00:06:45.615
+called customerselectstartDF and I'm going to use spark.sql to select the customer name,
+
+00:06:45.615 --> 00:06:49.740
+account number as customer number.
+
+00:06:49.740 --> 00:06:55.395
+I'm aliasing that field from bank customers.
+
+00:06:55.395 --> 00:07:03.470
+Now I'm going to join those two data frames with the customer and the deposit.
+
+00:07:03.470 --> 00:07:08.100
+This one here and this one here,
+
+00:07:08.100 --> 00:07:10.520
+and on the left side of the join,
+
+00:07:10.520 --> 00:07:13.880
+I'm going to have the deposits data frame.
+
+00:07:13.880 --> 00:07:21.245
+Let's create a customer with deposit D frame.
+
+00:07:21.245 --> 00:07:29.420
+That's going to equal the bankdepositsselectstarDF.join
+
+00:07:29.420 --> 00:07:40.130
+customerselectstarDF and the join expression is going to be surrounded by triple quotes,
+
+00:07:40.130 --> 00:07:45.400
+and account number is going equal customer number.
+
+00:07:45.530 --> 00:07:50.145
+Let's go ahead and print this out to the console.
+
+00:07:50.145 --> 00:08:00.615
+CustomerwithdepositDF.writestream.outputmode append,
+
+00:08:00.615 --> 00:08:03.975
+format, console,
+
+00:08:03.975 --> 00:08:07.930
+start, and then keep running.
+
+00:08:08.000 --> 00:08:12.110
+If I'm in the home workspace folder and do ls,
+
+00:08:12.110 --> 00:08:16.700
+I'll see a script that will run this Python script for me.
+
+00:08:16.700 --> 00:08:24.000
+I'm going to do submit-customer-deposits.sh.
+
+00:08:26.690 --> 00:08:31.900
+Line 32, I've misspelled builder.
+
+00:08:31.900 --> 00:08:36.325
+Let's save it and run it again up arrow enter.
+
+00:08:36.325 --> 00:08:41.135
+But now we're just waiting for the output that can take up to two minutes,
+
+00:08:41.135 --> 00:08:45.150
+especially with joints, they seem to take a little longer.
+
+00:08:45.150 --> 00:08:50.580
+We're still just waiting for that to finish running and start giving us output.
+
+00:08:50.580 --> 00:08:54.395
+Run there we go, and you'll notice
+
+00:08:54.395 --> 00:08:58.325
+I've got several deposits for a customer named Gail Jackson.
+
+00:08:58.325 --> 00:09:04.055
+The deposit amount is different in each case and the date and time is different,
+
+00:09:04.055 --> 00:09:06.380
+which tells us they're different deposits.
+
+00:09:06.380 --> 00:09:08.620
+They're all happening on the 28th.
+
+00:09:08.620 --> 00:09:12.185
+But now we're going to get into some other deposits,
+
+00:09:12.185 --> 00:09:14.855
+we've got another customer, named Eric Clark.
+
+00:09:14.855 --> 00:09:20.215
+Also on the 28th for $768.81.
+
+00:09:20.215 --> 00:09:22.390
+We have Sarah Khatib,
+
+00:09:22.390 --> 00:09:26.525
+who's made another deposit for a $197.
+
+00:09:26.525 --> 00:09:31.175
+Are these falling into our $300 greater than 300?
+
+00:09:31.175 --> 00:09:39.755
+We have 310, we have 318, nothing under 300.
+
+00:09:39.755 --> 00:09:44.150
+That's a view of joining data frames from
+
+00:09:44.150 --> 00:09:52.030
+two different Kafka topics and then creating the combined join of those two data frames.
+
+00:09:52.030 --> 00:09:55.170
+I'm going to stop this by doing control C,
+
+00:09:55.170 --> 00:09:58.300
+and that'll stop the spark application.
+

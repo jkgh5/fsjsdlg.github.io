@@ -1,0 +1,202 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:05.130
+We've just looked at using Spark to read in a data file as a source,
+
+00:00:05.130 --> 00:00:08.715
+and now we're going to look at using Kafka as source.
+
+00:00:08.715 --> 00:00:10.530
+In the previous lesson,
+
+00:00:10.530 --> 00:00:13.215
+you learned about running applications on Spark.
+
+00:00:13.215 --> 00:00:15.030
+In this lesson, we will learn about
+
+00:00:15.030 --> 00:00:19.320
+the foundational concept of stream processing which is called a DataFrame.
+
+00:00:19.320 --> 00:00:21.780
+We explore streaming from Kafka.
+
+00:00:21.780 --> 00:00:24.300
+We learn about Kafka keys and values,
+
+00:00:24.300 --> 00:00:27.825
+we cast data from Kafka to the string type.
+
+00:00:27.825 --> 00:00:31.620
+In Part 1, we will talk about DataFrames.
+
+00:00:31.620 --> 00:00:34.755
+Have you ever seen fireflies at night?
+
+00:00:34.755 --> 00:00:36.630
+Our world is full of data,
+
+00:00:36.630 --> 00:00:40.905
+which like fireflies it's constantly changing and in motion.
+
+00:00:40.905 --> 00:00:44.540
+Imagine each firefly as a different data stream.
+
+00:00:44.540 --> 00:00:47.120
+We want to be able to capture, compare,
+
+00:00:47.120 --> 00:00:49.339
+and gather their unique data,
+
+00:00:49.339 --> 00:00:51.775
+and see how they look when viewed together.
+
+00:00:51.775 --> 00:00:55.415
+DataFrames enable these unique comparisons to happen.
+
+00:00:55.415 --> 00:00:57.860
+They can make a short-term view of data in
+
+00:00:57.860 --> 00:01:01.880
+motion your application will use to create insights.
+
+00:01:01.880 --> 00:01:08.315
+A DataFrame is a programming construct used to coordinate processing of dynamic data.
+
+00:01:08.315 --> 00:01:12.995
+Here is a Spark streaming application using the DataFrame construct.
+
+00:01:12.995 --> 00:01:15.680
+Our source DataFrame in this example,
+
+00:01:15.680 --> 00:01:21.160
+kafkaRawStreamingDF is created by reading from a readStream.
+
+00:01:21.160 --> 00:01:27.545
+The sink DataFrame kafkaStreamingDF is used to write information to the console.
+
+00:01:27.545 --> 00:01:31.055
+Both DataFrames appear as coding variables,
+
+00:01:31.055 --> 00:01:34.945
+but they are powerful abstractions of moving datasets.
+
+00:01:34.945 --> 00:01:37.635
+A Source provides a data stream,
+
+00:01:37.635 --> 00:01:40.170
+a Sink receives a data stream.
+
+00:01:40.170 --> 00:01:45.125
+Almost any information system can act as a source or a sink.
+
+00:01:45.125 --> 00:01:47.975
+As a source, it provides data.
+
+00:01:47.975 --> 00:01:51.640
+As a sink, it receives data from other systems.
+
+00:01:51.640 --> 00:01:55.880
+A source is an external system which generates data.
+
+00:01:55.880 --> 00:02:00.455
+A sink as an external system which consumes data.
+
+00:02:00.455 --> 00:02:04.015
+Which is a source and which is a sink?
+
+00:02:04.015 --> 00:02:05.925
+The key is the perspective.
+
+00:02:05.925 --> 00:02:08.705
+It is all determined based on the point of view.
+
+00:02:08.705 --> 00:02:10.475
+When drawing a map of the world,
+
+00:02:10.475 --> 00:02:13.490
+you orient the globe based on your current perspective.
+
+00:02:13.490 --> 00:02:15.260
+When viewed from different angles,
+
+00:02:15.260 --> 00:02:16.985
+the world can look very different.
+
+00:02:16.985 --> 00:02:18.830
+When diagramming a system,
+
+00:02:18.830 --> 00:02:20.785
+you must choose the perspective.
+
+00:02:20.785 --> 00:02:23.870
+Which system will be the source in this diagram?
+
+00:02:23.870 --> 00:02:25.655
+Which will be the sink?
+
+00:02:25.655 --> 00:02:29.510
+In this picture, identify at least two sources,
+
+00:02:29.510 --> 00:02:33.230
+identify at least one sink.
+
+00:02:33.230 --> 00:02:38.720
+Can you identify something here that is both a source and a sink?
+
+00:02:38.720 --> 00:02:43.610
+The faucet represents both a data source and a data sink.
+
+00:02:43.610 --> 00:02:47.150
+Water flows to it from the hot and cold,
+
+00:02:47.150 --> 00:02:50.780
+water flows from it to the wash basin.
+
+00:02:50.780 --> 00:02:54.575
+The wash basin represents a data sink in this example.
+
+00:02:54.575 --> 00:02:57.415
+Water flows to it from the faucet.
+
+00:02:57.415 --> 00:03:01.040
+The hot and cold both represent data sources here,
+
+00:03:01.040 --> 00:03:04.969
+they provide both hot and cold water to the faucet.
+
+00:03:04.969 --> 00:03:08.000
+Remember, the key is in the perspective.
+
+00:03:08.000 --> 00:03:11.735
+Spark streams can read from various input sources.
+
+00:03:11.735 --> 00:03:16.760
+So far, we have read from a static file using just Spark without streaming.
+
+00:03:16.760 --> 00:03:20.165
+Spark streams have the ability to monitor folders,
+
+00:03:20.165 --> 00:03:22.475
+watching for files as they appear,
+
+00:03:22.475 --> 00:03:24.725
+and then read them in real time.
+
+00:03:24.725 --> 00:03:27.680
+Perhaps, the most flexible source to read from is
+
+00:03:27.680 --> 00:03:31.415
+Kafka because of its ability to broker data.
+
+00:03:31.415 --> 00:03:36.710
+Another source that can be used primarily for testing is a Unix socket.
+
+00:03:36.710 --> 00:03:39.215
+We will not be going into this in this course,
+
+00:03:39.215 --> 00:03:41.970
+but it can be useful for learning.
+

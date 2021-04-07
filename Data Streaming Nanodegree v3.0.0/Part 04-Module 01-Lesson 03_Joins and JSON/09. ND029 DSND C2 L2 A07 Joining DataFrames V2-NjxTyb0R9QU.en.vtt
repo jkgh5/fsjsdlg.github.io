@@ -1,0 +1,295 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:02.520
+Now that you know about StructType schemas,
+
+00:00:02.520 --> 00:00:04.770
+let's move on to joining DataFrames.
+
+00:00:04.770 --> 00:00:06.630
+This is where we are in the lesson.
+
+00:00:06.630 --> 00:00:08.655
+We just worked with parsing JSON,
+
+00:00:08.655 --> 00:00:10.860
+now we will be joining DataFrames.
+
+00:00:10.860 --> 00:00:15.405
+The steps to joining start with looking into the kind of data you want to deliver.
+
+00:00:15.405 --> 00:00:19.365
+You then survey your available fields to see where you can source them from.
+
+00:00:19.365 --> 00:00:23.835
+During this process, you should also be considering fields to join on.
+
+00:00:23.835 --> 00:00:27.195
+Let's look at analyzing the desired sink.
+
+00:00:27.195 --> 00:00:29.370
+One of the main purposes of writing
+
+00:00:29.370 --> 00:00:33.205
+a streaming application is to accept data from multiple sources.
+
+00:00:33.205 --> 00:00:35.930
+Joining on streaming data can be very powerful
+
+00:00:35.930 --> 00:00:39.710
+because typically the data is changing very rapidly.
+
+00:00:39.710 --> 00:00:45.400
+Creating a combined view of the data as it changes together adds tremendous value.
+
+00:00:45.400 --> 00:00:47.705
+Now that you have looked at your source data,
+
+00:00:47.705 --> 00:00:49.700
+it's time to start planning the sink.
+
+00:00:49.700 --> 00:00:51.185
+What is the final goal?
+
+00:00:51.185 --> 00:00:54.860
+What is the format of data you plan to send to the other system?
+
+00:00:54.860 --> 00:00:57.470
+Often the person who knows the answer is
+
+00:00:57.470 --> 00:01:00.590
+someone on another team who needs the data you provide.
+
+00:01:00.590 --> 00:01:03.110
+Other times there is no definitive answer,
+
+00:01:03.110 --> 00:01:05.225
+so you create your own format.
+
+00:01:05.225 --> 00:01:08.060
+As you interview system owners from other teams,
+
+00:01:08.060 --> 00:01:11.060
+it will be important to discuss the fields they need.
+
+00:01:11.060 --> 00:01:13.655
+Once you have discussed the data that is needed,
+
+00:01:13.655 --> 00:01:16.030
+you can create a mock data sample.
+
+00:01:16.030 --> 00:01:21.365
+Ask for feedback on the mock data sample before writing the Spark application.
+
+00:01:21.365 --> 00:01:25.075
+This will give you the chance to refine the data model.
+
+00:01:25.075 --> 00:01:30.800
+Data mocking is creating a representative sample of an undefined source of data.
+
+00:01:30.800 --> 00:01:34.295
+Sometimes, only a few critical fields are what is needed.
+
+00:01:34.295 --> 00:01:36.320
+In this example, there are three fields:
+
+00:01:36.320 --> 00:01:40.265
+customerId, originatingAirport, and destinationAirport.
+
+00:01:40.265 --> 00:01:43.535
+It is a common practice to include all available fields,
+
+00:01:43.535 --> 00:01:44.990
+but this can be risky.
+
+00:01:44.990 --> 00:01:49.280
+The downstream consumers may rely on fields that are subject to change.
+
+00:01:49.280 --> 00:01:51.245
+The fewer fields you transmit,
+
+00:01:51.245 --> 00:01:54.415
+the less likely it is that something will change.
+
+00:01:54.415 --> 00:01:57.695
+You have now learned to analyze the desired sink.
+
+00:01:57.695 --> 00:02:00.770
+Next, you will assess your source inventory.
+
+00:02:00.770 --> 00:02:03.530
+Now that you've designed the format for your sink,
+
+00:02:03.530 --> 00:02:05.495
+you should decide where the data will come from.
+
+00:02:05.495 --> 00:02:08.300
+Certain fields will be present in multiple sources.
+
+00:02:08.300 --> 00:02:12.560
+This is because often systems have redundancy in the data they generate.
+
+00:02:12.560 --> 00:02:15.065
+Some redundancy is helpful for joints.
+
+00:02:15.065 --> 00:02:18.845
+However, some data sources are less authoritative than others.
+
+00:02:18.845 --> 00:02:24.320
+Try to identify which sources are more authoritative for certain types of data.
+
+00:02:24.320 --> 00:02:28.519
+In this example, customerId is present in all three sources.
+
+00:02:28.519 --> 00:02:33.935
+This could be helpful for joining customer data as it is generated with departure data.
+
+00:02:33.935 --> 00:02:38.825
+The flight number is present in both the flight data and departure data sources.
+
+00:02:38.825 --> 00:02:43.805
+This could be helpful for joining flight data and departure data as it is generated.
+
+00:02:43.805 --> 00:02:46.820
+The customer e-mail field is probably more
+
+00:02:46.820 --> 00:02:50.900
+authoritative in the customer source than the flight source.
+
+00:02:50.900 --> 00:02:53.585
+Once you have identified redundant fields,
+
+00:02:53.585 --> 00:02:56.075
+you should be sure you have all your bases covered.
+
+00:02:56.075 --> 00:03:00.665
+Make sure every field you need and your destination data sink has been identified.
+
+00:03:00.665 --> 00:03:04.540
+In this example, the first payload has the customerId.
+
+00:03:04.540 --> 00:03:10.655
+The second payload contains the originatingAirport and destinationAirport fields.
+
+00:03:10.655 --> 00:03:14.060
+We will need both payloads to create the final sink,
+
+00:03:14.060 --> 00:03:16.130
+which includes the customerId,
+
+00:03:16.130 --> 00:03:20.500
+originatingAirport, and destinationAirport fields.
+
+00:03:20.500 --> 00:03:22.845
+You've assessed your source inventory.
+
+00:03:22.845 --> 00:03:25.290
+Now you will look at ways to join data.
+
+00:03:25.290 --> 00:03:27.160
+Before we write our join,
+
+00:03:27.160 --> 00:03:30.155
+we need to ensure we have a common field to join on.
+
+00:03:30.155 --> 00:03:33.385
+I may see all the fields I need in various sources,
+
+00:03:33.385 --> 00:03:35.795
+but unless there is a common field,
+
+00:03:35.795 --> 00:03:37.205
+the join won't work.
+
+00:03:37.205 --> 00:03:41.510
+In this example, there are four data types: Reservation,
+
+00:03:41.510 --> 00:03:44.465
+VehicleStatus, Checkin, and Payment.
+
+00:03:44.465 --> 00:03:46.460
+They each have unique data.
+
+00:03:46.460 --> 00:03:51.400
+There are some common fields that connect these together. What are they?
+
+00:03:51.650 --> 00:03:58.025
+Reservation, VehicleStatus, and Checkin all have a field called truck number.
+
+00:03:58.025 --> 00:04:03.805
+Reservation, Checkin, and Payment all contain a field called reservationId.
+
+00:04:03.805 --> 00:04:06.620
+In theory, this example would make joining
+
+00:04:06.620 --> 00:04:10.855
+possible between any two data types with the same field.
+
+00:04:10.855 --> 00:04:14.569
+Joining the reservation and the vehicle status DataFrames,
+
+00:04:14.569 --> 00:04:20.435
+we now have the reservation with status DataFrame with all the data from both DataFrames.
+
+00:04:20.435 --> 00:04:22.280
+To join means to connect
+
+00:04:22.280 --> 00:04:26.360
+two data collections by referencing a field they share in common,
+
+00:04:26.360 --> 00:04:29.210
+or a join can mean the state which connects
+
+00:04:29.210 --> 00:04:33.155
+two data collections by referencing a common field.
+
+00:04:33.155 --> 00:04:35.990
+It's a very good idea to look at samples of
+
+00:04:35.990 --> 00:04:39.215
+each data source to see if fields are standardized.
+
+00:04:39.215 --> 00:04:43.880
+Unfortunately, it is common to use the same field name to mean different things,
+
+00:04:43.880 --> 00:04:45.980
+especially in different systems.
+
+00:04:45.980 --> 00:04:47.975
+Look at these four data types.
+
+00:04:47.975 --> 00:04:51.090
+Do you see anything different about them?
+
+00:04:52.310 --> 00:04:58.715
+Reservation, Checkin, and Payment all format the reservationId differently.
+
+00:04:58.715 --> 00:05:01.880
+After examining Reservation and Checkin,
+
+00:05:01.880 --> 00:05:05.330
+it appears the main difference is the leading zeros.
+
+00:05:05.330 --> 00:05:08.545
+Until further data samples are obtained for payment,
+
+00:05:08.545 --> 00:05:11.300
+it is hard to say if the reservationId is
+
+00:05:11.300 --> 00:05:15.730
+the same field due to the significant difference in format.
+
+00:05:15.730 --> 00:05:19.670
+In this example, we want to join the two payloads shown.
+
+00:05:19.670 --> 00:05:23.010
+What is the common field we can join on?
+
+00:05:23.570 --> 00:05:29.260
+The common field in both Ticketing and Flight Info is flightNumber.
+
+00:05:29.260 --> 00:05:35.130
+Now we're going to walk through an example of joining two separate DataFrames.
+

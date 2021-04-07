@@ -1,0 +1,310 @@
+<!-- udacity2.0 -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Quiz: Join Streaming Dataframes from Different Datasources</title>
+  <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../assets/css/plyr.css">
+  <link rel="stylesheet" href="../assets/css/katex.min.css">
+  <link rel="stylesheet" href="../assets/css/jquery.mCustomScrollbar.min.css">
+  <link rel="stylesheet" href="../assets/css/styles.css">
+  <link rel="shortcut icon" type="image/png" href="../assets/img/udacimak.png" />
+</head>
+
+<body>
+  <div class="wrapper">
+    <nav id="sidebar">
+  <div class="sidebar-header">
+    <h3>Joins and JSON</h3>
+  </div>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled components">
+    <li class="">
+      <a href="01. Lesson Overview.html">01. Lesson Overview</a>
+    </li>
+    <li class="">
+      <a href="02. Why JSON is important.html">02. Why JSON is important?</a>
+    </li>
+    <li class="">
+      <a href="03. Why JSON and joins are important..html">03. Why JSON and joins are important.</a>
+    </li>
+    <li class="">
+      <a href="04. Parse a JSON Payload.html">04. Parse a JSON Payload</a>
+    </li>
+    <li class="">
+      <a href="05. Walkthrough 1 Parse a JSON Payload.html">05. Walkthrough 1: Parse a JSON Payload</a>
+    </li>
+    <li class="">
+      <a href="06. Quiz Parse a JSON payload into separate fields for analysis.html">06. Quiz: Parse a JSON payload into separate fields for analysis</a>
+    </li>
+    <li class="">
+      <a href="07. Exercise Parse a JSON Payload.html">07. Exercise: Parse a JSON Payload</a>
+    </li>
+    <li class="">
+      <a href="08. Solution 1 Parse a JSON Payload.html">08. Solution 1: Parse a JSON Payload</a>
+    </li>
+    <li class="">
+      <a href="09. Join Streaming Dataframes from Different Datasources.html">09. Join Streaming Dataframes from Different Datasources</a>
+    </li>
+    <li class="">
+      <a href="10. Walkthrough 2 Join Streaming Dataframes.html">10. Walkthrough 2: Join Streaming Dataframes</a>
+    </li>
+    <li class="">
+      <a href="11. Quiz Join Streaming Dataframes from Different Datasources.html">11. Quiz: Join Streaming Dataframes from Different Datasources</a>
+    </li>
+    <li class="">
+      <a href="12. Exercise 2 Join Streaming Dataframes.html">12. Exercise 2: Join Streaming Dataframes</a>
+    </li>
+    <li class="">
+      <a href="13. Solution Join Streaming Dataframes.html">13. Solution: Join Streaming Dataframes</a>
+    </li>
+    <li class="">
+      <a href="14. Sink to Kafka.html">14. Sink to Kafka</a>
+    </li>
+    <li class="">
+      <a href="15. Walkthrough 3 Sink to Kafka.html">15. Walkthrough 3: Sink to Kafka</a>
+    </li>
+    <li class="">
+      <a href="16. Quiz Sink to Kafka.html">16. Quiz: Sink to Kafka</a>
+    </li>
+    <li class="">
+      <a href="17. Exercise Sink to Kafka.html">17. Exercise: Sink to Kafka</a>
+    </li>
+    <li class="">
+      <a href="18. Solution 3 Sink to Kafka.html">18. Solution 3: Sink to Kafka</a>
+    </li>
+    <li class="">
+      <a href="19. Edge Cases.html">19. Edge Cases</a>
+    </li>
+    <li class="">
+      <a href="20. Glossary.html">20. Glossary</a>
+    </li>
+    <li class="">
+      <a href="21. Further Reading.html">21. Further Reading</a>
+    </li>
+    <li class="">
+      <a href="22. Lesson Review.html">22. Lesson Review</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+</nav>
+
+    <div id="content">
+      <header class="container-fluild header">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <div class="align-items-middle">
+                <button type="button" id="sidebarCollapse" class="btn btn-toggle-sidebar">
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                </button>
+
+                <h1 style="display: inline-block">11. Quiz: Join Streaming Dataframes from Different Datasources</h1>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <main class="container">
+        <div class="row">
+          <div class="col-12">
+            <div class="ud-atom">
+  <h3><p>Quiz: Join two streaming dataframes from different datasources Heading</p></h3>
+  <div>
+  <h2 id="quiz-join-streaming-dataframes-from-different-datasources">Quiz: Join Streaming Dataframes from Different Datasources</h2>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3><p>Identify the Common Field</p></h3>
+  <div>
+  <form>
+    <fieldset>
+      <legend><p>Identify the common field in the following payloads best suited to use for a join expression:</p>
+<h3 id="reservation">Reservation</h3>
+<pre><code>{
+  "reservationId":"814840107",
+  "customerName":"Jim Harris", 
+  "truckNumber":"15867", 
+  "reservationDate":"Sep 29, 2020, 10:06:23 AM"
+}</code></pre>
+<h3 id="payment">Payment</h3>
+<pre><code>{
+  "reservationId":"9856743232",
+  "customerName":"Frank Aristotle",
+  "amount":"946.88"
+}</code></pre></legend>
+    </fieldset>
+
+      <div>
+        <input type="radio" value="a1604684101213" name="1095985" id="a1604684101213">
+        <label for="a1604684101213"><p><code>customerName</code> </p></label>
+      </div>
+      <div>
+        <input type="radio" value="a1604684154762" name="1095985" id="a1604684154762">
+        <label for="a1604684154762"><p><code>reservationDate</code></p></label>
+      </div>
+      <div>
+        <input type="radio" value="a1604684166935" name="1095985" id="a1604684166935">
+        <label for="a1604684166935"><p><code>truckNumber</code></p></label>
+      </div>
+      <div>
+        <input type="radio" value="a1604684182935" name="1095985" id="a1604684182935">
+        <label for="a1604684182935"><p><code>reservationId</code></p></label>
+      </div>
+  </form>
+
+  <details>
+    <summary><strong>SOLUTION:</strong></summary>
+    `reservationId`
+  </details>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3><p>What is the goal of data mocking?</p></h3>
+  <div>
+  <form>
+    <fieldset>
+      <legend><p>What is the goal of data mocking? Select all that apply.</p></legend>
+    </fieldset>
+
+    <div>
+      <input type="checkbox" value="a1604684326923" name="1095986" id="a1604684326923">
+      <label for="a1604684326923"><p>To create the schema for a data sink</p></label>
+    </div>
+    <div>
+      <input type="checkbox" value="a1604684394192" name="1095986" id="a1604684394192">
+      <label for="a1604684394192"><p>To avoid having to make changes in the future</p></label>
+    </div>
+    <div>
+      <input type="checkbox" value="a1604684404041" name="1095986" id="a1604684404041">
+      <label for="a1604684404041"><p>To determine what fields are needed</p></label>
+    </div>
+    <div>
+      <input type="checkbox" value="a1604684416386" name="1095986" id="a1604684416386">
+      <label for="a1604684416386"><p>To extract data from the test system.</p></label>
+    </div>
+  </form>
+
+  <details>
+    <summary><strong>SOLUTION:</strong></summary>
+    <ul>
+      <li>To create the schema for a data sink</li>
+      <li>To determine what fields are needed</li>
+  </ul>
+  </details>
+</div>
+
+</div>
+<div class="divider"></div>
+          </div>
+
+          <div class="col-12">
+            <p class="text-right">
+              <a href="12. Exercise 2 Join Streaming Dataframes.html" class="btn btn-outline-primary mt-4" role="button">Next Concept</a>
+            </p>
+          </div>
+        </div>
+      </main>
+
+      <footer class="footer">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <p class="text-center">
+                <a href="https://us-udacity.github.io/" target="_blank">【udacity2.0 】If you need more courses, please add wechat：udacity6</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </div>
+
+
+  <script src="../assets/js/jquery-3.3.1.min.js"></script>
+  <script src="../assets/js/plyr.polyfilled.min.js"></script>
+  <script src="../assets/js/bootstrap.min.js"></script>
+  <script src="../assets/js/jquery.mCustomScrollbar.concat.min.js"></script>
+  <script src="../assets/js/katex.min.js"></script>
+  <script>
+    // Initialize Plyr video players
+    const players = Array.from(document.querySelectorAll('video')).map(p => new Plyr(p));
+
+    // render math equations
+    let elMath = document.getElementsByClassName('mathquill');
+    for (let i = 0, len = elMath.length; i < len; i += 1) {
+      const el = elMath[i];
+
+      katex.render(el.textContent, el, {
+        throwOnError: false
+      });
+    }
+
+    // this hack will make sure Bootstrap tabs work when using Handlebars
+    if ($('#question-tabs').length && $('#user-answer-tabs').length) {
+      $("#question-tabs a.nav-link").on('click', function () {
+        $("#question-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+      $("#user-answer-tabs a.nav-link").on('click', function () {
+        $("#user-answer-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    } else {
+      $("a.nav-link").on('click', function () {
+        $(".tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    }
+
+    // side bar events
+    $(document).ready(function () {
+      $("#sidebar").mCustomScrollbar({
+        theme: "minimal"
+      });
+
+      $('#sidebarCollapse').on('click', function () {
+        $('#sidebar, #content').toggleClass('active');
+        $('.collapse.in').toggleClass('in');
+        $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+      });
+
+      // scroll to first video on page loading
+      if ($('video').length) {
+        $('html,body').animate({ scrollTop: $('div.plyr').prev().offset().top});
+      }
+
+      // auto play first video: this may not work with chrome/safari due to autoplay policy
+      if (players && players.length > 0) {
+        players[0].play();
+      }
+
+      // scroll sidebar to current concept
+      const currentInSideBar = $( "ul.sidebar-list.components li a:contains('11. Quiz: Join Streaming Dataframes from Different Datasources')" )
+      currentInSideBar.css( "text-decoration", "underline" );
+      $("#sidebar").mCustomScrollbar('scrollTo', currentInSideBar);
+    });
+  </script>
+</body>
+
+</html>

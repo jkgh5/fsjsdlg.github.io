@@ -1,0 +1,40 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:03.120
+Let's recap what you have done in this lesson.
+
+00:00:03.120 --> 00:00:06.015
+First, you worked with parsing a source JSON payload.
+
+00:00:06.015 --> 00:00:08.880
+Then you joined two different streaming DataFrames.
+
+00:00:08.880 --> 00:00:12.960
+Then you created a Kafka sink with a newly created DataFrame.
+
+00:00:12.960 --> 00:00:15.180
+Now that you've completed lesson 2,
+
+00:00:15.180 --> 00:00:18.255
+you should be able to successfully complete the following.
+
+00:00:18.255 --> 00:00:22.020
+Parse a JSON payload into separate fields for analysis.
+
+00:00:22.020 --> 00:00:25.530
+Join two streaming DataFrames from different data sources.
+
+00:00:25.530 --> 00:00:29.385
+Write a streaming DataFrame to Kafka with aggregated data.
+
+00:00:29.385 --> 00:00:32.549
+Now that you've learned about JSON and Joins,
+
+00:00:32.549 --> 00:00:34.460
+we're now going to move onto Redis,
+
+00:00:34.460 --> 00:00:38.010
+Base64 and JSON. See there.
+

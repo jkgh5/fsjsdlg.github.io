@@ -1,0 +1,73 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:04.230
+Could you write Streaming Spark applications without using JSON?
+
+00:00:04.230 --> 00:00:06.360
+Do you need to use joints?
+
+00:00:06.360 --> 00:00:11.665
+In this lesson we will discuss the details of when and why we would use both.
+
+00:00:11.665 --> 00:00:13.500
+In the previous lesson,
+
+00:00:13.500 --> 00:00:16.350
+you learned how to write a basic streaming application.
+
+00:00:16.350 --> 00:00:20.715
+In this lesson, you will learn how to read streaming JSON messages.
+
+00:00:20.715 --> 00:00:24.090
+Streaming messages usually are JSON formatted.
+
+00:00:24.090 --> 00:00:27.720
+If you're using a version before Spark 3.0,
+
+00:00:27.720 --> 00:00:30.330
+JSON field inference is not available.
+
+00:00:30.330 --> 00:00:36.165
+In this lesson, you will learn how to create a JSON schema based on an expected format.
+
+00:00:36.165 --> 00:00:40.590
+You will learn how to explicitly parse JSON into independent fields,
+
+00:00:40.590 --> 00:00:42.235
+in a temporary view.
+
+00:00:42.235 --> 00:00:47.630
+Joints allow you to merge data from separate data frames into a single data frame,
+
+00:00:47.630 --> 00:00:50.305
+just like you would in a sequel join.
+
+00:00:50.305 --> 00:00:54.440
+JSON has become the de facto standard for data exchange.
+
+00:00:54.440 --> 00:00:58.715
+You will work extensively with JSON throughout the rest of the course.
+
+00:00:58.715 --> 00:01:02.975
+We will explore multiple JSON payload streaming from Kafka.
+
+00:01:02.975 --> 00:01:07.790
+Providing streaming data to others is best done through JSON format.
+
+00:01:07.790 --> 00:01:11.545
+JSON or JavaScript Object Notation,
+
+00:01:11.545 --> 00:01:15.350
+was originally created to serialize objects in JavaScript.
+
+00:01:15.350 --> 00:01:20.905
+JSON is a data serialization standard consisting of keys and values.
+
+00:01:20.905 --> 00:01:24.240
+In this example, we have two keys, first name,
+
+00:01:24.240 --> 00:01:29.790
+and last name, as well as two values, Sally and Smith.
+

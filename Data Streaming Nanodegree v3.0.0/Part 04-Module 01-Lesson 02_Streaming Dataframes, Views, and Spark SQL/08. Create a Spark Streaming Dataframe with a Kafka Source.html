@@ -1,0 +1,554 @@
+<!-- udacity2.0 -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Create a Spark Streaming Dataframe with a Kafka Source</title>
+  <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../assets/css/plyr.css">
+  <link rel="stylesheet" href="../assets/css/katex.min.css">
+  <link rel="stylesheet" href="../assets/css/jquery.mCustomScrollbar.min.css">
+  <link rel="stylesheet" href="../assets/css/styles.css">
+  <link rel="shortcut icon" type="image/png" href="../assets/img/udacimak.png" />
+</head>
+
+<body>
+  <div class="wrapper">
+    <nav id="sidebar">
+  <div class="sidebar-header">
+    <h3>Streaming Dataframes, Views, and Spark SQL</h3>
+  </div>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled components">
+    <li class="">
+      <a href="01. Lesson Overview.html">01. Lesson Overview</a>
+    </li>
+    <li class="">
+      <a href="02. Importance of Spark.html">02. Importance of Spark</a>
+    </li>
+    <li class="">
+      <a href="03. Spark Clusters.html">03. Spark Clusters</a>
+    </li>
+    <li class="">
+      <a href="04. Walkthrough 1 Start a Spark Cluster.html">04. Walkthrough 1: Start a Spark Cluster</a>
+    </li>
+    <li class="">
+      <a href="05. Quiz Spark Clusters.html">05. Quiz: Spark Clusters</a>
+    </li>
+    <li class="">
+      <a href="06. Exercise 1 Spark Clusters.html">06. Exercise 1: Spark Clusters</a>
+    </li>
+    <li class="">
+      <a href="07. Solution Spark Clusters.html">07. Solution: Spark Clusters</a>
+    </li>
+    <li class="">
+      <a href="08. Create a Spark Streaming Dataframe with a Kafka Source.html">08. Create a Spark Streaming Dataframe with a Kafka Source</a>
+    </li>
+    <li class="">
+      <a href="09. Walkthrough 2 Create a Spark Streaming Dataframe.html">09. Walkthrough 2: Create a Spark Streaming Dataframe</a>
+    </li>
+    <li class="">
+      <a href="10. Quiz Create a Spark Streaming Dataframe.html">10. Quiz: Create a Spark Streaming Dataframe</a>
+    </li>
+    <li class="">
+      <a href="11. Exercise  Create a Spark Streaming Dataframe.html">11. Exercise : Create a Spark Streaming Dataframe</a>
+    </li>
+    <li class="">
+      <a href="12. Solution 2 Create a Spark Streaming Dataframe.html">12. Solution 2: Create a Spark Streaming Dataframe</a>
+    </li>
+    <li class="">
+      <a href="13. Spark Views.html">13. Spark Views</a>
+    </li>
+    <li class="">
+      <a href="14. Walkthrough 3 Query a Spark View.html">14. Walkthrough 3: Query a Spark View</a>
+    </li>
+    <li class="">
+      <a href="15. Quiz Query a Spark View.html">15. Quiz: Query a Spark View</a>
+    </li>
+    <li class="">
+      <a href="16. Exercise Spark Views.html">16. Exercise: Spark Views</a>
+    </li>
+    <li class="">
+      <a href="17. Solution 3 Spark Views.html">17. Solution 3: Spark Views</a>
+    </li>
+    <li class="">
+      <a href="18. Edge Cases.html">18. Edge Cases</a>
+    </li>
+    <li class="">
+      <a href="19. Glossary.html">19. Glossary</a>
+    </li>
+    <li class="">
+      <a href="20. Further Reading.html">20. Further Reading</a>
+    </li>
+    <li class="">
+      <a href="21. Lesson Review.html">21. Lesson Review</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+</nav>
+
+    <div id="content">
+      <header class="container-fluild header">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <div class="align-items-middle">
+                <button type="button" id="sidebarCollapse" class="btn btn-toggle-sidebar">
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                </button>
+
+                <h1 style="display: inline-block">08. Create a Spark Streaming Dataframe with a Kafka Source</h1>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <main class="container">
+        <div class="row">
+          <div class="col-12">
+            <div class="ud-atom">
+  <h3><p>Create a Spark Streaming Dataframe with a Kafka source Heading</p></h3>
+  <div>
+  <h2 id="create-a-spark-streaming-dataframe-with-a-kafka-source">Create a Spark Streaming Dataframe with a Kafka Source</h2>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3><p>ND029 DSND C2 L1 A06 Kafka As A Source Part 1 V2</p></h3>
+  <video controls>
+  <source src="08. ND029 DSND C2 L1 A06 Kafka As A Source Part 1 V2-60ozjuOuP7w.mp4" type="video/mp4">
+
+  <track default="true" kind="subtitles" srclang="en" src="08. ND029 DSND C2 L1 A06 Kafka As A Source Part 1 V2-60ozjuOuP7w.en.vtt" label="en">
+</video>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h2 id="changing-data">Changing Data</h2>
+<p>Have you ever seen fireflies at night? Our world is full of data, which like fireflies is constantly changing and in motion.</p>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <figure class="figure">
+    <img src="img/slide-48.jpeg" alt="Streaming DataFrame: Capturing Data in Motion" class="img img-fluid">
+    <figcaption class="figure-caption">
+      <p>Streaming DataFrame: Capturing Data in Motion</p>
+    </figcaption>
+  </figure>
+</div>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h2 id="streaming-dataframe-capturing-data-in-motion">Streaming DataFrame: Capturing Data in Motion</h2>
+<ul>
+<li>Imagine each firefly is a different Data Stream</li>
+<li>We want to be able to capture, compare, and gather their unique data, and see how they look when viewed together </li>
+<li>DataFrames enable these unique comparisons to happen</li>
+<li>They can make a short-term view of data in motion, that your application will use to create insights</li>
+</ul>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h3 id="what-is-a-dataframe">What is a DataFrame?</h3>
+<p>**DataFrame: *<em>A</em>* **programming construct used to coordinate the processing of dynamic data.</p>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h2 id="dataframes-in-action">DataFrames in Action</h2>
+<pre><code>spark = SparkSession.builder.appName("balance-events").getOrCreate()
+
+kafkaRawStreamingDF = spark \
+   .readStream              \
+   .format("kafka")         \
+   .option("kafka.bootstrap.servers","localhost:9092") \
+   .option("subscribe","balance-updates")              \
+   .option("startingOffsets","earliest")              \    
+
+kafkaStreamingDF = kafkaRawStreamingDF \
+   .selectExpr("cast(key as string) key", "cast(value as string) value")
+
+kafkaStreamingDF.writeStream \
+   .outputMode("append") \
+   .format("console") \
+   .start() \
+   .awaitTermination()</code></pre>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h2 id="explanation-of-dataframes-in-action">Explanation of DataFrames in Action</h2>
+<p>Here is a Spark Streaming Application using the DataFrame construct:</p>
+<ul>
+<li>Our Source DataFrame in this example, <strong>kafkaRawStreamingDF</strong>, is created by reading from a readStream</li>
+<li>The Sink DataFrame, <strong>kafkaStreamingDF</strong>, is used to write information to the console </li>
+<li>Both DataFrames appear as coding variables, but they are powerful abstractions of moving DataSets</li>
+</ul>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <figure class="figure">
+    <img src="img/slide-51.jpeg" alt="Source and Sink" class="img img-fluid">
+    <figcaption class="figure-caption">
+      <p>Source and Sink</p>
+    </figcaption>
+  </figure>
+</div>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h3 id="what-is-a-source">What is a Source?</h3>
+<p>**Source: **an external system that generates data.</p>
+<h3 id="what-is-a-sink">What is a Sink?</h3>
+<p>**Sink: **an external system that consumes data.</p>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <figure class="figure">
+    <img src="img/slide-54.jpeg" alt="Pop Quiz" class="img img-fluid">
+    <figcaption class="figure-caption">
+      <p>Pop Quiz</p>
+    </figcaption>
+  </figure>
+</div>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h2 id="pop-quiz">Pop Quiz</h2>
+<p>So which is a source and which is a sink? The key is the <em>perspective</em>. It is all determined based on the point of view. When drawing a map of the world, you orient the globe based on your current perspective. When viewed from different angles, the world can look very different. When diagramming a system, you must choose the perspective. Which system will be the source in this diagram? Which will be the sink?</p>
+<ol>
+<li>In this picture, identify at least two sources</li>
+<li>Identify at least one sink</li>
+<li>Can you identify something in the picture that is both a source and a sink?</li>
+</ol>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <figure class="figure">
+    <img src="img/slide-55.jpeg" alt="Answer Key" class="img img-fluid">
+    <figcaption class="figure-caption">
+      <p>Answer Key</p>
+    </figcaption>
+  </figure>
+</div>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h3 id="answer-key">Answer Key</h3>
+<ul>
+<li>The faucet represents both a data Source and a data Sink</li>
+<li>Water flows <strong><em>to</em></strong> it from the Hot and Cold </li>
+<li>Water flows <strong><em>from</em></strong> it to the washbasin</li>
+<li>The washbasin represents a data Sink in this example</li>
+<li>Water flows <strong><em>to</em></strong> it from the faucet </li>
+<li>The Hot and Cold both represent data Sources here</li>
+<li>They provide both hot and cold water <strong><em>to</em></strong> the faucet</li>
+</ul>
+<p>Remember, the key is in the Perspective!</p>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <figure class="figure">
+    <img src="img/slide-56.jpeg" alt="Spark Sources" class="img img-fluid">
+    <figcaption class="figure-caption">
+      <p>Spark Sources</p>
+    </figcaption>
+  </figure>
+</div>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h2 id="spark-sources">Spark Sources</h2>
+<ul>
+<li>Spark Streams can read from various input sources</li>
+<li>So far we have read from a static file using just Spark without streaming</li>
+<li>Spark Streams have the ability to monitor folders, watching for files as they appear, and then read them in real-time</li>
+<li>Perhaps the most flexible source to read from is Kafka, because of its ability to broker data</li>
+<li>Another source that can be used primarily for testing is a Unix socket - we will not be going into this in the course, but it can be useful for learning</li>
+</ul>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <figure class="figure">
+    <img src="img/slide-58.jpeg" alt="Constructing a Kafka Stream" class="img img-fluid">
+    <figcaption class="figure-caption">
+      <p>Constructing a Kafka Stream</p>
+    </figcaption>
+  </figure>
+</div>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h2 id="to-construct-a-kafka-stream">To construct a Kafka Stream:</h2>
+<ul>
+<li>You first provide a <strong>broker</strong> name</li>
+<li>Then you choose a <strong>topic</strong></li>
+<li>Last you should indicate if you want <strong>the earliest</strong> or <strong>latest</strong> messages:<ul>
+<li>Earliest means you would like to read your messages starting with the oldest</li>
+<li>Latest means you would like to read the most recent messages first (this option doesn't read the older messages, just those messages from the time the stream starts going forward</li></ul></li>
+</ul>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h2 id="kafka-stream-in-action">Kafka Stream in Action</h2>
+<pre><code>kafkaRawStreamingDF = spark                          \    
+.readStream                                          \
+.format("kafka")                                     \
+.option("kafka.bootstrap.servers", "localhost:9092") \
+.option("subscribe", "balance-updates")              \
+.option("startingOffsets","earliest")                \ </code></pre>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h2 id="explanation-of-kafka-stream-in-action">Explanation of Kafka Stream in Action</h2>
+<p>Here is a Spark Streaming Application using a Kafka Stream as a Source</p>
+<ol>
+<li>Our Source DataFrame in this example, called <strong>kafkaRawStreamingDF</strong> is created by reading from a readStream</li>
+<li>We chain the option function to provide multiple connection parameters </li>
+<li>The first parameter we pass is the <strong>kafka.bootstrap.servers</strong> parameter…this is our <strong>broker</strong></li>
+<li>The next parameter we pass is the <strong>subscribe</strong> parameter…this is the <strong>topic</strong></li>
+<li>The last parameter we send is the <strong>startingOffsets</strong> parameter…this tells Kafka we want messages starting at the <strong>earliest</strong> message received for the topic</li>
+</ol>
+<p>Keep in mind that messages do expire eventually, so earliest is actually the earliest message Kafka still remembers.</p>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h2 id="whats-a-broker">What's a Broker?</h2>
+<p>**Broker: **in a Kafka configuration, the server to which requests from external systems can be addressed; also the central processing component of a Kafka cluster.</p>
+<h2 id="whats-a-topic">What's a Topic?</h2>
+<p>**Topic: **in a Kafka configuration, a communication channel; often representing similar or related data; sometimes called a mailbox.</p>
+<h2 id="what-is-an-offset">What is an Offset?</h2>
+<p>**Offset: **in a Kafka configuration, a value that determines the mode of consumption of a topic; earliest starts at the oldest message; the latest starts at the newest message.</p>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3><p>ND029 DSND C2 L1 A06 Kafka As A Source Part 2</p></h3>
+  <video controls>
+  <source src="08. ND029 DSND C2 L1 A06 Kafka As A Source Part 2-u2cI_vmIR6c.mp4" type="video/mp4">
+
+  <track default="true" kind="subtitles" srclang="en" src="08. ND029 DSND C2 L1 A06 Kafka As A Source Part 2-u2cI_vmIR6c.en.vtt" label="en">
+</video>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h2 id="the-topic-of-the-conversation">The <em>Topic</em> of the Conversation</h2>
+<p>Have you ever known someone who can intelligently discuss just about anything? It doesn't seem to matter what the conversation is about, they just happen to know something about it?</p>
+<p>Kafka has a similar quality. It can provide data from dozens or hundreds of topics. Each topic's data can come from a different source.</p>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <figure class="figure">
+    <img src="img/slide-63.jpeg" alt="Topic of the Conversation" class="img img-fluid">
+    <figcaption class="figure-caption">
+      <p>Topic of the Conversation</p>
+    </figcaption>
+  </figure>
+</div>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h2 id="keys-and-values">Keys and Values</h2>
+<p>Every message you read from Kafka has 2 fields:</p>
+<ul>
+<li>The <strong>Key</strong> column is like the primary key for a database table and is often a unique identifier</li>
+<li>The <strong>Value</strong> column contains the bulk of the data being transmitted</li>
+<li>By default, the Kafka key and value are in binary format</li>
+</ul>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <figure class="figure">
+    <img src="img/slide-65.jpeg" alt="Keys and Values" class="img img-fluid">
+    <figcaption class="figure-caption">
+      <p>Keys and Values</p>
+    </figcaption>
+  </figure>
+</div>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h2 id="additional-resources">Additional Resources</h2>
+<p>For more information on integrating Spark with Kafka, see the official <a href="https://spark.apache.org/docs/latest/structured-streaming-kafka-integration.html" target="_blank">Kafka Integration Guide</a>.</p>
+</div>
+
+</div>
+<div class="divider"></div>
+          </div>
+
+          <div class="col-12">
+            <p class="text-right">
+              <a href="09. Walkthrough 2 Create a Spark Streaming Dataframe.html" class="btn btn-outline-primary mt-4" role="button">Next Concept</a>
+            </p>
+          </div>
+        </div>
+      </main>
+
+      <footer class="footer">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <p class="text-center">
+                <a href="https://us-udacity.github.io/" target="_blank">【udacity2.0 】If you need more courses, please add wechat：udacity6</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </div>
+
+
+  <script src="../assets/js/jquery-3.3.1.min.js"></script>
+  <script src="../assets/js/plyr.polyfilled.min.js"></script>
+  <script src="../assets/js/bootstrap.min.js"></script>
+  <script src="../assets/js/jquery.mCustomScrollbar.concat.min.js"></script>
+  <script src="../assets/js/katex.min.js"></script>
+  <script>
+    // Initialize Plyr video players
+    const players = Array.from(document.querySelectorAll('video')).map(p => new Plyr(p));
+
+    // render math equations
+    let elMath = document.getElementsByClassName('mathquill');
+    for (let i = 0, len = elMath.length; i < len; i += 1) {
+      const el = elMath[i];
+
+      katex.render(el.textContent, el, {
+        throwOnError: false
+      });
+    }
+
+    // this hack will make sure Bootstrap tabs work when using Handlebars
+    if ($('#question-tabs').length && $('#user-answer-tabs').length) {
+      $("#question-tabs a.nav-link").on('click', function () {
+        $("#question-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+      $("#user-answer-tabs a.nav-link").on('click', function () {
+        $("#user-answer-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    } else {
+      $("a.nav-link").on('click', function () {
+        $(".tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    }
+
+    // side bar events
+    $(document).ready(function () {
+      $("#sidebar").mCustomScrollbar({
+        theme: "minimal"
+      });
+
+      $('#sidebarCollapse').on('click', function () {
+        $('#sidebar, #content').toggleClass('active');
+        $('.collapse.in').toggleClass('in');
+        $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+      });
+
+      // scroll to first video on page loading
+      if ($('video').length) {
+        $('html,body').animate({ scrollTop: $('div.plyr').prev().offset().top});
+      }
+
+      // auto play first video: this may not work with chrome/safari due to autoplay policy
+      if (players && players.length > 0) {
+        players[0].play();
+      }
+
+      // scroll sidebar to current concept
+      const currentInSideBar = $( "ul.sidebar-list.components li a:contains('08. Create a Spark Streaming Dataframe with a Kafka Source')" )
+      currentInSideBar.css( "text-decoration", "underline" );
+      $("#sidebar").mCustomScrollbar('scrollTo', currentInSideBar);
+    });
+  </script>
+</body>
+
+</html>

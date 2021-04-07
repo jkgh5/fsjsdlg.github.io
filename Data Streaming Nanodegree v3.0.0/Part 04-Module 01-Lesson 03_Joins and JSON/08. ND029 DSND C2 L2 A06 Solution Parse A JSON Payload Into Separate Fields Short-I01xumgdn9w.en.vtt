@@ -1,0 +1,145 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:03.885
+Let's look at the solution to the bank deposits exercise.
+
+00:00:03.885 --> 00:00:07.200
+The first thing we're going to do is import the Spark session,
+
+00:00:07.200 --> 00:00:10.950
+then we're going to import all of the SQL functions we're going to use,
+
+00:00:10.950 --> 00:00:14.325
+then we're going to import all of the SQL types we're going to use.
+
+00:00:14.325 --> 00:00:20.280
+We're going to first create a schema for the JSON message that will be receiving.
+
+00:00:20.280 --> 00:00:23.745
+That will include an account number and amount and a date and time.
+
+00:00:23.745 --> 00:00:26.355
+I'll create that Kafka message schema.
+
+00:00:26.355 --> 00:00:29.295
+Then I'm going to create a Spark session.
+
+00:00:29.295 --> 00:00:31.770
+I'll set the log level to 'WARN'.
+
+00:00:31.770 --> 00:00:33.285
+Then using Spark session,
+
+00:00:33.285 --> 00:00:35.880
+I will read a Kafka stream using
+
+00:00:35.880 --> 00:00:40.905
+my bootstrap server option I will direct it to localhost on port 9092.
+
+00:00:40.905 --> 00:00:42.530
+To read from the bank deposits,
+
+00:00:42.530 --> 00:00:44.225
+I'll use this subscribe option.
+
+00:00:44.225 --> 00:00:46.465
+To tell the starting offset option,
+
+00:00:46.465 --> 00:00:49.400
+I'll use that option and pass the earliest value.
+
+00:00:49.400 --> 00:00:51.940
+Then I will do download.
+
+00:00:51.940 --> 00:00:53.860
+Here's my data frame.
+
+00:00:53.860 --> 00:00:57.035
+I'm going to read from the raw data frame.
+
+00:00:57.035 --> 00:00:58.700
+By using a select expression,
+
+00:00:58.700 --> 00:01:03.875
+I'll cast the keys from binary to strings and the value from binary to strings.
+
+00:01:03.875 --> 00:01:08.470
+Then I want to de-serialize this from JSON to regular fields.
+
+00:01:08.470 --> 00:01:13.890
+I'll take the bank deposits stream data frame and call the dot width column on it.
+
+00:01:13.890 --> 00:01:17.175
+I'm going to overload the value column.
+
+00:01:17.175 --> 00:01:21.185
+From JSON I'll extract the current value, which is JSON.
+
+00:01:21.185 --> 00:01:24.140
+I'll have to reference the Kafka message schema.
+
+00:01:24.140 --> 00:01:28.730
+Then I will select the columnvalue.star,
+
+00:01:28.730 --> 00:01:31.175
+which is actually several nested columns.
+
+00:01:31.175 --> 00:01:33.140
+I'll put those necessary columns into
+
+00:01:33.140 --> 00:01:37.635
+a top level query and save them into a view called bank deposits.
+
+00:01:37.635 --> 00:01:43.485
+Then I will create a new data frame querying from that view using spark.sql.
+
+00:01:43.485 --> 00:01:45.950
+Then I'll take the data frame that I've queried
+
+00:01:45.950 --> 00:01:48.550
+from the view and write it to the console.
+
+00:01:48.550 --> 00:01:51.515
+I'm going to copy the syntax to run this.
+
+00:01:51.515 --> 00:01:56.630
+It's home/workspace/spark/bin/spark-submit--packages,
+
+00:01:56.630 --> 00:01:59.240
+and then the full name of the library we
+
+00:01:59.240 --> 00:02:03.890
+use and the path to the Spark Python application.
+
+00:02:03.890 --> 00:02:05.645
+I'm going to paste that in here.
+
+00:02:05.645 --> 00:02:12.360
+Then I'm going to type the path home/workspace/bank-deposits.py.
+
+00:02:13.690 --> 00:02:17.910
+I'm going to make sure I've saved this.
+
+00:02:19.220 --> 00:02:23.085
+Can't open it, it's because I misspelled it.
+
+00:02:23.085 --> 00:02:28.535
+Bank-deposits.py. Now we're waiting for it to run.
+
+00:02:28.535 --> 00:02:32.615
+That cursor means that Spark is running my application.
+
+00:02:32.615 --> 00:02:34.835
+I'm waiting for the output.
+
+00:02:34.835 --> 00:02:36.560
+Here's my account number,
+
+00:02:36.560 --> 00:02:38.690
+amount, and date, and time.
+
+00:02:38.690 --> 00:02:42.480
+I'm going to do Control C to break out of that.
+

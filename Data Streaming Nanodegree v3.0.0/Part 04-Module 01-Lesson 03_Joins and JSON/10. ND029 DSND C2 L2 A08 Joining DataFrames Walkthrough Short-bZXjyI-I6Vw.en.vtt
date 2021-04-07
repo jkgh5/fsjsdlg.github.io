@@ -1,0 +1,190 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:04.920
+Let's walk through the solution to the vehicle check-in exercise,
+
+00:00:04.920 --> 00:00:07.950
+which will help us get ready to work more with joining
+
+00:00:07.950 --> 00:00:11.850
+two streaming DataFrames from different data sources.
+
+00:00:11.850 --> 00:00:16.035
+The first thing I'm going to do is import the Spark session.
+
+00:00:16.035 --> 00:00:21.254
+I'm going to import all of the SQL functions and all of the SQL types.
+
+00:00:21.254 --> 00:00:25.005
+I'm going to create a schema that matches my JSON format.
+
+00:00:25.005 --> 00:00:29.085
+Make sure the field names match correctly and the types.
+
+00:00:29.085 --> 00:00:34.759
+I'm going to do another schema that is for this payload with the same fields,
+
+00:00:34.759 --> 00:00:38.945
+reservationid, locationNames, truckNumber, and status.
+
+00:00:38.945 --> 00:00:42.100
+Then I'm going to create a new Spark session.
+
+00:00:42.100 --> 00:00:45.680
+I'm going to do that using the name vehicle check-in.
+
+00:00:45.680 --> 00:00:47.795
+I'm going to set my log level to warn.
+
+00:00:47.795 --> 00:00:51.920
+Then I'm going to connect to Kafka using my Spark session,
+
+00:00:51.920 --> 00:00:54.190
+set my format to Kafka,
+
+00:00:54.190 --> 00:00:57.380
+my bootstrap servers to localhost 9092.
+
+00:00:57.380 --> 00:00:59.825
+I'm going to subscribe to vehicle status topic,
+
+00:00:59.825 --> 00:01:02.110
+set my offsets to earliest,
+
+00:01:02.110 --> 00:01:06.980
+and then I'm going to convert this raw DataFrame here using a select expression.
+
+00:01:06.980 --> 00:01:09.575
+I will cast my key and value as strings,
+
+00:01:09.575 --> 00:01:11.785
+capture that in another DataFrame.
+
+00:01:11.785 --> 00:01:15.245
+I'll then call the dot withColumn method on that DataFrame.
+
+00:01:15.245 --> 00:01:20.475
+I'm going to overload the value calling from JSON I'll extract the current value.
+
+00:01:20.475 --> 00:01:25.835
+I will use the vehicle status schema to split the JSON into multiple fields,
+
+00:01:25.835 --> 00:01:28.370
+which will then be found in value dot star.
+
+00:01:28.370 --> 00:01:30.080
+I'll select those using
+
+00:01:30.080 --> 00:01:35.615
+the COL function then I'll create a temporary view called vehicleStatus.
+
+00:01:35.615 --> 00:01:40.255
+I'm going to select all the data from that view into this DataFrame.
+
+00:01:40.255 --> 00:01:44.190
+I'm going to repeat the process for the other topic.
+
+00:01:44.190 --> 00:01:47.810
+You'll notice here I have another topic called check-in.
+
+00:01:47.810 --> 00:01:51.200
+I then have to convert this data as well.
+
+00:01:51.200 --> 00:01:55.750
+I need to convert it from JSON using the vehicle check-in schema.
+
+00:01:55.750 --> 00:01:59.010
+Now I'm going to create that vehicle check-in view.
+
+00:01:59.010 --> 00:02:01.080
+I'm going to select the data from that view.
+
+00:02:01.080 --> 00:02:03.650
+You'll notice I aliased this truck number as check-in
+
+00:02:03.650 --> 00:02:07.295
+truck number so that the column name is different when I go to do the join.
+
+00:02:07.295 --> 00:02:09.570
+Now I've got checkinStatusDF,
+
+00:02:09.570 --> 00:02:14.000
+VehicleStatusSelectStarDF, which came from selecting that data.
+
+00:02:14.000 --> 00:02:16.220
+I'm going to join the two using
+
+00:02:16.220 --> 00:02:19.835
+the dot join on the first and then inside of the dot join,
+
+00:02:19.835 --> 00:02:21.155
+I'll pass the second.
+
+00:02:21.155 --> 00:02:23.020
+The second argument is the expr,
+
+00:02:23.020 --> 00:02:27.550
+which is my join expression where I say the fields that I want to join on.
+
+00:02:27.550 --> 00:02:32.525
+Then last I'm going to take the DataFrame that I got and write that to the console.
+
+00:02:32.525 --> 00:02:37.930
+I'm going to CD to home,
+
+00:02:37.930 --> 00:02:41.925
+workspace, Spark, end list there.
+
+00:02:41.925 --> 00:02:49.215
+I've got a script to submit my vehicle check-in solution and I'm going to run that.
+
+00:02:49.215 --> 00:02:53.240
+Now before I do, I want to make sure that Spark is running.
+
+00:02:53.240 --> 00:02:57.750
+I see Spark here and here.
+
+00:02:57.750 --> 00:03:02.625
+I also see several Java processes that means Kafka's running.
+
+00:03:02.625 --> 00:03:06.100
+Now I'm going to run that script.
+
+00:03:07.280 --> 00:03:13.905
+We should see the joined output after the join runs.
+
+00:03:13.905 --> 00:03:17.284
+It can take around one and a half minutes
+
+00:03:17.284 --> 00:03:22.585
+for a join application to run and start producing output.
+
+00:03:22.585 --> 00:03:28.435
+We're going wait here patiently for that to run.
+
+00:03:28.435 --> 00:03:30.560
+The blinking cursor means it's still running.
+
+00:03:30.560 --> 00:03:33.125
+There haven't been any errors encountered.
+
+00:03:33.125 --> 00:03:38.210
+Later we'll find that we actually want to watch that cursor to know how things are going.
+
+00:03:38.210 --> 00:03:40.565
+Here we see the output of the join.
+
+00:03:40.565 --> 00:03:43.190
+We have statusTruckNumber, destination, milesFromShop,
+
+00:03:43.190 --> 00:03:47.735
+odometerReading, reservationid, locationName, checkinTruckNumber, and status.
+
+00:03:47.735 --> 00:03:52.805
+All of that is showing in individual columns because of the join that we've created.
+
+00:03:52.805 --> 00:03:56.580
+I'm going to break out of this by saying Control-C.
+

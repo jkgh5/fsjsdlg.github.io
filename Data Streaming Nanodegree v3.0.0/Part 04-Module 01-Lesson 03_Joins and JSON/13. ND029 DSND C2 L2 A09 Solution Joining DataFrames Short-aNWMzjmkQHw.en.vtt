@@ -1,0 +1,148 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:03.705
+First thing I'm going to do is make sure that Kafka and Spark are running.
+
+00:00:03.705 --> 00:00:05.805
+If I run ps-ef,
+
+00:00:05.805 --> 00:00:09.570
+I will see that there are two spark processes running.
+
+00:00:09.570 --> 00:00:13.785
+One to several Java processes which tells me Kafka is up.
+
+00:00:13.785 --> 00:00:15.810
+I'm going to clear my terminal, and now,
+
+00:00:15.810 --> 00:00:18.150
+let's look at the solution code.
+
+00:00:18.150 --> 00:00:21.360
+First thing we're going to do is import all of our libraries,
+
+00:00:21.360 --> 00:00:27.030
+which includes Spark session or Spark SQL functions and Spark SQL types.
+
+00:00:27.030 --> 00:00:30.375
+I have two different JSON payloads.
+
+00:00:30.375 --> 00:00:33.960
+I want to create a schema for each of those.
+
+00:00:33.960 --> 00:00:38.355
+You'll notice one thing different here is my amount is not a string.
+
+00:00:38.355 --> 00:00:41.580
+There is no quotes, so we're going to call it a FloatType.
+
+00:00:41.580 --> 00:00:44.660
+So I'm going to create that schema and this schema,
+
+00:00:44.660 --> 00:00:50.314
+remember the field names need to match the field names here in the JSON payloads.
+
+00:00:50.314 --> 00:00:52.460
+I'm going to create a spark session.
+
+00:00:52.460 --> 00:00:54.545
+I'm going to set the log level to WARN.
+
+00:00:54.545 --> 00:00:59.225
+I'm going to read from Kafka the first topic which is bank deposits.
+
+00:00:59.225 --> 00:01:03.335
+Then I'm going to convert the raw data to strings.
+
+00:01:03.335 --> 00:01:08.255
+I'm going to then convert the JSON to individual fields and saving interview.
+
+00:01:08.255 --> 00:01:13.105
+I'm going to select from that view where the amount is greater than $200,
+
+00:01:13.105 --> 00:01:16.820
+and then I'm going to read from the bank customers topic.
+
+00:01:16.820 --> 00:01:21.530
+I'm going to select that and convert it from binary to string.
+
+00:01:21.530 --> 00:01:26.900
+Save that here and then I'm going to take the schema I created for
+
+00:01:26.900 --> 00:01:32.120
+that data and load it from the value column from JSON method.
+
+00:01:32.120 --> 00:01:36.170
+Then put it back in the Value column where it now has nested fields.
+
+00:01:36.170 --> 00:01:38.210
+I'm going to select those nested fields using
+
+00:01:38.210 --> 00:01:42.935
+the COO function that I'm going to create a view called BankCustomers contain that data.
+
+00:01:42.935 --> 00:01:45.995
+You'll notice when I select that data using Spark SQL,
+
+00:01:45.995 --> 00:01:50.555
+I do change account number to customer number so that when I do my join,
+
+00:01:50.555 --> 00:01:54.440
+these two are not the same exact column name.
+
+00:01:54.440 --> 00:02:00.800
+So now, I've got a resulting data frame that comes from joining the select starDF.
+
+00:02:00.800 --> 00:02:04.460
+Using dot join, I will select the customers like starDF.
+
+00:02:04.460 --> 00:02:07.865
+The joint expression specifies the fields I want to join on.
+
+00:02:07.865 --> 00:02:10.520
+Remember the triple, double equals around those,
+
+00:02:10.520 --> 00:02:14.450
+and last, I'm going to take that data frame and write it to the console.
+
+00:02:14.450 --> 00:02:19.640
+I'm going to copy the syntax for submitting this from this script.
+
+00:02:19.640 --> 00:02:25.190
+It's home/workspace/spark/bin/spark-submit --packages and
+
+00:02:25.190 --> 00:02:27.695
+then the Kafka package that we're going to use.
+
+00:02:27.695 --> 00:02:29.990
+Then I'm going to pass the name of the script,
+
+00:02:29.990 --> 00:02:32.090
+the full path to the script rather.
+
+00:02:32.090 --> 00:02:36.420
+So the full path to the script is home/workspace/customer-deposits.
+
+00:02:38.390 --> 00:02:41.570
+py.
+
+00:02:41.570 --> 00:02:46.740
+We are doing a join that means it can take between one and two minutes.
+
+00:02:48.380 --> 00:02:50.510
+There's the data from the join.
+
+00:02:50.510 --> 00:02:51.980
+We have account number, amount,
+
+00:02:51.980 --> 00:02:55.165
+date and time, customer name, and customer number,
+
+00:02:55.165 --> 00:02:58.880
+and that customer number is the alias for the field
+
+00:02:58.880 --> 00:03:03.420
+from the bank customers when you control C and bring out of that.
+

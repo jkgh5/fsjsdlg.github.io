@@ -1,0 +1,121 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:03.150
+Let's look at the solution for this.
+
+00:00:03.150 --> 00:00:07.185
+The first thing I'm going to do is make sure Spark and Kafka are running.
+
+00:00:07.185 --> 00:00:08.820
+If I do ps -ef,
+
+00:00:08.820 --> 00:00:10.905
+I don't see either.
+
+00:00:10.905 --> 00:00:14.860
+In this case, actually, I only need Spark running.
+
+00:00:15.050 --> 00:00:21.675
+I'm going to cd to home/workspace/spark/sbin,
+
+00:00:21.675 --> 00:00:29.910
+and I'm going to run this./start-master.sh script.
+
+00:00:29.910 --> 00:00:32.925
+I'm going to look at the log file,
+
+00:00:32.925 --> 00:00:38.550
+get the master URI,./start-slave.sh,
+
+00:00:38.550 --> 00:00:41.490
+and the master URI starts the worker.
+
+00:00:41.490 --> 00:00:44.385
+Now, if I do ps -ef,
+
+00:00:44.385 --> 00:00:47.625
+I see Spark process is running.
+
+00:00:47.625 --> 00:00:54.880
+Good. Now, I'm going to clear that and now we can look at the solution.
+
+00:00:56.090 --> 00:00:59.595
+First thing I do is import SparkSession,
+
+00:00:59.595 --> 00:01:02.585
+then I create a file handle to the log file.
+
+00:01:02.585 --> 00:01:05.445
+I'm going to create my Spark Session now,
+
+00:01:05.445 --> 00:01:07.725
+using the SparkSession class.
+
+00:01:07.725 --> 00:01:10.305
+Then I'm going to set the log level to "WARN".
+
+00:01:10.305 --> 00:01:13.490
+I'm going to open the log file using the Spark Session.
+
+00:01:13.490 --> 00:01:17.015
+Then I'm going to count the lines,
+
+00:01:17.015 --> 00:01:23.840
+and I'm actually going to give you the solution to this one.
+
+00:01:24.020 --> 00:01:27.595
+I'm doing more than just counting the lines,
+
+00:01:27.595 --> 00:01:31.820
+I'm counting the total count on each line.
+
+00:01:31.820 --> 00:01:34.085
+To do that with a data frame,
+
+00:01:34.085 --> 00:01:39.800
+we're going to do the.foreach call on each one and pass in the function.
+
+00:01:39.800 --> 00:01:42.365
+This function accepts a row from a data frame,
+
+00:01:42.365 --> 00:01:49.800
+and then it acts on the data frame by printing the total count using row.value.count,
+
+00:01:49.800 --> 00:01:52.275
+and then it increments it for each line.
+
+00:01:52.275 --> 00:01:56.290
+Then we'll get printed updates for every row that it processes.
+
+00:01:56.290 --> 00:02:03.900
+If I go to the home/workspace/ directory,
+
+00:02:03.900 --> 00:02:08.955
+I have my python scripts.
+
+00:02:08.955 --> 00:02:11.920
+I'm going to run
+
+00:02:19.550 --> 00:02:22.720
+data/spark/bin/spark-submit /home/workspace/hellospark.solution.py.
+
+00:02:29.020 --> 00:02:32.480
+The blinking cursor mean it's running.
+
+00:02:32.480 --> 00:02:38.875
+Now, I have my line count and I'm just going to run that one more time.
+
+00:02:38.875 --> 00:02:41.350
+It didn't save correctly,
+
+00:02:41.350 --> 00:02:44.980
+that was the old code that I had shown you before.
+
+00:02:44.980 --> 00:02:47.760
+Now, we see the count going up, 1,
+
+00:02:47.760 --> 00:02:50.980
+2, 2, 3, 6.
+

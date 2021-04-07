@@ -1,0 +1,457 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:04.590
+Let's take a look at parsing a JSON payload into separate fields.
+
+00:00:04.590 --> 00:00:08.250
+The first thing I'm going to do is check to make sure that Kafka is running.
+
+00:00:08.250 --> 00:00:10.920
+So I'm going to type ps -ef.
+
+00:00:10.920 --> 00:00:14.370
+That command will give me a list of processes running and
+
+00:00:14.370 --> 00:00:18.015
+I see several Java processes which tells me in my system,
+
+00:00:18.015 --> 00:00:20.370
+I know this means Kafka is running.
+
+00:00:20.370 --> 00:00:23.235
+That will work in your workspace as well.
+
+00:00:23.235 --> 00:00:26.085
+The second thing I usually will look for is
+
+00:00:26.085 --> 00:00:29.235
+two processes that have the word Spark in them.
+
+00:00:29.235 --> 00:00:34.200
+The terminal output is being truncated here after the AMD 6,
+
+00:00:34.200 --> 00:00:37.080
+but if the output would continue beyond it,
+
+00:00:37.080 --> 00:00:39.075
+you'd see the word Spark.
+
+00:00:39.075 --> 00:00:41.630
+The same thing will show up for this line,
+
+00:00:41.630 --> 00:00:43.310
+you would see the word Spark as well,
+
+00:00:43.310 --> 00:00:47.210
+so I know I have a Spark worker and a Spark master running.
+
+00:00:47.210 --> 00:00:50.075
+So that means I'm ready to start coding and then I can
+
+00:00:50.075 --> 00:00:53.990
+submit my application to the Spark cluster right away.
+
+00:00:53.990 --> 00:00:58.190
+I've been given a JSON format that gives me
+
+00:00:58.190 --> 00:01:03.370
+information about the status of a truck or the vehicle status.
+
+00:01:03.370 --> 00:01:06.470
+So this information is contained in JSON format,
+
+00:01:06.470 --> 00:01:11.074
+I want to read it from Kafka and pass it into separate fields.
+
+00:01:11.074 --> 00:01:14.930
+I've imported most of the things we're going to work with.
+
+00:01:14.930 --> 00:01:18.590
+So the first thing I'm going to do is create a SparkSession.
+
+00:01:18.590 --> 00:01:21.440
+Actually, no, let's create the schema first.
+
+00:01:21.440 --> 00:01:28.190
+So I'm going to create a variable that's called vehicle status schema,
+
+00:01:28.190 --> 00:01:31.315
+and this will be a StructType.
+
+00:01:31.315 --> 00:01:33.495
+When I call it StructType,
+
+00:01:33.495 --> 00:01:36.090
+I pass an array of struct fields.
+
+00:01:36.090 --> 00:01:40.850
+The first struct field will match the first field in my JSON sample.
+
+00:01:40.850 --> 00:01:42.980
+So I'm going to use truck number,
+
+00:01:42.980 --> 00:01:45.220
+and that will be the name of the field.
+
+00:01:45.220 --> 00:01:47.400
+It needs to match exactly.
+
+00:01:47.400 --> 00:01:49.410
+This is a StringType,
+
+00:01:49.410 --> 00:01:51.960
+so I'm going to use the StringType.
+
+00:01:51.960 --> 00:01:55.040
+The next field is a destination,
+
+00:01:55.040 --> 00:01:57.160
+which is also a string.
+
+00:01:57.160 --> 00:01:59.830
+The next field is miles from shop,
+
+00:01:59.830 --> 00:02:01.715
+which is an integer.
+
+00:02:01.715 --> 00:02:04.850
+You will notice I haven't imported the integer type,
+
+00:02:04.850 --> 00:02:06.890
+so I'm going to do that.
+
+00:02:06.890 --> 00:02:12.060
+Again, the name needs to match exactly and this is an integer as well.
+
+00:02:12.060 --> 00:02:15.095
+So I'm going to reuse that import that I did earlier.
+
+00:02:15.095 --> 00:02:17.405
+Now that I've created my schema,
+
+00:02:17.405 --> 00:02:20.570
+I'm ready to start reading data from Kafka so that I
+
+00:02:20.570 --> 00:02:24.004
+can later convert it to regular fields.
+
+00:02:24.004 --> 00:02:31.100
+I'm going to take my SparkSession and use it to create a session.
+
+00:02:31.100 --> 00:02:34.840
+I'm going to call the name of it vehicle status.
+
+00:02:34.840 --> 00:02:37.155
+It doesn't really matter what it's called,
+
+00:02:37.155 --> 00:02:40.035
+but I like to make things meaningful.
+
+00:02:40.035 --> 00:02:46.315
+I'm going to take the SparkContext and set my log level to as low as I want,
+
+00:02:46.315 --> 00:02:48.900
+which is the WARN level.
+
+00:02:48.900 --> 00:02:55.195
+Now I am going to use the SparkSession to read information from Spark.
+
+00:02:55.195 --> 00:03:00.650
+So I'm going to create a new data frame called vehicle status raw
+
+00:03:00.650 --> 00:03:06.355
+streaming data frame and I'm going to get the data from Spark.
+
+00:03:06.355 --> 00:03:11.645
+Because Spark is my way of connecting to Kafka in this case.
+
+00:03:11.645 --> 00:03:14.030
+So I'm accessing my read stream,
+
+00:03:14.030 --> 00:03:16.535
+I'm setting my format to Kafka.
+
+00:03:16.535 --> 00:03:18.925
+What's the next thing I need to do?
+
+00:03:18.925 --> 00:03:23.490
+I need to set the option for the bootstrap servers.
+
+00:03:23.490 --> 00:03:26.855
+I only have one, so I'm going to just give it one
+
+00:03:26.855 --> 00:03:31.090
+and the name of the topic must match exactly,
+
+00:03:31.090 --> 00:03:33.650
+so it needs to be vehicle dash status,
+
+00:03:33.650 --> 00:03:36.770
+and that's the name of the topic that's being created by
+
+00:03:36.770 --> 00:03:40.530
+my simulation and I want get all the data.
+
+00:03:40.530 --> 00:03:42.420
+So I'm going to say earliest for
+
+00:03:42.420 --> 00:03:47.060
+my offset and then I'm going to load that data frame from Kafka.
+
+00:03:47.060 --> 00:03:50.150
+The data frame from Kafka is in binary format,
+
+00:03:50.150 --> 00:03:54.765
+so I want to convert it out of binary to strings.
+
+00:03:54.765 --> 00:03:58.650
+So I'm going to create a new data frame.
+
+00:03:58.650 --> 00:04:01.340
+That one is not named raw streaming,
+
+00:04:01.340 --> 00:04:02.959
+it's just called streaming.
+
+00:04:02.959 --> 00:04:06.440
+That way I know which one has which information.
+
+00:04:06.440 --> 00:04:13.530
+I'm going to use this, select XPR function to cast my keys as strings.
+
+00:04:13.530 --> 00:04:17.055
+The key in this case is truck number.
+
+00:04:17.055 --> 00:04:21.780
+Then I'm going to cast my value as a string as
+
+00:04:21.780 --> 00:04:28.015
+well and I'm going to call the value vehicle status JSON.
+
+00:04:28.015 --> 00:04:33.320
+Now that I've got a data frame that has string data,
+
+00:04:33.320 --> 00:04:37.550
+it still has just a giant field full of JSON values.
+
+00:04:37.550 --> 00:04:43.150
+So this one field has all of these fields in it and I want to get it out of there,
+
+00:04:43.150 --> 00:04:46.530
+into separated fields because then I can query on them.
+
+00:04:46.530 --> 00:04:49.100
+So let's do this.
+
+00:04:49.100 --> 00:04:57.695
+We are going to take the schema I've created and use it to parse the JSON.
+
+00:04:57.695 --> 00:05:02.725
+So first thing we do is start with the data frame that has the JSON in it.
+
+00:05:02.725 --> 00:05:07.160
+Then we're going to call the dot with column method.
+
+00:05:07.160 --> 00:05:14.915
+We're going to say the column we're going to override is called vehicle status JSON.
+
+00:05:14.915 --> 00:05:18.170
+Then we're going to say, let's use the from
+
+00:05:18.170 --> 00:05:22.985
+JSON to populate that and in the from JSON call,
+
+00:05:22.985 --> 00:05:25.460
+where is the JSON located?
+
+00:05:25.460 --> 00:05:27.535
+It's in this field.
+
+00:05:27.535 --> 00:05:30.120
+Where is the schema?
+
+00:05:30.120 --> 00:05:32.985
+It's in the vehicle status schema.
+
+00:05:32.985 --> 00:05:40.395
+Then that returns a data frame that has a bunch of subfields or nested fields,
+
+00:05:40.395 --> 00:05:43.490
+so this vehicle status JSON essentially has
+
+00:05:43.490 --> 00:05:47.710
+subfields underneath of it and each of those fields are here.
+
+00:05:47.710 --> 00:05:50.270
+So this field would be called vehicle strategy,
+
+00:05:50.270 --> 00:05:52.820
+some dot truck number and so on.
+
+00:05:52.820 --> 00:05:56.195
+So I'm going to select all of those fields.
+
+00:05:56.195 --> 00:05:59.330
+This is a little different from SQL because usually
+
+00:05:59.330 --> 00:06:02.495
+SQL doesn't have the concept of subfields.
+
+00:06:02.495 --> 00:06:04.865
+But here we can say,
+
+00:06:04.865 --> 00:06:09.575
+I'm going to select vehicles status JSON dot star,
+
+00:06:09.575 --> 00:06:12.410
+which vehicle says JSON is a field itself.
+
+00:06:12.410 --> 00:06:18.440
+So this isn't a table name and we're saying vehicle status JSON field dot star,
+
+00:06:18.440 --> 00:06:20.090
+which includes all the subfields.
+
+00:06:20.090 --> 00:06:24.600
+So that returns those as a separate data frame,
+
+00:06:24.600 --> 00:06:30.140
+and I wanted to put that data frame in a view that captures the fields in that way.
+
+00:06:30.140 --> 00:06:34.285
+I'm going to call create or replace TempView.
+
+00:06:34.285 --> 00:06:38.620
+I'm going to name the view vehicle status.
+
+00:06:38.750 --> 00:06:41.730
+Now I'm going to do a query on it.
+
+00:06:41.730 --> 00:06:45.480
+I've got a couple of fields here that I could query based on.
+
+00:06:45.480 --> 00:06:50.590
+I have the miles from shop and then I have the odometer reading.
+
+00:06:50.590 --> 00:06:55.060
+I'm going to say I want miles from shop that's over 100.
+
+00:06:55.060 --> 00:06:58.000
+So how would you do that in SQL if you had
+
+00:06:58.000 --> 00:07:02.620
+these three fields and a view called vehicle status,
+
+00:07:02.620 --> 00:07:05.350
+well, that's exactly how we're going to do it.
+
+00:07:05.350 --> 00:07:08.440
+So we're going to run a SQL statement that's
+
+00:07:08.440 --> 00:07:12.010
+exactly the same and when we run the statement,
+
+00:07:12.010 --> 00:07:15.390
+it's going to populate another data frame.
+
+00:07:15.390 --> 00:07:19.590
+Let's use Spark dot SQL to run our select statement.
+
+00:07:19.590 --> 00:07:21.480
+What's the statement we want to do?
+
+00:07:21.480 --> 00:07:26.525
+We're going to look for everything from vehicle status,
+
+00:07:26.525 --> 00:07:31.810
+and how would I say that I want the miles from shop over 100?
+
+00:07:31.810 --> 00:07:37.625
+I'd say where miles from shop greater than 100.
+
+00:07:37.625 --> 00:07:41.465
+So that should capture that subset of data.
+
+00:07:41.465 --> 00:07:45.790
+Now I want to put that data on the terminal so I can read it.
+
+00:07:45.790 --> 00:07:54.875
+I'm going to say writeStream dot output mode to put it line by line on the console,
+
+00:07:54.875 --> 00:08:03.080
+I'm going to do a start method that starts the entire Spark application.
+
+00:08:03.080 --> 00:08:06.690
+Then I'm going to say awaitTermination.
+
+00:08:06.690 --> 00:08:12.180
+I'm going to save that and we do have
+
+00:08:12.180 --> 00:08:18.035
+a script that will run the Spark application for us.
+
+00:08:18.035 --> 00:08:20.465
+It's in home workspace Spark.
+
+00:08:20.465 --> 00:08:22.025
+Can you find the script?
+
+00:08:22.025 --> 00:08:24.085
+Which one do you think it would be?
+
+00:08:24.085 --> 00:08:30.300
+It's going to start with submit and then how about submit vehicle check-in?
+
+00:08:30.300 --> 00:08:32.520
+That looks like the right one.
+
+00:08:32.520 --> 00:08:35.144
+So home workspace, Spark,
+
+00:08:35.144 --> 00:08:39.525
+submit vehicle, check-in, dot sh,
+
+00:08:39.525 --> 00:08:42.285
+loading all our libraries.
+
+00:08:42.285 --> 00:08:45.730
+What do we have?
+
+00:08:45.800 --> 00:08:48.330
+We use submit vehicle checking,
+
+00:08:48.330 --> 00:08:51.570
+we wanted to submit vehicle status.
+
+00:08:51.570 --> 00:08:54.115
+So we're watching the output.
+
+00:08:54.115 --> 00:08:58.340
+We should see it soon after the cursor starts blinking.
+
+00:08:58.450 --> 00:09:01.550
+Let's look at the miles from shop on these.
+
+00:09:01.550 --> 00:09:05.360
+We've got truck number destination miles from shop odometer reading,
+
+00:09:05.360 --> 00:09:10.440
+and let's make sure they're all over 100. They are.
+
+00:09:10.440 --> 00:09:14.305
+So the select statement has now given us
+
+00:09:14.305 --> 00:09:20.215
+a subset of data and we've been able to use SQL against JSON,
+
+00:09:20.215 --> 00:09:22.750
+which is a very useful thing to do.
+
+00:09:22.750 --> 00:09:25.660
+I'm going to stop this application because I'm done
+
+00:09:25.660 --> 00:09:29.380
+running it and I'm going to hit "Control C."
+

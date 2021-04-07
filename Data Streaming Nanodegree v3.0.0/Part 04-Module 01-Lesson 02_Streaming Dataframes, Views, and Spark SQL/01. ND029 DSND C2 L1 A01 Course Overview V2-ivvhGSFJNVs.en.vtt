@@ -1,0 +1,46 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:04.305
+Hello and welcome to the first lesson of the Apache Spark Streaming course.
+
+00:00:04.305 --> 00:00:07.275
+This lesson covers Spark Streaming DataFrames.
+
+00:00:07.275 --> 00:00:09.450
+Let's look at the course overview,
+
+00:00:09.450 --> 00:00:12.360
+we're at the beginning, Streaming DataFrames.
+
+00:00:12.360 --> 00:00:16.470
+In this lesson, we'll set the foundations of this course by getting hands
+
+00:00:16.470 --> 00:00:20.805
+on by starting a Spark Cluster and deploying a Spark application,
+
+00:00:20.805 --> 00:00:23.130
+creating a Spark Streaming DataFrame with
+
+00:00:23.130 --> 00:00:27.465
+a Kafka source creating and querying a spark view.
+
+00:00:27.465 --> 00:00:29.875
+Upon completion of lesson one,
+
+00:00:29.875 --> 00:00:33.610
+you should be able to successfully carry out the following tasks;
+
+00:00:33.610 --> 00:00:37.305
+start a Spark Cluster and deploy a Spark application,
+
+00:00:37.305 --> 00:00:41.130
+create a Spark Streaming DataFrame with a Kafka Source,
+
+00:00:41.130 --> 00:00:42.870
+create a Spark view,
+
+00:00:42.870 --> 00:00:45.250
+query a Spark view.
+

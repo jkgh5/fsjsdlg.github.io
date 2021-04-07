@@ -1,0 +1,43 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:02.670
+Let's recap the lesson so far.
+
+00:00:02.670 --> 00:00:07.050
+You should now be able to start a Spark cluster and run a Spark application.
+
+00:00:07.050 --> 00:00:09.915
+You should be able to create and work with Data Frames.
+
+00:00:09.915 --> 00:00:12.540
+You should be able to read data from Kafka.
+
+00:00:12.540 --> 00:00:15.240
+You should also be able to create inquiry,
+
+00:00:15.240 --> 00:00:18.510
+a spark view, and write data to Kafka.
+
+00:00:18.510 --> 00:00:21.045
+Upon completion of lesson 1,
+
+00:00:21.045 --> 00:00:24.615
+you should be able to successfully carry out the following tasks.
+
+00:00:24.615 --> 00:00:28.050
+Start a Spark cluster and deploy Spark application.
+
+00:00:28.050 --> 00:00:31.605
+Create a Spark streaming Data Frame with a Kafka Source.
+
+00:00:31.605 --> 00:00:33.360
+Create a spark view.
+
+00:00:33.360 --> 00:00:37.545
+Query a spark view. We just talked about streaming Data Frames.
+
+00:00:37.545 --> 00:00:41.680
+Next we're going to talk about Joins and JSON. I'll see you there.
+

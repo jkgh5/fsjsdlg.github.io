@@ -1,0 +1,259 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:04.380
+Let's look at the solution to Exercise 3 for Lesson 1,
+
+00:00:04.380 --> 00:00:09.195
+where we're querying the atm visits topic.
+
+00:00:09.195 --> 00:00:12.675
+We actually are going to query that topic,
+
+00:00:12.675 --> 00:00:15.330
+and in this case we're going to select some data from
+
+00:00:15.330 --> 00:00:20.595
+the atm visits and then we're going to send it back to another Kafka topic.
+
+00:00:20.595 --> 00:00:24.285
+So we're going to start by creating a Spark session.
+
+00:00:24.285 --> 00:00:26.459
+We've already imported the library,
+
+00:00:26.459 --> 00:00:30.360
+and we're going to call the app name this atm visits.
+
+00:00:30.360 --> 00:00:33.480
+Now, we're going to set the logging level,
+
+00:00:33.480 --> 00:00:36.205
+now, we're going to read from the topic.
+
+00:00:36.205 --> 00:00:39.550
+We're going to create a data frame from it.
+
+00:00:39.550 --> 00:00:44.040
+We are going to call, atmVisitsRawstreamingDF,
+
+00:00:44.040 --> 00:00:47.295
+then we're going to get that information from Spark.
+
+00:00:47.295 --> 00:00:52.685
+We are going to say the format is Kafka because we're reading from Kafka,
+
+00:00:52.685 --> 00:01:00.205
+and we're going to call the bootstrap server localhost port 9092,
+
+00:01:00.205 --> 00:01:05.330
+and then we're going to call the subscribe option atm visits.
+
+00:01:05.330 --> 00:01:10.415
+This needs to match your topic name you're reading from,
+
+00:01:10.415 --> 00:01:14.015
+and we're going to tell it to read the oldest data,
+
+00:01:14.015 --> 00:01:17.855
+which will still give us the newest as well, but we want both.
+
+00:01:17.855 --> 00:01:20.525
+We're going to tell it to load.
+
+00:01:20.525 --> 00:01:25.235
+Now, we're going to convert this from binary to string.
+
+00:01:25.235 --> 00:01:29.320
+So we're going to call this one atmVisitStreamingDF,
+
+00:01:29.320 --> 00:01:34.520
+and we're going to convert the raw one, VisitsRawStreamingDF.
+
+00:01:34.520 --> 00:01:40.430
+We are going to call that selectExpr,
+
+00:01:40.430 --> 00:01:46.570
+in here we're going to cast the key as a string.
+
+00:01:46.570 --> 00:01:51.120
+We're going to call it transaction ID,
+
+00:01:51.120 --> 00:02:00.160
+and then we're going to cast the value as a string as well.
+
+00:02:00.440 --> 00:02:04.770
+That's the location of the transaction.
+
+00:02:04.770 --> 00:02:07.850
+Now, I'm going to create a view from that data,
+
+00:02:07.850 --> 00:02:10.670
+so I'm using the last data frame I created,
+
+00:02:10.670 --> 00:02:13.770
+which is atmVisitsStreampingDF,
+
+00:02:14.900 --> 00:02:22.230
+create or replace temp view and the view is called ATMVisits.
+
+00:02:22.230 --> 00:02:26.330
+I'm going to query that view and the results of the query will
+
+00:02:26.330 --> 00:02:30.110
+be another data frame called select star
+
+00:02:30.110 --> 00:02:39.560
+atmVisitsSelectStarDF and my query is going to be just that select star from ATMVisits.
+
+00:02:39.560 --> 00:02:44.405
+Then I'm going to send the results of that query back to Kafka.
+
+00:02:44.405 --> 00:02:51.710
+So I take the data frame that I've got and I need to do another select expression on it.
+
+00:02:51.710 --> 00:02:56.900
+I'm going to cast the transaction ID as a string and call it
+
+00:02:56.900 --> 00:03:05.050
+key and I'm going to cast the location as a string and call it value.
+
+00:03:05.050 --> 00:03:08.800
+Then I'm going to access the dot write stream
+
+00:03:08.800 --> 00:03:15.025
+and the format will be Kafka because I'm sending it to a Kafka topic.
+
+00:03:15.025 --> 00:03:21.840
+The option kafka.bootstrap.servers, is going to be
+
+00:03:21.840 --> 00:03:28.225
+localhost port 9092 and then I'm going to call the topic,
+
+00:03:28.225 --> 00:03:31.645
+this is the new topic that I'm sending data to.
+
+00:03:31.645 --> 00:03:39.520
+I'm calling it atm visits updates and this is a new option that we need to use,
+
+00:03:39.520 --> 00:03:42.455
+it's not optional even though it's called option.
+
+00:03:42.455 --> 00:03:45.470
+If you're using Kafka to write to,
+
+00:03:45.470 --> 00:03:49.040
+you have to give a folder to Spark to save
+
+00:03:49.040 --> 00:03:54.815
+a temp file and it needs to be write accessible by the Spark workers.
+
+00:03:54.815 --> 00:04:00.575
+So that's that folder and then I'm going to equate termination.
+
+00:04:00.575 --> 00:04:02.980
+Save that.
+
+00:04:02.980 --> 00:04:07.350
+Now, let's make sure Spark and Kafka are running, they are not,
+
+00:04:07.350 --> 00:04:11.780
+so I'm clicking on "Start Kafka" and at the same time I'm
+
+00:04:11.780 --> 00:04:17.340
+going to start Spark workspace/spark/sbin/start-master.sh,
+
+00:04:19.370 --> 00:04:23.700
+and we're going to tail the log files,
+
+00:04:23.700 --> 00:04:26.265
+tail -f and then the path.
+
+00:04:26.265 --> 00:04:29.385
+This will watch the logs as they go by,
+
+00:04:29.385 --> 00:04:32.760
+and I was watching for this Spark master URI,
+
+00:04:32.760 --> 00:04:34.320
+so I'm copying that.
+
+00:04:34.320 --> 00:04:37.810
+I'm going to "Control C'' out of the logs.
+
+00:04:38.120 --> 00:04:44.730
+Homework/space/spark/sbin/start-slave. sh and point it to the master.
+
+00:04:44.730 --> 00:04:47.730
+Now, let's go look at Kafka.
+
+00:04:47.730 --> 00:04:49.800
+It's still starting up.
+
+00:04:49.800 --> 00:04:56.025
+I'm going to do a ps-ef and I see Spark number 1, Spark number 2.
+
+00:04:56.025 --> 00:04:58.165
+So Spark is green,
+
+00:04:58.165 --> 00:05:02.399
+Kafka is up because we're down to a blinking cursor.
+
+00:05:02.399 --> 00:05:06.640
+So now I'm going to run the script that I have for running
+
+00:05:06.640 --> 00:05:11.380
+this particular Python application and it's called submit atm visits.
+
+00:05:11.380 --> 00:05:16.670
+So I'm going to say home/workspace/submit /atm-visits.sh,
+
+00:05:18.930 --> 00:05:22.155
+then we see it loading libraries,
+
+00:05:22.155 --> 00:05:25.875
+and we see it starting up the Spark application,
+
+00:05:25.875 --> 00:05:29.690
+and now we're just waiting for it to process.
+
+00:05:30.530 --> 00:05:36.094
+So now I'm going to open up another terminal file, new terminal,
+
+00:05:36.094 --> 00:05:45.255
+and I am going to go to the Kafka console consumer.
+
+00:05:45.255 --> 00:05:51.750
+I'm passing the bootstrap server as local host and
+
+00:05:51.750 --> 00:05:58.515
+then I'm going to say that topic is atm visit updates,
+
+00:05:58.515 --> 00:06:02.804
+and then I'm going to say from beginning,
+
+00:06:02.804 --> 00:06:06.360
+and we have the atm visit locations.
+
+00:06:06.360 --> 00:06:09.475
+These are all the values that we're seeing in all over the world.
+
+00:06:09.475 --> 00:06:11.755
+We have atm transactions.
+
+00:06:11.755 --> 00:06:14.199
+This is how we read from Kafka,
+
+00:06:14.199 --> 00:06:17.515
+transform some data, and write to a new Kafka topic.
+
+00:06:17.515 --> 00:06:20.140
+I'm going to kill this Kafka console consumer because
+
+00:06:20.140 --> 00:06:22.855
+I'm done looking at the data "Control C".
+
+00:06:22.855 --> 00:06:28.160
+I'm going to kill this Spark application because I'm done running it. "Control C".
+

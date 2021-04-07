@@ -1,0 +1,371 @@
+<!-- udacity2.0 -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Sink to Kafka</title>
+  <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../assets/css/plyr.css">
+  <link rel="stylesheet" href="../assets/css/katex.min.css">
+  <link rel="stylesheet" href="../assets/css/jquery.mCustomScrollbar.min.css">
+  <link rel="stylesheet" href="../assets/css/styles.css">
+  <link rel="shortcut icon" type="image/png" href="../assets/img/udacimak.png" />
+</head>
+
+<body>
+  <div class="wrapper">
+    <nav id="sidebar">
+  <div class="sidebar-header">
+    <h3>Joins and JSON</h3>
+  </div>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled components">
+    <li class="">
+      <a href="01. Lesson Overview.html">01. Lesson Overview</a>
+    </li>
+    <li class="">
+      <a href="02. Why JSON is important.html">02. Why JSON is important?</a>
+    </li>
+    <li class="">
+      <a href="03. Why JSON and joins are important..html">03. Why JSON and joins are important.</a>
+    </li>
+    <li class="">
+      <a href="04. Parse a JSON Payload.html">04. Parse a JSON Payload</a>
+    </li>
+    <li class="">
+      <a href="05. Walkthrough 1 Parse a JSON Payload.html">05. Walkthrough 1: Parse a JSON Payload</a>
+    </li>
+    <li class="">
+      <a href="06. Quiz Parse a JSON payload into separate fields for analysis.html">06. Quiz: Parse a JSON payload into separate fields for analysis</a>
+    </li>
+    <li class="">
+      <a href="07. Exercise Parse a JSON Payload.html">07. Exercise: Parse a JSON Payload</a>
+    </li>
+    <li class="">
+      <a href="08. Solution 1 Parse a JSON Payload.html">08. Solution 1: Parse a JSON Payload</a>
+    </li>
+    <li class="">
+      <a href="09. Join Streaming Dataframes from Different Datasources.html">09. Join Streaming Dataframes from Different Datasources</a>
+    </li>
+    <li class="">
+      <a href="10. Walkthrough 2 Join Streaming Dataframes.html">10. Walkthrough 2: Join Streaming Dataframes</a>
+    </li>
+    <li class="">
+      <a href="11. Quiz Join Streaming Dataframes from Different Datasources.html">11. Quiz: Join Streaming Dataframes from Different Datasources</a>
+    </li>
+    <li class="">
+      <a href="12. Exercise 2 Join Streaming Dataframes.html">12. Exercise 2: Join Streaming Dataframes</a>
+    </li>
+    <li class="">
+      <a href="13. Solution Join Streaming Dataframes.html">13. Solution: Join Streaming Dataframes</a>
+    </li>
+    <li class="">
+      <a href="14. Sink to Kafka.html">14. Sink to Kafka</a>
+    </li>
+    <li class="">
+      <a href="15. Walkthrough 3 Sink to Kafka.html">15. Walkthrough 3: Sink to Kafka</a>
+    </li>
+    <li class="">
+      <a href="16. Quiz Sink to Kafka.html">16. Quiz: Sink to Kafka</a>
+    </li>
+    <li class="">
+      <a href="17. Exercise Sink to Kafka.html">17. Exercise: Sink to Kafka</a>
+    </li>
+    <li class="">
+      <a href="18. Solution 3 Sink to Kafka.html">18. Solution 3: Sink to Kafka</a>
+    </li>
+    <li class="">
+      <a href="19. Edge Cases.html">19. Edge Cases</a>
+    </li>
+    <li class="">
+      <a href="20. Glossary.html">20. Glossary</a>
+    </li>
+    <li class="">
+      <a href="21. Further Reading.html">21. Further Reading</a>
+    </li>
+    <li class="">
+      <a href="22. Lesson Review.html">22. Lesson Review</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+</nav>
+
+    <div id="content">
+      <header class="container-fluild header">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <div class="align-items-middle">
+                <button type="button" id="sidebarCollapse" class="btn btn-toggle-sidebar">
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                </button>
+
+                <h1 style="display: inline-block">14. Sink to Kafka</h1>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <main class="container">
+        <div class="row">
+          <div class="col-12">
+            <div class="ud-atom">
+  <h3><p>Write a streaming dataframe to Kafka with aggregated data Heading</p></h3>
+  <div>
+  <h2 id="write-a-streaming-dataframe-to-kafka-with-aggregated-data">Write a Streaming Dataframe to Kafka with Aggregated Data</h2>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3><p>ND029 DSND C2 L2 A10 Sink To Kafka V3</p></h3>
+  <video controls>
+  <source src="14. ND029 DSND C2 L2 A10 Sink To Kafka V3-SmRn19dOW3Y.mp4" type="video/mp4">
+
+  <track default="true" kind="subtitles" srclang="en" src="14. ND029 DSND C2 L2 A10 Sink To Kafka V3-SmRn19dOW3Y.en.vtt" label="en">
+</video>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <figure class="figure">
+    <img src="img/slide-77.jpeg" alt="Sinking Data to Kafka" class="img img-fluid">
+    <figcaption class="figure-caption">
+      <p>Sinking Data to Kafka</p>
+    </figcaption>
+  </figure>
+</div>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h2 id="sinking-data-to-kafka">Sinking Data to Kafka</h2>
+<ul>
+<li>In order to sink to Kafka, you need to have something to sink</li>
+<li>That will be a Streaming DataFrame you create</li>
+<li>When we sink to Kafka we need to identify the topic we will be sending data to</li>
+<li>Then it is just a matter of writing a few lines to sink your DataFrame</li>
+<li>They will look similar to what you have done to sink to the console</li>
+</ul>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h2 id="sink-to-kafka-in-practice">Sink to Kafka in Practice</h2>
+<pre><code> vehicleStatusDF\
+ .selectExpr("cast(statusTruckNumber as string) as key", "to_json(struct(*)) as value") \
+    .writeStream \
+    .format("kafka") \
+    .option("kafka.bootstrap.servers", "localhost:9092")\
+    .option("topic", "vehicle-status-changes")\
+    .option("checkpointLocation","/tmp/kafkacheckpoint")\
+    .start()\
+    .awaitTermination()</code></pre>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h2 id="explanation-of-sink-to-kafka">Explanation of Sink to Kafka</h2>
+<p>After creating a view, you have something unique to offer to other systems. Let's learn how to share that data via a Kafka topic:</p>
+<ul>
+<li>Use a select expression on the DataFrame to cast the key, and structure your fields as JSON</li>
+<li>Be sure to pass the Kafka bootstrap servers parameter</li>
+<li>Last sink the DataFrame to your new Kafka topic, using the <code>writeStream</code></li>
+</ul>
+<p>Now any Kafka consumer can access your data by subscribing to the topic called vehicle-status-changes.</p>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h2 id="what-does-calling-selectexpr-do">What does calling <code>.selectExpr</code> do?</h2>
+<p><strong><code>selectExpr</code></strong>:  A function called on a DataFrame to pass a select expression.</p>
+<p>Example:<code>.selectExpr("cast(statusTruckNumber as string) as key", "to_json(struct(*)) as value")</code></p>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h2 id="select-expression-key-points">Select Expression Key Points</h2>
+<ul>
+<li>We are creating a DataFrame with two fields</li>
+<li>Each parameter defines a field</li>
+<li>When streaming to Kafka, the fields should be called <code>"key"</code> and <code>"value"</code></li>
+<li>The key is a unique identifier</li>
+<li>The value contains the JSON</li>
+</ul>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h2 id="what-does-calling-to_json-do">What does calling <code>to_json</code> do?</h2>
+<p><strong><code>to_json</code></strong>: A Spark SQL function that accepts multiple columns containing JSON and creates a single column containing the JSON formatted data.</p>
+<p>Example:<br />
+<code>to_json(struct(*)) as value)</code></p>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h2 id="using-to_json-key-points-">Using <code>to_json</code> Key Points :</h2>
+<ul>
+<li>We use <code>to_json</code> in a select expression on a DataFrame</li>
+<li>First, pass the fields you want to be serialized</li>
+<li>Then alias them as a field</li>
+<li>When passing the JSON to Kafka we want the field name to be <code>"value"</code></li>
+</ul>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h2 id="what-is-the-checkpointlocation">What is the <code>checkpointLocation</code>?</h2>
+<p><strong><code>checkpointLocation</code></strong>:  an option passed when connecting to Kafka to send data to a topic; must be a writeable filesystem path for the Spark Worker.</p>
+<p>Example: <code>.option("checkpointLocation","/tmp/kafkacheckpoint")</code></p>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h2 id="passing-checkpointlocation-key-points">Passing <code>checkpointLocation</code> Key Points:</h2>
+<ul>
+<li>When streaming to Kafka, you must define the same options  when reading from Kafka</li>
+<li>You also need an additional option: <code>checkpointLocation</code></li>
+<li>This needs to be a writeable path</li>
+<li>It is used by Spark to offload some data to disk for recovery</li>
+</ul>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h2 id="kafka-integration-resources">Kafka Integration Resources</h2>
+<p>For more information on integrating Spark with Kafka, see the official <a href="https://spark.apache.org/docs/latest/structured-streaming-kafka-integration.html" target="_blank">Kafka Integration Guide</a></p>
+</div>
+
+</div>
+<div class="divider"></div>
+          </div>
+
+          <div class="col-12">
+            <p class="text-right">
+              <a href="15. Walkthrough 3 Sink to Kafka.html" class="btn btn-outline-primary mt-4" role="button">Next Concept</a>
+            </p>
+          </div>
+        </div>
+      </main>
+
+      <footer class="footer">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <p class="text-center">
+                <a href="https://us-udacity.github.io/" target="_blank">【udacity2.0 】If you need more courses, please add wechat：udacity6</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </div>
+
+
+  <script src="../assets/js/jquery-3.3.1.min.js"></script>
+  <script src="../assets/js/plyr.polyfilled.min.js"></script>
+  <script src="../assets/js/bootstrap.min.js"></script>
+  <script src="../assets/js/jquery.mCustomScrollbar.concat.min.js"></script>
+  <script src="../assets/js/katex.min.js"></script>
+  <script>
+    // Initialize Plyr video players
+    const players = Array.from(document.querySelectorAll('video')).map(p => new Plyr(p));
+
+    // render math equations
+    let elMath = document.getElementsByClassName('mathquill');
+    for (let i = 0, len = elMath.length; i < len; i += 1) {
+      const el = elMath[i];
+
+      katex.render(el.textContent, el, {
+        throwOnError: false
+      });
+    }
+
+    // this hack will make sure Bootstrap tabs work when using Handlebars
+    if ($('#question-tabs').length && $('#user-answer-tabs').length) {
+      $("#question-tabs a.nav-link").on('click', function () {
+        $("#question-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+      $("#user-answer-tabs a.nav-link").on('click', function () {
+        $("#user-answer-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    } else {
+      $("a.nav-link").on('click', function () {
+        $(".tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    }
+
+    // side bar events
+    $(document).ready(function () {
+      $("#sidebar").mCustomScrollbar({
+        theme: "minimal"
+      });
+
+      $('#sidebarCollapse').on('click', function () {
+        $('#sidebar, #content').toggleClass('active');
+        $('.collapse.in').toggleClass('in');
+        $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+      });
+
+      // scroll to first video on page loading
+      if ($('video').length) {
+        $('html,body').animate({ scrollTop: $('div.plyr').prev().offset().top});
+      }
+
+      // auto play first video: this may not work with chrome/safari due to autoplay policy
+      if (players && players.length > 0) {
+        players[0].play();
+      }
+
+      // scroll sidebar to current concept
+      const currentInSideBar = $( "ul.sidebar-list.components li a:contains('14. Sink to Kafka')" )
+      currentInSideBar.css( "text-decoration", "underline" );
+      $("#sidebar").mCustomScrollbar('scrollTo', currentInSideBar);
+    });
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,43 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:04.035
+This is the second lesson of the Apache Spark streaming course.
+
+00:00:04.035 --> 00:00:06.720
+This lesson covers Joins and JSON.
+
+00:00:06.720 --> 00:00:08.715
+Let's look at the course overview.
+
+00:00:08.715 --> 00:00:11.235
+You just learned about streaming DataFrames.
+
+00:00:11.235 --> 00:00:13.950
+In this lesson, we'll become familiar with parsing
+
+00:00:13.950 --> 00:00:17.505
+a JSON payload into separate fields for analysis,
+
+00:00:17.505 --> 00:00:21.530
+joining two streaming DataFrames from different data sources,
+
+00:00:21.530 --> 00:00:25.775
+and writing a streaming DataFrame to Kafka with aggregated data.
+
+00:00:25.775 --> 00:00:28.040
+Upon completion of Lesson 2,
+
+00:00:28.040 --> 00:00:31.600
+you should be able to successfully complete the following.
+
+00:00:31.600 --> 00:00:35.740
+Parse a JSON payload into separate fields for analysis,
+
+00:00:35.740 --> 00:00:39.630
+join two streaming DataFrames from different data sources,
+
+00:00:39.630 --> 00:00:45.000
+and write a streaming DataFrame to Kafka with aggregated data.
+

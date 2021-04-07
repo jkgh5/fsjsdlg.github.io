@@ -1,0 +1,505 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:03.750
+Let's get spark up and running that will allow us
+
+00:00:03.750 --> 00:00:07.540
+to run some spark applications on a spark cluster.
+
+00:00:07.540 --> 00:00:12.230
+In this workspace we have the scripts for starting spark
+
+00:00:12.230 --> 00:00:17.145
+in the home workspace spark sbin folder.
+
+00:00:17.145 --> 00:00:21.115
+You will find a similar folder called spark
+
+00:00:21.115 --> 00:00:25.635
+sbin in your own spark installation on your server.
+
+00:00:25.635 --> 00:00:28.410
+If I list in this directory in the workspace,
+
+00:00:28.410 --> 00:00:30.060
+we have two scripts.
+
+00:00:30.060 --> 00:00:31.470
+One that starts a master,
+
+00:00:31.470 --> 00:00:33.045
+and one that starts the worker.
+
+00:00:33.045 --> 00:00:36.220
+I'm going to start the master first.
+
+00:00:38.330 --> 00:00:43.930
+Okay. Thinks it's already running.
+
+00:00:44.180 --> 00:00:48.160
+I'm going do a stop all.
+
+00:00:50.960 --> 00:00:54.255
+When I start the Spark Master,
+
+00:00:54.255 --> 00:01:01.490
+the thing I'm looking for right off the bat is this folder and file location for the log.
+
+00:01:01.490 --> 00:01:04.060
+I'm going to copy that location,
+
+00:01:04.060 --> 00:01:07.380
+and then I'm going to cut that file.
+
+00:01:07.380 --> 00:01:10.730
+Almost the last line that I see,
+
+00:01:10.730 --> 00:01:12.980
+I guess it's about the fifth the last line,
+
+00:01:12.980 --> 00:01:15.410
+is this URI for the master.
+
+00:01:15.410 --> 00:01:22.100
+That's the way the Spark Worker can address the Spark Master and communicate with it.
+
+00:01:22.100 --> 00:01:26.315
+I've copy that, and then I'm going to start the worker.
+
+00:01:26.315 --> 00:01:28.220
+As a command line parameter,
+
+00:01:28.220 --> 00:01:31.380
+I'm going to pass the spark URI.
+
+00:01:32.030 --> 00:01:35.710
+Thinks that's still running,
+
+00:01:36.410 --> 00:01:39.885
+so I'm going to say stop.
+
+00:01:39.885 --> 00:01:43.350
+Another one, okay.
+
+00:01:43.350 --> 00:01:46.050
+I'm going back to that folder,
+
+00:01:46.050 --> 00:01:53.680
+and I'm going to start the worker and pass the URI.
+
+00:01:54.800 --> 00:02:01.520
+Now, handy command to look out for both of them running is this ps -ef command.
+
+00:02:01.520 --> 00:02:04.040
+It's not necessary, but if I run it,
+
+00:02:04.040 --> 00:02:07.470
+I see two lines that both are running Spark.
+
+00:02:07.470 --> 00:02:11.125
+That tells me I have both a worker and master running.
+
+00:02:11.125 --> 00:02:15.720
+Okay, now to make it easier to see what I'm typing,
+
+00:02:15.720 --> 00:02:17.870
+I'm going to type the clear command,
+
+00:02:17.870 --> 00:02:22.460
+and that just clears out the terminal and brings me up to the top of the screen.
+
+00:02:22.460 --> 00:02:27.465
+Now let's get the HellosPark program working.
+
+00:02:27.465 --> 00:02:31.010
+We're going to use that to demonstrate the features of
+
+00:02:31.010 --> 00:02:34.630
+the spark cluster and get some practice running it.
+
+00:02:34.630 --> 00:02:40.940
+We've got a file in this folder called Test.txt.
+
+00:02:40.940 --> 00:02:43.625
+If we open it, it just looks like an e-mail,
+
+00:02:43.625 --> 00:02:46.100
+and there's just free form text in it.
+
+00:02:46.100 --> 00:02:50.965
+We have five lines and various words that are in that file.
+
+00:02:50.965 --> 00:02:56.960
+What we want to do is we're actually going to count how many times we see
+
+00:02:56.960 --> 00:03:03.395
+the letter 'a' and how many times we see the letter 'b' in that file.
+
+00:03:03.395 --> 00:03:05.690
+The first thing we're going to do is create
+
+00:03:05.690 --> 00:03:10.640
+a variable that stores the location of that file.
+
+00:03:10.640 --> 00:03:12.230
+I'm just calling it log file,
+
+00:03:12.230 --> 00:03:18.110
+because a lot of times that's a file that we're going to be processing, it's a log.
+
+00:03:18.110 --> 00:03:21.380
+Next, I'm going to create a Spark Session using
+
+00:03:21.380 --> 00:03:25.635
+the SparkSession class that I've imported.
+
+00:03:25.635 --> 00:03:29.160
+I'm going to give the application a name,
+
+00:03:29.160 --> 00:03:32.580
+I'm calling it "HelloSpark".
+
+00:03:32.580 --> 00:03:35.925
+Then I'm going to call getOrCreate().
+
+00:03:35.925 --> 00:03:42.385
+That actually instantiates the SparkSession with that specific application name.
+
+00:03:42.385 --> 00:03:46.865
+A lot of the things we do are within the scope of a spark session.
+
+00:03:46.865 --> 00:03:49.445
+Later we'll work with something called spark views,
+
+00:03:49.445 --> 00:03:55.865
+and the SparkSession is the bounded context for that construct for view.
+
+00:03:55.865 --> 00:03:58.580
+View isn't global, because all spark sessions,
+
+00:03:58.580 --> 00:04:02.065
+it's only within that one session that we've created.
+
+00:04:02.065 --> 00:04:04.430
+When we run spark by default,
+
+00:04:04.430 --> 00:04:07.700
+there's a lot of information that comes on to the terminal.
+
+00:04:07.700 --> 00:04:11.705
+We want to reduce that so it's easier to see what we're doing.
+
+00:04:11.705 --> 00:04:15.410
+We're going to actually take the SparkSession and reduce
+
+00:04:15.410 --> 00:04:19.085
+the logging level to minimal logging.
+
+00:04:19.085 --> 00:04:26.860
+The way you do that is by saying spark.sparkContext.setLogLevel().
+
+00:04:26.860 --> 00:04:29.080
+We're going to use the level called 'WARN',
+
+00:04:29.080 --> 00:04:32.525
+which means we're not going to show any info messages.
+
+00:04:32.525 --> 00:04:36.095
+That makes it a lot easier to find what we're looking for.
+
+00:04:36.095 --> 00:04:40.595
+Next, I'm going to create a variable that's actually a DataFrame.
+
+00:04:40.595 --> 00:04:43.205
+This is the first DataFrame you're going to work with.
+
+00:04:43.205 --> 00:04:45.350
+It's not our streaming DataFrame,
+
+00:04:45.350 --> 00:04:47.410
+because it's not watching data in motion,
+
+00:04:47.410 --> 00:04:50.120
+it's just referring to a static text file.
+
+00:04:50.120 --> 00:04:54.184
+Spark has both DataFrames and streaming DataFrames.
+
+00:04:54.184 --> 00:04:56.495
+This is just a regular DataFrame.
+
+00:04:56.495 --> 00:04:58.640
+I've created that variable name,
+
+00:04:58.640 --> 00:05:02.030
+and now I'm going to assign a DataFrame to it.
+
+00:05:02.030 --> 00:05:06.080
+The way I create the DataFrame is starting with the spark session.
+
+00:05:06.080 --> 00:05:10.055
+I'm going to say spark.read.text,
+
+00:05:10.055 --> 00:05:13.400
+and now I'm passing the full path to the file.
+
+00:05:13.400 --> 00:05:16.374
+I'm going to tell it to cashe,
+
+00:05:16.374 --> 00:05:25.650
+and then I'm going to look for the number of times I see the letter 'a' in the file.
+
+00:05:25.650 --> 00:05:29.225
+That's actually going to correspond in this case
+
+00:05:29.225 --> 00:05:33.020
+with the number of rows that have a letter 'a' in them.
+
+00:05:33.020 --> 00:05:34.880
+If you look at this row,
+
+00:05:34.880 --> 00:05:36.380
+it has an 'a',
+
+00:05:36.380 --> 00:05:38.740
+this row has an 'a',
+
+00:05:38.740 --> 00:05:41.820
+this row has an 'a' and this row has an 'a',
+
+00:05:41.820 --> 00:05:44.140
+that's what we're referring to.
+
+00:05:44.330 --> 00:05:49.555
+We're going to create a variable for that called number numAs.
+
+00:05:49.555 --> 00:05:54.290
+We're going to take the DataFrame and do
+
+00:05:54.290 --> 00:05:58.475
+some filtering to get to the number that we just counted by hand.
+
+00:05:58.475 --> 00:06:01.865
+That's easy to do by hand if you've got a small file.
+
+00:06:01.865 --> 00:06:05.510
+But if you've got a file that has hundreds of thousands,
+
+00:06:05.510 --> 00:06:11.850
+or millions of rows than processing it programmatically is much more optimal.
+
+00:06:11.850 --> 00:06:15.320
+The call that I'm doing here is I'm taking a DataFrame,
+
+00:06:15.320 --> 00:06:16.895
+which is called logData.
+
+00:06:16.895 --> 00:06:20.075
+I'm calling the.filter method on it.
+
+00:06:20.075 --> 00:06:22.205
+Then inside of the filter,
+
+00:06:22.205 --> 00:06:25.220
+I'm giving it an expression to filter by.
+
+00:06:25.220 --> 00:06:32.500
+I'm looking for any place that the logData.value contains the letter 'a'.
+
+00:06:32.500 --> 00:06:36.225
+Then I'm going to get a quick count of that information,
+
+00:06:36.225 --> 00:06:38.390
+and that is going to give me the number.
+
+00:06:38.390 --> 00:06:41.825
+I'm going to do the same thing for the number of Bs.
+
+00:06:41.825 --> 00:06:46.890
+I'm going to take the logData and filter it.
+
+00:06:46.890 --> 00:06:56.260
+I'm going to use an expression there that's logData.value.contains what? It's 'b'.
+
+00:06:56.480 --> 00:06:59.895
+Now I'm going to take that.
+
+00:06:59.895 --> 00:07:02.755
+I've got basically at this point,
+
+00:07:02.755 --> 00:07:09.205
+I've got a filtered DataFrame that's only reflecting the rows with 'b' in it.
+
+00:07:09.205 --> 00:07:13.640
+If we look, Hello everyone this is a text file would like to parse,
+
+00:07:13.640 --> 00:07:16.200
+for the spark exercise,
+
+00:07:16.200 --> 00:07:18.540
+thanks, have a great weekend!
+
+00:07:18.540 --> 00:07:20.640
+It's going to look through every row,
+
+00:07:20.640 --> 00:07:23.440
+and if it sees a 'b' on any of those,
+
+00:07:23.440 --> 00:07:25.810
+then it's going to include it.
+
+00:07:25.810 --> 00:07:29.875
+If it doesn't see a 'b' then it's not going to include it at this point.
+
+00:07:29.875 --> 00:07:33.055
+Now I'm going to count what's included after the filter,
+
+00:07:33.055 --> 00:07:36.700
+and that's going to be assigned to the variable called numBs.
+
+00:07:36.700 --> 00:07:43.520
+Now I'm going to print to the screen the information that I've counted.
+
+00:07:43.520 --> 00:07:49.610
+Sometimes I like to put these markers before and after something that's in a console,
+
+00:07:49.610 --> 00:07:54.520
+or in a terminal because it's easier for me to find my place later on.
+
+00:07:54.520 --> 00:07:58.890
+I'm going to say, "lines with," and I'm going to
+
+00:07:58.890 --> 00:08:03.605
+give some older style spark string templating,
+
+00:08:03.605 --> 00:08:05.760
+starting in spark 3.6.
+
+00:08:05.760 --> 00:08:07.385
+There is a newer way of doing this,
+
+00:08:07.385 --> 00:08:14.325
+and I'm using the old school way and lines with 'b',
+
+00:08:14.325 --> 00:08:20.250
+and I'm going to use the letter 'i' in both cases.
+
+00:08:20.250 --> 00:08:23.120
+Then I'm going to do some string replacement with
+
+00:08:23.120 --> 00:08:25.640
+the variables that I've instantiated earlier.
+
+00:08:25.640 --> 00:08:30.800
+I am going to replace the first string template with numAs,
+
+00:08:30.800 --> 00:08:33.330
+and the second with numBs.
+
+00:08:33.590 --> 00:08:40.600
+I'm going to do a little bit more marking on this just to make it consistent.
+
+00:08:40.600 --> 00:08:44.745
+The last thing I'm going to do is stop the spark application.
+
+00:08:44.745 --> 00:08:48.905
+I just take the SparkSession and I call it stop on it.
+
+00:08:48.905 --> 00:08:52.080
+Now I'm going to save this file.
+
+00:08:52.780 --> 00:08:57.020
+At this point, you're probably used to doing with Python.
+
+00:08:57.020 --> 00:08:59.835
+If you've worked with Python is you would just normally type
+
+00:08:59.835 --> 00:09:04.385
+python and the name of the file that you're working with.
+
+00:09:04.385 --> 00:09:09.590
+We're actually going to do things differently for the duration of this course.
+
+00:09:09.590 --> 00:09:13.070
+We're going to be running them using something different instead
+
+00:09:13.070 --> 00:09:16.700
+of just using the word python and then calling the script.
+
+00:09:16.700 --> 00:09:21.620
+We're going to actually use the constructs within spark itself,
+
+00:09:21.620 --> 00:09:27.180
+and it will use a spark interpreter to execute the script.
+
+00:09:27.180 --> 00:09:33.435
+In our case, we're going to use a command called Spark Submit.
+
+00:09:33.435 --> 00:09:37.920
+If I go to the home, workspace,
+
+00:09:37.920 --> 00:09:43.690
+spark bin folder, there's a shell script called spark-submit.
+
+00:09:43.690 --> 00:09:45.755
+Again, in your spark installation,
+
+00:09:45.755 --> 00:09:49.970
+you'll have a spark folder there and a sub folder called bin,
+
+00:09:49.970 --> 00:09:53.540
+and that's where spark-submit will be located for you.
+
+00:09:53.540 --> 00:09:57.410
+I'm going to just say spark-submit,
+
+00:09:57.410 --> 00:09:59.390
+because I'm in the folder where that command is,
+
+00:09:59.390 --> 00:10:06.855
+I can just do.slash which is short for here where I am and then referring to the script.
+
+00:10:06.855 --> 00:10:12.295
+Then I'm going to give it the full path to the Spark Python application.
+
+00:10:12.295 --> 00:10:16.410
+I'm seeing home, workspace,
+
+00:10:16.410 --> 00:10:21.590
+and then I'm going to save and name of the Python script hellospark.py.
+
+00:10:21.590 --> 00:10:25.340
+Now it's thinking and it's starting to run.
+
+00:10:25.340 --> 00:10:30.355
+You'll see a bunch of loading happening of libraries and so on,
+
+00:10:30.355 --> 00:10:32.195
+and now it's waiting.
+
+00:10:32.195 --> 00:10:38.270
+You'll see this message right before it executes the Python script.
+
+00:10:38.270 --> 00:10:42.250
+Then it found the number of lines with 'a' was four.
+
+00:10:42.250 --> 00:10:45.750
+If we go back to here, 1, 2, 3,
+
+00:10:45.750 --> 00:10:50.895
+4, and the number of lines with 'b' are zero.
+
+00:10:50.895 --> 00:10:52.620
+We don't see any here,
+
+00:10:52.620 --> 00:10:56.720
+so that's consistent with what we were hoping to do.
+
+00:10:56.720 --> 00:11:01.100
+This is a fun exercise just to get things started up
+
+00:11:01.100 --> 00:11:06.240
+and experience running a Python inside of Spark.
+

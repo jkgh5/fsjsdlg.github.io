@@ -1,0 +1,232 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:03.750
+Let's look at the solution to the bank withdrawals exercise.
+
+00:00:03.750 --> 00:00:06.885
+The first thing we're going to do is import the Spark session.
+
+00:00:06.885 --> 00:00:09.120
+Then we're going to import our SQL functions.
+
+00:00:09.120 --> 00:00:11.730
+Then we're going to import our SQL types.
+
+00:00:11.730 --> 00:00:14.030
+We have some JSON examples here.
+
+00:00:14.030 --> 00:00:17.835
+We're going to take both of those and create schemas from them.
+
+00:00:17.835 --> 00:00:20.280
+You'll notice all of them are string types.
+
+00:00:20.280 --> 00:00:23.340
+Makes sure the field names match your JSON fields.
+
+00:00:23.340 --> 00:00:25.215
+We're going to create a Spark session,
+
+00:00:25.215 --> 00:00:26.940
+set the log level to one.
+
+00:00:26.940 --> 00:00:30.690
+Then we're going to read using the Spark session from Kafka,
+
+00:00:30.690 --> 00:00:33.765
+setting the bootstrap server to localhost 9092.
+
+00:00:33.765 --> 00:00:37.505
+We're going to subscribe to the bank withdrawals topic starting offset of earliest,
+
+00:00:37.505 --> 00:00:42.335
+and we'll load that needs to be converted using the cast.
+
+00:00:42.335 --> 00:00:45.635
+We are going to cast the keys are strings and the values as strings.
+
+00:00:45.635 --> 00:00:47.630
+That will create a new DataFrame,
+
+00:00:47.630 --> 00:00:54.410
+which we can then use to extract the JSON from the value column.
+
+00:00:54.410 --> 00:00:56.470
+We'll use the from JSON method,
+
+00:00:56.470 --> 00:01:01.115
+and we will use the bank withdrawals message schema to extract the JSON fields.
+
+00:01:01.115 --> 00:01:02.795
+We're going to put them back in value,
+
+00:01:02.795 --> 00:01:06.520
+which will create a bunch of fields underneath of it called subfields.
+
+00:01:06.520 --> 00:01:08.120
+Now we're going to select those.
+
+00:01:08.120 --> 00:01:11.190
+using the COO function value.star.
+
+00:01:11.190 --> 00:01:13.250
+We're going to create a view with those fields called
+
+00:01:13.250 --> 00:01:15.830
+bank withdrawals and here we select all of them,
+
+00:01:15.830 --> 00:01:19.865
+all of the data for making withdrawals into another DataFrame.
+
+00:01:19.865 --> 00:01:24.769
+We now need to repeat that process with our other topic, ATM withdrawals.
+
+00:01:24.769 --> 00:01:27.485
+We're going to cast the data to strings.
+
+00:01:27.485 --> 00:01:31.029
+We're going to convert the JSON to irregular dataframe,
+
+00:01:31.029 --> 00:01:34.670
+and here we select that data into another DataFrame.
+
+00:01:34.670 --> 00:01:39.500
+You'll notice that we alias transaction ID here as ATM transaction ID,
+
+00:01:39.500 --> 00:01:41.165
+so that when we do a join,
+
+00:01:41.165 --> 00:01:43.460
+we don't have a collision on field names.
+
+00:01:43.460 --> 00:01:47.345
+Here we're going to do a new DataFrame that is the result of the join.
+
+00:01:47.345 --> 00:01:50.765
+We joine the bank withdrawals with the ATMs like star.
+
+00:01:50.765 --> 00:01:55.475
+The expression we use is transaction ID equals ATM transaction ID.
+
+00:01:55.475 --> 00:01:58.045
+That gives us this joint DataFrame.
+
+00:01:58.045 --> 00:02:00.000
+We're going to put that into Kafka,
+
+00:02:00.000 --> 00:02:03.005
+and we're going to make our transaction ID our key.
+
+00:02:03.005 --> 00:02:07.520
+We're going to cast all the fields as the value using two JSON.
+
+00:02:07.520 --> 00:02:10.070
+It will become one JSON payload,
+
+00:02:10.070 --> 00:02:13.340
+which will be written to Kafka on the bootstrap server
+
+00:02:13.340 --> 00:02:16.910
+indicated the new topic will be called withdrawals location.
+
+00:02:16.910 --> 00:02:19.640
+That's a new topic we're creating here in this code,
+
+00:02:19.640 --> 00:02:22.280
+and we're going to make a checkpoint location,
+
+00:02:22.280 --> 00:02:26.650
+which is a temporary path that's used by Spark to save files.
+
+00:02:26.650 --> 00:02:30.010
+I'm going to call this checkpoint two,
+
+00:02:30.080 --> 00:02:33.300
+and I'm going to save that.
+
+00:02:33.300 --> 00:02:36.275
+I'm going to copy the syntax to run it,
+
+00:02:36.275 --> 00:02:39.395
+which is Spark submit dash dash packages,
+
+00:02:39.395 --> 00:02:41.795
+the full name of the Kafka library,
+
+00:02:41.795 --> 00:02:45.605
+and then we will give it the full path to the Python file,
+
+00:02:45.605 --> 00:02:51.660
+which is home workspace, pink withdrawals.pie.
+
+00:02:54.440 --> 00:02:59.865
+Now, the cursor is blinking.
+
+00:02:59.865 --> 00:03:03.585
+Normally it's blinking, it's solid white this time.
+
+00:03:03.585 --> 00:03:07.960
+For that cursor that means we're waiting for our application to run.
+
+00:03:07.960 --> 00:03:13.355
+There we go, and that means it's starting to put it into Kafka,
+
+00:03:13.355 --> 00:03:16.725
+so it just created that topic on the fly.
+
+00:03:16.725 --> 00:03:22.310
+We're going to read it from Kafka by going to the data Kafka bin folder,
+
+00:03:22.310 --> 00:03:27.055
+lists that, and we'll see a Kafka console consumer command.
+
+00:03:27.055 --> 00:03:32.815
+With Bootstrap server, we will tell it where to talk to broker.
+
+00:03:32.815 --> 00:03:39.500
+The topic is going to be called withdrawals location,
+
+00:03:39.500 --> 00:03:40.700
+and we want to say dash,
+
+00:03:40.700 --> 00:03:50.065
+dash from beginning./kafka console consumer.
+
+00:03:50.065 --> 00:03:56.145
+Oh, let's do that again.slash/Kafka console consumer.
+
+00:03:56.145 --> 00:04:01.760
+Bootstrap server, localhost 9092,
+
+00:04:01.760 --> 00:04:10.380
+topic withdraws location from beginning,
+
+00:04:10.380 --> 00:04:13.365
+and there's my JSON formatted output.
+
+00:04:13.365 --> 00:04:16.010
+I'm going to Control "C", so we can look at one.
+
+00:04:16.010 --> 00:04:18.125
+Here's our count number, our amount,
+
+00:04:18.125 --> 00:04:19.655
+our day and time,
+
+00:04:19.655 --> 00:04:22.895
+the transaction ID and the transaction date,
+
+00:04:22.895 --> 00:04:26.120
+the ATM transaction ID, which should match.
+
+00:04:26.120 --> 00:04:28.595
+That's how joints work,
+
+00:04:28.595 --> 00:04:30.815
+and the ATM location.
+
+00:04:30.815 --> 00:04:35.100
+I'm going to stop the spark application with Control "C".
+

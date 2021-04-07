@@ -1,0 +1,136 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:02.880
+The first thing I'm going to do is make sure that spark and
+
+00:00:02.880 --> 00:00:06.345
+Kafka are running by typing ps dash ef.
+
+00:00:06.345 --> 00:00:08.879
+If I do that,
+
+00:00:08.879 --> 00:00:14.730
+I should see two spark processes and several Kafka processes running,
+
+00:00:14.730 --> 00:00:17.280
+so we're good there.
+
+00:00:17.280 --> 00:00:19.845
+Now let's take a look at the code.
+
+00:00:19.845 --> 00:00:22.125
+I've imported my spark session.
+
+00:00:22.125 --> 00:00:25.550
+I've also included all of the functions that I'm going to use from
+
+00:00:25.550 --> 00:00:32.155
+spark SQL and all of the types I'm going to use from spark SQL as well.
+
+00:00:32.155 --> 00:00:37.905
+Here, I've created my schema for this JSON payload.
+
+00:00:37.905 --> 00:00:41.415
+Now I'm going to connect to spark.
+
+00:00:41.415 --> 00:00:44.790
+Using spark, I'm going to set the log level to one.
+
+00:00:44.790 --> 00:00:48.975
+I'm also going to use the spark session to read a Kafka stream.
+
+00:00:48.975 --> 00:00:52.550
+From the Kafka server at localhost
+
+00:00:52.550 --> 00:00:57.245
+9092 on the vehicle status topic starting at the earliest offset.
+
+00:00:57.245 --> 00:00:58.925
+Then I'll do a dot load.
+
+00:00:58.925 --> 00:01:01.220
+I'm going to take my vehicle status streaming
+
+00:01:01.220 --> 00:01:05.090
+DataFrame and read it from the raw streaming DataFrame
+
+00:01:05.090 --> 00:01:07.580
+after a select expression that casts
+
+00:01:07.580 --> 00:01:11.600
+my binary keys as string and my binary value as string.
+
+00:01:11.600 --> 00:01:14.960
+Then I'm going to extract my JSON by
+
+00:01:14.960 --> 00:01:18.860
+acting on this DataFrame that has the key and the value from Kafka,
+
+00:01:18.860 --> 00:01:23.150
+I'm going to replace the column called value using the dot with column method.
+
+00:01:23.150 --> 00:01:26.270
+I'm going to replace what's in value using the from
+
+00:01:26.270 --> 00:01:30.785
+JSON and there I will refer to what's in the value column currently,
+
+00:01:30.785 --> 00:01:32.435
+which is a JSON string.
+
+00:01:32.435 --> 00:01:38.855
+I will refer to the Kafka message schema in order to deserialize the JSON.
+
+00:01:38.855 --> 00:01:43.940
+Then I'm going to select the column called value.star,
+
+00:01:43.940 --> 00:01:46.385
+which includes all of these fields;
+
+00:01:46.385 --> 00:01:49.280
+truck number, destination, miles from shop, odometer reading.
+
+00:01:49.280 --> 00:01:51.740
+I'll put them in this vehicle status view.
+
+00:01:51.740 --> 00:01:54.410
+I'll select them using spark.SQL into
+
+00:01:54.410 --> 00:01:58.970
+another DataFrame using the select star from vehicle status,
+
+00:01:58.970 --> 00:02:01.025
+which is SQL syntax.
+
+00:02:01.025 --> 00:02:04.175
+I'll take this DataFrame and write it to the console.
+
+00:02:04.175 --> 00:02:08.980
+I'm going to CD to home workspace spark.
+
+00:02:08.980 --> 00:02:12.470
+If I list, I will see all the scripts I can run.
+
+00:02:12.470 --> 00:02:14.960
+I want to run the script for vehicle status.
+
+00:02:14.960 --> 00:02:23.450
+I'm going to say.slash, submit, vehicle status,.solution,.sh.
+
+00:02:25.070 --> 00:02:31.445
+Now we're waiting for the Kafka output to come to the terminal.
+
+00:02:31.445 --> 00:02:33.575
+Here, we have our truck number,
+
+00:02:33.575 --> 00:02:35.030
+destination, miles from shop,
+
+00:02:35.030 --> 00:02:39.545
+odometer reading nicely formatted into individual columns.
+
+00:02:39.545 --> 00:02:43.170
+I'm going to break out of this by saying Control C.
+

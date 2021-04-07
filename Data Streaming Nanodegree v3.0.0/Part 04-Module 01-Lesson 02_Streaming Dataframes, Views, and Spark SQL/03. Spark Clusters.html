@@ -1,0 +1,484 @@
+<!-- udacity2.0 -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Spark Clusters</title>
+  <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../assets/css/plyr.css">
+  <link rel="stylesheet" href="../assets/css/katex.min.css">
+  <link rel="stylesheet" href="../assets/css/jquery.mCustomScrollbar.min.css">
+  <link rel="stylesheet" href="../assets/css/styles.css">
+  <link rel="shortcut icon" type="image/png" href="../assets/img/udacimak.png" />
+</head>
+
+<body>
+  <div class="wrapper">
+    <nav id="sidebar">
+  <div class="sidebar-header">
+    <h3>Streaming Dataframes, Views, and Spark SQL</h3>
+  </div>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled components">
+    <li class="">
+      <a href="01. Lesson Overview.html">01. Lesson Overview</a>
+    </li>
+    <li class="">
+      <a href="02. Importance of Spark.html">02. Importance of Spark</a>
+    </li>
+    <li class="">
+      <a href="03. Spark Clusters.html">03. Spark Clusters</a>
+    </li>
+    <li class="">
+      <a href="04. Walkthrough 1 Start a Spark Cluster.html">04. Walkthrough 1: Start a Spark Cluster</a>
+    </li>
+    <li class="">
+      <a href="05. Quiz Spark Clusters.html">05. Quiz: Spark Clusters</a>
+    </li>
+    <li class="">
+      <a href="06. Exercise 1 Spark Clusters.html">06. Exercise 1: Spark Clusters</a>
+    </li>
+    <li class="">
+      <a href="07. Solution Spark Clusters.html">07. Solution: Spark Clusters</a>
+    </li>
+    <li class="">
+      <a href="08. Create a Spark Streaming Dataframe with a Kafka Source.html">08. Create a Spark Streaming Dataframe with a Kafka Source</a>
+    </li>
+    <li class="">
+      <a href="09. Walkthrough 2 Create a Spark Streaming Dataframe.html">09. Walkthrough 2: Create a Spark Streaming Dataframe</a>
+    </li>
+    <li class="">
+      <a href="10. Quiz Create a Spark Streaming Dataframe.html">10. Quiz: Create a Spark Streaming Dataframe</a>
+    </li>
+    <li class="">
+      <a href="11. Exercise  Create a Spark Streaming Dataframe.html">11. Exercise : Create a Spark Streaming Dataframe</a>
+    </li>
+    <li class="">
+      <a href="12. Solution 2 Create a Spark Streaming Dataframe.html">12. Solution 2: Create a Spark Streaming Dataframe</a>
+    </li>
+    <li class="">
+      <a href="13. Spark Views.html">13. Spark Views</a>
+    </li>
+    <li class="">
+      <a href="14. Walkthrough 3 Query a Spark View.html">14. Walkthrough 3: Query a Spark View</a>
+    </li>
+    <li class="">
+      <a href="15. Quiz Query a Spark View.html">15. Quiz: Query a Spark View</a>
+    </li>
+    <li class="">
+      <a href="16. Exercise Spark Views.html">16. Exercise: Spark Views</a>
+    </li>
+    <li class="">
+      <a href="17. Solution 3 Spark Views.html">17. Solution 3: Spark Views</a>
+    </li>
+    <li class="">
+      <a href="18. Edge Cases.html">18. Edge Cases</a>
+    </li>
+    <li class="">
+      <a href="19. Glossary.html">19. Glossary</a>
+    </li>
+    <li class="">
+      <a href="20. Further Reading.html">20. Further Reading</a>
+    </li>
+    <li class="">
+      <a href="21. Lesson Review.html">21. Lesson Review</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+</nav>
+
+    <div id="content">
+      <header class="container-fluild header">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <div class="align-items-middle">
+                <button type="button" id="sidebarCollapse" class="btn btn-toggle-sidebar">
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                </button>
+
+                <h1 style="display: inline-block">03. Spark Clusters</h1>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <main class="container">
+        <div class="row">
+          <div class="col-12">
+            <div class="ud-atom">
+  <h3><p>Start a Spark Cluster and deploy a Spark application Heading</p></h3>
+  <div>
+  <h2 id="run-a-spark-cluster-and-deploy-spark-applications">Run a Spark Cluster and Deploy Spark Applications</h2>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3><p>ND029 DSND C2 L1 A03 Spark Clusters V2</p></h3>
+  <video controls>
+  <source src="03. ND029 DSND C2 L1 A03 Spark Clusters V2-WAa98lxdUSI.mp4" type="video/mp4">
+
+  <track default="true" kind="subtitles" srclang="en" src="03. ND029 DSND C2 L1 A03 Spark Clusters V2-WAa98lxdUSI.en.vtt" label="en">
+</video>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h2 id="spark-component-inventory">Spark Component Inventory</h2>
+<ul>
+<li>**Zookeeper: **connects to the Spark Master</li>
+<li><strong><code>spark-submit</code></strong> <strong>command</strong>: deploys the Spark Application </li>
+<li>**Spark Master: **connects to the Spark workers.</li>
+<li>**Spark Workers: **connect to the Spark Master on the Spark URI in a Standalone Cluster; in a Kubernetes configuration they are orchestrated by Kubernetes.</li>
+</ul>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <figure class="figure">
+    <img src="img/slide-22.jpeg" alt="Spark Startup Sequence" class="img img-fluid">
+    <figcaption class="figure-caption">
+      <p>Spark Startup Sequence</p>
+    </figcaption>
+  </figure>
+</div>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h2 id="starting-the-spark-cluster">Starting the Spark Cluster</h2>
+<ol>
+<li>Run the <code>start-master.sh</code> script</li>
+<li>Watch for the log file location</li>
+<li>Cat or tail the log file to find the Spark Master URI</li>
+<li>Run the <code>start-slave.sh</code> script passing the Spark Master URI parameter</li>
+</ol>
+<h2 id="spark-startup-commands">Spark Startup Commands</h2>
+<pre><code>$ /data/spark/sbin/start-master.sh
+$ tail -f /opt/spark-2.3.4-bin-hadoop2.7/logs/spark--org.apache.spark.deploy.master.Master-1-719f72471d5b.out
+$ /data/spark/sbin/start-slave.sh spark://719f72471d5b:7077</code></pre>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <figure class="figure">
+    <img src="img/slide-25.jpeg" alt="Spark is Polyglot" class="img img-fluid">
+    <figcaption class="figure-caption">
+      <p>Spark is Polyglot</p>
+    </figcaption>
+  </figure>
+</div>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h2 id="multi-language-support">Multi-Language Support</h2>
+<ul>
+<li>You can write Spark Streaming applications using R, which is very popular for Data Science applications</li>
+<li>You can also use Java, which is very familiar to a large portion of the Development Community</li>
+<li>Spark also supports Scala, one of the foundational languages for Spark and Big Data</li>
+<li>Lastly, Spark supports Python, one of the most popular programming languages</li>
+</ul>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <figure class="figure">
+    <img src="img/slide-26.jpeg" alt="Spark Language Constructs" class="img img-fluid">
+    <figcaption class="figure-caption">
+      <p>Spark Language Constructs</p>
+    </figcaption>
+  </figure>
+</div>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h2 id="data-streaming-constructs">Data Streaming constructs</h2>
+<ul>
+<li>R uses DataFrames</li>
+<li>Java and Scala use typed DataSets</li>
+<li>Python uses DataFrames</li>
+</ul>
+<h2 id="why-use-python">Why use Python?</h2>
+<ul>
+<li>Python is not strictly typed</li>
+<li>Popular for Data Science applications</li>
+</ul>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <figure class="figure">
+    <img src="img/slide-29.jpeg" alt="Pressing Needs Create Pipelines" class="img img-fluid">
+    <figcaption class="figure-caption">
+      <p>Pressing Needs Create Pipelines</p>
+    </figcaption>
+  </figure>
+</div>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h2 id="what-is-a-data-pipeline">What is a Data Pipeline?</h2>
+<p>**Data Pipeline: **a series of processing steps that augment or refine a raw data source in preparation for consumption by another system.</p>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <figure class="figure">
+    <img src="img/slide-32.jpeg" alt="Structure of a Data Pipeline" class="img img-fluid">
+    <figcaption class="figure-caption">
+      <p>Structure of a Data Pipeline</p>
+    </figcaption>
+  </figure>
+</div>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h2 id="structure-of-a-data-pipeline">Structure of a Data Pipeline</h2>
+<ol>
+<li>Every Spark Application starts by reading in a source</li>
+<li>A series of steps is executed that transforms the original flow of information</li>
+<li>The end result is a DataFrame that can be sinked externally with an outside system</li>
+</ol>
+<p>The source is continually polled for updates to apply the transformations.* This continual polling is what sets Spark Streaming apart from non-streaming applications.*</p>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h2 id="sample-spark-streaming-application">Sample Spark Streaming Application</h2>
+<pre><code>spark = SparkSession.builder.appName("balance-events").getOrCreate()
+
+kafkaRawStreamingDF = spark                          \    
+.readStream                                          \
+.format("kafka")                                     \
+.option("kafka.bootstrap.servers","localhost:9092)   \
+.option("subscribe","balance-updates")               \
+.option("startingOffsets","earliest")                \
+.load()
+
+kafkaStreamingDF = kafkaRawStreamingDF.selectExpr("cast(key as string) key,"cast(value as string) value")
+
+kafkaStreamingDF.writeStream.outputMode("append").format("console").start().awaitTermination()</code></pre>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h2 id="explanation-of-sample-spark-streaming-application">Explanation of Sample Spark Streaming Application</h2>
+<p><strong>Note:</strong> the import of SparkSession is omitted for brevity</p>
+<ul>
+<li>We start by instantiating a Spark session- this connects us to the Spark cluster</li>
+<li>Next, we open a streaming source (Kafka in this case)</li>
+<li>Third, we apply data transformations</li>
+<li>Last we sink data to something external to Spark (the console is a good sink to test your data quality visually)</li>
+</ul>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <figure class="figure">
+    <img src="img/slide-34.jpeg" alt="From Start to Deployment" class="img img-fluid">
+    <figcaption class="figure-caption">
+      <p>From Start to Deployment</p>
+    </figcaption>
+  </figure>
+</div>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h2 id="from-start-to-deployment">From Start to Deployment</h2>
+<p>To take advantage of the resources in the Spark cluster, we submit (or deploy) the Spark code:</p>
+<ol>
+<li>Start the Spark master</li>
+<li>Start the Spark workers   </li>
+<li>Submit your application</li>
+</ol>
+<pre><code>$ /home/workspace/spark/sbin/start-master.sh
+$ /home/workspace/spark/sbin/start-slave.sh spark://719f72471d5b:7077
+$ /home/workspace/spark/bin/spark-submit /home/workspace/hellospark.py</code></pre>
+<p>If you ever need to stop the master, the script for that is:</p>
+<pre><code>$ /data/spark/sbin/stop-master.sh</code></pre>
+<p>If you ever need to stop the worker, the script for that is:</p>
+<pre><code>$ /data/spark/sbin/stop-slave.sh</code></pre>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h2 id="streaming-results">Streaming Results</h2>
+<ul>
+<li>When your spark streaming application begins producing data, it will push the data to the sink you have created </li>
+<li>By default, Spark executes in micro-batches</li>
+<li>When sinking to the console you will see the batches</li>
+<li>When sinking to anything else, you won't see the batches on the console</li>
+<li>When sinking to the console, you should wait up to 2 minutes to see the results</li>
+<li>When you see Batch 0 you have started getting results</li>
+</ul>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <figure class="figure">
+    <img src="img/slide-38.jpeg" alt="Streaming Results" class="img img-fluid">
+    <figcaption class="figure-caption">
+      <p>Streaming Results</p>
+    </figcaption>
+  </figure>
+</div>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h2 id="additional-resources">Additional Resources</h2>
+<p>For more details about various Spark deployment configurations see the official <a href="http://spark.apache.org/docs/latest/cluster-overview.html" target="_blank">Spark Cluster mode Overview</a></p>
+</div>
+
+</div>
+<div class="divider"></div>
+          </div>
+
+          <div class="col-12">
+            <p class="text-right">
+              <a href="04. Walkthrough 1 Start a Spark Cluster.html" class="btn btn-outline-primary mt-4" role="button">Next Concept</a>
+            </p>
+          </div>
+        </div>
+      </main>
+
+      <footer class="footer">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <p class="text-center">
+                <a href="https://us-udacity.github.io/" target="_blank">【udacity2.0 】If you need more courses, please add wechat：udacity6</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </div>
+
+
+  <script src="../assets/js/jquery-3.3.1.min.js"></script>
+  <script src="../assets/js/plyr.polyfilled.min.js"></script>
+  <script src="../assets/js/bootstrap.min.js"></script>
+  <script src="../assets/js/jquery.mCustomScrollbar.concat.min.js"></script>
+  <script src="../assets/js/katex.min.js"></script>
+  <script>
+    // Initialize Plyr video players
+    const players = Array.from(document.querySelectorAll('video')).map(p => new Plyr(p));
+
+    // render math equations
+    let elMath = document.getElementsByClassName('mathquill');
+    for (let i = 0, len = elMath.length; i < len; i += 1) {
+      const el = elMath[i];
+
+      katex.render(el.textContent, el, {
+        throwOnError: false
+      });
+    }
+
+    // this hack will make sure Bootstrap tabs work when using Handlebars
+    if ($('#question-tabs').length && $('#user-answer-tabs').length) {
+      $("#question-tabs a.nav-link").on('click', function () {
+        $("#question-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+      $("#user-answer-tabs a.nav-link").on('click', function () {
+        $("#user-answer-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    } else {
+      $("a.nav-link").on('click', function () {
+        $(".tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    }
+
+    // side bar events
+    $(document).ready(function () {
+      $("#sidebar").mCustomScrollbar({
+        theme: "minimal"
+      });
+
+      $('#sidebarCollapse').on('click', function () {
+        $('#sidebar, #content').toggleClass('active');
+        $('.collapse.in').toggleClass('in');
+        $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+      });
+
+      // scroll to first video on page loading
+      if ($('video').length) {
+        $('html,body').animate({ scrollTop: $('div.plyr').prev().offset().top});
+      }
+
+      // auto play first video: this may not work with chrome/safari due to autoplay policy
+      if (players && players.length > 0) {
+        players[0].play();
+      }
+
+      // scroll sidebar to current concept
+      const currentInSideBar = $( "ul.sidebar-list.components li a:contains('03. Spark Clusters')" )
+      currentInSideBar.css( "text-decoration", "underline" );
+      $("#sidebar").mCustomScrollbar('scrollTo', currentInSideBar);
+    });
+  </script>
+</body>
+
+</html>

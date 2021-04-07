@@ -1,0 +1,691 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:05.295
+The first thing I'm going to do is make sure that I have Kafka and Spark running.
+
+00:00:05.295 --> 00:00:07.830
+I'm going to type ps dash ef.
+
+00:00:07.830 --> 00:00:11.385
+From here I can see a few different things happening.
+
+00:00:11.385 --> 00:00:14.205
+Here I see spark running.
+
+00:00:14.205 --> 00:00:15.780
+Here, I see spark again.
+
+00:00:15.780 --> 00:00:19.065
+One of these is my master and one of them is the worker.
+
+00:00:19.065 --> 00:00:20.750
+That means we have spark up.
+
+00:00:20.750 --> 00:00:23.850
+I also see several other Java processes,
+
+00:00:23.850 --> 00:00:27.045
+which are my Kafka, different workers.
+
+00:00:27.045 --> 00:00:29.205
+Kafka is running and Spark,
+
+00:00:29.205 --> 00:00:30.660
+so we're good to go.
+
+00:00:30.660 --> 00:00:33.615
+I've already imported my SparkSession library,
+
+00:00:33.615 --> 00:00:36.900
+so I'm going to get going creating that SparkSession.
+
+00:00:36.900 --> 00:00:43.500
+Spark is going to be equal my SparkSession dot builder dot appName.
+
+00:00:43.500 --> 00:00:45.785
+Here I'm going to just name it
+
+00:00:45.785 --> 00:00:52.670
+the gear position because that's the name of the topic that I'm going to be querying.
+
+00:00:52.670 --> 00:00:56.255
+Then I'm going to say get or Create.
+
+00:00:56.255 --> 00:00:58.870
+Now I'm going to set the log level,
+
+00:00:58.870 --> 00:01:05.450
+and we're going to make that just minimal information that we want.
+
+00:01:05.450 --> 00:01:08.780
+Now I'm going to start talking to Kafka,
+
+00:01:08.780 --> 00:01:14.025
+and I'm going to ask for a new data frame.
+
+00:01:14.025 --> 00:01:16.215
+We're going to give that a name,
+
+00:01:16.215 --> 00:01:18.940
+call it Gear Position Raw Streaming DF.
+
+00:01:18.940 --> 00:01:22.640
+I need to access my SparkSession to connect to Kafka.
+
+00:01:22.640 --> 00:01:27.380
+I'm getting to the read stream on my spark session and I'm
+
+00:01:27.380 --> 00:01:32.560
+going to set the format to Kafka so I know what I'm reading from.
+
+00:01:32.560 --> 00:01:36.770
+That's going to access my Kafka connection,
+
+00:01:36.770 --> 00:01:41.015
+but I'm going to have to pass it some information so it knows how to connect.
+
+00:01:41.015 --> 00:01:43.400
+The first thing I'm going to pass it as the name of
+
+00:01:43.400 --> 00:01:46.735
+the server that's running my Kafka broker.
+
+00:01:46.735 --> 00:01:50.900
+That's just local host since we're running on a test environment.
+
+00:01:50.900 --> 00:01:54.320
+Here is the critical part of saying the name of
+
+00:01:54.320 --> 00:01:58.130
+the topic or the data currently is being streamed to.
+
+00:01:58.130 --> 00:02:01.760
+This is where we say we want all the data in the topic.
+
+00:02:01.760 --> 00:02:04.400
+Earliest means, give me everything you
+
+00:02:04.400 --> 00:02:09.095
+have and we're going to tell it to load that data into the DataFrame.
+
+00:02:09.095 --> 00:02:14.800
+This is a dataframe that represents the data in the topic in its current state.
+
+00:02:14.800 --> 00:02:17.659
+Kafka likes to store things in binary,
+
+00:02:17.659 --> 00:02:20.300
+but we don't like to analyze things in binary.
+
+00:02:20.300 --> 00:02:22.490
+We like to use strings.
+
+00:02:22.490 --> 00:02:29.660
+We're going to go ahead and get another DataFrame that extracts out those strings.
+
+00:02:29.660 --> 00:02:33.905
+The other DataFrame is going to be called gear Position Streaming DF.
+
+00:02:33.905 --> 00:02:36.540
+We're going to act on
+
+00:02:36.540 --> 00:02:42.975
+the Gear Position Raw Streaming DF by calling the dot Select Expr function.
+
+00:02:42.975 --> 00:02:48.330
+Here is where we're going to change the binary key to a string.
+
+00:02:48.440 --> 00:02:52.370
+In this case, this happens to be our truck Id.
+
+00:02:52.370 --> 00:02:54.275
+We're going to call it that,
+
+00:02:54.275 --> 00:02:57.545
+makes it easier for querying later.
+
+00:02:57.545 --> 00:03:02.600
+We're going to cast the value from Kafka as a string as well instead of binary.
+
+00:03:02.600 --> 00:03:07.160
+We actually can look at the information and understand it.
+
+00:03:07.160 --> 00:03:10.480
+This is going to be our Gear Position.
+
+00:03:10.480 --> 00:03:14.445
+We're going to create our view using this dataframe,
+
+00:03:14.445 --> 00:03:16.950
+which is now string formatted.
+
+00:03:16.950 --> 00:03:23.520
+We're going to take that and call the createOrReplaceTempView function.
+
+00:03:23.520 --> 00:03:26.080
+We're going to call our view Gear Position.
+
+00:03:26.080 --> 00:03:29.030
+This view is only visible within the SparkSession that's
+
+00:03:29.030 --> 00:03:32.690
+running right now inside of the program when it starts.
+
+00:03:32.690 --> 00:03:37.865
+I've just taken the code that I started earlier and pasted that back in here.
+
+00:03:37.865 --> 00:03:42.620
+This is the Gear Position Select Star DF DataFrame.
+
+00:03:42.620 --> 00:03:48.020
+I'm just going to pass the results of my select statement into that.
+
+00:03:48.020 --> 00:03:50.900
+We're saying select star from what?
+
+00:03:50.900 --> 00:03:53.690
+What's the name of the view that we're querying?
+
+00:03:53.690 --> 00:03:56.180
+It's right here, it's gear position.
+
+00:03:56.180 --> 00:04:00.480
+We're going to say select star from gear position.
+
+00:04:01.010 --> 00:04:03.840
+This will represent all the fields.
+
+00:04:03.840 --> 00:04:06.135
+That's because that's the query I used.
+
+00:04:06.135 --> 00:04:08.150
+We could have used a lot of other queries and we're
+
+00:04:08.150 --> 00:04:10.805
+going to do some more different examples later.
+
+00:04:10.805 --> 00:04:15.700
+I'm going to take the DataFrame that has all my fields in it.
+
+00:04:15.700 --> 00:04:19.249
+Now I'm going to send that on to another topic.
+
+00:04:19.249 --> 00:04:21.525
+Just imagined that I've made a change.
+
+00:04:21.525 --> 00:04:23.405
+This is why this is important,
+
+00:04:23.405 --> 00:04:29.105
+because I can now send it onto another system through a new Kafka topic I'm creating.
+
+00:04:29.105 --> 00:04:31.100
+When we first pulled in our data,
+
+00:04:31.100 --> 00:04:33.280
+we cast things as strings.
+
+00:04:33.280 --> 00:04:37.870
+We took the key column and turn it into truck ID for example.
+
+00:04:37.870 --> 00:04:41.240
+Later we selected all the columns from gear position,
+
+00:04:41.240 --> 00:04:44.374
+which would include the truck ID and the Gear Position.
+
+00:04:44.374 --> 00:04:50.660
+We want to take the truck ID now and put it into a key field that Kafka will recognize.
+
+00:04:50.660 --> 00:04:52.850
+We're going to take truck ID,
+
+00:04:52.850 --> 00:04:54.485
+cast it as a string,
+
+00:04:54.485 --> 00:04:55.880
+and we're going to call it,
+
+00:04:55.880 --> 00:04:58.810
+Key because Kafka expects that field.
+
+00:04:58.810 --> 00:05:03.415
+Then we're going to cast the gear position as a string,
+
+00:05:03.415 --> 00:05:06.140
+and we're going to name it Value because
+
+00:05:06.140 --> 00:05:09.560
+Kafka expects to get a value when we send the data,
+
+00:05:09.560 --> 00:05:12.095
+we're going to access the right stream.
+
+00:05:12.095 --> 00:05:14.270
+Before we've accessed read stream,
+
+00:05:14.270 --> 00:05:16.655
+and that's given us a read from Kafka.
+
+00:05:16.655 --> 00:05:20.245
+In this case, we're going to take the data frame we want to send.
+
+00:05:20.245 --> 00:05:25.225
+We're creating another DataFrame by calling this Select Expr.
+
+00:05:25.225 --> 00:05:27.545
+Then after that call,
+
+00:05:27.545 --> 00:05:29.285
+we're doing dot right stream,
+
+00:05:29.285 --> 00:05:34.795
+which is actually accessing the right stream on the DataFrame that came out of this call.
+
+00:05:34.795 --> 00:05:39.590
+Then we're going to set the format to that right stream as Kafka.
+
+00:05:39.590 --> 00:05:45.220
+This may look very familiar because it's the same call we did when we read from Kafka.
+
+00:05:45.220 --> 00:05:47.565
+The next thing we'll match as well.
+
+00:05:47.565 --> 00:05:51.755
+The option parameter which tells us the server we want to send data to.
+
+00:05:51.755 --> 00:05:53.150
+This could be different.
+
+00:05:53.150 --> 00:05:56.659
+If you have multiple servers running with Kafka,
+
+00:05:56.659 --> 00:05:59.735
+and you had them for different purposes in your organization,
+
+00:05:59.735 --> 00:06:04.460
+then this server name here might not match this one here,
+
+00:06:04.460 --> 00:06:07.755
+just depending what your purpose is.
+
+00:06:07.755 --> 00:06:13.610
+The name of the topic that we're going to create is called Gear Position updates.
+
+00:06:13.610 --> 00:06:19.160
+This is a new topic and the data that we send will go into that topic.
+
+00:06:19.160 --> 00:06:22.690
+This is a new parameter here called checkpoint location.
+
+00:06:22.690 --> 00:06:24.595
+That's one we haven't seen before.
+
+00:06:24.595 --> 00:06:31.300
+This is a folder and file path that's writable by the Spark worker.
+
+00:06:31.300 --> 00:06:33.400
+The Spark worker needs to have read,
+
+00:06:33.400 --> 00:06:35.350
+write permissions to this location.
+
+00:06:35.350 --> 00:06:41.920
+It's a temp file that's used for the purpose of synchronizing data with Spark,
+
+00:06:41.920 --> 00:06:44.295
+we're going to run thing the dots start,
+
+00:06:44.295 --> 00:06:46.274
+which starts our stream.
+
+00:06:46.274 --> 00:06:50.495
+Then we're going to let it run indefinitely or until told to stop.
+
+00:06:50.495 --> 00:06:57.000
+I'm saving that file and then I'm going to run the script that will start it.
+
+00:06:57.100 --> 00:07:00.320
+If cd to spark folder,
+
+00:07:00.320 --> 00:07:05.165
+I have a script called submit gear position right here.
+
+00:07:05.165 --> 00:07:15.355
+I'm going to say home, workspacesparksubmitgearposition.sh.
+
+00:07:15.355 --> 00:07:17.850
+Now it's loading libraries.
+
+00:07:17.850 --> 00:07:20.690
+It's done with that. It's starting up the spark application.
+
+00:07:20.690 --> 00:07:24.260
+Now we're waiting for data to spit out.
+
+00:07:24.260 --> 00:07:26.785
+We have an error.
+
+00:07:26.785 --> 00:07:32.475
+Invalid usage of star in expression alias.
+
+00:07:32.475 --> 00:07:35.230
+Okay. It's because I didn't say from,
+
+00:07:35.230 --> 00:07:37.210
+so that's the problem there.
+
+00:07:37.210 --> 00:07:39.595
+That was invalid SQL syntax.
+
+00:07:39.595 --> 00:07:41.305
+That should resolve it.
+
+00:07:41.305 --> 00:07:46.390
+I'm going to save the file and I'll burrow to run the same script again.
+
+00:07:46.390 --> 00:07:50.215
+Now we're waiting for the data to output again.
+
+00:07:50.215 --> 00:07:54.690
+The interesting thing here is because we're not streaming to the console.
+
+00:07:54.690 --> 00:07:57.540
+You may be expecting to see data coming out.
+
+00:07:57.540 --> 00:08:00.735
+You won't really see the data unless we do
+
+00:08:00.735 --> 00:08:04.255
+another command and I'll show you what that is.
+
+00:08:04.255 --> 00:08:08.620
+This error that it says while fetching metadata and it
+
+00:08:08.620 --> 00:08:13.885
+says correlation id 1 gear position updates leader not available.
+
+00:08:13.885 --> 00:08:17.965
+Does this name sound familiar gear position updates?
+
+00:08:17.965 --> 00:08:22.540
+That's the name of the topic that we're sending data to.
+
+00:08:22.540 --> 00:08:25.750
+It's saying that that topic doesn't exist yet.
+
+00:08:25.750 --> 00:08:30.055
+So you just created it in Kafka and it worked.
+
+00:08:30.055 --> 00:08:34.360
+This is just a normal error to see the first time you use a topic.
+
+00:08:34.360 --> 00:08:37.630
+Let's go look at the data in the Kafka topic.
+
+00:08:37.630 --> 00:08:42.310
+I'm going to go to my Kafka installation and I'm going to go to the bin folder.
+
+00:08:42.310 --> 00:08:47.530
+If I list that I'm going to find a command in here called Kafka-console-consumer.
+
+00:08:47.530 --> 00:08:54.040
+That's just a command line utility that lets me query a Kafka topic.
+
+00:08:54.040 --> 00:08:59.275
+Now when I pass the dash dash bootstrap server command you'll notice it's not
+
+00:08:59.275 --> 00:09:05.440
+plural like it is over here and that's just because you only need to send it one.
+
+00:09:05.440 --> 00:09:08.200
+I'm going to tell it the name of the topic.
+
+00:09:08.200 --> 00:09:10.000
+What's the name of the topic again?
+
+00:09:10.000 --> 00:09:12.490
+I just saw it in my air over here.
+
+00:09:12.490 --> 00:09:15.925
+It's gear-position-updates.
+
+00:09:15.925 --> 00:09:18.370
+I'm going to tell it I want data from
+
+00:09:18.370 --> 00:09:23.575
+the beginning and now we should see the data that's going into Kafka.
+
+00:09:23.575 --> 00:09:33.474
+It says leader not available so that could mean that Kafka's down as well.
+
+00:09:33.474 --> 00:09:37.255
+I'm going to just check on that.
+
+00:09:37.255 --> 00:09:46.135
+Seems to be that all the Kafka processes are running, gear-position-updates.
+
+00:09:46.135 --> 00:09:52.195
+Now what could be happening is there might not be any data being sent to it right now.
+
+00:09:52.195 --> 00:09:58.390
+So to check that what we can do is instead of writing to
+
+00:09:58.390 --> 00:10:04.510
+Kafka we can take and run this to the console instead.
+
+00:10:04.510 --> 00:10:08.005
+I'm just going to comment out all the steps that
+
+00:10:08.005 --> 00:10:11.650
+stream in to the Kafka topic and I'm going to
+
+00:10:11.650 --> 00:10:19.405
+go gear position select "Star DF" and I'm going to write it to the console.
+
+00:10:19.405 --> 00:10:22.270
+I'm going to say write stream output mode append
+
+00:10:22.270 --> 00:10:32.245
+format console.start.awaittermination and save that again.
+
+00:10:32.245 --> 00:10:35.260
+Now, here's an interesting feature of Kafka.
+
+00:10:35.260 --> 00:10:37.990
+I can have this running the whole time and not have to
+
+00:10:37.990 --> 00:10:41.590
+worry that it's going to get messed up because it's just talking to Kafka.
+
+00:10:41.590 --> 00:10:46.030
+So even if I kill my spark job here control C kills it.
+
+00:10:46.030 --> 00:10:48.160
+You'll notice it's still connected.
+
+00:10:48.160 --> 00:10:52.480
+This Kafka console is still connected to the Kafka topic.
+
+00:10:52.480 --> 00:10:55.220
+That's interesting.
+
+00:10:55.380 --> 00:10:57.880
+Now let's run this again.
+
+00:10:57.880 --> 00:11:04.615
+I've saved my python file and now we should see data on the console if we're getting any.
+
+00:11:04.615 --> 00:11:12.550
+Okay. Gear position should be spelled correctly, it's not.
+
+00:11:12.550 --> 00:11:16.010
+Let's save that file and run it again.
+
+00:11:16.920 --> 00:11:20.035
+Now we're waiting for output.
+
+00:11:20.035 --> 00:11:25.420
+There's the data that should be going to Kafka and it is coming out, right?
+
+00:11:25.420 --> 00:11:28.180
+So I've got trucks and their gear position.
+
+00:11:28.180 --> 00:11:31.105
+So the gear truck 9841 is in neutral,
+
+00:11:31.105 --> 00:11:33.580
+2397 is in neutral.
+
+00:11:33.580 --> 00:11:37.225
+Maybe they're having car wash or something. They're in neutral.
+
+00:11:37.225 --> 00:11:41.710
+I'm going to kill this and then let's see if we
+
+00:11:41.710 --> 00:11:46.615
+can find out why it's not streaming to Kafka when we tell it to.
+
+00:11:46.615 --> 00:11:49.825
+Let's go back to the code that we have
+
+00:11:49.825 --> 00:11:55.060
+here and I'm going to comment out this one in case we need it later.
+
+00:11:55.060 --> 00:12:00.250
+We're casting the truck ID which we have here as
+
+00:12:00.250 --> 00:12:06.460
+a string and then we're calling it key right here.
+
+00:12:06.460 --> 00:12:08.770
+We are not passing a value.
+
+00:12:08.770 --> 00:12:12.130
+Even though we said the word value that's not good enough.
+
+00:12:12.130 --> 00:12:14.155
+It has to be as value.
+
+00:12:14.155 --> 00:12:16.025
+Notice we didn't get an error.
+
+00:12:16.025 --> 00:12:17.355
+That is interesting.
+
+00:12:17.355 --> 00:12:21.450
+Sometimes when you use an expression it assumes you know what you're
+
+00:12:21.450 --> 00:12:25.995
+doing and it just tries it and if it doesn't work we don't hear back from it.
+
+00:12:25.995 --> 00:12:27.885
+That's what happened in this case.
+
+00:12:27.885 --> 00:12:31.350
+We weren't actually sending any values to Kafka and so it wasn't
+
+00:12:31.350 --> 00:12:35.815
+giving us any over here when we were watching for it.
+
+00:12:35.815 --> 00:12:40.900
+We've now changed this to as value which should fix that problem.
+
+00:12:40.900 --> 00:12:45.620
+Now we're going to save this file and run it again.
+
+00:12:46.190 --> 00:12:51.040
+If it works we should start seeing data over here.
+
+00:12:51.590 --> 00:12:56.660
+I'm not seeing anything, so I'm going to go check on how my spark job is running.
+
+00:12:56.660 --> 00:13:02.830
+So it says it's running and we're waiting output.
+
+00:13:02.830 --> 00:13:09.920
+Well, in theory this should work but let's just kill it and run it again.
+
+00:13:11.490 --> 00:13:14.395
+Oh, I just realized what I did.
+
+00:13:14.395 --> 00:13:18.670
+So value was correct and key was not,
+
+00:13:18.670 --> 00:13:21.625
+so we shouldn't have as inherit off.
+
+00:13:21.625 --> 00:13:24.820
+Let's try it last time.
+
+00:13:24.820 --> 00:13:31.670
+It should work. I saved it and we were running it again.
+
+00:13:32.760 --> 00:13:36.800
+We're going to put those ases back in.
+
+00:13:40.800 --> 00:13:46.465
+Now this can take up to two minutes so I'm going to be patient this time.
+
+00:13:46.465 --> 00:13:56.570
+It's 18:01 and four seconds so we should see it by 18:03 and four seconds at the latest.
+
+00:14:01.200 --> 00:14:10.610
+I just killed the Kafka-console-consumer and we're not seeing any data still from it.
+
+00:14:12.600 --> 00:14:15.475
+Oh, I see what it is.
+
+00:14:15.475 --> 00:14:21.430
+I put a dash in the topic name so that shouldn't be there.
+
+00:14:21.430 --> 00:14:25.510
+The name of our topic is gear-position -updates
+
+00:14:25.510 --> 00:14:30.760
+so that's what we need it to be called here. There's our data.
+
+00:14:30.760 --> 00:14:34.060
+We don't end up seeing the keys.
+
+00:14:34.060 --> 00:14:37.690
+When we do this Kafka-console-consumer it just tells us
+
+00:14:37.690 --> 00:14:41.440
+the values which is enough to tell us that it's working.
+
+00:14:41.440 --> 00:14:44.950
+The truck numbers are not showing up here while
+
+00:14:44.950 --> 00:14:48.580
+if we look at the data before we clearly are passing them.
+
+00:14:48.580 --> 00:14:54.310
+It's just the per fact that the tool they were given doesn't display that information.
+
+00:14:54.310 --> 00:14:58.030
+A lot of times when you're dealing with more complex messages,
+
+00:14:58.030 --> 00:15:01.315
+the key is part of the message.
+
+00:15:01.315 --> 00:15:04.165
+A lot of times it's not a big deal.
+
+00:15:04.165 --> 00:15:08.180
+This is perfect. We can see that we're sending data to Kafka.
+
+00:15:08.180 --> 00:15:12.650
+Here we've looked at how to take data from Kafka and
+
+00:15:12.650 --> 00:15:18.220
+transform it and then send some more data out to another Kafka topic.
+
+00:15:18.220 --> 00:15:21.640
+I'm going to kill this by control C that stops processing
+
+00:15:21.640 --> 00:15:28.110
+that topic and I'm going to kill this spark application by doing control C as well.
+

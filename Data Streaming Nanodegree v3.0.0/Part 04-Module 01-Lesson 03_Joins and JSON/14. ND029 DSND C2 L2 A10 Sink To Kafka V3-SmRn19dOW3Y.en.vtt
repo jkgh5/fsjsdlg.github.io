@@ -1,0 +1,121 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:03.915
+Kafka has the ability to sink with multiple connectors.
+
+00:00:03.915 --> 00:00:07.320
+The flexibility given by the connectors of Kafka
+
+00:00:07.320 --> 00:00:11.070
+allow you to communicate with multiple outside systems.
+
+00:00:11.070 --> 00:00:15.930
+Next, we're going to work with joining DataFrames and sinking them to Kafka.
+
+00:00:15.930 --> 00:00:18.165
+This is where we are in the lesson.
+
+00:00:18.165 --> 00:00:20.565
+We just worked with streaming DataFrames,
+
+00:00:20.565 --> 00:00:22.845
+now we will be sinking to Kafka.
+
+00:00:22.845 --> 00:00:24.650
+In order to sink to Kafka,
+
+00:00:24.650 --> 00:00:26.750
+you need to have something to sink.
+
+00:00:26.750 --> 00:00:29.780
+That will be a streaming DataFrame you create.
+
+00:00:29.780 --> 00:00:31.250
+When we sink to Kafka,
+
+00:00:31.250 --> 00:00:34.885
+we need to identify the topic we will be sinking data to.
+
+00:00:34.885 --> 00:00:39.365
+Then it's just a matter of writing a few lines to sink your DataFrame.
+
+00:00:39.365 --> 00:00:41.030
+After creating a view,
+
+00:00:41.030 --> 00:00:43.790
+you have something unique to offer to other systems.
+
+00:00:43.790 --> 00:00:47.605
+Let's learn how to share that data via a Kafka topic.
+
+00:00:47.605 --> 00:00:50.870
+Use a select expression on the DataFrame to cast
+
+00:00:50.870 --> 00:00:53.960
+the key and structure your field as JSON.
+
+00:00:53.960 --> 00:00:57.685
+Be sure to pass the Kafka bootstrap server's parameter.
+
+00:00:57.685 --> 00:01:02.600
+Last, sink the DataFrame to your new Kafka topic using the right stream.
+
+00:01:02.600 --> 00:01:06.140
+Now, any Kafka consumer can access your data by
+
+00:01:06.140 --> 00:01:09.805
+subscribing to the topic called vehicle-status-changes.
+
+00:01:09.805 --> 00:01:15.330
+Let's call the.selectExpr function..selectExpr
+
+00:01:15.330 --> 00:01:18.980
+starts with a DataFrame and returns a DataFrame.
+
+00:01:18.980 --> 00:01:22.885
+Each parameter we pass ends up being a field in the DataFrame.
+
+00:01:22.885 --> 00:01:24.965
+When passing a DataFrame to Kafka,
+
+00:01:24.965 --> 00:01:27.290
+we need two fields, key and value.
+
+00:01:27.290 --> 00:01:30.020
+The key is usually a unique identifier.
+
+00:01:30.020 --> 00:01:32.705
+The value contains the JSON data.
+
+00:01:32.705 --> 00:01:37.090
+Let's take a closer look at how to call the to_JSON function.
+
+00:01:37.090 --> 00:01:41.284
+We use to_JSON in a select expression on a DataFrame.
+
+00:01:41.284 --> 00:01:44.180
+First pass the fields you want serialized,
+
+00:01:44.180 --> 00:01:46.955
+then alias them as a field.
+
+00:01:46.955 --> 00:01:50.960
+With Kafka, we want the field to be value.
+
+00:01:50.960 --> 00:01:52.910
+When streaming to Kafka,
+
+00:01:52.910 --> 00:01:56.120
+use the same options as you do streaming from Kafka.
+
+00:01:56.120 --> 00:02:00.355
+However, a new option is needed called checkpointLocation.
+
+00:02:00.355 --> 00:02:03.965
+This needs to be a writeable path on Spark worker.
+
+00:02:03.965 --> 00:02:08.550
+It is used by Spark to offload data to disk for recovery.
+

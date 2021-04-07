@@ -1,0 +1,64 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:05.235
+You were asked in the quiz question whether you would be able to be certain
+
+00:00:05.235 --> 00:00:07.725
+that the Spark cluster was up and running
+
+00:00:07.725 --> 00:00:10.830
+if you received the correct output on the console.
+
+00:00:10.830 --> 00:00:13.155
+Well, let's take a look at the answer.
+
+00:00:13.155 --> 00:00:15.420
+The data showing on the console is
+
+00:00:15.420 --> 00:00:18.600
+an indication your Spark application was written correctly.
+
+00:00:18.600 --> 00:00:22.020
+However, it is not a guarantee that you started the cluster.
+
+00:00:22.020 --> 00:00:26.235
+Running the Spark application without a cluster will not scale appropriately.
+
+00:00:26.235 --> 00:00:30.655
+You should always check that the spark master and worker are running using this command.
+
+00:00:30.655 --> 00:00:35.915
+Typing ps -ef will give you a list of processes running on the server.
+
+00:00:35.915 --> 00:00:39.545
+You will want to watch for two lines that have the word Spark in them.
+
+00:00:39.545 --> 00:00:42.980
+You may have to expand the terminal to see the full output.
+
+00:00:42.980 --> 00:00:46.165
+In this example, do you see Spark running?
+
+00:00:46.165 --> 00:00:49.520
+There are no processes showing the word Spark,
+
+00:00:49.520 --> 00:00:51.350
+so Spark is not running.
+
+00:00:51.350 --> 00:00:55.480
+How about in this example, is Spark running?
+
+00:00:55.480 --> 00:01:01.535
+Notice in this screen there are two lines containing the word Spark: each is a process,
+
+00:01:01.535 --> 00:01:03.050
+one's running the master,
+
+00:01:03.050 --> 00:01:04.610
+and one is running a worker.
+
+00:01:04.610 --> 00:01:07.710
+This means Spark is actively running.
+

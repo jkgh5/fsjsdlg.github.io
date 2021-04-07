@@ -1,0 +1,448 @@
+<!-- udacity2.0 -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Quiz: Parse a JSON payload into separate fields for analysis</title>
+  <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../assets/css/plyr.css">
+  <link rel="stylesheet" href="../assets/css/katex.min.css">
+  <link rel="stylesheet" href="../assets/css/jquery.mCustomScrollbar.min.css">
+  <link rel="stylesheet" href="../assets/css/styles.css">
+  <link rel="shortcut icon" type="image/png" href="../assets/img/udacimak.png" />
+</head>
+
+<body>
+  <div class="wrapper">
+    <nav id="sidebar">
+  <div class="sidebar-header">
+    <h3>Joins and JSON</h3>
+  </div>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled components">
+    <li class="">
+      <a href="01. Lesson Overview.html">01. Lesson Overview</a>
+    </li>
+    <li class="">
+      <a href="02. Why JSON is important.html">02. Why JSON is important?</a>
+    </li>
+    <li class="">
+      <a href="03. Why JSON and joins are important..html">03. Why JSON and joins are important.</a>
+    </li>
+    <li class="">
+      <a href="04. Parse a JSON Payload.html">04. Parse a JSON Payload</a>
+    </li>
+    <li class="">
+      <a href="05. Walkthrough 1 Parse a JSON Payload.html">05. Walkthrough 1: Parse a JSON Payload</a>
+    </li>
+    <li class="">
+      <a href="06. Quiz Parse a JSON payload into separate fields for analysis.html">06. Quiz: Parse a JSON payload into separate fields for analysis</a>
+    </li>
+    <li class="">
+      <a href="07. Exercise Parse a JSON Payload.html">07. Exercise: Parse a JSON Payload</a>
+    </li>
+    <li class="">
+      <a href="08. Solution 1 Parse a JSON Payload.html">08. Solution 1: Parse a JSON Payload</a>
+    </li>
+    <li class="">
+      <a href="09. Join Streaming Dataframes from Different Datasources.html">09. Join Streaming Dataframes from Different Datasources</a>
+    </li>
+    <li class="">
+      <a href="10. Walkthrough 2 Join Streaming Dataframes.html">10. Walkthrough 2: Join Streaming Dataframes</a>
+    </li>
+    <li class="">
+      <a href="11. Quiz Join Streaming Dataframes from Different Datasources.html">11. Quiz: Join Streaming Dataframes from Different Datasources</a>
+    </li>
+    <li class="">
+      <a href="12. Exercise 2 Join Streaming Dataframes.html">12. Exercise 2: Join Streaming Dataframes</a>
+    </li>
+    <li class="">
+      <a href="13. Solution Join Streaming Dataframes.html">13. Solution: Join Streaming Dataframes</a>
+    </li>
+    <li class="">
+      <a href="14. Sink to Kafka.html">14. Sink to Kafka</a>
+    </li>
+    <li class="">
+      <a href="15. Walkthrough 3 Sink to Kafka.html">15. Walkthrough 3: Sink to Kafka</a>
+    </li>
+    <li class="">
+      <a href="16. Quiz Sink to Kafka.html">16. Quiz: Sink to Kafka</a>
+    </li>
+    <li class="">
+      <a href="17. Exercise Sink to Kafka.html">17. Exercise: Sink to Kafka</a>
+    </li>
+    <li class="">
+      <a href="18. Solution 3 Sink to Kafka.html">18. Solution 3: Sink to Kafka</a>
+    </li>
+    <li class="">
+      <a href="19. Edge Cases.html">19. Edge Cases</a>
+    </li>
+    <li class="">
+      <a href="20. Glossary.html">20. Glossary</a>
+    </li>
+    <li class="">
+      <a href="21. Further Reading.html">21. Further Reading</a>
+    </li>
+    <li class="">
+      <a href="22. Lesson Review.html">22. Lesson Review</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+</nav>
+
+    <div id="content">
+      <header class="container-fluild header">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <div class="align-items-middle">
+                <button type="button" id="sidebarCollapse" class="btn btn-toggle-sidebar">
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                </button>
+
+                <h1 style="display: inline-block">06. Quiz: Parse a JSON payload into separate fields for analysis</h1>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <main class="container">
+        <div class="row">
+          <div class="col-12">
+            <div class="ud-atom">
+  <h3><p>Quiz: Parse a JSON payload into separate fields for analysis Heading</p></h3>
+  <div>
+  <h2 id="quiz-parse-a-json-payload-into-separate-fields-for-analysis">Quiz: Parse a JSON payload into separate fields for analysis</h2>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <p><strong>QUIZ QUESTION:</strong>: <p>Match the Concept with the Definition</p></p>
+  <p><strong>ANSWER CHOICES:</strong></p>
+  <button class="btn btn-primary"><p>a Spark class that defines the schema for a DataFrame</p></button>
+  <button class="btn btn-primary"><p>a data serialization standard consisting of keys and values </p></button>
+  <button class="btn btn-primary"><p>a Python class used to create a typed field in a StructType</p></button>
+
+  <br><br>
+
+  <table class="table">
+    <tr class="thead-dark table-hover">
+      <th>
+        <p>Concept</p>
+      </th>
+      <th>
+        <p>Definition</p>
+      </th>
+    </tr>
+
+    <tr>
+      <td><p><code>StructType</code></p></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><p><code>StructField</code></p></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><p>JSON</p></td>
+      <td></td>
+    </tr>
+  </table>
+
+  <details>
+    <summary><strong>SOLUTION:</strong></summary>
+
+    <table class="table">
+      <tr class="thead-dark table-hover">
+        <th>
+          <p>Concept</p>
+        </th>
+        <th>
+          <p>Definition</p>
+        </th>
+      </tr>
+
+      <tr>
+        <td>
+          <p><code>StructType</code></p>
+        </td>
+        <td>
+            <button class="btn btn-primary"><p>a Spark class that defines the schema for a DataFrame</p></button>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <p>JSON</p>
+        </td>
+        <td>
+            <button class="btn btn-primary"><p>a data serialization standard consisting of keys and values </p></button>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <p><code>StructField</code></p>
+        </td>
+        <td>
+            <button class="btn btn-primary"><p>a Python class used to create a typed field in a StructType</p></button>
+        </td>
+      </tr>
+    </table>
+  </details>
+</div>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <form>
+    <fieldset>
+      <legend><p>What is the correct way to use a <code>StructType</code> called <code>vehicleStatusSchema</code> to deserialize JSON?</p></legend>
+    </fieldset>
+
+      <div>
+        <input type="radio" value="cc7f13f2-39eb-41af-988c-b272f3d0dfdd" name="1095510" id="cc7f13f2-39eb-41af-988c-b272f3d0dfdd">
+        <label for="cc7f13f2-39eb-41af-988c-b272f3d0dfdd"><pre><code>vehicleStatusStreamingDF \
+  .withColumn("value",from_json("value",vehicleStatusSchema))</code></pre></label>
+      </div>
+      <div>
+        <input type="radio" value="9548cfc0-e196-4adf-bef7-6c1cb0eb12ea" name="1095510" id="9548cfc0-e196-4adf-bef7-6c1cb0eb12ea">
+        <label for="9548cfc0-e196-4adf-bef7-6c1cb0eb12ea"><pre><code>vehicleStatusStreamingDF \
+  .withColumn("value",parse_json("value",vehicleStatusSchema))</code></pre></label>
+      </div>
+      <div>
+        <input type="radio" value="6fd39667-2d8a-460c-a48a-3b07d2951dcc" name="1095510" id="6fd39667-2d8a-460c-a48a-3b07d2951dcc">
+        <label for="6fd39667-2d8a-460c-a48a-3b07d2951dcc"><pre><code>vehicleStatusStreamingDF \
+  .withColumn("value",from_json("vehicleStatusSchema))</code></pre></label>
+      </div>
+  </form>
+
+  <details>
+    <summary><strong>SOLUTION:</strong></summary>
+    ```
+vehicleStatusStreamingDF \
+  .withColumn("value",from_json("value",vehicleStatusSchema))
+
+```
+  </details>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <form>
+    <fieldset>
+      <legend><p>Select an appropriate Instantiation of a <code>StructType</code> for the following <code>VehicleStatus</code> JSON: </p>
+<pre><code>{
+  "truckNumber":"5169",
+  "destination":"Florida",
+  "milesFromShop":505,
+  "odomoterReading":50513
+}</code></pre></legend>
+    </fieldset>
+
+    <div>
+      <input type="checkbox" value="18c04109-39ea-49d4-a7ef-4303082944e6" name="1095511" id="18c04109-39ea-49d4-a7ef-4303082944e6">
+      <label for="18c04109-39ea-49d4-a7ef-4303082944e6"><pre><code>vehicleStatusSchema = StructType (
+    [
+        StructField("truckNumber", StringType()),
+        StructField("destination", StringType()),
+        StructField("milesFromShop", IntegerType()),
+        StructField("odometerReading", IntegerType())     
+    ]   
+)</code></pre></label>
+    </div>
+    <div>
+      <input type="checkbox" value="40be8f87-5337-4fc8-a57e-89fcd8dc43a4" name="1095511" id="40be8f87-5337-4fc8-a57e-89fcd8dc43a4">
+      <label for="40be8f87-5337-4fc8-a57e-89fcd8dc43a4"><pre><code>vehicleStatusSchema = StructType (
+    [
+        StructField("truckNumber", StringType()),
+        StructField("destination", FloatType()),
+        StructField("milesFromShop", IntegerType()),
+        StructField("odometerReading", IntegerType())     
+    ]   
+)</code></pre></label>
+    </div>
+    <div>
+      <input type="checkbox" value="e93ae616-baf0-494a-b9db-13b8904a2303" name="1095511" id="e93ae616-baf0-494a-b9db-13b8904a2303">
+      <label for="e93ae616-baf0-494a-b9db-13b8904a2303"><pre><code>vehicleStatusSchema = StructType (   
+        StructField("truckNumber", StringType()),
+        StructField("destination", StringType()),
+        StructField("milesFromShop", IntegerType()),
+        StructField("odometerReading", IntegerType())           
+)</code></pre></label>
+    </div>
+  </form>
+
+  <details>
+    <summary><strong>SOLUTION:</strong></summary>
+    <ul>
+      <li>```
+vehicleStatusSchema = StructType (
+    [
+        StructField("truckNumber", StringType()),
+        StructField("destination", StringType()),
+        StructField("milesFromShop", IntegerType()),
+        StructField("odometerReading", IntegerType())     
+    ]   
+)
+```</li>
+  </ul>
+  </details>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <form>
+    <fieldset>
+      <legend><p>Which <code>StructField</code> instantiations below match the <code>VehicleCheckin</code> JSON:</p>
+<pre><code>{
+  "reservationId":"1601485848310",
+  "locationName":"New Mexico",
+  "truckNumber":"3944",
+  "status":"In"}</code></pre></legend>
+    </fieldset>
+
+    <div>
+      <input type="checkbox" value="24c49b6f-6c5e-45ae-840e-263cde921190" name="1095518" id="24c49b6f-6c5e-45ae-840e-263cde921190">
+      <label for="24c49b6f-6c5e-45ae-840e-263cde921190"><p><code>StructField("reservationid", StringType())</code></p></label>
+    </div>
+    <div>
+      <input type="checkbox" value="b606608b-f39b-4720-ad5d-6402756b8d73" name="1095518" id="b606608b-f39b-4720-ad5d-6402756b8d73">
+      <label for="b606608b-f39b-4720-ad5d-6402756b8d73"><p><code>StructField("locationName", StringType())</code></p></label>
+    </div>
+    <div>
+      <input type="checkbox" value="9595ccdf-6024-4fe7-bea2-c41387126080" name="1095518" id="9595ccdf-6024-4fe7-bea2-c41387126080">
+      <label for="9595ccdf-6024-4fe7-bea2-c41387126080"><p><code>StructField("truckNumber", IntegerType())</code></p></label>
+    </div>
+    <div>
+      <input type="checkbox" value="4b1f6646-fb83-4980-8278-916a02a7c6c4" name="1095518" id="4b1f6646-fb83-4980-8278-916a02a7c6c4">
+      <label for="4b1f6646-fb83-4980-8278-916a02a7c6c4"><p><code>StructField("status", StringType()</code></p></label>
+    </div>
+  </form>
+
+  <details>
+    <summary><strong>SOLUTION:</strong></summary>
+    <ul>
+      <li>` StructField("locationName", StringType())`</li>
+      <li>`StructField("status", StringType()`</li>
+  </ul>
+  </details>
+</div>
+
+</div>
+<div class="divider"></div>
+          </div>
+
+          <div class="col-12">
+            <p class="text-right">
+              <a href="07. Exercise Parse a JSON Payload.html" class="btn btn-outline-primary mt-4" role="button">Next Concept</a>
+            </p>
+          </div>
+        </div>
+      </main>
+
+      <footer class="footer">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <p class="text-center">
+                <a href="https://us-udacity.github.io/" target="_blank">【udacity2.0 】If you need more courses, please add wechat：udacity6</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </div>
+
+
+  <script src="../assets/js/jquery-3.3.1.min.js"></script>
+  <script src="../assets/js/plyr.polyfilled.min.js"></script>
+  <script src="../assets/js/bootstrap.min.js"></script>
+  <script src="../assets/js/jquery.mCustomScrollbar.concat.min.js"></script>
+  <script src="../assets/js/katex.min.js"></script>
+  <script>
+    // Initialize Plyr video players
+    const players = Array.from(document.querySelectorAll('video')).map(p => new Plyr(p));
+
+    // render math equations
+    let elMath = document.getElementsByClassName('mathquill');
+    for (let i = 0, len = elMath.length; i < len; i += 1) {
+      const el = elMath[i];
+
+      katex.render(el.textContent, el, {
+        throwOnError: false
+      });
+    }
+
+    // this hack will make sure Bootstrap tabs work when using Handlebars
+    if ($('#question-tabs').length && $('#user-answer-tabs').length) {
+      $("#question-tabs a.nav-link").on('click', function () {
+        $("#question-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+      $("#user-answer-tabs a.nav-link").on('click', function () {
+        $("#user-answer-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    } else {
+      $("a.nav-link").on('click', function () {
+        $(".tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    }
+
+    // side bar events
+    $(document).ready(function () {
+      $("#sidebar").mCustomScrollbar({
+        theme: "minimal"
+      });
+
+      $('#sidebarCollapse').on('click', function () {
+        $('#sidebar, #content').toggleClass('active');
+        $('.collapse.in').toggleClass('in');
+        $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+      });
+
+      // scroll to first video on page loading
+      if ($('video').length) {
+        $('html,body').animate({ scrollTop: $('div.plyr').prev().offset().top});
+      }
+
+      // auto play first video: this may not work with chrome/safari due to autoplay policy
+      if (players && players.length > 0) {
+        players[0].play();
+      }
+
+      // scroll sidebar to current concept
+      const currentInSideBar = $( "ul.sidebar-list.components li a:contains('06. Quiz: Parse a JSON payload into separate fields for analysis')" )
+      currentInSideBar.css( "text-decoration", "underline" );
+      $("#sidebar").mCustomScrollbar('scrollTo', currentInSideBar);
+    });
+  </script>
+</body>
+
+</html>

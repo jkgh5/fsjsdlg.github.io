@@ -1,0 +1,328 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:06.320
+Let's take a look at a hands-on example of streaming from Kafka using Spark.
+
+00:00:06.320 --> 00:00:09.860
+The first thing I'm going to do is start-up Kafka.
+
+00:00:09.860 --> 00:00:13.780
+While that's starting, I'm going to start Spark as well.
+
+00:00:20.780 --> 00:00:25.005
+Copying the log location for this Spark master.
+
+00:00:25.005 --> 00:00:27.760
+Then I'm going to view that log.
+
+00:00:28.520 --> 00:00:33.015
+I'm going to tail it because I want to see it as it goes.
+
+00:00:33.015 --> 00:00:35.770
+It's still running.
+
+00:00:44.480 --> 00:00:47.564
+Here is what I was looking for,
+
+00:00:47.564 --> 00:00:50.175
+the Spark URI for the master.
+
+00:00:50.175 --> 00:00:53.790
+I'm going to break out of the tail 'control C',
+
+00:00:53.790 --> 00:00:58.965
+home workspace, Spark, sbin,
+
+00:00:58.965 --> 00:01:02.650
+start, I'm starting the worker.
+
+00:01:02.720 --> 00:01:08.595
+Then I'm passing this URI.
+
+00:01:08.595 --> 00:01:12.810
+Starting up the worker now.
+
+00:01:12.810 --> 00:01:16.500
+If I look at the p_f,
+
+00:01:16.500 --> 00:01:19.875
+I'm going to see Spark and Spark,
+
+00:01:19.875 --> 00:01:22.545
+both master and worker are running.
+
+00:01:22.545 --> 00:01:25.664
+If I come back to Kafka,
+
+00:01:25.664 --> 00:01:29.670
+it says Zookeeper is up, Kafka is up.
+
+00:01:29.670 --> 00:01:35.090
+We're going to disregard this last stack trace that we saw because that's just
+
+00:01:35.090 --> 00:01:40.640
+an error with serializing from [inaudible] connector which is not relevant.
+
+00:01:40.640 --> 00:01:44.680
+It's just a little bug that doesn't affect us in any of our lessons.
+
+00:01:44.680 --> 00:01:47.770
+The next thing I'm going to do is,
+
+00:01:47.770 --> 00:01:51.005
+open up the application I'm going to work on,
+
+00:01:51.005 --> 00:01:55.900
+it's the Kafka console dot pie.
+
+00:01:55.900 --> 00:02:00.545
+I'm just going to make it a little easier to work with here.
+
+00:02:00.545 --> 00:02:03.604
+I have my Spark library imported,
+
+00:02:03.604 --> 00:02:12.455
+and the next thing I'm going to do is create a Spark session by calling,.builder.appname.
+
+00:02:12.455 --> 00:02:16.910
+I'm going to call this one fuel level because that's
+
+00:02:16.910 --> 00:02:21.720
+the name of the topic that I'm going to be pulling from Kafka.
+
+00:02:21.720 --> 00:02:26.045
+I'm setting the logging to low or one.
+
+00:02:26.045 --> 00:02:28.500
+Now, I'm going to connect to Kafka,
+
+00:02:28.500 --> 00:02:32.115
+I'm creating a data-frame that's going to pull from a topic,
+
+00:02:32.115 --> 00:02:35.130
+that [inaudible] color Kafka streaming df.
+
+00:02:35.130 --> 00:02:36.840
+Then I'm going to wrap down,
+
+00:02:36.840 --> 00:02:38.330
+this is a little easier to read,
+
+00:02:38.330 --> 00:02:41.020
+because there's a lot of chaining happening here.
+
+00:02:41.020 --> 00:02:45.510
+I'm accessing the.read-stream on the Spark-Session.
+
+00:02:45.510 --> 00:02:48.969
+Then I'm going to change it to a Kafka format.
+
+00:02:48.969 --> 00:02:52.660
+Then I'm going to pass a couple options.
+
+00:02:53.030 --> 00:02:56.185
+The first option is the bootstrap server,
+
+00:02:56.185 --> 00:02:58.865
+that tells it where to connect to Kafka.
+
+00:02:58.865 --> 00:03:00.995
+Usually that's a server name.
+
+00:03:00.995 --> 00:03:05.365
+In this case, it's just local host because we're on a test environment.
+
+00:03:05.365 --> 00:03:09.065
+I'm going to say subscribe to the fuel level topic.
+
+00:03:09.065 --> 00:03:14.350
+We want to get the oldest data possible from the topic, from the beginning.
+
+00:03:14.350 --> 00:03:18.695
+Again, this could be deleted by Kafka if it's really old data.
+
+00:03:18.695 --> 00:03:23.390
+But we'll get at least today's data and probably a little older than that.
+
+00:03:23.390 --> 00:03:27.985
+Now, I've got this data-frame which represents a topic from Kafka,
+
+00:03:27.985 --> 00:03:33.005
+and I want to take that data-frame and convert it to something a little more usable.
+
+00:03:33.005 --> 00:03:35.809
+The raw default format is binary,
+
+00:03:35.809 --> 00:03:39.355
+and we want to cast it to string format.
+
+00:03:39.355 --> 00:03:42.320
+We're going to create a new data-frame that doesn't have
+
+00:03:42.320 --> 00:03:47.469
+the binary in it from the one that does.
+
+00:03:47.469 --> 00:03:52.400
+We're going do that using a select expression method on the data-frame.
+
+00:03:52.400 --> 00:03:58.450
+Inside the expression we're going to cast the key is a string that came from Kafka.
+
+00:03:58.450 --> 00:04:05.220
+In this case, the key is the truck number.
+
+00:04:05.220 --> 00:04:08.480
+We're going to name that column truck number.
+
+00:04:08.480 --> 00:04:11.885
+Then I'm casting the value as a string as well.
+
+00:04:11.885 --> 00:04:15.320
+I'm going to call that one the fuel
+
+00:04:15.320 --> 00:04:18.890
+level because that's what's going to be in that column.
+
+00:04:18.890 --> 00:04:24.860
+Then I'm going take this data-frame, Kafka streaming df,
+
+00:04:24.860 --> 00:04:34.835
+and I'm going to write this to the console using the right stream output mode of append,
+
+00:04:34.835 --> 00:04:38.660
+that just means, show the new entries as they appear.
+
+00:04:38.660 --> 00:04:43.085
+I want it to stream to the console and I'm starting it.
+
+00:04:43.085 --> 00:04:48.695
+This kicks off the entire application, start.
+
+00:04:48.695 --> 00:04:51.695
+Then I'm going to say await termination,
+
+00:04:51.695 --> 00:04:54.845
+which means it should keep running continuously.
+
+00:04:54.845 --> 00:04:57.900
+I'm going to save this.
+
+00:04:57.940 --> 00:05:00.830
+Now, I'm going to run it.
+
+00:05:00.830 --> 00:05:09.800
+I've actually created some scripts that startup the applications for us.
+
+00:05:09.800 --> 00:05:12.470
+I'm going to show you what one of those looks like.
+
+00:05:12.470 --> 00:05:16.910
+This one starts off by saying Spark
+
+00:05:16.910 --> 00:05:21.755
+submit and it passes a command -packages, - -packages.
+
+00:05:21.755 --> 00:05:26.120
+This is where we put the Kafka library we want.
+
+00:05:26.120 --> 00:05:31.445
+The version matters, this two dot for the six actually is important.
+
+00:05:31.445 --> 00:05:34.080
+It's based on what version of Spark you're running.
+
+00:05:34.080 --> 00:05:39.140
+We're running version 2,4,6 in the workspace that we've created for you here at Udacity.
+
+00:05:39.140 --> 00:05:41.570
+In order for that to work correctly,
+
+00:05:41.570 --> 00:05:43.270
+we need to match.
+
+00:05:43.270 --> 00:05:47.840
+Again, this is the library for Kafka to work with Spark.
+
+00:05:47.840 --> 00:05:50.345
+We're passing that as - -packages.
+
+00:05:50.345 --> 00:05:52.519
+The rest of these commands are just for convenience,
+
+00:05:52.519 --> 00:05:54.800
+for logging purposes and they're not necessary.
+
+00:05:54.800 --> 00:05:59.200
+I could just run this whole command from the command line and it would work just fine.
+
+00:05:59.200 --> 00:06:01.610
+We're going to use scripts throughout the rest of
+
+00:06:01.610 --> 00:06:04.700
+the course just to make running it a little simpler.
+
+00:06:04.700 --> 00:06:07.160
+You're welcome to go look at those whenever you want,
+
+00:06:07.160 --> 00:06:10.700
+and you can actually copy the commands and paste them in manually,
+
+00:06:10.700 --> 00:06:14.345
+if you find that's easier or on better learning process for you.
+
+00:06:14.345 --> 00:06:16.640
+I'll just do that this time just to show you.
+
+00:06:16.640 --> 00:06:19.145
+I've copied that command,
+
+00:06:19.145 --> 00:06:23.240
+and actually, I do need this part, that wasn't true.
+
+00:06:23.240 --> 00:06:26.700
+This is the name of the Python script I want to run.
+
+00:06:26.740 --> 00:06:29.725
+I'm going to run this.
+
+00:06:29.725 --> 00:06:31.605
+The librarie's got loaded.
+
+00:06:31.605 --> 00:06:33.195
+You can see a bunch of ivy,
+
+00:06:33.195 --> 00:06:34.630
+jars, things like that,
+
+00:06:34.630 --> 00:06:36.569
+that means it's loading libraries.
+
+00:06:36.569 --> 00:06:39.935
+Then this steps to our in-pointment we were waiting.
+
+00:06:39.935 --> 00:06:41.900
+Then we saw our data output.
+
+00:06:41.900 --> 00:06:43.520
+We have truck numbers,
+
+00:06:43.520 --> 00:06:45.215
+all different kinds of trucks,
+
+00:06:45.215 --> 00:06:49.610
+and here's the percentage of fuel that they have in each of the trucks at that time.
+
+00:06:49.610 --> 00:06:51.590
+This truck is below empty.
+
+00:06:51.590 --> 00:06:55.365
+That's a problem, and now we want to kill this,
+
+00:06:55.365 --> 00:06:57.815
+to get it to stop, I just say 'control C'.
+
+00:06:57.815 --> 00:07:02.070
+That's a walk-through for streaming from Kafka in Spark.
+

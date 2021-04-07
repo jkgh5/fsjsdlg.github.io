@@ -1,0 +1,172 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:04.290
+It is important to know what the data looks like and the sources you will be joining,
+
+00:00:04.290 --> 00:00:07.245
+so you know which fields will come from which streams.
+
+00:00:07.245 --> 00:00:11.145
+Try to get sample payloads of each source as early as possible,
+
+00:00:11.145 --> 00:00:12.840
+so you can create a picture of
+
+00:00:12.840 --> 00:00:16.635
+the complete sink and where all the pieces might come from.
+
+00:00:16.635 --> 00:00:21.960
+It is okay if the payload format is not a 100 percent finalized at first.
+
+00:00:21.960 --> 00:00:25.975
+However, if fields change in the sources that are used in your join,
+
+00:00:25.975 --> 00:00:29.650
+the format of the final output will be affected.
+
+00:00:29.650 --> 00:00:32.885
+As soon as you have sampled data for your JSON sources,
+
+00:00:32.885 --> 00:00:36.265
+you should examine the fields and data types available to you.
+
+00:00:36.265 --> 00:00:40.160
+It might be helpful to format the JSON in a text file
+
+00:00:40.160 --> 00:00:44.875
+for you to reference later in a format that makes it easier to read.
+
+00:00:44.875 --> 00:00:49.065
+In this example, we have four fields: truckNumber,
+
+00:00:49.065 --> 00:00:54.175
+destination, milesFromShop, and odometerReading.
+
+00:00:54.175 --> 00:00:56.465
+In order to leverage the data you have,
+
+00:00:56.465 --> 00:00:58.705
+you will create a JSON schema.
+
+00:00:58.705 --> 00:01:04.609
+Pop quiz. How would you format this JSON data for readability?
+
+00:01:04.609 --> 00:01:08.090
+Here is the correct way to format the JSON.
+
+00:01:08.090 --> 00:01:11.210
+Notice each key and value are on a separate line.
+
+00:01:11.210 --> 00:01:14.860
+Curly braces are usually on their own line also.
+
+00:01:14.860 --> 00:01:17.945
+You've learned about analyzing source data.
+
+00:01:17.945 --> 00:01:20.540
+Next, you will begin creating a JSON schema.
+
+00:01:20.540 --> 00:01:26.510
+A StructType is a spark class that defines the schema for a DataFrame.
+
+00:01:26.510 --> 00:01:28.700
+Using an array of structs fields,
+
+00:01:28.700 --> 00:01:30.815
+you can create your StructType.
+
+00:01:30.815 --> 00:01:35.080
+Each StructField correlates with the JSON field.
+
+00:01:35.080 --> 00:01:38.795
+A StructField defines a data element.
+
+00:01:38.795 --> 00:01:40.925
+When creating a StructType,
+
+00:01:40.925 --> 00:01:43.895
+you pass a field name and a datatype.
+
+00:01:43.895 --> 00:01:48.430
+The field name needs to match the JSON field exactly.
+
+00:01:48.430 --> 00:01:53.659
+A StructType is a spark class that defines the schema for a DataFrame.
+
+00:01:53.659 --> 00:01:59.890
+A StructField is a Python class used to create a typed field in a StructType.
+
+00:01:59.890 --> 00:02:04.590
+You define a StructType by instantiating it in code.
+
+00:02:04.590 --> 00:02:07.940
+Lists to the array of fields by name and type.
+
+00:02:07.940 --> 00:02:13.130
+Notice the field names in this example correspond with the JSON fields earlier.
+
+00:02:13.130 --> 00:02:16.940
+Now that you know how this works, let's try it out.
+
+00:02:16.940 --> 00:02:19.460
+You've created your StructType schema.
+
+00:02:19.460 --> 00:02:22.585
+Now, you will use it to parse JSON.
+
+00:02:22.585 --> 00:02:24.845
+Once you have defined the schema,
+
+00:02:24.845 --> 00:02:28.115
+you are ready to use it to parse of field containing JSON.
+
+00:02:28.115 --> 00:02:33.100
+In this example, the DataFrame is called vehiclesStatusStreamingDF.
+
+00:02:33.100 --> 00:02:38.105
+We pass the JSON field called value using the dot with column method.
+
+00:02:38.105 --> 00:02:42.230
+Dot width column creates or overwrites an existing column.
+
+00:02:42.230 --> 00:02:46.540
+Because the value column already exists, we're overwriting it.
+
+00:02:46.540 --> 00:02:50.835
+The new value is assigned using the from JSON function.
+
+00:02:50.835 --> 00:02:54.230
+The from JSON function uses the column name containing
+
+00:02:54.230 --> 00:02:58.615
+the JSON value and the truckStatusSchema.
+
+00:02:58.615 --> 00:03:02.645
+Let's take a closer look at the dot with column function.
+
+00:03:02.645 --> 00:03:05.135
+Dot with column takes two parameters.
+
+00:03:05.135 --> 00:03:09.740
+The first parameter is the new or existing column name we are assigning data to.
+
+00:03:09.740 --> 00:03:13.540
+The second parameter is the data we want to assign.
+
+00:03:13.540 --> 00:03:16.860
+Now, let's look at the from JSON function.
+
+00:03:16.860 --> 00:03:18.755
+When calling from JSON,
+
+00:03:18.755 --> 00:03:20.375
+we pass two things.
+
+00:03:20.375 --> 00:03:24.455
+First, we pass the column name we want to extract JSON out of.
+
+00:03:24.455 --> 00:03:30.630
+Second, we pass the variable which holds the StructType, defining our schema.
+

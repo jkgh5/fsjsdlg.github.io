@@ -1,0 +1,133 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:04.080
+Let's look at the solution to the gear position exercise.
+
+00:00:04.080 --> 00:00:07.480
+We're going to import the SparkSession class,
+
+00:00:07.480 --> 00:00:09.920
+and then we're going to create a SparkSession.
+
+00:00:09.920 --> 00:00:14.040
+Using that balance-events name, we're going to create it.
+
+00:00:14.040 --> 00:00:16.020
+We're going to set our log level to one.
+
+00:00:16.020 --> 00:00:18.465
+We're going to take the DataFrame from
+
+00:00:18.465 --> 00:00:22.515
+a SparkSession using the readStream, format of Kafka.
+
+00:00:22.515 --> 00:00:25.950
+We're going to set our bootstrap servers to localhost 9092,
+
+00:00:25.950 --> 00:00:28.080
+subscribe to the gear position topic,
+
+00:00:28.080 --> 00:00:30.960
+set our offsets to earliest, and load.
+
+00:00:30.960 --> 00:00:35.805
+Then we're going to convert the DataFrame binary format to strings,
+
+00:00:35.805 --> 00:00:39.060
+and cast the key into a new variable called
+
+00:00:39.060 --> 00:00:43.415
+truckId and the value into a variable called gearPosition.
+
+00:00:43.415 --> 00:00:45.035
+We're going to take that data frame,
+
+00:00:45.035 --> 00:00:46.760
+create a view called gearPosition,
+
+00:00:46.760 --> 00:00:49.865
+then we're going to select from the gearPosition into a new DataFrame.
+
+00:00:49.865 --> 00:00:51.860
+We're actually going to take that DataFrame,
+
+00:00:51.860 --> 00:00:54.575
+and put the data into a new Kafka topic.
+
+00:00:54.575 --> 00:00:58.190
+I'm going to cd to home/workspace/spark.
+
+00:00:58.190 --> 00:01:01.790
+Please make sure Spark and Kafka are running before you run this.
+
+00:01:01.790 --> 00:01:05.820
+Then I'm going to LS and I'm going to do./submit-gear-position.solution.sh.
+
+00:01:10.340 --> 00:01:14.490
+First thing it does is load all of the libraries.
+
+00:01:14.490 --> 00:01:17.430
+Then it's going to start-up Spark,
+
+00:01:17.430 --> 00:01:20.640
+then runs the Spark application.
+
+00:01:20.640 --> 00:01:22.755
+You will notice there's no output,
+
+00:01:22.755 --> 00:01:25.775
+the data is actually going to Kafka right now.
+
+00:01:25.775 --> 00:01:27.215
+In order to see the data,
+
+00:01:27.215 --> 00:01:30.455
+we have to pull from a Kafka topic.
+
+00:01:30.455 --> 00:01:33.225
+I'm going to clear my terminal here,
+
+00:01:33.225 --> 00:01:36.400
+and we'll do that. I'm going to cd data/Kafka/bin.
+
+00:01:37.070 --> 00:01:46.050
+I'm going to do start, Kafka-console-consumer.
+
+00:01:46.050 --> 00:01:54.000
+I'm going to say dash dash bootstrap-server-localhost:9092.
+
+00:01:54.000 --> 00:02:01.630
+Topic is gear-position-updates in my case.
+
+00:02:02.150 --> 00:02:06.825
+Then I'm going to say dash dash from-beginning.
+
+00:02:06.825 --> 00:02:09.800
+We should see the data that's going into Kafka.
+
+00:02:09.800 --> 00:02:15.605
+There's the value, that's the gear position which is reverse, drive, neutral.
+
+00:02:15.605 --> 00:02:17.435
+Those are my options.
+
+00:02:17.435 --> 00:02:19.610
+These are for various different keys.
+
+00:02:19.610 --> 00:02:22.060
+This utility only displays the value not the key,
+
+00:02:22.060 --> 00:02:24.020
+so you're not seeing the truckId.
+
+00:02:24.020 --> 00:02:26.010
+Now, I'm going to break out of this,
+
+00:02:26.010 --> 00:02:29.430
+Control C will leave the console consumer.
+
+00:02:29.430 --> 00:02:33.940
+I'm going to stop the Spark application with Control C.
+

@@ -1,0 +1,115 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:03.720
+Let's look at the solution to the atm visit exercise.
+
+00:00:03.720 --> 00:00:06.810
+The first thing I want to do is check that Spark and Kafka are running.
+
+00:00:06.810 --> 00:00:08.805
+If I do ps -ef,
+
+00:00:08.805 --> 00:00:11.505
+I do see Spark and Spark,
+
+00:00:11.505 --> 00:00:15.495
+and then I see several other Java processes which tells me Kafka's up.
+
+00:00:15.495 --> 00:00:19.170
+I'm going to clear my terminal before we run this.
+
+00:00:19.170 --> 00:00:21.540
+I've imported my SparkSession,
+
+00:00:21.540 --> 00:00:23.685
+I'm going to create a SparkSession,
+
+00:00:23.685 --> 00:00:26.355
+then I'm going to set my log level to one.
+
+00:00:26.355 --> 00:00:29.895
+I'm going to open a connection to Kafka,
+
+00:00:29.895 --> 00:00:33.630
+and then I'm going to read a data frame from it here.
+
+00:00:33.630 --> 00:00:38.445
+Now I'm going to convert it from raw to string format.
+
+00:00:38.445 --> 00:00:42.465
+Now I'm going to create a view called ATMVisits from that data.
+
+00:00:42.465 --> 00:00:46.160
+I'm going to select all of the things in that view then I'm
+
+00:00:46.160 --> 00:00:50.340
+going to put that data into another Kafka topic.
+
+00:00:50.340 --> 00:00:58.500
+To run this, I'm going to borrow some commands from this script.
+
+00:00:58.500 --> 00:01:02.475
+I'm going to run home workspace spark bin spark-submit
+
+00:01:02.475 --> 00:01:08.170
+dash dash packages and then give the name of the library I need to run Kafka.
+
+00:01:08.170 --> 00:01:13.250
+Then I'll specify the full path to the Python script that I'm going to run.
+
+00:01:13.250 --> 00:01:15.560
+Copy that to the terminal,
+
+00:01:15.560 --> 00:01:21.570
+and the full path is going to be home, workspace, atm-visits.py.
+
+00:01:23.120 --> 00:01:27.295
+Now we're waiting for the Spark code to run.
+
+00:01:27.295 --> 00:01:32.960
+You won't see any output to the terminal because we're not writing to the terminal,
+
+00:01:32.960 --> 00:01:34.550
+we're writing to Kafka.
+
+00:01:34.550 --> 00:01:36.140
+To view that data,
+
+00:01:36.140 --> 00:01:39.960
+we're going to open up another terminal,
+
+00:01:42.110 --> 00:01:48.840
+and I'm going to go to the cd data kafka bin folder.
+
+00:01:48.840 --> 00:01:54.255
+If I list, I'll see a Kafka console consumer command,
+
+00:01:54.255 --> 00:02:02.025
+and I'm going say my bootstrap server is localhost 9092.
+
+00:02:02.025 --> 00:02:06.935
+My topic comes from the topic that I just created here,
+
+00:02:06.935 --> 00:02:10.755
+atm-visits-updates, in my case,
+
+00:02:10.755 --> 00:02:14.190
+and I want it from the beginning of the topic.
+
+00:02:14.190 --> 00:02:17.920
+I should start seeing ATM visit information.
+
+00:02:17.920 --> 00:02:24.870
+I put an s in that topic name, should be atm-visit-updates.
+
+00:02:24.870 --> 00:02:29.155
+We have all these places where people are going to their ATM.
+
+00:02:29.155 --> 00:02:32.700
+I'm going to click control C and break out of that,
+
+00:02:32.700 --> 00:02:36.940
+and then I'm going to stop the Spark application with control C as well.
+

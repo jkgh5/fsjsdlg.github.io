@@ -1,0 +1,223 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:02.624
+Next, we will walk through a hands on example
+
+00:00:02.624 --> 00:00:06.345
+of joining and then sinking to a Kafka topic.
+
+00:00:06.345 --> 00:00:12.255
+We've already worked with this vehicle data before and stream it to the console.
+
+00:00:12.255 --> 00:00:16.680
+The next thing we're going to do on the vehicle check-in Python script is change
+
+00:00:16.680 --> 00:00:21.945
+the sync from streaming to the console to streaming to a new Kafka topic.
+
+00:00:21.945 --> 00:00:23.445
+On the last line,
+
+00:00:23.445 --> 00:00:25.410
+I'm going to comment out the stream to
+
+00:00:25.410 --> 00:00:29.235
+the console and I'm going to use the same DataFrame,
+
+00:00:29.235 --> 00:00:33.615
+but I'm going to start streaming to a Kafka topic.
+
+00:00:33.615 --> 00:00:37.260
+The first thing I want to do is convert the data
+
+00:00:37.260 --> 00:00:41.265
+from regular fields and rows to JSON format.
+
+00:00:41.265 --> 00:00:44.910
+I'm going to take the DataFrame and run the dots,
+
+00:00:44.910 --> 00:00:47.265
+select DXPR function on it.
+
+00:00:47.265 --> 00:00:50.060
+Then inside of that method,
+
+00:00:50.060 --> 00:00:53.400
+I'm going to call cast,
+
+00:00:53.400 --> 00:01:01.565
+and I'm going to cast the status truck number as a key.
+
+00:01:01.565 --> 00:01:03.770
+Now let me just double check my joint
+
+00:01:03.770 --> 00:01:10.310
+statement and the status truck number is the truck number columns,
+
+00:01:10.310 --> 00:01:11.990
+so that's what I want.
+
+00:01:11.990 --> 00:01:15.550
+But Kafka wants it to be called what?
+
+00:01:15.550 --> 00:01:17.040
+It calls that a key,
+
+00:01:17.040 --> 00:01:19.365
+so I need to call it that,
+
+00:01:19.365 --> 00:01:22.245
+and I'm casting it as a string.
+
+00:01:22.245 --> 00:01:30.030
+The next thing I want to do is convert the regular fields to JSON,
+
+00:01:30.030 --> 00:01:32.685
+so I'm going to call an expression.
+
+00:01:32.685 --> 00:01:35.445
+In an expression, I'm going to call two JSON,
+
+00:01:35.445 --> 00:01:36.950
+and then in the two JSON,
+
+00:01:36.950 --> 00:01:40.085
+I'm going pass the fields that I want to serialize.
+
+00:01:40.085 --> 00:01:44.155
+If I do struck star it select all the fields,
+
+00:01:44.155 --> 00:01:48.890
+then I'm going to call that JSON payload value,
+
+00:01:48.890 --> 00:01:53.145
+because that's what Kafka wants the value field to be called.
+
+00:01:53.145 --> 00:01:59.820
+I'm going to access the right stream and I'm going to format it as Kafka.
+
+00:01:59.820 --> 00:02:03.690
+Then I'm going set my bootstrap option,
+
+00:02:03.690 --> 00:02:07.545
+and I'm listening on port 9092.
+
+00:02:07.545 --> 00:02:09.795
+I'm going to create a new topic,
+
+00:02:09.795 --> 00:02:16.455
+and the name I want to call it is check-ins status,
+
+00:02:16.455 --> 00:02:20.270
+and I need to provide this option called
+
+00:02:20.270 --> 00:02:23.795
+checkpoint location when I'm sending data to Kafka,
+
+00:02:23.795 --> 00:02:29.195
+that needs to be a folder path that's writable by the Spark worker,
+
+00:02:29.195 --> 00:02:33.905
+and it's for the purpose of writing a temporary file that's used by Spark.
+
+00:02:33.905 --> 00:02:39.394
+I'm starting that pipeline again and this time going to Kafka,
+
+00:02:39.394 --> 00:02:45.755
+and then I want to await it terminating until it's told to stop.
+
+00:02:45.755 --> 00:02:51.765
+I'm going to go to the home workspace spark folder and lists there.
+
+00:02:51.765 --> 00:02:53.220
+I have multiple scripts,
+
+00:02:53.220 --> 00:02:57.135
+the one I want is submit vehicle checkin.sh,
+
+00:02:57.135 --> 00:03:02.130
+so I'm going to say./submitvehiclecheckin.sh,
+
+00:03:02.130 --> 00:03:05.065
+that only works if I'm in the right folder.
+
+00:03:05.065 --> 00:03:10.790
+Home workspace spark through thing it does is load a bunch of Java libraries,
+
+00:03:10.790 --> 00:03:13.970
+including the Kafka library that we want,
+
+00:03:13.970 --> 00:03:17.080
+so you'll see that one here.
+
+00:03:17.080 --> 00:03:18.965
+There's several others.
+
+00:03:18.965 --> 00:03:21.110
+These all come from Maven Central,
+
+00:03:21.110 --> 00:03:27.400
+so it uses Maven Central to pull down the libraries unless they're already installed.
+
+00:03:27.400 --> 00:03:34.400
+Now, we're waiting for the job to start streaming to the new Kafka topic.
+
+00:03:34.400 --> 00:03:36.380
+If we want to check out that topic,
+
+00:03:36.380 --> 00:03:39.905
+we're going to head over to the Kafka console consumer,
+
+00:03:39.905 --> 00:03:43.665
+so I'm going to CD to the Kafka bin directory,
+
+00:03:43.665 --> 00:03:45.380
+and then if I list in there,
+
+00:03:45.380 --> 00:03:49.645
+I'll see a script called Kafka console consumer.
+
+00:03:49.645 --> 00:03:54.090
+I'm going to say dot slash because I'm in the directory,
+
+00:03:54.090 --> 00:03:57.735
+and then I want to consume that topic.
+
+00:03:57.735 --> 00:04:03.830
+First, I have to provide the bootstrap server's location, and in this case,
+
+00:04:03.830 --> 00:04:11.155
+it's actually single bootstrap server and its local-host 9092, of course.
+
+00:04:11.155 --> 00:04:14.000
+The topic we want to look at is called
+
+00:04:14.000 --> 00:04:19.855
+check-ins status and we want the messages from the beginning.
+
+00:04:19.855 --> 00:04:25.290
+Looks like I missed one of the parameters, bootstraps server.
+
+00:04:25.290 --> 00:04:28.320
+Oh, I did a dot instead of a dash.
+
+00:04:28.760 --> 00:04:33.890
+Bootstrap-server, and there's all the data that we're getting.
+
+00:04:33.890 --> 00:04:38.240
+We're seeing the same information we saw before on the screen,
+
+00:04:38.240 --> 00:04:39.650
+but in this case,
+
+00:04:39.650 --> 00:04:43.080
+it's coming out of a Kafka topic.
+
+00:04:43.080 --> 00:04:47.255
+That was the goal that we had was to streamed to Kafka, and we've done it.
+
+00:04:47.255 --> 00:04:50.790
+I'm going to Control C to stop this application.
+

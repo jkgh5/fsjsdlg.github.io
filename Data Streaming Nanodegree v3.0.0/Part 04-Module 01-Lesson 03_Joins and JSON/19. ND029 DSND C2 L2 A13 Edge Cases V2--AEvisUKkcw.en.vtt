@@ -1,0 +1,61 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:05.025
+You were asked in the quiz how to start troubleshooting a non-working Spark application.
+
+00:00:05.025 --> 00:00:06.870
+Let's take a look at the answer.
+
+00:00:06.870 --> 00:00:11.410
+It's very common that your Spark application will not run correctly the first time.
+
+00:00:11.410 --> 00:00:14.775
+The first step is usually to look for errors in the Spark console.
+
+00:00:14.775 --> 00:00:16.155
+If there aren't any errors,
+
+00:00:16.155 --> 00:00:17.655
+but your data doesn't look right,
+
+00:00:17.655 --> 00:00:20.700
+it might be time to start examining some of your data frames.
+
+00:00:20.700 --> 00:00:22.530
+To view the data frame in question,
+
+00:00:22.530 --> 00:00:27.480
+simply change the output of your Spark application to point to that data frame.
+
+00:00:27.480 --> 00:00:29.490
+In this case, we have two data frames,
+
+00:00:29.490 --> 00:00:35.115
+one called customerSelectStarDF, and one called customerWithDepositDF.
+
+00:00:35.115 --> 00:00:37.830
+To examine data, pass the data frame to
+
+00:00:37.830 --> 00:00:42.430
+the.writeStream call on the last line in this example.
+
+00:00:42.430 --> 00:00:45.620
+Notice we are now writing the data from
+
+00:00:45.620 --> 00:00:50.975
+customerSelectStarDF instead of customerWithDepositDF to the console.
+
+00:00:50.975 --> 00:00:53.390
+Once we start running the Spark application,
+
+00:00:53.390 --> 00:00:56.135
+we will see the data that we want to look into further.
+
+00:00:56.135 --> 00:00:58.820
+This may lead to a conclusion about what we need
+
+00:00:58.820 --> 00:01:02.370
+to change in dealing with that particular data.
+

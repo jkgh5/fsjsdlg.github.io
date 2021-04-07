@@ -1,0 +1,178 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:05.490
+Let's start by working with JSON Kafka messages as a Spark streaming source.
+
+00:00:05.490 --> 00:00:08.070
+We will first analyze the source sample.
+
+00:00:08.070 --> 00:00:10.215
+Next, we create a schema.
+
+00:00:10.215 --> 00:00:13.560
+Last, we use the schema to extract fields.
+
+00:00:13.560 --> 00:00:17.130
+Let's start by analyzing the source sample.
+
+00:00:17.130 --> 00:00:20.700
+Creating a Sink can be compared with assembling a puzzle.
+
+00:00:20.700 --> 00:00:23.520
+The JSON Fields are the pieces to the puzzle.
+
+00:00:23.520 --> 00:00:28.515
+Just as the picture of the finished puzzle will help you decide where pieces belong,
+
+00:00:28.515 --> 00:00:33.040
+seeing the end goal for your Sink format guides your programming.
+
+00:00:33.040 --> 00:00:36.570
+Let's take a look back in draw.i0 at where
+
+00:00:36.570 --> 00:00:40.775
+our sources are coming from and where our sink will go.
+
+00:00:40.775 --> 00:00:44.210
+Let's look at this Spark application.
+
+00:00:44.210 --> 00:00:47.540
+We're going to start off with just a cylinder that
+
+00:00:47.540 --> 00:00:50.735
+I've taken and dragged over and then turn sideways,
+
+00:00:50.735 --> 00:00:54.070
+and I'm going to use this to represent my topics.
+
+00:00:54.070 --> 00:00:58.740
+We're going to draw each of the topics that we're going to use in this lesson.
+
+00:00:58.740 --> 00:01:02.175
+I'm going to put some text on this topic,
+
+00:01:02.175 --> 00:01:04.665
+that way I can label it.
+
+00:01:04.665 --> 00:01:08.855
+One of the topics we're going to look at is gear-position.
+
+00:01:08.855 --> 00:01:13.835
+I'm going to copy this topic by copying and pasting it.
+
+00:01:13.835 --> 00:01:18.920
+Another topic we're going to work with is vehicle-status.
+
+00:01:18.920 --> 00:01:24.935
+Another topic that we're going to work with is vehicle check-in status.
+
+00:01:24.935 --> 00:01:27.920
+Where are these topics coming from?
+
+00:01:27.920 --> 00:01:30.650
+You may have asked yourself that question when you worked in
+
+00:01:30.650 --> 00:01:33.430
+the earlier exercises of Lesson 1.
+
+00:01:33.430 --> 00:01:40.520
+In our workspace, we have a Java application that's used for simulating data,
+
+00:01:40.520 --> 00:01:43.180
+so I'm going to draw that.
+
+00:01:43.180 --> 00:01:47.915
+We're going omit Kafka as an entity from this diagram
+
+00:01:47.915 --> 00:01:53.185
+because each of these topics infers the presence of a Kafka broker,
+
+00:01:53.185 --> 00:01:56.915
+so this is where the data is actually coming from.
+
+00:01:56.915 --> 00:02:02.795
+The simulation application is actually populating each of these topics.
+
+00:02:02.795 --> 00:02:06.560
+In order to do so, it has to connect to Kafka,
+
+00:02:06.560 --> 00:02:08.420
+and then provide a topic name.
+
+00:02:08.420 --> 00:02:11.260
+Then it writes the data into the topic.
+
+00:02:11.260 --> 00:02:13.605
+Where are we ingesting this data?
+
+00:02:13.605 --> 00:02:15.915
+We're ingesting it in a Spark application,
+
+00:02:15.915 --> 00:02:17.265
+so I'm going to draw that.
+
+00:02:17.265 --> 00:02:19.905
+I'm going to copy this simulation,
+
+00:02:19.905 --> 00:02:22.140
+and bring it over here.
+
+00:02:22.140 --> 00:02:26.030
+My Spark application is the one ingesting these topics,
+
+00:02:26.030 --> 00:02:28.450
+so I'm going to represent that.
+
+00:02:28.450 --> 00:02:35.330
+Lastly, I'm going to create a Kafka topic that I'm sending data to,
+
+00:02:35.330 --> 00:02:37.265
+from my Spark application,
+
+00:02:37.265 --> 00:02:40.960
+and I've called that topic in my case,
+
+00:02:40.960 --> 00:02:47.295
+check-in status because it has data from vehicle-status and vehicle check-in,
+
+00:02:47.295 --> 00:02:50.300
+and it's joined data.
+
+00:02:50.300 --> 00:02:55.670
+So I'm calling it something that represents the names from both original topics.
+
+00:02:55.670 --> 00:02:58.445
+Which direction should the arrows go here?
+
+00:02:58.445 --> 00:03:00.530
+Where should the data be coming from?
+
+00:03:00.530 --> 00:03:02.630
+If it's originating in Spark,
+
+00:03:02.630 --> 00:03:04.990
+then I should represent that,
+
+00:03:04.990 --> 00:03:07.530
+and where's the data going?
+
+00:03:07.530 --> 00:03:11.200
+In theory, we would have an application consuming this data,
+
+00:03:11.200 --> 00:03:14.605
+so we can just say that our simulation is consuming it,
+
+00:03:14.605 --> 00:03:17.930
+and that shows us an example of a consumer.
+
+00:03:17.930 --> 00:03:21.740
+This has just been a simple exercise to draw where the data is coming from,
+
+00:03:21.740 --> 00:03:25.430
+and where it's going to in the ecosystem that you've been working in,
+
+00:03:25.430 --> 00:03:29.070
+and we'll continue to work in throughout the rest of the course.
+

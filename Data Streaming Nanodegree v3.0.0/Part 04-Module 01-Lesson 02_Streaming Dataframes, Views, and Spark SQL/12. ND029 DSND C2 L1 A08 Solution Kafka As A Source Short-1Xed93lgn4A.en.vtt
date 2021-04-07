@@ -1,0 +1,103 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:03.705
+The first thing I'm going to do is make sure that Kafka is up and running.
+
+00:00:03.705 --> 00:00:05.280
+If I do ps-ef,
+
+00:00:05.280 --> 00:00:08.670
+I don't see it, so I'm going to start Kafka.
+
+00:00:08.670 --> 00:00:11.550
+The next thing I'm going to do is start Spark.
+
+00:00:11.550 --> 00:00:19.980
+I'm going to say start-master.sh and copy the path to the log file.
+
+00:00:19.980 --> 00:00:28.605
+Start-slave.sh. I need to cut the log file and get the Spark master,
+
+00:00:28.605 --> 00:00:34.650
+copy that URI, start-slave.sh and pass that URI.
+
+00:00:34.650 --> 00:00:36.725
+I think it's all ready running.
+
+00:00:36.725 --> 00:00:43.910
+I'm going to say data/spark/sbin, stop-slave.sh.
+
+00:00:44.910 --> 00:00:54.740
+Then I'm going to say home/workspace/spark/sbin/start-slave.sh and spark URI.
+
+00:00:54.740 --> 00:00:58.830
+Now, Spark is running and Kafka is running.
+
+00:00:58.830 --> 00:01:01.845
+Let's look at the solution.
+
+00:01:01.845 --> 00:01:05.040
+We are creating a Spark session,
+
+00:01:05.040 --> 00:01:08.810
+we're creating a Spark application named balance-events.
+
+00:01:08.810 --> 00:01:11.300
+We're making the Spark log level "WARN".
+
+00:01:11.300 --> 00:01:13.205
+We're reading from Kafka,
+
+00:01:13.205 --> 00:01:15.735
+and we're reading from localhost 92.
+
+00:01:15.735 --> 00:01:18.330
+That's our broker. Here's our topic.
+
+00:01:18.330 --> 00:01:21.195
+We're setting our offsets to earliest and we're loading.
+
+00:01:21.195 --> 00:01:26.780
+Now, we're going to convert the binary key and value from binary to strings,
+
+00:01:26.780 --> 00:01:28.460
+store that in a DataFrame,
+
+00:01:28.460 --> 00:01:31.670
+then we're going to write that DataFrame out to the console.
+
+00:01:31.670 --> 00:01:38.620
+I'm going to copy the syntax to start this from the script.
+
+00:01:38.620 --> 00:01:40.770
+I'm going to paste it in here,
+
+00:01:40.770 --> 00:01:48.270
+and it's spark-submit --packages and then there's spark-sql-kafka JAR library,
+
+00:01:48.270 --> 00:01:55.655
+and it's now going to be important to specify the script for running and go Enter.
+
+00:01:55.655 --> 00:01:59.640
+I'm just missing my leading slash.
+
+00:02:01.370 --> 00:02:06.120
+It's loading a bunch of JARs then it's starting Spark.
+
+00:02:06.120 --> 00:02:09.330
+Now, it's running the Spark program.
+
+00:02:09.330 --> 00:02:12.405
+We should see data from Kafka shortly.
+
+00:02:12.405 --> 00:02:17.225
+There's the keys with the account number for the balance event,
+
+00:02:17.225 --> 00:02:21.000
+and then the value is the actual balance.
+
+00:02:21.000 --> 00:02:24.960
+We're gong to Control C and quit that.
+

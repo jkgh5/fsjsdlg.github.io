@@ -1,0 +1,4330 @@
+{
+  "data": {
+    "nanodegree": {
+      "id": 899653,
+      "key": "nd029",
+      "title": "Data Streaming Nanodegree",
+      "semantic_type": "Degree",
+      "is_public": true,
+      "cohorts": [],
+      "version": "1.0.0",
+      "locale": "en-us",
+      "color_scheme": "color_scheme1",
+      "enrollment": {
+        "product_variant": "STANDARD",
+        "variant": "STANDARD",
+        "static_access": {
+          "static_access": true,
+          "access_expiry_at": "2021-10-28T09:44:21.005Z"
+        }
+      },
+      "nd_units": [
+        {
+          "id": 10262
+        }
+      ],
+      "hero_image": {
+        "url": "https://video.udacity-data.com/topher/2018/September/5ba928aa_1-1-intro-data-engineering2x/1-1-intro-data-engineering2x.jpg"
+      },
+      "forum_path": "",
+      "summary": "Learn the latest skills to process data in real-time by building fluency in modern data engineering tools, such as Apache Spark, Kafka, Spark Streaming, and Kafka Streaming.",
+      "is_graduated": false,
+      "is_term_based": true,
+      "is_default": false,
+      "project_deadlines": [
+        {
+          "due_at": "2020-11-10T08:49:01.482Z",
+          "node_key": "bb812668-e487-40d4-977b-565ba9bb5e0b"
+        },
+        {
+          "due_at": "2020-11-11T08:49:01.482Z",
+          "node_key": "4180859007"
+        },
+        {
+          "due_at": "2020-12-09T08:49:01.482Z",
+          "node_key": "09b2469b-e47c-40ca-9077-f4d7c84d5265"
+        },
+        {
+          "due_at": "2020-12-10T08:49:01.482Z",
+          "node_key": "0051a3da-930f-47a1-bd41-d7fe3bd324f4"
+        }
+      ],
+      "user_state": {
+        "node_key": "nd029",
+        "completed_at": "2020-10-13T08:49:11.838Z",
+        "last_viewed_at": "2021-02-12T08:40:30.976Z",
+        "unstructured": null
+      },
+      "aggregated_state": {
+        "node_key": "nd029",
+        "completion_amount": 0.09496817339456935,
+        "completed_count": 8,
+        "concept_count": 310,
+        "last_viewed_child_key": "84d70661-3df9-451c-a50e-397596cf08a4",
+        "part_aggregated_states": [
+          {
+            "node_key": "e616e35b-561a-4b9e-a5b9-076dabf0dfeb",
+            "completed_at": null,
+            "completion_amount": 0.25,
+            "completed_count": 2,
+            "concept_count": 8,
+            "last_viewed_child_key": "907e08e9-49e7-403c-a8fc-6070262afc07",
+            "module_aggregated_states": [
+              {
+                "node_key": "907e08e9-49e7-403c-a8fc-6070262afc07",
+                "completed_at": null,
+                "completion_amount": 0.25,
+                "completed_count": 2,
+                "concept_count": 8,
+                "last_viewed_child_key": "ada2bab2-0d15-483d-81ac-8e7e48d82391",
+                "lesson_aggregated_states": [
+                  {
+                    "node_key": "8b04e8d2-b9ab-4ef4-acc0-0fdff4baab1d",
+                    "completed_at": null,
+                    "completed_count": 0,
+                    "concept_count": 5,
+                    "completion_amount": 0,
+                    "last_viewed_child_key": "b7d7e728-f6bc-4023-8412-c4233ec45f0e"
+                  },
+                  {
+                    "node_key": "ada2bab2-0d15-483d-81ac-8e7e48d82391",
+                    "completed_at": "2021-01-29T19:19:21.663Z",
+                    "completed_count": 2,
+                    "concept_count": 2,
+                    "completion_amount": 1,
+                    "last_viewed_child_key": "fe86be46-d8a4-4f73-847f-b10edc296967"
+                  },
+                  {
+                    "node_key": "b19f40d7-8ac7-42b2-912c-5c146cfa777d",
+                    "completed_at": null,
+                    "completed_count": 0,
+                    "concept_count": 1,
+                    "completion_amount": 0,
+                    "last_viewed_child_key": "99232e4b-299c-40f5-a985-3162da96288e"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "node_key": "ebc913e4-e913-4499-813f-83cbc44ede10",
+            "completed_at": null,
+            "completion_amount": 0.025380710659898477,
+            "completed_count": 5,
+            "concept_count": 197,
+            "last_viewed_child_key": "e0b3bd1e-0dfd-4c1a-827a-7e8c05948586",
+            "module_aggregated_states": [
+              {
+                "node_key": "e0b3bd1e-0dfd-4c1a-827a-7e8c05948586",
+                "completed_at": null,
+                "completion_amount": 0.025380710659898477,
+                "completed_count": 5,
+                "concept_count": 197,
+                "last_viewed_child_key": "f196d7c0-ad20-4108-b29d-40c77a9f9289",
+                "lesson_aggregated_states": [
+                  {
+                    "node_key": "f8713281-67a6-4b9a-8523-06e31f16d3bb",
+                    "completed_at": null,
+                    "completed_count": 3,
+                    "concept_count": 17,
+                    "completion_amount": 0.17647058823529413,
+                    "last_viewed_child_key": "640335c0-01a9-48a6-9415-3ba4fccc356f"
+                  },
+                  {
+                    "node_key": "3735d043-b123-4285-bfa1-b386ffc4bff2",
+                    "completed_at": null,
+                    "completed_count": 1,
+                    "concept_count": 43,
+                    "completion_amount": 0.023255813953488372,
+                    "last_viewed_child_key": "64b2f469-dcba-443b-a37a-f5759b614bb3"
+                  },
+                  {
+                    "node_key": "f196d7c0-ad20-4108-b29d-40c77a9f9289",
+                    "completed_at": null,
+                    "completed_count": 1,
+                    "concept_count": 29,
+                    "completion_amount": 0.034482758620689655,
+                    "last_viewed_child_key": "4ec8df01-15aa-42da-8847-f8c191a4c3a2"
+                  },
+                  {
+                    "node_key": "f9587e2d-1694-46a0-8e8e-f6562f8a01b8",
+                    "completed_at": null,
+                    "completed_count": 0,
+                    "concept_count": 28,
+                    "completion_amount": 0,
+                    "last_viewed_child_key": "3a8b75cf-2ffa-4f1a-9f86-a907308f755b"
+                  },
+                  {
+                    "node_key": "3704f722-78b8-423f-ba9f-0c1144b072ac",
+                    "completed_at": null,
+                    "completed_count": 0,
+                    "concept_count": 18,
+                    "completion_amount": 0,
+                    "last_viewed_child_key": "1751805a-2136-40b8-8854-71e5ea6198fb"
+                  },
+                  {
+                    "node_key": "7de0a1ec-a43e-4a62-8973-00c7c844ff39",
+                    "completed_at": null,
+                    "completed_count": 0,
+                    "concept_count": 21,
+                    "completion_amount": 0,
+                    "last_viewed_child_key": "85a7a97f-7c6b-427f-80f4-1810733499fc"
+                  },
+                  {
+                    "node_key": "9f33b59e-ec20-4bd3-9254-283e904f0de9",
+                    "completed_at": null,
+                    "completed_count": 0,
+                    "concept_count": 20,
+                    "completion_amount": 0,
+                    "last_viewed_child_key": "4f7636cc-7bbd-44a9-9978-eb07039ca966"
+                  },
+                  {
+                    "node_key": "b2809b6c-fff1-41e0-a827-37c4aeb595ce",
+                    "completed_at": null,
+                    "completed_count": 0,
+                    "concept_count": 4,
+                    "completion_amount": 0,
+                    "last_viewed_child_key": "779e753b-8f70-4bc9-8c87-0bcd0ad855a1"
+                  },
+                  {
+                    "node_key": "de38d0de-afac-4d34-a339-25c2519cf9f9",
+                    "completed_at": null,
+                    "completed_count": 0,
+                    "concept_count": 17,
+                    "completion_amount": 0,
+                    "last_viewed_child_key": "00b53aa6-a4a0-4eee-a034-39915c379b68"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "node_key": "d3d2cbfa-dc05-44c3-8db8-84e1d931170d",
+            "completed_at": null,
+            "completion_amount": 0.009523809523809526,
+            "completed_count": 1,
+            "concept_count": 105,
+            "last_viewed_child_key": "d0276127-727a-4339-aacd-abb732149883",
+            "module_aggregated_states": [
+              {
+                "node_key": "d0276127-727a-4339-aacd-abb732149883",
+                "completed_at": null,
+                "completion_amount": 0.009523809523809525,
+                "completed_count": 1,
+                "concept_count": 105,
+                "last_viewed_child_key": "6cd0369e-32ae-42ab-aa26-550e66a4a986",
+                "lesson_aggregated_states": [
+                  {
+                    "node_key": "154f3b0f-3504-4876-8916-6ffeb24a372e",
+                    "completed_at": null,
+                    "completed_count": 0,
+                    "concept_count": 18,
+                    "completion_amount": 0,
+                    "last_viewed_child_key": "2d9b0183-d4da-4e69-b94e-7205be11c52d"
+                  },
+                  {
+                    "node_key": "03c444d3-6216-432b-bc2c-bca4d20dfd26",
+                    "completed_at": null,
+                    "completed_count": 0,
+                    "concept_count": 28,
+                    "completion_amount": 0,
+                    "last_viewed_child_key": "1abb865e-585d-4139-a7c9-7bba7512e44a"
+                  },
+                  {
+                    "node_key": "952320e3-fbe2-44fa-ab23-2acc8ce14e68",
+                    "completed_at": null,
+                    "completed_count": 0,
+                    "concept_count": 17,
+                    "completion_amount": 0,
+                    "last_viewed_child_key": "e69aa3c1-9a3c-4e09-aab6-8def9a7b11d1"
+                  },
+                  {
+                    "node_key": "6cd0369e-32ae-42ab-aa26-550e66a4a986",
+                    "completed_at": null,
+                    "completed_count": 1,
+                    "concept_count": 14,
+                    "completion_amount": 0.07142857142857142,
+                    "last_viewed_child_key": "6e48101f-c666-4114-b918-04b6af4a117f"
+                  },
+                  {
+                    "node_key": "233d13c1-2510-4e7a-9852-26491ae740b0",
+                    "completed_at": null,
+                    "completed_count": 0,
+                    "concept_count": 13,
+                    "completion_amount": 0,
+                    "last_viewed_child_key": "7eca7aee-f9cf-4c69-bad6-e2c69eba1149"
+                  },
+                  {
+                    "node_key": "9a62b3fd-3586-47a1-a1c9-5c727d4ec3b4",
+                    "completed_at": null,
+                    "completed_count": 0,
+                    "concept_count": 3,
+                    "completion_amount": 0,
+                    "last_viewed_child_key": "b8e5d5b1-6752-48be-a8de-a6ea4a63cfab"
+                  },
+                  {
+                    "node_key": "20707806-8f14-420f-b613-4196199a88c1",
+                    "completed_at": null,
+                    "completed_count": 0,
+                    "concept_count": 12,
+                    "completion_amount": 0,
+                    "last_viewed_child_key": "c8c3fbd0-b7ba-471e-85b7-eb2b1c3820c0"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "node_key": "84d70661-3df9-451c-a50e-397596cf08a4",
+            "completed_at": null,
+            "completion_amount": 0.6629213483146067,
+            "completed_count": 59,
+            "concept_count": 89,
+            "last_viewed_child_key": "c930cd76-0913-484c-9c14-9dbcfb6470ea",
+            "module_aggregated_states": [
+              {
+                "node_key": "c930cd76-0913-484c-9c14-9dbcfb6470ea",
+                "completed_at": null,
+                "completion_amount": 0.6629213483146067,
+                "completed_count": 59,
+                "concept_count": 89,
+                "last_viewed_child_key": "8853e375-7281-4477-abf9-0c8041afd8a0",
+                "lesson_aggregated_states": [
+                  {
+                    "node_key": "441f6b6e-8946-424f-bc1d-07caae55f041",
+                    "completed_at": "2021-01-29T14:33:34.068Z",
+                    "completed_count": 13,
+                    "concept_count": 13,
+                    "completion_amount": 1,
+                    "last_viewed_child_key": "eb32c555-125c-4400-93ba-f5f4ffa8e204"
+                  },
+                  {
+                    "node_key": "876ada77-99c4-44f5-b2c1-a948c6288bef",
+                    "completed_at": null,
+                    "completed_count": 20,
+                    "concept_count": 21,
+                    "completion_amount": 0.9523809523809523,
+                    "last_viewed_child_key": "38784b96-a1c6-43bf-b1a9-a7019ee4214f"
+                  },
+                  {
+                    "node_key": "4720ad9e-3236-4ebe-a324-b55b61dcf328",
+                    "completed_at": "2021-02-05T09:26:15.969Z",
+                    "completed_count": 22,
+                    "concept_count": 22,
+                    "completion_amount": 1,
+                    "last_viewed_child_key": "fd176961-528c-4928-a37f-5edc4d878c21"
+                  },
+                  {
+                    "node_key": "8853e375-7281-4477-abf9-0c8041afd8a0",
+                    "completed_at": null,
+                    "completed_count": 4,
+                    "concept_count": 27,
+                    "completion_amount": 0.14814814814814814,
+                    "last_viewed_child_key": "af76288e-98e3-4eef-a2ff-a6257f9e3c54"
+                  },
+                  {
+                    "node_key": "72fcdb74-d4d2-4d3f-a940-b644aba0349f",
+                    "completed_at": null,
+                    "completed_count": 0,
+                    "concept_count": 6,
+                    "completion_amount": 0,
+                    "last_viewed_child_key": "c3113876-48d1-4020-b9a7-283e4fdfc2e9"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "resources": null,
+      "specializations": [],
+      "parts": [
+        {
+          "id": 921874,
+          "key": "e616e35b-561a-4b9e-a5b9-076dabf0dfeb",
+          "title": "Welcome to the Data Streaming Nanodegree Program",
+          "semantic_type": "Part",
+          "is_public": true,
+          "version": "1.0.0",
+          "locale": "en-us",
+          "summary": "",
+          "part_type": "Core",
+          "locked_reason": "not_locked",
+          "locked_until": null,
+          "content_ready_date_ms": 1573588800000,
+          "resources": null,
+          "image": null,
+          "specialization": null,
+          "modules": [
+            {
+              "id": 1064958,
+              "key": "907e08e9-49e7-403c-a8fc-6070262afc07",
+              "title": "Welcome to the Data Streaming Nanodegree Program",
+              "semantic_type": "Module",
+              "is_public": true,
+              "version": "1.0.0",
+              "locale": "en-us",
+              "is_project_module": null,
+              "forum_path": "",
+              "lessons": [
+                {
+                  "id": 955509,
+                  "key": "8b04e8d2-b9ab-4ef4-acc0-0fdff4baab1d",
+                  "version": "1.0.0",
+                  "locale": "en-us",
+                  "semantic_type": "Lesson",
+                  "summary": "You are starting a challenging but rewarding journey! Take a few minutes to read how to get help with projects and content.",
+                  "title": "Data Streaming Nanodegree Program Introduction",
+                  "duration": 20,
+                  "is_public": true,
+                  "is_project_lesson": false,
+                  "display_workspace_project_only": false,
+                  "lesson_type": "Classroom",
+                  "image": {
+                    "url": "https://video.udacity-data.com/topher/2019/May/5cdefd77_1-1-welcome-to-the-nanodegree-program2x/1-1-welcome-to-the-nanodegree-program2x.jpg",
+                    "width": 500,
+                    "height": 500
+                  },
+                  "video": null,
+                  "lab": null,
+                  "project": null,
+                  "concepts": [
+                    {
+                      "id": 955510,
+                      "key": "b7d7e728-f6bc-4023-8412-c4233ec45f0e",
+                      "title": "Welcome to Udacity",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 955512,
+                      "key": "963ba95e-a070-4ce6-bfab-5e6994461c68",
+                      "title": "Welcome to the Nanodegree Program Experience",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 955515,
+                      "key": "0ecfca45-e5e9-4347-bc5b-eb4a7245e78c",
+                      "title": "Pre-requisites",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 955516,
+                      "key": "858b67e8-465d-4ed6-b826-aa6f84826671",
+                      "title": "Meet Your Instructors",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 955517,
+                      "key": "999f1ed7-0e76-4b57-bfa1-eb57ffa8667b",
+                      "title": "How to Succeed",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    }
+                  ]
+                },
+                {
+                  "id": 955519,
+                  "key": "ada2bab2-0d15-483d-81ac-8e7e48d82391",
+                  "version": "1.0.0",
+                  "locale": "en-us",
+                  "semantic_type": "Lesson",
+                  "summary": "Learn how to process data in real-time by building fluency in modern data engineering tools, such as Apache Spark, Kafka, Spark Streaming, and Kafka Streaming",
+                  "title": "Introduction to Data Streaming",
+                  "duration": 10,
+                  "is_public": true,
+                  "is_project_lesson": false,
+                  "display_workspace_project_only": false,
+                  "lesson_type": "Classroom",
+                  "image": {
+                    "url": "https://video.udacity-data.com/topher/2018/July/5b454c12_1-1-welcome-to-the-nano-degree2x/1-1-welcome-to-the-nano-degree2x.jpg",
+                    "width": 592,
+                    "height": 640
+                  },
+                  "video": null,
+                  "lab": null,
+                  "project": null,
+                  "concepts": [
+                    {
+                      "id": 955520,
+                      "key": "ac608ab1-dd98-49f2-9b8a-8f3f47db0913",
+                      "title": "Introduction to Data Streaming Part I",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 955523,
+                      "key": "fe86be46-d8a4-4f73-847f-b10edc296967",
+                      "title": "Introduction to Data Streaming Part 2",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    }
+                  ]
+                },
+                {
+                  "id": 728725,
+                  "key": "b19f40d7-8ac7-42b2-912c-5c146cfa777d",
+                  "version": "1.0.0",
+                  "locale": "en-us",
+                  "semantic_type": "Lesson",
+                  "summary": "The Careers team at Udacity is here to help you move forward in your career - whether it's finding a new job, exploring a new career path, or applying new skills to your current job.",
+                  "title": "Nanodegree Career Services",
+                  "duration": 15,
+                  "is_public": true,
+                  "is_project_lesson": false,
+                  "display_workspace_project_only": false,
+                  "lesson_type": "Classroom",
+                  "image": {
+                    "url": "https://s3.amazonaws.com/video.udacity-data.com/topher/2018/July/5b3a82a4_careers/careers.jpg",
+                    "width": 500,
+                    "height": 500
+                  },
+                  "video": null,
+                  "lab": null,
+                  "project": null,
+                  "concepts": [
+                    {
+                      "id": 831981,
+                      "key": "99232e4b-299c-40f5-a985-3162da96288e",
+                      "title": "Career Services",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": 921875,
+          "key": "ebc913e4-e913-4499-813f-83cbc44ede10",
+          "title": "Data Ingestion with Kafka & Kafka Streaming",
+          "semantic_type": "Part",
+          "is_public": true,
+          "version": "1.0.0",
+          "locale": "en-us",
+          "summary": "Learn to use REST Proxy, Kafka Connect, KSQL, and Faust Python Stream Processing and use it to stream public transit statuses using Kafka and Kafka ecosystem to build a stream processing application that shows the status of trains in real-time.",
+          "part_type": "Core",
+          "locked_reason": "not_locked",
+          "locked_until": null,
+          "content_ready_date_ms": 1573588800000,
+          "resources": null,
+          "image": null,
+          "specialization": null,
+          "modules": [
+            {
+              "id": 1066838,
+              "key": "e0b3bd1e-0dfd-4c1a-827a-7e8c05948586",
+              "title": "Data Ingestion with Kafka & Kafka Streaming",
+              "semantic_type": "Module",
+              "is_public": true,
+              "version": "1.0.0",
+              "locale": "en-us",
+              "is_project_module": null,
+              "forum_path": "",
+              "lessons": [
+                {
+                  "id": 909845,
+                  "key": "f8713281-67a6-4b9a-8523-06e31f16d3bb",
+                  "version": "1.0.0",
+                  "locale": "en-us",
+                  "semantic_type": "Lesson",
+                  "summary": "In this lesson students will learn what data streaming is. Students will learn the pros and cons of data streaming, and how it compares to traditional data strategies.",
+                  "title": "Introduction to Stream Processing",
+                  "duration": 300,
+                  "is_public": true,
+                  "is_project_lesson": false,
+                  "display_workspace_project_only": false,
+                  "lesson_type": "Classroom",
+                  "image": {
+                    "url": "https://video.udacity-data.com/topher/2018/September/5ba941b7_4-1-data-visualization-fundamentals/4-1-data-visualization-fundamentals.jpg",
+                    "width": 500,
+                    "height": 500
+                  },
+                  "video": null,
+                  "lab": null,
+                  "project": null,
+                  "concepts": [
+                    {
+                      "id": 909829,
+                      "key": "ef88fee8-45e1-4925-a891-09625422d77b",
+                      "title": "Welcome",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 922219,
+                      "key": "5f3aa81c-b3df-49ce-89ec-5dc622246a44",
+                      "title": "Lesson Glossary of Key Terms",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 909838,
+                      "key": "640335c0-01a9-48a6-9415-3ba4fccc356f",
+                      "title": "Intro to Stream Processing",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 909837,
+                      "key": "626e647a-995e-4178-8900-541bd84fecdc",
+                      "title": "Stream Processing Examples",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 909830,
+                      "key": "758e218f-60fd-42eb-8679-dbe3bb50b1ac",
+                      "title": "Stream vs. Batch Processing",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 909834,
+                      "key": "0a2814eb-c93c-4180-abbd-2d583a8eb62f",
+                      "title": "Review: Stream Processing",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 909831,
+                      "key": "f9663505-494c-4d82-8dde-8264fc110d4f",
+                      "title": "Append-Only Logs",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 909840,
+                      "key": "2bb2fac6-2ddb-46f2-84fd-2df0b8cfb75e",
+                      "title": "Log-structured storage",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 909841,
+                      "key": "d8b7aa4e-ee23-4c53-b68f-3f6f2826425c",
+                      "title": "Kafka: A Stream Processing Tool",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 909839,
+                      "key": "e9d41d57-a788-4487-8b28-cb9fb97bb998",
+                      "title": "Kafka in Industry",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 909836,
+                      "key": "80b076b4-88ec-4b82-a47a-bfff37e206cb",
+                      "title": "Kafka in Action",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 909843,
+                      "key": "332639e3-510c-4d49-bb58-87341d12bea2",
+                      "title": "What is a Kafka Topic?",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 909835,
+                      "key": "7714e798-77c1-45d5-b588-c873ab4ab065",
+                      "title": "What is a Kafka Producer?",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 909844,
+                      "key": "1a89f0c5-bd3c-46f2-8277-4c44068f0806",
+                      "title": "What is a Kafka Consumer?",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 909842,
+                      "key": "2f96778e-bba6-40c1-ac50-215a5ebcc201",
+                      "title": "Using the Kafka CLI tools",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 909832,
+                      "key": "f25622bf-41d7-426c-8dd7-c6816ad1e0c9",
+                      "title": "Kafka Python Library",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 909833,
+                      "key": "a95e9b2b-ecbf-4525-8a95-7f41092a19b1",
+                      "title": "Lesson Summary",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    }
+                  ]
+                },
+                {
+                  "id": 916801,
+                  "key": "3735d043-b123-4285-bfa1-b386ffc4bff2",
+                  "version": "1.0.0",
+                  "locale": "en-us",
+                  "semantic_type": "Lesson",
+                  "summary": "In this lesson we’ll review the architecture and configuration of Apache Kafka.",
+                  "title": "Apache Kafka",
+                  "duration": 300,
+                  "is_public": true,
+                  "is_project_lesson": false,
+                  "display_workspace_project_only": false,
+                  "lesson_type": "Classroom",
+                  "image": null,
+                  "video": null,
+                  "lab": null,
+                  "project": null,
+                  "concepts": [
+                    {
+                      "id": 916763,
+                      "key": "64b2f469-dcba-443b-a37a-f5759b614bb3",
+                      "title": "Lesson Overview",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 928433,
+                      "key": "b579d20e-0033-496c-b1e7-be9cb0f1269d",
+                      "title": "Lesson Glossary of Key Terms",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 928431,
+                      "key": "97cde721-be3b-46e3-9da6-f1d8b0e67c2c",
+                      "title": "Kafka Runs Anywhere",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 916761,
+                      "key": "357297e1-f5bc-4815-81e5-3c604e1b368b",
+                      "title": "How Kafka Stores Data",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 916795,
+                      "key": "f1e23afc-e0c6-4257-8e20-6ec010506da5",
+                      "title": "Kafka Data Partitioning",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 916762,
+                      "key": "e0902448-b059-4ec7-869e-dbb1e0aba56b",
+                      "title": "Kafka Data Replication",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 916769,
+                      "key": "e98f59cd-69cb-4d91-a932-c89914e3b901",
+                      "title": "Explore How Kafka Works",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 916768,
+                      "key": "fdef3715-472b-4eac-aa52-d6aed40e8d6a",
+                      "title": "Summary: How Kafka Works",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 916772,
+                      "key": "b6cc84f3-88e1-4404-a6c6-705411db0bde",
+                      "title": "Kafka Topics in Depth",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 916774,
+                      "key": "7d4e9b34-5e75-4d75-a385-dd37d7a16ff4",
+                      "title": "Partitioning Topics",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 916799,
+                      "key": "d1a569b8-cec1-4897-b4df-a49023196ba3",
+                      "title": "Review: Topic Partitioning",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 916767,
+                      "key": "82228230-502a-436d-bb19-b4ea794c1c3a",
+                      "title": "Naming Kafka Topics",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 916776,
+                      "key": "f98b08db-5b29-48a5-9aa6-174a3b1ab36d",
+                      "title": "Topic Data Management",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 916784,
+                      "key": "d4f73ae0-ce00-4f69-89ce-fc365b495362",
+                      "title": "Topic Creation",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 916777,
+                      "key": "9f7cec7f-d44a-47c6-a9fb-807eb1ade6a2",
+                      "title": "Kafka Topics Summary",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 916782,
+                      "key": "379b439d-712e-444e-bea7-32fe4556d8e4",
+                      "title": "Kafka Producers",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 916792,
+                      "key": "049961cd-edac-41ca-b75d-b1d0c7449611",
+                      "title": "Synchronous Production",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 916778,
+                      "key": "07fe9f5a-3c90-4ed1-873a-269078a2b825",
+                      "title": "Asynchronous Production",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 916771,
+                      "key": "305d0b73-6cde-46fd-b9a3-5c4902b1266d",
+                      "title": "Message Serialization",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 916764,
+                      "key": "0c7cdf74-ed32-4c4c-980e-fc8ebed0a253",
+                      "title": "Synchronous or Asynchronous?",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 916780,
+                      "key": "a790df57-9311-4947-a1dc-f6e71419c11a",
+                      "title": "Producer Configuration",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 916790,
+                      "key": "12524506-b381-47a8-b78d-87502f3300bd",
+                      "title": "Review: Producer Configuration",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 916765,
+                      "key": "90aa39f7-5a4d-426e-8fa8-459e40ae3575",
+                      "title": "Batching Configuration",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 916766,
+                      "key": "6726c19a-d661-4627-b94e-f27577053098",
+                      "title": "Configure a Producer",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 916785,
+                      "key": "7a4826fd-0185-49cd-a6b9-e4e0f1b6ad84",
+                      "title": "Kafka Producers Summary",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 916783,
+                      "key": "68713125-bebc-4948-b1e1-f8dd0c43bfcd",
+                      "title": "Kafka Consumers",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 916796,
+                      "key": "4206c6f6-4a04-4c3e-a1d8-0573ff356bcb",
+                      "title": "Consumer Offsets",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 916770,
+                      "key": "a0f5386a-7bcd-408c-a632-8ed43c1c519c",
+                      "title": "Practice with Consumer Offsets",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 916791,
+                      "key": "71724b07-69ea-402e-a9f1-ecf0f56ecf78",
+                      "title": "Consumer Groups",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 916793,
+                      "key": "682b8137-f936-4dde-a74f-5e02de429300",
+                      "title": "Consumer Subscriptions",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 916788,
+                      "key": "207c9929-521a-438c-82d2-f51d4ddc755b",
+                      "title": "Consumer Deserializers",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 916800,
+                      "key": "d053ecd6-2208-4570-b88a-56aef7ceaae8",
+                      "title": "Retrieving Data from Kafka",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 916773,
+                      "key": "965226bb-a829-44a0-a056-402b898a8782",
+                      "title": "Build a Kafka Consumer",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 916779,
+                      "key": "29dc4b11-871d-4a03-b0cf-57cdb0a9433e",
+                      "title": "Kafka Consumers Summary",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 916798,
+                      "key": "4b6ff926-fd43-469e-8a71-4d85d1a9f2c2",
+                      "title": "Consumer Performance",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 916797,
+                      "key": "b2f6cec8-05ec-472c-aae5-00483e1fdb03",
+                      "title": "Producer Performance",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 916787,
+                      "key": "3065e6c2-43c6-401f-9f88-17aafebb583a",
+                      "title": "Broker Performance",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 916775,
+                      "key": "f61fa5f8-d1bd-4787-83c3-db0a3d9444bf",
+                      "title": "Performance Summary",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 916786,
+                      "key": "63853092-abd9-4135-a6a6-8f86873f07c5",
+                      "title": "Record Removal; Data Privacy",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 916789,
+                      "key": "33b03f81-a3f3-4b25-9901-41c8a2934210",
+                      "title": "Per-User Key Encryption",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 916781,
+                      "key": "a859fa2b-44d3-424e-afa2-f47d57f2001e",
+                      "title": "Review: Record Removal & Data Privacy",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 916794,
+                      "key": "7c69f097-1e21-48e9-8d5b-2d42a9ebf662",
+                      "title": "Summary: Record Removal & Data Privacy",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 928432,
+                      "key": "ea8ca7e6-ef24-48bc-9935-03d99bc3ed1e",
+                      "title": "Lesson Summary",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    }
+                  ]
+                },
+                {
+                  "id": 928552,
+                  "key": "f196d7c0-ad20-4108-b29d-40c77a9f9289",
+                  "version": "1.0.0",
+                  "locale": "en-us",
+                  "semantic_type": "Lesson",
+                  "summary": "This lesson covers data schemas and data schema management, with a focus on Apache Avro.",
+                  "title": "Data Schemas and Apache Avro",
+                  "duration": 300,
+                  "is_public": true,
+                  "is_project_lesson": false,
+                  "display_workspace_project_only": false,
+                  "lesson_type": "Classroom",
+                  "image": {
+                    "url": "https://video.udacity-data.com/topher/2018/November/5bf38b15_1-5-blockchain-data-overview/1-5-blockchain-data-overview.png",
+                    "width": 500,
+                    "height": 500
+                  },
+                  "video": null,
+                  "lab": null,
+                  "project": null,
+                  "concepts": [
+                    {
+                      "id": 928533,
+                      "key": "4ec8df01-15aa-42da-8847-f8c191a4c3a2",
+                      "title": "Intro to Data Schemas",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 928523,
+                      "key": "f8b10034-f1b1-47ee-af74-24e7e7c5ed52",
+                      "title": "Lesson Glossary of Key Terms",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 928527,
+                      "key": "2f5fe203-828c-44fd-9d90-d9faa6ab820b",
+                      "title": "Understanding Data Schemas",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 928529,
+                      "key": "bc767fe9-935d-4ffb-aa97-6d37edbb61b4",
+                      "title": "Real-world Usage",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 928561,
+                      "key": "d682b331-f419-4646-ac58-63506598738f",
+                      "title": "Data Streaming w/o Schemas",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 928550,
+                      "key": "56d85368-80ed-4f26-b3f2-751cf9b6ff11",
+                      "title": "Data Streaming with Schemas",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 928532,
+                      "key": "8caf1030-5a3d-4fa9-9976-47eb024ed7df",
+                      "title": "Summary: Data Schemas",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 928528,
+                      "key": "e3bed3e1-9eb5-4b0e-85c5-dbd5793eb4cb",
+                      "title": "Apache Avro",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 928530,
+                      "key": "4b5aa143-7dd1-4544-9a65-80948bb9da8b",
+                      "title": "What is Apache Avro?",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 928531,
+                      "key": "f7285fac-e609-4e85-ad8f-06b68e6a48f3",
+                      "title": "How Avro Schemas are Defined",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 928524,
+                      "key": "c0ade4f4-efb7-4759-afc5-b483a022a53b",
+                      "title": "Practice: Defining an Avro Record",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 928536,
+                      "key": "802ffd29-e9e6-4db9-9cd4-cf5006ae5019",
+                      "title": "Apache Avro Data Types",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 928535,
+                      "key": "148db9d1-e496-446f-8f55-a64c96fcacda",
+                      "title": "Complex Records in Avro",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 928542,
+                      "key": "df8a4fca-11e6-4802-b073-8af46db19ff4",
+                      "title": "Apache Avro Summary",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 928544,
+                      "key": "dc7b29b7-25ac-4cf7-82a6-2d72a2de2a68",
+                      "title": "Apache Avro and Kafka",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 928522,
+                      "key": "cda6d4c4-9718-4c68-b3b9-9e4d6147a1f1",
+                      "title": "Schema Registry",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 928525,
+                      "key": "ba85ca19-f94b-4658-8492-3ff8d5e260ec",
+                      "title": "Kafka - Schema Registry Integration",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 928543,
+                      "key": "e12e7dd1-6dcb-4332-8b26-8f3075771101",
+                      "title": "Review: Kafka - Schema Registry Integration",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 928546,
+                      "key": "6830ebf2-b22b-48ca-9062-ce4044adc39e",
+                      "title": "Integrating Schema Registry",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 928547,
+                      "key": "63b7d4d5-ab70-420c-8f42-c00f8d27e7e4",
+                      "title": "Schema Registry Summary",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 928534,
+                      "key": "aac32584-522a-400b-a580-ddde942ca9c9",
+                      "title": "Schema Evolution; Compatibility",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 928548,
+                      "key": "b912d352-8e9d-47d3-8d13-d662c75db7e4",
+                      "title": "Understanding Schema Evolution",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 928539,
+                      "key": "ca9136c9-53c2-401a-9b7e-6c685b7dc819",
+                      "title": "Schema Compatibility",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 928549,
+                      "key": "79964bee-7fa8-4386-bc5e-966d35d18b16",
+                      "title": "Backward Compatibility",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 928541,
+                      "key": "ce0d7190-7aba-46e7-bdb0-c56ef52f68ed",
+                      "title": "Forward Compatibility",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 928540,
+                      "key": "d5a74b2d-bd0e-4b4b-a244-90f1789f630b",
+                      "title": "Full Compatibility",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 928551,
+                      "key": "8ef0c79b-3170-40eb-b107-d53f5ac39681",
+                      "title": "No Compatibility",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 928538,
+                      "key": "6b474b18-e73f-4e39-8c62-c90b662b6fa6",
+                      "title": "Summary: Schema Evolution & Compatibility",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 928537,
+                      "key": "dc878353-12fe-41ff-9164-14ea8d81b4b6",
+                      "title": "Lesson Summary",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    }
+                  ]
+                },
+                {
+                  "id": 929920,
+                  "key": "f9587e2d-1694-46a0-8e8e-f6562f8a01b8",
+                  "version": "1.0.0",
+                  "locale": "en-us",
+                  "semantic_type": "Lesson",
+                  "summary": "This lesson covers producing and consuming data into Kafka with Kafka Connect and REST Proxy.",
+                  "title": "Kafka Connect and REST Proxy",
+                  "duration": 300,
+                  "is_public": true,
+                  "is_project_lesson": false,
+                  "display_workspace_project_only": false,
+                  "lesson_type": "Classroom",
+                  "image": {
+                    "url": "https://video.udacity-data.com/topher/2018/September/5ba94415_7-3-assessing-data2x/7-3-assessing-data2x.jpg",
+                    "width": 500,
+                    "height": 500
+                  },
+                  "video": null,
+                  "lab": null,
+                  "project": null,
+                  "concepts": [
+                    {
+                      "id": 929893,
+                      "key": "3a8b75cf-2ffa-4f1a-9f86-a907308f755b",
+                      "title": "Lesson Overview",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 929892,
+                      "key": "b4b1cfb8-7c91-4fb3-8423-4b8d39175985",
+                      "title": "Lesson Glossary of Key Terms",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 929918,
+                      "key": "5802948d-0337-4eae-a3c7-0cfa7a176a8b",
+                      "title": "Kafka Connect",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 929904,
+                      "key": "0adb36d1-0bd2-41fa-93bd-94ac07701660",
+                      "title": "Kafka Connect Architecture",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 929894,
+                      "key": "f0d1fcd9-87d3-40c7-b508-953a08418511",
+                      "title": "Kafka Connect Summary",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 929895,
+                      "key": "bc6b75af-02c7-4d60-b3f3-d2e753cf477b",
+                      "title": "Kafka Connect Connectors",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 929919,
+                      "key": "c1e1eb3f-562a-42bd-b94b-185d95b17cf1",
+                      "title": "Reviewing Kafka Connectors",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 929896,
+                      "key": "df3ea39d-10a2-4987-8758-5af8059584e6",
+                      "title": "The Kafka Connect API",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 929897,
+                      "key": "7838d138-5e6d-42d3-ae37-3023737065ac",
+                      "title": "Using the Kafka Connect API",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 929909,
+                      "key": "655a3926-e113-4d79-bab2-d9698ad7a338",
+                      "title": "Summary: Kafka Connect Connectors",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 929913,
+                      "key": "a0960efd-5961-4fdf-aaa2-e2bf80e9ec4f",
+                      "title": "Key Connectors",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 929908,
+                      "key": "cc86d700-f13e-42a4-baea-be804d1020fd",
+                      "title": "Kafka Connect FileStream Source",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 929911,
+                      "key": "c52fcdcd-97e4-42c7-a906-e067ea2eb3a4",
+                      "title": "JDBC Sinks and Sources",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 929917,
+                      "key": "eda85b6d-34cd-42c0-80de-018454a810a2",
+                      "title": "Kafka Connect JDBC Source",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 929910,
+                      "key": "d3ae3e44-f46b-4a61-9fdd-06b2aa883670",
+                      "title": "Key Connectors Summary",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 929901,
+                      "key": "5705e891-a5fd-45f7-ad18-cd8c08629a2e",
+                      "title": "Kafka REST Proxy",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 929902,
+                      "key": "7e1683dd-fbf7-4655-95d2-fa9173f68972",
+                      "title": "REST Proxy Architecture",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 929916,
+                      "key": "dcb38874-f097-413a-a47d-500129672a26",
+                      "title": "Review: REST Proxy Architecture",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 929915,
+                      "key": "f4a8bd9f-b230-4e66-8544-014eec493b03",
+                      "title": "Practice: REST Proxy Metadata API",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 929914,
+                      "key": "1ae71553-dc6f-4c21-9ccf-12eeddcad26f",
+                      "title": "REST Proxy Summary",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 929900,
+                      "key": "e64396a5-b54b-418d-a8e1-cfd365e65471",
+                      "title": "Using REST Proxy",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 929905,
+                      "key": "5910e960-2505-4c6c-bd74-f4182a7e7ead",
+                      "title": "Review of REST Proxy Usage",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 929899,
+                      "key": "7b07fecd-8c8c-4ad7-94b9-38c3c84e73d3",
+                      "title": "Producing JSON Data via REST Proxy",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 929898,
+                      "key": "85e68143-1f81-430c-8fa6-c44dbac72d23",
+                      "title": "Producing Avro Data via REST Proxy",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 929906,
+                      "key": "701cbc65-9bf3-4348-b46b-01655f655d99",
+                      "title": "Consuming Data with REST Proxy",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 929907,
+                      "key": "21b72cd5-f123-4259-910b-fb5cfdb0fd27",
+                      "title": "Practice: Consuming Avro Data via REST Proxy",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 929903,
+                      "key": "ea14e1f4-165b-427a-aaf4-52c801739a7e",
+                      "title": "Summary: Using REST Proxy",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 929912,
+                      "key": "40ac5bb3-7a2b-4aaa-a456-cb67e2b9eca5",
+                      "title": "Lesson Summary",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    }
+                  ]
+                },
+                {
+                  "id": 930069,
+                  "key": "3704f722-78b8-423f-ba9f-0c1144b072ac",
+                  "version": "1.0.0",
+                  "locale": "en-us",
+                  "semantic_type": "Lesson",
+                  "summary": "Learn to build real-time applications that instantly process events, the concepts of stream processing state storage, windowed processing, and stateful and non-stateful stream processing.",
+                  "title": "Stream Processing Fundamentals",
+                  "duration": 300,
+                  "is_public": true,
+                  "is_project_lesson": false,
+                  "display_workspace_project_only": false,
+                  "lesson_type": "Classroom",
+                  "image": {
+                    "url": "https://video.udacity-data.com/topher/2018/October/5bc22af3_1-1-intro-data-engineering2x/1-1-intro-data-engineering2x.jpg",
+                    "width": 500,
+                    "height": 500
+                  },
+                  "video": null,
+                  "lab": null,
+                  "project": null,
+                  "concepts": [
+                    {
+                      "id": 930066,
+                      "key": "1751805a-2136-40b8-8854-71e5ea6198fb",
+                      "title": "Lesson Overview",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 930064,
+                      "key": "4de93c59-0978-40ab-ba39-44ec853a5d68",
+                      "title": "Glossary of Terms for Lesson",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 930054,
+                      "key": "b49d1f75-75ef-48bf-9223-b86724e9722f",
+                      "title": "Stream Processing Basics",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 930051,
+                      "key": "6dfc44f4-efc7-4342-af43-cca3f29f9560",
+                      "title": "Stream Processing Strategies",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 930061,
+                      "key": "0ac80add-b31d-47f5-bc99-231821a4e799",
+                      "title": "Combining Streams",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 930065,
+                      "key": "c74c1ca1-f3b5-4960-9868-cd8e7258f8fa",
+                      "title": "Filtering Streams",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 930058,
+                      "key": "6b3dc51b-d6c7-45cd-917c-40305755155b",
+                      "title": "Remapping Streams",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 930063,
+                      "key": "2914ccf8-821d-43f2-a339-3c1e5c64026a",
+                      "title": "Aggregating Streams",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 930057,
+                      "key": "34692791-b529-4253-8287-f525c978d028",
+                      "title": "Handling Time",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 930059,
+                      "key": "56241d39-4666-4040-ba09-7c1735b505c6",
+                      "title": "Tumbling Window",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 930052,
+                      "key": "cb047841-6318-4c1d-b62a-ca39d118b1f0",
+                      "title": "Hopping Window",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 930056,
+                      "key": "4baa5f24-930c-415a-99b1-401c9c53ffef",
+                      "title": "Sliding Window",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 930060,
+                      "key": "34ed1ad0-f9d0-4760-9205-1d33e78a582b",
+                      "title": "Streams and Tables",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 930068,
+                      "key": "65530097-ad28-4401-b8c7-ff8dd1b8444c",
+                      "title": "Streams",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 930062,
+                      "key": "6aed2748-616b-4e87-a10d-20d5097a008a",
+                      "title": "Tables",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 930055,
+                      "key": "1d259dd9-34ca-40eb-9316-b3b8cc934e07",
+                      "title": "Streams vs Tables",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 930053,
+                      "key": "5a9fb339-b393-4b7d-a0c1-77713605d87b",
+                      "title": "Data Storage",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 930067,
+                      "key": "f2883197-9aec-47ca-a796-3a5466f069e9",
+                      "title": "Lesson Summary",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    }
+                  ]
+                },
+                {
+                  "id": 930160,
+                  "key": "7de0a1ec-a43e-4a62-8973-00c7c844ff39",
+                  "version": "1.0.0",
+                  "locale": "en-us",
+                  "semantic_type": "Lesson",
+                  "summary": "Students will learn how to use the Python stream processing library Faust to rapidly create powerful stream processing applications.",
+                  "title": "Stream Processing with Faust",
+                  "duration": 300,
+                  "is_public": true,
+                  "is_project_lesson": false,
+                  "display_workspace_project_only": false,
+                  "lesson_type": "Classroom",
+                  "image": {
+                    "url": "https://video.udacity-data.com/topher/2018/August/5b853b84_2-7-p-analyze-survey-data/2-7-p-analyze-survey-data.jpg",
+                    "width": 500,
+                    "height": 500
+                  },
+                  "video": null,
+                  "lab": null,
+                  "project": null,
+                  "concepts": [
+                    {
+                      "id": 930145,
+                      "key": "85a7a97f-7c6b-427f-80f4-1810733499fc",
+                      "title": "Lesson Overview",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 930143,
+                      "key": "5b194219-558a-4204-b82a-e24811b67aa7",
+                      "title": "Glossary of Terms in Lesson",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 930148,
+                      "key": "f0707f60-f757-4624-beef-f31ce0ffbfa8",
+                      "title": "Stream Processing with Faust",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 930153,
+                      "key": "e15dffb4-fbaa-41ed-8ba6-5225aa3d4494",
+                      "title": "Introduction to Faust",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 930141,
+                      "key": "89739528-16fb-4d1d-b5d4-acd018d4618b",
+                      "title": "Your First Faust Application",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 930156,
+                      "key": "c469ddaf-71d3-42df-9728-8cdccbfd01ab",
+                      "title": "Serialization and Deserialization in Faust",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 930159,
+                      "key": "dc83049c-404e-4be3-b1e3-4062e09203cc",
+                      "title": "Deserialization in Faust",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 930150,
+                      "key": "1596aeeb-bcd1-473f-8768-751a33ce04af",
+                      "title": "Serialization in Faust",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 930158,
+                      "key": "c769afb9-ca06-4b28-95bf-b7f4f58f10fc",
+                      "title": "Summary: Serialization & Deserialization",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 930155,
+                      "key": "f17d80a4-f52b-4368-931c-4dca97fed369",
+                      "title": "Storage in Faust",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 930157,
+                      "key": "3ff9cd9f-8023-4992-b72c-0403140fd953",
+                      "title": "Streams Basics in Faust",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 930203,
+                      "key": "0320e287-b18f-4c06-adad-e44d7f5f1dfa",
+                      "title": "Practice: Streams",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 930154,
+                      "key": "b5976d42-233b-438a-920c-6e6a4a99439b",
+                      "title": "Stream Processors & Operations",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 930200,
+                      "key": "5c273ce9-39ec-4ac1-96c4-a418aa483d94",
+                      "title": "Practice: Processors & Operations",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 930149,
+                      "key": "2ddd85c0-3644-4487-bdda-8acbb7804f72",
+                      "title": "Streams Summary",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 930152,
+                      "key": "9fd04d65-d819-4496-9425-463e8ba97130",
+                      "title": "Tables in Faust",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 930147,
+                      "key": "a4bec254-7c42-4448-a643-b539eda648d1",
+                      "title": "Windowing in Faust",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 930144,
+                      "key": "bf9a5799-d0f5-4de6-ac19-5f988b5ed03b",
+                      "title": "Practice: Tumbling Windows",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 930142,
+                      "key": "78d83c42-5b8d-42bd-b156-15f416f7e405",
+                      "title": "Practice: Hopping Windows",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 930146,
+                      "key": "b0ff34d4-9abe-4c31-a771-6e731049fa80",
+                      "title": "Faust Windowing Review",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 930151,
+                      "key": "d9bb141b-7240-4e14-b36c-f6763a5fa9e7",
+                      "title": "Lesson Summary",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    }
+                  ]
+                },
+                {
+                  "id": 930499,
+                  "key": "9f33b59e-ec20-4bd3-9254-283e904f0de9",
+                  "version": "1.0.0",
+                  "locale": "en-us",
+                  "semantic_type": "Lesson",
+                  "summary": "Learn how to write simple SQL queries to turn Kafka topics into KSQL streams and tables, and then write those tables back out to Kafka.",
+                  "title": "KSQL",
+                  "duration": 300,
+                  "is_public": true,
+                  "is_project_lesson": false,
+                  "display_workspace_project_only": false,
+                  "lesson_type": "Classroom",
+                  "image": {
+                    "url": "https://video.udacity-data.com/topher/2018/September/5ba939cb_7-2-gathering-data2x/7-2-gathering-data2x.jpg",
+                    "width": 500,
+                    "height": 500
+                  },
+                  "video": null,
+                  "lab": null,
+                  "project": null,
+                  "concepts": [
+                    {
+                      "id": 930482,
+                      "key": "4f7636cc-7bbd-44a9-9978-eb07039ca966",
+                      "title": "Lesson Overview",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 930490,
+                      "key": "3ac6dd9f-f904-420a-8f78-39a11eaf9991",
+                      "title": "Glossary of Terms for Lesson",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 930483,
+                      "key": "a6e7dd19-57db-43ae-a893-eab58aa5cd23",
+                      "title": "Stream Processing with KSQL",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 930491,
+                      "key": "667f675e-c3e1-4a74-a78f-b47761681f85",
+                      "title": "Introduction to KSQL",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 930485,
+                      "key": "f0812792-c1e7-4778-82e9-c9c0d715d9e2",
+                      "title": "KSQL Architecture",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 930488,
+                      "key": "dd6a2b4a-092a-46aa-ba88-469dfbe5eb08",
+                      "title": "KSQL vs Traditional Frameworks",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 930487,
+                      "key": "e14e43fa-a53a-4b5b-ad91-6d68d42411d2",
+                      "title": "Topics --> Tables & Streams",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 930484,
+                      "key": "921b4ef1-597d-4310-b009-6d1be27fc893",
+                      "title": "Creating a Stream",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 930513,
+                      "key": "29792ca6-6b67-4ce9-a815-61e56bce869b",
+                      "title": "Practice: Creating a Stream",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 930496,
+                      "key": "4b219c72-fa56-44dd-b72c-1e20cfaeeb05",
+                      "title": "Creating a Table",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 930517,
+                      "key": "ad2c0e54-0b12-4299-913f-111fa9ca342b",
+                      "title": "Practice: Creating a Table",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 930498,
+                      "key": "f0f09d5c-407c-48ae-8e2c-0bfdc8e41dcb",
+                      "title": "Querying",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 930495,
+                      "key": "a5f24ac7-2bc5-4e89-a18a-af9bc139884d",
+                      "title": "Hopping and Tumbling Windowing",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 930486,
+                      "key": "3c2c8700-74d0-4755-a759-dbd91f5577a0",
+                      "title": "Session Windowing",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 930494,
+                      "key": "03871993-ca26-4f33-8a06-d294f8f4026b",
+                      "title": "Practice: Session Windowing",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 930492,
+                      "key": "e95472b9-2540-44a5-8b03-6edd854aa829",
+                      "title": "Aggregating Data",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 930521,
+                      "key": "c266127b-3002-469d-b2af-4f5a5623f9d5",
+                      "title": "Practice: Aggregating Data",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 930493,
+                      "key": "b2006f4b-6d95-4274-b4f0-3a59c612d407",
+                      "title": "Joins",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 930497,
+                      "key": "0fdd57ba-3bff-4e7c-bd29-e228022f6c50",
+                      "title": "Practice: Joins",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 930489,
+                      "key": "c7801e0e-a793-4976-b1bc-6bc0ab9c1d09",
+                      "title": "Summary",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    }
+                  ]
+                },
+                {
+                  "id": 900461,
+                  "key": "b2809b6c-fff1-41e0-a827-37c4aeb595ce",
+                  "version": "1.0.0",
+                  "locale": "en-us",
+                  "semantic_type": "Lesson",
+                  "summary": "For your first project, you’ll be streaming public transit status using Kafka and the Kafka ecosystem to build a stream processing application that shows the status of trains in real-time.",
+                  "title": "Optimizing Public Transportation",
+                  "duration": 300,
+                  "is_public": true,
+                  "is_project_lesson": true,
+                  "display_workspace_project_only": false,
+                  "lesson_type": "Classroom",
+                  "image": {
+                    "url": "https://video.udacity-data.com/topher/2018/July/5b50d535_1-4-data-processing/1-4-data-processing.png",
+                    "width": 500,
+                    "height": 500
+                  },
+                  "video": null,
+                  "lab": null,
+                  "project": {
+                    "key": "bb812668-e487-40d4-977b-565ba9bb5e0b",
+                    "version": "1.0.0",
+                    "locale": "en-us",
+                    "duration": 40320,
+                    "semantic_type": "Project",
+                    "title": "Optimizing Public Transportation",
+                    "description": "Congratulations on putting in the hard work to complete this project! Now you can look forward to receiving valuable feedback from a project reviewer.\n\nBefore you submit your project, please check your work against the project [rubric](https://review.udacity.com/#!/rubrics/2660/view). Your reviewer will be using this rubric to assess your project work.\n\nThe only thing you need to submit for this project is your code. You have two options to do this:\n- Submit a link to your GitHub repo.\n- Submit your code directly from the classroom project workspace.",
+                    "is_public": true,
+                    "summary": null,
+                    "forum_path": "",
+                    "rubric_id": "2660",
+                    "terminal_project_id": null,
+                    "resources": null,
+                    "image": null
+                  },
+                  "concepts": [
+                    {
+                      "id": 900778,
+                      "key": "779e753b-8f70-4bc9-8c87-0bcd0ad855a1",
+                      "title": "Project Overview",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 900777,
+                      "key": "57dc5b19-05eb-4109-af9b-02337828670c",
+                      "title": "Project Directions",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 906241,
+                      "key": "d4440087-4852-4fb9-bb5c-137feba98f8f",
+                      "title": "Project Walkthrough",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 909729,
+                      "key": "f79cecb6-21e0-46ab-b47c-227d142ba8a9",
+                      "title": "Project Workspace",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    }
+                  ]
+                },
+                {
+                  "id": 594372,
+                  "key": "de38d0de-afac-4d34-a339-25c2519cf9f9",
+                  "version": "1.0.0",
+                  "locale": "en-us",
+                  "semantic_type": "Lesson",
+                  "summary": "Other professionals are collaborating on GitHub and growing their network. Submit your profile to ensure your profile is on par with leaders in your field.",
+                  "title": "Optimize Your GitHub Profile",
+                  "duration": 75,
+                  "is_public": true,
+                  "is_project_lesson": true,
+                  "display_workspace_project_only": false,
+                  "lesson_type": "Classroom",
+                  "image": {
+                    "url": "https://s3.amazonaws.com/video.udacity-data.com/topher/2018/August/5b7218b9_2-5-add-commits-to-a-repo2x-1/2-5-add-commits-to-a-repo2x-1.jpg",
+                    "width": 592,
+                    "height": 640
+                  },
+                  "video": null,
+                  "lab": null,
+                  "project": {
+                    "key": "4180859007",
+                    "version": "1.0.0",
+                    "locale": "en-us",
+                    "duration": 1440,
+                    "semantic_type": "Project",
+                    "title": "Optimize Your GitHub Profile",
+                    "description": "GitHub Profiles are a key piece of \"evidence\" to an employer that you'd be a good job candidate, because they can see the details of your work. Recruiters use GitHub as a way to find job candidates, and many Nanodegree alumni have received work opportunities from their activity on GitHub. In addition, using GitHub is a way for you to collaborate on projects with other programmers - this will show that you are able to work well with others on an engineering team on the job.\n\n## Submission Instructions\n1. Submit this project after you've done some continuous coding for two weeks, so the reviewer will be able to comment on trends.\n2. Submit your GitHub profile URL as your project.\n3. If you'd like to **opt-out** of this project, please read the instructions underneath the divider line, below.\n\n## Project Resources\n1. [Project Rubric](https://review.udacity.com/#!/rubrics/52/view). *Your project will be reviewed by a Udacity Career Reviewer against this rubric.*\n2. [Project checklist](https://docs.google.com/document/d/1a9AKnNyqfGgdQV5ohPCN5H9ntnEUhMptWMwVBWURCN0/pub?embedded=true). *Based on the project rubric, this is a handy checklist on GitHub best practices.*\n3. [Career Resource Center](https://career-resource-center.udacity.com/linkedin-github-profiles). *Find additional tips and guides on developing your GitHub Profile.*\n\n## Up Next\nContinue developing on GitHub! For project ideas, consider [contributing to open source](https://career-resource-center.udacity.com/contributing-to-open-source).\n\n---\n\n### *Career Review Requirement*\n\n*Your Nanodegree program was designed to ensure your long-term success in the field, and to pursue a successful career you must showcase the skills you’ve learned to employers effectively. **Therefore, this is a requirement for graduation, unless you opt-out.*** \n\n#### Opting Out\n\nIf improving your GitHub profile does not align with your Nanodegree goals, **you may opt-out of this graduation requirement**.\n\nWhen you opt-out:\n\n* *You will no longer be able to submit the GitHub Review from this Nanodegree program and all other Nanodegree programs.*\n* *Your decision to opt-out is final and future access to GitHub Review will need to be purchased separately.*\n\n*If you would like to opt-out, please click [here](https://forms.udacity.com/forms/career-opt-out).*",
+                    "is_public": true,
+                    "summary": "GitHub is a great way for employers to get a sense of how you code. Learn what your GitHub profile says about you and how to improve it to impress employers.",
+                    "forum_path": "c/careers-github-profile-review",
+                    "rubric_id": "52",
+                    "terminal_project_id": "",
+                    "resources": {
+                      "files": [],
+                      "google_plus_link": null,
+                      "career_resource_center_link": null,
+                      "coaching_appointments_link": null,
+                      "office_hours_link": null,
+                      "aws_provisioning_link": null
+                    },
+                    "image": null
+                  },
+                  "concepts": [
+                    {
+                      "id": 653724,
+                      "key": "00b53aa6-a4a0-4eee-a034-39915c379b68",
+                      "title": "Prove Your Skills With GitHub",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 25024,
+                      "key": "58316191600923",
+                      "title": "Introduction",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 41373,
+                      "key": "58492985590923",
+                      "title": "GitHub profile important items",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 19532,
+                      "key": "58315398190923",
+                      "title": "Good GitHub repository",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 21541,
+                      "key": "58503485550923",
+                      "title": "Interview with Art - Part 1",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 44395,
+                      "key": "58334298230923",
+                      "title": "Identify fixes for example “bad” profile",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 5637,
+                      "key": "64958716790923",
+                      "title": "Quick Fixes #1",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 23053,
+                      "key": "64786551490923",
+                      "title": "Quick Fixes #2",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 67965,
+                      "key": "65214390560923",
+                      "title": "Writing READMEs with Walter",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 16617,
+                      "key": "64423071120923",
+                      "title": "Interview with Art - Part 2",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 55196,
+                      "key": "65265285770923",
+                      "title": "Commit messages best practices",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 41944,
+                      "key": "64804050710923",
+                      "title": "Reflect on your commit messages",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 91571,
+                      "key": "65053008530923",
+                      "title": "Participating in open source projects",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 56941,
+                      "key": "64818045500923",
+                      "title": "Interview with Art - Part 3",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 5694,
+                      "key": "65019290470923",
+                      "title": "Participating in open source projects 2",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 22046,
+                      "key": "64858046490923",
+                      "title": "Starring interesting repositories",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 594373,
+                      "key": "156ac946-5ac9-45e8-9ca4-7523e6af7234",
+                      "title": "Next Steps",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": {
+                        "files": [],
+                        "google_plus_link": null,
+                        "career_resource_center_link": null,
+                        "coaching_appointments_link": null,
+                        "office_hours_link": null,
+                        "aws_provisioning_link": null
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": 921877,
+          "key": "d3d2cbfa-dc05-44c3-8db8-84e1d931170d",
+          "title": "Apache Spark and Spark Streaming",
+          "semantic_type": "Part",
+          "is_public": true,
+          "version": "1.0.0",
+          "locale": "en-us",
+          "summary": "",
+          "part_type": "Core",
+          "locked_reason": "not_locked",
+          "locked_until": null,
+          "content_ready_date_ms": 1573588800000,
+          "resources": null,
+          "image": {
+            "url": "https://video.udacity-data.com/topher/2018/September/5ba928aa_1-1-intro-data-engineering2x/1-1-intro-data-engineering2x.jpg",
+            "width": 500,
+            "height": 500
+          },
+          "specialization": null,
+          "modules": [
+            {
+              "id": 1059985,
+              "key": "d0276127-727a-4339-aacd-abb732149883",
+              "title": "Apache Spark and Spark Streaming",
+              "semantic_type": "Module",
+              "is_public": true,
+              "version": "1.0.0",
+              "locale": "en-us",
+              "is_project_module": null,
+              "forum_path": "",
+              "lessons": [
+                {
+                  "id": 790933,
+                  "key": "154f3b0f-3504-4876-8916-6ffeb24a372e",
+                  "version": "1.0.0",
+                  "locale": "en-us",
+                  "semantic_type": "Lesson",
+                  "summary": "In this lesson, you will learn about the problems that Apache Spark is designed to solve. You'll also learn about the greater Big Data ecosystem and how Spark fits into it.",
+                  "title": "The Power of Spark",
+                  "duration": 90,
+                  "is_public": true,
+                  "is_project_lesson": false,
+                  "display_workspace_project_only": false,
+                  "lesson_type": "Classroom",
+                  "image": {
+                    "url": "https://s3.amazonaws.com/video.udacity-data.com/topher/2019/April/5cabb4f7_screen-shot-2019-04-08-at-1.54.04-pm/screen-shot-2019-04-08-at-1.54.04-pm.png",
+                    "width": 356,
+                    "height": 366
+                  },
+                  "video": null,
+                  "lab": null,
+                  "project": null,
+                  "concepts": [
+                    {
+                      "id": 475943,
+                      "key": "2d9b0183-d4da-4e69-b94e-7205be11c52d",
+                      "title": "Introduction",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 475945,
+                      "key": "ab1dbe1d-3c7c-4caf-b27d-9b1fdd80fd3d",
+                      "title": "What is Big Data?",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 475948,
+                      "key": "da4daf02-264c-4372-a7a7-0c78bc3952eb",
+                      "title": "Numbers Everyone Should Know",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 527850,
+                      "key": "8425cb83-f8c3-4ec0-a1fb-63c2b6a69d17",
+                      "title": "Hardware: CPU",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 527881,
+                      "key": "3313759c-8725-4b09-9bd1-3d6731163559",
+                      "title": "Hardware: Memory",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 476039,
+                      "key": "0e11805a-4f2d-45fb-a068-12101a2b9045",
+                      "title": "Hardware: Storage",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 476041,
+                      "key": "dd98569d-4642-4ba2-a3aa-9153cc8ace63",
+                      "title": "Hardware: Network ",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 476043,
+                      "key": "cf88b362-f6ed-4ed6-a969-5dd27a13cc20",
+                      "title": "Hardware: Key Ratios",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 476086,
+                      "key": "85c48454-4299-453d-8ecf-fdb8bd3c02b9",
+                      "title": "Small Data Numbers",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 476088,
+                      "key": "5f7dad68-1b5e-480e-9424-93ef1e883303",
+                      "title": "Big Data Numbers",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 476090,
+                      "key": "44685991-59d1-4ebb-bfaa-b5b18a644b70",
+                      "title": "Medium Data Numbers",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 476099,
+                      "key": "54038ace-c78e-4774-817d-4ca17e4bef21",
+                      "title": "History of Distributed Computing",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 476102,
+                      "key": "30000fe9-e616-43c6-8693-ce8642134429",
+                      "title": "The Hadoop Ecosystem",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 476104,
+                      "key": "8f702761-1c16-4ec6-90d3-292d3196ab0e",
+                      "title": "MapReduce",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 760125,
+                      "key": "ed071b31-01b7-4041-b8be-c393c1baaadb",
+                      "title": "Hadoop MapReduce [Demo]",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 476107,
+                      "key": "ce0fba14-8794-402a-9703-f84b8cb93af3",
+                      "title": "The Spark Cluster",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 476109,
+                      "key": "49ac7e52-1d08-4661-9b33-7e1c43b877a4",
+                      "title": "Spark Use Cases",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 476137,
+                      "key": "1b487566-a510-44b5-a71e-1fe2f758785a",
+                      "title": "Summary",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    }
+                  ]
+                },
+                {
+                  "id": 790934,
+                  "key": "03c444d3-6216-432b-bc2c-bca4d20dfd26",
+                  "version": "1.0.0",
+                  "locale": "en-us",
+                  "semantic_type": "Lesson",
+                  "summary": "In this lesson, we'll dive into how to use Spark for cleaning and aggregating data.",
+                  "title": "Data Wrangling with Spark",
+                  "duration": 90,
+                  "is_public": true,
+                  "is_project_lesson": false,
+                  "display_workspace_project_only": false,
+                  "lesson_type": "Classroom",
+                  "image": {
+                    "url": "https://video.udacity-data.com/topher/2019/April/5cc83650_1-2-the-life-of-a-data-analyst2x/1-2-the-life-of-a-data-analyst2x.jpg",
+                    "width": 500,
+                    "height": 500
+                  },
+                  "video": null,
+                  "lab": null,
+                  "project": null,
+                  "concepts": [
+                    {
+                      "id": 634525,
+                      "key": "1abb865e-585d-4139-a7c9-7bba7512e44a",
+                      "title": "Introduction",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 634526,
+                      "key": "c7f229c9-b575-4e66-9e65-1b1f035f61a0",
+                      "title": "Functional Programming",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 634527,
+                      "key": "6dfae7ce-1e9c-4b45-8f0f-8dfd451391ed",
+                      "title": "Why Use Functional Programming",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 666140,
+                      "key": "efc90b27-f14f-4314-b0a0-6f8a992ce1dc",
+                      "title": "Procedural Example",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 777857,
+                      "key": "f91bb65a-18d2-4041-b462-bf0d234e1b85",
+                      "title": "Procedural [Example Code]",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 698575,
+                      "key": "abbf4802-529b-497d-908b-16447e44e2ec",
+                      "title": "Pure Functions in the Bread Factory",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 701877,
+                      "key": "d0a41723-9ba9-4959-836f-30f39cd12d47",
+                      "title": "The Spark DAGs: Recipe for Data",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 778202,
+                      "key": "e1846cb5-6307-46b8-b693-bbc1c727a773",
+                      "title": "Maps and Lambda Functions",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 701882,
+                      "key": "d4f8c589-881d-455b-85c2-c38d2ea93fbd",
+                      "title": "Maps and Lambda Functions [Example Code]",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 701883,
+                      "key": "745c8c29-6667-414e-9991-42f3fa448445",
+                      "title": "Data Formats",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 664563,
+                      "key": "1de03338-6941-4dee-bcfe-a6cdf239197c",
+                      "title": "Distributed Data Stores",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 664573,
+                      "key": "cc173c72-f22c-4726-9670-1da856b9598b",
+                      "title": "SparkSession",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 664581,
+                      "key": "e986c351-9b8d-4cca-ac9c-071dfc5ee59b",
+                      "title": "Reading and Writing Data into Spark Data Frames",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 778211,
+                      "key": "ab26506e-9cdd-4c19-b35a-b190e33d6b70",
+                      "title": "Read and Write Data into Spark Data Frames [example code]",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 664567,
+                      "key": "ebecdf88-f1f2-47e7-a531-b3119d1e5980",
+                      "title": "Imperative vs Declarative programming ",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 664591,
+                      "key": "cf89a74d-32bb-4097-a99f-e3fa52aa5999",
+                      "title": "Data Wrangling with DataFrames",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 666137,
+                      "key": "3c540fdb-6c0f-40df-9686-be3aea83ba20",
+                      "title": "Data Wrangling with DataFrames Extra Tips",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 778241,
+                      "key": "02cfa30e-9e3b-4173-a074-2c53234f4216",
+                      "title": "Data Wrangling with Spark [Example Code]",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 666133,
+                      "key": "feaf7659-1fab-460e-93ad-d19c0d863d1a",
+                      "title": "Quiz - Data Wrangling with DataFrames",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 778296,
+                      "key": "ded49d0f-d31c-4338-8180-812c273d0cdb",
+                      "title": "Quiz - Data Wrangling with DataFrames Jupyter Notebook",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 778297,
+                      "key": "79b6e174-d26d-4356-b3dd-6a93afafdbb9",
+                      "title": "Quiz [Solution Code]",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 664565,
+                      "key": "8f7b98a0-2951-4f98-9af8-fceb80aee1d3",
+                      "title": "Spark SQL",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 701889,
+                      "key": "1d50da39-e216-4d47-83fe-e1869e7c6ba1",
+                      "title": "Example Spark SQL",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 778316,
+                      "key": "78ac15d5-d33f-42fe-8606-b79ca430f78f",
+                      "title": "Example Spark SQL [Example Code]",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 783161,
+                      "key": "6f14f4c1-1180-44a7-ae5e-cbe2fcbcb1c2",
+                      "title": "Quiz - Data Wrangling with SparkSQL",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 783162,
+                      "key": "e703f510-e90a-4ced-b427-ef7bd29195cc",
+                      "title": "Quiz [Spark SQL Solution Code]",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 664576,
+                      "key": "6af0e3f8-513d-4b76-affe-78ebd61f110d",
+                      "title": "RDDs",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 664578,
+                      "key": "a8c47fac-9ef7-4aa0-aaf9-eb8165f8065d",
+                      "title": "Summary",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    }
+                  ]
+                },
+                {
+                  "id": 922166,
+                  "key": "952320e3-fbe2-44fa-ab23-2acc8ce14e68",
+                  "version": "1.0.0",
+                  "locale": "en-us",
+                  "semantic_type": "Lesson",
+                  "summary": "In this lesson, students will learn what Apache Spark Streaming is. Students will review the core architecture of Spark, and distinguish differences between Spark Streaming vs Structured Streaming.",
+                  "title": "Intro to Spark Streaming",
+                  "duration": 300,
+                  "is_public": true,
+                  "is_project_lesson": false,
+                  "display_workspace_project_only": false,
+                  "lesson_type": "Classroom",
+                  "image": {
+                    "url": "https://video.udacity-data.com/topher/2018/October/5bc22af3_1-1-intro-data-engineering2x/1-1-intro-data-engineering2x.jpg",
+                    "width": 500,
+                    "height": 500
+                  },
+                  "video": null,
+                  "lab": null,
+                  "project": null,
+                  "concepts": [
+                    {
+                      "id": 951258,
+                      "key": "e69aa3c1-9a3c-4e09-aab6-8def9a7b11d1",
+                      "title": "Welcome to Data Streaming",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 951300,
+                      "key": "25fad2c3-8ed3-45b7-9f4c-ddd699e46599",
+                      "title": "Lesson Overview",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 951267,
+                      "key": "0bd04178-dc2f-4fed-8b1e-bd29079dc798",
+                      "title": "Introduce Spark Ecosystem",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 951270,
+                      "key": "65fd7067-5ea3-44cc-858c-bfbf7bbc133f",
+                      "title": "Review: Spark Ecosystem",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 951260,
+                      "key": "bde7b724-337b-4aba-ae18-fb0205be9670",
+                      "title": "Intro to Spark RDDs",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 951257,
+                      "key": "8eae1992-4e84-47d9-a2ca-010fc2500d27",
+                      "title": "Partitioning in Spark",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 951263,
+                      "key": "ee07d39f-1db8-4d61-af22-f42924779cd5",
+                      "title": "DataFrames and Datasets",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 951235,
+                      "key": "b4f12c7e-16c8-491e-9ffd-b4e4b3d33cc6",
+                      "title": "Create RDD and DataFrame",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 951264,
+                      "key": "704ece8c-a0cd-4c7f-bf47-b223997449dd",
+                      "title": "Intro to Spark Streaming",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 951265,
+                      "key": "7e9c29ff-6c7d-4ec8-a04c-c569b612c0d6",
+                      "title": "Review: Spark Streaming & DStream",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 951261,
+                      "key": "92cb2bec-04ca-427a-853b-c5d10142f4a1",
+                      "title": "Spark Structured Streaming",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 951259,
+                      "key": "6d5d591b-a655-4c4c-a35f-fe5d8dc524de",
+                      "title": "State Management",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 951262,
+                      "key": "660e7afb-e243-4b36-9ed6-68411c9b1db8",
+                      "title": "Spark UI / DAGs",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 951407,
+                      "key": "70b8e08f-3a45-436f-b3b7-cf7f0d727618",
+                      "title": "More on the Spark UI",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 951268,
+                      "key": "aaad3a67-3a04-4f48-bd45-dd215f5f0bd9",
+                      "title": "Spark Stages",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 951269,
+                      "key": "4e9c4c4e-078c-4e75-aaa0-c7e81c5151f0",
+                      "title": "Establishing Schema",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 951266,
+                      "key": "998b12e2-5817-4019-80ae-a244020d6cae",
+                      "title": "Lesson Recap",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    }
+                  ]
+                },
+                {
+                  "id": 922167,
+                  "key": "6cd0369e-32ae-42ab-aa26-550e66a4a986",
+                  "version": "1.0.0",
+                  "locale": "en-us",
+                  "semantic_type": "Lesson",
+                  "summary": "In this lesson, we’ll go over commonly used functions in RDD/DataFrame/Dataset. We’ll continue to learn about Spark Streaming APIs and how you can use them to solve real-time analytic problems.",
+                  "title": "Structured Streaming APIs",
+                  "duration": 300,
+                  "is_public": true,
+                  "is_project_lesson": false,
+                  "display_workspace_project_only": false,
+                  "lesson_type": "Classroom",
+                  "image": {
+                    "url": "https://video.udacity-data.com/topher/2018/June/5b1acb8b_2-4-spreadsheets-2-manipulate-data/2-4-spreadsheets-2-manipulate-data.jpg",
+                    "width": 500,
+                    "height": 500
+                  },
+                  "video": null,
+                  "lab": null,
+                  "project": null,
+                  "concepts": [
+                    {
+                      "id": 932010,
+                      "key": "6e48101f-c666-4114-b918-04b6af4a117f",
+                      "title": "Lesson Overview",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 932020,
+                      "key": "26640360-51fb-47f1-ab54-a9c238dca8fb",
+                      "title": "RDD/DataFrame Functions",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 932017,
+                      "key": "c353735a-b90f-4007-9478-1695aa94d20a",
+                      "title": "Lazy Evaluation",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 932008,
+                      "key": "94babb6f-f8ee-40fc-9b29-2e2628eefe60",
+                      "title": "Transformations",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 932015,
+                      "key": "feffd3c7-99e4-4d0e-aa19-869e340e48d8",
+                      "title": "Actions",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 932011,
+                      "key": "6c6264cf-f67c-4507-bc22-412ad4dbf615",
+                      "title": "Transformations in DAGs",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 932019,
+                      "key": "dd4bf956-8152-4dba-a637-c2b951e7d186",
+                      "title": "Structured Streaming APIs",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 932009,
+                      "key": "e7e8e44d-8dbc-4c1c-9d61-099179d9190a",
+                      "title": "Watermark",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 932016,
+                      "key": "9adde7f6-94d5-4151-8c26-d5b445d90248",
+                      "title": "Spark UI for Query Plans",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 932012,
+                      "key": "c3522f3d-9707-4163-8014-ac2018c3d95f",
+                      "title": "Output Sinks",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 932014,
+                      "key": "c338f3c1-9deb-497a-98e8-5e5c8ffa3557",
+                      "title": "Checkpointing Data",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 951480,
+                      "key": "05ea173b-7bed-4bc8-bb6c-e66e690b5e8e",
+                      "title": "State Store and Checkpointing",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 932018,
+                      "key": "66d0d80b-7dd1-45b4-b4e5-e31bf73ea98f",
+                      "title": "Configurations/Tuning of Spark Clusters",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 932013,
+                      "key": "6f44a142-3145-4e99-9331-711089e3a0d5",
+                      "title": "Lesson Recap",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    }
+                  ]
+                },
+                {
+                  "id": 922168,
+                  "key": "233d13c1-2510-4e7a-9852-26491ae740b0",
+                  "version": "1.0.0",
+                  "locale": "en-us",
+                  "semantic_type": "Lesson",
+                  "summary": "In this lesson, students will learn core components in integrating Spark Streaming and Kafka.",
+                  "title": "Integration of Spark Streaming and Kafka",
+                  "duration": 300,
+                  "is_public": true,
+                  "is_project_lesson": false,
+                  "display_workspace_project_only": false,
+                  "lesson_type": "Classroom",
+                  "image": {
+                    "url": "https://video.udacity-data.com/topher/2018/January/5a4df6fd_3-2-sql-joins/3-2-sql-joins.jpg",
+                    "width": 1250,
+                    "height": 1250
+                  },
+                  "video": null,
+                  "lab": null,
+                  "project": null,
+                  "concepts": [
+                    {
+                      "id": 951175,
+                      "key": "7eca7aee-f9cf-4c69-bad6-e2c69eba1149",
+                      "title": "Lesson Overview",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 956105,
+                      "key": "3d5e6728-71e0-4510-8b64-1b8f32189fa3",
+                      "title": "Create a Kafka Producer Server",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 951174,
+                      "key": "0d1cfe0c-b222-4837-878c-8753a5398103",
+                      "title": "Kafka Data Source API",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 951179,
+                      "key": "16f75426-35c4-4cbe-be42-a172639ad208",
+                      "title": "Kafka Offsets in Spark",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 951176,
+                      "key": "091a37e1-e498-4ea0-bb2d-ed7c325bde54",
+                      "title": "Exercise: Offsets & Triggers",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 951184,
+                      "key": "b51a4f8b-573d-44d8-8827-7c71c877766a",
+                      "title": "Integrating Spark and Kafka",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 951183,
+                      "key": "6aec0c48-b390-47a3-bc4e-ba046e57a6ea",
+                      "title": "Logs with Spark Console & UI",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 951180,
+                      "key": "451ae30b-9722-4946-a0ce-0f12382c273d",
+                      "title": "Progress Reports in Spark Console",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 957463,
+                      "key": "83a9e12d-c73c-433a-a340-069fcfeaa4a8",
+                      "title": "Review: Progress Report Fields",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 951177,
+                      "key": "e1f20b0f-9b99-43ac-928a-60bac18ed2a6",
+                      "title": "Kafka-Spark Integration Pt. 1",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 951182,
+                      "key": "200969f6-ab83-4b5f-ab63-1a363dadad64",
+                      "title": "Kafka-Spark Integration Pt. 2",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 951777,
+                      "key": "6f109d10-999e-4f07-8742-c51649aa3f11",
+                      "title": "Performance Tuning",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 951181,
+                      "key": "d87385db-a2a4-4077-8e7a-8d0ba8b6dfbd",
+                      "title": "Lesson and Course Wrap-Up",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    }
+                  ]
+                },
+                {
+                  "id": 922176,
+                  "key": "9a62b3fd-3586-47a1-a1c9-5c727d4ec3b4",
+                  "version": "1.0.0",
+                  "locale": "en-us",
+                  "semantic_type": "Lesson",
+                  "summary": "In this project, you will analyze a real-world dataset of the SF Crime Rate, extracted from kaggle, to provide statistical analysis using Apache Spark Structured Streaming.",
+                  "title": "SF Crime Statistics with Spark Streaming",
+                  "duration": 300,
+                  "is_public": true,
+                  "is_project_lesson": true,
+                  "display_workspace_project_only": false,
+                  "lesson_type": "Classroom",
+                  "image": {
+                    "url": "https://video.udacity-data.com/topher/2018/March/5ab99c62_3-9-deep-debugging-copy2x/3-9-deep-debugging-copy2x.jpg",
+                    "width": 592,
+                    "height": 640
+                  },
+                  "video": null,
+                  "lab": null,
+                  "project": {
+                    "key": "09b2469b-e47c-40ca-9077-f4d7c84d5265",
+                    "version": "1.0.0",
+                    "locale": "en-us",
+                    "duration": 40320,
+                    "semantic_type": "Project",
+                    "title": "SF Crime Statistics with Spark Streaming",
+                    "description": "Congratulations on putting in the hard work to complete this project! Now you can look forward to receiving valuable feedback from a project reviewer.\n\nBefore you submit your project, please check your work against the project [rubric](https://review.udacity.com/#!/rubrics/2676/view). Your reviewer will be using this rubric to assess your project work.\n\nHere is what you need to submit for this project:\n- A link to your GitHub repo.\n- A zip file containing the three screenshots specified in steps 1 and 2 of the project directions\n\nPlease make sure you've included these three files in your GitHub repo:\n- `producer_server.py`\n- `consumer_server.py`\n- `data_stream.py`\n\nThe README.md doc in your GitHub repo should also contain your responses to the two questions in step 3 of the project directions.",
+                    "is_public": true,
+                    "summary": null,
+                    "forum_path": "",
+                    "rubric_id": "2676",
+                    "terminal_project_id": null,
+                    "resources": null,
+                    "image": null
+                  },
+                  "concepts": [
+                    {
+                      "id": 909596,
+                      "key": "b8e5d5b1-6752-48be-a8de-a6ea4a63cfab",
+                      "title": "Project Overview",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 909597,
+                      "key": "0165e25d-9da1-4c92-a3cb-ffc56c5eef4f",
+                      "title": "Project Directions",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 909728,
+                      "key": "6890495e-136d-4047-a174-d810233ec6ff",
+                      "title": "Project Workspace",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    }
+                  ]
+                },
+                {
+                  "id": 631083,
+                  "key": "20707806-8f14-420f-b613-4196199a88c1",
+                  "version": "1.0.0",
+                  "locale": "en-us",
+                  "semantic_type": "Lesson",
+                  "summary": "Find your next job or connect with industry peers on LinkedIn. Ensure your profile attracts relevant leads that will grow your professional network.",
+                  "title": "Take 30 Min to Improve your LinkedIn",
+                  "duration": 30,
+                  "is_public": true,
+                  "is_project_lesson": true,
+                  "display_workspace_project_only": false,
+                  "lesson_type": "Classroom",
+                  "image": {
+                    "url": "https://s3.amazonaws.com/video.udacity-data.com/topher/2018/February/5a8222c0_1-3-career-services-available-to-you2x/1-3-career-services-available-to-you2x.jpg",
+                    "width": 500,
+                    "height": 500
+                  },
+                  "video": null,
+                  "lab": null,
+                  "project": {
+                    "key": "0051a3da-930f-47a1-bd41-d7fe3bd324f4",
+                    "version": "1.0.0",
+                    "locale": "en-us",
+                    "duration": 1440,
+                    "semantic_type": "Project",
+                    "title": "Improve Your LinkedIn Profile",
+                    "description": "Have job opportunities come to you by optimizing your LinkedIn profile! Complete this simple process to get personalized tips from a career mentor. \n\nHere’s how to submit your LinkedIn profile for feedback now:\n* Check out this [checklist](https://docs.google.com/document/d/1BZMxuKnBNovOyMelEx7d8ktbsWGj0EJ9KaD81dVC1TE/pub?embedded=true) for tips on optimizing your LinkedIn profile (optional).\n* **Make sure your profile is in English.** If you do not have an English profile yet, check out LinkedIn's [advice](https://www.linkedin.com/help/linkedin/answer/1717/creating-or-deleting-a-profile-in-another-language?lang=en) on how to create a secondary language profile.\n* Make your profile publicly visible. Scroll down and set the profile section toggles to `Show` under the “Edit Visibility” section of  [your public profile edit page](https://www.linkedin.com/public-profile/settings?trk=nprofile-public-profile-settings-redirect).\n * ![Edit Visibility](http://lh3.googleusercontent.com/R0A5rnKYyzLPZJ8B_pkyxdKkvab5qQi2LnEpFq2L-F33TSgzmjduHuUyDi-Z_ka2L7oU50UYqQTeU1n8VcM=s0#w=400&h=333 \"Edit Visibility\")\n* Create a custom profile URL in the “Edit URL” section of [your public profile edit page](https://www.linkedin.com/public-profile/settings?trk=nprofile-public-profile-settings-redirect).\n * ![Edit URL](http://lh3.googleusercontent.com/SGdIHFzKav0QZmOSrrP69xch_F0Ufhu9pLy-nDXYDArHUyzAen7ewoLakVOKn3KvX_CVgJjBWkl_FmPTPqM=s0#w=250&h=120 \"Edit URL\")\n* Submit your public profile URL (such as `www.linkedin.com/in/udacitystudent`) for guidance from a career mentor by clicking “Submit Project” below.",
+                    "is_public": true,
+                    "summary": null,
+                    "forum_path": "",
+                    "rubric_id": "1910",
+                    "terminal_project_id": null,
+                    "resources": null,
+                    "image": null
+                  },
+                  "concepts": [
+                    {
+                      "id": 704348,
+                      "key": "c8c3fbd0-b7ba-471e-85b7-eb2b1c3820c0",
+                      "title": "Get Opportunities with LinkedIn",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 703862,
+                      "key": "20efad1e-c7b3-432d-86ad-0e798c795d49",
+                      "title": "Use Your Story to Stand Out",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 703860,
+                      "key": "a891296f-46ea-457c-89d9-f4ec96a40cae",
+                      "title": "Why Use an Elevator Pitch",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 703864,
+                      "key": "0c1acad0-cb41-4260-bd5c-6df07f1b2778",
+                      "title": "Create Your Elevator Pitch",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 708825,
+                      "key": "36e84f5b-204e-48c4-8071-293f49886a85",
+                      "title": "Use Your Elevator Pitch on LinkedIn",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 729380,
+                      "key": "a7deba78-27c8-4735-ad9c-7ab2b2b1ad91",
+                      "title": "Create Your Profile With SEO In Mind",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 728573,
+                      "key": "6ed9b5b0-43cf-4b65-b01d-345e44dfd765",
+                      "title": "Profile Essentials",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 728593,
+                      "key": "d3f369bb-78d7-478a-a909-c6e13683cc18",
+                      "title": "Work Experiences & Accomplishments",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 708828,
+                      "key": "eb90e45b-5d77-458b-af34-0f8eaecd45a8",
+                      "title": "Build and Strengthen Your Network",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 617430,
+                      "key": "64ed9954-b423-4a75-ad70-b2a1fbaa3a6d",
+                      "title": "Reaching Out on LinkedIn",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 728591,
+                      "key": "1d61fe7d-02e6-4376-a0c5-e01e26969d63",
+                      "title": "Boost Your Visibility",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 708834,
+                      "key": "2da1cc73-72cb-4678-b84d-1ab91798e8b3",
+                      "title": "Up Next",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": 1098748,
+          "key": "84d70661-3df9-451c-a50e-397596cf08a4",
+          "title": "Apache Spark and Spark Streaming (Updated)",
+          "semantic_type": "Part",
+          "is_public": true,
+          "version": "1.0.0",
+          "locale": "en-us",
+          "summary": "",
+          "part_type": "Elective",
+          "locked_reason": "not_locked",
+          "locked_until": null,
+          "content_ready_date_ms": null,
+          "resources": null,
+          "image": null,
+          "specialization": null,
+          "modules": [
+            {
+              "id": 1098749,
+              "key": "c930cd76-0913-484c-9c14-9dbcfb6470ea",
+              "title": "Apache Spark and Spark Streaming (Updated)",
+              "semantic_type": "Module",
+              "is_public": true,
+              "version": "1.0.0",
+              "locale": "en-us",
+              "is_project_module": null,
+              "forum_path": "",
+              "lessons": [
+                {
+                  "id": 1079464,
+                  "key": "441f6b6e-8946-424f-bc1d-07caae55f041",
+                  "version": "1.0.0",
+                  "locale": "en-us",
+                  "semantic_type": "Lesson",
+                  "summary": "Introduction to Data Streaming with Spark",
+                  "title": "Welcome",
+                  "duration": 30,
+                  "is_public": true,
+                  "is_project_lesson": false,
+                  "display_workspace_project_only": false,
+                  "lesson_type": "Classroom",
+                  "image": {
+                    "url": "https://video.udacity-data.com/topher/2020/October/5f9545ba_welcome-to-fs-challenge/welcome-to-fs-challenge.jpg",
+                    "width": 592,
+                    "height": 640
+                  },
+                  "video": null,
+                  "lab": null,
+                  "project": null,
+                  "concepts": [
+                    {
+                      "id": 1079404,
+                      "key": "5e3de483-dbd4-47dd-9b12-40d61b4ff68f",
+                      "title": "Meet Your Instructor",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 1079409,
+                      "key": "5d99b8c5-07f4-4457-b864-97338171952f",
+                      "title": "Course Outline",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 1079414,
+                      "key": "e4ca2eec-7baf-4c32-9a44-d69d189be106",
+                      "title": "Lesson Outline",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 1079424,
+                      "key": "f427dc03-697c-4c3e-b09c-656ccfd45248",
+                      "title": "Introduction to Data Streaming",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 1079428,
+                      "key": "5a868a75-72bc-4a08-b40f-28d0476d7125",
+                      "title": "Why Data Streaming Is Important",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 1079434,
+                      "key": "b8dc7938-710e-4774-8580-8a6d659d3083",
+                      "title": "Business Stakeholders",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 1079439,
+                      "key": "3fe26d88-7c91-4fb0-bf33-a275f3a16c8a",
+                      "title": "When To Use Data Streaming",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 1079444,
+                      "key": "bb77d901-b8e0-41b3-bbe9-4a60ce523e53",
+                      "title": "History of Data Streaming",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 1079450,
+                      "key": "d2229881-c258-4cf6-82f3-5e07df6b2b65",
+                      "title": "Tools & Environment",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 1105245,
+                      "key": "eb32c555-125c-4400-93ba-f5f4ffa8e204",
+                      "title": "Workspace Setup Outside of Classroom",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 1079455,
+                      "key": "731edf2d-ec17-4371-b50a-c0ad1de577d6",
+                      "title": "Project: Evaluate Human Balance with Spark Streaming",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 1079460,
+                      "key": "04709727-386e-4dd5-b30a-5a4cac4dfd06",
+                      "title": "Lesson Recap",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 1079463,
+                      "key": "56d6019d-a471-4c8e-9a76-6c90b08bcf47",
+                      "title": "Let's Get Started!",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    }
+                  ]
+                },
+                {
+                  "id": 1079586,
+                  "key": "876ada77-99c4-44f5-b2c1-a948c6288bef",
+                  "version": "1.0.0",
+                  "locale": "en-us",
+                  "semantic_type": "Lesson",
+                  "summary": "In this lesson, you'll learn about working with Spark Dataframes and views.",
+                  "title": "Streaming Dataframes, Views, and Spark SQL",
+                  "duration": 120,
+                  "is_public": true,
+                  "is_project_lesson": false,
+                  "display_workspace_project_only": false,
+                  "lesson_type": "Classroom",
+                  "image": {
+                    "url": "https://video.udacity-data.com/topher/2018/August/5b63f672_3-9-sql-aggregations2x/3-9-sql-aggregations2x.jpg",
+                    "width": 500,
+                    "height": 500
+                  },
+                  "video": null,
+                  "lab": null,
+                  "project": null,
+                  "concepts": [
+                    {
+                      "id": 1079476,
+                      "key": "26c02271-ee8a-4d1c-b9b6-7720125acf42",
+                      "title": "Lesson Overview",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 1079482,
+                      "key": "e23294fb-680a-4a04-b004-a87822b512dd",
+                      "title": "Importance of Spark",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 1079493,
+                      "key": "860886c1-1ee9-48f3-ac53-ee62595b8a2a",
+                      "title": "Spark Clusters",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 1082043,
+                      "key": "44f2d9fa-18a7-4d01-9bfe-0a9e165bbe65",
+                      "title": "Walkthrough 1: Start a Spark Cluster",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 1079497,
+                      "key": "c67e0b04-304a-476d-a4f8-50c594a03847",
+                      "title": "Quiz: Spark Clusters",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 1079500,
+                      "key": "136d9c37-583c-47b5-81c7-a01195008367",
+                      "title": "Exercise 1: Spark Clusters",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 1079505,
+                      "key": "b05518a4-3d80-4ce6-9b57-97f0c2f62127",
+                      "title": "Solution: Spark Clusters",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 1079510,
+                      "key": "ee340531-06b9-4761-8264-37a732a770ef",
+                      "title": "Create a Spark Streaming Dataframe with a Kafka Source",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 1082044,
+                      "key": "952d8d8a-cf48-46d1-9177-76a6b51f6f70",
+                      "title": "Walkthrough 2: Create a Spark Streaming Dataframe",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 1079514,
+                      "key": "0ef94baa-f1b4-49f1-bc00-c1099a3682e5",
+                      "title": "Quiz: Create a Spark Streaming Dataframe",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 1079517,
+                      "key": "109587bc-8822-46cc-aa68-cdd32bbd0bde",
+                      "title": "Exercise : Create a Spark Streaming Dataframe",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 1079522,
+                      "key": "5fc52d1d-6e30-4166-bd56-40adbcd6e516",
+                      "title": "Solution 2: Create a Spark Streaming Dataframe",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 1079527,
+                      "key": "a051b4bc-0f82-4963-ac42-5e2f299cbc44",
+                      "title": "Spark Views",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 1082046,
+                      "key": "2b4e6414-89d3-4809-bc9d-970bd74436fc",
+                      "title": "Walkthrough 3: Query a Spark View",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 1079548,
+                      "key": "352a66fc-f192-434d-9ef7-6a60540a61be",
+                      "title": "Quiz: Query a Spark View",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 1079551,
+                      "key": "d01a03c3-2117-4515-bc6c-807a8b66ac38",
+                      "title": "Exercise: Spark Views",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 1079556,
+                      "key": "e0849104-cd49-4235-b52f-b45e7214aae0",
+                      "title": "Solution 3: Spark Views",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 1079564,
+                      "key": "31f0227b-8ae0-4e88-956a-0f7fc89b97a7",
+                      "title": "Edge Cases",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 1079574,
+                      "key": "2baf8ff1-772c-4def-8018-7fa814afab88",
+                      "title": "Glossary",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 1079577,
+                      "key": "19ff3269-e996-43f4-a031-b44075740d6b",
+                      "title": "Further Reading",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 1079585,
+                      "key": "38784b96-a1c6-43bf-b1a9-a7019ee4214f",
+                      "title": "Lesson Review",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    }
+                  ]
+                },
+                {
+                  "id": 1079708,
+                  "key": "4720ad9e-3236-4ebe-a324-b55b61dcf328",
+                  "version": "1.0.0",
+                  "locale": "en-us",
+                  "semantic_type": "Lesson",
+                  "summary": "In this lesson, you'll learn how to work with JSON and complete Joins for data streaming.",
+                  "title": "Joins and JSON",
+                  "duration": 120,
+                  "is_public": true,
+                  "is_project_lesson": false,
+                  "display_workspace_project_only": false,
+                  "lesson_type": "Classroom",
+                  "image": {
+                    "url": "https://video.udacity-data.com/topher/2018/December/5c07f9d2_3-2-sql-joins/3-2-sql-joins.jpg",
+                    "width": 1250,
+                    "height": 1250
+                  },
+                  "video": null,
+                  "lab": null,
+                  "project": null,
+                  "concepts": [
+                    {
+                      "id": 1079590,
+                      "key": "b146d8eb-95bc-47dd-b4d3-8802947bb9c7",
+                      "title": "Lesson Overview",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 1079598,
+                      "key": "4e45fed4-366a-4c17-86c5-515f90d07ecc",
+                      "title": "Why JSON is important?",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 1079604,
+                      "key": "d212346c-c2d2-4b03-8b6d-264a00d85e5e",
+                      "title": "Why JSON and joins are important.",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 1079610,
+                      "key": "a929874c-cd75-49f4-9877-aad20701a4ce",
+                      "title": "Parse a JSON Payload",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 1082048,
+                      "key": "3a7d3149-0b43-4501-9a8d-0c51950482ca",
+                      "title": "Walkthrough 1: Parse a JSON Payload",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 1079619,
+                      "key": "d54979ed-fa30-4a1a-b2fd-1d754c75a633",
+                      "title": "Quiz: Parse a JSON payload into separate fields for analysis",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 1079622,
+                      "key": "1c99ffa2-86a7-47fe-a6ad-0c8e0c8e1e74",
+                      "title": "Exercise: Parse a JSON Payload",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 1079627,
+                      "key": "e12a1490-3e00-47bc-930c-bf232af161c1",
+                      "title": "Solution 1: Parse a JSON Payload",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 1079632,
+                      "key": "e21c2f54-9ea7-4060-a666-45f2fb330844",
+                      "title": "Join Streaming Dataframes from Different Datasources",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 1082050,
+                      "key": "b78c70a4-4257-47c3-9352-6654563c2a4c",
+                      "title": "Walkthrough 2: Join Streaming Dataframes",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 1079636,
+                      "key": "072c6af3-5dba-408a-bc56-b19145ff30e1",
+                      "title": "Quiz: Join Streaming Dataframes from Different Datasources",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 1079639,
+                      "key": "84fff6aa-bc20-4cbb-a326-e0fbc44d14dd",
+                      "title": "Exercise 2: Join Streaming Dataframes",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 1079644,
+                      "key": "263906ba-43ab-4e08-ae50-828a0df0ec90",
+                      "title": "Solution: Join Streaming Dataframes",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 1079649,
+                      "key": "e74cc724-dfa7-4dc0-8d99-a57159df0628",
+                      "title": "Sink to Kafka",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 1082052,
+                      "key": "ecf915ae-21f1-473e-b86e-8f0b822ac414",
+                      "title": "Walkthrough 3: Sink to Kafka",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 1079653,
+                      "key": "67872d0e-ab88-4ad9-bf32-f0b786afaa24",
+                      "title": "Quiz: Sink to Kafka",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 1079656,
+                      "key": "5d0ad3fb-7c3b-45da-86ba-778a77fbe0bf",
+                      "title": "Exercise: Sink to Kafka",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 1079661,
+                      "key": "4c96cf1c-b7ad-471c-b7e0-e51d681d6dc7",
+                      "title": "Solution 3: Sink to Kafka",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 1079686,
+                      "key": "8607dd1c-173a-43e8-83ad-59aca7a67382",
+                      "title": "Edge Cases",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 1079696,
+                      "key": "7eb02a8e-c182-4fb5-b5bc-3bf03c82b5b2",
+                      "title": "Glossary",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 1079699,
+                      "key": "7bbc8594-419a-4d52-83fd-5c8022a4466d",
+                      "title": "Further Reading",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 1079707,
+                      "key": "fd176961-528c-4928-a37f-5edc4d878c21",
+                      "title": "Lesson Review",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    }
+                  ]
+                },
+                {
+                  "id": 1079838,
+                  "key": "8853e375-7281-4477-abf9-0c8041afd8a0",
+                  "version": "1.0.0",
+                  "locale": "en-us",
+                  "semantic_type": "Lesson",
+                  "summary": "This lesson will focus on working with Redis, Base64, and JSON in Data Streaming.  ",
+                  "title": "Redis, Base64 and JSON",
+                  "duration": 120,
+                  "is_public": true,
+                  "is_project_lesson": false,
+                  "display_workspace_project_only": false,
+                  "lesson_type": "Classroom",
+                  "image": {
+                    "url": "https://video.udacity-data.com/topher/2018/September/5ba54880_3-13-sql-advanced-joins-and-performance-tuning2x/3-13-sql-advanced-joins-and-performance-tuning2x.jpg",
+                    "width": 500,
+                    "height": 500
+                  },
+                  "video": null,
+                  "lab": null,
+                  "project": null,
+                  "concepts": [
+                    {
+                      "id": 1079712,
+                      "key": "c41f6846-d0ad-4315-94e2-0b14e9a8c2f5",
+                      "title": "Lesson Outline",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 1079726,
+                      "key": "ea70ea97-6d3d-40f3-999f-8be0ae7a99ce",
+                      "title": "Why are Redis and Base64 Important?",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 1079732,
+                      "key": "e36812a9-b794-4d23-b349-9bb3228bda3d",
+                      "title": "How an Expert Thinks About Redis and Base64",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 1079737,
+                      "key": "af76288e-98e3-4eef-a2ff-a6257f9e3c54",
+                      "title": "Manually Save and Read with Redis and Kafka",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 1082056,
+                      "key": "fb9c66f1-c003-4586-8c8e-3057871b32d9",
+                      "title": "Walkthrough 1: Manually Save and Read with Redis and Kafka",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 1079741,
+                      "key": "a61c98b8-adf0-4d16-9dbe-e8e3be68e543",
+                      "title": "Quiz: Manually Save and Read with Redis and Kafka",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 1079744,
+                      "key": "c7939a92-7132-4855-9b68-d359fcc8b20e",
+                      "title": "Exercise: Manually Save and Read with Redis and Kafka",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 1079749,
+                      "key": "dfaba652-b970-4153-beff-f382c659fd28",
+                      "title": "Solution 1: Manually Save and Read with Redis and Kafka",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 1079754,
+                      "key": "103c3750-ed58-4296-a5b4-613b0772559f",
+                      "title": "Parse Base64 Encoded Information",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 1082058,
+                      "key": "b4ed7401-6287-4917-92f2-f130c98666d7",
+                      "title": "Walkthrough 2: Parse Base64 Encoded Information",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 1079758,
+                      "key": "4aec0cd1-e428-4530-9e1c-8b627d25ea58",
+                      "title": "Quiz: Parse Base64 Encoded Information",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 1079761,
+                      "key": "ed1f057d-9bd3-440a-9b39-a2e1668583dc",
+                      "title": "Exercise 2: Parse Base64 Encoded Information",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 1079766,
+                      "key": "09adf166-18c4-4cc5-b2be-df4cdac43246",
+                      "title": "Solution: Parse Base64 Encoded Information",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 1079788,
+                      "key": "f14d7ca6-0d4e-4e96-8c6b-2e5a77269985",
+                      "title": "Sink a Subset of JSON",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 1082062,
+                      "key": "c2fd5401-7dab-4e47-9e91-d460e9d3ec4b",
+                      "title": "Walkthrough 3: Sink a Subset of JSON Fields",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 1079792,
+                      "key": "07c5a57d-8737-43ae-af0d-50fa46f3e05e",
+                      "title": "Quiz: Sink a Subset of JSON",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 1079795,
+                      "key": "1a91b385-460e-47ac-8f9c-2ad70b1f6543",
+                      "title": "Exercise 3: Sink a Subset of JSON",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 1079800,
+                      "key": "87c59930-02bd-4a9c-95d7-c59cf257f3b3",
+                      "title": "Solution 3: Sink a Subset of JSON",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 1079808,
+                      "key": "e3923a46-8c8b-4eb5-98d4-2657e3b12693",
+                      "title": "Edge Cases",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 1103478,
+                      "key": "2b332ae6-0a2c-4576-a37b-f505a57bca9e",
+                      "title": "Quiz: Edge Cases",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 1094135,
+                      "key": "9f8924fb-a21f-44cc-8104-e0370149b89b",
+                      "title": "Bringing it all Together Walkthrough",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 1079811,
+                      "key": "d7914998-b6b3-42a5-a71c-0617dfecfe02",
+                      "title": "Final Exercise",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 1079815,
+                      "key": "92e3e309-a077-42ca-86c3-230a1cb9e48c",
+                      "title": "Solution 4: Final Exercise",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 1079818,
+                      "key": "ead9b1c1-2c1f-43cf-b4cf-788567682641",
+                      "title": "Glossary",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 1079821,
+                      "key": "aa6bf4e4-8344-402a-b69d-5a1bfc34e449",
+                      "title": "Further Reading",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 1079829,
+                      "key": "1961aaf3-6e0e-4698-b5dc-3328cf9c4e74",
+                      "title": "Lesson and Course Recap",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 1079837,
+                      "key": "2b2d18a1-7a98-4798-8cfd-6ea85a50f269",
+                      "title": "Congratulations",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    }
+                  ]
+                },
+                {
+                  "id": 1054014,
+                  "key": "72fcdb74-d4d2-4d3f-a940-b644aba0349f",
+                  "version": "1.0.0",
+                  "locale": "en-us",
+                  "semantic_type": "Lesson",
+                  "summary": null,
+                  "title": "Evaluate Human Balance with Spark Streaming",
+                  "duration": 300,
+                  "is_public": true,
+                  "is_project_lesson": true,
+                  "display_workspace_project_only": false,
+                  "lesson_type": "Classroom",
+                  "image": {
+                    "url": "https://video.udacity-data.com/topher/2017/May/591db0ed_stairs-man-person-walking/stairs-man-person-walking.jpg",
+                    "width": 500,
+                    "height": 500
+                  },
+                  "video": null,
+                  "lab": null,
+                  "project": {
+                    "key": "f52e27cd-7945-46c5-b7ac-4c378365bb6a",
+                    "version": "1.0.0",
+                    "locale": "en-us",
+                    "duration": 40320,
+                    "semantic_type": "Project",
+                    "title": "Evaluate Human Balance with Spark Streaming",
+                    "description": "### Submission Deliverables\n\nAs part of this project, you will submit the following:\n\n- The **sparkpykafkajoin.py** Python script\n- The **sparkpyeventskafkastreamtoconsole.py** Python script\n- The **sparkpyrediskafkastreamtoconsole.py** Python script\n- The log file from running the **sparkpykafkajoin.py** Python script in Spark: `/home/workspace/spark/logs/kafkajoin.log`\n- The log file from running the **sparkpyeventskafkastreamtoconsole.py** Python script in Spark: `/home/workspace/spark/logs/eventstream.log`\n- The log file from running the **sparkpyrediskafkastreamtoconsole.py** Python script in Spark: `/home/workspace/spark/logs/redisstream.log`\n- The stedi-application sub-folder in the Python script `sparkpykafkajoin.py`, including  the `/home/workspace/stedi-application/application.conf` file\n- The log files from the Spark master and Spark worker: `/home/workspace/spark/logs`\n- At least two screenshots of the working graph showing data flowing to the `/home/workspace/screenshots` folder\n\nAwesome job completing your project. Before submitting your project for review please make sure:\n- Your project meets everything in the [Rubric](https://review.udacity.com/#!/rubrics/2895/view)\n- You have included all of the files listed above.\n\nIf you have completed all of that, please submit!",
+                    "is_public": true,
+                    "summary": null,
+                    "forum_path": "",
+                    "rubric_id": "2895",
+                    "terminal_project_id": null,
+                    "resources": null,
+                    "image": null
+                  },
+                  "concepts": [
+                    {
+                      "id": 1078004,
+                      "key": "c3113876-48d1-4020-b9a7-283e4fdfc2e9",
+                      "title": "Project Overview",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 1099272,
+                      "key": "f560b037-addb-4490-a2dd-26af9a536579",
+                      "title": "Project Setup Outside of Classroom",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 1078006,
+                      "key": "f5c8f761-8414-4392-b1d3-8fb24f1d745c",
+                      "title": "Project Instructions",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 1095978,
+                      "key": "22f5c4b6-adbc-46e2-b8dd-465e0ded97fb",
+                      "title": "Create Wireframe",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 1095979,
+                      "key": "02f778bb-bb7d-40c4-9dfa-262dc14107a3",
+                      "title": "Wireframe Solution",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    },
+                    {
+                      "id": 1054017,
+                      "key": "69f49918-ab80-49ba-88e8-e035745ff485",
+                      "title": "Project Workspace",
+                      "semantic_type": "Concept",
+                      "is_public": true,
+                      "resources": null
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  }
+}
