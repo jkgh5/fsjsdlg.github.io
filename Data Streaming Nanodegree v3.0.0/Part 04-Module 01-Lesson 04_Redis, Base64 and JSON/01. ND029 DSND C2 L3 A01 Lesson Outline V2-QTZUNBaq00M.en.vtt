@@ -1,0 +1,43 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:03.735
+This is the third lesson of the Apache Spark streaming course.
+
+00:00:03.735 --> 00:00:08.215
+This lesson covers Redis, Base64, and JSON.
+
+00:00:08.215 --> 00:00:10.250
+Let's look at the course overview.
+
+00:00:10.250 --> 00:00:12.585
+You just learned about Joins and JSON.
+
+00:00:12.585 --> 00:00:16.470
+In this lesson, we'll become familiar with manually saving to Redis,
+
+00:00:16.470 --> 00:00:18.840
+reading the same data from a Kafka topic,
+
+00:00:18.840 --> 00:00:21.780
+parsing Base64 encoded information,
+
+00:00:21.780 --> 00:00:25.335
+and sinking a subset of JSON fields.
+
+00:00:25.335 --> 00:00:28.065
+Upon completion of lesson 3,
+
+00:00:28.065 --> 00:00:33.765
+you should be able to successfully complete the following: manually save to Redis,
+
+00:00:33.765 --> 00:00:36.615
+read the same data from a Kafka topic,
+
+00:00:36.615 --> 00:00:39.585
+parse Base64 encoded information,
+
+00:00:39.585 --> 00:00:42.760
+sink a subset of JSON fields.
+

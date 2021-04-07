@@ -1,0 +1,187 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:04.500
+Let's look at how a Redis Kafka source connector works in action.
+
+00:00:04.500 --> 00:00:09.060
+The first thing I'm going to do is make sure that Kafka and Redis are running.
+
+00:00:09.060 --> 00:00:11.385
+I'm going to type ps-ef,
+
+00:00:11.385 --> 00:00:13.740
+and I'm pretty sure they're not running.
+
+00:00:13.740 --> 00:00:16.245
+I don't see a line saying Redis,
+
+00:00:16.245 --> 00:00:18.855
+and I don't see any Java processes.
+
+00:00:18.855 --> 00:00:21.990
+This tells me I need to start Kafka and Redis.
+
+00:00:21.990 --> 00:00:24.910
+This button will start both of them.
+
+00:00:31.670 --> 00:00:34.305
+I still have a spinning.
+
+00:00:34.305 --> 00:00:40.075
+It stopped spinning. That means Kafka is up and Redis is up.
+
+00:00:40.075 --> 00:00:45.170
+We looked at the diagram before and we were talking about how,
+
+00:00:45.170 --> 00:00:48.710
+now that we have a Kafka source connector for Redis,
+
+00:00:48.710 --> 00:00:54.495
+we can start streaming data from Redis to a Kafka topic.
+
+00:00:54.495 --> 00:00:56.985
+That's been put in place.
+
+00:00:56.985 --> 00:01:00.205
+I'm going to go look at that topic.
+
+00:01:00.205 --> 00:01:06.700
+I'm going to switch to the Kafka bin folder and I'm going to list that folder.
+
+00:01:06.700 --> 00:01:10.085
+We'll see I have a Kafka console consumer in there.
+
+00:01:10.085 --> 00:01:11.750
+Because I'm in data Kafka bin,
+
+00:01:11.750 --> 00:01:20.910
+I can say /./Kafka-console-consumer bootstrap-server localhost:9092.
+
+00:01:22.210 --> 00:01:24.980
+The topic was, remember?
+
+00:01:24.980 --> 00:01:31.000
+Redis server, and from the beginning.
+
+00:01:31.580 --> 00:01:36.350
+Now, we're going to see some messages that came into Redis earlier,
+
+00:01:36.350 --> 00:01:38.525
+and then you just see it stops.
+
+00:01:38.525 --> 00:01:41.995
+That's because no one's using the application at this point.
+
+00:01:41.995 --> 00:01:46.229
+Now, I'm going to go into Redis and make some data changes,
+
+00:01:46.229 --> 00:01:49.415
+and then hopefully we should see that data come out over here.
+
+00:01:49.415 --> 00:01:51.065
+So I'm going to the data,
+
+00:01:51.065 --> 00:01:57.510
+Redis, Redis-stable, source, Redis-cli,
+
+00:01:57.510 --> 00:02:03.315
+and normally you have a host parameter but it defaults to localhost,
+
+00:02:03.315 --> 00:02:05.520
+so I'm not going to include that,
+
+00:02:05.520 --> 00:02:09.020
+and I need to indicate the password for the Redis server,
+
+00:02:09.020 --> 00:02:11.405
+and that's called notreally,
+
+00:02:11.405 --> 00:02:14.930
+so -a is for the password and that's the password.
+
+00:02:14.930 --> 00:02:19.830
+This carat means I'm at the Redis command line.
+
+00:02:19.830 --> 00:02:21.620
+If I say keys, star,
+
+00:02:21.620 --> 00:02:25.685
+star I'll get a list of all the Redis tables that I have.
+
+00:02:25.685 --> 00:02:31.085
+I'm actually just going to create a simple key value pair here in Redis.
+
+00:02:31.085 --> 00:02:36.150
+The way you do that is just using the word set.
+
+00:02:36.150 --> 00:02:42.515
+So I'm just going to say set and now I have to give it a key.
+
+00:02:42.515 --> 00:02:45.200
+I'm going to call it mykey,
+
+00:02:45.200 --> 00:02:50.010
+and then for the value I'm going to call it myvalue.
+
+00:02:50.570 --> 00:02:57.240
+Now, if I say get mykey then I have my value.
+
+00:02:57.240 --> 00:02:59.660
+I should see this one other place.
+
+00:02:59.660 --> 00:03:04.085
+If I go back and look at the Kafka console consumer,
+
+00:03:04.085 --> 00:03:09.050
+I should see the data there as well in Base64 format.
+
+00:03:09.050 --> 00:03:12.305
+Here is my key that I just created.
+
+00:03:12.305 --> 00:03:14.495
+It doesn't look quite the same, does it?
+
+00:03:14.495 --> 00:03:16.325
+But if I copy this,
+
+00:03:16.325 --> 00:03:18.530
+I can do something with it.
+
+00:03:18.530 --> 00:03:23.275
+If go to base64decode.org
+
+00:03:23.275 --> 00:03:29.910
+and paste it in here and decode it, I have my key.
+
+00:03:29.910 --> 00:03:33.279
+Let's see what the value was.
+
+00:03:33.320 --> 00:03:38.010
+The value is this still.
+
+00:03:38.010 --> 00:03:39.900
+It doesn't look right there, does it?
+
+00:03:39.900 --> 00:03:44.715
+Let's see if we can extract that,
+
+00:03:44.715 --> 00:03:48.600
+and we have my value.
+
+00:03:48.600 --> 00:03:54.110
+All I've done is made a small update to the Redis database and
+
+00:03:54.110 --> 00:04:00.200
+that update was immediately popped into a Kafka topic called Redis-dash server,
+
+00:04:00.200 --> 00:04:04.705
+which means I could start listening to that topic in a Spark application.
+
+00:04:04.705 --> 00:04:07.545
+I'm going to stop listening to that topic,
+
+00:04:07.545 --> 00:04:13.690
+Control C, and I'm going to exit out of the Redis CLI using the word exit.
+

@@ -1,0 +1,418 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:03.705
+Let's walk through the solution to the final exercise.
+
+00:00:03.705 --> 00:00:09.465
+The first thing I want to do is make sure that both Spark and Kafka are running.
+
+00:00:09.465 --> 00:00:12.735
+Ps -ef tells me that nothing is running
+
+00:00:12.735 --> 00:00:16.335
+other than a couple other things for my JupyterLab.
+
+00:00:16.335 --> 00:00:18.750
+I need to start Kafka.
+
+00:00:18.750 --> 00:00:22.930
+I will go ahead and do that.
+
+00:00:23.450 --> 00:00:26.850
+You'll notice later on we're going to click the "Start Banking
+
+00:00:26.850 --> 00:00:30.540
+Simulation" once we're ready to run our Python script,
+
+00:00:30.540 --> 00:00:32.835
+which is not quite yet.
+
+00:00:32.835 --> 00:00:35.940
+Let's start up Spark.
+
+00:00:35.940 --> 00:00:40.020
+Let's startup the master node and I'm
+
+00:00:40.020 --> 00:00:45.510
+copying the file path to the log and I'm going to cat that.
+
+00:00:45.510 --> 00:00:53.340
+There's my Spark master URI and let's start the worker up.
+
+00:00:53.340 --> 00:00:55.650
+If I do ps -ef,
+
+00:00:55.650 --> 00:00:58.500
+now I see two spark processes one,
+
+00:00:58.500 --> 00:01:03.300
+two and it looks like Kafka is almost done and it is.
+
+00:01:03.490 --> 00:01:10.370
+Now, we can write our code and pretty soon we'll be able to run it on Spark.
+
+00:01:10.370 --> 00:01:12.660
+Let's clear this terminal,
+
+00:01:12.660 --> 00:01:14.815
+so it's easier to read.
+
+00:01:14.815 --> 00:01:18.080
+The first thing we've got already done here is we have
+
+00:01:18.080 --> 00:01:21.485
+a schema for redisMessages already defined.
+
+00:01:21.485 --> 00:01:24.560
+We're going to be pulling out a customer record and
+
+00:01:24.560 --> 00:01:28.160
+a customer location record out of the redisSchema.
+
+00:01:28.160 --> 00:01:35.970
+We're going to need some more JSON schemas in order to pass those. Let's create them.
+
+00:01:35.970 --> 00:01:41.670
+The first one we'll call customerJSONSchema equals
+
+00:01:41.670 --> 00:01:48.195
+StructType and we'll do an array of StructField.
+
+00:01:48.195 --> 00:01:57.630
+Each of these is coming from my JSON example above and I need a birthDay field,
+
+00:01:57.630 --> 00:02:01.065
+and I need an accountNumber field,
+
+00:02:01.065 --> 00:02:05.320
+and lastly, I need a location.
+
+00:02:06.500 --> 00:02:13.170
+Now, I'm going to create a customerLocationSchema, another StructType,
+
+00:02:13.170 --> 00:02:23.810
+and we'll pass it the first one as an accountNumber and the second one is a location.
+
+00:02:23.810 --> 00:02:31.040
+Let's create a SparkSession and let's set the log level to WARN.
+
+00:02:31.040 --> 00:02:40.630
+Now, let's read the redis topic using the read stream on that SparkSession.
+
+00:02:40.630 --> 00:02:48.360
+We will read in a Kafka topic using the format of Kafka.
+
+00:02:49.490 --> 00:02:56.120
+We need to get the server name down with the right port and the topic will be called
+
+00:02:56.120 --> 00:03:03.465
+redis-server and we want the earliest messages we can get and we'll load that.
+
+00:03:03.465 --> 00:03:10.535
+Let's convert the Kafka data from binary to strings.
+
+00:03:10.535 --> 00:03:12.800
+Using a select expression,
+
+00:03:12.800 --> 00:03:22.605
+we'll cast the key as a string and now we'll extract the base64 out of that JSON message.
+
+00:03:22.605 --> 00:03:30.200
+We're going to use withColumn to update the value column that we just selected here.
+
+00:03:30.200 --> 00:03:40.815
+We're going to use the from_json method and the redisMessageSchema to pull the JSON out.
+
+00:03:40.815 --> 00:03:44.475
+We want to select all the fields,
+
+00:03:44.475 --> 00:03:47.070
+save those as a view.
+
+00:03:47.070 --> 00:03:50.980
+Now, we're going to select a specific element we're looking for.
+
+00:03:50.980 --> 00:03:52.580
+If we look at the schema,
+
+00:03:52.580 --> 00:03:56.325
+we're looking for the element out of this record.
+
+00:03:56.325 --> 00:04:05.070
+So zSetEntriesEncodedStreamingDF we're pulling that base-64 field out by doing a select
+
+00:04:05.070 --> 00:04:12.410
+key zSetEntries0 and pulling
+
+00:04:12.410 --> 00:04:19.780
+the element field off of that, zSetEntries0.element from RedisData.
+
+00:04:19.780 --> 00:04:22.580
+Now, we're going to actually create
+
+00:04:22.580 --> 00:04:30.395
+two separate streaming dataframes that are both base64 decoded versions of this one.
+
+00:04:30.395 --> 00:04:38.105
+We're going to have decoded stream 1 and decoded stream 2 and I'm going to
+
+00:04:38.105 --> 00:04:46.990
+pull the data out of the redisEvent column and I need to declare it here as redisEvent.
+
+00:04:46.990 --> 00:04:51.110
+I'm going to base64 decode that
+
+00:04:56.540 --> 00:05:02.790
+zSetEntriesEncodedStreamingDataFrame.redisEvent and then I'm going to cast
+
+00:05:02.790 --> 00:05:11.090
+it as a string and I'm going to do the same thing for this other one.
+
+00:05:11.090 --> 00:05:15.710
+I've got two copies now that are separate dataframes, DF1 and DF2.
+
+00:05:15.710 --> 00:05:19.105
+They're both base64 decoded JSON.
+
+00:05:19.105 --> 00:05:25.515
+Now, I'm going to look for stuff in that JSON and see what we have.
+
+00:05:25.515 --> 00:05:34.230
+Lets say zSetDecodedEntriesStreamingDF1.filter and
+
+00:05:34.230 --> 00:05:41.430
+we're going to look for the redisEvent column containing a birthday field.
+
+00:05:41.430 --> 00:05:44.490
+We're going to look for
+
+00:05:44.490 --> 00:05:51.815
+the second one and we're going to say in that case it doesn't have the birthday field.
+
+00:05:51.815 --> 00:05:57.330
+Knot colredisEvent.contains birthDay,
+
+00:05:58.220 --> 00:06:07.010
+I just like to put a knot around this whole expression or before this whole expression.
+
+00:06:08.520 --> 00:06:15.550
+Now, we're going to extract the JSON out of these specific ones,
+
+00:06:15.550 --> 00:06:18.070
+one that has birthdays and one that doesn't.
+
+00:06:18.070 --> 00:06:21.420
+The customer should have a birthday.
+
+00:06:21.420 --> 00:06:27.260
+We're going to use that dataframe to get our birthday information.
+
+00:06:28.940 --> 00:06:36.750
+zSetDecodedEntriesStreamingDF1.withColumncustomer and we're going to
+
+00:06:36.750 --> 00:06:44.740
+pull out the redisEvent column and we're going to use the customerJSONSchema.
+
+00:06:45.740 --> 00:06:50.640
+From that customer, I want all the subfields.
+
+00:06:50.640 --> 00:06:55.305
+I'm going to create a view called customer.
+
+00:06:55.305 --> 00:07:01.030
+Then, I'm going to go zSetDecodedEntries,
+
+00:07:01.760 --> 00:07:07.430
+second dataframe which doesn't have birthdays and we're going to call
+
+00:07:07.430 --> 00:07:13.220
+this customer location from_json redisEvent,
+
+00:07:13.220 --> 00:07:16.070
+and use the customer locations schema.
+
+00:07:16.070 --> 00:07:20.210
+Select column,
+
+00:07:20.210 --> 00:07:23.000
+customerLocation.star
+
+00:07:23.000 --> 00:07:31.890
+and createOrReplaceTempViewcustomerLocation.
+
+00:07:32.090 --> 00:07:35.760
+Now, I've got the first dataframe that has customers,
+
+00:07:35.760 --> 00:07:38.690
+the second one has customer location.
+
+00:07:38.690 --> 00:07:44.830
+I'm going to select the customer information I want from dataframe 1.
+
+00:07:44.830 --> 00:07:49.350
+We'll say customerStreamingDF equals
+
+00:07:49.350 --> 00:07:58.900
+spark.sqlselect accountNumber as customerAccountNumber,
+
+00:07:58.900 --> 00:08:05.180
+location as homeLocation, birthDay and
+
+00:08:05.180 --> 00:08:11.555
+all of these are coming from Customer where birthDay is not null.
+
+00:08:11.555 --> 00:08:15.815
+Shouldn't be null because we found all the ones that had a birthday,
+
+00:08:15.815 --> 00:08:19.880
+but we'll put that in there just in case.
+
+00:08:19.880 --> 00:08:24.380
+Second thing we're going to do is take
+
+00:08:24.380 --> 00:08:26.510
+the customer streaming dataframe and pass
+
+00:08:26.510 --> 00:08:29.210
+the birth day and we're going to go for just the birth year,
+
+00:08:29.210 --> 00:08:33.990
+relevantCustomerFieldsStreamingDF
+
+00:08:35.200 --> 00:08:40.985
+equals customerStreamingDF.select.
+
+00:08:40.985 --> 00:08:45.620
+We're going to do another select which this time is using the.select method.
+
+00:08:45.620 --> 00:08:52.380
+We're going to select the customerAccountNumber, the homeLocation,
+
+00:08:52.380 --> 00:09:02.920
+and then we're going to split customerStreamingDF.birthDay on the dash character.
+
+00:09:04.700 --> 00:09:07.215
+Let's look at our data.
+
+00:09:07.215 --> 00:09:10.755
+We want to get the zeroth element in there.
+
+00:09:10.755 --> 00:09:21.035
+We're going to get item 0 and we'll create an alias on that called birthYear.
+
+00:09:21.035 --> 00:09:27.410
+The next thing we're going to do is select the customer location information we want.
+
+00:09:27.410 --> 00:09:33.840
+We'll say customerLocationStreamingDF equals
+
+00:09:33.840 --> 00:09:39.540
+spark.sql select accountNumber as
+
+00:09:39.540 --> 00:09:44.300
+locationAccountNumber and then we want location,
+
+00:09:44.300 --> 00:09:50.585
+selecting those from customer location and now we're going to do a join.
+
+00:09:50.585 --> 00:10:00.840
+We'll call the resulting join currentAndHomeLocationStreamingDataFrames and
+
+00:10:00.840 --> 00:10:08.250
+we'll join customerLocationStreamingDF using.join we will join to
+
+00:10:08.250 --> 00:10:16.955
+relevantCustomerFieldsStreamingDF using the following expression.
+
+00:10:16.955 --> 00:10:24.690
+CustomerAccountNumber equals locationAccountNumber.
+
+00:10:26.810 --> 00:10:31.200
+Then, we're going to sync all of that to the console.
+
+00:10:39.200 --> 00:10:43.800
+CurrentAndHomeLocationStreamingDF.writeStream.outputModeappend.formatconsole
+
+00:10:43.800 --> 00:10:44.220
+and we're going
+
+00:10:44.220 --> 00:10:48.345
+to start and await termination.
+
+00:10:48.345 --> 00:10:57.940
+Let's save that and let's start the banking simulation.
+
+00:11:00.140 --> 00:11:03.310
+Now, that's running.
+
+00:11:03.440 --> 00:11:09.700
+We're going to start the Python application now,
+
+00:11:10.640 --> 00:11:16.960
+cd/ home/workspace, list that and then we do submit-current-country.sh.
+
+00:11:19.430 --> 00:11:22.380
+We're loading our jars,
+
+00:11:22.380 --> 00:11:26.400
+libraries, now we're starting up Spark.
+
+00:11:26.400 --> 00:11:30.520
+Now, we're running the Spark application.
+
+00:11:31.310 --> 00:11:34.505
+A join can take up to two minutes to run,
+
+00:11:34.505 --> 00:11:39.840
+so we're just going to wait it out here. There's our data.
+
+00:11:39.840 --> 00:11:42.245
+We have the location account number,
+
+00:11:42.245 --> 00:11:44.960
+the location, the customer account number,
+
+00:11:44.960 --> 00:11:48.800
+which matches because the join is what made those the same,
+
+00:11:48.800 --> 00:11:52.410
+the home location and the birth year.
+
+00:11:52.410 --> 00:11:57.910
+So far, it looks like these customers are all currently in their home.
+
+00:11:57.910 --> 00:12:02.910
+Can you spot a difference where someone's not in their home?
+
+00:12:03.220 --> 00:12:06.320
+If we look at the second batch,
+
+00:12:06.320 --> 00:12:08.930
+this customer is in Ghana currently,
+
+00:12:08.930 --> 00:12:10.894
+even though their home is Alabama,
+
+00:12:10.894 --> 00:12:13.805
+and the next customer is in New Mexico,
+
+00:12:13.805 --> 00:12:16.115
+even though their home is Togo.
+
+00:12:16.115 --> 00:12:21.080
+That's the data that we got from streaming data out of Redis.
+
+00:12:21.080 --> 00:12:26.449
+Very important information about customers and their traveling.
+
+00:12:26.449 --> 00:12:32.675
+That can be very helpful to detect potential fraud activity on banking charges.
+
+00:12:32.675 --> 00:12:35.510
+We're going to stop the Spark from running.
+
+00:12:35.510 --> 00:12:38.160
+I'm going to "Control+C" and kill that.
+

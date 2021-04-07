@@ -1,0 +1,613 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:01.950
+Let's take a look at writing
+
+00:00:01.950 --> 00:00:06.360
+a PySpark application that sinks a subset of JSON fields to Kafka.
+
+00:00:06.360 --> 00:00:10.365
+The first thing I'm going to do is check that Spark and Kafka are running.
+
+00:00:10.365 --> 00:00:12.030
+I see that neither of them is up,
+
+00:00:12.030 --> 00:00:13.935
+so I'm going to start Kafka.
+
+00:00:13.935 --> 00:00:17.730
+You'll notice this particular simulation has two instructions.
+
+00:00:17.730 --> 00:00:20.985
+First start Kafka, and then start simulation.
+
+00:00:20.985 --> 00:00:26.670
+It's important to remember to start the simulation before you run your code.
+
+00:00:26.670 --> 00:00:28.740
+While Kafka is starting,
+
+00:00:28.740 --> 00:00:30.675
+I'm going to start Spark.
+
+00:00:30.675 --> 00:00:34.360
+I'm going to data/spark/sbin,
+
+00:00:35.930 --> 00:00:40.020
+then I'm going to say, excuse me,
+
+00:00:40.020 --> 00:00:49.620
+I'm going to go to home/workspace/spark/sbin and./start-master.sh.
+
+00:00:49.620 --> 00:00:52.700
+Kafka is up and running. That's good.
+
+00:00:52.700 --> 00:00:55.355
+We see a blinking cursor and no spinning.
+
+00:00:55.355 --> 00:01:00.865
+But remember, we have to start the simulation before we run our Python code.
+
+00:01:00.865 --> 00:01:04.595
+Now I'm going to look at the log that the master created,
+
+00:01:04.595 --> 00:01:06.470
+and I'm going to use cat this time,
+
+00:01:06.470 --> 00:01:08.450
+cat and the log file.
+
+00:01:08.450 --> 00:01:10.880
+There's my spark master.
+
+00:01:10.880 --> 00:01:18.000
+I'm going to do./start=slave.sh and pass the master URI.
+
+00:01:18.000 --> 00:01:20.715
+Spark should be up and running.
+
+00:01:20.715 --> 00:01:24.800
+Ps-ef shows me two Spark processes and Kafka,
+
+00:01:24.800 --> 00:01:26.695
+bunch of Java stuff.
+
+00:01:26.695 --> 00:01:31.800
+Great. Now we can start coding.
+
+00:01:31.800 --> 00:01:35.030
+We just have to remember to come back and start
+
+00:01:35.030 --> 00:01:39.425
+the simulation before our code starts running.
+
+00:01:39.425 --> 00:01:41.315
+Now I'm going to clear the console,
+
+00:01:41.315 --> 00:01:43.115
+so it's easier to read.
+
+00:01:43.115 --> 00:01:46.415
+You'll notice that I've already created a schema for you.
+
+00:01:46.415 --> 00:01:49.460
+This is the default Redis message schema,
+
+00:01:49.460 --> 00:01:55.130
+and that's just a message envelope that we see our Redis messages show up inside of.
+
+00:01:55.130 --> 00:01:58.160
+Usually the key here is very important.
+
+00:01:58.160 --> 00:02:04.490
+That tells us the name of the collection we're working with within Redis.
+
+00:02:04.490 --> 00:02:08.180
+The other thing that's important when we're working
+
+00:02:08.180 --> 00:02:13.730
+with Redis sorted sets is a collection called z set entries.
+
+00:02:13.730 --> 00:02:19.315
+So z set entries is what has the data that changed inside of it.
+
+00:02:19.315 --> 00:02:22.020
+In this case, it's going to be a payment.
+
+00:02:22.020 --> 00:02:25.640
+I'm going to create a schema for that payment.
+
+00:02:25.770 --> 00:02:32.135
+I'm going to call it a paymentJSONSchema.
+
+00:02:32.135 --> 00:02:37.880
+It's going to be a StructType because that's what schemas are made out of.
+
+00:02:37.880 --> 00:02:40.825
+I'm going to create an array.
+
+00:02:40.825 --> 00:02:44.445
+Remember, it's an array of struct fields,
+
+00:02:44.445 --> 00:02:53.175
+and each field needs to match the JSON field name and have the proper type.
+
+00:02:53.175 --> 00:02:56.445
+I need another one for customerName,
+
+00:02:56.445 --> 00:03:00.315
+I need another one for date.
+
+00:03:00.315 --> 00:03:03.060
+We're going to make that a string.
+
+00:03:03.060 --> 00:03:07.410
+I need another one for amount.
+
+00:03:07.410 --> 00:03:10.700
+I'm going to call the amount of FloatType which I have not
+
+00:03:10.700 --> 00:03:13.675
+imported yet. Let's import that.
+
+00:03:13.675 --> 00:03:17.300
+I'm just getting rid of some extra space,
+
+00:03:17.300 --> 00:03:20.375
+and I'm going to connect to Spark.
+
+00:03:20.375 --> 00:03:23.630
+I'm going to set my logging level.
+
+00:03:23.630 --> 00:03:28.630
+I'm going to connect to Kafka to read my Redis data.
+
+00:03:28.630 --> 00:03:32.950
+Creating a data frame named redisServerStreamingDF,
+
+00:03:35.270 --> 00:03:41.660
+this should be called RawStreaming because it's coming straight from Kafka.
+
+00:03:41.660 --> 00:03:44.060
+That's just my own naming convention.
+
+00:03:44.060 --> 00:03:45.995
+You can name it what you want.
+
+00:03:45.995 --> 00:03:52.315
+I'm accessing.readStream, and then format is "kafka",
+
+00:03:52.315 --> 00:03:59.790
+and my option is "kafka.bootstrap.servers",
+
+00:03:59.790 --> 00:04:03.220
+and then the server name is "localhost:9092".
+
+00:04:04.100 --> 00:04:09.580
+I want to get to the right topic.
+
+00:04:09.580 --> 00:04:15.190
+This is the topic that's configured through my Kafka connect source.
+
+00:04:15.190 --> 00:04:18.275
+In our example, that's already been set up for you.
+
+00:04:18.275 --> 00:04:21.110
+But if you didn't have that Kafka connect source setup,
+
+00:04:21.110 --> 00:04:22.990
+you would need to create it.
+
+00:04:22.990 --> 00:04:26.945
+Now, let's convert that from binary to string.
+
+00:04:26.945 --> 00:04:29.910
+A data frame to hold that.
+
+00:04:31.090 --> 00:04:39.120
+Well, we use the original and we're going to select some data out of it.
+
+00:04:39.120 --> 00:04:44.990
+We want the key and we want the value.
+
+00:04:46.730 --> 00:04:51.045
+Now, we're going to get the JSON out,
+
+00:04:51.045 --> 00:04:55.505
+we're actually going to extract the fields from the JSON that we're interested in,
+
+00:04:55.505 --> 00:05:01.480
+and we're going to use the.withColumn to overload the current value column.
+
+00:05:01.480 --> 00:05:03.680
+We're going to extract the data out of
+
+00:05:03.680 --> 00:05:08.945
+the current value column using the redisMessageSchema.
+
+00:05:08.945 --> 00:05:16.650
+I'm going to select all those nested fields that I just extracted from JSON,
+
+00:05:16.650 --> 00:05:20.920
+I may create a view called RedisData.
+
+00:05:21.680 --> 00:05:30.790
+The next thing that I'm going to do is select all the fields that I need from that view.
+
+00:05:30.790 --> 00:05:37.210
+I'm creating a data frame for that called zSetEntriesEncodedStreamingDF.
+
+00:05:37.760 --> 00:05:43.860
+I'm going to use spark.sql to select my key and select
+
+00:05:43.860 --> 00:05:53.320
+zSetEntries element 0.element as payment from RedisData.
+
+00:05:53.450 --> 00:06:00.065
+Now I need to add base64 at our base-64 decoded is what most people would call that.
+
+00:06:00.065 --> 00:06:02.120
+We're going to create a data frame
+
+00:06:02.120 --> 00:06:07.900
+to hold that information called zSetDecodedEntriesStreamingDF,
+
+00:06:10.490 --> 00:06:15.970
+then we use the.withColumn to overwrite the payment field.
+
+00:06:15.970 --> 00:06:19.270
+We're going to extract.
+
+00:06:19.280 --> 00:06:23.855
+Actually that's getting a little ahead of ourselves.
+
+00:06:23.855 --> 00:06:26.870
+We don't have a zSetDecodedEntries yet,
+
+00:06:26.870 --> 00:06:29.340
+so we need to create that.
+
+00:06:29.340 --> 00:06:38.000
+Let's take the encoded entries and spell those right and say.withColumn to
+
+00:06:38.000 --> 00:06:46.825
+overwrite the payment column with the base-64 decoded information.
+
+00:06:46.825 --> 00:06:50.204
+I want to get the payment field.
+
+00:06:50.204 --> 00:06:52.995
+I'm base-64 decoding it.
+
+00:06:52.995 --> 00:06:57.870
+Then after that, I'm casting it as a string.
+
+00:06:58.610 --> 00:07:04.355
+Now we've got that decoded data frame right there.
+
+00:07:04.355 --> 00:07:11.200
+We're going to use that to extract the decoded JSON as separate fields.
+
+00:07:11.200 --> 00:07:17.415
+We're going to say zSetDecodedEntriesStreamingDF.withColumn.
+
+00:07:17.415 --> 00:07:21.770
+We're adding, we're actually overwriting the payment column.
+
+00:07:21.770 --> 00:07:25.670
+We're going to extract the JSON from it
+
+00:07:25.670 --> 00:07:32.965
+using the schema we created called paymentJSONSchema.
+
+00:07:32.965 --> 00:07:36.885
+Make sure I got that spelled the same way.
+
+00:07:36.885 --> 00:07:43.845
+Then I am going to select the column payment dot star,
+
+00:07:43.845 --> 00:07:46.680
+get all the subcolumns out of there,
+
+00:07:46.680 --> 00:07:49.305
+and put them in their own view.
+
+00:07:49.305 --> 00:07:52.230
+I'll call view payment,
+
+00:07:52.230 --> 00:07:55.889
+and now, we're going to select from that view,
+
+00:07:55.889 --> 00:08:00.765
+so paymentStreamingDF is coming from it,
+
+00:08:00.765 --> 00:08:04.575
+the select I'm doing on using spark.sql.
+
+00:08:04.575 --> 00:08:08.175
+I'm going to select reservationId,
+
+00:08:08.175 --> 00:08:11.325
+amount, and customer name,
+
+00:08:11.325 --> 00:08:14.940
+which are all fields that we've defined right
+
+00:08:14.940 --> 00:08:25.150
+there from payment because that is the view we defined right there.
+
+00:08:25.670 --> 00:08:33.885
+The next thing we're going to do is extract the last name for the order,
+
+00:08:33.885 --> 00:08:36.285
+for the payment rather,
+
+00:08:36.285 --> 00:08:41.625
+and the way we're going to do that is, first,
+
+00:08:41.625 --> 00:08:45.660
+let's set up unvariable to hold the data frame,
+
+00:08:45.660 --> 00:08:51.600
+and then we're going to use the dot select method paymentStreamingDF.select.
+
+00:08:52.520 --> 00:08:54.975
+In the select statement,
+
+00:08:54.975 --> 00:08:57.900
+we're going to ask again for the reservationId,
+
+00:08:57.900 --> 00:09:03.720
+then the amount, notice we're putting commas and then quotes around each of these,
+
+00:09:03.720 --> 00:09:06.700
+because we're passing them to a function.
+
+00:09:06.770 --> 00:09:10.305
+Next, we're going to do is split,
+
+00:09:10.305 --> 00:09:13.815
+and we're splitting the customer name,
+
+00:09:13.815 --> 00:09:19.570
+so we needed the full path to that, which is paymentStreamingDF.customerName.
+
+00:09:26.060 --> 00:09:28.860
+We need to tell what character to split on it,
+
+00:09:28.860 --> 00:09:30.210
+it's going to be a space.
+
+00:09:30.210 --> 00:09:33.960
+You'll notice in our sample data there's a space here in the name,
+
+00:09:33.960 --> 00:09:39.315
+so we're assuming that their name has first and last and a space in the middle.
+
+00:09:39.315 --> 00:09:43.890
+In our split, we're asking it to split on the space character,
+
+00:09:43.890 --> 00:09:50.820
+and that will give us the ability to access position based elements.
+
+00:09:50.820 --> 00:09:53.220
+We want the position 1,
+
+00:09:53.220 --> 00:09:55.920
+which will be our second field,
+
+00:09:55.920 --> 00:09:58.710
+which is the first name.
+
+00:09:58.710 --> 00:10:04.275
+Let's alias that and call it last name.
+
+00:10:04.275 --> 00:10:07.290
+Now we're going to stream all of these information to
+
+00:10:07.290 --> 00:10:15.520
+the console and FieldsStreamingDF.selectExpr.
+
+00:10:18.380 --> 00:10:21.210
+I'm actually going to say,
+
+00:10:21.210 --> 00:10:25.725
+let's stream this to Kafka,
+
+00:10:25.725 --> 00:10:29.920
+because I think we need to try that.
+
+00:10:30.380 --> 00:10:35.325
+Now let's cast this as a string.
+
+00:10:35.325 --> 00:10:37.785
+We're going to convert it to JSON.
+
+00:10:37.785 --> 00:10:46.065
+We're going to make the reservationId the key to the message that goes into Kafka,
+
+00:10:46.065 --> 00:10:53.160
+and then we're going to convert it to JSON,
+
+00:10:53.160 --> 00:10:57.435
+and that would be the value in the Kafka message,
+
+00:10:57.435 --> 00:11:04.770
+and then I'm going to send it to Kafka using the right stream with a format of Kafka,
+
+00:11:04.770 --> 00:11:07.454
+tell it where ascended,
+
+00:11:07.454 --> 00:11:10.305
+and the topic is going to be a new topic,
+
+00:11:10.305 --> 00:11:13.440
+we're going to make it called payment JSON.
+
+00:11:13.440 --> 00:11:18.840
+It will create the topic the first time it tries to send to it if it doesn't exist.
+
+00:11:18.840 --> 00:11:20.610
+We're going to depend on that,
+
+00:11:20.610 --> 00:11:25.290
+check point locations where the temp file needs to be for spark,
+
+00:11:25.290 --> 00:11:33.100
+and then we're going to start and await determination.
+
+00:11:34.940 --> 00:11:38.760
+We need to make sure we start up our simulations,
+
+00:11:38.760 --> 00:11:45.190
+so let's go back to the guide, and start that.
+
+00:11:47.090 --> 00:11:53.985
+I'm going to go to the folder that has the start up for that.
+
+00:11:53.985 --> 00:12:02.230
+That's homework space trucking application start.sh.
+
+00:12:03.470 --> 00:12:09.510
+The next thing I'm going to do is run the Python that I just wrote,
+
+00:12:09.510 --> 00:12:16.695
+so if I go to cd homework space spark in ls,
+
+00:12:16.695 --> 00:12:18.795
+I have several scripts there.
+
+00:12:18.795 --> 00:12:21.495
+I want to submit the payment.
+
+00:12:21.495 --> 00:12:24.045
+That's the one I'm going to run,
+
+00:12:24.045 --> 00:12:30.765
+and I'm just going to check that that has the right Python script in it and it does,
+
+00:12:30.765 --> 00:12:35.070
+dot slash submit payment.sh.
+
+00:12:35.070 --> 00:12:42.045
+Now it's holding all of the libraries and it should try and run the Python script.
+
+00:12:42.045 --> 00:12:47.010
+It says, "An error occurred while calling is o33.load,
+
+00:12:47.010 --> 00:12:52.395
+bootstrap.servers must be specified for configuring Kafka consumer."
+
+00:12:52.395 --> 00:12:56.140
+Looks like I left the S off.
+
+00:13:00.260 --> 00:13:04.785
+Line 56, it says,
+
+00:13:04.785 --> 00:13:08.925
+"rediServerSstreamingDF is not defined".
+
+00:13:08.925 --> 00:13:16.620
+So "rediServerStreamingDF.withColumn value from JSON,
+
+00:13:16.620 --> 00:13:22.935
+Name Error name rediServerStreamingDF is not defined".
+
+00:13:22.935 --> 00:13:26.475
+We just misspelled it.
+
+00:13:26.475 --> 00:13:29.625
+Now I'm going to kill this Control C,
+
+00:13:29.625 --> 00:13:36.375
+run it again, payment JSON schema is not defined.
+
+00:13:36.375 --> 00:13:39.525
+It's seeing line 69,
+
+00:13:39.525 --> 00:13:44.290
+and schema is from there,
+
+00:13:44.450 --> 00:13:47.685
+going to move to a different terminal
+
+00:13:47.685 --> 00:13:52.515
+because this one has something else running from Kafka still.
+
+00:13:52.515 --> 00:13:54.420
+If I list here,
+
+00:13:54.420 --> 00:13:59.260
+I'm going to do dot slash submit payment.sh.
+
+00:14:00.590 --> 00:14:02.970
+That error is a good sign,
+
+00:14:02.970 --> 00:14:06.750
+it means it's producing to the topic we created.
+
+00:14:06.750 --> 00:14:13.560
+That topic is called payment-json right here.
+
+00:14:13.560 --> 00:14:17.760
+I'm going to go look at the data from Kafka,
+
+00:14:17.760 --> 00:14:23.070
+cd data Kafka, cd bin,
+
+00:14:23.070 --> 00:14:27.970
+and dot slash Kafka console consumer,
+
+00:14:28.220 --> 00:14:43.480
+bootstrap-server localhost 9092 topic payment-json from-beginning.
+
+00:14:45.140 --> 00:14:51.675
+There's a reservations and we have the last name of these customers.
+
+00:14:51.675 --> 00:14:54.270
+I have a reservationId,
+
+00:14:54.270 --> 00:14:57.885
+and that's looking good.
+
+00:14:57.885 --> 00:15:02.850
+I have reservationId, amount, and last name.
+
+00:15:02.850 --> 00:15:08.200
+Now, it does appear some of the fields don't have an amount in them.
+
+00:15:08.450 --> 00:15:14.130
+It looks like we're actually catching some data that's not payment data,
+
+00:15:14.130 --> 00:15:15.740
+because if it was payment data,
+
+00:15:15.740 --> 00:15:17.225
+it would always have an amount.
+
+00:15:17.225 --> 00:15:22.130
+That can happen just because of the way the redis topic is sending us all the redis data,
+
+00:15:22.130 --> 00:15:24.500
+and so we're getting all the collections.
+
+00:15:24.500 --> 00:15:28.685
+We could say, here where amount not null,
+
+00:15:28.685 --> 00:15:33.840
+and that would filter us down to the right collections that we're looking for.
+
+00:15:33.860 --> 00:15:36.000
+I'm going to kill the spacing,
+
+00:15:36.000 --> 00:15:38.720
+Control C, and I've stopped consuming the topic,
+
+00:15:38.720 --> 00:15:40.639
+but it's still producing it,
+
+00:15:40.639 --> 00:15:45.270
+and then I'm going to stop it from producing by killing the spark application.
+

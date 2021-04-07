@@ -1,0 +1,31 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:04.110
+Let's go over what you've done in this lesson and what comes next.
+
+00:00:04.110 --> 00:00:06.000
+After finishing this lesson,
+
+00:00:06.000 --> 00:00:08.460
+you should be able to manually save and read from
+
+00:00:08.460 --> 00:00:14.475
+Redis parse Base64 encoded information and sink a subset of JSON.
+
+00:00:14.475 --> 00:00:16.875
+Let's look at the course overview.
+
+00:00:16.875 --> 00:00:20.820
+You just learned about Redis, Base64, and JSON.
+
+00:00:20.820 --> 00:00:25.305
+Next, you will get to work with a real-world challenge to evaluate human balance.
+
+00:00:25.305 --> 00:00:29.400
+You'll apply techniques from the course to a streaming analytics application.
+
+00:00:29.400 --> 00:00:32.890
+I hope you are ready to put your skills to the test.
+

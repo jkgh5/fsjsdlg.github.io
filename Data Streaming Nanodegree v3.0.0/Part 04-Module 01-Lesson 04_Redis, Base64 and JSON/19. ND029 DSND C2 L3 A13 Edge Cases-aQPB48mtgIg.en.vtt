@@ -1,0 +1,28 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:03.435
+Let's discuss some potential edge cases.
+
+00:00:03.435 --> 00:00:08.265
+What if you subscribe to the wrong Kafka topic in your Spark application?
+
+00:00:08.265 --> 00:00:12.854
+You may encounter this error after correcting the Kafka topic.
+
+00:00:12.854 --> 00:00:16.470
+The error states that some data may have been lost because,
+
+00:00:16.470 --> 00:00:18.960
+they are not available in Kafka anymore.
+
+00:00:18.960 --> 00:00:21.420
+In order to resolve this issue,
+
+00:00:21.420 --> 00:00:25.380
+in your Kafka connection within the Spark application,
+
+00:00:25.380 --> 00:00:30.580
+set the source option failOnDataLoss to false.
+

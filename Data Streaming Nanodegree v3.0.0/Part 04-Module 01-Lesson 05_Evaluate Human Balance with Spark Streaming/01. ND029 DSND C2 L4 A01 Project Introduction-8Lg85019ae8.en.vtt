@@ -1,0 +1,70 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:03.135
+Let's talk about the project that you're about to work on.
+
+00:00:03.135 --> 00:00:05.820
+You work for the Data Science team at STEDI,
+
+00:00:05.820 --> 00:00:09.180
+a small start-up focused on assessing balance for seniors.
+
+00:00:09.180 --> 00:00:13.920
+STEDI has an application that collects data from seniors during a small exercise.
+
+00:00:13.920 --> 00:00:17.505
+The user logs in and then selects the customer they are working with.
+
+00:00:17.505 --> 00:00:21.765
+Then the user starts a timer and clicks the button with each step the senior takes.
+
+00:00:21.765 --> 00:00:23.730
+When the senior has reached 30 steps,
+
+00:00:23.730 --> 00:00:25.080
+their test is finished.
+
+00:00:25.080 --> 00:00:29.985
+The data transmitted enables the application to monitor seniors' balance risk.
+
+00:00:29.985 --> 00:00:35.120
+Your product manager has requested a graph that shows fall risk for recent assessments.
+
+00:00:35.120 --> 00:00:38.090
+The development team has built a graph which is ready
+
+00:00:38.090 --> 00:00:41.410
+to receive risk information from Kafka.
+
+00:00:41.410 --> 00:00:43.590
+When you first come into the STEDI graph,
+
+00:00:43.590 --> 00:00:45.235
+it will be empty.
+
+00:00:45.235 --> 00:00:49.705
+The job that you have is to bring data into the graph.
+
+00:00:49.705 --> 00:00:54.470
+The way you're going to do that is by pulling information from a couple of sources.
+
+00:00:54.470 --> 00:00:59.165
+The first source is a redis source topic from Kafka.
+
+00:00:59.165 --> 00:01:03.235
+The next source is an application topic.
+
+00:01:03.235 --> 00:01:09.800
+You're going to join the information from both of those to create a message that
+
+00:01:09.800 --> 00:01:16.490
+includes the year of birth of the participant and their current fall risk.
+
+00:01:16.490 --> 00:01:20.825
+You will then pass that message on to a new topic you create.
+
+00:01:20.825 --> 00:01:25.590
+That topic is where the data's coming from for this graph.
+

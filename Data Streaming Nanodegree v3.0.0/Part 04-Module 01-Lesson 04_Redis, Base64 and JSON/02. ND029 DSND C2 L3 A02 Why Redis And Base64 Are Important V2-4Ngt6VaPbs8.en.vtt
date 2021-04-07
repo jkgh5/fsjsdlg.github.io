@@ -1,0 +1,61 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:03.120
+Redis and Base64 are not always used together.
+
+00:00:03.120 --> 00:00:07.080
+In this lesson, we will be using Redis and Base64 together.
+
+00:00:07.080 --> 00:00:10.410
+Let's start talking about why we would use Redis.
+
+00:00:10.410 --> 00:00:13.550
+Redis is a database used primarily for caching,
+
+00:00:13.550 --> 00:00:17.640
+this means it is optimized for fast reads and writes.
+
+00:00:17.640 --> 00:00:20.670
+Redis is used by a lot of companies.
+
+00:00:20.670 --> 00:00:23.520
+This makes it worthwhile to learn how to use Redis.
+
+00:00:23.520 --> 00:00:27.930
+Also, Redis is great for rapid prototyping of new applications.
+
+00:00:27.930 --> 00:00:31.500
+This can take you well beyond a proof of concept all the way to
+
+00:00:31.500 --> 00:00:35.215
+production without having to create or maintain schemas.
+
+00:00:35.215 --> 00:00:37.759
+Later, you can create a structured schema,
+
+00:00:37.759 --> 00:00:40.235
+and migrate to a relational database,
+
+00:00:40.235 --> 00:00:44.495
+or stay with Redis and create a nightly extract for reports.
+
+00:00:44.495 --> 00:00:51.235
+In either case, Redis is super-fast both in terms of execution and in development.
+
+00:00:51.235 --> 00:00:54.810
+Base64 is the encoding of the Internet.
+
+00:00:54.810 --> 00:00:58.700
+It is used to make certain texts more easily readable by servers.
+
+00:00:58.700 --> 00:01:02.750
+In this example, the URL has a long encoded string.
+
+00:01:02.750 --> 00:01:08.005
+Decoding the string is the latitude and longitude where the takeout is needed.
+
+00:01:08.005 --> 00:01:15.090
+Base64 is an encoding format used by computers to transmit and store information.
+

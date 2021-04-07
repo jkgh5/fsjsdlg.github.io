@@ -1,0 +1,458 @@
+<!-- udacity2.0 -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Quiz: Sink a Subset of JSON</title>
+  <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../assets/css/plyr.css">
+  <link rel="stylesheet" href="../assets/css/katex.min.css">
+  <link rel="stylesheet" href="../assets/css/jquery.mCustomScrollbar.min.css">
+  <link rel="stylesheet" href="../assets/css/styles.css">
+  <link rel="shortcut icon" type="image/png" href="../assets/img/udacimak.png" />
+</head>
+
+<body>
+  <div class="wrapper">
+    <nav id="sidebar">
+  <div class="sidebar-header">
+    <h3>Redis, Base64 and JSON</h3>
+  </div>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled components">
+    <li class="">
+      <a href="01. Lesson Outline.html">01. Lesson Outline</a>
+    </li>
+    <li class="">
+      <a href="02. Why are Redis and Base64 Important.html">02. Why are Redis and Base64 Important?</a>
+    </li>
+    <li class="">
+      <a href="03. How an Expert Thinks About Redis and Base64.html">03. How an Expert Thinks About Redis and Base64</a>
+    </li>
+    <li class="">
+      <a href="04. Manually Save and Read with Redis and Kafka.html">04. Manually Save and Read with Redis and Kafka</a>
+    </li>
+    <li class="">
+      <a href="05. Walkthrough 1 Manually Save and Read with Redis and Kafka.html">05. Walkthrough 1: Manually Save and Read with Redis and Kafka</a>
+    </li>
+    <li class="">
+      <a href="06. Quiz Manually Save and Read with Redis and Kafka.html">06. Quiz: Manually Save and Read with Redis and Kafka</a>
+    </li>
+    <li class="">
+      <a href="07. Exercise Manually Save and Read with Redis and Kafka.html">07. Exercise: Manually Save and Read with Redis and Kafka</a>
+    </li>
+    <li class="">
+      <a href="08. Solution 1 Manually Save and Read with Redis and Kafka.html">08. Solution 1: Manually Save and Read with Redis and Kafka</a>
+    </li>
+    <li class="">
+      <a href="09. Parse Base64 Encoded Information.html">09. Parse Base64 Encoded Information</a>
+    </li>
+    <li class="">
+      <a href="10. Walkthrough 2 Parse Base64 Encoded Information.html">10. Walkthrough 2: Parse Base64 Encoded Information</a>
+    </li>
+    <li class="">
+      <a href="11. Quiz Parse Base64 Encoded Information.html">11. Quiz: Parse Base64 Encoded Information</a>
+    </li>
+    <li class="">
+      <a href="12. Exercise 2 Parse Base64 Encoded Information.html">12. Exercise 2: Parse Base64 Encoded Information</a>
+    </li>
+    <li class="">
+      <a href="13. Solution Parse Base64 Encoded Information.html">13. Solution: Parse Base64 Encoded Information</a>
+    </li>
+    <li class="">
+      <a href="14. Sink a Subset of JSON.html">14. Sink a Subset of JSON</a>
+    </li>
+    <li class="">
+      <a href="15. Walkthrough 3 Sink a Subset of JSON Fields.html">15. Walkthrough 3: Sink a Subset of JSON Fields</a>
+    </li>
+    <li class="">
+      <a href="16. Quiz Sink a Subset of JSON.html">16. Quiz: Sink a Subset of JSON</a>
+    </li>
+    <li class="">
+      <a href="17. Exercise 3 Sink a Subset of JSON.html">17. Exercise 3: Sink a Subset of JSON</a>
+    </li>
+    <li class="">
+      <a href="18. Solution 3 Sink a Subset of JSON.html">18. Solution 3: Sink a Subset of JSON</a>
+    </li>
+    <li class="">
+      <a href="19. Edge Cases.html">19. Edge Cases</a>
+    </li>
+    <li class="">
+      <a href="20. Quiz Edge Cases.html">20. Quiz: Edge Cases</a>
+    </li>
+    <li class="">
+      <a href="21. Bringing it all Together Walkthrough.html">21. Bringing it all Together Walkthrough</a>
+    </li>
+    <li class="">
+      <a href="22. Final Exercise.html">22. Final Exercise</a>
+    </li>
+    <li class="">
+      <a href="23. Solution 4 Final Exercise.html">23. Solution 4: Final Exercise</a>
+    </li>
+    <li class="">
+      <a href="24. Glossary.html">24. Glossary</a>
+    </li>
+    <li class="">
+      <a href="25. Further Reading.html">25. Further Reading</a>
+    </li>
+    <li class="">
+      <a href="26. Lesson and Course Recap.html">26. Lesson and Course Recap</a>
+    </li>
+    <li class="">
+      <a href="27. Congratulations.html">27. Congratulations</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+</nav>
+
+    <div id="content">
+      <header class="container-fluild header">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <div class="align-items-middle">
+                <button type="button" id="sidebarCollapse" class="btn btn-toggle-sidebar">
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                </button>
+
+                <h1 style="display: inline-block">16. Quiz: Sink a Subset of JSON</h1>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <main class="container">
+        <div class="row">
+          <div class="col-12">
+            <div class="ud-atom">
+  <h3><p>Quiz: Write a pyspark application that sinks a subset of JSON fields Heading</p></h3>
+  <div>
+  <h2 id="quiz-sink-a-subset-of-json-fields-with-pyspark">Quiz: Sink a Subset of JSON Fields with Pyspark</h2>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <p><strong>QUIZ QUESTION:</strong>: <p>Match the Spark SQL Function with its purpose</p></p>
+  <p><strong>ANSWER CHOICES:</strong></p>
+  <button class="btn btn-primary"><p>Separate a string of characters</p></button>
+  <button class="btn btn-primary"><p>Parse JSON</p></button>
+  <button class="btn btn-primary"><p>Base64 Encode</p></button>
+  <button class="btn btn-primary"><p>Create JSON</p></button>
+  <button class="btn btn-primary"><p>Base64 Decode</p></button>
+
+  <br><br>
+
+  <table class="table">
+    <tr class="thead-dark table-hover">
+      <th>
+        
+      </th>
+      <th>
+        
+      </th>
+    </tr>
+
+    <tr>
+      <td><p><code>to_json</code></p></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><p><code>from_json</code></p></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><p><code>unbase64</code></p></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><p><code>base64</code></p></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><p><code>split</code></p></td>
+      <td></td>
+    </tr>
+  </table>
+
+  <details>
+    <summary><strong>SOLUTION:</strong></summary>
+
+    <table class="table">
+      <tr class="thead-dark table-hover">
+        <th>
+          
+        </th>
+        <th>
+          
+        </th>
+      </tr>
+
+      <tr>
+        <td>
+          <p><code>split</code></p>
+        </td>
+        <td>
+            <button class="btn btn-primary"><p>Separate a string of characters</p></button>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <p><code>from_json</code></p>
+        </td>
+        <td>
+            <button class="btn btn-primary"><p>Parse JSON</p></button>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <p><code>base64</code></p>
+        </td>
+        <td>
+            <button class="btn btn-primary"><p>Base64 Encode</p></button>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <p><code>to_json</code></p>
+        </td>
+        <td>
+            <button class="btn btn-primary"><p>Create JSON</p></button>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <p><code>unbase64</code></p>
+        </td>
+        <td>
+            <button class="btn btn-primary"><p>Base64 Decode</p></button>
+        </td>
+      </tr>
+    </table>
+  </details>
+</div>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <form>
+    <fieldset>
+      <legend><p>If I wanted to extract the number portion of the street address in the data below, what Spark SQL function would I use?</p>
+<pre><code>{"businessName":"Sven's Bread",
+"streetAddress": "9876 S Fenton Ave.",
+"city":"New York",
+"state":"New York"
+}</code></pre></legend>
+    </fieldset>
+
+      <div>
+        <input type="radio" value="3fcc3428-f71d-48b9-9c76-fff0a1023705" name="1098552" id="3fcc3428-f71d-48b9-9c76-fff0a1023705">
+        <label for="3fcc3428-f71d-48b9-9c76-fff0a1023705"><p><code>base64</code></p></label>
+      </div>
+      <div>
+        <input type="radio" value="02454bd5-6545-4da0-b716-1048db50d481" name="1098552" id="02454bd5-6545-4da0-b716-1048db50d481">
+        <label for="02454bd5-6545-4da0-b716-1048db50d481"><p><code>unbase64</code></p></label>
+      </div>
+      <div>
+        <input type="radio" value="b5f62392-d92e-4a8f-b8a5-84733aa7b683" name="1098552" id="b5f62392-d92e-4a8f-b8a5-84733aa7b683">
+        <label for="b5f62392-d92e-4a8f-b8a5-84733aa7b683"><p><code>split</code></p></label>
+      </div>
+      <div>
+        <input type="radio" value="6440df37-4940-46e4-ab00-dcccd3656894" name="1098552" id="6440df37-4940-46e4-ab00-dcccd3656894">
+        <label for="6440df37-4940-46e4-ab00-dcccd3656894"><p><code>extract</code></p></label>
+      </div>
+  </form>
+
+  <details>
+    <summary><strong>SOLUTION:</strong></summary>
+    `split`
+  </details>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <form>
+    <fieldset>
+      <legend><p>I have a DataFrame called <em>testCustomersDF</em> containing the fields: <em>firstName</em>,<em>lastName</em>, <em>streetAddress</em>,<em>phoneNumber</em>,<em>customerId</em>. I want to sink the fields <em>customerId</em> and <em>phoneNumber</em> to a Kafka Topic called <em>test-customers</em> on a Broker listening at <code>broker1.testbroker.net:9092</code>, what is the syntax?</p></legend>
+    </fieldset>
+
+      <div>
+        <input type="radio" value="2da928d2-1c7e-4630-8095-95e51ef120d8" name="1098555" id="2da928d2-1c7e-4630-8095-95e51ef120d8">
+        <label for="2da928d2-1c7e-4630-8095-95e51ef120d8"><pre><code>testCustomersDF \
+.selectExpr(
+"cast(customerId as string) key",
+"cast(phoneNumber as string) value"
+)  \
+.writeStream \
+.format("kafka") \
+.option("kafka.bootstrap.servers", "broker1.testbroker.net:9092")\
+.option("topic", "test-customers")\
+.option("checkpointLocation","/tmp/kafkacheckpoint")\
+.start()\
+.awaitTermination()</code></pre></label>
+      </div>
+      <div>
+        <input type="radio" value="8bc4604d-29d2-40da-baa8-132f63f19ac6" name="1098555" id="8bc4604d-29d2-40da-baa8-132f63f19ac6">
+        <label for="8bc4604d-29d2-40da-baa8-132f63f19ac6"><pre><code>.selectExpr(
+"cast(customerId as string) key",
+"cast(phoneNumber as string) value"
+)  \
+.writeStream \
+.format("kafka") \
+.option("kafka.bootstrap.servers", "broker1.testbroker.net:9092")\
+.option("topic", "test-customers")\
+.option("checkpointLocation","/tmp/kafkacheckpoint")\
+.start()\
+.awaitTermination()</code></pre></label>
+      </div>
+      <div>
+        <input type="radio" value="368c9518-7ab4-47e0-b9da-3c8dfc5a1d38" name="1098555" id="368c9518-7ab4-47e0-b9da-3c8dfc5a1d38">
+        <label for="368c9518-7ab4-47e0-b9da-3c8dfc5a1d38"><pre><code>testCustomersDF \
+.selectExpr(
+"cast(customerId as string) key",
+"cast(phoneNumber as string) value"
+)  \
+.writeStream \
+.format("kafka") \
+.option("kafka.bootstrap.servers", "broker1.testbroker.net:9092")\
+.option("checkpointLocation","/tmp/kafkacheckpoint")\
+.start()\
+.awaitTermination()</code></pre></label>
+      </div>
+  </form>
+
+  <details>
+    <summary><strong>SOLUTION:</strong></summary>
+    ```
+testCustomersDF \
+.selectExpr(
+"cast(customerId as string) key",
+"cast(phoneNumber as string) value"
+)  \
+.writeStream \
+.format("kafka") \
+.option("kafka.bootstrap.servers", "broker1.testbroker.net:9092")\
+.option("topic", "test-customers")\
+.option("checkpointLocation","/tmp/kafkacheckpoint")\
+.start()\
+.awaitTermination()
+```
+  </details>
+</div>
+
+</div>
+<div class="divider"></div>
+          </div>
+
+          <div class="col-12">
+            <p class="text-right">
+              <a href="17. Exercise 3 Sink a Subset of JSON.html" class="btn btn-outline-primary mt-4" role="button">Next Concept</a>
+            </p>
+          </div>
+        </div>
+      </main>
+
+      <footer class="footer">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <p class="text-center">
+                <a href="https://us-udacity.github.io/" target="_blank">【udacity2.0 】If you need more courses, please add wechat：udacity6</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </div>
+
+
+  <script src="../assets/js/jquery-3.3.1.min.js"></script>
+  <script src="../assets/js/plyr.polyfilled.min.js"></script>
+  <script src="../assets/js/bootstrap.min.js"></script>
+  <script src="../assets/js/jquery.mCustomScrollbar.concat.min.js"></script>
+  <script src="../assets/js/katex.min.js"></script>
+  <script>
+    // Initialize Plyr video players
+    const players = Array.from(document.querySelectorAll('video')).map(p => new Plyr(p));
+
+    // render math equations
+    let elMath = document.getElementsByClassName('mathquill');
+    for (let i = 0, len = elMath.length; i < len; i += 1) {
+      const el = elMath[i];
+
+      katex.render(el.textContent, el, {
+        throwOnError: false
+      });
+    }
+
+    // this hack will make sure Bootstrap tabs work when using Handlebars
+    if ($('#question-tabs').length && $('#user-answer-tabs').length) {
+      $("#question-tabs a.nav-link").on('click', function () {
+        $("#question-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+      $("#user-answer-tabs a.nav-link").on('click', function () {
+        $("#user-answer-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    } else {
+      $("a.nav-link").on('click', function () {
+        $(".tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    }
+
+    // side bar events
+    $(document).ready(function () {
+      $("#sidebar").mCustomScrollbar({
+        theme: "minimal"
+      });
+
+      $('#sidebarCollapse').on('click', function () {
+        $('#sidebar, #content').toggleClass('active');
+        $('.collapse.in').toggleClass('in');
+        $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+      });
+
+      // scroll to first video on page loading
+      if ($('video').length) {
+        $('html,body').animate({ scrollTop: $('div.plyr').prev().offset().top});
+      }
+
+      // auto play first video: this may not work with chrome/safari due to autoplay policy
+      if (players && players.length > 0) {
+        players[0].play();
+      }
+
+      // scroll sidebar to current concept
+      const currentInSideBar = $( "ul.sidebar-list.components li a:contains('16. Quiz: Sink a Subset of JSON')" )
+      currentInSideBar.css( "text-decoration", "underline" );
+      $("#sidebar").mCustomScrollbar('scrollTo', currentInSideBar);
+    });
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,175 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:05.220
+The first thing I'm going to do is make sure that Kafka and Spark are running.
+
+00:00:05.220 --> 00:00:07.235
+I'm going to type ps -ef.
+
+00:00:07.235 --> 00:00:09.915
+I see Spark running once and twice.
+
+00:00:09.915 --> 00:00:14.430
+I also see several Java processes which tells me that Kafka is working.
+
+00:00:14.430 --> 00:00:18.735
+The next thing I'm going to do is actually connect to Redis.
+
+00:00:18.735 --> 00:00:23.760
+I can see that Redis is running right here, so that's a good sign.
+
+00:00:23.760 --> 00:00:30.460
+I'm going to say /data/redis/redis-stable/src/redis-cli
+
+00:00:33.440 --> 00:00:36.660
+and -a which is for my password,
+
+00:00:36.660 --> 00:00:40.800
+which is not a very good password.
+
+00:00:40.800 --> 00:00:42.930
+Now, I'm going to do keys.
+
+00:00:42.930 --> 00:00:45.830
+That tells me all the tables that I have right now.
+
+00:00:45.830 --> 00:00:52.380
+I'm going to just do a simple set operation, testkey testvalue.
+
+00:00:52.380 --> 00:00:54.210
+Now, the cool thing is,
+
+00:00:54.210 --> 00:00:55.310
+I'm not going to hit "Enter" yet.
+
+00:00:55.310 --> 00:00:57.560
+I want to show you something.
+
+00:00:57.560 --> 00:01:01.660
+Because we have a Kafka source for Redis setup,
+
+00:01:01.660 --> 00:01:05.920
+what that means is that all the data we write to Redis shows up in a topic.
+
+00:01:05.920 --> 00:01:09.415
+Let's go connect to that topic.
+
+00:01:09.415 --> 00:01:13.700
+I'm going to cd to data/kafka/bin.
+
+00:01:13.700 --> 00:01:19.680
+If I ls, I can do kafka-console-consumer, with dot slash.
+
+00:01:19.680 --> 00:01:27.960
+I want to say, bootstrap-server localhost:9092,
+
+00:01:27.960 --> 00:01:31.415
+the topic is redis-server.
+
+00:01:31.415 --> 00:01:37.150
+That's the topic that we configured in the Kafka source connector.
+
+00:01:37.150 --> 00:01:39.980
+It's putting all the Redis data into that topic,
+
+00:01:39.980 --> 00:01:43.800
+because we configured it to and I want it from the beginning.
+
+00:01:43.800 --> 00:01:46.650
+I'll see a bunch of data from Redis,
+
+00:01:46.650 --> 00:01:49.110
+and there it goes by.
+
+00:01:49.110 --> 00:01:51.650
+Most of these keys are pretty large,
+
+00:01:51.650 --> 00:01:54.365
+so this represents an application in use.
+
+00:01:54.365 --> 00:01:56.735
+All of the stuff coming through here,
+
+00:01:56.735 --> 00:01:59.380
+it's like a live application being used.
+
+00:01:59.380 --> 00:02:01.990
+This is what it would look like.
+
+00:02:02.270 --> 00:02:05.025
+When I do set testkey,
+
+00:02:05.025 --> 00:02:09.675
+that's putting the key as testkey and my value as testvalue in Redis.
+
+00:02:09.675 --> 00:02:11.930
+As you see things scrolling by here,
+
+00:02:11.930 --> 00:02:15.964
+you're going to see keys that are Base64 encoded.
+
+00:02:15.964 --> 00:02:21.275
+Let's see what testkey looks like in Base64 format.
+
+00:02:21.275 --> 00:02:24.040
+I'm going to create a new terminal.
+
+00:02:24.040 --> 00:02:27.720
+Let's say, echo testkey,
+
+00:02:27.720 --> 00:02:30.045
+pipe it to Base64,
+
+00:02:30.045 --> 00:02:33.210
+and that's what it looks like.
+
+00:02:33.210 --> 00:02:37.410
+Testkey in Base64 looks like this.
+
+00:02:37.410 --> 00:02:40.550
+When I set this and come over to the topic,
+
+00:02:40.550 --> 00:02:42.485
+I should see that key.
+
+00:02:42.485 --> 00:02:46.190
+I'm going to do it pretty quick and then I'm going to break out of
+
+00:02:46.190 --> 00:02:49.880
+this console consumer so we can check it.
+
+00:02:49.880 --> 00:02:51.710
+I'm going to hit "Enter" here,
+
+00:02:51.710 --> 00:02:54.455
+and then I'm going to break over here.
+
+00:02:54.455 --> 00:02:59.460
+Let's see. The keys will be dGVzdGtleQ0.
+
+00:03:04.510 --> 00:03:12.500
+Testkey dGVzdGtleQ.
+
+00:03:12.500 --> 00:03:16.305
+What's interesting is,
+
+00:03:16.305 --> 00:03:19.680
+that doesn't have the last 0 in it.
+
+00:03:19.680 --> 00:03:24.600
+But if I echo it and pipe it to base64 -d,
+
+00:03:24.600 --> 00:03:28.180
+sure enough, it comes back as testkey.
+
+00:03:29.150 --> 00:03:31.290
+That shows us that
+
+00:03:31.290 --> 00:03:37.775
+the Redis Kafka source connector is working and when I put data into Redis,
+
+00:03:37.775 --> 00:03:40.710
+it comes out in my topic.
+

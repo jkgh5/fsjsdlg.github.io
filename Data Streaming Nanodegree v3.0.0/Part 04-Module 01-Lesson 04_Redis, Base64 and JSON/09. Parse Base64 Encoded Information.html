@@ -1,0 +1,417 @@
+<!-- udacity2.0 -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Parse Base64 Encoded Information</title>
+  <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../assets/css/plyr.css">
+  <link rel="stylesheet" href="../assets/css/katex.min.css">
+  <link rel="stylesheet" href="../assets/css/jquery.mCustomScrollbar.min.css">
+  <link rel="stylesheet" href="../assets/css/styles.css">
+  <link rel="shortcut icon" type="image/png" href="../assets/img/udacimak.png" />
+</head>
+
+<body>
+  <div class="wrapper">
+    <nav id="sidebar">
+  <div class="sidebar-header">
+    <h3>Redis, Base64 and JSON</h3>
+  </div>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled components">
+    <li class="">
+      <a href="01. Lesson Outline.html">01. Lesson Outline</a>
+    </li>
+    <li class="">
+      <a href="02. Why are Redis and Base64 Important.html">02. Why are Redis and Base64 Important?</a>
+    </li>
+    <li class="">
+      <a href="03. How an Expert Thinks About Redis and Base64.html">03. How an Expert Thinks About Redis and Base64</a>
+    </li>
+    <li class="">
+      <a href="04. Manually Save and Read with Redis and Kafka.html">04. Manually Save and Read with Redis and Kafka</a>
+    </li>
+    <li class="">
+      <a href="05. Walkthrough 1 Manually Save and Read with Redis and Kafka.html">05. Walkthrough 1: Manually Save and Read with Redis and Kafka</a>
+    </li>
+    <li class="">
+      <a href="06. Quiz Manually Save and Read with Redis and Kafka.html">06. Quiz: Manually Save and Read with Redis and Kafka</a>
+    </li>
+    <li class="">
+      <a href="07. Exercise Manually Save and Read with Redis and Kafka.html">07. Exercise: Manually Save and Read with Redis and Kafka</a>
+    </li>
+    <li class="">
+      <a href="08. Solution 1 Manually Save and Read with Redis and Kafka.html">08. Solution 1: Manually Save and Read with Redis and Kafka</a>
+    </li>
+    <li class="">
+      <a href="09. Parse Base64 Encoded Information.html">09. Parse Base64 Encoded Information</a>
+    </li>
+    <li class="">
+      <a href="10. Walkthrough 2 Parse Base64 Encoded Information.html">10. Walkthrough 2: Parse Base64 Encoded Information</a>
+    </li>
+    <li class="">
+      <a href="11. Quiz Parse Base64 Encoded Information.html">11. Quiz: Parse Base64 Encoded Information</a>
+    </li>
+    <li class="">
+      <a href="12. Exercise 2 Parse Base64 Encoded Information.html">12. Exercise 2: Parse Base64 Encoded Information</a>
+    </li>
+    <li class="">
+      <a href="13. Solution Parse Base64 Encoded Information.html">13. Solution: Parse Base64 Encoded Information</a>
+    </li>
+    <li class="">
+      <a href="14. Sink a Subset of JSON.html">14. Sink a Subset of JSON</a>
+    </li>
+    <li class="">
+      <a href="15. Walkthrough 3 Sink a Subset of JSON Fields.html">15. Walkthrough 3: Sink a Subset of JSON Fields</a>
+    </li>
+    <li class="">
+      <a href="16. Quiz Sink a Subset of JSON.html">16. Quiz: Sink a Subset of JSON</a>
+    </li>
+    <li class="">
+      <a href="17. Exercise 3 Sink a Subset of JSON.html">17. Exercise 3: Sink a Subset of JSON</a>
+    </li>
+    <li class="">
+      <a href="18. Solution 3 Sink a Subset of JSON.html">18. Solution 3: Sink a Subset of JSON</a>
+    </li>
+    <li class="">
+      <a href="19. Edge Cases.html">19. Edge Cases</a>
+    </li>
+    <li class="">
+      <a href="20. Quiz Edge Cases.html">20. Quiz: Edge Cases</a>
+    </li>
+    <li class="">
+      <a href="21. Bringing it all Together Walkthrough.html">21. Bringing it all Together Walkthrough</a>
+    </li>
+    <li class="">
+      <a href="22. Final Exercise.html">22. Final Exercise</a>
+    </li>
+    <li class="">
+      <a href="23. Solution 4 Final Exercise.html">23. Solution 4: Final Exercise</a>
+    </li>
+    <li class="">
+      <a href="24. Glossary.html">24. Glossary</a>
+    </li>
+    <li class="">
+      <a href="25. Further Reading.html">25. Further Reading</a>
+    </li>
+    <li class="">
+      <a href="26. Lesson and Course Recap.html">26. Lesson and Course Recap</a>
+    </li>
+    <li class="">
+      <a href="27. Congratulations.html">27. Congratulations</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+</nav>
+
+    <div id="content">
+      <header class="container-fluild header">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <div class="align-items-middle">
+                <button type="button" id="sidebarCollapse" class="btn btn-toggle-sidebar">
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                </button>
+
+                <h1 style="display: inline-block">09. Parse Base64 Encoded Information</h1>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <main class="container">
+        <div class="row">
+          <div class="col-12">
+            <div class="ud-atom">
+  <h3><p>Write a pyspark application that parses Base64 encoded information Heading</p></h3>
+  <div>
+  <h2 id="parse-base64-with-pyspark">Parse Base64 with Pyspark</h2>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3><p>ND029 DSND C2 L3 A07 Parse Base64 Encoded Information</p></h3>
+  <video controls>
+  <source src="09. ND029 DSND C2 L3 A07 Parse Base64 Encoded Information-qUab2Qcsuks.mp4" type="video/mp4">
+
+  <track default="true" kind="subtitles" srclang="en" src="09. ND029 DSND C2 L3 A07 Parse Base64 Encoded Information-qUab2Qcsuks.en.vtt" label="en">
+</video>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <figure class="figure">
+    <img src="img/slide-58.jpeg" alt="Base64 Table" class="img img-fluid">
+    <figcaption class="figure-caption">
+      <p>Base64 Table</p>
+    </figcaption>
+  </figure>
+</div>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h2 id="what-is-base64">What is Base64?</h2>
+<ul>
+<li>Base64 is a system of representing binary data (8-bit data), in text format. </li>
+<li>Each binary sequence has a letter. </li>
+<li>It can be used to represent any binary data, including text and photographs. </li>
+</ul>
+<p>Above is a table that shows the key for each letter, and what it represents. The padding character is an equals sign.</p>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h2 id="html-using-base64">HTML Using Base64</h2>
+<pre><code>&lt;div&gt;
+&lt;p&gt;Smiley Face&lt;/p&gt;
+&lt;img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAoAAAAHgCAYAAAA10dzkAAAEGWlDQ1B"
+/&gt;
+&lt;/div&gt;</code></pre>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h2 id="explanation-of-html-using-base64">Explanation of HTML Using Base64</h2>
+<p>Sometimes document formatted messages contain encoded information:</p>
+<ul>
+<li>It can be convenient to embed small images as text directly in an HTML document</li>
+<li>In this example, a smiley face is embedded in the HTML snippet</li>
+<li>The base64 encoded data is truncated here for brevity</li>
+</ul>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <figure class="figure">
+    <img src="img/slide-61.jpeg" alt="Base64 Decoded Image" class="img img-fluid">
+    <figcaption class="figure-caption">
+      <p>Base64 Decoded Image</p>
+    </figcaption>
+  </figure>
+</div>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h2 id="this-is-the-base64-decoded-smiley-face-displayed-in-a-browser">This is the Base64 decoded smiley face displayed in a browser</h2>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <figure class="figure">
+    <img src="img/slide-62.jpeg" alt="Base64 Smiley Face" class="img img-fluid">
+    <figcaption class="figure-caption">
+      <p>Base64 Smiley Face</p>
+    </figcaption>
+  </figure>
+</div>
+
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h2 id="this-is-what-the-entire-base64-string-looks-like-in-the-html-source">This is what the entire Base64 string looks like in the HTML source</h2>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h2 id="redis-kafka-source-vs-decoded-message">Redis Kafka Source vs Decoded Message</h2>
+<p><strong>Message Sample</strong></p>
+<pre><code>{
+"key":"cHVtcGtpblBpZUluZ3JlZGllbnRz",
+"existType":"NONE",
+"ch":false,
+"incr":false,           
+"zSetEntries":[{"element":"cHVtcGtpbg==","score":0.0}],
+"zsetEntries":[{"element":"cHVtcGtpbg==","score":0.0}]
+}</code></pre>
+<p>In our Business Application, the Redis Source Connector uses Base64 to send new records to Kafka. Here is a message sample.** Can you decode the encoded information?**</p>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h2 id="decoding-base64">Decoding Base64</h2>
+<p>To decode the element from the JSON above. Try this: from a Linux or Unix bash prompt, type: <code>echo "cHVtcGtpbg==" | base64 -d</code></p>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <p><strong>Message Decoded</strong></p>
+<pre><code>{   
+  "key":"pumpkinPieIngredients",
+  "existType":"NONE",  
+  "ch":false,  
+  "incr":false,
+  "zSetEntries":[{"element":"pumpkin","score":0.0}],
+  "zsetEntries":[{"element":"pumpkin","score":0.0}]
+}</code></pre>
+<p>Here is the message decoded from Base64 to plain text. The decoded key is <strong><code>"pumpkinPieIngredients"</code></strong>. The decoded element is <strong><code>"pumpkin"</code></strong>.</p>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h2 id="how-would-i-do-that-in-spark">How would I do that in Spark?</h2>
+<p>**unbase64: ** <code>unbase64(encodedStreamingDF.reservation).cast("string")</code></p>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h2 id="using-unbase64">Using unbase64</h2>
+<p>In this example, the <code>encodedStreamingDF</code>** DataFrame** has a field called <code>"reservation"</code>. We are decoding it and then casting it to a string. This statement must be used in a spark SQL or <strong>DataFrame</strong> select.</p>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h2 id="more-on-pyspark-sql-functions">More on PySpark SQL Functions</h2>
+<p>To see the full list of possible SQL functions that come with PySpark, see the <a href="https://spark.apache.org/docs/latest/api/python/pyspark.sql.html" target="_blank">PySpark SQL Module</a></p>
+</div>
+
+</div>
+<div class="divider"></div><div class="ud-atom">
+  <h3></h3>
+  <div>
+  <h2 id="wikipedia-on-base64">Wikipedia on Base64</h2>
+<p>For more information about Base64, see the <a href="https://en.wikipedia.org/wiki/Base64" target="_blank">Wikipedia Base64 Article</a></p>
+</div>
+
+</div>
+<div class="divider"></div>
+          </div>
+
+          <div class="col-12">
+            <p class="text-right">
+              <a href="10. Walkthrough 2 Parse Base64 Encoded Information.html" class="btn btn-outline-primary mt-4" role="button">Next Concept</a>
+            </p>
+          </div>
+        </div>
+      </main>
+
+      <footer class="footer">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <p class="text-center">
+                <a href="https://us-udacity.github.io/" target="_blank">【udacity2.0 】If you need more courses, please add wechat：udacity6</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </div>
+
+
+  <script src="../assets/js/jquery-3.3.1.min.js"></script>
+  <script src="../assets/js/plyr.polyfilled.min.js"></script>
+  <script src="../assets/js/bootstrap.min.js"></script>
+  <script src="../assets/js/jquery.mCustomScrollbar.concat.min.js"></script>
+  <script src="../assets/js/katex.min.js"></script>
+  <script>
+    // Initialize Plyr video players
+    const players = Array.from(document.querySelectorAll('video')).map(p => new Plyr(p));
+
+    // render math equations
+    let elMath = document.getElementsByClassName('mathquill');
+    for (let i = 0, len = elMath.length; i < len; i += 1) {
+      const el = elMath[i];
+
+      katex.render(el.textContent, el, {
+        throwOnError: false
+      });
+    }
+
+    // this hack will make sure Bootstrap tabs work when using Handlebars
+    if ($('#question-tabs').length && $('#user-answer-tabs').length) {
+      $("#question-tabs a.nav-link").on('click', function () {
+        $("#question-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+      $("#user-answer-tabs a.nav-link").on('click', function () {
+        $("#user-answer-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    } else {
+      $("a.nav-link").on('click', function () {
+        $(".tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    }
+
+    // side bar events
+    $(document).ready(function () {
+      $("#sidebar").mCustomScrollbar({
+        theme: "minimal"
+      });
+
+      $('#sidebarCollapse').on('click', function () {
+        $('#sidebar, #content').toggleClass('active');
+        $('.collapse.in').toggleClass('in');
+        $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+      });
+
+      // scroll to first video on page loading
+      if ($('video').length) {
+        $('html,body').animate({ scrollTop: $('div.plyr').prev().offset().top});
+      }
+
+      // auto play first video: this may not work with chrome/safari due to autoplay policy
+      if (players && players.length > 0) {
+        players[0].play();
+      }
+
+      // scroll sidebar to current concept
+      const currentInSideBar = $( "ul.sidebar-list.components li a:contains('09. Parse Base64 Encoded Information')" )
+      currentInSideBar.css( "text-decoration", "underline" );
+      $("#sidebar").mCustomScrollbar('scrollTo', currentInSideBar);
+    });
+  </script>
+</body>
+
+</html>

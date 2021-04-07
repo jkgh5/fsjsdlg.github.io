@@ -1,0 +1,202 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:03.600
+The first thing I'm going to do is make sure Spark and Kafka running.
+
+00:00:03.600 --> 00:00:06.075
+Ps -ef will help me with that.
+
+00:00:06.075 --> 00:00:09.795
+I'm looking for Spark twice and several Javas.
+
+00:00:09.795 --> 00:00:12.390
+That tells me Spark's running and Kafka's running.
+
+00:00:12.390 --> 00:00:15.765
+I'm going to clear that terminal.
+
+00:00:15.765 --> 00:00:17.310
+Now let's look at the code.
+
+00:00:17.310 --> 00:00:21.045
+The first thing we've done is import all of our classes we need.
+
+00:00:21.045 --> 00:00:23.390
+Then we've got our redis message schema.
+
+00:00:23.390 --> 00:00:28.725
+Then we're going to create a payment JSON schema to match the JSON payload here.
+
+00:00:28.725 --> 00:00:30.900
+We're going to create our Spark session,
+
+00:00:30.900 --> 00:00:32.725
+set the log level to warn,
+
+00:00:32.725 --> 00:00:35.690
+connect to Kafka using the appropriate options for
+
+00:00:35.690 --> 00:00:39.484
+Bootstrap server topic, starting offsets.
+
+00:00:39.484 --> 00:00:44.270
+We're going to extract the binary data here and cast it as strings,
+
+00:00:44.270 --> 00:00:48.490
+and then we have access to it in regular string format.
+
+00:00:48.490 --> 00:00:52.200
+Using the data frame with the string formatted keys and values,
+
+00:00:52.200 --> 00:00:55.340
+we'll extract the JSON using the redis message schema.
+
+00:00:55.340 --> 00:00:58.870
+Select all those fields and save them in a redis data view.
+
+00:00:58.870 --> 00:01:01.130
+We'll select from the redis data view.
+
+00:01:01.130 --> 00:01:05.779
+We're looking specifically for the key and the z set entries,
+
+00:01:05.779 --> 00:01:07.665
+element zero of the array.
+
+00:01:07.665 --> 00:01:09.440
+Within the zeroth element,
+
+00:01:09.440 --> 00:01:12.425
+there's an object which has an element field.
+
+00:01:12.425 --> 00:01:15.110
+We want that field. We're going to call it Payment.
+
+00:01:15.110 --> 00:01:17.540
+It is base-64 encoded at this time,
+
+00:01:17.540 --> 00:01:20.725
+so we called it encoded streaming data frame.
+
+00:01:20.725 --> 00:01:24.545
+We're going to decode it using the.withColumn function.
+
+00:01:24.545 --> 00:01:30.860
+We will overload the payment with an unbase-64 encoded version of the payment field,
+
+00:01:30.860 --> 00:01:32.525
+casting it as a string.
+
+00:01:32.525 --> 00:01:37.025
+We now want to deserialize the JSON that's stored in that field.
+
+00:01:37.025 --> 00:01:41.920
+We're going to use the data frame that has the decoded data in it.
+
+00:01:41.920 --> 00:01:46.395
+Overloading the column called Payment using the from JSON function,
+
+00:01:46.395 --> 00:01:49.260
+we'll reference the payment JSON schema.
+
+00:01:49.260 --> 00:01:51.920
+Then we'll select all of the new fields we've just
+
+00:01:51.920 --> 00:01:55.280
+extracted and put them into a view called Payment.
+
+00:01:55.280 --> 00:01:58.490
+We'll select reservation ID and amount from payment using
+
+00:01:58.490 --> 00:02:01.870
+Spark.SQL into a payment streaming data frame.
+
+00:02:01.870 --> 00:02:06.285
+That data frame we want to cast back into JSON format,
+
+00:02:06.285 --> 00:02:11.735
+so we'll cast the reservation ID as a string and make it the key for the Kafka topic.
+
+00:02:11.735 --> 00:02:19.115
+We're going to make the struct star inserted into our to JSON function call,
+
+00:02:19.115 --> 00:02:21.620
+which will take all the fields currently in
+
+00:02:21.620 --> 00:02:25.115
+this data frame and inject them as JSON fields.
+
+00:02:25.115 --> 00:02:27.020
+We'll call that value,
+
+00:02:27.020 --> 00:02:29.010
+and that will be our payload.
+
+00:02:29.010 --> 00:02:34.120
+We're going to write the stream to Kafka using the local host 9092 broker.
+
+00:02:34.120 --> 00:02:36.805
+The topic will be called Payment-JSON.
+
+00:02:36.805 --> 00:02:42.095
+We're going to put it in a checkpoint location called Kafkacheckpoint3.
+
+00:02:42.095 --> 00:02:48.160
+Remember that this needs to be a folder that your Spark workers have right access to.
+
+00:02:48.160 --> 00:02:51.020
+I'm going to save that.
+
+00:02:51.080 --> 00:02:58.945
+Now I'm going to CD to homework space, Spark and LS.
+
+00:02:58.945 --> 00:03:07.710
+I have a script called submit payment solution.sh.
+
+00:03:07.710 --> 00:03:11.970
+See, now we're waiting for the Spark application to run.
+
+00:03:11.970 --> 00:03:13.890
+Now it says leader not available.
+
+00:03:13.890 --> 00:03:18.580
+That means it just created this Kafka topic and started generating data into it.
+
+00:03:18.580 --> 00:03:22.625
+I'm going to go to the data Kafka bin folder.
+
+00:03:22.625 --> 00:03:28.420
+I'm going to run the Kafka console consumer and attach to
+
+00:03:28.420 --> 00:03:36.660
+Kafka using the bootstrap server of local host 9092,
+
+00:03:36.660 --> 00:03:40.360
+the topic of payment-json.
+
+00:03:40.610 --> 00:03:44.520
+Go from the beginning.
+
+00:03:44.520 --> 00:03:46.485
+We should see JSON.
+
+00:03:46.485 --> 00:03:50.655
+There we go. We have reservation ID and amount.
+
+00:03:50.655 --> 00:03:59.150
+We should have selected probably amount from payment where amount is not null,
+
+00:03:59.150 --> 00:04:02.510
+because we're getting some data that's not payment data.
+
+00:04:02.510 --> 00:04:08.030
+That's why we're seeing JSON with no amount in it. That would fix that.
+
+00:04:08.030 --> 00:04:11.680
+I'm going to break out of my console with "Control+C".
+
+00:04:11.680 --> 00:04:15.910
+Then I'm going to "Control+C" out of this Spark application.j
+

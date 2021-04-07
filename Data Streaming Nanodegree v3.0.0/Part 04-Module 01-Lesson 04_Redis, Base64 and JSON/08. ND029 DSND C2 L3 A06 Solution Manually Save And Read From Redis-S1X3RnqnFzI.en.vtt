@@ -1,0 +1,226 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:05.685
+Let's look at the solution to exercise 1 for lesson 3.
+
+00:00:05.685 --> 00:00:09.495
+The first thing I want to do is make sure that Kafka and Redis are up and running.
+
+00:00:09.495 --> 00:00:11.460
+I'm going to type ps-ef.
+
+00:00:11.460 --> 00:00:13.890
+I don't see a process called Redis,
+
+00:00:13.890 --> 00:00:18.300
+or a bunch of Java processes which usually tells me Kafka is running.
+
+00:00:18.300 --> 00:00:22.860
+I'm going to click this ''Start'' button and that'll start both Kafka and Redis for me.
+
+00:00:22.860 --> 00:00:25.050
+I see a spinning symbol.
+
+00:00:25.050 --> 00:00:28.060
+That means Kafka is still starting up.
+
+00:00:31.010 --> 00:00:33.915
+Now I'm back to a blinking cursor.
+
+00:00:33.915 --> 00:00:36.390
+That means we've got Redis and Kafka.
+
+00:00:36.390 --> 00:00:40.650
+So if I repeat this ps-ef I have
+
+00:00:40.650 --> 00:00:45.380
+a Redis server running and I have several Java processes,
+
+00:00:45.380 --> 00:00:48.470
+which tells me Kafka is probably up as well.
+
+00:00:48.470 --> 00:00:53.055
+We talked about how if we have a Redis,
+
+00:00:53.055 --> 00:00:56.750
+Kafka source connector, we can enable data to be
+
+00:00:56.750 --> 00:01:01.235
+delivered to Kafka directly from Redis when data changes are made.
+
+00:01:01.235 --> 00:01:03.560
+Let's look at how that works.
+
+00:01:03.560 --> 00:01:07.965
+I'm going to connect to a topic called Redis-server
+
+00:01:07.965 --> 00:01:13.175
+that's currently connected through Kafka Connect to the Redis database.
+
+00:01:13.175 --> 00:01:15.920
+I'm going to cd to data, Kafka,
+
+00:01:15.920 --> 00:01:19.090
+bin and ls there,
+
+00:01:19.090 --> 00:01:23.500
+and I see a command Kafka console consumer that I'm going to use.
+
+00:01:23.500 --> 00:01:27.915
+I'm going to say bootstrap server is localhost 9092.
+
+00:01:27.915 --> 00:01:31.125
+The topic is Redis-server,
+
+00:01:31.125 --> 00:01:34.340
+and I want from the beginning so I'll see
+
+00:01:34.340 --> 00:01:38.410
+some data from earlier that was committed to Redis.
+
+00:01:38.410 --> 00:01:40.290
+Then it just stops.
+
+00:01:40.290 --> 00:01:42.500
+That's because there is no activity currently on
+
+00:01:42.500 --> 00:01:47.870
+the application so I'm going to log into Redis manually.
+
+00:01:47.870 --> 00:01:50.990
+I'm going to use the Redis CLI command,
+
+00:01:50.990 --> 00:02:01.330
+which is under /data/Redis/Redis-stable/ src/redis-cli.
+
+00:02:01.330 --> 00:02:02.960
+When I run the Redis CLI,
+
+00:02:02.960 --> 00:02:05.105
+usually I'm going to give it the host name,
+
+00:02:05.105 --> 00:02:06.620
+but it defaults to local host,
+
+00:02:06.620 --> 00:02:07.910
+which will work for us.
+
+00:02:07.910 --> 00:02:10.445
+I'm going to pass the password,
+
+00:02:10.445 --> 00:02:13.640
+-a is the password flag and it's not really.
+
+00:02:13.640 --> 00:02:15.350
+If I say keys,
+
+00:02:15.350 --> 00:02:18.245
+I have three tables,
+
+00:02:18.245 --> 00:02:20.765
+user, customer and customer location.
+
+00:02:20.765 --> 00:02:23.360
+I'm going to create a fourth one and I'm going to use
+
+00:02:23.360 --> 00:02:28.580
+the ZADD command that's going to put a new entry.
+
+00:02:28.580 --> 00:02:31.835
+If I am putting it in an existing table,
+
+00:02:31.835 --> 00:02:33.275
+then it'll add to it.
+
+00:02:33.275 --> 00:02:36.565
+If it's a new table, it will create it on the fly.
+
+00:02:36.565 --> 00:02:42.540
+I'm going to say zadd testkey,
+
+00:02:42.540 --> 00:02:45.085
+and then the score which zero.
+
+00:02:45.085 --> 00:02:49.435
+It's just an index and I'm just setting it to zero.
+
+00:02:49.435 --> 00:02:52.350
+Then here's my test value.
+
+00:02:52.350 --> 00:03:02.535
+Now, if I say keys I have four and If I say zrange testkey zero to minus one,
+
+00:03:02.535 --> 00:03:06.905
+now I have that test value in that Redis collection.
+
+00:03:06.905 --> 00:03:10.760
+I should see a new value pop-up in my topic.
+
+00:03:10.760 --> 00:03:13.520
+If I come over here, sure enough here's
+
+00:03:13.520 --> 00:03:18.305
+my new value and the key isn't really intelligible,
+
+00:03:18.305 --> 00:03:23.940
+so I'm going to copy that value and then I'm going to paste it.
+
+00:03:23.940 --> 00:03:26.900
+So I'm going to say echo and put it in quotes,
+
+00:03:26.900 --> 00:03:31.820
+and then I'm going to pipe it to base64 with a -d flag.
+
+00:03:31.820 --> 00:03:35.450
+You'll see base64 isn't the friendliest command.
+
+00:03:35.450 --> 00:03:41.630
+It actually wraps around and it mixes with my username, which is root.
+
+00:03:41.630 --> 00:03:44.045
+If you go to the left of my username,
+
+00:03:44.045 --> 00:03:47.665
+you'll see the value that it decoded testkey.
+
+00:03:47.665 --> 00:03:51.780
+Now, if I want to look at what I committed we're going to go into
+
+00:03:51.780 --> 00:03:55.950
+my zSetEntries and find the first element,
+
+00:03:55.950 --> 00:03:58.865
+and I'm going to copy the value there.
+
+00:03:58.865 --> 00:04:00.990
+Now, I'm going to use the same technique.
+
+00:04:00.990 --> 00:04:03.245
+I'm going to echo it in double quotes,
+
+00:04:03.245 --> 00:04:07.730
+piping it to base64 with a -d for decode,
+
+00:04:07.730 --> 00:04:12.290
+and before my username root I see the test value.
+
+00:04:12.290 --> 00:04:18.950
+Now, we've experienced using the Redis Kafka source connector in action.
+
+00:04:18.950 --> 00:04:21.800
+You can see that now the data is being piped into
+
+00:04:21.800 --> 00:04:25.625
+my topic whenever and updates made to the Redis database.
+
+00:04:25.625 --> 00:04:30.500
+That will make it possible for me to read from that topic in a spark application.
+
+00:04:30.500 --> 00:04:34.384
+I'm going to kill this by hitting "Control C",
+
+00:04:34.384 --> 00:04:39.270
+and then I'm going to exit out of my Redis command line with the word exit.
+

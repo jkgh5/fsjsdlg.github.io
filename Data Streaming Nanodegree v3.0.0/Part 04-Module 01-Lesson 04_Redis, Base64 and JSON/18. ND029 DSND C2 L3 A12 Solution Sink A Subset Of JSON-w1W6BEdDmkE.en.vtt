@@ -1,0 +1,484 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:04.335
+Let's look at the solution to the customer record exercise.
+
+00:00:04.335 --> 00:00:07.790
+First thing we're going to do is check for Kafka running,
+
+00:00:07.790 --> 00:00:09.620
+and if I do ps dash AF,
+
+00:00:09.620 --> 00:00:12.539
+I don't see Kafka running, no Java processes.
+
+00:00:12.539 --> 00:00:14.445
+I also don't see Spark.
+
+00:00:14.445 --> 00:00:17.160
+So I'm going to go ahead and start this.
+
+00:00:17.160 --> 00:00:19.290
+Notice, we have a note later to start
+
+00:00:19.290 --> 00:00:22.635
+the banking application right before we run our code.
+
+00:00:22.635 --> 00:00:25.560
+So we're going to save that.
+
+00:00:25.560 --> 00:00:35.610
+Kafka starts, I'm going to start Spark and it cleared the terminal and let's close this.
+
+00:00:35.610 --> 00:00:41.535
+I'm going to go to the Homework space Spark spin folder,
+
+00:00:41.535 --> 00:00:45.405
+start the master there,
+
+00:00:45.405 --> 00:00:49.760
+and I'm going to go look at the log file it creates with tail,
+
+00:00:49.760 --> 00:00:53.785
+tail dash F and the log file name.
+
+00:00:53.785 --> 00:00:55.650
+I'm going to break out of this.
+
+00:00:55.650 --> 00:00:58.550
+Control C and start the worker.
+
+00:00:58.550 --> 00:01:04.680
+Start dash slave dot SH script with Spark master URI.
+
+00:01:04.680 --> 00:01:07.005
+If I run ps dash AF,
+
+00:01:07.005 --> 00:01:08.910
+I now see Spark running.
+
+00:01:08.910 --> 00:01:13.605
+Spark is here, and Spark is here.
+
+00:01:13.605 --> 00:01:17.370
+Kafka says it is up.
+
+00:01:17.370 --> 00:01:19.770
+So we're good to go.
+
+00:01:19.770 --> 00:01:24.120
+I'm going to clear the terminal per readability.
+
+00:01:25.360 --> 00:01:29.360
+We're ready. So first thing to notice is we
+
+00:01:29.360 --> 00:01:32.870
+have a message schema for redis already created.
+
+00:01:32.870 --> 00:01:38.530
+So that's going to give us the schema for the data that comes from redis.
+
+00:01:38.530 --> 00:01:41.720
+We don't have a schema yet for this customer records,
+
+00:01:41.720 --> 00:01:44.165
+so we need to create a schema for that.
+
+00:01:44.165 --> 00:01:50.760
+So I'm going to call that customer Jason schema equals struct type.
+
+00:01:51.110 --> 00:01:53.749
+Then I'm going to create an array,
+
+00:01:53.749 --> 00:02:02.280
+a struct fields and each one is going to match the Jason field names.
+
+00:02:02.650 --> 00:02:08.835
+I got email, which is also a string.
+
+00:02:08.835 --> 00:02:10.320
+All of these look like strings,
+
+00:02:10.320 --> 00:02:12.285
+because they have codes around them.
+
+00:02:12.285 --> 00:02:17.550
+Birthday, and I cast this as a string as well,
+
+00:02:17.550 --> 00:02:22.305
+and account number, string as well,
+
+00:02:22.305 --> 00:02:27.015
+and location, string as well.
+
+00:02:27.015 --> 00:02:29.954
+I'm going to create a Spark session,
+
+00:02:29.954 --> 00:02:36.850
+then app name of customer record can't or create,
+
+00:02:36.850 --> 00:02:45.060
+and Spark is going to be set to warn hog level.
+
+00:02:45.060 --> 00:02:52.230
+Now we're going to read from Kafka using dot read stream,
+
+00:02:52.230 --> 00:02:55.590
+and we want a Kafka format.
+
+00:02:55.590 --> 00:03:01.130
+The bootstrap servers are going to be a local host 1992.
+
+00:03:01.130 --> 00:03:06.710
+We're going to subscribe to a topic called [inaudible] stash server.
+
+00:03:06.710 --> 00:03:09.410
+It's important to get that right.
+
+00:03:09.410 --> 00:03:15.490
+We're going to say starting offsets of earliest,
+
+00:03:15.490 --> 00:03:18.375
+and then we're going to load it.
+
+00:03:18.375 --> 00:03:21.695
+Next we're going to convert it from binary.
+
+00:03:21.695 --> 00:03:26.210
+So we're going to call it redis server streaming.
+
+00:03:26.210 --> 00:03:31.065
+Df equals redis server streaming,
+
+00:03:31.065 --> 00:03:34.515
+dF dot select expression,
+
+00:03:34.515 --> 00:03:39.870
+and then we're going to cast the key as a string key.
+
+00:03:39.870 --> 00:03:47.160
+We're going to cast the value as a string value.
+
+00:03:47.160 --> 00:03:53.870
+Now we're going to get the Jason deserialized from the redis perspective,
+
+00:03:53.870 --> 00:03:57.984
+which will get us down to a base64 encoded message.
+
+00:03:57.984 --> 00:04:02.720
+So the field we want to extract the Jason from is called value,
+
+00:04:02.720 --> 00:04:06.215
+which is what we say here.
+
+00:04:06.215 --> 00:04:08.690
+That's the field we want it from.
+
+00:04:08.690 --> 00:04:13.140
+The schema is called redis message schema.
+
+00:04:13.140 --> 00:04:16.720
+Let's double-check the spelling of that.
+
+00:04:18.710 --> 00:04:25.175
+We're going to select the column and its value dot star.
+
+00:04:25.175 --> 00:04:30.850
+That's going to create a bunch of sub fields which we
+
+00:04:30.850 --> 00:04:36.545
+want to end up in a view called redis data.
+
+00:04:36.545 --> 00:04:42.070
+So now we've got base64 encoded information hiding in
+
+00:04:42.070 --> 00:04:48.300
+this little element that we want to select out of it, out of the view.
+
+00:04:48.300 --> 00:04:56.145
+So let's create variable to hold that information,
+
+00:04:56.145 --> 00:05:04.180
+and let's use Spark SQL to select both the key and the z set entries.
+
+00:05:04.180 --> 00:05:07.755
+Element zero dot element.
+
+00:05:07.755 --> 00:05:09.200
+So if you look at this,
+
+00:05:09.200 --> 00:05:13.340
+we have a sub-struct type called element inside z set entries,
+
+00:05:13.340 --> 00:05:15.605
+and that's what we're getting to there.
+
+00:05:15.605 --> 00:05:19.120
+We're going to call that element customer.
+
+00:05:19.120 --> 00:05:23.010
+We're selecting from redis data.
+
+00:05:23.010 --> 00:05:26.330
+Now that is not always going to be a customer.
+
+00:05:26.330 --> 00:05:27.920
+We're calling it customer.
+
+00:05:27.920 --> 00:05:30.680
+It depends on the redis collection that came through.
+
+00:05:30.680 --> 00:05:33.520
+So we're going to look at that a little bit later.
+
+00:05:33.520 --> 00:05:40.585
+So we now need to decode the base64 encoded information that's here in this element.
+
+00:05:40.585 --> 00:05:48.260
+We're going to overload the customer column with the decoded version of the data.
+
+00:05:48.260 --> 00:05:54.550
+The way we're going to decode it is using the unbase64 function,
+
+00:05:54.550 --> 00:05:58.325
+and we're going to pass in the customer field.
+
+00:05:58.325 --> 00:06:02.425
+Once that's decoded, we're going to cast it to a string.
+
+00:06:02.425 --> 00:06:05.880
+We've got this decoded dataframe,
+
+00:06:05.880 --> 00:06:11.840
+and it contains Jason because redis is storing the data as Jason format.
+
+00:06:11.840 --> 00:06:14.705
+So once we've decoded it, that's what we have.
+
+00:06:14.705 --> 00:06:18.525
+We want to deserialize that Jason,
+
+00:06:18.525 --> 00:06:23.685
+z set decoded entries streaming dataframe,
+
+00:06:23.685 --> 00:06:32.940
+and we're going to overload the customer column using the from Jason function.
+
+00:06:32.940 --> 00:06:39.500
+We're telling it that we're going to extract it from the customer field,
+
+00:06:39.500 --> 00:06:43.580
+and we're going to use the customer Jason schema that we created.
+
+00:06:43.580 --> 00:06:50.250
+Here, and then we'll say dot select and column,
+
+00:06:50.250 --> 00:06:54.960
+and we want to select all the subfields and with those,
+
+00:06:54.960 --> 00:07:01.120
+we will create a view called customer.
+
+00:07:01.250 --> 00:07:04.955
+At this point we're going to massage the data just a little bit,
+
+00:07:04.955 --> 00:07:09.814
+so we're going to select for any data that has a birthday,
+
+00:07:09.814 --> 00:07:15.310
+and that makes it possible for us to filter out data that's probably not customer data.
+
+00:07:15.310 --> 00:07:24.150
+So customers streaming df equals spark dot SQL select,
+
+00:07:24.150 --> 00:07:27.080
+and here we're selecting from our view,
+
+00:07:27.080 --> 00:07:28.610
+we want the account number,
+
+00:07:28.610 --> 00:07:29.689
+we want the location,
+
+00:07:29.689 --> 00:07:31.595
+we want the birthday,
+
+00:07:31.595 --> 00:07:38.025
+but only where birthday is not null.
+
+00:07:38.025 --> 00:07:41.895
+We want to now do just another slight change,
+
+00:07:41.895 --> 00:07:43.880
+and we're going to get a birth year off of
+
+00:07:43.880 --> 00:07:49.185
+that birthday so we're going to use the split function.
+
+00:07:49.185 --> 00:07:51.695
+Let's go ahead and do that.
+
+00:07:51.695 --> 00:07:56.170
+So we'll create a dataframe called relevant customer fields.
+
+00:07:56.170 --> 00:08:03.085
+Streaming dataframe equals customers streaming dataframe.
+
+00:08:03.085 --> 00:08:06.650
+This time we're going to use the dots select instead of spark
+
+00:08:06.650 --> 00:08:10.685
+dot SQL and we're going to say,
+
+00:08:10.685 --> 00:08:14.460
+"Give me the account number field comma,
+
+00:08:14.460 --> 00:08:17.910
+give me the location field comma,
+
+00:08:17.910 --> 00:08:26.130
+and split the birthday and give me the year birthday",
+
+00:08:26.130 --> 00:08:28.020
+and we're going to split it on one character.
+
+00:08:28.020 --> 00:08:32.975
+So if we look at the sample data, it is dash.
+
+00:08:32.975 --> 00:08:38.150
+So we want to get the dash in here,
+
+00:08:38.450 --> 00:08:46.545
+and that gives us an array and we want the zeroth element of that array.
+
+00:08:46.545 --> 00:08:51.600
+We're going to alias that field and call it birth year.
+
+00:08:51.600 --> 00:08:55.600
+Notice that is spelled wrong way.
+
+00:08:55.910 --> 00:08:58.525
+The last thing we're going to do,
+
+00:08:58.525 --> 00:09:03.720
+is take the relevant customer fields and string them to Kafka.
+
+00:09:03.720 --> 00:09:08.000
+We want to extract the fields that need to go into Kafka.
+
+00:09:08.000 --> 00:09:16.855
+So we're going to cast the account number as a string and call it key.
+
+00:09:16.855 --> 00:09:21.229
+We're going to put the rest of the data,
+
+00:09:21.229 --> 00:09:24.485
+all of it into Jason.
+
+00:09:24.485 --> 00:09:26.435
+We want to struct star,
+
+00:09:26.435 --> 00:09:28.505
+that'll give us every field,
+
+00:09:28.505 --> 00:09:34.340
+and we're going to call that Jason payload value.
+
+00:09:34.340 --> 00:09:40.800
+We're going to do the write stream and we're sending it to Kafka.
+
+00:09:41.660 --> 00:09:46.125
+We need to tell it where Kafka's running,
+
+00:09:46.125 --> 00:09:52.285
+and we're going to send it to the topic we define called customer attributes.
+
+00:09:52.285 --> 00:09:55.460
+We want the checkpoint location defined,
+
+00:09:55.460 --> 00:09:57.290
+which is our temp file,
+
+00:09:57.290 --> 00:10:02.770
+and we're going to do start and await termination.
+
+00:10:02.770 --> 00:10:12.450
+Okay, I've saved that file and now we're going to start up this banking simulation.
+
+00:10:15.470 --> 00:10:18.750
+Let's now run our code.
+
+00:10:18.750 --> 00:10:24.860
+So I hope I've got a cd home workspace and then ls,
+
+00:10:24.860 --> 00:10:26.345
+I have a script here,
+
+00:10:26.345 --> 00:10:32.070
+submit customer record dot SH.
+
+00:10:36.370 --> 00:10:42.095
+Now we're waiting for the application to process,
+
+00:10:42.095 --> 00:10:47.865
+and it's saying customer dash attributes, leader not available.
+
+00:10:47.865 --> 00:10:51.760
+That mean that's putting data in that topic for the first time,
+
+00:10:51.760 --> 00:10:55.015
+so let's go look at that cd to data,
+
+00:10:55.015 --> 00:10:58.280
+Kafka bin, and then we ls.
+
+00:10:58.280 --> 00:11:01.730
+We're going to say dot slash Kafka console,
+
+00:11:01.730 --> 00:11:07.280
+consumer, dash, dash, boot, strap, server.
+
+00:11:07.280 --> 00:11:14.415
+Notice there's no s This time, localhost 9092 topic.
+
+00:11:14.415 --> 00:11:21.880
+Customer attributes is the topic we defined from the beginning.
+
+00:11:21.880 --> 00:11:23.910
+There's our data.
+
+00:11:23.910 --> 00:11:26.070
+So we have account number,
+
+00:11:26.070 --> 00:11:30.135
+location, India in this case, and the birth here.
+
+00:11:30.135 --> 00:11:38.624
+So that's an example of extracting a redis payload out of a Kafka source connector,
+
+00:11:38.624 --> 00:11:42.740
+and then decoding the base64 field that we're looking
+
+00:11:42.740 --> 00:11:46.760
+for and extracting the Jason as separated fields.
+
+00:11:46.760 --> 00:11:50.270
+Then we massage the data and data
+
+00:11:50.270 --> 00:11:53.855
+frame format to extract a certain field we were looking for.
+
+00:11:53.855 --> 00:11:57.860
+The new data that we were extracting will now be in our Jason.
+
+00:11:57.860 --> 00:12:03.120
+So we streamed that into a Kafka topic for consumption by another consumer.
+
+00:12:03.120 --> 00:12:05.990
+I'm going to stop the topic listening now
+
+00:12:05.990 --> 00:12:12.360
+control C and then I'm going to stop my Spark here control C there.
+

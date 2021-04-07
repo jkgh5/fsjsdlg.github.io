@@ -1,0 +1,163 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:04.395
+We've talked a lot about options for using Redis and
+
+00:00:04.395 --> 00:00:09.015
+using a data store as a source of Kafka messages.
+
+00:00:09.015 --> 00:00:14.820
+Let's draw this so we can see in detail how this would work in our configuration.
+
+00:00:14.820 --> 00:00:18.315
+I'm using a tool called draw.io,
+
+00:00:18.315 --> 00:00:20.955
+even though the URL says something different.
+
+00:00:20.955 --> 00:00:26.655
+The way you get to it is just go to your browser and type draw.io,
+
+00:00:26.655 --> 00:00:30.225
+and it will bring you to this URL.
+
+00:00:30.225 --> 00:00:32.220
+That's the tool we'll be using.
+
+00:00:32.220 --> 00:00:34.440
+You're welcome to follow along.
+
+00:00:34.440 --> 00:00:37.140
+The first emblem that I have here,
+
+00:00:37.140 --> 00:00:40.370
+the first shape is just a cylinder.
+
+00:00:40.370 --> 00:00:42.365
+I just pulled the cylinder over,
+
+00:00:42.365 --> 00:00:50.070
+and then I took and use the rotating option to rotate that,
+
+00:00:50.780 --> 00:00:54.900
+and that turn sideways,
+
+00:00:54.900 --> 00:00:58.680
+and then you can stretch it like this,
+
+00:00:58.680 --> 00:01:01.170
+and make it like that,
+
+00:01:01.170 --> 00:01:03.240
+and then you've got a topic.
+
+00:01:03.240 --> 00:01:06.050
+That's how we make the symbol that we use for
+
+00:01:06.050 --> 00:01:09.820
+topics in this diagram in case you're wondering where I got it from.
+
+00:01:09.820 --> 00:01:12.639
+Let's draw a few things.
+
+00:01:12.639 --> 00:01:17.789
+We have an application that we're representing,
+
+00:01:17.789 --> 00:01:21.550
+and we have spark.
+
+00:01:21.550 --> 00:01:24.269
+I'm going to make this a little bigger,
+
+00:01:24.269 --> 00:01:26.790
+and then we'll copy that.
+
+00:01:26.790 --> 00:01:30.375
+Then I'm going to put spark over here.
+
+00:01:30.375 --> 00:01:32.930
+So what we're saying is,
+
+00:01:32.930 --> 00:01:37.150
+you've got an application that's supported by developers,
+
+00:01:37.150 --> 00:01:40.390
+and there's a lot of stuff going on with that
+
+00:01:40.390 --> 00:01:44.470
+because it's probably one of the things that makes your company money,
+
+00:01:44.470 --> 00:01:49.245
+so there are a lot of initiatives going on.
+
+00:01:49.245 --> 00:01:56.725
+That can often mean getting a new data pipeline going is not the highest priority.
+
+00:01:56.725 --> 00:01:59.710
+Well, we have an advantage.
+
+00:01:59.710 --> 00:02:04.300
+Because this application already writes to Redis and
+
+00:02:04.300 --> 00:02:09.380
+because there's a Redis source connector available for Kafka,
+
+00:02:09.380 --> 00:02:12.540
+we can do something pretty interesting.
+
+00:02:12.540 --> 00:02:17.325
+We can put that connector in place,
+
+00:02:17.325 --> 00:02:20.635
+so we'll do that,
+
+00:02:20.635 --> 00:02:29.395
+and what happens then is the data that's already being written to Redis,
+
+00:02:29.395 --> 00:02:33.710
+now becomes available in a topic.
+
+00:02:33.710 --> 00:02:37.370
+You can figure what you want that to be called.
+
+00:02:37.370 --> 00:02:43.055
+In our case, we made it super easy to remember,
+
+00:02:43.055 --> 00:02:48.120
+and we called ours Redis-server.
+
+00:02:48.120 --> 00:02:52.095
+All the rights that happen to Redis will go to the same topic,
+
+00:02:52.095 --> 00:02:55.340
+so even if there's multiple different collections in Redis,
+
+00:02:55.340 --> 00:02:57.245
+they're all going to end up in the same topic.
+
+00:02:57.245 --> 00:03:01.280
+That's one downside, but the advantage is there is literally
+
+00:03:01.280 --> 00:03:06.560
+no coding needed within this application to deliver this value.
+
+00:03:06.560 --> 00:03:08.960
+You can have a different work stream
+
+00:03:08.960 --> 00:03:13.015
+going on getting this data available to be processed.
+
+00:03:13.015 --> 00:03:18.110
+It might be a completely different team than the team that works on the main application.
+
+00:03:18.110 --> 00:03:21.340
+It might be someone like you.
+
+00:03:21.340 --> 00:03:26.195
+Now, we've got that data available in a Redis server topic.
+
+00:03:26.195 --> 00:03:32.610
+We can now ingest the data as a source in our spark streaming application.
+

@@ -1,0 +1,460 @@
+<!-- udacity2.0 -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Evaluate Human Balance with Spark Streaming</title>
+  <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../assets/css/plyr.css">
+  <link rel="stylesheet" href="../assets/css/katex.min.css">
+  <link rel="stylesheet" href="../assets/css/jquery.mCustomScrollbar.min.css">
+  <link rel="stylesheet" href="../assets/css/styles.css">
+  <link rel="shortcut icon" type="image/png" href="../assets/img/udacimak.png" />
+</head>
+
+<body>
+  <div class="wrapper">
+    <nav id="sidebar">
+  <div class="sidebar-header">
+    <h3>Evaluate Human Balance with Spark Streaming</h3>
+  </div>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled components">
+    <li class="">
+      <a href="01. Project Overview.html">01. Project Overview</a>
+    </li>
+    <li class="">
+      <a href="02. Project Setup Outside of Classroom.html">02. Project Setup Outside of Classroom</a>
+    </li>
+    <li class="">
+      <a href="03. Project Instructions.html">03. Project Instructions</a>
+    </li>
+    <li class="">
+      <a href="04. Create Wireframe.html">04. Create Wireframe</a>
+    </li>
+    <li class="">
+      <a href="05. Wireframe Solution.html">05. Wireframe Solution</a>
+    </li>
+    <li class="">
+      <a href="06. Project Workspace.html">06. Project Workspace</a>
+    </li>
+    <li class="">
+      <a href="Project Description - Evaluate Human Balance with Spark Streaming.html">Project Description - Evaluate Human Balance with Spark Streaming</a>
+    </li>
+    <li class="">
+      <a href="Project Rubric - Evaluate Human Balance with Spark Streaming.html">Project Rubric - Evaluate Human Balance with Spark Streaming</a>
+    </li>
+  </ul>
+
+  <ul class="sidebar-list list-unstyled CTAs">
+    <li>
+      <a href="../index.html" class="article">Back to Home</a>
+    </li>
+  </ul>
+</nav>
+
+    <div id="content">
+      <header class="container-fluild header">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <div class="align-items-middle">
+                <button type="button" id="sidebarCollapse" class="btn btn-toggle-sidebar">
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                </button>
+
+                <h1 style="display: inline-block">Evaluate Human Balance with Spark Streaming</h1>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <main class="container">
+        <div class="row">
+          <div class="col-12">
+            
+      <div>
+        <h2><p>Initialize Spark Components</p></h2>
+        <table class="table table-bordered table-hover">
+          <thead>
+            <tr class="thead-dark">
+              <th>Criteria</th>
+              <th>Meet Specification</th>
+            </tr>
+          </thead>
+          
+    <tbody>
+      
+      <tr scope="row">
+        <td>
+          <p>Start a Spark cluster</p>
+        </td>
+        <td>
+          <p>The log <code>/home/workspace/spark/logs/spark-[username]-org.apache.spark.deploy.worker.Worker-1-[hostname].out</code> contains a statement “Successfully registered with master spark”, like this:</p>
+<pre><code>20/09/12 22:19:15 INFO Worker: Successfully registered with master spark://Seans-MBP:7077</code></pre>
+        </td>
+      </tr>
+    
+      <tr scope="row">
+        <td>
+          <p>The Spark application successfully executes on the Spark cluster</p>
+        </td>
+        <td>
+          <p>The log <code>/home/workspace/spark/logs/kafkajoin.log</code> does not have any Python, Java, or Scala errors.</p>
+        </td>
+      </tr>
+    
+    </tbody>
+  
+        </table>
+
+      </div>
+    
+      <div>
+        <h2><p>Continuous Application</p></h2>
+        <table class="table table-bordered table-hover">
+          <thead>
+            <tr class="thead-dark">
+              <th>Criteria</th>
+              <th>Meet Specification</th>
+            </tr>
+          </thead>
+          
+    <tbody>
+      
+      <tr scope="row">
+        <td>
+          <p>The data pipeline provides continuous output of customer risk scores</p>
+        </td>
+        <td>
+          <p>As evidence, provide at least two screenshots of the STEDI risk graph showing a change in the data captured. The graph should have different data points.</p>
+        </td>
+      </tr>
+    
+      <tr scope="row">
+        <td>
+          <p>The spark streaming application doesn’t exit prematurely</p>
+        </td>
+        <td>
+          <p>The sink statement at the end of the sparkpykafkajoin.py script uses the proper method to ensure that the application runs continuously (until either killed or the computer shuts down).</p>
+        </td>
+      </tr>
+    
+    </tbody>
+  
+        </table>
+
+      </div>
+    
+      <div>
+        <h2><p>Consume and Process Data</p></h2>
+        <table class="table table-bordered table-hover">
+          <thead>
+            <tr class="thead-dark">
+              <th>Criteria</th>
+              <th>Meet Specification</th>
+            </tr>
+          </thead>
+          
+    <tbody>
+      
+      <tr scope="row">
+        <td>
+          <p>The spark streaming application consumes data from the <strong>redis-server</strong> Kafka topic</p>
+        </td>
+        <td>
+          <p>A streaming dataframe is instantiated in the <code>sparkpykafkajoin.py</code> script with the <strong>redis-server</strong> Kafka topic as a source.</p>
+        </td>
+      </tr>
+    
+      <tr scope="row">
+        <td>
+          <p>The spark streaming application consumes data from the <strong>stedi-events</strong> Kafka topic</p>
+        </td>
+        <td>
+          <p>A streaming dataframe is instantiated in the <code>sparkpykafkajoin.py</code> script with the <strong>stedi-events</strong> Kafka topic as a source.</p>
+        </td>
+      </tr>
+    
+      <tr scope="row">
+        <td>
+          <p>The spark streaming application parses JSON and Base64 decodes (where applicable) the data received from Kafka</p>
+        </td>
+        <td>
+          <p>The Python script <code>sparkpykafkajoin.py</code> properly invokes the appropriate function to parse JSON and decode Base64 encoded data from Kafka.</p>
+        </td>
+      </tr>
+    
+    </tbody>
+  
+        </table>
+
+      </div>
+    
+      <div>
+        <h2><p>Aggregation of Streaming Dataframes</p></h2>
+        <table class="table table-bordered table-hover">
+          <thead>
+            <tr class="thead-dark">
+              <th>Criteria</th>
+              <th>Meet Specification</th>
+            </tr>
+          </thead>
+          
+    <tbody>
+      
+      <tr scope="row">
+        <td>
+          <p>The Spark streaming application instantiates two distinct streaming dataframes</p>
+        </td>
+        <td>
+          <p>The two distinct streaming dataframes joined for the aggregate streaming dataframes contain the following:<br />
+<strong>emailAndBirthYear</strong>: Email and Birth Year<br />
+<strong>emailAndRiskScore</strong>: Email and Risk Score</p>
+        </td>
+      </tr>
+    
+      <tr scope="row">
+        <td>
+          <p>The Spark streaming application joins the two streaming dataframes <strong>emailAndBirthYear</strong> and <strong>emailAndRiskScore</strong> to create <strong>riskScoreByBirthYear</strong></p>
+        </td>
+        <td>
+          <p>In the Python script <code>sparkpykafkajoin.py</code>, the streaming dataframe on which <code>.join()</code> is invoked contains information about either the customer risk or the customer record. The streaming dataframe passed inside the <code>.join()</code> function call contains information about either the customer risk or the customer record including the birth year. </p>
+<p>The Python script <code>sparkpykafkajoin.py</code> calls the appropriate function to join two separate dataframes to create <strong>riskScoreByBirthYear</strong>.</p>
+        </td>
+      </tr>
+    
+    </tbody>
+  
+        </table>
+
+      </div>
+    
+      <div>
+        <h2><p>Sink Datastream</p></h2>
+        <table class="table table-bordered table-hover">
+          <thead>
+            <tr class="thead-dark">
+              <th>Criteria</th>
+              <th>Meet Specification</th>
+            </tr>
+          </thead>
+          
+    <tbody>
+      
+      <tr scope="row">
+        <td>
+          <p>The spark streaming application produces a sink to Kafka</p>
+        </td>
+        <td>
+          <p>In the Python script <code>sparkpykafkajoin.py</code>, the application sinks a streaming dataframe to a Kafka topic which is defined in the <code>/home/workspace/stedi-application/application.conf</code> file (example below):</p>
+<pre><code>kafka{
+  riskTopic=customer-risk
+}</code></pre>
+        </td>
+      </tr>
+    
+      <tr scope="row">
+        <td>
+          <p>The streaming dataframe being sinked with Kafka contains JSON formatted data</p>
+        </td>
+        <td>
+          <p>In the Python script <code>sparkpykafkajoin.py</code>, the appropriate function is called to sink the <strong>riskScoreByBirthYear</strong> streaming dataframe to Kafka in JSON format below:</p>
+<pre><code>{
+"customer":"Santosh.Fibonnaci@test.com",
+"Score":"28.5",
+"email":"Santosh.Fibonnaci@test.com",
+"birthYear":"1963"
+} </code></pre>
+        </td>
+      </tr>
+    
+    </tbody>
+  
+        </table>
+
+      </div>
+    
+      <div>
+        <h2><p>Validation</p></h2>
+        <table class="table table-bordered table-hover">
+          <thead>
+            <tr class="thead-dark">
+              <th>Criteria</th>
+              <th>Meet Specification</th>
+            </tr>
+          </thead>
+          
+    <tbody>
+      
+      <tr scope="row">
+        <td>
+          <p>Outputs a log which contains customer risk information in a console output format</p>
+        </td>
+        <td>
+          <p>The Python script <code>sparkpyeventskafkastreamtoconsole.py</code> sinks a streaming dataframe to the console which contains customer risk information in a human-readable format. (Example below):</p>
+<pre><code>+--------------------+-----
+|customer           |score|
++--------------------+-----+
+|Spencer.Davis@tes...| 8.0|
++--------------------+-----</code></pre>
+        </td>
+      </tr>
+    
+      <tr scope="row">
+        <td>
+          <p>Outputs a log which contains customer birth year information in a console output format</p>
+        </td>
+        <td>
+          <p>The Python script <code>sparkpyrediskafkastreamtoconsole.py</code> sinks a streaming dataframe to the console which contains customer birth year information in a human-readable format. (Example below):</p>
+<pre><code>+--------------------+-----               
+| email         |birthYear|
++--------------------+-----
+|Gail.Spencer@test...|1963|
+|Craig.Lincoln@tes...|1962|
+|  Edward.Wu@test.com|1961|
+|Santosh.Phillips@...|1960|
+|Sarah.Lincoln@tes...|1959|
+|Sean.Howard@test.com|1958|
+|Sarah.Clark@test.com|1957|
++--------------------+-----</code></pre>
+        </td>
+      </tr>
+    
+    </tbody>
+  
+        </table>
+
+      </div>
+    
+      <div class="jumbotron">
+        <h3>Tips to make your project standout:</h3>
+        <p><ol>
+<li>Create a streaming spark application that listens to the <strong>redis-server</strong> kafka topic and analyzes the Redis SortedSet called RapidStepTest to calculate a risk score (see pseudocode below) based on the last 4 step tests for each customer. The goal is that the risk score reflects an integer which is negative when the step time is going down, and positive when the risk score is going up.</li>
+<li>Create a streaming spark application that listens to the redis-server kafka topic, and analyzes the Redis SortedSet called RapidStepTest to calculate a risk score (see pseudocode below) based on the last 4 step tests for each customer. Also listen to the <strong>stedi-events</strong> kafka topic for the risk score emitted by the STEDI application. Compare the scores side by side in a sink to the console and evaluate whether the score is correct or not. The goal is that the risk score reflects an integer which is negative when the step time is going down, and positive when the risk score is going up.</li>
+</ol>
+<pre><code>public static CustomerRisk riskScore(String email) throws Exception{
+
+    List&lt;RapidStepTest&gt; rapidStepTestsSortedByDate = allTests.stream().filter(historicUserPredicate).sorted(Comparator.comparing(RapidStepTest::getStartTime)).collect(Collectors.toList());
+    if (rapidStepTestsSortedByDate.size()&lt;4){
+        throw new Exception("Customer "+email+" has: "+rapidStepTestsSortedByDate.size()+" rapid step tests on file which is less than the required number(4) to calculate fall risk.");
+    }
+
+    BigDecimal currentTestAverageScore = BigDecimal.valueOf((mostRecentTest.getStopTime()-mostRecentTest.getStartTime())+ (secondMostRecentTest.getStopTime()-secondMostRecentTest.getStartTime())).divide(BigDecimal.valueOf(2l));
+
+    BigDecimal previousTestAverageScore = BigDecimal.valueOf((thirdMostRecentTest.getStopTime()-thirdMostRecentTest.getStartTime())+ (fourthMostRecentTest.getStopTime()-fourthMostRecentTest.getStartTime())).divide(BigDecimal.valueOf(2l));
+
+    BigDecimal riskScore = (previousTestAverageScore.subtract(currentTestAverageScore)).divide(new BigDecimal(1000l));
+
+    CustomerRisk customerRisk = new CustomerRisk();
+    customerRisk.setScore(new Float(riskScore.setScale(2, BigDecimal.ROUND_HALF_UP).toString()));
+    customerRisk.setCustomer(email);
+    customerRisk.setRiskDate(new Date(mostRecentTest.getStopTime()));
+
+    return customerRisk;
+}</code></pre></p>
+      </div>
+    
+          </div>
+
+          <div class="col-12">
+            <p class="text-right">
+            </p>
+          </div>
+        </div>
+      </main>
+
+      <footer class="footer">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <p class="text-center">
+                <a href="https://us-udacity.github.io/" target="_blank">【udacity2.0 】If you need more courses, please add wechat：udacity6</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </div>
+
+
+  <script src="../assets/js/jquery-3.3.1.min.js"></script>
+  <script src="../assets/js/plyr.polyfilled.min.js"></script>
+  <script src="../assets/js/bootstrap.min.js"></script>
+  <script src="../assets/js/jquery.mCustomScrollbar.concat.min.js"></script>
+  <script src="../assets/js/katex.min.js"></script>
+  <script>
+    // Initialize Plyr video players
+    const players = Array.from(document.querySelectorAll('video')).map(p => new Plyr(p));
+
+    // render math equations
+    let elMath = document.getElementsByClassName('mathquill');
+    for (let i = 0, len = elMath.length; i < len; i += 1) {
+      const el = elMath[i];
+
+      katex.render(el.textContent, el, {
+        throwOnError: false
+      });
+    }
+
+    // this hack will make sure Bootstrap tabs work when using Handlebars
+    if ($('#question-tabs').length && $('#user-answer-tabs').length) {
+      $("#question-tabs a.nav-link").on('click', function () {
+        $("#question-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+      $("#user-answer-tabs a.nav-link").on('click', function () {
+        $("#user-answer-tab-contents .tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    } else {
+      $("a.nav-link").on('click', function () {
+        $(".tab-pane").hide();
+        $($(this).attr("href")).show();
+      });
+    }
+
+    // side bar events
+    $(document).ready(function () {
+      $("#sidebar").mCustomScrollbar({
+        theme: "minimal"
+      });
+
+      $('#sidebarCollapse').on('click', function () {
+        $('#sidebar, #content').toggleClass('active');
+        $('.collapse.in').toggleClass('in');
+        $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+      });
+
+      // scroll to first video on page loading
+      if ($('video').length) {
+        $('html,body').animate({ scrollTop: $('div.plyr').prev().offset().top});
+      }
+
+      // auto play first video: this may not work with chrome/safari due to autoplay policy
+      if (players && players.length > 0) {
+        players[0].play();
+      }
+
+      // scroll sidebar to current concept
+      const currentInSideBar = $( "ul.sidebar-list.components li a:contains('Evaluate Human Balance with Spark Streaming')" )
+      currentInSideBar.css( "text-decoration", "underline" );
+      $("#sidebar").mCustomScrollbar('scrollTo', currentInSideBar);
+    });
+  </script>
+</body>
+
+</html>

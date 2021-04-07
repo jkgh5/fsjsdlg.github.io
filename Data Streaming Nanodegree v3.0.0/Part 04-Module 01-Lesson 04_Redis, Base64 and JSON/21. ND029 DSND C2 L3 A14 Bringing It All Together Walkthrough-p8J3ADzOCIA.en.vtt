@@ -1,0 +1,496 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:03.750
+Let's bring it all together by streaming some data for
+
+00:00:03.750 --> 00:00:08.430
+Redis and decoding that data from base64,
+
+00:00:08.430 --> 00:00:10.275
+extract the JSON fields,
+
+00:00:10.275 --> 00:00:14.670
+and then join the data from two separate Redis collections.
+
+00:00:14.670 --> 00:00:17.940
+We have one collection called reservation and
+
+00:00:17.940 --> 00:00:21.390
+one called payment and we're going to be working with both of those.
+
+00:00:21.390 --> 00:00:26.460
+The first thing we want to do is make sure that Kafka is running.
+
+00:00:26.460 --> 00:00:31.545
+We're going to go to the command line here and say ps -ef,
+
+00:00:31.545 --> 00:00:34.695
+and sure enough, Kafka is not running.
+
+00:00:34.695 --> 00:00:37.930
+Let's get that started,
+
+00:00:38.270 --> 00:00:41.740
+and then we're going to start Spark.
+
+00:00:42.380 --> 00:00:50.460
+I'm going to tail the Spark log from the master using tail -f and the path to the file.
+
+00:00:50.460 --> 00:00:52.955
+There's the Spark master URI.
+
+00:00:52.955 --> 00:00:58.755
+We're going to break out of the tail and I'm going to start the worker,
+
+00:00:58.755 --> 00:01:05.740
+start and pass that in.
+
+00:01:06.470 --> 00:01:12.535
+Kafka rest is up and let's check out everything, ps -ef.
+
+00:01:12.535 --> 00:01:16.820
+You'll notice that we've asked you in the guide to start
+
+00:01:16.820 --> 00:01:20.330
+the simulation once we are ready to run our code,
+
+00:01:20.330 --> 00:01:23.090
+so we're going to do that in a minute here.
+
+00:01:23.090 --> 00:01:27.375
+Now, I've got two JSON payloads,
+
+00:01:27.375 --> 00:01:30.105
+so I need a schema for each of those.
+
+00:01:30.105 --> 00:01:38.790
+We're going to do one for reservation using StructType and an array of StructFields.
+
+00:01:38.790 --> 00:01:41.790
+The first field will be reservationId.
+
+00:01:41.790 --> 00:01:45.945
+The next field will be customerName,
+
+00:01:45.945 --> 00:01:52.125
+and then truckNumber, and reservationDate,
+
+00:01:52.125 --> 00:01:57.285
+and that will be the last field for this schema.
+
+00:01:57.285 --> 00:02:00.315
+Now, we're going to create one for the payment,
+
+00:02:00.315 --> 00:02:05.935
+and we're going to call it reservationId for this one as well.
+
+00:02:05.935 --> 00:02:08.330
+These are different schemas,
+
+00:02:08.330 --> 00:02:09.890
+so it's okay if they use
+
+00:02:09.890 --> 00:02:16.865
+the same field name more than once as long as those are in two separate schemas.
+
+00:02:16.865 --> 00:02:22.550
+I've got all my fields there so far.
+
+00:02:22.550 --> 00:02:31.035
+Excuse me, I need this one to be called just date,
+
+00:02:31.035 --> 00:02:34.650
+and there is not a truckNumber here.
+
+00:02:34.650 --> 00:02:38.385
+Then the last field is amount,
+
+00:02:38.385 --> 00:02:40.845
+and that's a string,
+
+00:02:40.845 --> 00:02:44.020
+which is not normally what it would be,
+
+00:02:44.020 --> 00:02:46.065
+but that's what it is in this case.
+
+00:02:46.065 --> 00:02:50.560
+You'll find lots of different ways of using JSON.
+
+00:02:50.560 --> 00:02:55.100
+We've got schema defined for both of those.
+
+00:02:55.100 --> 00:02:59.555
+I'm just double-checking the field names to make sure they match.
+
+00:02:59.555 --> 00:03:07.210
+Now, I'm going to create a Spark session and we'll call it reservation-payment.
+
+00:03:07.210 --> 00:03:11.920
+We'll set our logging to WARN,
+
+00:03:11.920 --> 00:03:20.205
+RawStreamingDataFrame is going come from Spark and it's Kafka format.
+
+00:03:20.205 --> 00:03:23.100
+This needs to have s on
+
+00:03:23.100 --> 00:03:30.245
+the end bootstrap servers because you could provide more than one in this case.
+
+00:03:30.245 --> 00:03:37.055
+We're reading from the redis-server topic and reading the earliest data,
+
+00:03:37.055 --> 00:03:39.745
+and we're going to load that.
+
+00:03:39.745 --> 00:03:43.755
+Let's convert it from binary to string,
+
+00:03:43.755 --> 00:03:53.080
+and we're going to do a select expression of cast key as string and name it key.
+
+00:03:53.090 --> 00:04:03.025
+Then we are going to cast the value as a string as well and call it value.
+
+00:04:03.025 --> 00:04:09.885
+Now, we need to extract the base64 data out of the JSON payload.
+
+00:04:09.885 --> 00:04:14.925
+Let's do that,.withColumn.
+
+00:04:14.925 --> 00:04:18.045
+We want to get the value column.
+
+00:04:18.045 --> 00:04:26.260
+We're extracting the JSON from that column using the redisMessageSchema,
+
+00:04:26.330 --> 00:04:31.965
+and I'm going to select the column called value dot star,
+
+00:04:31.965 --> 00:04:37.215
+and I'm going to create a view called RedisData.
+
+00:04:37.215 --> 00:04:43.815
+I'm going to select the key and the zSetEntries zero element from that view.
+
+00:04:43.815 --> 00:04:46.530
+Then I select the key,
+
+00:04:46.530 --> 00:04:53.200
+and then I'm going to select zSetEntries 0.element.
+
+00:04:53.200 --> 00:04:57.470
+If you look at this schema, you'll see zSetEntries,
+
+00:04:57.470 --> 00:05:03.290
+it's a array type and it's an array of this type of
+
+00:05:03.290 --> 00:05:06.170
+object that has an element and a score in it and I'm looking
+
+00:05:06.170 --> 00:05:09.635
+at the element in that query.
+
+00:05:09.635 --> 00:05:17.975
+We're going to call this a redisEvent and we're creating from the RedisData view.
+
+00:05:17.975 --> 00:05:22.070
+Now, I want to decode it,
+
+00:05:22.070 --> 00:05:24.110
+so I'm going to do that.
+
+00:05:24.110 --> 00:05:26.810
+I'm actually going to do this twice this time
+
+00:05:26.810 --> 00:05:30.395
+because I have two different things I'm looking for,
+
+00:05:30.395 --> 00:05:32.990
+two different kinds of data.
+
+00:05:32.990 --> 00:05:38.075
+I'm going to create this the first time and then I'm going to copy it.
+
+00:05:38.075 --> 00:05:47.700
+Now, we're going to decode the redisEvent column which we created here from this element,
+
+00:05:47.840 --> 00:05:51.320
+and we're going to decode it using
+
+00:05:51.320 --> 00:06:00.655
+the unbase64 method calling it zSetEntriesEncodedStreamingDataFrame,
+
+00:06:00.655 --> 00:06:02.759
+which will soon be decoded,
+
+00:06:02.759 --> 00:06:05.565
+and we want the redisEvent column,
+
+00:06:05.565 --> 00:06:09.495
+and we're going to cast it as a string.
+
+00:06:09.495 --> 00:06:13.439
+Now, I want to copy this again,
+
+00:06:13.439 --> 00:06:17.655
+and the second one is going to be DF2.
+
+00:06:17.655 --> 00:06:22.870
+We're going to apply a filter and we're going to look into the JSON that's in
+
+00:06:22.870 --> 00:06:25.750
+the redisEvent and we're going to look for the fields we're
+
+00:06:25.750 --> 00:06:29.990
+looking for and filter out the things we don't want.
+
+00:06:30.050 --> 00:06:35.205
+Let's filter the first data frame, DF1.
+
+00:06:35.205 --> 00:06:44.580
+We're going to say zSetDecodedEntriesStreamingDF1.filter,
+
+00:06:44.580 --> 00:06:55.005
+and we're going to say column redisEvent.contains reservationDate.
+
+00:06:55.005 --> 00:06:57.690
+We just filter that,
+
+00:06:57.690 --> 00:07:02.315
+and now we're going to filter the second data frame.
+
+00:07:02.315 --> 00:07:04.865
+We're going to say column,
+
+00:07:04.865 --> 00:07:07.500
+and we're actually going to say not.
+
+00:07:07.500 --> 00:07:11.200
+So this is the not symbol in Spark.
+
+00:07:11.210 --> 00:07:15.635
+We're saying not redisEvent.
+
+00:07:15.635 --> 00:07:18.925
+.contains reservation Date.
+
+00:07:18.925 --> 00:07:23.125
+This is everything else that doesn't have a reservationDate.
+
+00:07:23.125 --> 00:07:33.880
+Now we're going to extract the JSON out of the first data frame using the.withColumn and
+
+00:07:33.880 --> 00:07:41.470
+we're extracting data from the reservation column and we're going to use
+
+00:07:41.470 --> 00:07:48.745
+the reservationJSONSchema and then we're going to select column
+
+00:07:48.745 --> 00:07:57.790
+"reservation.star" and create a view called "Reservation".
+
+00:07:57.790 --> 00:08:03.280
+Now we're going to create another view using the second data frame,
+
+00:08:03.280 --> 00:08:10.465
+with column payment and from_json,
+
+00:08:10.465 --> 00:08:16.930
+we should actually be looking for the redisEvent field.
+
+00:08:16.930 --> 00:08:19.850
+I just made that update there,
+
+00:08:19.850 --> 00:08:23.220
+and we're going to look for it again here.
+
+00:08:23.220 --> 00:08:32.575
+Now we're using the paymentJSONSchema and I'm selecting "payment.star",
+
+00:08:32.575 --> 00:08:36.595
+and I'm going to create a view called "Payment".
+
+00:08:36.595 --> 00:08:43.225
+Now I'm going to select everything where the reservationDate is not null.
+
+00:08:43.225 --> 00:08:52.600
+So reservationStreamingDF comes from that query, spark.sql,
+
+00:08:52.600 --> 00:09:04.180
+"select reservationId, reservationDate from Reservation where
+
+00:09:04.180 --> 00:09:08.170
+reservationDate is not null".
+
+00:09:08.170 --> 00:09:21.230
+I'm going to do another query, paymentStreamingDF,
+
+00:09:24.090 --> 00:09:33.730
+select reservationId, and we're going to call it paymentReservationId,
+
+00:09:33.890 --> 00:09:38.970
+and the date we are going to call it paymentDate and the
+
+00:09:38.970 --> 00:09:45.405
+amount as paymentAmount from Payment.
+
+00:09:45.405 --> 00:09:49.290
+Now we're going to do a left outer join,
+
+00:09:49.290 --> 00:09:56.875
+which allows us to see data when it actually missing from the right-hand of the join.
+
+00:09:56.875 --> 00:10:00.130
+We're going to call it, noPaymentStreamingDF
+
+00:10:00.130 --> 00:10:04.490
+because it could have data where there's no payment showing.
+
+00:10:05.370 --> 00:10:10.510
+ReservationStreamingDF.join(paymentStreamingDF),
+
+00:10:10.510 --> 00:10:14.350
+which is the right side which could be missing if there's no payment,
+
+00:10:14.350 --> 00:10:20.900
+and then we're going to say reservationId equals paymentReservationId,
+
+00:10:21.180 --> 00:10:30.020
+and we're going to call the type of a join explicitly here as a leftOuter join.
+
+00:10:31.380 --> 00:10:40.640
+Then lastly, we're going to stream this to the console and see what we get from it.
+
+00:10:43.080 --> 00:10:56.080
+NoPaymentStreamingDF.wrieStream.outputMode(''append'').format(''console").start()
+
+00:10:56.080 --> 00:11:05.540
+and await Termination(). We'll save that file and start our simulation.
+
+00:11:12.270 --> 00:11:17.240
+I'm just checking the startup for that,
+
+00:11:18.420 --> 00:11:24.610
+so that should be running now and we can run to clear this
+
+00:11:24.610 --> 00:11:31.070
+so it starts at the top home/workspace resting there.
+
+00:11:32.010 --> 00:11:36.250
+Let's go to Spark and I have a script to
+
+00:11:36.250 --> 00:11:45.535
+run this submit-reservation-payment.sh 940,
+
+00:11:45.535 --> 00:11:47.589
+the sruct type is not defined,
+
+00:11:47.589 --> 00:11:50.770
+looks like I spelled it wrong.
+
+00:11:50.770 --> 00:12:00.890
+Struck type here has a lowercase t. It should have that t there, uppercase.
+
+00:12:01.410 --> 00:12:10.920
+ZSetEntriesEncoded, we can see that we misspelled that there on line 83 Encoded,
+
+00:12:10.920 --> 00:12:15.339
+and it's misspelled here as well,
+
+00:12:17.390 --> 00:12:26.205
+on line 83 zSetEntriesEncodedStreamingDF, there we go.
+
+00:12:26.205 --> 00:12:28.930
+Now, let's run that again.
+
+00:12:29.630 --> 00:12:35.960
+From_json missing one argument schema on line 100.
+
+00:12:35.960 --> 00:12:41.330
+There we're just going to print out of place.
+
+00:12:46.110 --> 00:12:51.520
+Outer join between two streaming data frames is not supported with join
+
+00:12:51.520 --> 00:12:59.140
+leftOuter without a watermark in the join keys or a watermark on the nullable side.
+
+00:12:59.140 --> 00:13:06.970
+I'm just going to make a note of that and we will change this
+
+00:13:06.970 --> 00:13:15.025
+then to payment instead of noPayment because it won't show up unless it has a payment.
+
+00:13:15.025 --> 00:13:21.320
+I'm going to take out the leftOuter, save that.
+
+00:13:26.010 --> 00:13:28.030
+When you're doing joins,
+
+00:13:28.030 --> 00:13:31.700
+it can take up to two minutes for the output to come.
+
+00:13:33.330 --> 00:13:43.750
+There's our information, so we have a paymentDate of null on every line.
+
+00:13:43.750 --> 00:13:49.960
+Let's check out date,
+
+00:13:49.960 --> 00:13:53.935
+so every reservation is looking correct, whether reservationId,
+
+00:13:53.935 --> 00:13:57.730
+reservationDate, paymentReservationId,
+
+00:13:57.730 --> 00:14:04.870
+and the Payment field is showing up as null even where the paymentAmount is there.
+
+00:14:04.870 --> 00:14:07.495
+That's an error in the data that we're getting,
+
+00:14:07.495 --> 00:14:10.225
+so that means it's not providing that.
+
+00:14:10.225 --> 00:14:15.145
+The lines that were showing that say paymentAmount is null,
+
+00:14:15.145 --> 00:14:22.450
+that means we just need to do is not null here and we would have a fix on that.
+
+00:14:22.450 --> 00:14:28.780
+But the data that's coming in apparently isn't including the paymentDate,
+
+00:14:28.780 --> 00:14:32.890
+we can look at that here if we go to
+
+00:14:32.890 --> 00:14:43.630
+data/redis/redis-stable/source/redis-cli- and the password keys.
+
+00:14:43.630 --> 00:14:46.220
+If I look at a payment,
+
+00:14:46.470 --> 00:14:55.105
+zrange Payment 0-1, there is not actually a paymentDate.
+
+00:14:55.105 --> 00:15:02.165
+To resolve that, we would just go in here and correct this.
+
+00:15:02.165 --> 00:15:07.030
+We would just remove that date from that.
+
+00:15:07.030 --> 00:15:13.670
+That's joining two base-64 encoded data frames decoded to
+
+00:15:13.670 --> 00:15:20.135
+JSON and formatted so that they can be reused later in further analysis.
+
+00:15:20.135 --> 00:15:24.755
+I'm going to kill that Spark application using control C,
+
+00:15:24.755 --> 00:15:28.680
+and I'm going to exit from the redis-cli using exit.
+

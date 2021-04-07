@@ -1,0 +1,115 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:03.420
+Next we work with sinking a subset of JSON.
+
+00:00:03.420 --> 00:00:07.515
+We just worked with parsing Base64 encoded information.
+
+00:00:07.515 --> 00:00:09.855
+Next we will sink a subset of JSON.
+
+00:00:09.855 --> 00:00:13.245
+We start by looking at two ways to select data in Spark,
+
+00:00:13.245 --> 00:00:16.110
+then explore Spark SQL functions,
+
+00:00:16.110 --> 00:00:18.840
+and last we dive into the split function.
+
+00:00:18.840 --> 00:00:23.310
+Let's start by looking at the two ways to select in Spark.
+
+00:00:23.310 --> 00:00:26.370
+There are two main functions used for selecting data in
+
+00:00:26.370 --> 00:00:29.970
+Spark streaming,.select and Spark.sql.
+
+00:00:29.970 --> 00:00:32.940
+Here is an example of using the.select method to
+
+00:00:32.940 --> 00:00:36.765
+select the columns reservation ID and truck number.
+
+00:00:36.765 --> 00:00:42.765
+Notice the.select function accepts from one-to-many column names separated by a comma.
+
+00:00:42.765 --> 00:00:46.575
+Let's do the same select using Spark.sql.
+
+00:00:46.575 --> 00:00:51.885
+Notice the Spark SQL function accepts valid SQL statements.
+
+00:00:51.885 --> 00:00:55.955
+Let's talk about Spark SQL functions.
+
+00:00:55.955 --> 00:00:59.245
+Here's some useful Spark SQL functions.
+
+00:00:59.245 --> 00:01:04.865
+These can be used within the Spark SQL function or within the.select function,
+
+00:01:04.865 --> 00:01:08.745
+to-JSON and from-JSON are for working with JSON,
+
+00:01:08.745 --> 00:01:15.100
+unbase64 and base64 are for working with base64 encoded information.
+
+00:01:15.100 --> 00:01:18.415
+Split is for separating a string of characters.
+
+00:01:18.415 --> 00:01:20.525
+We have worked with to-JSON,
+
+00:01:20.525 --> 00:01:24.790
+from-JSON and unbase64 so far.
+
+00:01:24.790 --> 00:01:29.480
+We just looked at several of the Spark SQL functions available in Spark streaming.
+
+00:01:29.480 --> 00:01:32.360
+Next, we will work with the split function.
+
+00:01:32.360 --> 00:01:36.455
+In this example, we are parsing a DataFrame field customer name,
+
+00:01:36.455 --> 00:01:39.050
+which contains both a first and a last name.
+
+00:01:39.050 --> 00:01:41.195
+In this example, June Aristotle.
+
+00:01:41.195 --> 00:01:46.810
+Using split, we extract both first and last names we then call it.getItem,
+
+00:01:46.810 --> 00:01:48.665
+to get the zeroth element.
+
+00:01:48.665 --> 00:01:52.835
+We then call alias to create a field called firstName.
+
+00:01:52.835 --> 00:01:58.680
+How would you approach this same data to get the customer's e-mail provider?
+
+00:01:59.180 --> 00:02:01.605
+To get the email domain,
+
+00:02:01.605 --> 00:02:06.275
+we call split parsing customers streaming df.email field,
+
+00:02:06.275 --> 00:02:08.405
+and then the at symbol.
+
+00:02:08.405 --> 00:02:11.225
+We then get the element from position 1,
+
+00:02:11.225 --> 00:02:13.145
+which will be the e-mail domain.
+
+00:02:13.145 --> 00:02:19.050
+So we call the.alias function to create an alias called emailDomain.
+

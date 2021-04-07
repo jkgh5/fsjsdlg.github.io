@@ -1,0 +1,199 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:03.675
+The first thing I'm going do is make sure that Spark and Kafka are running.
+
+00:00:03.675 --> 00:00:05.280
+When I do ps dash ef,
+
+00:00:05.280 --> 00:00:08.670
+that allows me to look at the processes running on my machine.
+
+00:00:08.670 --> 00:00:10.740
+I have two spark processes one,
+
+00:00:10.740 --> 00:00:12.795
+two and several Java processes,
+
+00:00:12.795 --> 00:00:17.085
+which means Kafka's probably still running. That's a good sign.
+
+00:00:17.085 --> 00:00:19.980
+Let's look at the solution to the code.
+
+00:00:19.980 --> 00:00:22.125
+I've imported my SparkSession,
+
+00:00:22.125 --> 00:00:25.275
+I've imported my spark functions,
+
+00:00:25.275 --> 00:00:27.645
+I've imported my types.
+
+00:00:27.645 --> 00:00:29.560
+I have this redisMessageSchema,
+
+00:00:29.560 --> 00:00:36.720
+which is the message schema of data that comes into the kafka source connector for redis.
+
+00:00:36.720 --> 00:00:40.220
+Then I have some data that's going to come from redis inside of
+
+00:00:40.220 --> 00:00:44.665
+that and I need to create a schema for it.
+
+00:00:44.665 --> 00:00:55.710
+Here I have my account number and my location and this JSON here is not correct.
+
+00:00:55.710 --> 00:01:03.340
+It should say something like account number and then location and then Spain.
+
+00:01:03.340 --> 00:01:05.655
+We only have two fields.
+
+00:01:05.655 --> 00:01:10.710
+Let's create that schema and we're going
+
+00:01:10.710 --> 00:01:15.600
+to create a SparkSession and call it customer location.
+
+00:01:15.600 --> 00:01:24.870
+We set the log level to WARN and then we're going to create a spark connection to kafka,
+
+00:01:24.870 --> 00:01:29.280
+format kafka bootstrap server localhost 9092.
+
+00:01:29.280 --> 00:01:33.950
+We're going to subscribe to the redis server topic starting in the earliest message.
+
+00:01:33.950 --> 00:01:39.859
+Then we're going to read from that DataFrame that is a representation of the topic.
+
+00:01:39.859 --> 00:01:42.025
+We'll call dot select,
+
+00:01:42.025 --> 00:01:45.650
+Expr on it and we will cast the key and
+
+00:01:45.650 --> 00:01:50.110
+value as strings and name them key and value in this DataFrame.
+
+00:01:50.110 --> 00:01:52.345
+We're going to call dot withColumn,
+
+00:01:52.345 --> 00:01:57.290
+and we're going to overwrite the value column with
+
+00:01:57.290 --> 00:02:02.360
+the extracted fields from the JSON in the current value column
+
+00:02:02.360 --> 00:02:07.400
+using the redisMessageSchema and we will call dot select and
+
+00:02:07.400 --> 00:02:12.815
+use the column function to extract all the value sub-fields that were just generated.
+
+00:02:12.815 --> 00:02:15.440
+We'll create a temporary view called RedisData.
+
+00:02:15.440 --> 00:02:21.165
+In that view, we want to select the zSetEntries zero with array element,
+
+00:02:21.165 --> 00:02:26.300
+and then get the dot element field from the object in that array position.
+
+00:02:26.300 --> 00:02:29.360
+We'll call that customerLocation and we will
+
+00:02:29.360 --> 00:02:32.390
+save that in an encoded, it's called encoded.
+
+00:02:32.390 --> 00:02:34.280
+It's just a variable name,
+
+00:02:34.280 --> 00:02:39.515
+an encoded streaming DataFrame because it has base-64 data in it.
+
+00:02:39.515 --> 00:02:41.870
+We're just using that to help us remember.
+
+00:02:41.870 --> 00:02:45.470
+We now need to decode it using dot with column,
+
+00:02:45.470 --> 00:02:49.620
+just like we did with JSON over here and we're going to
+
+00:02:49.620 --> 00:02:54.794
+overwrite the customerLocation column by calling the unbase64 function,
+
+00:02:54.794 --> 00:02:58.745
+we'll pass the customer location and decode it.
+
+00:02:58.745 --> 00:03:01.820
+Then we're going to cast the result to a string and that ends
+
+00:03:01.820 --> 00:03:05.525
+up here in this DataFrame, which is JSON.
+
+00:03:05.525 --> 00:03:10.250
+We need to decode the JSON which came into redis originally and we're
+
+00:03:10.250 --> 00:03:15.510
+going to extract that from JSON format using the schema we created.
+
+00:03:15.510 --> 00:03:18.025
+When we're done extracting it,
+
+00:03:18.025 --> 00:03:20.815
+we're going to save it in a view called customerLocation,
+
+00:03:20.815 --> 00:03:24.850
+where we'll use sparks equal to select all of its columns and rows.
+
+00:03:24.850 --> 00:03:27.670
+That'll end up into customerLocationStreamingDF,
+
+00:03:27.670 --> 00:03:31.460
+DataFrame, which will then write to the console.
+
+00:03:31.730 --> 00:03:35.605
+I'm going to copy the syntax to start this,
+
+00:03:35.605 --> 00:03:38.590
+which is spark submit dashes packages,
+
+00:03:38.590 --> 00:03:42.715
+package name, and the full path to the Python script,
+
+00:03:42.715 --> 00:03:48.645
+which will be home, workspace, customer-location,
+
+00:03:48.645 --> 00:03:55.510
+dot py and it's loading all libraries starting
+
+00:03:55.510 --> 00:04:02.275
+out spark and then it's running spark application and here's the data.
+
+00:04:02.275 --> 00:04:05.845
+Notice we didn't say where location is not null here.
+
+00:04:05.845 --> 00:04:09.740
+That would have made it so we gotten none of these null rows.
+
+00:04:09.740 --> 00:04:12.230
+These are rows where there's data coming into redis that
+
+00:04:12.230 --> 00:04:15.395
+doesn't match the schema and so it ends up as a null row.
+
+00:04:15.395 --> 00:04:20.060
+But here are these, we have one account number in Thailand, Argentina,
+
+00:04:20.060 --> 00:04:22.055
+South Africa, Ukraine, India, Uganda,
+
+00:04:22.055 --> 00:04:26.190
+and New Zealand and hit Control-C out of that.
+
